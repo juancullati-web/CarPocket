@@ -253,11 +253,13 @@ _BODY_TABLE = [
 
 def to_metric(text: str) -> str:
     """Convertit pouces, livres et mph en unités métriques."""
-    match = re.match(r"\s*(\d[\d,]*(?:\.\d+)?)\s*(in|inches|lb|lbs|mph)\b", text or "", re.I)
+    match = re.match(r"\s*(\d[\d,]*(?:\.\d+)?)\s*(lb[-⋅· ]?ft|lbft|ft[-⋅· ]?lb|lbf[-⋅· ]?ft|in|inches|lb|lbs|mph)\b", text or "", re.I)
     if not match:
         return text
     number = float(match.group(1).replace(",", ""))
     unit = match.group(2).lower()
+    if "ft" in unit:
+        return f"{round(number * 1.35582)} Nm"
     if unit in ("in", "inches"):
         return f"{round(number * 25.4)} mm"
     if unit in ("lb", "lbs"):
@@ -326,7 +328,7 @@ def extract_specs(wikitext: str) -> dict:
     else:
         text_power, _ = _power_and_torque(prose)
         put("power", text_power, from_text=True)
-    put("torque", torque)
+    put("torque", to_metric(torque))
 
     put("top_speed", to_metric(find_top_speed(prose)), from_text=True)
     put("zero_100", find_acceleration(prose).replace(".", ","), from_text=True)

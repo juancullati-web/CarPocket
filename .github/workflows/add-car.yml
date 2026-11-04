@@ -4,10 +4,6 @@ on:
   issues:
     types: [opened]
 
-concurrency:
-  group: library
-  cancel-in-progress: false
-
 jobs:
   add:
     # Seules les demandes ouvertes par le propriétaire du dépôt sont traitées.
@@ -36,8 +32,12 @@ jobs:
             echo "changed=false" >> "$GITHUB_OUTPUT"
           else
             git commit -m "Ajoute une voiture (demande #$ISSUE_NUMBER)"
-            git pull --rebase origin main
-            git push origin HEAD:main
+            # Chaque voiture a ses propres fichiers : plusieurs demandes peuvent se suivre.
+            for attempt in 1 2 3 4 5; do
+              git pull --rebase origin main && git push origin HEAD:main && pushed=yes && break
+              sleep $((attempt * 5))
+            done
+            test "$pushed" = yes
             echo "changed=true" >> "$GITHUB_OUTPUT"
           fi
         env:

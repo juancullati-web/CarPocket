@@ -96,6 +96,7 @@ class Specs(unittest.TestCase):
         self.assertEqual(infobox.to_metric("174.6 in"), "4435 mm")
         self.assertEqual(infobox.to_metric("116.8 mph"), "188 km/h")
         self.assertEqual(infobox.to_metric("1100 kg"), "1100 kg")
+        self.assertEqual(infobox.to_metric("288 lbft"), "390 Nm")
 
     def test_nested_infobox_inherits_shared_fields(self):
         self.assertEqual(infobox.extract_specs(NESTED)["specs"]["body"]["value"], "Coupé 2 portes")

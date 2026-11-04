@@ -50,6 +50,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 
 
 def main() -> None:
+    build_index.build()
     handler = functools.partial(Handler, directory=str(SITE))
     with http.server.ThreadingHTTPServer(("127.0.0.1", PORT), handler) as server:
         print(f"Site disponible sur http://localhost:{PORT}")
