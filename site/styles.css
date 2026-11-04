@@ -138,7 +138,7 @@ strong { font-weight: 700; }
 .showroom {
   position: relative;
   display: flex;
-  min-height: clamp(520px, 72vh, 780px);
+  min-height: clamp(400px, 52vh, 560px);
   overflow: hidden;
   background: var(--surface-dark);
   color: var(--on-dark);
@@ -152,9 +152,9 @@ strong { font-weight: 700; }
   object-fit: cover;
   opacity: 0;
   transform: scale(1.02);
-  transition: opacity .9s ease;
+  transition: opacity .6s ease;
 }
-.showroom-photo.is-active { opacity: 1; animation: showroom-drift 8s ease-out forwards; }
+.showroom-photo.is-active { opacity: 1; animation: showroom-drift 5s ease-out forwards; }
 @keyframes showroom-drift { to { transform: scale(1.09); } }
 .showroom-scrim {
   position: absolute;
@@ -168,8 +168,8 @@ strong { font-weight: 700; }
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  gap: 28px;
-  padding-block: 48px 28px;
+  gap: 20px;
+  padding-block: 32px 16px;
 }
 .showroom-copy { display: flex; flex-direction: column; align-items: flex-start; gap: 12px; min-width: 0; }
 .showroom-copy.is-entering > * { animation: showroom-rise .7s cubic-bezier(.2, .7, .2, 1) backwards; }
@@ -206,7 +206,7 @@ strong { font-weight: 700; }
   transform-origin: left;
 }
 .showroom-segment.is-done .showroom-fill { transform: none; }
-.showroom-segment[aria-current="true"] .showroom-fill { animation: showroom-progress 6s linear forwards; }
+.showroom-segment[aria-current="true"] .showroom-fill { animation: showroom-progress 4s linear forwards; }
 @keyframes showroom-progress { to { transform: none; } }
 .showroom.is-paused .showroom-fill,
 .showroom:has(:focus-visible) .showroom-fill,
@@ -423,7 +423,7 @@ dialog p { margin-bottom: 16px; }
   .wordmark { font-size: 1.125rem; gap: 8px; }
   .wordmark img { width: 30px; height: 30px; }
   .spec-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .showroom { min-height: 600px; }
+  .showroom { min-height: 440px; }
   .showroom-stats { gap: 12px 24px; }
   .showroom-stats dd { font-size: 1.25rem; }
   .showroom-controls { gap: 12px; }
