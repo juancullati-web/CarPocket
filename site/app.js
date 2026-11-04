@@ -357,6 +357,8 @@ function renderSession() {
   el("cta-band").hidden = !canEdit();
   el("accounts-link").hidden = !isAdmin();
   el("library-title").textContent = state.viewing ? `Collection de ${state.viewing.username}` : "Mon deck";
+  el("app-intro").hidden = Boolean(state.viewing);
+  el("search-label").textContent = state.viewing ? "Rechercher dans cette collection" : "Rechercher dans mon deck";
   const note = el("viewing-note");
   note.hidden = !state.viewing;
 }

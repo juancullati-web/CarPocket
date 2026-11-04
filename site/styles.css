@@ -678,3 +678,5 @@ body.has-compare-bar { padding-bottom: 72px; }
 .avatar-picture img { width: 82%; height: 82%; object-fit: contain; }
 .avatar-logo { background: #fff; box-shadow: inset 0 0 0 1px var(--hairline); }
 .avatar-logo img { width: 66%; height: 66%; object-fit: contain; }
+
+.app-intro { max-width: 65ch; margin-bottom: 48px; color: var(--body); font-size: 1.125rem; line-height: 1.55; }
