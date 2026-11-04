@@ -27,6 +27,9 @@ alter table public.profiles drop constraint if exists profiles_avatar_check;
 alter table public.profiles add constraint profiles_avatar_check
   check (avatar is null or avatar ~ '^(emoji|marque|perso):[a-z0-9-]{1,30}$');
 
+-- Chacun peut masquer sa collection : les autres comptes connectés ne la voient plus.
+alter table public.profiles add column if not exists shared boolean not null default true;
+
 -- Le profil se crée tout seul avec le compte, toujours en simple membre.
 create or replace function public.handle_new_user()
 returns trigger
@@ -64,6 +67,19 @@ as $$
   );
 $$;
 
+-- Le rôle des autres n'est lisible que par l'administrateur.
+create or replace function public.account_roles()
+returns table (id uuid, role text)
+language sql
+stable
+security definer
+set search_path = ''
+as $$
+  select p.id, p.role from public.profiles p where public.is_admin();
+$$;
+
+revoke all on function public.account_roles() from public, anon;
+grant execute on function public.account_roles() to authenticated;
 revoke all on function public.handle_new_user() from public, anon, authenticated;
 revoke all on function public.is_admin() from public, anon;
 grant execute on function public.is_admin() to authenticated;
@@ -73,16 +89,17 @@ alter table public.deck_items enable row level security;
 
 revoke all on public.profiles from anon, authenticated;
 revoke all on public.deck_items from anon, authenticated;
--- Seul l'avatar est modifiable depuis le site : personne ne peut changer son rôle.
-grant select on public.profiles to authenticated;
-grant update (avatar) on public.profiles to authenticated;
+-- Le rôle n'est pas lisible directement, et seuls l'avatar et le partage sont modifiables.
+grant select (id, username, avatar, shared) on public.profiles to authenticated;
+grant update (avatar, shared) on public.profiles to authenticated;
 grant select, insert, delete on public.deck_items to authenticated;
 grant update (main_photo) on public.deck_items to authenticated;
 
 drop policy if exists "profil lisible par soi ou l'admin" on public.profiles;
-create policy "profil lisible par soi ou l'admin" on public.profiles
+drop policy if exists "profil lisible si partagé" on public.profiles;
+create policy "profil lisible si partagé" on public.profiles
   for select to authenticated
-  using (id = (select auth.uid()) or (select public.is_admin()));
+  using (id = (select auth.uid()) or shared or (select public.is_admin()));
 
 drop policy if exists "avatar modifiable par soi" on public.profiles;
 create policy "avatar modifiable par soi" on public.profiles
@@ -91,9 +108,14 @@ create policy "avatar modifiable par soi" on public.profiles
   with check (id = (select auth.uid()));
 
 drop policy if exists "collection lisible par soi ou l'admin" on public.deck_items;
-create policy "collection lisible par soi ou l'admin" on public.deck_items
+drop policy if exists "collection lisible si partagée" on public.deck_items;
+create policy "collection lisible si partagée" on public.deck_items
   for select to authenticated
-  using (user_id = (select auth.uid()) or (select public.is_admin()));
+  using (
+    user_id = (select auth.uid())
+    or (select public.is_admin())
+    or exists (select 1 from public.profiles p where p.id = deck_items.user_id and p.shared)
+  );
 
 drop policy if exists "ajout dans sa collection" on public.deck_items;
 create policy "ajout dans sa collection" on public.deck_items

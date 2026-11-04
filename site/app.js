@@ -12,7 +12,7 @@ const RELAUNCH_MS = 90000;
 const TIMEOUT_MS = 20 * 60 * 1000;
 
 const el = (id) => document.getElementById(id);
-const state = { catalog: [], cars: [], items: [], user: null, viewing: null, brand: "", compare: [], failed: new Set(), starting: new Set(), relaunched: new Set(), accounts: [] };
+const state = { catalog: [], cars: [], items: [], user: null, viewing: null, brand: "", compare: [], failed: new Set(), starting: new Set(), relaunched: new Set(), accounts: [], people: [], ownTitles: new Set() };
 
 const esc = (value) =>
   String(value ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -79,6 +79,7 @@ async function server(action, input = {}) {
 
 /** La collection affichée : la fiche partagée, plus les choix de la personne. */
 function rebuildDeck() {
+  if (!state.viewing) state.ownTitles = new Set(state.items.map((item) => item.title));
   const byTitle = new Map(state.catalog.map((car) => [titleOf(car), car]));
   state.cars = state.items.flatMap((item) => {
     const car = byTitle.get(item.title);
@@ -93,6 +94,7 @@ function rebuildDeck() {
 }
 
 function pendingItems() {
+  if (state.viewing) return [];
   const known = new Set(state.catalog.map(titleOf));
   return state.items.filter((item) => !known.has(item.title)).map((item) => {
     const failed = state.failed.has(item.title);
@@ -116,6 +118,17 @@ function compareButton(car) {
   return `<button type="button" class="text-link" data-compare="${esc(car.slug)}" aria-pressed="${selected}">${selected ? "Sélectionnée ✓" : "Comparer"}</button>`;
 }
 
+const backLabel = () => (state.viewing ? `‹ Collection de ${esc(state.viewing.username)}` : "‹ Mon deck");
+
+/** Sur la collection d'un ami : ajouter la voiture à la sienne, sans attente. */
+function friendAddButton(car) {
+  if (!state.viewing) return "";
+  const title = titleOf(car);
+  return state.ownTitles.has(title)
+    ? `<span class="in-deck">Dans mon deck ✓</span>`
+    : `<button type="button" class="text-link" data-add-title="${esc(title)}" aria-label="Ajouter ${esc(car.name)} à mon deck">+ Mon deck</button>`;
+}
+
 function cardHtml(car) {
   const photo = car.photos[0];
   return `<div class="model-card">
@@ -130,6 +143,7 @@ function cardHtml(car) {
         ${compareButton(car)}
         <a class="text-link" href="#${esc(car.slug)}">Fiche ›</a>
         ${canEdit() ? `<button type="button" class="text-link quiet" data-delete="${esc(car.slug)}" aria-label="Retirer ${esc(car.name)} de ma collection">Retirer</button>` : ""}
+        ${friendAddButton(car)}
       </div>
     </div>
   </div>`;
@@ -414,7 +428,7 @@ function detailHtml(car) {
 
   return `<section class="detail-hero">
       <div class="wrap detail-title">
-        <a class="back" href="#">‹ Mon deck</a>
+        <a class="back" href="#">${backLabel()}</a>
         <div class="detail-eyebrow">
           <span class="label">${esc(car.brand)}</span>
           ${car.example ? `<span class="badge">Exemple</span>` : ""}
@@ -445,6 +459,7 @@ function detailHtml(car) {
           <div class="actions">
             ${compareButton(car)}
             ${canEdit() ? `<button type="button" class="text-link quiet" data-delete="${esc(car.slug)}">Retirer de ma collection</button>` : ""}
+            ${friendAddButton(car)}
             ${isAdmin() ? `<a class="text-link" href="https://github.com/juancullati-web/CarPocket/edit/main/data/cars/${esc(car.slug)}.json" target="_blank" rel="noopener">Corriger cette fiche ›</a>
             <button type="button" class="text-link quiet" data-remove-sheet="${esc(titleOf(car))}">Supprimer la fiche pour tout le monde</button>` : ""}
           </div>
@@ -523,7 +538,7 @@ function compareHtml(cars) {
   }).join("");
 
   return `<section class="compare-head"><div class="wrap">
-      <a class="back" href="#">‹ Mon deck</a>
+      <a class="back" href="#">${backLabel()}</a>
       <h1 class="display-xl">Comparaison</h1>
     </div></section>
     <section class="section"><div class="wrap">
@@ -585,17 +600,20 @@ function renderRoute() {
   }
   const accounts = hash === "comptes" && isAdmin();
   const profile = hash === "profil" && Boolean(state.user);
+  const discover = hash === "decouvrir" && Boolean(state.user);
   const car = carBySlug(hash) || null;
-  el("library").hidden = Boolean(car || compareCars || accounts || profile);
+  el("library").hidden = Boolean(car || compareCars || accounts || profile || discover);
+  el("discover").hidden = !discover;
   el("profile").hidden = !profile;
   el("detail").hidden = !car;
   el("compare").hidden = !compareCars;
   el("accounts").hidden = !accounts;
-  document.title = car ? `${car.name} · CarPocket` : compareCars ? "Comparaison · CarPocket" : accounts ? "Comptes · CarPocket" : profile ? "Mon profil · CarPocket" : "CarPocket";
+  document.title = car ? `${car.name} · CarPocket` : compareCars ? "Comparaison · CarPocket" : accounts ? "Comptes · CarPocket" : profile ? "Mon profil · CarPocket" : discover ? "Découvrir · CarPocket" : "CarPocket";
   if (car) el("detail").innerHTML = detailHtml(car);
   if (compareCars) el("compare").innerHTML = compareHtml(compareCars);
   if (accounts) renderAccounts();
   if (profile) renderProfile();
+  if (discover) renderDiscover();
 }
 
 function route() {
@@ -922,9 +940,10 @@ const toEmail = (username) => `${username.trim().toLowerCase()}@${LOGIN_DOMAIN}`
 
 async function enterApp(session) {
   const { data: profile, error } = await db.from("profiles")
-    .select("id, username, role, avatar").eq("id", session.user.id).single();
+    .select("id, username, avatar, shared").eq("id", session.user.id).single();
   if (error) throw error;
-  state.user = profile;
+  const { data: admin } = await db.rpc("is_admin");
+  state.user = { ...profile, role: admin ? "admin" : "member" };
   state.viewing = null;
   state.catalog = await fetchCatalog();
   await loadItems();
@@ -962,7 +981,7 @@ el("session-form").addEventListener("submit", async (event) => {
 el("session-button").addEventListener("click", async () => {
   clearTimeout(pollTimer);
   await db.auth.signOut();
-  Object.assign(state, { user: null, viewing: null, items: [], cars: [], compare: [], accounts: [] });
+  Object.assign(state, { user: null, viewing: null, items: [], cars: [], compare: [], accounts: [], people: [], ownTitles: new Set() });
   profileRendered = false;
   state.failed.clear();
   showroom.key = "";
@@ -1050,7 +1069,7 @@ let profileRendered = false;
 function renderProfile() {
   // Ne pas effacer une saisie en cours quand la page se rafraîchit.
   if (profileRendered && el("profile-form")) {
-    el("profile-count").textContent = plural(deck().length + pendingItems().length, "voiture");
+    el("profile-count").textContent = plural(state.ownTitles.size, "voiture");
     return;
   }
   profileRendered = true;
@@ -1062,8 +1081,16 @@ function renderProfile() {
       <dl class="profile-facts">
         <div class="spec-row"><dt>Identifiant</dt><dd>${esc(state.user.username)}</dd></div>
         <div class="spec-row"><dt>Rôle</dt><dd>${isAdmin() ? "Administrateur" : "Membre"}</dd></div>
-        <div class="spec-row"><dt>Collection</dt><dd id="profile-count">${plural(deck().length + pendingItems().length, "voiture")}</dd></div>
+        <div class="spec-row"><dt>Collection</dt><dd id="profile-count">${plural(state.ownTitles.size, "voiture")}</dd></div>
       </dl>
+      <section class="profile-sharing">
+        <h2 class="display-sm">Partage</h2>
+        <label class="sharing-toggle">
+          <input type="checkbox" id="profile-shared" ${state.user.shared ? "checked" : ""}>
+          <span>Rendre ma collection visible par les autres comptes connectés</span>
+        </label>
+        <p class="notice" id="shared-notice" role="status"></p>
+      </section>
       <section class="profile-avatar">
         <h2 class="display-sm">Mon avatar</h2>
         <div id="avatar-picker">${avatarChoices()}</div>
@@ -1099,6 +1126,22 @@ el("profile").addEventListener("click", async (event) => {
     return;
   }
   notice.textContent = "Avatar enregistré.";
+  notice.classList.remove("failed");
+});
+
+el("profile").addEventListener("change", async (event) => {
+  if (event.target.id !== "profile-shared") return;
+  const shared = event.target.checked;
+  const notice = el("shared-notice");
+  const { error } = await db.from("profiles").update({ shared }).eq("id", state.user.id);
+  if (error) {
+    event.target.checked = !shared;
+    notice.textContent = "Ce réglage n'a pas pu être enregistré. Réessaie.";
+    notice.classList.add("failed");
+    return;
+  }
+  state.user.shared = shared;
+  notice.textContent = shared ? "Ta collection est visible par les autres comptes." : "Ta collection est masquée.";
   notice.classList.remove("failed");
 });
 
@@ -1139,7 +1182,12 @@ el("profile").addEventListener("submit", async (event) => {
 /* Comptes (administrateur) */
 async function renderAccounts() {
   const box = el("accounts");
-  const { data: profiles, error } = await db.from("profiles").select("id, username, role, avatar").order("username");
+  const [{ data: rows, error }, { data: roles }] = await Promise.all([
+    db.from("profiles").select("id, username, avatar, shared").order("username"),
+    db.rpc("account_roles"),
+  ]);
+  const roleOf = new Map((roles || []).map((entry) => [entry.id, entry.role]));
+  const profiles = (rows || []).map((p) => ({ ...p, role: roleOf.get(p.id) || "member" }));
   if (error) {
     box.innerHTML = `<section class="section"><div class="wrap"><p class="notice failed">Les comptes n'ont pas pu être chargés.</p></div></section>`;
     return;
@@ -1154,7 +1202,7 @@ async function renderAccounts() {
         <thead><tr><th>Identifiant</th><th>Rôle</th><th>Actions</th></tr></thead>
         <tbody>${profiles.map((p) => `<tr>
           <td><span class="account-name"><span class="account-avatar">${avatarHtml(p.avatar, p.username)}</span>${esc(p.username)}</span></td>
-          <td>${p.role === "admin" ? "Administrateur" : "Membre"}</td>
+          <td>${p.role === "admin" ? "Administrateur" : "Membre"}${p.shared ? "" : " · collection masquée"}</td>
           <td><div class="account-actions">
             <button type="button" class="text-link" data-view-user="${esc(p.id)}">Voir la collection</button>
             <button type="button" class="text-link quiet" data-password-user="${esc(p.id)}">Changer le mot de passe</button>
@@ -1310,9 +1358,14 @@ document.addEventListener("click", (event) => {
     });
     return;
   }
-  const leave = event.target.closest("#viewing-leave");
-  if (leave) {
+  const leave = event.target.closest("#viewing-leave, .wordmark, [data-leave-viewing]");
+  if (leave && state.viewing) {
     viewCollection(null);
+    return;
+  }
+  const addTitle = event.target.closest("[data-add-title]");
+  if (addTitle) {
+    addFromCollection(addTitle.dataset.addTitle);
     return;
   }
   const compare = event.target.closest("[data-compare]");
@@ -1349,17 +1402,68 @@ document.addEventListener("click", (event) => {
   }
 });
 
+async function addFromCollection(title) {
+  const { error } = await db.from("deck_items").insert({ user_id: state.user.id, title });
+  // Déjà présente (ajout depuis un autre appareil) : le résultat voulu est atteint.
+  if (error && error.code !== "23505") return;
+  state.ownTitles.add(title);
+  renderLibrary();
+  renderRoute();
+}
+
 async function viewCollection(userId) {
-  const account = state.accounts.find((p) => p.id === userId);
-  state.viewing = account && account.id !== state.user.id ? account : null;
-  el("viewing-name").textContent = state.viewing ? `Tu regardes la collection de ${state.viewing.username}, sans pouvoir la modifier.` : "";
+  const account = state.people.find((p) => p.id === userId) || state.accounts.find((p) => p.id === userId);
+  const leaving = !account || account.id === state.user.id;
+  state.viewing = leaving ? null : account;
+  el("viewing-name").textContent = state.viewing ? `Tu regardes la collection de ${state.viewing.username}.` : "";
   try {
     await loadItems();
   } catch { /* la liste reste vide : le message de collection vide s'affiche */ }
   showroom.key = "";
-  setCompare([]);
+  state.compareFull = false;
+  state.compare = state.viewing ? [] : load(`compare.${state.user.id}`, []).filter((slug) => carBySlug(slug));
   if (location.hash) location.hash = "";
   renderAll();
+  window.scrollTo(0, 0);
+}
+
+/* Découvrir les collections des autres */
+async function renderDiscover() {
+  const box = el("discover");
+  box.innerHTML = `<section class="compare-head"><div class="wrap">
+      <a class="back" href="#" data-leave-viewing>‹ Mon deck</a>
+      <h1 class="display-xl">Découvrir</h1>
+    </div></section>
+    <section class="section"><div class="wrap"><p class="count" id="discover-status">Chargement des collections…</p><div class="people-grid" id="people-grid"></div></div></section>`;
+  const [{ data: people, error }, { data: items, error: itemsError }] = await Promise.all([
+    db.from("profiles").select("id, username, avatar, shared").eq("shared", true).neq("id", state.user.id).order("username"),
+    db.from("deck_items").select("user_id, title, main_photo, added_at").order("added_at", { ascending: false }),
+  ]);
+  if (el("discover").hidden) return;
+  if (error || itemsError) {
+    el("discover-status").textContent = "Les collections n'ont pas pu être chargées. Réessaie dans un instant.";
+    return;
+  }
+  state.people = people;
+  const catalog = new Map(state.catalog.map((car) => [titleOf(car), car]));
+  el("discover-status").textContent = people.length
+    ? `${plural(people.length, "collection")} à découvrir`
+    : "Aucune autre collection n'est visible pour l'instant.";
+  el("people-grid").innerHTML = people.map((person) => {
+    const cars = items.filter((item) => item.user_id === person.id && catalog.has(item.title));
+    const photos = cars.slice(0, 3).map((item) => {
+      const car = catalog.get(item.title);
+      const photo = car.photos.find((p) => p.file === item.main_photo) || car.photos[0];
+      return photo ? `<img src="${esc(photo.file)}" alt="" loading="lazy">` : "";
+    }).join("");
+    return `<button type="button" class="person-card" data-view-user="${esc(person.id)}">
+      <span class="person-photos" data-count="${Math.min(cars.length, 3)}">${photos || `<span class="person-empty">Collection vide</span>`}</span>
+      <span class="person-info">
+        <span class="person-avatar">${avatarHtml(person.avatar, person.username)}</span>
+        <span><strong>${esc(person.username)}</strong><small>${plural(cars.length, "voiture")}</small></span>
+      </span>
+    </button>`;
+  }).join("");
 }
 
 el("compare-clear").addEventListener("click", () => {

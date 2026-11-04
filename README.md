@@ -10,6 +10,10 @@ Chaque compte se connecte avec son identifiant et son mot de passe, et retrouve 
 
 Clique sur la pastille de ton avatar, en haut à droite. Le menu donne accès à **Mon profil**, où tu peux choisir ton avatar et changer ton mot de passe, et à **Se déconnecter**. Pour l'administrateur, il donne aussi accès à **Gérer les comptes**.
 
+## Découvrir les collections
+
+Depuis **Découvrir les collections**, tu vois les collections des autres comptes et tu peux ajouter leurs voitures à ton deck avec **+ Mon deck**. Personne ne peut modifier la collection d'un autre. Pour masquer la tienne, décoche le réglage dans **Mon profil**.
+
 ## Ajouter une voiture
 
 Clique sur **Ajouter une voiture**, ou sur le **+** en haut de page, tape quelques lettres, puis choisis une suggestion. Si la page décrit plusieurs générations, choisis celle que tu veux : chacune a sa propre carte. Si quelqu'un l'a déjà ajoutée, elle arrive tout de suite. Sinon, la fiche et les photos arrivent en une ou deux minutes.
@@ -46,7 +50,7 @@ Champs possibles : `engine`, `power`, `torque`, `transmission`, `layout`, `top_s
 - Un astérisque signale une valeur lue dans le texte de l'article : elle peut concerner une autre version du modèle.
 - « Non renseigné » signifie que le robot n'a rien trouvé. Il n'invente jamais de valeur.
 - Seules des photos sous licence libre sont enregistrées, avec leur auteur et leur licence sur la fiche.
-- Les fiches et les photos sont publiques. Les collections ne sont visibles qu'après connexion, par leur propriétaire et l'administrateur.
+- Les fiches et les photos sont publiques. Les collections ne sont visibles qu'après connexion : les visiteurs n'y ont pas accès, et un compte peut masquer la sienne aux autres comptes.
 - Le projet Supabase gratuit se met en pause après une semaine sans activité. Une tâche automatique le sollicite deux fois par semaine. Si la connexion échoue, regarde s'il faut le réactiver dans le tableau de bord.
 
 ## Crédits des avatars
