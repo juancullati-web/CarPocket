@@ -21,6 +21,8 @@ const esc = (value) =>
 const safeUrl = (url) => (/^https?:\/\//i.test(url || "") ? url : "");
 const ratioOf = (car) =>
   car.power_ch && car.weight_kg ? Math.round((car.power_ch / car.weight_kg) * 1000) : null;
+/** Les identifiants sont stockés en minuscules : on les affiche comme des prénoms. */
+const displayName = (username = "") => username.replace(/(^|[-_])([a-z])/g, (_, separator, letter) => separator + letter.toUpperCase());
 const plural = (n, word) => `${n} ${word}${n > 1 ? "s" : ""}`;
 const STAR = `<abbr class="mark" title="Extrait du texte de l'article : à vérifier">*</abbr>`;
 const carBySlug = (slug) => state.cars.find((c) => c.slug === slug);
@@ -118,7 +120,7 @@ function compareButton(car) {
   return `<button type="button" class="text-link" data-compare="${esc(car.slug)}" aria-pressed="${selected}">${selected ? "Sélectionnée ✓" : "Comparer"}</button>`;
 }
 
-const backLabel = () => (state.viewing ? `‹ Collection de ${esc(state.viewing.username)}` : "‹ Mon deck");
+const backLabel = () => (state.viewing ? `‹ Collection de ${esc(displayName(state.viewing.username))}` : "‹ Mon deck");
 
 /** Sur la collection d'un ami : ajouter la voiture à la sienne, sans attente. */
 function friendAddButton(car) {
@@ -368,10 +370,10 @@ function renderSession() {
   el("friends-link").hidden = !signedIn;
   if (!signedIn) closeProfileMenu();
   el("profile-initial").innerHTML = signedIn ? avatarHtml(state.user.avatar, state.user.username) : "";
-  el("profile-name").textContent = signedIn ? state.user.username : "";
+  el("profile-name").textContent = signedIn ? displayName(state.user.username) : "";
   el("cta-band").hidden = !canEdit();
   el("accounts-link").hidden = !isAdmin();
-  el("library-title").textContent = state.viewing ? `Collection de ${state.viewing.username}` : "Mon deck";
+  el("library-title").textContent = state.viewing ? `Collection de ${displayName(state.viewing.username)}` : "Mon deck";
   el("app-intro").hidden = Boolean(state.viewing);
   el("search-label").textContent = state.viewing ? "Rechercher dans cette collection" : "Rechercher dans mon deck";
   const note = el("viewing-note");
@@ -937,7 +939,9 @@ themeQuery.addEventListener("change", (event) => {
 applyTheme(document.documentElement.dataset.theme || "light");
 
 /* Connexion */
-const toEmail = (username) => `${username.trim().toLowerCase()}@${LOGIN_DOMAIN}`;
+// « Noémie », « noemie » et « NOEMIE » désignent le même compte.
+const toLogin = (username) => username.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+const toEmail = (username) => `${toLogin(username)}@${LOGIN_DOMAIN}`;
 
 async function enterApp(session) {
   const { data: profile, error } = await db.from("profiles")
@@ -1080,7 +1084,7 @@ function renderProfile() {
     </div></section>
     <section class="section"><div class="wrap profile-layout">
       <dl class="profile-facts">
-        <div class="spec-row"><dt>Identifiant</dt><dd>${esc(state.user.username)}</dd></div>
+        <div class="spec-row"><dt>Identifiant</dt><dd>${esc(displayName(state.user.username))}</dd></div>
         <div class="spec-row"><dt>Rôle</dt><dd>${isAdmin() ? "Administrateur" : "Membre"}</dd></div>
         <div class="spec-row"><dt>Collection</dt><dd id="profile-count">${plural(state.ownTitles.size, "voiture")}</dd></div>
       </dl>
@@ -1202,7 +1206,7 @@ async function renderAccounts() {
       <div class="compare-scroll"><table class="accounts-table">
         <thead><tr><th>Identifiant</th><th>Rôle</th><th>Actions</th></tr></thead>
         <tbody>${profiles.map((p) => `<tr>
-          <td><span class="account-name"><span class="account-avatar">${avatarHtml(p.avatar, p.username)}</span>${esc(p.username)}</span></td>
+          <td><span class="account-name"><span class="account-avatar">${avatarHtml(p.avatar, p.username)}</span>${esc(displayName(p.username))}</span></td>
           <td>${p.role === "admin" ? "Administrateur" : "Membre"}${p.shared ? "" : " · collection masquée"}</td>
           <td><div class="account-actions">
             <button type="button" class="text-link" data-view-user="${esc(p.id)}">Voir la collection</button>
@@ -1232,8 +1236,7 @@ el("accounts").addEventListener("submit", async (event) => {
   if (event.target.id !== "account-form") return;
   event.preventDefault();
   // Accepte « Thibault » ou « Noémie » : l'identifiant s'écrit sans majuscule ni accent.
-  const username = el("account-username").value.trim().toLowerCase()
-    .normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  const username = toLogin(el("account-username").value);
   const password = el("account-password").value;
   if (!/^[a-z0-9_-]{2,30}$/.test(username)) {
     accountNotice("L'identifiant doit faire 2 à 30 caractères : lettres, chiffres, - ou _, sans espace.", true);
@@ -1247,7 +1250,7 @@ el("accounts").addEventListener("submit", async (event) => {
   try {
     await server("create-user", { username, password });
     await renderAccounts();
-    accountNotice(`Compte créé. Identifiant de connexion : ${username}`);
+    accountNotice(`Compte créé. Identifiant de connexion : ${displayName(username)}`);
   } catch (error) {
     accountNotice(error.message, true);
   }
@@ -1334,7 +1337,7 @@ document.addEventListener("click", (event) => {
   if (pass) {
     const account = state.accounts.find((p) => p.id === pass.dataset.passwordUser);
     askConfirm({
-      title: `Nouveau mot de passe pour ${account.username}`,
+      title: `Nouveau mot de passe pour ${displayName(account.username)}`,
       text: "10 caractères minimum.",
       label: "Changer",
       password: true,
@@ -1349,7 +1352,7 @@ document.addEventListener("click", (event) => {
   if (removeUser) {
     const account = state.accounts.find((p) => p.id === removeUser.dataset.deleteUser);
     askConfirm({
-      title: `Supprimer le compte ${account.username} ?`,
+      title: `Supprimer le compte ${displayName(account.username)} ?`,
       text: "Le compte et sa collection seront effacés. C'est irréversible. Les fiches partagées restent.",
       label: "Supprimer",
       action: async () => {
@@ -1416,7 +1419,7 @@ async function viewCollection(userId) {
   const account = state.people.find((p) => p.id === userId) || state.accounts.find((p) => p.id === userId);
   const leaving = !account || account.id === state.user.id;
   state.viewing = leaving ? null : account;
-  el("viewing-name").textContent = state.viewing ? `Tu regardes la collection de ${state.viewing.username}.` : "";
+  el("viewing-name").textContent = state.viewing ? `Tu regardes la collection de ${displayName(state.viewing.username)}.` : "";
   try {
     await loadItems();
   } catch { /* la liste reste vide : le message de collection vide s'affiche */ }
@@ -1463,7 +1466,7 @@ async function renderDiscover() {
       <span class="person-photos" data-count="${Math.min(cars.length, 3)}">${photos}</span>
       <span class="person-info">
         <span class="person-avatar">${avatarHtml(person.avatar, person.username)}</span>
-        <span><strong>${esc(person.username)}</strong><small>${plural(cars.length, "voiture")}</small></span>
+        <span><strong>${esc(displayName(person.username))}</strong><small>${plural(cars.length, "voiture")}</small></span>
       </span>
     </button>`;
   }).join("");
