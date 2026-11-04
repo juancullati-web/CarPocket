@@ -25,6 +25,7 @@ const ratioOf = (car) =>
 const displayName = (username = "") => username.replace(/(^|[-_])([a-z])/g, (_, separator, letter) => separator + letter.toUpperCase());
 const plural = (n, word) => `${n} ${word}${n > 1 ? "s" : ""}`;
 const STAR = `<abbr class="mark" title="Extrait du texte de l'article : à vérifier">*</abbr>`;
+const specMark = (spec) => (spec?.edited ? `<span class="edited-mark">Modifié</span>` : spec?.from_text ? STAR : "");
 const carBySlug = (slug) => state.cars.find((c) => c.slug === slug);
 const catalogCar = (slug) => state.catalog.find((c) => c.slug === slug);
 const inOwnDeck = (car) => state.ownTitles.has(titleOf(car));
@@ -81,9 +82,25 @@ async function server(action, input = {}) {
   return body;
 }
 
-const ITEM_FIELDS = "title, thumb, main_photo, added_at, custom_photos, hidden_photos";
+const ITEM_FIELDS = "title, thumb, main_photo, added_at, custom_photos, hidden_photos, notes, custom_specs";
 const PHOTO_BUCKET = "user-photos";
 const SIGNED_SECONDS = 6 * 60 * 60;
+
+/** Les valeurs changées par la personne priment dans sa collection, sans toucher au catalogue. */
+function withEditedSpecs(car, custom) {
+  const specs = { ...car.specs };
+  const known = new Set(SPEC_GROUPS.flatMap(([, rows]) => rows.map(([key]) => key)));
+  const edited = Object.entries(custom || {}).filter(([key, value]) => known.has(key) && typeof value === "string");
+  if (!edited.length) return car;
+  edited.forEach(([key, value]) => { specs[key] = { value, from_text: false, edited: true }; });
+  const result = { ...car, specs, customSpecs: Object.fromEntries(edited) };
+  if (result.customSpecs.power) result.power_ch = Math.round(numberIn(result.customSpecs.power)) || null;
+  if (result.customSpecs.weight) result.weight_kg = Math.round(numberIn(result.customSpecs.weight)) || null;
+  if (result.customSpecs.production) {
+    result.year = Number(result.customSpecs.production.match(/\b(?:18|19|20)\d{2}\b/)?.[0]) || null;
+  }
+  return result;
+}
 
 /** Les photos personnelles sont privées : on demande une adresse temporaire pour les afficher. */
 async function signPhotos(paths) {
@@ -118,7 +135,7 @@ function rebuildDeck() {
   state.cars = state.items.flatMap((item) => {
     const car = byTitle.get(item.title);
     if (!car) return [];
-    return [{ ...car, added: item.added_at, hiddenCount: car.photos.filter((photo) => (item.hidden_photos || []).includes(photo.file)).length, photos: itemPhotos(item, car) }];
+    return [{ ...withEditedSpecs(car, item.custom_specs), notes: item.notes || "", added: item.added_at, hiddenCount: car.photos.filter((photo) => (item.hidden_photos || []).includes(photo.file)).length, photos: itemPhotos(item, car) }];
   });
 }
 
@@ -226,13 +243,13 @@ function shuffled(list) {
 
 function showroomStats(car) {
   const stats = [];
-  if (car.power_ch) stats.push({ value: car.power_ch, unit: "ch", label: "Puissance", star: car.specs.power?.from_text });
+  if (car.power_ch) stats.push({ value: car.power_ch, unit: "ch", label: "Puissance", star: car.specs.power });
   const ratio = ratioOf(car);
-  if (ratio) stats.push({ value: ratio, unit: "ch/t", label: "Poids/puissance", star: car.specs.power?.from_text });
+  if (ratio) stats.push({ value: ratio, unit: "ch/t", label: "Poids/puissance", star: car.specs.power });
   const speed = car.specs.top_speed;
   const kmh = speed && parseInt(speed.value, 10);
-  if (kmh) stats.push({ value: kmh, unit: "km/h", label: "Vitesse maximale", star: speed.from_text });
-  else if (car.weight_kg) stats.push({ value: car.weight_kg, unit: "kg", label: "Poids", star: car.specs.weight?.from_text });
+  if (kmh) stats.push({ value: kmh, unit: "km/h", label: "Vitesse maximale", star: speed });
+  else if (car.weight_kg) stats.push({ value: car.weight_kg, unit: "kg", label: "Poids", star: car.specs.weight });
   return stats;
 }
 
@@ -246,7 +263,7 @@ function showroomCopy(car) {
   return `<p class="label">${esc(eyebrow)}</p>
     <h1 class="display-xl">${esc(car.name)}</h1>
     <dl class="showroom-stats">${showroomStats(car).map((stat) => `<div>
-      <dd><span data-count="${stat.value}">${stat.value}</span> ${stat.unit}${stat.star ? STAR : ""}</dd>
+      <dd><span data-count="${stat.value}">${stat.value}</span> ${stat.unit}${specMark(stat.star)}</dd>
       <dt>${stat.label}</dt>
     </div>`).join("")}</dl>
     <div class="showroom-actions">
@@ -425,24 +442,24 @@ function specRow(car, key, label) {
   if (!spec) {
     return `<div class="spec-row"><dt>${label}</dt><dd class="unknown">Non renseigné</dd></div>`;
   }
-  return `<div class="spec-row"><dt>${label}</dt><dd>${esc(spec.value)}${spec.from_text ? STAR : ""}</dd></div>`;
+  return `<div class="spec-row"><dt>${label}</dt><dd>${esc(spec.value)}${specMark(spec)}</dd></div>`;
 }
 
 function specCells(car) {
-  const cell = (value, label, fromText) =>
-    `<div class="spec-cell"><div class="spec-value">${esc(value)}${fromText ? STAR : ""}</div><span class="label">${esc(label)}</span></div>`;
+  const cell = (value, label, spec) =>
+    `<div class="spec-cell"><div class="spec-value">${esc(value)}${specMark(spec)}</div><span class="label">${esc(label)}</span></div>`;
   const cells = [];
-  if (car.power_ch) cells.push(cell(`${car.power_ch} ch`, "Puissance", car.specs.power?.from_text));
+  if (car.power_ch) cells.push(cell(`${car.power_ch} ch`, "Puissance", car.specs.power));
   const ratio = ratioOf(car);
-  if (ratio) cells.push(cell(`${ratio} ch/t`, "Poids/puissance", car.specs.power?.from_text));
+  if (ratio) cells.push(cell(`${ratio} ch/t`, "Poids/puissance", car.specs.power));
   const speed = car.specs.top_speed;
-  if (speed) cells.push(cell(speed.value, "Vitesse maximale", speed.from_text));
+  if (speed) cells.push(cell(speed.value, "Vitesse maximale", speed));
   const sprint = car.specs.zero_100;
   if (sprint) {
     const [label, value] = sprint.value.includes(" : ") ? sprint.value.split(" : ") : ["Accélération", sprint.value];
-    cells.push(cell(value, label, sprint.from_text));
+    cells.push(cell(value, label, sprint));
   }
-  if (car.weight_kg) cells.push(cell(`${car.weight_kg} kg`, "Poids", car.specs.weight?.from_text));
+  if (car.weight_kg) cells.push(cell(`${car.weight_kg} kg`, "Poids", car.specs.weight));
   return cells.join("");
 }
 
@@ -490,6 +507,19 @@ const STAR_PATH = '<path d="M12 3l2.8 5.9 6.2.8-4.5 4.4 1.1 6.4-5.6-3.1-5.6 3.1 
 const photoIcon = (paths, fill = "none") => `<svg viewBox="0 0 24 24" fill="${fill}" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">${paths}</svg>`;
 const iconButton = (label, attribute, paths) => `<button type="button" class="photo-icon" ${attribute} aria-label="${label}" data-tip="${label}">${photoIcon(paths)}</button>`;
 
+function notesHtml(car) {
+  if (canEdit() && inOwnDeck(car)) {
+    return `<section class="car-notes">
+      <h2 class="display-sm"><label for="car-notes">Mes notes</label></h2>
+      <textarea id="car-notes" data-slug="${esc(car.slug)}" rows="4" maxlength="${MAX_NOTES}" placeholder="Un souvenir, un prix payé, un point à surveiller…">${esc(itemOf(car)?.notes || "")}</textarea>
+      <p class="notes-help"><span id="notes-status" role="status"></span> Tes amis peuvent les lire tant que ta collection est partagée.</p>
+    </section>`;
+  }
+  if (!car.notes) return "";
+  const author = state.viewing ? `Notes de ${esc(displayName(state.viewing.username))}` : "Mes notes";
+  return `<section class="car-notes"><h2 class="display-sm">${author}</h2><p class="notes-text">${esc(car.notes)}</p></section>`;
+}
+
 function detailHtml(car) {
   const hasTextValues = Object.values(car.specs).some((s) => s.from_text);
   const photos = car.photos;
@@ -526,6 +556,7 @@ function detailHtml(car) {
           ${car.summary ? `<h2 class="display-md">Présentation</h2>
             <p class="summary">${esc(car.summary)}</p>
             <p class="summary-source">Source : <a href="${esc(safeUrl(car.summary_url))}" target="_blank" rel="noopener" data-tip="Lire l'article sur Wikipédia">Wikipédia${car.summary_lang === "en" ? " (en anglais)" : ""}</a></p>` : ""}
+          ${notesHtml(car)}
           <div class="actions">
             ${compareButton(car)}
             ${canEdit() && inOwnDeck(car) ? `<button type="button" class="text-link quiet" data-delete="${esc(car.slug)}" data-tip="Retirer cette voiture de ma collection">Retirer de ma collection</button>` : ""}
@@ -535,12 +566,21 @@ function detailHtml(car) {
           </div>
         </div>
         <div>
+          ${canEdit() && inOwnDeck(car) ? `<div class="spec-tools">
+            <button type="button" class="theme-toggle" data-edit-specs aria-label="Modifier les informations" data-tip="Modifier les informations">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M4 20l1-5L16 4l4 4L9 19z"/></svg>
+            </button>
+            ${car.customSpecs ? `<button type="button" class="theme-toggle" data-reset-specs aria-label="Réinitialiser toutes les informations" data-tip="Réinitialiser toutes les informations">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M4 5v5h5M5 10a8 8 0 1 1-1 5"/></svg>
+            </button>` : ""}
+          </div>` : ""}
           ${car.variant ? `<p class="note">Ce modèle a plusieurs générations. Cette fiche décrit la version <strong>${esc(car.variant)}</strong>.</p>` : ""}
           ${SPEC_GROUPS.map(([title, rows]) => `<section class="spec-group">
             <h3>${title}</h3>
             <dl>${rows.map(([key, label]) => specRow(car, key, label)).join("")}</dl>
           </section>`).join("")}
           ${hasTextValues ? `<p class="legend">* Valeur extraite du texte de l'article, à vérifier. Elle peut concerner une autre version du modèle.</p>` : ""}
+          ${car.customSpecs ? `<p class="legend">« Modifié » : valeur changée dans cette collection. Le catalogue n'a pas changé.</p>` : ""}
         </div>
       </div>
     </section>
@@ -576,8 +616,17 @@ function compareRow(label, cars, read) {
   }
   return `<tr><th scope="row">${esc(label)}</th>${cells.map((c) => {
     if (!c.text) return `<td class="unknown">Non renseigné</td>`;
-    return `<td class="${c.num === best && best !== null ? "best" : ""}">${esc(c.text)}${c.star ? STAR : ""}</td>`;
+    return `<td class="${c.num === best && best !== null ? "best" : ""}">${esc(c.text)}${specMark(c.star)}</td>`;
   }).join("")}</tr>`;
+}
+
+/** Une voiture comparée garde les valeurs de la collection d'où elle vient. */
+function compareCar(slug) {
+  const car = catalogCar(slug);
+  if (!car) return null;
+  const info = state.compareInfo[slug];
+  const own = !info?.owner && !state.viewing && state.items.find((item) => item.title === titleOf(car));
+  return withEditedSpecs(car, own ? own.custom_specs : info?.specs);
 }
 
 function comparePhoto(car) {
@@ -593,20 +642,20 @@ function compareHtml(cars) {
   const sameSprint = new Set(cars.map((c) => sprintParts(c).target).filter(Boolean)).size === 1;
   const specCell = (key, better) => (car) => {
     const spec = car.specs[key];
-    return { text: spec?.value, star: spec?.from_text, num: better ? numberIn(spec?.value) : null, better };
+    return { text: spec?.value, star: spec, num: better ? numberIn(spec?.value) : null, better };
   };
   const key = [
     compareRow("Année", cars, (c) => ({ text: c.year })),
-    compareRow("Puissance", cars, (c) => ({ text: c.power_ch && `${c.power_ch} ch`, num: c.power_ch, star: c.specs.power?.from_text, better: "high" })),
-    compareRow("Poids/puissance", cars, (c) => ({ text: ratioOf(c) && `${ratioOf(c)} ch/t`, num: ratioOf(c), star: c.specs.power?.from_text, better: "high" })),
+    compareRow("Puissance", cars, (c) => ({ text: c.power_ch && `${c.power_ch} ch`, num: c.power_ch, star: c.specs.power, better: "high" })),
+    compareRow("Poids/puissance", cars, (c) => ({ text: ratioOf(c) && `${ratioOf(c)} ch/t`, num: ratioOf(c), star: c.specs.power, better: "high" })),
     compareRow("Vitesse maximale", cars, specCell("top_speed", "high")),
     compareRow("Accélération", cars, (c) => ({
       text: c.specs.zero_100?.value,
-      star: c.specs.zero_100?.from_text,
+      star: c.specs.zero_100,
       num: sameSprint ? sprintParts(c).time : null,
       better: sameSprint ? "low" : undefined,
     })),
-    compareRow("Poids", cars, (c) => ({ text: c.weight_kg && `${c.weight_kg} kg`, num: c.weight_kg, star: c.specs.weight?.from_text, better: "low" })),
+    compareRow("Poids", cars, (c) => ({ text: c.weight_kg && `${c.weight_kg} kg`, num: c.weight_kg, star: c.specs.weight, better: "low" })),
   ].join("");
   const shown = new Set(["top_speed", "zero_100", "weight", "power"]);
   const groups = SPEC_GROUPS.map(([title, rows]) => {
@@ -633,7 +682,7 @@ function compareHtml(cars) {
         </tr></thead>
         <tbody>${key}${groups}</tbody>
       </table></div>
-      <p class="legend">En bleu : la meilleure valeur. * Valeur extraite du texte de l'article, à vérifier.</p>
+      <p class="legend">En bleu : la meilleure valeur. * Valeur extraite du texte de l'article, à vérifier. « Modifié » : valeur changée dans la collection.</p>
     </div></section>`;
 }
 
@@ -685,6 +734,7 @@ function toggleCompare(slug) {
     state.compareInfo[slug] = {
       owner: state.viewing ? displayName(state.viewing.username) : null,
       photo: car?.photos[0] && !car.photos[0].custom ? car.photos[0].file : null,
+      specs: car?.customSpecs || null,
     };
     setCompare([...state.compare, slug]);
   }
@@ -746,14 +796,14 @@ function renderRoute() {
   const hash = decodeURIComponent(location.hash.slice(1));
   let compareCars = null;
   if (hash.startsWith("comparer:")) {
-    compareCars = hash.slice(9).split(",").map(catalogCar).filter(Boolean).slice(0, MAX_COMPARE);
+    compareCars = hash.slice(9).split(",").map(compareCar).filter(Boolean).slice(0, MAX_COMPARE);
     if (compareCars.length < 2) compareCars = null;
   }
   const accounts = hash === "comptes" && isAdmin();
   const profile = hash === "profil" && Boolean(state.user);
   const discover = hash === "decouvrir" && Boolean(state.user);
   // Une voiture ouverte depuis une comparaison peut venir de la collection d'un ami.
-  const car = carBySlug(hash) || catalogCar(hash) || null;
+  const car = carBySlug(hash) || compareCar(hash) || null;
   el("library").hidden = Boolean(car || compareCars || accounts || profile || discover);
   el("discover").hidden = !discover;
   el("profile").hidden = !profile;
@@ -761,7 +811,9 @@ function renderRoute() {
   el("compare").hidden = !compareCars;
   el("accounts").hidden = !accounts;
   document.title = car ? `${car.name} · CarPocket` : compareCars ? "Comparaison · CarPocket" : accounts ? "Comptes · CarPocket" : profile ? "Mon profil · CarPocket" : discover ? "Collections de mes amis · CarPocket" : "CarPocket";
-  if (car) el("detail").innerHTML = detailHtml(car);
+  // Une actualisation ne doit pas effacer une note en cours de saisie.
+  const typing = document.activeElement?.id === "car-notes" && document.activeElement.dataset.slug === car?.slug;
+  if (car && !typing) el("detail").innerHTML = detailHtml(car);
   if (compareCars) el("compare").innerHTML = compareHtml(compareCars);
   if (accounts) renderAccounts();
   if (profile) renderProfile();
@@ -1560,7 +1612,7 @@ document.addEventListener("click", (event) => {
     if (!car) return;
     askConfirm({
       title: `Retirer ${car.name} ?`,
-      text: "Elle disparaît de ta collection. Tu pourras l'ajouter de nouveau, mais ton choix de photo sera perdu.",
+      text: "Elle disparaît de ta collection. Tu pourras l'ajouter de nouveau, mais tes photos, tes notes et tes modifications seront perdues.",
       label: "Retirer",
       action: () => removeFromDeck(car),
     });
@@ -1768,6 +1820,21 @@ el("detail").addEventListener("click", (event) => {
     chooseMainPhoto(car, Number(main.dataset.mainPhoto));
     return;
   }
+  if (event.target.closest("[data-edit-specs]") && car) {
+    openSpecsEditor(car);
+    return;
+  }
+  if (event.target.closest("[data-reset-specs]") && car) {
+    askConfirm({
+      title: "Tout réinitialiser ?",
+      text: "Toutes les valeurs que tu as modifiées sur cette fiche reprendront leur valeur d'origine.",
+      label: "Réinitialiser",
+      action: async () => {
+        if (!(await saveSpecs(car, {}))) throw new Error("La fiche n'a pas pu être réinitialisée. Réessaie.");
+      },
+    });
+    return;
+  }
   const hide = event.target.closest("[data-hide-photo]");
   if (hide && car) {
     hidePhoto(car, Number(hide.dataset.hidePhoto));
@@ -1814,7 +1881,141 @@ el("brands").addEventListener("click", (event) => {
   renderBrands();
   renderLibrary();
 });
-window.addEventListener("hashchange", route);
+window.addEventListener("hashchange", () => { flushNotes(); route(); });
+
+/* Notes d'une voiture */
+const MAX_NOTES = 2000;
+const notesDraft = { title: null, value: "", timer: null };
+
+async function flushNotes() {
+  clearTimeout(notesDraft.timer);
+  const { title, value } = notesDraft;
+  if (title === null) return;
+  notesDraft.title = null;
+  const { error } = await db.from("deck_items").update({ notes: value }).eq("user_id", state.user.id).eq("title", title);
+  const status = el("notes-status");
+  if (status) status.textContent = error ? "Note non enregistrée : vérifie ta connexion et réessaie." : "Enregistré.";
+}
+
+el("detail").addEventListener("input", (event) => {
+  if (event.target.id !== "car-notes") return;
+  const car = carBySlug(event.target.dataset.slug);
+  if (!car) return;
+  const title = titleOf(car);
+  const value = event.target.value;
+  state.items = state.items.map((item) => (item.title === title ? { ...item, notes: value } : item));
+  car.notes = value;
+  // Une note d'une autre voiture encore en attente part avant celle-ci.
+  if (notesDraft.title !== null && notesDraft.title !== title) flushNotes();
+  notesDraft.title = title;
+  notesDraft.value = value;
+  el("notes-status").textContent = "";
+  clearTimeout(notesDraft.timer);
+  notesDraft.timer = setTimeout(flushNotes, 800);
+});
+el("detail").addEventListener("focusout", (event) => {
+  if (event.target.id === "car-notes") flushNotes();
+});
+window.addEventListener("pagehide", flushNotes);
+
+/* Modification des informations */
+const NUMERIC_SPECS = {
+  power: "ch",
+  torque: "N·m",
+  top_speed: "km/h",
+  zero_100: "s",
+  weight: "kg",
+  length: "mm",
+  width: "mm",
+  height: "mm",
+  wheelbase: "mm",
+};
+const specsEditor = { car: null };
+
+const editedNumber = (key, value) => (key === "zero_100" ? value.split(" : ").pop() : value).match(/\d+(?:[.,]\d+)?/)?.[0] || "";
+
+function specField(car, key, label) {
+  const unit = NUMERIC_SPECS[key];
+  const edited = car.customSpecs?.[key];
+  const original = catalogCar(car.slug)?.specs[key]?.value || "Non renseigné";
+  const current = edited ? (unit ? editedNumber(key, edited) : edited) : "";
+  const title = key === "zero_100" ? "Accélération 0-100 km/h" : label;
+  return `<div class="spec-field">
+    <label class="label" for="spec-${key}">${esc(title)}${unit ? ` (${esc(unit)})` : ""}</label>
+    <div class="spec-input">
+      <input id="spec-${key}" data-spec="${key}" type="text" ${unit ? `inputmode="decimal"` : `maxlength="200"`} autocomplete="off" value="${esc(current)}">
+      <button type="button" class="text-link quiet" data-clear-spec="${key}"${edited ? "" : " hidden"} aria-label="Réinitialiser : ${esc(title)}">Réinitialiser</button>
+    </div>
+    <p class="spec-origin">D'origine : ${esc(original)}</p>
+  </div>`;
+}
+
+function openSpecsEditor(car) {
+  specsEditor.car = car;
+  el("specs-error").hidden = true;
+  el("specs-fields").innerHTML = SPEC_GROUPS.map(([title, rows]) => `<fieldset>
+    <legend>${title}</legend>
+    ${rows.map(([key, label]) => specField(car, key, label)).join("")}
+  </fieldset>`).join("");
+  el("specs-dialog").showModal();
+}
+
+/** Enregistre les valeurs de la personne ; la comparaison suit ses changements. */
+async function saveSpecs(car, specs) {
+  const saved = await updateItem(car, { custom_specs: specs });
+  if (saved && state.compareInfo[car.slug]) {
+    state.compareInfo[car.slug].specs = Object.keys(specs).length ? specs : null;
+    if (state.user) save(`compareInfo.${state.user.id}`, state.compareInfo);
+  }
+  return saved;
+}
+
+el("specs-fields").addEventListener("click", (event) => {
+  const key = event.target.closest("[data-clear-spec]")?.dataset.clearSpec;
+  if (!key) return;
+  el(`spec-${key}`).value = "";
+  el(`spec-${key}`).focus();
+  event.target.hidden = true;
+});
+el("specs-fields").addEventListener("input", (event) => {
+  const key = event.target.dataset?.spec;
+  if (key) el("specs-fields").querySelector(`[data-clear-spec="${key}"]`).hidden = !event.target.value;
+});
+el("specs-cancel").addEventListener("click", () => el("specs-dialog").close());
+el("specs-form").addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const specs = {};
+  const invalid = [];
+  el("specs-fields").querySelectorAll("[data-spec]").forEach((input) => {
+    const key = input.dataset.spec;
+    const value = input.value.trim();
+    if (!value) return;
+    const unit = NUMERIC_SPECS[key];
+    if (!unit) {
+      specs[key] = value;
+    } else if (/^\d+([.,]\d+)?$/.test(value)) {
+      const number = value.replace(".", ",");
+      specs[key] = key === "zero_100" ? `0-100 km/h : ${number} s` : `${number} ${unit}`;
+    } else {
+      invalid.push(el(`spec-${key}`).closest(".spec-field").querySelector("label").textContent);
+    }
+  });
+  const error = el("specs-error");
+  if (invalid.length) {
+    error.textContent = `Indique seulement un nombre pour : ${invalid.join(", ")}.`;
+    error.hidden = false;
+    return;
+  }
+  el("specs-submit").disabled = true;
+  const saved = await saveSpecs(specsEditor.car, specs);
+  el("specs-submit").disabled = false;
+  if (!saved) {
+    error.textContent = "Les informations n'ont pas pu être enregistrées. Réessaie.";
+    error.hidden = false;
+    return;
+  }
+  el("specs-dialog").close();
+});
 
 /* Photo en grand */
 const viewer = { car: null, index: 0, swipe: null };

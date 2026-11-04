@@ -209,6 +209,18 @@
     </form>
   </dialog>
 
+  <dialog class="specs-dialog" id="specs-dialog" aria-labelledby="specs-title">
+    <form id="specs-form" novalidate>
+      <h2 class="display-sm" id="specs-title">Modifier les informations</h2>
+      <p>Laisse un champ vide pour garder la valeur d'origine. Tes changements ne s'appliquent qu'à ta collection.</p>
+      <div id="specs-fields"></div>
+      <p class="form-error" id="specs-error" role="alert" hidden></p>
+      <div class="dialog-actions">
+        <button type="button" class="button button-secondary" id="specs-cancel">Annuler</button>
+        <button type="submit" class="button button-primary" id="specs-submit">Enregistrer</button>
+      </div>
+    </form>
+  </dialog>
   <dialog class="photo-viewer" id="photo-viewer" aria-label="Photo en grand">
     <button type="button" class="viewer-button viewer-close" id="viewer-close" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
     <button type="button" class="viewer-button viewer-prev" id="viewer-prev" aria-label="Photo précédente" title="Photo précédente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>

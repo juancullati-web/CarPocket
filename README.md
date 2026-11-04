@@ -30,6 +30,12 @@ Clique sur **Comparer** sur 2 ou 3 cartes, puis sur le bouton de comparaison en 
 
 Clique sur **Retirer** sur la carte ou sur la fiche, puis confirme. La fiche reste disponible pour les autres comptes. Seul l'administrateur peut supprimer une fiche pour tout le monde.
 
+## Notes et informations modifiées
+
+Sur la fiche d'une voiture de ta collection, écris tes notes : elles s'enregistrent toutes seules. Le bouton crayon change les valeurs de la fiche technique pour ta collection seulement, et chaque valeur changée porte la mention « Modifié ». Tu peux réinitialiser une valeur dans le formulaire, ou toutes les valeurs avec le bouton voisin.
+
+Tes amis voient tes notes et tes valeurs modifiées tant que ta collection est partagée.
+
 ## Gérer ses photos
 
 Sur la fiche d'une voiture de ta collection, tu peux :

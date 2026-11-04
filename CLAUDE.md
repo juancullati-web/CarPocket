@@ -20,6 +20,8 @@ Avatars (`site/avatars`) : logos de [Simple Icons](https://simpleicons.org) en C
 
 PWA : `site/manifest.webmanifest` et `site/sw.js`. Le service worker ne met jamais en cache les appels Supabase. Il sert réseau d'abord pour les pages, et cache d'abord pour `photos/` et `avatars/`.
 
+Notes et valeurs modifiées : colonnes `notes` et `custom_specs` de `deck_items`, propres à chaque collection et visibles avec elle. Une valeur modifiée porte `edited: true` à l'affichage et ne touche jamais `data/cars`.
+
 Photos personnelles : bucket privé `user-photos`, dossier par compte, affichées par adresses signées. Les masquages et les choix sont dans `deck_items`. Le fichier ré-encodé en JPEG perd ses métadonnées avant l'envoi.
 
 Tests : `python3 -m unittest discover -s tests`. Aperçu avec suppression : `python3 scripts/serve.py`.

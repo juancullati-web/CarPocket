@@ -36,6 +36,26 @@ alter table public.deck_items add constraint deck_items_custom_photos_check
 alter table public.deck_items drop constraint if exists deck_items_hidden_photos_check;
 alter table public.deck_items add constraint deck_items_hidden_photos_check
   check (cardinality(hidden_photos) <= 50);
+
+-- Notes et valeurs modifiées : propres à chaque collection, jamais au catalogue partagé.
+alter table public.deck_items add column if not exists notes text not null default '';
+alter table public.deck_items add column if not exists custom_specs jsonb not null default '{}';
+
+create or replace function public.custom_specs_valid(specs jsonb)
+returns boolean language sql immutable set search_path = '' as $$
+  select jsonb_typeof(specs) = 'object' and not exists (
+    select 1 from jsonb_each(specs) as field(key, value)
+    where field.key not in ('engine', 'power', 'torque', 'transmission', 'layout', 'top_speed', 'zero_100',
+      'weight', 'length', 'width', 'height', 'wheelbase', 'body', 'production', 'designer', 'assembly')
+      or jsonb_typeof(field.value) <> 'string'
+      or char_length(field.value #>> '{}') not between 1 and 200
+  );
+$$;
+
+alter table public.deck_items drop constraint if exists deck_items_notes_check;
+alter table public.deck_items add constraint deck_items_notes_check check (char_length(notes) <= 2000);
+alter table public.deck_items drop constraint if exists deck_items_custom_specs_check;
+alter table public.deck_items add constraint deck_items_custom_specs_check check (public.custom_specs_valid(custom_specs));
 alter table public.deck_items drop constraint if exists deck_items_main_photo_check;
 alter table public.deck_items add constraint deck_items_main_photo_check
   check (main_photo is null
@@ -119,7 +139,7 @@ revoke all on public.deck_items from anon, authenticated;
 grant select (id, username, avatar, shared) on public.profiles to authenticated;
 grant update (avatar, shared) on public.profiles to authenticated;
 grant select, insert, delete on public.deck_items to authenticated;
-grant update (main_photo, custom_photos, hidden_photos) on public.deck_items to authenticated;
+grant update (main_photo, custom_photos, hidden_photos, notes, custom_specs) on public.deck_items to authenticated;
 
 drop policy if exists "profil lisible par soi ou l'admin" on public.profiles;
 drop policy if exists "profil lisible si partagé" on public.profiles;
