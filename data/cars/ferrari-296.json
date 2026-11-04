@@ -1,0 +1,115 @@
+{
+  "slug": "ferrari-296",
+  "name": "Ferrari 296",
+  "brand": "Ferrari",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-04T18:01:20+00:00",
+  "summary": "La Ferrari 296 GTB est une voiture de sport hybride rechargeable du constructeur automobile italien Ferrari produite à partir de 2021.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Ferrari_296_GTB",
+  "wikipedia_title": "Ferrari 296",
+  "specs": {
+    "engine": {
+      "value": "2992 cc F163 BC 120° twin-turbo V6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Double embrayage 8 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Longitudinal moteur central arrière, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes (GTB) · 2-door retractable hard-top convertible (GTS)",
+      "from_text": false
+    },
+    "production": {
+      "value": "Coupe: 2022–2025 · Spider: 2023–2026",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Ferrari Styling Centre under the direction of Flavio Manzoni",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Italy: Maranello",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1470-1540 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4565 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1958 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1187 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2600 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "663 PS",
+      "from_text": false
+    },
+    "top_speed": {
+      "value": "330 km/h",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/ferrari-296/1.jpg",
+      "author": "Max Baillie",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2022_Ferrari_296_(cropped).jpg"
+    },
+    {
+      "file": "photos/ferrari-296/2.png",
+      "author": "pelican-actor",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Ferrari_296_GTB_Assetto_Fiorano_front.png"
+    },
+    {
+      "file": "photos/ferrari-296/3.png",
+      "author": "pelican-actor",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Ferrari_296_GTB_Assetto_Fiorano_rear.png"
+    },
+    {
+      "file": "photos/ferrari-296/4.jpg",
+      "author": "Original: 350z33 Derivative work: 350z33",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2023_Ferrari_296_GT3_Daytona_(cropped).jpg"
+    },
+    {
+      "file": "photos/ferrari-296/5.jpg",
+      "author": "Alexander-93",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Ferrari_296_GTB_Auto_Zuerich_2024_DSC_6405.jpg"
+    },
+    {
+      "file": "photos/ferrari-296/6.jpg",
+      "author": "Mustang Joe",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Ferrari_296_Speciale_(55112786260).jpg"
+    }
+  ]
+}
