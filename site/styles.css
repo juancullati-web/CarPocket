@@ -758,3 +758,11 @@ body.has-compare-bar { padding-bottom: 72px; }
   .compare-bar-actions { width: 100%; }
   .compare-bar-actions .button { flex: 1; }
 }
+
+/* Application installée : laisser la place à l'encoche et à la barre d'accueil */
+.top-nav { padding-top: env(safe-area-inset-top, 0px); }
+.top-nav-inner { padding-left: max(16px, min(4vw, 48px), env(safe-area-inset-left, 0px)); padding-right: max(16px, min(4vw, 48px), env(safe-area-inset-right, 0px)); }
+.compare-bar { padding-bottom: env(safe-area-inset-bottom, 0px); }
+.footer { padding-bottom: calc(48px + env(safe-area-inset-bottom, 0px)); }
+.offline-note { padding: 8px 16px; background: var(--surface-dark-elevated); color: var(--on-dark); font-size: .875rem; text-align: center; }
+.install-steps { margin: 8px 0 0; padding-left: 20px; line-height: 1.8; }

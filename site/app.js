@@ -384,6 +384,7 @@ function renderSession() {
 
 function renderAll() {
   rebuildDeck();
+  saveOfflineCopy();
   renderSession();
   renderHero();
   renderBrands();
@@ -1027,6 +1028,28 @@ applyTheme(document.documentElement.dataset.theme || "light");
 const toLogin = (username) => username.trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
 const toEmail = (username) => `${toLogin(username)}@${LOGIN_DOMAIN}`;
 
+/** Hors connexion, on retrouve la dernière collection enregistrée sur cet appareil. */
+function saveOfflineCopy() {
+  if (state.user && !state.viewing) save(`offline.${state.user.id}`, { user: state.user, items: state.items });
+}
+
+async function enterOffline(session) {
+  const copy = load(`offline.${session.user.id}`, null);
+  if (!copy) return false;
+  state.catalog = await fetchCatalog();
+  state.user = copy.user;
+  state.items = copy.items;
+  state.viewing = null;
+  el("offline-note").hidden = false;
+  rebuildDeck();
+  state.compareInfo = load(`compareInfo.${state.user.id}`, {});
+  state.compare = load(`compare.${state.user.id}`, []).filter((slug) => catalogCar(slug)).slice(0, MAX_COMPARE);
+  showroom.key = "";
+  profileRendered = false;
+  renderAll();
+  return true;
+}
+
 async function enterApp(session) {
   const { data: profile, error } = await db.from("profiles")
     .select("id, username, avatar, shared").eq("id", session.user.id).single();
@@ -1036,6 +1059,8 @@ async function enterApp(session) {
   state.viewing = null;
   state.catalog = await fetchCatalog();
   await loadItems();
+  el("offline-note").hidden = true;
+  saveOfflineCopy();
   state.compareInfo = load(`compareInfo.${profile.id}`, {});
   state.compare = load(`compare.${profile.id}`, []).filter((slug) => catalogCar(slug)).slice(0, MAX_COMPARE);
   showroom.key = "";
@@ -1069,6 +1094,7 @@ el("session-form").addEventListener("submit", async (event) => {
 
 el("session-button").addEventListener("click", async () => {
   clearTimeout(pollTimer);
+  if (state.user) save(`offline.${state.user.id}`, null);
   await db.auth.signOut();
   Object.assign(state, { user: null, viewing: null, items: [], cars: [], compare: [], accounts: [], people: [], ownTitles: new Set() });
   profileRendered = false;
@@ -1604,6 +1630,51 @@ el("brands").addEventListener("click", (event) => {
 });
 window.addEventListener("hashchange", route);
 
+/* Application installable */
+let installPrompt = null;
+const isInstalled = () => window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
+const isAppleMobile = () => /iphone|ipad|ipod/i.test(navigator.userAgent)
+  || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
+function updateInstallButton() {
+  el("install-button").hidden = isInstalled() || !(installPrompt || isAppleMobile() || /android/i.test(navigator.userAgent));
+}
+
+window.addEventListener("beforeinstallprompt", (event) => {
+  event.preventDefault();
+  installPrompt = event;
+  updateInstallButton();
+});
+window.addEventListener("appinstalled", () => {
+  installPrompt = null;
+  updateInstallButton();
+});
+el("install-button").addEventListener("click", async () => {
+  if (installPrompt) {
+    installPrompt.prompt();
+    await installPrompt.userChoice.catch(() => null);
+    installPrompt = null;
+    updateInstallButton();
+    return;
+  }
+  el("install-steps").innerHTML = isAppleMobile()
+    ? "<li>Ouvre ce site dans Safari.</li><li>Touche le bouton <strong>Partager</strong>.</li><li>Choisis <strong>Sur l'écran d'accueil</strong>, puis <strong>Ajouter</strong>.</li>"
+    : "<li>Ouvre le menu du navigateur.</li><li>Choisis <strong>Installer l'application</strong> ou <strong>Ajouter à l'écran d'accueil</strong>.</li>";
+  el("install-dialog").showModal();
+});
+el("install-close").addEventListener("click", () => el("install-dialog").close());
+updateInstallButton();
+
+window.addEventListener("online", () => {
+  if (!el("offline-note").hidden) location.reload();
+});
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("sw.js").catch(() => { /* le site marche aussi sans */ });
+  });
+}
+
 async function start() {
   // Efface la clé GitHub et les données de l'ancienne version du site.
   ["token", "pending", "removing", "mainPhotos", "compare"].forEach((key) => save(key, null));
@@ -1612,7 +1683,11 @@ async function start() {
     try {
       await enterApp(data.session);
       return;
-    } catch { /* on revient à la page de connexion */ }
+    } catch {
+      // Sans réseau, on rouvre la copie locale plutôt que la page de connexion.
+      const opened = !navigator.onLine && await enterOffline(data.session).catch(() => false);
+      if (opened) return;
+    }
   }
   renderSession();
   fetchCatalog().then((catalog) => {

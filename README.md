@@ -6,6 +6,10 @@ Mon deck de voitures préférées : photos et fiches techniques, complétées au
 
 Chaque compte se connecte avec son identifiant et son mot de passe, et retrouve sa propre collection sur tous ses appareils. L'administrateur gère les comptes depuis le menu du profil. Il peut aussi regarder les collections, sans les modifier.
 
+## Installer l'application
+
+Depuis le menu de ta pastille, sur téléphone, choisis **Installer l'application**. Sur iPhone : dans Safari, **Partager**, puis **Sur l'écran d'accueil**. Hors connexion, CarPocket affiche la dernière version enregistrée sur l'appareil, sans pouvoir la modifier.
+
 ## Gérer son profil
 
 Clique sur la pastille de ton avatar, en haut à droite. Le menu donne accès à **Mon profil**, où tu peux choisir ton avatar et changer ton mot de passe, et à **Se déconnecter**. Pour l'administrateur, il donne aussi accès à **Gérer les comptes**.

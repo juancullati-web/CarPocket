@@ -18,4 +18,6 @@ Site statique (GitHub Pages) d'une bibliothèque de voitures, avec comptes et co
 
 Avatars (`site/avatars`) : logos de [Simple Icons](https://simpleicons.org) en CC0, Alpine et Mercedes-Benz de Wikimedia Commons, personnages et objets de [Fluent Emoji](https://github.com/microsoft/fluentui-emoji) sous licence MIT. Les logos restent des marques de leurs propriétaires.
 
+PWA : `site/manifest.webmanifest` et `site/sw.js`. Le service worker ne met jamais en cache les appels Supabase. Il sert réseau d'abord pour les pages, et cache d'abord pour `photos/` et `avatars/`.
+
 Tests : `python3 -m unittest discover -s tests`. Aperçu avec suppression : `python3 scripts/serve.py`.
