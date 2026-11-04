@@ -365,6 +365,7 @@ function renderSession() {
   el("app").hidden = !signedIn;
   el("open-add").hidden = !canEdit();
   el("profile-menu").hidden = !signedIn;
+  el("friends-link").hidden = !signedIn;
   if (!signedIn) closeProfileMenu();
   el("profile-initial").innerHTML = signedIn ? avatarHtml(state.user.avatar, state.user.username) : "";
   el("profile-name").textContent = signedIn ? state.user.username : "";
