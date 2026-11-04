@@ -10,9 +10,9 @@ Chaque compte se connecte avec son identifiant et son mot de passe, et retrouve 
 
 Clique sur la pastille de ton avatar, en haut à droite. Le menu donne accès à **Mon profil**, où tu peux choisir ton avatar et changer ton mot de passe, et à **Se déconnecter**. Pour l'administrateur, il donne aussi accès à **Gérer les comptes**.
 
-## Découvrir les collections
+## Voir les collections de ses amis
 
-Depuis **Découvrir les collections**, tu vois les collections des autres comptes et tu peux ajouter leurs voitures à ton deck avec **+ Mon deck**. Personne ne peut modifier la collection d'un autre. Pour masquer la tienne, décoche le réglage dans **Mon profil**.
+Depuis **Voir les collections de mes amis**, tu vois les collections des autres comptes et tu peux ajouter leurs voitures à ton deck avec **+ Mon deck**. Personne ne peut modifier la collection d'un autre. Pour masquer la tienne, décoche le réglage dans **Mon profil**.
 
 ## Ajouter une voiture
 

@@ -608,7 +608,7 @@ function renderRoute() {
   el("detail").hidden = !car;
   el("compare").hidden = !compareCars;
   el("accounts").hidden = !accounts;
-  document.title = car ? `${car.name} · CarPocket` : compareCars ? "Comparaison · CarPocket" : accounts ? "Comptes · CarPocket" : profile ? "Mon profil · CarPocket" : discover ? "Découvrir · CarPocket" : "CarPocket";
+  document.title = car ? `${car.name} · CarPocket` : compareCars ? "Comparaison · CarPocket" : accounts ? "Comptes · CarPocket" : profile ? "Mon profil · CarPocket" : discover ? "Collections de mes amis · CarPocket" : "CarPocket";
   if (car) el("detail").innerHTML = detailHtml(car);
   if (compareCars) el("compare").innerHTML = compareHtml(compareCars);
   if (accounts) renderAccounts();
@@ -1432,7 +1432,7 @@ async function renderDiscover() {
   const box = el("discover");
   box.innerHTML = `<section class="compare-head"><div class="wrap">
       <a class="back" href="#" data-leave-viewing>‹ Mon deck</a>
-      <h1 class="display-xl">Découvrir</h1>
+      <h1 class="display-xl">Les collections de mes amis</h1>
     </div></section>
     <section class="section"><div class="wrap"><p class="count" id="discover-status">Chargement des collections…</p><div class="people-grid" id="people-grid"></div></div></section>`;
   const [{ data: people, error }, { data: items, error: itemsError }] = await Promise.all([
@@ -1450,7 +1450,7 @@ async function renderDiscover() {
   const visible = people.filter((person) => items.some((item) => item.user_id === person.id && catalog.has(item.title)));
   el("discover-status").textContent = visible.length
     ? `${plural(visible.length, "collection")} à découvrir`
-    : "Aucune autre collection n'est visible pour l'instant.";
+    : "Aucun ami n'a encore de collection visible.";
   el("people-grid").innerHTML = visible.map((person) => {
     const cars = items.filter((item) => item.user_id === person.id && catalog.has(item.title));
     const photos = cars.slice(0, 3).map((item) => {
