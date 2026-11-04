@@ -16,6 +16,32 @@ create table if not exists public.deck_items (
   primary key (user_id, title)
 );
 
+-- Photos propres à chaque collection : envoyées par la personne, ou masquées dans le catalogue.
+alter table public.deck_items add column if not exists custom_photos text[] not null default '{}';
+alter table public.deck_items add column if not exists hidden_photos text[] not null default '{}';
+
+-- Une collection ne peut désigner que des fichiers rangés dans le dossier de son propriétaire.
+create or replace function public.photos_in_folder(paths text[], owner_id uuid)
+returns boolean
+language sql
+immutable
+set search_path = ''
+as $$
+  select coalesce(bool_and(p like owner_id::text || '/%'), true) from unnest(paths) as p;
+$$;
+
+alter table public.deck_items drop constraint if exists deck_items_custom_photos_check;
+alter table public.deck_items add constraint deck_items_custom_photos_check
+  check (cardinality(custom_photos) <= 20 and public.photos_in_folder(custom_photos, user_id));
+alter table public.deck_items drop constraint if exists deck_items_hidden_photos_check;
+alter table public.deck_items add constraint deck_items_hidden_photos_check
+  check (cardinality(hidden_photos) <= 50);
+alter table public.deck_items drop constraint if exists deck_items_main_photo_check;
+alter table public.deck_items add constraint deck_items_main_photo_check
+  check (main_photo is null
+    or main_photo ~ '^photos/[a-z0-9-]+/[0-9]+\.(jpg|png|webp)$'
+    or main_photo ~ '^[0-9a-f-]{36}/[a-z0-9-]+\.jpg$');
+
 -- Wikimedia peut servir ses vignettes depuis plusieurs sous-domaines.
 alter table public.deck_items drop constraint if exists deck_items_thumb_check;
 alter table public.deck_items add constraint deck_items_thumb_check
@@ -93,7 +119,7 @@ revoke all on public.deck_items from anon, authenticated;
 grant select (id, username, avatar, shared) on public.profiles to authenticated;
 grant update (avatar, shared) on public.profiles to authenticated;
 grant select, insert, delete on public.deck_items to authenticated;
-grant update (main_photo) on public.deck_items to authenticated;
+grant update (main_photo, custom_photos, hidden_photos) on public.deck_items to authenticated;
 
 drop policy if exists "profil lisible par soi ou l'admin" on public.profiles;
 drop policy if exists "profil lisible si partagé" on public.profiles;
@@ -132,3 +158,33 @@ drop policy if exists "retrait de sa collection" on public.deck_items;
 create policy "retrait de sa collection" on public.deck_items
   for delete to authenticated
   using (user_id = (select auth.uid()));
+
+-- Stockage privé des photos : lisibles avec les mêmes droits que la collection.
+insert into storage.buckets (id, name, public, file_size_limit, allowed_mime_types)
+values ('user-photos', 'user-photos', false, 5242880, array['image/jpeg'])
+on conflict (id) do update
+  set public = false, file_size_limit = 5242880, allowed_mime_types = array['image/jpeg'];
+
+drop policy if exists "carpocket photos lecture" on storage.objects;
+create policy "carpocket photos lecture" on storage.objects
+  for select to authenticated
+  using (
+    bucket_id = 'user-photos' and (
+      (storage.foldername(name))[1] = (select auth.uid())::text
+      or (select public.is_admin())
+      or exists (
+        select 1 from public.profiles p
+        where p.id::text = (storage.foldername(name))[1] and p.shared
+      )
+    )
+  );
+
+drop policy if exists "carpocket photos ajout" on storage.objects;
+create policy "carpocket photos ajout" on storage.objects
+  for insert to authenticated
+  with check (bucket_id = 'user-photos' and (storage.foldername(name))[1] = (select auth.uid())::text);
+
+drop policy if exists "carpocket photos suppression" on storage.objects;
+create policy "carpocket photos suppression" on storage.objects
+  for delete to authenticated
+  using (bucket_id = 'user-photos' and (storage.foldername(name))[1] = (select auth.uid())::text);
