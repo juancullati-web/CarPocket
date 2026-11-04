@@ -34,7 +34,9 @@
         <span><strong>Car</strong>Pocket</span>
       </a>
       <div class="top-nav-actions">
-        <button class="button button-primary" id="open-add" type="button" hidden><span class="add-long">Ajouter une voiture</span><span class="add-short">Ajouter</span></button>
+        <button class="add-icon" id="open-add" type="button" aria-label="Ajouter une voiture" title="Ajouter une voiture" hidden>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
         <div class="profile-menu" id="profile-menu" hidden>
           <button class="profile-button" id="profile-button" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="profile-dropdown" aria-label="Ouvrir le menu du profil">
             <span id="profile-initial"></span>
@@ -85,7 +87,10 @@
 
       <section class="section" aria-labelledby="library-title">
         <div class="wrap">
-          <p class="app-intro" id="app-intro">CarPocket est ton garage de poche. Ajoute les voitures qui te plaisent, retrouve leurs caractéristiques et leurs photos, puis compare jusqu'à trois modèles côte à côte.</p>
+          <div class="app-intro" id="app-intro">
+            <p>CarPocket est ton garage de poche. Ajoute les voitures qui te plaisent, retrouve leurs caractéristiques et leurs photos, puis compare jusqu'à trois modèles côte à côte.</p>
+            <button class="button button-primary" id="open-add-intro" type="button">Ajouter une voiture</button>
+          </div>
           <div class="library-head">
             <h2 class="display-lg" id="library-title">Mon deck</h2>
             <p class="count" id="count" aria-live="polite">Chargement des voitures…</p>

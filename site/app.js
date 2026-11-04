@@ -884,6 +884,7 @@ function openAdd() {
 }
 el("open-add").addEventListener("click", openAdd);
 el("open-add-cta").addEventListener("click", openAdd);
+el("open-add-intro").addEventListener("click", openAdd);
 
 /* Thème clair ou sombre : suit l'appareil tant qu'aucun choix n'a été fait. */
 const themeQuery = window.matchMedia("(prefers-color-scheme: dark)");

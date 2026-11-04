@@ -624,7 +624,6 @@ body.has-compare-bar { padding-bottom: 72px; }
 }
 .profile-dropdown a:hover, .profile-dropdown button:hover { background: var(--surface-soft); }
 .profile-dropdown button { border-top: 1px solid var(--hairline); }
-.add-short { display: none; }
 .profile-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; align-items: start; }
 .profile-facts { margin: 0; }
 .profile-form { display: flex; flex-direction: column; gap: 16px; align-items: stretch; }
@@ -634,8 +633,6 @@ body.has-compare-bar { padding-bottom: 72px; }
   .profile-layout { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 640px) {
-  .add-long { display: none; }
-  .add-short { display: inline; }
   .profile-button { width: 36px; height: 36px; }
   .profile-form .button { align-self: stretch; }
 }
@@ -679,4 +676,25 @@ body.has-compare-bar { padding-bottom: 72px; }
 .avatar-logo { background: #fff; box-shadow: inset 0 0 0 1px var(--hairline); }
 .avatar-logo img { width: 66%; height: 66%; object-fit: contain; }
 
-.app-intro { max-width: 65ch; margin-bottom: 48px; color: var(--body); font-size: 1.125rem; line-height: 1.55; }
+.app-intro { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; max-width: 65ch; margin-bottom: 48px; }
+.app-intro p { color: var(--body); font-size: 1.125rem; line-height: 1.55; }
+
+/* Ajout rapide dans le menu du haut */
+.add-icon {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  padding: 0;
+  background: var(--primary);
+  color: #fff;
+  cursor: pointer;
+}
+.add-icon:hover { background: var(--primary-active); }
+.add-icon svg { width: 20px; height: 20px; }
+@media (max-width: 640px) {
+  .add-icon { width: 36px; height: 36px; }
+  .app-intro .button { width: 100%; }
+}

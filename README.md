@@ -12,7 +12,7 @@ Clique sur la pastille de ton avatar, en haut à droite. Le menu donne accès à
 
 ## Ajouter une voiture
 
-Clique sur **Ajouter une voiture**, tape quelques lettres, puis choisis une suggestion. Si la page décrit plusieurs générations, choisis celle que tu veux : chacune a sa propre carte. Si quelqu'un l'a déjà ajoutée, elle arrive tout de suite. Sinon, la fiche et les photos arrivent en une ou deux minutes.
+Clique sur **Ajouter une voiture**, ou sur le **+** en haut de page, tape quelques lettres, puis choisis une suggestion. Si la page décrit plusieurs générations, choisis celle que tu veux : chacune a sa propre carte. Si quelqu'un l'a déjà ajoutée, elle arrive tout de suite. Sinon, la fiche et les photos arrivent en une ou deux minutes.
 
 ## Comparer
 
