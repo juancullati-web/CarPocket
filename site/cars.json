@@ -126,6 +126,130 @@
   "year": 2017
  },
  {
+  "slug": "aston-martin-db5",
+  "name": "Aston Martin DB5",
+  "brand": "Aston Martin",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-04",
+  "summary": "L'Aston Martin DB5 est une voiture de sport GT de luxe du constructeur automobile britannique Aston Martin. Déclinée en coupé et en cabriolet, puis en série limitée break de chasse, réalisée par le carrossier italien Carrozzeria Touring, elle succède à la DB4 et précède la DB6. Elle devient une des voitures les plus célèbres et emblématiques du cinéma en tant que première voiture à gadgets du célèbre agent secret britannique James Bond 007 dans huit films de la saga : Goldfinger (1964), Opération Tonnerre (1965), GoldenEye (1995), Demain ne meurt jamais (1997), Casino Royale (2006), Skyfall (2012), 007 Spectre (2015), et Mourir peut attendre (2020).",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Aston_Martin_DB5",
+  "wikipedia_title": "Aston Martin DB5",
+  "photos": [
+   {
+    "file": "photos/aston-martin-db5/1.jpg",
+    "author": "DeFacto",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Aston_Martin_DB5_(Skyfall).jpg"
+   },
+   {
+    "file": "photos/aston-martin-db5/2.jpg",
+    "author": "Thesupermat",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Paris_-_RM_Sotheby%E2%80%99s_2016_-_Aston_Martin_DB5_-_1963_-_007.jpg"
+   },
+   {
+    "file": "photos/aston-martin-db5/3.jpg",
+    "author": "MrWalkr",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:1964_Aston_Martin_DB5_Convertible_LC.jpg"
+   },
+   {
+    "file": "photos/aston-martin-db5/4.jpg",
+    "author": "MrWalkr",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:1965_Aston_Martin_DB5_Shooting_Brake_HCC23.jpg"
+   },
+   {
+    "file": "photos/aston-martin-db5/5.jpg",
+    "author": "Calreyn88",
+    "license": "CC BY-SA 4.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:1964_Aston_Martin_DB5_Vantage.jpg"
+   },
+   {
+    "file": "photos/aston-martin-db5/6.jpg",
+    "author": "Herranderssvensson",
+    "license": "CC BY-SA 3.0",
+    "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+    "source_url": "https://commons.wikimedia.org/wiki/File:Aston_Martin_DB5_engine.jpg"
+   }
+  ],
+  "specs": {
+   "engine": {
+    "value": "3995 cc Marek DOHC I6",
+    "from_text": false
+   },
+   "transmission": {
+    "value": "Manuelle 5 rapports · Automatique 3 rapports (optional)",
+    "from_text": false
+   },
+   "layout": {
+    "value": "Moteur avant, propulsion",
+    "from_text": false
+   },
+   "body": {
+    "value": "2-door 2+2 coupé · Cabriolet 2 portes (123) · 2-door shooting brake (13)",
+    "from_text": false
+   },
+   "production": {
+    "value": "1963–1965 (1,059 units) · 2020 (25 units)",
+    "from_text": false
+   },
+   "designer": {
+    "value": "Federico Formenti at Carrozzeria Touring Superleggera",
+    "from_text": false
+   },
+   "assembly": {
+    "value": "United Kingdom: Newport Pagnell, England",
+    "from_text": false
+   },
+   "weight": {
+    "value": "1502 kg",
+    "from_text": false
+   },
+   "length": {
+    "value": "4570 mm",
+    "from_text": false
+   },
+   "width": {
+    "value": "1680 mm",
+    "from_text": false
+   },
+   "wheelbase": {
+    "value": "2489 mm",
+    "from_text": false
+   },
+   "power": {
+    "value": "282-325 bhp",
+    "from_text": false
+   },
+   "torque": {
+    "value": "288 lbft",
+    "from_text": false
+   },
+   "top_speed": {
+    "value": "233 km/h",
+    "from_text": true
+   },
+   "zero_100": {
+    "value": "0-60 mph : 8 s",
+    "from_text": true
+   }
+  },
+  "missing": [
+   "height"
+  ],
+  "power_ch": 286,
+  "weight_kg": 1502,
+  "year": 1963
+ },
+ {
   "slug": "ferrari-f40",
   "name": "Ferrari F40",
   "brand": "Ferrari",
