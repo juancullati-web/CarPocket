@@ -29,6 +29,8 @@ jobs:
           ref: main
       - name: Régénérer l'index (prend en compte les corrections manuelles)
         run: python3 scripts/build_index.py
+      - name: Forcer le rechargement du style et du code après chaque publication
+        run: sed -i "s/__VERSION__/$(git rev-parse --short HEAD)/g" site/index.html
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
