@@ -51,7 +51,7 @@ Champs possibles : `engine`, `power`, `torque`, `transmission`, `layout`, `top_s
 
 ## Crédits des avatars
 
-- Logos : [Simple Icons](https://simpleicons.org) (CC0). Ces logos restent des marques de leurs propriétaires, et CarPocket n'est affilié à aucune d'elles.
+- Logos : [Simple Icons](https://simpleicons.org) (CC0), et [Wikimedia Commons](https://commons.wikimedia.org) (domaine public selon Commons) pour Alpine et Mercedes-Benz. Ces logos restent des marques de leurs propriétaires, et CarPocket n'est affilié à aucune d'elles.
 - Personnages et objets : [Fluent Emoji](https://github.com/microsoft/fluentui-emoji), Copyright (c) Microsoft Corporation, licence MIT.
 
 ## En local

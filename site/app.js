@@ -979,17 +979,12 @@ const AVATAR_CHARACTERS = {
   tigre: "Tigre", loup: "Loup", panda: "Panda", dragon: "Dragon", licorne: "Licorne", aigle: "Aigle",
 };
 const AVATAR_BRANDS = {
-  ferrari: "Ferrari", porsche: "Porsche", lamborghini: "Lamborghini", bugatti: "Bugatti", koenigsegg: "Koenigsegg",
+  alpine: "Alpine", mercedes: "Mercedes-Benz", ferrari: "Ferrari", porsche: "Porsche", lamborghini: "Lamborghini", bugatti: "Bugatti", koenigsegg: "Koenigsegg",
   mclaren: "McLaren", astonmartin: "Aston Martin", maserati: "Maserati", bmw: "BMW", audi: "Audi", tesla: "Tesla",
   volkswagen: "Volkswagen", peugeot: "Peugeot", renault: "Renault", dacia: "Dacia", citroen: "Citroën", toyota: "Toyota",
   honda: "Honda", nissan: "Nissan", mazda: "Mazda", subaru: "Subaru", suzuki: "Suzuki", hyundai: "Hyundai", kia: "Kia",
   ford: "Ford", chevrolet: "Chevrolet", cadillac: "Cadillac", jeep: "Jeep", fiat: "Fiat", mini: "Mini", volvo: "Volvo",
   seat: "SEAT", opel: "Opel",
-};
-// Pas de logo dans la bibliothèque libre : ces marques gardent leur badge en lettres.
-const AVATAR_BADGES = {
-  alpine: ["Alpine", "AL", "#0a5fb4", "#fff"],
-  mercedes: ["Mercedes-Benz", "ME", "#3c4148", "#fff"],
 };
 const AVATAR_EMOJIS = {
   bolide: "Bolide", voiture: "Voiture", suv: "SUV", drapeau: "Drapeau à damier", roue: "Roue", cle: "Clé",
@@ -1010,10 +1005,6 @@ function avatarHtml(avatarValue, username = "") {
   if (kind === "marque" && AVATAR_BRANDS[id]) {
     return `<span class="avatar avatar-logo" aria-hidden="true">${image("marques", `${id}.svg`)}</span>`;
   }
-  if (kind === "marque" && AVATAR_BADGES[id]) {
-    const [, letters, background, color] = AVATAR_BADGES[id];
-    return `<span class="avatar avatar-brand" style="background:${background};color:${color}" aria-hidden="true">${letters}</span>`;
-  }
   return `<span class="avatar avatar-initial" aria-hidden="true">${esc(username.charAt(0).toUpperCase())}</span>`;
 }
 
@@ -1024,8 +1015,7 @@ function avatarChoices() {
   const list = (prefix, table) => Object.entries(table).map(([id, label]) => button(`${prefix}:${id}`, label)).join("");
   return group("Par défaut", button("", "Mon initiale"))
     + group("Personnages", list("perso", AVATAR_CHARACTERS))
-    + group("Marques", list("marque", AVATAR_BRANDS)
-      + Object.entries(AVATAR_BADGES).map(([id, [label]]) => button(`marque:${id}`, label)).join(""))
+    + group("Marques", list("marque", AVATAR_BRANDS))
     + group("Objets", list("emoji", AVATAR_EMOJIS));
 }
 
