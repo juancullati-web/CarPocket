@@ -1,0 +1,107 @@
+{
+  "slug": "koenigsegg-jesko",
+  "name": "Koenigsegg Jesko",
+  "brand": "Koenigsegg",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-04T21:01:29+00:00",
+  "summary": "La Jesko est une hypercar à moteur central arrière produite en série limitée par le constructeur automobile suédois Koenigsegg.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Koenigsegg_Jesko",
+  "wikipedia_title": "Koenigsegg Jesko",
+  "specs": {
+    "engine": {
+      "value": "L twin-turbocharged V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "9-speed Koenigsegg LST multi-clutch",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur central arrière, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "2-door targa top",
+      "from_text": false
+    },
+    "production": {
+      "value": "2020–present · 125 units planned",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Christian von Koenigsegg, Joachim Nordwall",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1420 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4626 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "2030 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1210 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2700 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "1280 hp",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/koenigsegg-jesko/1.jpg",
+      "author": "Matti Blume",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:GIMS_2019,_Le_Grand-Saconnex_(GIMS0833).jpg"
+    },
+    {
+      "file": "photos/koenigsegg-jesko/2.jpg",
+      "author": "Matti Blume",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Koenigsegg_Jesko,_GIMS_2019,_Le_Grand-Saconnex_(GIMS1043).jpg"
+    },
+    {
+      "file": "photos/koenigsegg-jesko/3.jpg",
+      "author": "Alexander-93",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Koenigsegg_Jesko_Auto_Zuerich_2023_1X7A0925.jpg"
+    },
+    {
+      "file": "photos/koenigsegg-jesko/4.jpg",
+      "author": "MrWalkr",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2023_Koenigsegg_Jesko_Driving_LC24.jpg"
+    },
+    {
+      "file": "photos/koenigsegg-jesko/5.jpg",
+      "author": "Calreyn88",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Koenigsegg_Jesko_4.jpg"
+    },
+    {
+      "file": "photos/koenigsegg-jesko/6.jpg",
+      "author": "Calreyn88",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Koenigsegg_Jesko_12.jpg"
+    }
+  ]
+}
