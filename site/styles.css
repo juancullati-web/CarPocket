@@ -531,3 +531,4 @@ body.has-compare-bar { padding-bottom: 72px; }
 .account-form .field { flex: 1 1 200px; }
 .notice { margin-top: 16px; font-size: .875rem; }
 .notice.failed { color: var(--error); }
+.suggest-back { margin-top: 12px; }

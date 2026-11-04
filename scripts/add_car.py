@@ -27,15 +27,24 @@ LABELS = {
 }
 
 
-def has_car_infobox(page) -> bool:
-    return bool(page and infobox.find_infoboxes(infobox.strip_noise(page["wikitext"])))
+def has_car_infobox(page, wanted=None) -> bool:
+    if not page:
+        return False
+    boxes = infobox.find_infoboxes(infobox.strip_noise(page["wikitext"]))
+    return bool(infobox.choose_infobox(boxes, wanted))
 
 
 def resolve(query: str):
-    """Trouve la page : titre exact d'abord, puis meilleur résultat de recherche."""
-    page = wiki.fetch_page(query)
-    if has_car_infobox(page):
+    """Trouve la page : titre exact d'abord, puis meilleur résultat de recherche.
+
+    « Page#Génération » demande une génération précise : pas de recherche approchée.
+    """
+    title, _, wanted = query.partition("#")
+    page = wiki.fetch_page(title)
+    if has_car_infobox(page, wanted or None):
         return page, []
+    if wanted:
+        return None, []
     candidates = wiki.search_titles(query)
     for title in candidates:
         page = wiki.fetch_page(title)
@@ -86,22 +95,27 @@ def add(query: str, example: bool = False) -> dict:
         return {"status": "not_found", "query": query, "candidates": candidates}
 
     title = page["title"]
-    slug = common.slugify(title)
-    found = existing_car(slug, title)
+    wanted = query.partition("#")[2] or None
+    key = f"{title}#{wanted}" if wanted else title
+    slug = common.slugify(key)
+    found = existing_car(slug, key)
     if found:
         return {"status": "duplicate", "name": found["name"], "slug": found["slug"]}
 
-    extracted = infobox.extract_specs(page["wikitext"])
+    extracted = infobox.extract_specs(page["wikitext"], wanted)
     boxes = infobox.find_infoboxes(infobox.strip_noise(page["wikitext"]))
     manufacturer = boxes[0]["fields"].get("manufacturer", "")
     brand = infobox.brand_from(title, manufacturer)
     text = wiki.summary(title, page["fr_title"])
     files = wiki.choose_photos(title, brand, extracted["image"], page["wikidata"], extracted["variant"])
     photos = save_photos(files, slug)
+    name = title
+    if wanted:
+        name = wanted if wanted.lower().startswith(brand.lower()) else f"{brand} {wanted}"
 
     car = {
         "slug": slug,
-        "name": title,
+        "name": name,
         "brand": brand,
         "variant": extracted["variant"],
         "example": example,
@@ -109,7 +123,7 @@ def add(query: str, example: bool = False) -> dict:
         "summary": text["text"],
         "summary_lang": text["lang"],
         "summary_url": text["url"],
-        "wikipedia_title": title,
+        "wikipedia_title": key,
         "specs": extracted["specs"],
         "overrides": {},
         "photos": photos,
@@ -121,7 +135,7 @@ def add(query: str, example: bool = False) -> dict:
     build_index.build()
     missing = [key for key in infobox.SPEC_KEYS if key not in extracted["specs"]]
     return {
-        "status": "ok", "name": title, "slug": slug, "variant": extracted["variant"],
+        "status": "ok", "name": name, "slug": slug, "variant": extracted["variant"],
         "photos": len(photos), "missing": missing,
     }
 

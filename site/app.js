@@ -24,6 +24,8 @@ const plural = (n, word) => `${n} ${word}${n > 1 ? "s" : ""}`;
 const STAR = `<abbr class="mark" title="Extrait du texte de l'article : à vérifier">*</abbr>`;
 const carBySlug = (slug) => state.cars.find((c) => c.slug === slug);
 const titleOf = (car) => car.wikipedia_title || car.name;
+/** Une génération précise s'écrit « Page#Génération » dans les données. */
+const displayTitle = (title) => title.replace("#", " · ");
 
 function tagline(car) {
   return [car.year, car.power_ch && `${car.power_ch} ch`, car.weight_kg && `${car.weight_kg} kg`]
@@ -143,7 +145,7 @@ function pendingCardHtml(item) {
       ${safeUrl(item.thumb) ? `<img src="${esc(item.thumb)}" alt="">` : `<div class="no-photo">Photos en préparation</div>`}
     </div>
     <div class="model-body">
-      <h3>${esc(item.name)}</h3>
+      <h3>${esc(displayTitle(item.name))}</h3>
       <p class="pending-state${failed ? " failed" : ""}">${text}</p>
       ${failed || slow ? `<div class="pending-actions">
         ${failed ? `<button type="button" class="text-link" data-retry="${esc(item.name)}">Réessayer</button>` : ""}
@@ -674,6 +676,7 @@ let suggestTimer = null;
 let suggestAbort = null;
 let suggestItems = [];
 let suggestIndex = -1;
+let suggestParents = null;
 
 async function searchCars(query) {
   const key = query.toLowerCase();
@@ -688,11 +691,11 @@ async function searchCars(query) {
     generator: "search",
     gsrsearch: `${query}* hastemplate:"Infobox automobile"`,
     gsrnamespace: "0",
-    gsrlimit: "10",
+    gsrlimit: "30",
     prop: "pageimages|description",
     piprop: "thumbnail",
     pithumbsize: "240",
-    pilimit: "10",
+    pilimit: "30",
   });
   const response = await fetch(`https://en.wikipedia.org/w/api.php?${params}`, { signal: suggestAbort.signal });
   if (!response.ok) throw new Error(String(response.status));
@@ -714,13 +717,55 @@ function renderSuggestions() {
     const taken = inDeck(item.name);
     return `<li class="suggestion" id="suggestion-${i}" role="option" data-index="${i}" aria-selected="${i === suggestIndex}" aria-disabled="${taken}">
       <div class="suggestion-photo">${safeUrl(item.thumb) ? `<img src="${esc(item.thumb)}" alt="">` : ""}</div>
-      <div><strong>${esc(item.name)}</strong><small>${taken ? "Déjà dans ton deck" : esc(item.description)}</small></div>
+      <div><strong>${esc(item.label || item.name)}</strong><small>${taken ? "Déjà dans ton deck" : esc(item.description)}</small></div>
     </li>`;
   }).join("");
   const input = el("add-name");
   input.setAttribute("aria-expanded", String(suggestItems.length > 0));
   if (suggestIndex >= 0) input.setAttribute("aria-activedescendant", `suggestion-${suggestIndex}`);
   else input.removeAttribute("aria-activedescendant");
+  el("suggest-back").hidden = !suggestParents;
+}
+
+/** Les générations décrites sur une page : chacune a son encadré technique. */
+async function pageVariants(title) {
+  const params = new URLSearchParams({
+    action: "query", format: "json", formatversion: "2", origin: "*",
+    titles: title, redirects: "1", prop: "revisions", rvprop: "content", rvslots: "main",
+  });
+  const response = await fetch(`https://en.wikipedia.org/w/api.php?${params}`);
+  if (!response.ok) throw new Error(String(response.status));
+  const data = await response.json();
+  const text = (data.query?.pages?.[0]?.revisions?.[0]?.slots?.main?.content || "")
+    .replace(/<!--[\s\S]*?-->/g, "")
+    .replace(/<ref\b[^>]*\/>/gi, "")
+    .replace(/<ref\b[^>]*>[\s\S]*?<\/ref>/gi, "");
+  const variants = new Map();
+  for (const match of text.matchAll(/\{\{\s*infobox[ _]+(?:automobile|car)\b/gi)) {
+    let depth = 0;
+    let end = match.index;
+    while (end < text.length - 1) {
+      const pair = text.slice(end, end + 2);
+      if (pair === "{{") { depth += 1; end += 2; }
+      else if (pair === "}}") { depth -= 1; end += 2; if (depth === 0) break; }
+      else end += 1;
+    }
+    const box = text.slice(match.index, end);
+    if (!/\|\s*engine\s*=\s*\S/i.test(box)) continue;
+    const name = (box.match(/\|\s*name\s*=\s*([^\n]*)/i)?.[1] || "")
+      .split(/<br\s*\/?>/i)[0]
+      .replace(/\[\[(?:[^\]|]*\|)?([^\]|]*)\]\]/g, "$1")
+      .replace(/'{2,}/g, "")
+      .replace(/\s*\|.*$/, "")
+      .trim();
+    if (!name || /[{}<>#]/.test(name) || variants.has(name)) continue;
+    const image = (box.match(/\|\s*image\s*=\s*([^\n|]*)/i)?.[1] || "").trim();
+    const thumb = image && !/[{}<>[\]]/.test(image)
+      ? `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(image.replace(/^(file|image):/i, ""))}?width=240`
+      : "";
+    variants.set(name, thumb);
+  }
+  return [...variants].map(([name, thumb]) => ({ name, thumb }));
 }
 
 function setSuggestStatus(text) {
@@ -732,6 +777,8 @@ el("add-name").addEventListener("input", () => {
   clearTimeout(suggestTimer);
   const query = el("add-name").value.trim();
   suggestIndex = -1;
+  suggestParents = null;
+  el("suggest-back").hidden = true;
   if (query.length < 2) {
     suggestAbort?.abort();
     suggestItems = [];
@@ -753,9 +800,28 @@ el("add-name").addEventListener("input", () => {
   }, 350);
 });
 
-function pickSuggestion(index) {
+async function pickSuggestion(index) {
   const item = suggestItems[index];
   if (!item || inDeck(item.name)) return;
+  if (!item.final) {
+    setSuggestStatus("Recherche des générations…");
+    const variants = await pageVariants(item.name).catch(() => []);
+    if (suggestItems[index] !== item) return;
+    if (variants.length >= 2) {
+      suggestParents = suggestItems;
+      suggestItems = variants.map((variant) => ({
+        name: `${item.name}#${variant.name}`,
+        label: variant.name,
+        description: item.name,
+        thumb: variant.thumb || item.thumb,
+        final: true,
+      }));
+      suggestIndex = -1;
+      renderSuggestions();
+      setSuggestStatus(`${variants.length} générations sur cette page. Laquelle veux-tu ?`);
+      return;
+    }
+  }
   el("add-dialog").close();
   addCar(item.name, item.thumb);
 }
@@ -773,6 +839,17 @@ el("add-name").addEventListener("keydown", (event) => {
     pickSuggestion(suggestIndex >= 0 ? suggestIndex : 0);
   }
 });
+el("suggest-back").addEventListener("click", () => {
+  suggestItems = suggestParents || [];
+  suggestParents = null;
+  suggestIndex = -1;
+  renderSuggestions();
+  setSuggestStatus("");
+  el("add-name").focus();
+});
+el("suggestions").addEventListener("error", (event) => {
+  if (event.target.tagName === "IMG") event.target.remove();
+}, true);
 el("suggestions").addEventListener("click", (event) => {
   const item = event.target.closest("[data-index]");
   if (item) pickSuggestion(Number(item.dataset.index));
@@ -782,6 +859,7 @@ el("add-cancel").addEventListener("click", () => el("add-dialog").close());
 
 function openAdd() {
   el("add-name").value = "";
+  suggestParents = null;
   suggestItems = [];
   suggestIndex = -1;
   renderSuggestions();

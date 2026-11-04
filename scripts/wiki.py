@@ -183,6 +183,15 @@ def category_files(category: str, limit: int = 150) -> list:
     return _parse_files((data.get("query") or {}).get("pages") or [])
 
 
+def search_files(query: str, limit: int = 40) -> list:
+    data = api(
+        COMMONS, action="query", generator="search", gsrsearch=query,
+        gsrnamespace="6", gsrlimit=str(limit), **_INFO,
+    )
+    pages = sorted((data.get("query") or {}).get("pages") or [], key=lambda p: p.get("index", 0))
+    return _parse_files(pages)
+
+
 def _normalize(text: str) -> str:
     return re.sub(r"[^a-z0-9]", "", text.lower())
 
@@ -215,9 +224,8 @@ def _evenly(items: list, count: int) -> list:
 def choose_photos(
     title: str, brand: str, main_image, wikidata_id, variant=None, count: int = 6
 ) -> list:
-    tokens = model_tokens(title, brand)
-    if variant:  # une seule génération décrite : pas de photos des autres
-        tokens += [t for t in model_tokens(variant, "") if t not in tokens]
+    # Une seule génération décrite : son nom suffit, et écarte les photos des autres.
+    tokens = model_tokens(variant, brand) if variant else model_tokens(title, brand)
     chosen, seen = [], set()
 
     def add(file):
@@ -240,6 +248,14 @@ def choose_photos(
     for name in categories:
         try:
             candidates += [f for f in category_files(name) if _is_usable(f, tokens)]
+        except (KeyError, ValueError):
+            pass
+
+    # Pas assez de photos : on cherche directement dans les fichiers de Commons.
+    if len({f["name"] for f in candidates}) < 6:
+        name = f"{brand} {variant}" if variant else re.sub(r"\s*\(.*?\)", "", title)
+        try:
+            candidates += [f for f in search_files(name) if _is_usable(f, tokens)]
         except (KeyError, ValueError):
             pass
 

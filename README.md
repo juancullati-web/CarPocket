@@ -8,7 +8,7 @@ Chaque compte se connecte avec son identifiant et son mot de passe, et retrouve 
 
 ## Ajouter une voiture
 
-Clique sur **Ajouter une voiture**, tape quelques lettres, puis choisis une suggestion. Si quelqu'un l'a déjà ajoutée, elle arrive tout de suite. Sinon, la fiche et les photos arrivent en une ou deux minutes.
+Clique sur **Ajouter une voiture**, tape quelques lettres, puis choisis une suggestion. Si la page décrit plusieurs générations, choisis celle que tu veux : chacune a sa propre carte. Si quelqu'un l'a déjà ajoutée, elle arrive tout de suite. Sinon, la fiche et les photos arrivent en une ou deux minutes.
 
 ## Comparer
 

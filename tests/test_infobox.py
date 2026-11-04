@@ -52,6 +52,28 @@ It has a top speed of {{convert|310|km/h|mph|0|abbr=on}}.
 """
 
 
+NESTED_TWO = """{{Infobox automobile
+| name = Porsche 911 GT3
+| body_style = 2-door [[coupé]]
+}}
+== Road cars ==
+=== 996 GT3 ===
+{{Infobox automobile
+| name = 996 GT3
+| engine = 3.6L flat-6
+| powerout = {{cvt|360|PS|hp kW|0}}
+}}
+It has a top speed of {{convert|306|km/h|mph|0|abbr=on}}.
+=== 997 GT3 ===
+{{Infobox automobile
+| name = 997 GT3
+| engine = 3.6L flat-6
+| powerout = {{cvt|415|PS|hp kW|0}}
+}}
+It has a top speed of {{convert|310|km/h|mph|0|abbr=on}}.
+"""
+
+
 class Specs(unittest.TestCase):
     def setUp(self):
         self.f40 = infobox.extract_specs(F40)
@@ -112,6 +134,16 @@ class Specs(unittest.TestCase):
     def test_measure_skips_a_heading_line(self):
         specs = infobox.extract_specs("{{Infobox automobile|engine=V8|weight=Standard:<br />{{cvt|1435|kg}}}}")["specs"]
         self.assertEqual(specs["weight"]["value"], "1435 kg")
+
+    def test_a_named_generation_is_read(self):
+        result = infobox.extract_specs(NESTED_TWO, "997 GT3")
+        self.assertEqual(result["variant"], "997 GT3")
+        self.assertEqual(result["specs"]["power"]["value"], "415 PS")
+        self.assertEqual(result["specs"]["top_speed"]["value"], "310 km/h")
+        self.assertEqual(result["specs"]["body"]["value"], "Coupé 2 portes")
+
+    def test_an_unknown_generation_gives_nothing(self):
+        self.assertEqual(infobox.extract_specs(NESTED_TWO, "Inconnue")["specs"], {})
 
     def test_missing_infobox(self):
         self.assertEqual(infobox.extract_specs("Pas de fiche.")["specs"], {})

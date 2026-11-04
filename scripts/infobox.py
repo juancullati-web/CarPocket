@@ -138,8 +138,21 @@ def find_infoboxes(wikitext: str) -> list:
     return boxes
 
 
-def choose_infobox(boxes: list):
-    """Prend la première infobox qui décrit vraiment un moteur."""
+def _same_name(left: str, right: str) -> bool:
+    return re.sub(r"[^a-z0-9]", "", left.lower()) == re.sub(r"[^a-z0-9]", "", right.lower())
+
+
+def box_name(box: dict) -> str:
+    return _first_line(clean(box["fields"].get("name", "")))
+
+
+def choose_infobox(boxes: list, wanted=None):
+    """Prend la génération demandée, sinon la première infobox qui décrit un moteur."""
+    if wanted:
+        for box in boxes:
+            if _same_name(box_name(box), wanted):
+                return box
+        return None
     for box in boxes:
         if box["fields"].get("engine", "").strip():
             return box
@@ -279,11 +292,11 @@ def _capitalize(value: str) -> str:
     return value[:1].upper() + value[1:] if value else value
 
 
-def extract_specs(wikitext: str) -> dict:
+def extract_specs(wikitext: str, wanted=None) -> dict:
     """Renvoie {specs: {clé: {value, from_text}}, variant}."""
     wikitext = strip_noise(wikitext)
     boxes = find_infoboxes(wikitext)
-    box = choose_infobox(boxes)
+    box = choose_infobox(boxes, wanted)
     if not box:
         return {"specs": {}, "variant": None, "image": None}
 
@@ -341,9 +354,9 @@ def extract_specs(wikitext: str) -> dict:
     put("top_speed", to_metric(find_top_speed(prose)), from_text=True)
     put("zero_100", find_acceleration(prose).replace(".", ","), from_text=True)
 
-    variant = None
-    if box is not boxes[0]:
-        variant = clean(fields.get("name", "")) or None
+    variant = wanted
+    if not variant and box is not boxes[0]:
+        variant = box_name(box) or None
     return {
         "specs": specs,
         "variant": variant,
