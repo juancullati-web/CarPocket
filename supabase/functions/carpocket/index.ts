@@ -103,6 +103,20 @@ async function inDeck(userId: string, title: string): Promise<boolean> {
 
 type Answer = { status: number; body: Record<string, unknown> };
 
+/** Traduit le refus du service de comptes, et le garde dans les journaux. */
+async function authFailure(response: Response, fallback: string): Promise<Answer> {
+  const detail = await response.json().catch(() => ({}));
+  const code = detail.error_code ?? detail.code ?? response.status;
+  console.error("Refus du service de comptes", response.status, code);
+  if (code === "email_exists" || code === "user_already_exists") {
+    return { status: 400, body: { error: "Cet identifiant existe déjà." } };
+  }
+  if (code === "weak_password") {
+    return { status: 400, body: { error: "Ce mot de passe est trop faible. Choisis-en un plus long ou moins courant." } };
+  }
+  return { status: 400, body: { error: `${fallback} (code : ${code})` } };
+}
+
 async function memberAction(user: { id: string }, action: string, input: Record<string, unknown>): Promise<Answer | null> {
   if (action === "request-car") {
     if (!validTitle(input.title)) return { status: 400, body: { error: "Nom de voiture invalide." } };
@@ -138,7 +152,7 @@ async function adminAction(action: string, input: Record<string, unknown>, self:
     });
     return response.ok
       ? { status: 200, body: { created: true } }
-      : { status: 400, body: { error: "Ce compte n'a pas pu être créé. L'identifiant existe peut-être déjà." } };
+      : await authFailure(response, "Ce compte n'a pas pu être créé.");
   }
   if (action === "set-password") {
     if (!validId(input.user_id)) return { status: 400, body: { error: "Compte invalide." } };
@@ -148,13 +162,13 @@ async function adminAction(action: string, input: Record<string, unknown>, self:
       headers: serverHeaders(),
       body: JSON.stringify({ password: input.password }),
     });
-    return response.ok ? { status: 200, body: { updated: true } } : { status: 400, body: { error: "Le mot de passe n'a pas pu être changé." } };
+    return response.ok ? { status: 200, body: { updated: true } } : await authFailure(response, "Le mot de passe n'a pas pu être changé.");
   }
   if (action === "delete-user") {
     if (!validId(input.user_id)) return { status: 400, body: { error: "Compte invalide." } };
     if (input.user_id === self.id) return { status: 400, body: { error: "Tu ne peux pas supprimer ton propre compte." } };
     const response = await fetch(`${authUrl}/${input.user_id}`, { method: "DELETE", headers: serverHeaders() });
-    return response.ok ? { status: 200, body: { deleted: true } } : { status: 400, body: { error: "Ce compte n'a pas pu être supprimé." } };
+    return response.ok ? { status: 200, body: { deleted: true } } : await authFailure(response, "Ce compte n'a pas pu être supprimé.");
   }
   if (action === "remove-sheet") {
     if (!validTitle(input.title)) return { status: 400, body: { error: "Nom de voiture invalide." } };

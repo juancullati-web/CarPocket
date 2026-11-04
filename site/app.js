@@ -957,8 +957,8 @@ async function renderAccounts() {
         </tr>`).join("")}</tbody>
       </table></div>
       <h2 class="display-sm" style="margin-top:48px">Créer un compte</h2>
-      <form class="account-form" id="account-form">
-        <label class="field"><span class="label">Identifiant</span><input id="account-username" required pattern="[a-z0-9_\\-]{2,30}" autocomplete="off" autocapitalize="none" spellcheck="false"></label>
+      <form class="account-form" id="account-form" novalidate>
+        <label class="field"><span class="label">Identifiant</span><input id="account-username" required autocomplete="off" autocapitalize="none" spellcheck="false"></label>
         <label class="field"><span class="label">Mot de passe (10 caractères minimum)</span><input id="account-password" type="password" required minlength="10" autocomplete="new-password"></label>
         <button type="submit" class="button button-primary">Créer</button>
       </form>
@@ -976,10 +976,23 @@ function accountNotice(text, failed = false) {
 el("accounts").addEventListener("submit", async (event) => {
   if (event.target.id !== "account-form") return;
   event.preventDefault();
+  // Accepte « Thibault » ou « Noémie » : l'identifiant s'écrit sans majuscule ni accent.
+  const username = el("account-username").value.trim().toLowerCase()
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  const password = el("account-password").value;
+  if (!/^[a-z0-9_-]{2,30}$/.test(username)) {
+    accountNotice("L'identifiant doit faire 2 à 30 caractères : lettres, chiffres, - ou _, sans espace.", true);
+    return;
+  }
+  if (password.length < 10) {
+    accountNotice("Le mot de passe doit faire au moins 10 caractères.", true);
+    return;
+  }
+  accountNotice("Création du compte…");
   try {
-    await server("create-user", { username: el("account-username").value.trim(), password: el("account-password").value });
+    await server("create-user", { username, password });
     await renderAccounts();
-    accountNotice("Compte créé.");
+    accountNotice(`Compte créé. Identifiant de connexion : ${username}`);
   } catch (error) {
     accountNotice(error.message, true);
   }
