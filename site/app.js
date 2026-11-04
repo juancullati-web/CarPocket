@@ -1093,6 +1093,8 @@ el("brands").addEventListener("click", (event) => {
 window.addEventListener("hashchange", route);
 
 async function start() {
+  // Efface la clé GitHub et les données de l'ancienne version du site.
+  ["token", "pending", "removing", "mainPhotos", "compare"].forEach((key) => save(key, null));
   const { data } = await db.auth.getSession();
   if (data.session) {
     try {
