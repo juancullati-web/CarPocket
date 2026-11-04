@@ -1,0 +1,80 @@
+{
+  "slug": "alfa-romeo-gta",
+  "name": "Alfa Romeo GTA",
+  "brand": "Alfa Romeo",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-04T17:48:52+00:00",
+  "summary": "L'Alfa Romeo Giulia GTA est une automobile coupé sportif produite par le constructeur italien Alfa Romeo de 1965 à 1975.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Alfa_Romeo_Giulia_GTA",
+  "wikipedia_title": "Alfa Romeo GTA",
+  "specs": {
+    "engine": {
+      "value": "Alfa Romeo Twin Cam I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1965–1969",
+      "from_text": false
+    },
+    "power": {
+      "value": "115 PS",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "185 km/h",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/alfa-romeo-gta/1.jpg",
+      "author": "Zairon",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Arese_Museo_Storico_Alfa_Romeo_1965_Giulia_Sprint_GTA_1.jpg"
+    },
+    {
+      "file": "photos/alfa-romeo-gta/2.jpg",
+      "author": "GTHO",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Alfa_Romeo_GTAm_of_Tony_Karanfilovski.jpg"
+    },
+    {
+      "file": "photos/alfa-romeo-gta/3.jpg",
+      "author": "Alexander Migl",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Alfa_Romeo_GTA1300_Junior_(1968)_Solitude_Revival_2019_IMG_1741.jpg"
+    },
+    {
+      "file": "photos/alfa-romeo-gta/4.jpg",
+      "author": "Martin308GTB",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Alfa_Romeo_Giulietta_Sprint_und_GTAJ.jpg"
+    },
+    {
+      "file": "photos/alfa-romeo-gta/5.jpg",
+      "author": "Mac Edmunds",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Alfa_Romeo_GTA_Goodwood_Revival_2024.jpg"
+    }
+  ]
+}
