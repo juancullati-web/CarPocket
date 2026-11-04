@@ -463,7 +463,7 @@ function mainPhotoControl(car, index) {
       : `<button type="button" class="photo-action" data-hide-photo="${index}">Masquer</button>`);
   }
   buttons.push(`<label class="add-icon photo-add" title="Ajouter une photo">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M3 8h4l2-3h6l2 3h4v11H3z"/><circle cx="12" cy="13" r="3.5"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M3 8h4l2-3h6l2 3h4v11H3z"/><path d="M12 10v6M9 13h6"/></svg>
     <input type="file" accept="image/*" aria-label="Ajouter une photo" data-add-photo>
   </label>`);
   if (car.hiddenCount) {
