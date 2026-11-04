@@ -609,9 +609,13 @@ function setCompare(list) {
 function toggleCompare(slug) {
   if (state.compare.includes(slug)) {
     setCompare(state.compare.filter((s) => s !== slug));
-  } else if (state.compare.length >= MAX_COMPARE) {
+    return false;
+  }
+  if (state.compare.length >= MAX_COMPARE) {
     state.compareFull = true;
-  } else {
+    return false;
+  }
+  {
     const car = carBySlug(slug) || catalogCar(slug);
     state.compareInfo[slug] = {
       owner: state.viewing ? displayName(state.viewing.username) : null,
@@ -619,6 +623,57 @@ function toggleCompare(slug) {
     };
     setCompare([...state.compare, slug]);
   }
+  return true;
+}
+
+/** La photo que le visiteur regarde quand il clique sur « Comparer ». */
+function comparisonSource(button) {
+  return button.closest(".model-card")?.querySelector(".model-photo img")
+    || (button.closest("#hero") && el("hero").querySelector(".showroom-photo.is-active"))
+    || (button.closest("#detail") && el("hero-photo"))
+    || null;
+}
+
+/** La photo se réduit en suivant une courbe, puis rejoint sa miniature dans la barre. */
+function flyToCompareBar(source, from, slug) {
+  const target = [...el("compare-thumbs").children].find((thumb) => thumb.dataset.unselect === slug);
+  if (!target) return;
+  const pop = () => target.animate(
+    [{ transform: "scale(1)" }, { transform: "scale(1.2)" }, { transform: "scale(1)" }],
+    { duration: 240, easing: "ease-out" },
+  );
+  if (!source || !from || calmMotion()) {
+    if (!calmMotion()) pop();
+    return;
+  }
+  const to = target.getBoundingClientRect();
+  if (!from.width || !to.width) return;
+  const clone = document.createElement("img");
+  clone.src = source.currentSrc || source.src;
+  clone.alt = "";
+  clone.className = "compare-flyer";
+  document.body.append(clone);
+  target.style.visibility = "hidden";
+  const frame = (rect, radius, opacity = 1) => ({
+    left: `${rect.left}px`, top: `${rect.top}px`, width: `${rect.width}px`, height: `${rect.height}px`, borderRadius: radius, opacity,
+  });
+  const middle = {
+    left: from.left + (to.left - from.left) * 0.55,
+    top: Math.min(from.top, to.top) + (to.top - from.top) * 0.35,
+    width: Math.max(to.width * 2.2, from.width * 0.42),
+    height: Math.max(to.height * 2.2, from.height * 0.42),
+  };
+  const flight = clone.animate(
+    [frame(from, "0"), { ...frame(middle, "24%"), offset: 0.55 }, frame(to, "50%")],
+    { duration: 620, easing: "cubic-bezier(.45, .05, .25, 1)", fill: "forwards" },
+  );
+  const land = () => {
+    clone.remove();
+    target.style.visibility = "";
+    pop();
+  };
+  flight.onfinish = land;
+  flight.oncancel = land;
 }
 
 /* Navigation */
@@ -1403,11 +1458,14 @@ document.addEventListener("click", (event) => {
   }
   const compare = event.target.closest("[data-compare]");
   if (compare) {
-    toggleCompare(compare.dataset.compare);
+    const source = comparisonSource(compare);
+    const from = source?.getBoundingClientRect();
+    const added = toggleCompare(compare.dataset.compare);
     renderHero();
     renderLibrary();
     renderRoute();
     renderCompareBar();
+    if (added) flyToCompareBar(source, from, compare.dataset.compare);
     return;
   }
   const unselect = event.target.closest("[data-unselect]");
