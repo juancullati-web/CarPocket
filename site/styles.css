@@ -803,3 +803,16 @@ button.photo-icon:hover { background: var(--on-dark); color: var(--surface-dark)
 .photo-add input { position: absolute; width: 1px; height: 1px; opacity: 0; }
 .photo-add:focus-within { outline: 2px solid var(--on-dark); outline-offset: 2px; }
 #photo-notice { padding-bottom: 4px; min-height: 0; }
+
+/* Info-bulles */
+.tooltip {
+  position: fixed;
+  z-index: 30;
+  max-width: min(260px, calc(100vw - 16px));
+  border: 1px solid rgba(255, 255, 255, .35);
+  padding: 6px 10px;
+  background: #1a2129;
+  color: #fff;
+  font: 700 .75rem/1.3 var(--font);
+  pointer-events: none;
+}

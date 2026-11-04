@@ -145,7 +145,7 @@ async function loadItems() {
 /* Cartes */
 function compareButton(car) {
   const selected = state.compare.includes(car.slug);
-  return `<button type="button" class="text-link" data-compare="${esc(car.slug)}" aria-pressed="${selected}">${selected ? "Sélectionnée ✓" : "Comparer"}</button>`;
+  return `<button type="button" class="text-link" data-compare="${esc(car.slug)}" data-tip="${selected ? "Retirer cette voiture de la comparaison" : "Ajouter cette voiture à la comparaison"}" aria-pressed="${selected}">${selected ? "Sélectionnée ✓" : "Comparer"}</button>`;
 }
 
 const backLabel = () => (state.viewing ? `‹ Collection de ${esc(displayName(state.viewing.username))}` : "‹ Mon deck");
@@ -156,7 +156,7 @@ function friendAddButton(car) {
   if (state.ownTitles.has(title) && !state.viewing) return "";
   return state.ownTitles.has(title)
     ? `<span class="in-deck">Dans mon deck ✓</span>`
-    : `<button type="button" class="text-link" data-add-title="${esc(title)}" aria-label="Ajouter ${esc(car.name)} à mon deck">+ Mon deck</button>`;
+    : `<button type="button" class="text-link" data-add-title="${esc(title)}" aria-label="Ajouter ${esc(car.name)} à mon deck" data-tip="Ajouter cette voiture à mon deck">+ Mon deck</button>`;
 }
 
 function cardHtml(car) {
@@ -238,7 +238,7 @@ function showroomStats(car) {
 
 function showroomCompareButton(car) {
   const selected = state.compare.includes(car.slug);
-  return `<button type="button" class="button button-on-dark" data-compare="${esc(car.slug)}" aria-pressed="${selected}">${selected ? "Sélectionnée ✓" : "Comparer"}</button>`;
+  return `<button type="button" class="button button-on-dark" data-compare="${esc(car.slug)}" data-tip="${selected ? "Retirer cette voiture de la comparaison" : "Ajouter cette voiture à la comparaison"}" aria-pressed="${selected}">${selected ? "Sélectionnée ✓" : "Comparer"}</button>`;
 }
 
 function showroomCopy(car) {
@@ -453,7 +453,7 @@ const creditText = (photo) => (photo.custom
 /** Actions sur la photo affichée, puis ajout de photos. */
 function mainPhotoControl(car, index) {
   const photo = car.photos[index];
-  const buttons = [`<label class="add-icon photo-add" title="Ajouter une photo">
+  const buttons = [`<label class="add-icon photo-add" data-tip="Ajouter une photo">
     ${photoIcon('<path d="M3 8h4l2-3h6l2 3h4v11H3z"/><path d="M12 10v6M9 13h6"/>')}
     <input type="file" accept="image/*" aria-label="Ajouter une photo" data-add-photo>
   </label>`];
@@ -462,12 +462,12 @@ function mainPhotoControl(car, index) {
       ? iconButton("Supprimer cette photo", `data-delete-photo="${index}"`, '<path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v5M14 11v5"/>')
       : iconButton("Masquer cette photo", `data-hide-photo="${index}"`, '<path d="M3 3l18 18M10 6a9 9 0 0 1 12 6 12 12 0 0 1-3 4M6 7a13 13 0 0 0-4 5 10 10 0 0 0 14 5M10 10a3 3 0 0 0 4 4"/>'));
     buttons.push(index === 0
-      ? `<span class="photo-icon is-main" role="img" aria-label="Photo principale" title="Photo principale">${photoIcon(STAR_PATH, "currentColor")}</span>`
+      ? `<span class="photo-icon is-main" role="img" aria-label="Photo principale" data-tip="C'est la photo principale">${photoIcon(STAR_PATH, "currentColor")}</span>`
       : iconButton("Choisir comme photo principale", `data-main-photo="${index}"`, STAR_PATH));
   }
   if (car.hiddenCount) {
     const label = car.hiddenCount > 1 ? `Rétablir ${car.hiddenCount} photos masquées` : "Rétablir 1 photo masquée";
-    buttons.push(`<button type="button" class="photo-icon" data-restore-photos aria-label="${label}" title="${label}">
+    buttons.push(`<button type="button" class="photo-icon" data-restore-photos aria-label="${label}" data-tip="${label}">
       ${photoIcon('<path d="M2 12a11 11 0 0 1 20 0 11 11 0 0 1-20 0z"/><circle cx="12" cy="12" r="3"/>')}
       <span class="photo-count" aria-hidden="true">${car.hiddenCount}</span>
     </button>`);
@@ -477,7 +477,7 @@ function mainPhotoControl(car, index) {
 
 const STAR_PATH = '<path d="M12 3l2.8 5.9 6.2.8-4.5 4.4 1.1 6.4-5.6-3.1-5.6 3.1 1.1-6.4L3 9.7l6.2-.8z"/>';
 const photoIcon = (paths, fill = "none") => `<svg viewBox="0 0 24 24" fill="${fill}" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">${paths}</svg>`;
-const iconButton = (label, attribute, paths) => `<button type="button" class="photo-icon" ${attribute} aria-label="${label}" title="${label}">${photoIcon(paths)}</button>`;
+const iconButton = (label, attribute, paths) => `<button type="button" class="photo-icon" ${attribute} aria-label="${label}" data-tip="${label}">${photoIcon(paths)}</button>`;
 
 function detailHtml(car) {
   const hasTextValues = Object.values(car.specs).some((s) => s.from_text);
@@ -486,7 +486,7 @@ function detailHtml(car) {
 
   return `<section class="detail-hero">
       <div class="wrap detail-title">
-        <a class="back" href="#">${backLabel()}</a>
+        <a class="back" href="#" data-tip="Revenir à la liste">${backLabel()}</a>
         <div class="detail-eyebrow">
           <span class="label">${esc(car.brand)}</span>
           ${car.example ? `<span class="badge">Exemple</span>` : ""}
@@ -498,7 +498,7 @@ function detailHtml(car) {
       </div>
       <div class="thumbs-band"><div class="wrap">
         ${photos.length > 1 ? `<div class="thumbs">${photos.map((photo, i) => `
-          <button type="button" data-photo="${i}" aria-label="Voir la photo ${i + 1}" aria-current="${i === 0}">
+          <button type="button" data-photo="${i}" aria-label="Voir la photo ${i + 1}" data-tip="Voir la photo ${i + 1}" aria-current="${i === 0}">
             <img src="${esc(photo.file)}" alt="" loading="lazy">
           </button>`).join("")}</div>` : ""}
         ${photos.length ? `<div class="photo-bar">
@@ -513,13 +513,13 @@ function detailHtml(car) {
         <div>
           ${car.summary ? `<h2 class="display-md">Présentation</h2>
             <p class="summary">${esc(car.summary)}</p>
-            <p class="summary-source">Source : <a href="${esc(safeUrl(car.summary_url))}" target="_blank" rel="noopener">Wikipédia${car.summary_lang === "en" ? " (en anglais)" : ""}</a></p>` : ""}
+            <p class="summary-source">Source : <a href="${esc(safeUrl(car.summary_url))}" target="_blank" rel="noopener" data-tip="Lire l'article sur Wikipédia">Wikipédia${car.summary_lang === "en" ? " (en anglais)" : ""}</a></p>` : ""}
           <div class="actions">
             ${compareButton(car)}
-            ${canEdit() && inOwnDeck(car) ? `<button type="button" class="text-link quiet" data-delete="${esc(car.slug)}">Retirer de ma collection</button>` : ""}
+            ${canEdit() && inOwnDeck(car) ? `<button type="button" class="text-link quiet" data-delete="${esc(car.slug)}" data-tip="Retirer cette voiture de ma collection">Retirer de ma collection</button>` : ""}
             ${friendAddButton(car)}
-            ${isAdmin() ? `<a class="text-link" href="https://github.com/juancullati-web/CarPocket/edit/main/data/cars/${esc(car.slug)}.json" target="_blank" rel="noopener">Corriger cette fiche ›</a>
-            <button type="button" class="text-link quiet" data-remove-sheet="${esc(titleOf(car))}">Supprimer la fiche pour tout le monde</button>` : ""}
+            ${isAdmin() ? `<a class="text-link" href="https://github.com/juancullati-web/CarPocket/edit/main/data/cars/${esc(car.slug)}.json" target="_blank" rel="noopener" data-tip="Corriger cette fiche sur GitHub">Corriger cette fiche ›</a>
+            <button type="button" class="text-link quiet" data-remove-sheet="${esc(titleOf(car))}" data-tip="Effacer cette fiche pour tous les comptes">Supprimer la fiche pour tout le monde</button>` : ""}
           </div>
         </div>
         <div>
@@ -535,9 +535,9 @@ function detailHtml(car) {
     ${photos.some((photo) => !photo.custom) ? `<section class="credits"><div class="wrap">
       <h2>Crédits photos</h2>
       <ol>${photos.filter((photo) => !photo.custom).map((photo) => `<li>${esc(photo.author)}, ${safeUrl(photo.license_url)
-        ? `<a href="${esc(photo.license_url)}" target="_blank" rel="noopener">${esc(photo.license)}</a>`
+        ? `<a href="${esc(photo.license_url)}" target="_blank" rel="noopener" data-tip="Lire la licence de cette photo">${esc(photo.license)}</a>`
         : esc(photo.license)}${safeUrl(photo.source_url)
-        ? ` (<a href="${esc(photo.source_url)}" target="_blank" rel="noopener">Wikimedia Commons</a>)` : ""}</li>`).join("")}</ol>
+        ? ` (<a href="${esc(photo.source_url)}" target="_blank" rel="noopener" data-tip="Voir la photo sur Wikimedia Commons">Wikimedia Commons</a>)` : ""}</li>`).join("")}</ol>
     </div></section>` : ""}`;
 }
 
@@ -605,7 +605,7 @@ function compareHtml(cars) {
   }).join("");
 
   return `<section class="compare-head"><div class="wrap">
-      <a class="back" href="#">${backLabel()}</a>
+      <a class="back" href="#" data-tip="Revenir à la liste">${backLabel()}</a>
       <h1 class="display-xl">Comparaison</h1>
     </div></section>
     <section class="section"><div class="wrap">
@@ -636,7 +636,7 @@ function renderCompareBar() {
     const car = catalogCar(slug);
     if (!car) return "";
     const photo = comparePhoto(car);
-    return `<button type="button" class="compare-thumb" data-unselect="${esc(slug)}" aria-label="Retirer ${esc(car.name)} de la comparaison" title="${esc(car.name)}">
+    return `<button type="button" class="compare-thumb" data-unselect="${esc(slug)}" aria-label="Retirer ${esc(car.name)} de la comparaison" data-tip="Retirer ${esc(car.name)} de la comparaison">
       ${photo ? `<img src="${esc(photo)}" alt="">` : ""}<span aria-hidden="true">×</span>
     </button>`;
   }).join("");
@@ -1139,7 +1139,7 @@ function applyTheme(theme) {
   const label = theme === "dark" ? "Passer en thème clair" : "Passer en thème sombre";
   const button = el("theme-toggle");
   button.setAttribute("aria-label", label);
-  button.title = label;
+  button.dataset.tip = label;
 }
 
 el("theme-toggle").addEventListener("click", () => {
@@ -1797,6 +1797,40 @@ el("brands").addEventListener("click", (event) => {
   renderLibrary();
 });
 window.addEventListener("hashchange", route);
+
+/* Info-bulles : l'action de chaque bouton au survol à la souris ou au clavier. */
+const tooltip = el("tooltip");
+const hideTip = () => { tooltip.hidden = true; };
+
+function showTip(target) {
+  tooltip.textContent = target.dataset.tip;
+  tooltip.hidden = false;
+  const box = target.getBoundingClientRect();
+  const { width, height } = tooltip.getBoundingClientRect();
+  const margin = 8;
+  const left = Math.min(Math.max(margin, box.left + box.width / 2 - width / 2), innerWidth - width - margin);
+  const below = box.bottom + margin;
+  tooltip.style.left = `${left}px`;
+  tooltip.style.top = `${below + height > innerHeight ? box.top - height - margin : below}px`;
+}
+
+document.addEventListener("pointerover", (event) => {
+  if (event.pointerType !== "mouse") return;
+  const target = event.target.closest("[data-tip]");
+  if (target) showTip(target);
+  else hideTip();
+});
+document.addEventListener("focusin", (event) => {
+  const target = event.target.closest("[data-tip]");
+  if (target && event.target.matches(":focus-visible")) showTip(target);
+});
+document.addEventListener("focusout", hideTip);
+document.addEventListener("pointerdown", hideTip);
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") hideTip();
+});
+window.addEventListener("scroll", hideTip, { passive: true, capture: true });
+window.addEventListener("hashchange", hideTip);
 
 /* Application installable */
 let installPrompt = null;

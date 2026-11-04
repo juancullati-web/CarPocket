@@ -36,28 +36,28 @@
 <body>
   <header class="top-nav">
     <div class="wrap top-nav-inner">
-      <a class="wordmark" href="#" aria-label="CarPocket, accueil">
+      <a class="wordmark" href="#" aria-label="CarPocket, accueil" data-tip="Revenir à l'accueil">
         <img src="logo.svg?v=__VERSION__" alt="" width="36" height="36">
         <span><strong>Car</strong>Pocket</span>
       </a>
       <div class="top-nav-actions">
-        <button class="add-icon" id="open-add" type="button" aria-label="Ajouter une voiture" title="Ajouter une voiture" hidden>
+        <button class="add-icon" id="open-add" type="button" aria-label="Ajouter une voiture" data-tip="Ajouter une voiture" hidden>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
         </button>
         <div class="profile-menu" id="profile-menu" hidden>
-          <button class="profile-button" id="profile-button" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="profile-dropdown" aria-label="Ouvrir le menu du profil">
+          <button class="profile-button" id="profile-button" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="profile-dropdown" aria-label="Ouvrir le menu du profil" data-tip="Ouvrir le menu du profil">
             <span id="profile-initial"></span>
           </button>
           <div class="profile-dropdown" id="profile-dropdown" role="menu" hidden>
             <p class="profile-name" id="profile-name"></p>
-            <a role="menuitem" href="#profil">Mon profil</a>
-            <a role="menuitem" href="#decouvrir">Collections de mes amis</a>
-            <a role="menuitem" id="accounts-link" href="#comptes" hidden>Gérer les comptes</a>
-            <button role="menuitem" type="button" id="install-button" hidden>Installer l'application</button>
-            <button role="menuitem" type="button" id="session-button">Se déconnecter</button>
+            <a role="menuitem" href="#profil" data-tip="Voir et modifier mon profil">Mon profil</a>
+            <a role="menuitem" href="#decouvrir" data-tip="Voir les collections de mes amis">Collections de mes amis</a>
+            <a role="menuitem" id="accounts-link" href="#comptes" data-tip="Créer ou supprimer des comptes" hidden>Gérer les comptes</a>
+            <button role="menuitem" type="button" id="install-button" data-tip="Installer CarPocket sur cet appareil" hidden>Installer l'application</button>
+            <button role="menuitem" type="button" id="session-button" data-tip="Me déconnecter de CarPocket">Se déconnecter</button>
           </div>
         </div>
-        <a class="theme-toggle friends-link" id="friends-link" href="#decouvrir" aria-label="Voir les collections de mes amis" title="Voir les collections de mes amis" hidden>
+        <a class="theme-toggle friends-link" id="friends-link" href="#decouvrir" aria-label="Voir les collections de mes amis" data-tip="Voir les collections de mes amis" hidden>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20a6.5 6.5 0 0 1 13 0"/><path d="M15.5 4.8a3.5 3.5 0 0 1 0 6.4"/><path d="M18 14.2a6.5 6.5 0 0 1 3.5 5.8"/></svg>
         </a>
         <button class="theme-toggle" id="theme-toggle" type="button">
@@ -163,8 +163,8 @@
         <p id="compare-count" aria-live="polite"></p>
       </div>
       <div class="compare-bar-actions">
-        <button type="button" class="button button-on-dark" id="compare-clear">Effacer</button>
-        <a class="button button-primary" id="compare-go">Comparer</a>
+        <button type="button" class="button button-on-dark" id="compare-clear" data-tip="Vider la sélection à comparer">Effacer</button>
+        <a class="button button-primary" id="compare-go" data-tip="Comparer les voitures sélectionnées">Comparer</a>
       </div>
     </div>
   </div>
@@ -209,6 +209,7 @@
     </form>
   </dialog>
 
+  <div class="tooltip" id="tooltip" aria-hidden="true" hidden></div>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.118.0/dist/umd/supabase.js" integrity="sha384-TcHRA3zBbn+Lexh5n+Oil4guNPOS3rjNDpGRAN46u/s/mB2IZ50ceC6TYDU2yvgK" crossorigin="anonymous"></script>
   <script src="app.js?v=__VERSION__"></script>
 </body>
