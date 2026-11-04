@@ -536,8 +536,6 @@ body.has-compare-bar { padding-bottom: 72px; }
 .login-card .button { width: 100%; }
 
 /* Pied de page et bandeaux */
-.footer-links { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; margin-top: 16px; }
-.footer-links .footer-link { display: inline; margin-top: 0; }
 .viewing-note { padding-block: 12px; background: var(--surface-soft); border-bottom: 1px solid var(--hairline); font-size: .875rem; }
 .viewing-note .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 16px; }
 
@@ -577,4 +575,67 @@ body.has-compare-bar { padding-bottom: 72px; }
 @media (max-width: 400px) {
   .top-nav .button { padding-inline: 10px; font-size: .75rem; }
   .wordmark img { width: 26px; height: 26px; }
+}
+
+/* Menu du profil */
+.profile-menu { position: relative; }
+.profile-button {
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--hairline-strong);
+  border-radius: 50%;
+  padding: 0;
+  background: var(--surface-dark);
+  color: var(--on-dark);
+  font: 700 .9375rem/1 var(--font);
+  cursor: pointer;
+}
+.profile-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 12;
+  display: flex;
+  flex-direction: column;
+  min-width: 220px;
+  border: 1px solid var(--hairline-strong);
+  background: var(--canvas);
+}
+.profile-name {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--hairline);
+  color: var(--muted);
+  font-size: .875rem;
+  overflow-wrap: anywhere;
+}
+.profile-dropdown a, .profile-dropdown button {
+  display: block;
+  width: 100%;
+  border: 0;
+  padding: 12px 16px;
+  background: none;
+  color: var(--ink);
+  font: 400 .9375rem/1.3 var(--font);
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+}
+.profile-dropdown a:hover, .profile-dropdown button:hover { background: var(--surface-soft); }
+.profile-dropdown button { border-top: 1px solid var(--hairline); }
+.add-short { display: none; }
+.profile-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 48px; align-items: start; }
+.profile-facts { margin: 0; }
+.profile-form { display: flex; flex-direction: column; gap: 16px; align-items: stretch; }
+.profile-form .button { align-self: flex-start; }
+.profile-form .notice { margin-top: 0; }
+@media (max-width: 820px) {
+  .profile-layout { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 640px) {
+  .add-long { display: none; }
+  .add-short { display: inline; }
+  .profile-button { width: 36px; height: 36px; }
+  .profile-form .button { align-self: stretch; }
 }

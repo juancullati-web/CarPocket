@@ -38,7 +38,18 @@
           <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M21 13a9 9 0 1 1-10-10 7 7 0 0 0 10 10z"/></svg>
           <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg>
         </button>
-        <button class="button button-primary" id="open-add" type="button" hidden>Ajouter une voiture</button>
+        <button class="button button-primary" id="open-add" type="button" hidden><span class="add-long">Ajouter une voiture</span><span class="add-short">Ajouter</span></button>
+        <div class="profile-menu" id="profile-menu" hidden>
+          <button class="profile-button" id="profile-button" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="profile-dropdown" aria-label="Ouvrir le menu du profil">
+            <span id="profile-initial"></span>
+          </button>
+          <div class="profile-dropdown" id="profile-dropdown" role="menu" hidden>
+            <p class="profile-name" id="profile-name"></p>
+            <a role="menuitem" href="#profil">Mon profil</a>
+            <a role="menuitem" id="accounts-link" href="#comptes" hidden>Gérer les comptes</a>
+            <button role="menuitem" type="button" id="session-button">Se déconnecter</button>
+          </div>
+        </div>
       </div>
     </div>
   </header>
@@ -112,16 +123,12 @@
     <article id="detail" hidden></article>
     <article id="compare" hidden></article>
     <article id="accounts" hidden></article>
+    <article id="profile" hidden></article>
   </main>
 
   <footer class="footer">
     <div class="wrap">
       <p>Textes et données issus de Wikipédia (CC BY-SA 4.0). Photos issues de Wikimedia Commons, avec leur auteur et leur licence sur chaque fiche.</p>
-      <div class="footer-links" id="footer-links" hidden>
-        <span id="session-name"></span>
-        <a class="footer-link" id="accounts-link" href="#comptes" hidden>Gérer les comptes</a>
-        <button type="button" class="footer-link" id="session-button">Se déconnecter</button>
-      </div>
     </div>
   </footer>
 

@@ -350,10 +350,12 @@ function renderSession() {
   el("login-view").hidden = signedIn;
   el("app").hidden = !signedIn;
   el("open-add").hidden = !canEdit();
-  el("footer-links").hidden = !signedIn;
+  el("profile-menu").hidden = !signedIn;
+  if (!signedIn) closeProfileMenu();
+  el("profile-initial").textContent = signedIn ? state.user.username.charAt(0).toUpperCase() : "";
+  el("profile-name").textContent = signedIn ? state.user.username : "";
   el("cta-band").hidden = !canEdit();
   el("accounts-link").hidden = !isAdmin();
-  el("session-name").textContent = signedIn ? `Connecté : ${state.user.username}` : "";
   el("library-title").textContent = state.viewing ? `Collection de ${state.viewing.username}` : "Mon deck";
   const note = el("viewing-note");
   note.hidden = !state.viewing;
@@ -580,15 +582,18 @@ function renderRoute() {
     if (compareCars.length < 2) compareCars = null;
   }
   const accounts = hash === "comptes" && isAdmin();
+  const profile = hash === "profil" && Boolean(state.user);
   const car = carBySlug(hash) || null;
-  el("library").hidden = Boolean(car || compareCars || accounts);
+  el("library").hidden = Boolean(car || compareCars || accounts || profile);
+  el("profile").hidden = !profile;
   el("detail").hidden = !car;
   el("compare").hidden = !compareCars;
   el("accounts").hidden = !accounts;
-  document.title = car ? `${car.name} · CarPocket` : compareCars ? "Comparaison · CarPocket" : accounts ? "Comptes · CarPocket" : "CarPocket";
+  document.title = car ? `${car.name} · CarPocket` : compareCars ? "Comparaison · CarPocket" : accounts ? "Comptes · CarPocket" : profile ? "Mon profil · CarPocket" : "CarPocket";
   if (car) el("detail").innerHTML = detailHtml(car);
   if (compareCars) el("compare").innerHTML = compareHtml(compareCars);
   if (accounts) renderAccounts();
+  if (profile) renderProfile();
 }
 
 function route() {
@@ -923,6 +928,7 @@ async function enterApp(session) {
   state.compare = load(`compare.${profile.id}`, []).slice(0, MAX_COMPARE);
   state.compare = state.compare.filter((slug) => carBySlug(slug));
   showroom.key = "";
+  profileRendered = false;
   renderAll();
   if (pendingItems().length) poll();
 }
@@ -954,11 +960,99 @@ el("session-button").addEventListener("click", async () => {
   clearTimeout(pollTimer);
   await db.auth.signOut();
   Object.assign(state, { user: null, viewing: null, items: [], cars: [], compare: [], accounts: [] });
+  profileRendered = false;
   state.failed.clear();
   showroom.key = "";
   if (location.hash) location.hash = "";
   renderSession();
   renderCompareBar();
+});
+
+/* Menu et page du profil */
+function closeProfileMenu() {
+  el("profile-dropdown").hidden = true;
+  el("profile-button").setAttribute("aria-expanded", "false");
+}
+
+el("profile-button").addEventListener("click", (event) => {
+  event.stopPropagation();
+  const opening = el("profile-dropdown").hidden;
+  el("profile-dropdown").hidden = !opening;
+  el("profile-button").setAttribute("aria-expanded", String(opening));
+  if (opening) el("profile-dropdown").querySelector("a").focus();
+});
+el("profile-dropdown").addEventListener("click", closeProfileMenu);
+document.addEventListener("click", (event) => {
+  if (!el("profile-menu").contains(event.target)) closeProfileMenu();
+});
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && !el("profile-dropdown").hidden) {
+    closeProfileMenu();
+    el("profile-button").focus();
+  }
+});
+
+let profileRendered = false;
+function renderProfile() {
+  // Ne pas effacer une saisie en cours quand la page se rafraîchit.
+  if (profileRendered && el("profile-form")) {
+    el("profile-count").textContent = plural(deck().length + pendingItems().length, "voiture");
+    return;
+  }
+  profileRendered = true;
+  el("profile").innerHTML = `<section class="compare-head"><div class="wrap">
+      <a class="back" href="#">‹ Mon deck</a>
+      <h1 class="display-xl">Mon profil</h1>
+    </div></section>
+    <section class="section"><div class="wrap profile-layout">
+      <dl class="profile-facts">
+        <div class="spec-row"><dt>Identifiant</dt><dd>${esc(state.user.username)}</dd></div>
+        <div class="spec-row"><dt>Rôle</dt><dd>${isAdmin() ? "Administrateur" : "Membre"}</dd></div>
+        <div class="spec-row"><dt>Collection</dt><dd id="profile-count">${plural(deck().length + pendingItems().length, "voiture")}</dd></div>
+      </dl>
+      <form class="profile-form" id="profile-form" novalidate>
+        <h2 class="display-sm">Changer mon mot de passe</h2>
+        <label class="field"><span class="label">Mot de passe actuel</span><input id="profile-current" type="password" autocomplete="current-password"></label>
+        <label class="field"><span class="label">Nouveau mot de passe (10 caractères minimum)</span><input id="profile-new" type="password" autocomplete="new-password"></label>
+        <label class="field"><span class="label">Confirme le nouveau mot de passe</span><input id="profile-confirm" type="password" autocomplete="new-password"></label>
+        <button type="submit" class="button button-primary" id="profile-submit">Changer le mot de passe</button>
+        <p class="notice" id="profile-notice" role="status"></p>
+      </form>
+    </div></section>`;
+}
+
+function profileNotice(text, failed = false) {
+  el("profile-notice").textContent = text;
+  el("profile-notice").classList.toggle("failed", failed);
+}
+
+el("profile").addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const current = el("profile-current").value;
+  const next = el("profile-new").value;
+  if (!current) return profileNotice("Saisis ton mot de passe actuel.", true);
+  if (next.length < 10) return profileNotice("Le nouveau mot de passe doit faire au moins 10 caractères.", true);
+  if (next !== el("profile-confirm").value) return profileNotice("Les deux nouveaux mots de passe ne sont pas identiques.", true);
+  if (next === current) return profileNotice("Le nouveau mot de passe doit être différent de l'actuel.", true);
+  el("profile-submit").disabled = true;
+  profileNotice("Modification en cours…");
+  try {
+    // Vérifie le mot de passe actuel, pour protéger une session restée ouverte.
+    const check = await db.auth.signInWithPassword({ email: toEmail(state.user.username), password: current });
+    if (check.error) return profileNotice("Le mot de passe actuel est incorrect.", true);
+    const { error } = await db.auth.updateUser({ password: next });
+    if (error) {
+      return profileNotice(error.code === "weak_password"
+        ? "Ce mot de passe est trop faible. Choisis-en un plus long ou moins courant."
+        : "Le mot de passe n'a pas pu être changé. Réessaie.", true);
+    }
+    ["profile-current", "profile-new", "profile-confirm"].forEach((id) => { el(id).value = ""; });
+    profileNotice("Ton mot de passe a été changé.");
+  } catch {
+    profileNotice("Le serveur ne répond pas. Réessaie dans un instant.", true);
+  } finally {
+    el("profile-submit").disabled = false;
+  }
 });
 
 /* Comptes (administrateur) */

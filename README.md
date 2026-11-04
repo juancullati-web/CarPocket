@@ -4,7 +4,11 @@ Mon deck de voitures préférées : photos et fiches techniques, complétées au
 
 ## Se connecter
 
-Chaque compte se connecte avec son identifiant et son mot de passe, et retrouve sa propre collection sur tous ses appareils. L'administrateur gère les comptes depuis **Gérer les comptes**, en bas de page. Il peut aussi regarder les collections, sans les modifier.
+Chaque compte se connecte avec son identifiant et son mot de passe, et retrouve sa propre collection sur tous ses appareils. L'administrateur gère les comptes depuis le menu du profil. Il peut aussi regarder les collections, sans les modifier.
+
+## Gérer son profil
+
+Clique sur la pastille avec ton initiale, en haut à droite. Le menu donne accès à **Mon profil**, où tu peux changer ton mot de passe, et à **Se déconnecter**. Pour l'administrateur, il donne aussi accès à **Gérer les comptes**.
 
 ## Ajouter une voiture
 
