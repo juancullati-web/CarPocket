@@ -10,11 +10,16 @@ create table if not exists public.profiles (
 create table if not exists public.deck_items (
   user_id uuid not null references public.profiles (id) on delete cascade,
   title text not null check (char_length(title) between 1 and 200),
-  thumb text check (thumb is null or thumb like 'https://upload.wikimedia.org/%'),
+  thumb text check (thumb is null or thumb ~ '^https://[a-z]+\.wikimedia\.org/'),
   main_photo text check (main_photo is null or main_photo ~ '^photos/[a-z0-9-]+/[0-9]+\.(jpg|png|webp)$'),
   added_at timestamptz not null default now(),
   primary key (user_id, title)
 );
+
+-- Wikimedia peut servir ses vignettes depuis plusieurs sous-domaines.
+alter table public.deck_items drop constraint if exists deck_items_thumb_check;
+alter table public.deck_items add constraint deck_items_thumb_check
+  check (thumb is null or thumb ~ '^https://[a-z]+\.wikimedia\.org/');
 
 -- Le profil se crée tout seul avec le compte, toujours en simple membre.
 create or replace function public.handle_new_user()
