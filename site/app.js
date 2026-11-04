@@ -11,7 +11,7 @@ const POLL_MS = 15000;
 const TIMEOUT_MS = 20 * 60 * 1000;
 
 const el = (id) => document.getElementById(id);
-const state = { cars: [], brand: "", pending: [], removing: [], compare: [] };
+const state = { cars: [], brand: "", pending: [], removing: [], compare: [], mainPhotos: [] };
 
 const esc = (value) =>
   String(value ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -248,7 +248,7 @@ function renderHero() {
   const available = deck().filter((c) => c.photos.length);
   const hero = el("hero");
   hero.hidden = !available.length;
-  const key = available.map((c) => c.slug).sort().join(",");
+  const key = available.map((c) => `${c.slug}:${c.photos[0].file}`).sort().join(",");
   if (key === showroom.key) {
     const current = showroom.cars[showroom.index];
     const slot = el("showroom-compare");
@@ -376,6 +376,11 @@ function specCells(car) {
 
 const creditText = (photo) => `Photo : ${photo.author}, ${photo.license}`;
 
+function mainPhotoControl(car, index) {
+  if (index === 0) return `<span class="main-photo-state">Photo principale ✓</span>`;
+  return `<button type="button" class="button button-on-dark main-photo-button" data-main-photo="${index}">Choisir comme photo principale</button>`;
+}
+
 function detailHtml(car) {
   const hasTextValues = Object.values(car.specs).some((s) => s.from_text);
   const repo = repository();
@@ -399,7 +404,10 @@ function detailHtml(car) {
           <button type="button" data-photo="${i}" aria-label="Voir la photo ${i + 1}" aria-current="${i === 0}">
             <img src="${esc(photo.file)}" alt="" loading="lazy">
           </button>`).join("")}</div>` : ""}
-        ${photos.length ? `<p class="photo-credit" id="hero-credit">${esc(creditText(photos[0]))}</p>` : ""}
+        ${photos.length ? `<div class="photo-bar">
+          <p class="photo-credit" id="hero-credit">${esc(creditText(photos[0]))}</p>
+          ${canEdit() && photos.length > 1 ? `<div id="main-photo-slot">${mainPhotoControl(car, 0)}</div>` : ""}
+        </div>` : ""}
       </div></div>
     </section>
     ${cells ? `<div class="wrap"><div class="spec-strip">${cells}</div></div>` : ""}
@@ -576,12 +584,22 @@ async function fetchCars() {
 function savePending() {
   save("pending", state.pending);
   save("removing", state.removing);
+  save("mainPhotos", state.mainPhotos);
+}
+
+/** Affiche tout de suite la photo choisie, sans attendre la publication. */
+function applyMainPhotos() {
+  state.mainPhotos.forEach(({ slug, file }) => {
+    const car = carBySlug(slug);
+    const chosen = car?.photos.find((photo) => photo.file === file);
+    if (chosen) car.photos = [chosen, ...car.photos.filter((photo) => photo !== chosen)];
+  });
 }
 
 let pollTimer = null;
 function schedulePoll() {
   clearTimeout(pollTimer);
-  const running = state.pending.some((p) => p.status !== "failed") || state.removing.length;
+  const running = state.pending.some((p) => p.status !== "failed") || state.removing.length || state.mainPhotos.length;
   if (running) pollTimer = setTimeout(poll, POLL_MS);
 }
 
@@ -605,10 +623,67 @@ async function findFailedRuns() {
   return failed;
 }
 
+async function findFailedPhotoRuns() {
+  if (isLocal() || !token() || !state.mainPhotos.length) return new Set();
+  const response = await github("/actions/runs?event=workflow_dispatch&per_page=30");
+  if (!response.ok) return new Set();
+  const { workflow_runs: runs } = await response.json();
+  const failed = new Set();
+  for (const { slug, at } of state.mainPhotos) {
+    const run = runs.find((r) => r.display_title === `Photo de ${slug}`);
+    if (run && Date.parse(run.created_at) >= at - 60000 && run.status === "completed" && run.conclusion === "failure") {
+      failed.add(slug);
+    }
+  }
+  return failed;
+}
+
+async function chooseMainPhoto(car, index) {
+  const file = car.photos[index]?.file;
+  if (!file) return;
+  const slot = el("main-photo-slot");
+  try {
+    if (isLocal()) {
+      const response = await fetch("/api/photo", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ slug: car.slug, file }),
+      });
+      if (!response.ok) throw new Error(String(response.status));
+      state.cars = await fetchCars();
+    } else {
+      const response = await github("/actions/workflows/set-photo.yml/dispatches", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ref: "main", inputs: { slug: car.slug, file } }),
+      });
+      if (response.status === 401 || response.status === 403 || response.status === 404) {
+        requireLogin("Cette clé n'est plus valable. Donne-en une nouvelle.");
+        return;
+      }
+      if (!response.ok) throw new Error(String(response.status));
+      state.mainPhotos = [...state.mainPhotos.filter((m) => m.slug !== car.slug), { slug: car.slug, file, at: Date.now() }];
+      savePending();
+      applyMainPhotos();
+      schedulePoll();
+    }
+    renderAll();
+  } catch {
+    if (slot) slot.innerHTML = `<span class="main-photo-state failed">Le choix n'a pas pu être enregistré. Réessaie.</span>`;
+  }
+}
+
 async function poll() {
   try {
     state.cars = await fetchCars();
   } catch { /* on réessaiera au prochain passage */ }
+  // Une photo reste affichée jusqu'à sa publication, ou abandonnée si le robot a échoué.
+  const failedPhotos = await findFailedPhotoRuns().catch(() => new Set());
+  state.mainPhotos = state.mainPhotos.filter(({ slug, file, at }) => {
+    const car = carBySlug(slug);
+    return car && car.photos[0]?.file !== file && !failedPhotos.has(slug) && Date.now() - at < TIMEOUT_MS;
+  });
+  applyMainPhotos();
   const titles = new Set(state.cars.map(titleOf));
   const names = new Set(state.cars.map((c) => c.name));
   const failed = await findFailedRuns().catch(() => new Set());
@@ -951,12 +1026,19 @@ el("compare-clear").addEventListener("click", () => {
 });
 
 el("detail").addEventListener("click", (event) => {
+  const car = carBySlug(decodeURIComponent(location.hash.slice(1)));
+  const main = event.target.closest("[data-main-photo]");
+  if (main && car) {
+    chooseMainPhoto(car, Number(main.dataset.mainPhoto));
+    return;
+  }
   const button = event.target.closest("[data-photo]");
   if (!button) return;
-  const car = carBySlug(decodeURIComponent(location.hash.slice(1)));
   const photo = car.photos[Number(button.dataset.photo)];
   el("hero-photo").src = photo.file;
   el("hero-credit").textContent = creditText(photo);
+  const slot = el("main-photo-slot");
+  if (slot) slot.innerHTML = mainPhotoControl(car, Number(button.dataset.photo));
   el("detail").querySelectorAll("[data-photo]").forEach((b) => b.setAttribute("aria-current", String(b === button)));
 });
 
@@ -974,9 +1056,11 @@ async function start() {
   state.pending = load("pending", []);
   state.removing = load("removing", []);
   state.compare = load("compare", []);
+  state.mainPhotos = load("mainPhotos", []);
   renderSession();
   try {
     state.cars = await fetchCars();
+    applyMainPhotos();
   } catch {
     el("count").textContent = "Impossible de charger les voitures. Recharge la page dans un instant.";
     return;
@@ -984,7 +1068,7 @@ async function start() {
   state.compare = state.compare.filter((s) => carBySlug(s)).slice(0, MAX_COMPARE);
   renderAll();
   window.scrollTo(0, 0);
-  if (state.pending.length || state.removing.length) poll();
+  if (state.pending.length || state.removing.length || state.mainPhotos.length) poll();
 }
 
 start();

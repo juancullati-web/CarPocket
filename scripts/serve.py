@@ -9,6 +9,7 @@ import json
 import add_car
 import build_index
 import remove_car
+import set_photo
 
 PORT = 8765
 ALLOWED_HOSTS = {f"localhost:{PORT}", f"127.0.0.1:{PORT}"}
@@ -25,7 +26,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         self.wfile.write(body)
 
     def do_POST(self) -> None:
-        if self.path not in ("/api/remove", "/api/add"):
+        if self.path not in ("/api/remove", "/api/add", "/api/photo"):
             self._answer(404, {"error": "Adresse inconnue."})
             return
         # Refuse les demandes venues d'un autre site ouvert dans le navigateur.
@@ -42,6 +43,10 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             payload = json.loads(self.rfile.read(length))
         except (ValueError, TypeError):
             self._answer(400, {"error": "Demande illisible."})
+            return
+        if self.path == "/api/photo":
+            done = set_photo.set_main(str(payload.get("slug", "")), str(payload.get("file", "")))
+            self._answer(200 if done else 404, {"done": done})
             return
         if self.path == "/api/add":
             result = add_car.add(str(payload.get("name", "")))

@@ -16,6 +16,10 @@ Clique sur **Comparer** sur 2 ou 3 cartes, puis sur le bouton de comparaison en 
 
 Clique sur **Supprimer** sur la carte ou sur la fiche, puis confirme.
 
+## Choisir la photo principale
+
+Sur une fiche, clique sur une miniature, puis sur **Choisir comme photo principale**. Elle sert ensuite dans le carrousel, sur la carte et sur la fiche.
+
 ## Corriger une fiche
 
 Ouvre `data/cars/<nom>.json` sur GitHub et renseigne le bloc `overrides` :
