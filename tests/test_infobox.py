@@ -109,6 +109,10 @@ class Specs(unittest.TestCase):
         specs = infobox.extract_specs("{{Infobox automobile|engine=F6|powerout={{cvt|360-380|PS|kW hp|0}}}}")["specs"]
         self.assertEqual(specs["power"]["value"], "360-380 PS")
 
+    def test_measure_skips_a_heading_line(self):
+        specs = infobox.extract_specs("{{Infobox automobile|engine=V8|weight=Standard:<br />{{cvt|1435|kg}}}}")["specs"]
+        self.assertEqual(specs["weight"]["value"], "1435 kg")
+
     def test_missing_infobox(self):
         self.assertEqual(infobox.extract_specs("Pas de fiche.")["specs"], {})
 

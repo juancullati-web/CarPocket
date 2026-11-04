@@ -175,6 +175,14 @@ def _first_line(value: str) -> str:
     return value.split("\n")[0].strip() if value else ""
 
 
+def _first_measure(value: str) -> str:
+    """Première ligne qui contient un chiffre : ignore les intitulés comme « Standard : »."""
+    for line in (value or "").split("\n"):
+        if re.search(r"\d", line):
+            return line.strip()
+    return ""
+
+
 def _power_and_torque(text: str) -> tuple:
     power = re.search(r"(\d[\d,. ]*\d(?:\s*[-–]\s*\d+)?|\d)\s*(PS|bhp|hp|kW|CV|ch)\b", text)
     torque = re.search(
@@ -321,7 +329,7 @@ def extract_specs(wikitext: str) -> dict:
     put("assembly", inherited("assembly").replace("\n", " "))
     for key in ("weight", "length", "width", "height", "wheelbase"):
         names = (key, "curb_weight", "kerb_weight") if key == "weight" else (key,)
-        put(key, to_metric(_first_line(field(*names))))
+        put(key, to_metric(_first_measure(field(*names))))
 
     if power:
         put("power", power)
