@@ -109,9 +109,7 @@ def add(query: str, example: bool = False) -> dict:
     text = wiki.summary(title, page["fr_title"])
     files = wiki.choose_photos(title, brand, extracted["image"], page["wikidata"], extracted["variant"])
     photos = save_photos(files, slug)
-    name = title
-    if wanted:
-        name = wanted if wanted.lower().startswith(brand.lower()) else f"{brand} {wanted}"
+    name = wiki.car_name(title, brand, wanted)
 
     car = {
         "slug": slug,

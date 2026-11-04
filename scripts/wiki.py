@@ -212,11 +212,24 @@ GENERIC_VARIANT = re.compile(
 )
 
 
+def is_generic_variant(variant: str) -> bool:
+    return not GENERIC_VARIANT.sub("", variant).strip()
+
+
 def photo_tokens(title: str, brand: str, variant=None) -> list:
     """Les mots qu'un fichier doit citer : ceux de la génération si elle a un vrai nom."""
-    if variant and GENERIC_VARIANT.sub("", variant).strip():
+    if variant and not is_generic_variant(variant):
         return model_tokens(variant, brand)
     return model_tokens(title, brand)
+
+
+def car_name(title: str, brand: str, wanted=None) -> str:
+    """Le nom affiché : « First generation » seul ne dit pas de quel modèle il s'agit."""
+    if not wanted:
+        return title
+    if is_generic_variant(wanted):
+        return f"{title} ({wanted})"
+    return wanted if wanted.lower().startswith(brand.lower()) else f"{brand} {wanted}"
 
 
 def _is_usable(file: dict, tokens: list) -> bool:
