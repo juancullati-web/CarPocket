@@ -150,21 +150,151 @@ function deck() {
   return state.cars.filter((car) => !removing.has(car.name));
 }
 
-function renderHero() {
-  const car = [...deck()].sort(SORTERS.added).find((c) => c.photos.length);
-  const hero = el("hero");
-  hero.hidden = !car;
-  if (!car) return;
-  hero.innerHTML = `<div class="hero-grid">
-    <div class="hero-copy">
-      <p class="label">${esc(car.brand)}</p>
-      <h1 class="display-xl">${esc(car.name)}</h1>
-      <p>${esc(tagline(car))}</p>
-      <a class="button button-primary" href="#${esc(car.slug)}">Voir la fiche</a>
-    </div>
-    <div class="hero-photo"><img src="${esc(car.photos[0].file)}" alt="${esc(car.name)}"></div>
-  </div>`;
+/* Le showroom d'accueil : les voitures du deck défilent, dans un ordre différent à chaque visite. */
+const SHOWROOM_MAX = 8;
+const showroom = { key: "", cars: [], index: 0, paused: false, touchX: null };
+const calmMotion = () => window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+function shuffled(list) {
+  const copy = [...list];
+  for (let i = copy.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
 }
+
+function showroomStats(car) {
+  const stats = [];
+  if (car.power_ch) stats.push({ value: car.power_ch, unit: "ch", label: "Puissance", star: car.specs.power?.from_text });
+  const ratio = ratioOf(car);
+  if (ratio) stats.push({ value: ratio, unit: "ch/t", label: "Poids/puissance", star: car.specs.power?.from_text });
+  const speed = car.specs.top_speed;
+  const kmh = speed && parseInt(speed.value, 10);
+  if (kmh) stats.push({ value: kmh, unit: "km/h", label: "Vitesse maximale", star: speed.from_text });
+  else if (car.weight_kg) stats.push({ value: car.weight_kg, unit: "kg", label: "Poids", star: car.specs.weight?.from_text });
+  return stats;
+}
+
+function showroomCompareButton(car) {
+  const selected = state.compare.includes(car.slug);
+  return `<button type="button" class="button button-on-dark" data-compare="${esc(car.slug)}" aria-pressed="${selected}">${selected ? "Sélectionnée ✓" : "Comparer"}</button>`;
+}
+
+function showroomCopy(car) {
+  const eyebrow = [car.brand, car.year].filter(Boolean).join(" · ");
+  return `<p class="label">${esc(eyebrow)}</p>
+    <h1 class="display-xl">${esc(car.name)}</h1>
+    <dl class="showroom-stats">${showroomStats(car).map((stat) => `<div>
+      <dd><span data-count="${stat.value}">${stat.value}</span> ${stat.unit}${stat.star ? STAR : ""}</dd>
+      <dt>${stat.label}</dt>
+    </div>`).join("")}</dl>
+    <div class="showroom-actions">
+      <a class="button button-primary" href="#${esc(car.slug)}">Voir la fiche</a>
+      <span id="showroom-compare">${showroomCompareButton(car)}</span>
+    </div>`;
+}
+
+/** Les chiffres montent comme un compteur à l'arrivée de chaque voiture. */
+function countUp(root) {
+  if (calmMotion()) return;
+  const started = performance.now();
+  const targets = [...root.querySelectorAll("[data-count]")].map((node) => ({ node, end: Number(node.dataset.count) }));
+  const tick = (now) => {
+    const progress = Math.min((now - started) / 900, 1);
+    const eased = 1 - (1 - progress) ** 3;
+    targets.forEach(({ node, end }) => { node.textContent = Math.round(end * eased); });
+    if (progress < 1 && root.isConnected) requestAnimationFrame(tick);
+  };
+  requestAnimationFrame(tick);
+}
+
+function showSlide(index) {
+  const { cars } = showroom;
+  if (!cars.length) return;
+  showroom.index = (index + cars.length) % cars.length;
+  const car = cars[showroom.index];
+  el("hero").querySelectorAll(".showroom-photo").forEach((photo, i) => {
+    const active = i === showroom.index;
+    photo.classList.toggle("is-active", active);
+    photo.alt = active ? car.name : "";
+  });
+  const copy = el("showroom-copy");
+  copy.innerHTML = showroomCopy(car);
+  copy.classList.remove("is-entering");
+  void copy.offsetWidth;
+  copy.classList.add("is-entering");
+  countUp(copy);
+  el("hero").querySelectorAll(".showroom-segment").forEach((segment, i) => {
+    segment.classList.toggle("is-done", i < showroom.index);
+    segment.setAttribute("aria-current", String(i === showroom.index));
+    const fill = segment.firstElementChild;
+    fill.remove();
+    segment.append(fill);
+  });
+}
+
+function setShowroomPaused(paused) {
+  showroom.paused = paused;
+  el("hero").classList.toggle("is-paused", paused);
+  const button = el("showroom-pause");
+  if (button) {
+    button.textContent = paused ? "▶" : "❚❚";
+    button.setAttribute("aria-label", paused ? "Reprendre le défilement" : "Mettre le défilement en pause");
+  }
+}
+
+function renderHero() {
+  const available = deck().filter((c) => c.photos.length);
+  const hero = el("hero");
+  hero.hidden = !available.length;
+  const key = available.map((c) => c.slug).sort().join(",");
+  if (key === showroom.key) {
+    const current = showroom.cars[showroom.index];
+    const slot = el("showroom-compare");
+    if (current && slot) slot.innerHTML = showroomCompareButton(current);
+    return;
+  }
+  showroom.key = key;
+  if (!available.length) return;
+  showroom.cars = shuffled(available).slice(0, SHOWROOM_MAX);
+  const several = showroom.cars.length > 1;
+  hero.innerHTML = `${showroom.cars.map((car) => `<img class="showroom-photo" src="${esc(car.photos[0].file)}" alt="">`).join("")}
+    <div class="showroom-scrim"></div>
+    <div class="wrap showroom-inner">
+      <div class="showroom-copy" id="showroom-copy"></div>
+      ${several ? `<div class="showroom-controls">
+        <div class="showroom-segments">${showroom.cars.map((car, i) => `<button type="button" class="showroom-segment" data-slide="${i}" aria-label="Voir ${esc(car.name)}"><span class="showroom-fill"></span></button>`).join("")}</div>
+        <div class="showroom-buttons">
+          <button type="button" class="showroom-button" id="showroom-pause"></button>
+          <button type="button" class="showroom-button" data-step="-1" aria-label="Voiture précédente">‹</button>
+          <button type="button" class="showroom-button" data-step="1" aria-label="Voiture suivante">›</button>
+        </div>
+      </div>` : ""}
+    </div>`;
+  setShowroomPaused(calmMotion());
+  showSlide(0);
+}
+
+el("hero").addEventListener("animationend", (event) => {
+  if (event.target.classList.contains("showroom-fill")) showSlide(showroom.index + 1);
+});
+el("hero").addEventListener("click", (event) => {
+  const segment = event.target.closest("[data-slide]");
+  if (segment) showSlide(Number(segment.dataset.slide));
+  const step = event.target.closest("[data-step]");
+  if (step) showSlide(showroom.index + Number(step.dataset.step));
+  if (event.target.closest("#showroom-pause")) setShowroomPaused(!showroom.paused);
+});
+el("hero").addEventListener("touchstart", (event) => {
+  showroom.touchX = event.touches[0].clientX;
+}, { passive: true });
+el("hero").addEventListener("touchend", (event) => {
+  if (showroom.touchX === null) return;
+  const moved = event.changedTouches[0].clientX - showroom.touchX;
+  showroom.touchX = null;
+  if (Math.abs(moved) > 50) showSlide(showroom.index + (moved < 0 ? 1 : -1));
+}, { passive: true });
 
 function renderBrands() {
   const brands = [...new Set(deck().map((car) => car.brand))].sort((a, b) => a.localeCompare(b, "fr"));
@@ -784,6 +914,7 @@ document.addEventListener("click", (event) => {
   const compare = event.target.closest("[data-compare]");
   if (compare) {
     toggleCompare(compare.dataset.compare);
+    renderHero();
     renderLibrary();
     renderRoute();
     renderCompareBar();
@@ -813,6 +944,7 @@ document.addEventListener("click", (event) => {
 
 el("compare-clear").addEventListener("click", () => {
   setCompare([]);
+  renderHero();
   renderLibrary();
   renderRoute();
   renderCompareBar();
