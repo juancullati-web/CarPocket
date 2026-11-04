@@ -1,23 +1,24 @@
 # CarPocket
 
-Ma bibliothèque de voitures préférées : photos et fiches techniques, complétées automatiquement depuis Wikipédia et Wikimedia Commons.
+Mon deck de voitures préférées : photos et fiches techniques, complétées automatiquement depuis Wikipédia et Wikimedia Commons.
 
 ## Ajouter une voiture
 
-Sur le site, clique sur **Ajouter une voiture**, tape le nom, puis valide le formulaire sur GitHub. Le robot répond dans la demande en deux minutes environ, avec le lien de la fiche et ce qu'il n'a pas trouvé.
+Clique sur **Ajouter une voiture**, tape quelques lettres, puis choisis une suggestion. La carte apparaît dans le deck, et la fiche complète arrive en une ou deux minutes.
 
-Conseil : sois précis. « Porsche 911 (993) » donne une meilleure fiche que « Porsche 911 ».
+La première fois sur un appareil, le site demande une clé d'accès. Elle n'autorise que le lancement du robot de ce dépôt et reste enregistrée dans ce navigateur. Sans clé, le site se consulte mais ne se modifie pas.
+
+## Comparer
+
+Clique sur **Comparer** sur 2 ou 3 cartes, puis sur le bouton de comparaison en bas de l'écran.
 
 ## Supprimer une voiture
 
-Clique sur **Supprimer** sur la voiture, dans la galerie ou sur sa fiche, puis confirme.
-
-- **En ligne :** le formulaire s'ouvre sur GitHub. Valide-le, et la voiture disparaît en deux minutes environ.
-- **Sur ce Mac :** avec `scripts/serve.py`, la suppression est immédiate.
+Clique sur **Supprimer** sur la carte ou sur la fiche, puis confirme.
 
 ## Corriger une fiche
 
-Ouvre la fiche, clique sur **Corriger cette fiche**, et renseigne le bloc `overrides` :
+Ouvre `data/cars/<nom>.json` sur GitHub et renseigne le bloc `overrides` :
 
 ```json
 "overrides": {
@@ -32,19 +33,14 @@ Champs possibles : `engine`, `power`, `torque`, `transmission`, `layout`, `top_s
 
 ## Ce qu'il faut savoir
 
-- Un astérisque sur une valeur signifie qu'elle vient du texte de l'article et qu'elle peut concerner une autre version du modèle. Vérifie-la.
+- Un astérisque signale une valeur lue dans le texte de l'article : elle peut concerner une autre version du modèle.
 - « Non renseigné » signifie que le robot n'a rien trouvé. Il n'invente jamais de valeur.
-- Seules des photos sous licence libre sont utilisées, avec leur auteur et leur licence sur la fiche.
-- Le site et ce dépôt sont publics, mais seul le propriétaire du dépôt peut déclencher le robot.
+- Seules des photos sous licence libre sont enregistrées, avec leur auteur et leur licence sur la fiche.
 
 ## En local
 
 ```bash
 python3 -m unittest discover -s tests
-```
-
-```bash
-python3 scripts/add_car.py "Aston Martin DB5"
 ```
 
 ```bash

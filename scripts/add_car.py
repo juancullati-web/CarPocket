@@ -5,7 +5,6 @@ from __future__ import annotations
 import argparse
 import datetime
 import json
-import os
 import shutil
 import sys
 from pathlib import Path
@@ -106,7 +105,7 @@ def add(query: str, example: bool = False) -> dict:
         "brand": brand,
         "variant": extracted["variant"],
         "example": example,
-        "added": datetime.date.today().isoformat(),
+        "added": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds"),
         "summary": text["text"],
         "summary_lang": text["lang"],
         "summary_url": text["url"],
@@ -157,12 +156,12 @@ def main() -> int:
     parser.add_argument("--comment-file", help="fichier où écrire la réponse à la demande")
     args = parser.parse_args()
 
-    name = args.name or common.name_from_issue(os.environ.get("ISSUE_BODY", ""))
-    if not name:
+    if not args.name:
         common.write_comment(args.comment_file, "Je n'ai pas trouvé de nom de voiture dans la demande.")
-        return 0
-    common.write_comment(args.comment_file, comment_for(add(name, example=args.example)))
-    return 0
+        return 1
+    result = add(args.name, example=args.example)
+    common.write_comment(args.comment_file, comment_for(result))
+    return 1 if result["status"] == "not_found" else 0
 
 
 if __name__ == "__main__":

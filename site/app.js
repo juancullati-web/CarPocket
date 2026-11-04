@@ -6,41 +6,94 @@ const SPEC_GROUPS = [
   ["Gabarit", [["weight", "Poids"], ["length", "Longueur"], ["width", "Largeur"], ["height", "Hauteur"], ["wheelbase", "Empattement"], ["body", "Carrosserie"]]],
   ["Histoire", [["production", "Production"], ["designer", "Design"], ["assembly", "Assemblage"]]],
 ];
+const MAX_COMPARE = 3;
+const POLL_MS = 15000;
+const TIMEOUT_MS = 20 * 60 * 1000;
 
 const el = (id) => document.getElementById(id);
-const state = { cars: [], brand: "" };
+const state = { cars: [], brand: "", pending: [], removing: [], compare: [] };
 
 const esc = (value) =>
   String(value ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 
 /** Seuls les liens http(s) des données sont rendus cliquables. */
 const safeUrl = (url) => (/^https?:\/\//i.test(url || "") ? url : "");
-
 const ratioOf = (car) =>
   car.power_ch && car.weight_kg ? Math.round((car.power_ch / car.weight_kg) * 1000) : null;
-
 const plural = (n, word) => `${n} ${word}${n > 1 ? "s" : ""}`;
-
 const STAR = `<abbr class="mark" title="Extrait du texte de l'article : à vérifier">*</abbr>`;
+const carBySlug = (slug) => state.cars.find((c) => c.slug === slug);
+const titleOf = (car) => car.wikipedia_title || car.name;
 
-/** Année, puissance et poids : seulement ce qui est connu. */
 function tagline(car) {
   return [car.year, car.power_ch && `${car.power_ch} ch`, car.weight_kg && `${car.weight_kg} kg`]
     .filter(Boolean)
     .join(" · ");
 }
 
+/* Mémoire de cet appareil : tout est facultatif, le site fonctionne sans. */
+function load(key, fallback) {
+  try {
+    const raw = localStorage.getItem(`carpocket.${key}`);
+    return raw === null ? fallback : JSON.parse(raw);
+  } catch {
+    return fallback;
+  }
+}
+function save(key, value) {
+  try {
+    if (value === null) localStorage.removeItem(`carpocket.${key}`);
+    else localStorage.setItem(`carpocket.${key}`, JSON.stringify(value));
+  } catch { /* navigation privée : rien n'est mémorisé */ }
+}
+
+/* Où envoyer les changements */
+const isLocal = () => ["localhost", "127.0.0.1"].includes(location.hostname);
+
 /** Le dépôt se déduit de l'adresse GitHub Pages : <compte>.github.io/<dépôt>/. */
 function repository() {
   const host = location.hostname.match(/^([^.]+)\.github\.io$/i);
   const repo = location.pathname.split("/").filter(Boolean)[0];
-  return host && repo ? `https://github.com/${host[1]}/${repo}` : null;
+  return host && repo ? { owner: host[1], name: repo } : null;
+}
+const token = () => load("token", null);
+const canEdit = () => isLocal() || Boolean(token());
+
+async function github(path, options = {}) {
+  const repo = repository();
+  return fetch(`https://api.github.com/repos/${repo.owner}/${repo.name}${path}`, {
+    ...options,
+    headers: {
+      Accept: "application/vnd.github+json",
+      "X-GitHub-Api-Version": "2022-11-28",
+      Authorization: `Bearer ${options.tokenOverride || token()}`,
+      ...(options.headers || {}),
+    },
+  });
 }
 
-function issueUrl(template, name) {
-  const repo = repository();
-  if (!repo) return null;
-  return `${repo}/issues/new?template=${template}&nom=${encodeURIComponent(name)}`;
+/** Lance le robot. Renvoie false si la clé doit être redonnée. */
+async function runRobot(workflow, name) {
+  const response = await github(`/actions/workflows/${workflow}/dispatches`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ ref: "main", inputs: { name } }),
+  });
+  if (response.status === 401 || response.status === 403 || response.status === 404) return false;
+  if (!response.ok) throw new Error(String(response.status));
+  return true;
+}
+
+function requireLogin(message) {
+  save("token", null);
+  renderSession();
+  openLogin(message);
+}
+
+/* Cartes */
+function compareButton(car) {
+  const selected = state.compare.includes(car.slug);
+  return `<button type="button" class="text-link" data-compare="${esc(car.slug)}" aria-pressed="${selected}">${selected ? "Sélectionnée ✓" : "Comparer"}</button>`;
 }
 
 function cardHtml(car) {
@@ -54,9 +107,31 @@ function cardHtml(car) {
       <h3><a href="#${esc(car.slug)}">${esc(car.name)}</a></h3>
       <p>${esc(tagline(car))}</p>
       <div class="model-actions">
-        <a class="text-link" href="#${esc(car.slug)}">Voir la fiche ›</a>
-        <button type="button" class="text-link quiet" data-delete="${esc(car.slug)}" aria-label="Supprimer ${esc(car.name)}">Supprimer</button>
+        ${compareButton(car)}
+        <a class="text-link" href="#${esc(car.slug)}">Fiche ›</a>
+        ${canEdit() ? `<button type="button" class="text-link quiet" data-delete="${esc(car.slug)}" aria-label="Supprimer ${esc(car.name)}">Supprimer</button>` : ""}
       </div>
+    </div>
+  </div>`;
+}
+
+function pendingCardHtml(item) {
+  const failed = item.status === "failed";
+  const slow = item.status === "slow";
+  const text = failed
+    ? "L'ajout n'a pas abouti."
+    : slow ? "Plus long que prévu, GitHub est peut-être ralenti." : "Ajout en cours, fiche et photos en préparation…";
+  return `<div class="model-card">
+    <div class="model-photo pending-photo">
+      ${safeUrl(item.thumb) ? `<img src="${esc(item.thumb)}" alt="">` : `<div class="no-photo">Photos en préparation</div>`}
+    </div>
+    <div class="model-body">
+      <h3>${esc(item.name)}</h3>
+      <p class="pending-state${failed ? " failed" : ""}">${text}</p>
+      ${failed || slow ? `<div class="pending-actions">
+        ${failed ? `<button type="button" class="text-link" data-retry="${esc(item.name)}">Réessayer</button>` : ""}
+        <button type="button" class="text-link quiet" data-dismiss="${esc(item.name)}">Retirer</button>
+      </div>` : ""}
     </div>
   </div>`;
 }
@@ -69,9 +144,14 @@ const SORTERS = {
   year: (a, b) => (b.year ?? -1) - (a.year ?? -1),
 };
 
-/** À la une : la voiture la plus récemment ajoutée qui a une photo. */
+/** Les voitures qu'on doit afficher : celles en cours de retrait sont déjà masquées. */
+function deck() {
+  const removing = new Set(state.removing.map((r) => r.name));
+  return state.cars.filter((car) => !removing.has(car.name));
+}
+
 function renderHero() {
-  const car = [...state.cars].sort(SORTERS.added).find((c) => c.photos.length);
+  const car = [...deck()].sort(SORTERS.added).find((c) => c.photos.length);
   const hero = el("hero");
   hero.hidden = !car;
   if (!car) return;
@@ -87,7 +167,7 @@ function renderHero() {
 }
 
 function renderBrands() {
-  const brands = [...new Set(state.cars.map((car) => car.brand))].sort((a, b) => a.localeCompare(b, "fr"));
+  const brands = [...new Set(deck().map((car) => car.brand))].sort((a, b) => a.localeCompare(b, "fr"));
   if (!brands.includes(state.brand)) state.brand = "";
   const chip = (value, label) =>
     `<button type="button" class="chip" data-brand="${esc(value)}" aria-pressed="${state.brand === value}">${esc(label)}</button>`;
@@ -95,8 +175,9 @@ function renderBrands() {
 }
 
 function renderLibrary() {
+  const all = deck();
   const query = el("search").value.trim().toLowerCase();
-  const visible = state.cars
+  const visible = all
     .filter((car) => !state.brand || car.brand === state.brand)
     .filter((car) => {
       if (!query) return true;
@@ -105,18 +186,38 @@ function renderLibrary() {
     })
     .sort(SORTERS[el("sort").value]);
 
-  el("grid").innerHTML = visible.map(cardHtml).join("");
-  el("count").textContent = visible.length === state.cars.length
-    ? plural(state.cars.length, "voiture")
-    : `${visible.length} sur ${plural(state.cars.length, "voiture")}`;
+  el("grid").innerHTML = state.pending.map(pendingCardHtml).join("") + visible.map(cardHtml).join("");
+  el("count").textContent = visible.length === all.length
+    ? plural(all.length, "voiture")
+    : `${visible.length} sur ${plural(all.length, "voiture")}`;
 
   const empty = el("empty");
-  empty.hidden = visible.length > 0;
-  empty.textContent = state.cars.length
+  empty.hidden = visible.length + state.pending.length > 0;
+  empty.textContent = all.length
     ? "Aucune voiture ne correspond à cette recherche."
-    : "La bibliothèque est vide. Ajoute ta première voiture avec le bouton en haut.";
+    : "Ton deck est vide pour l'instant.";
 }
 
+function renderSession() {
+  const edit = canEdit();
+  el("open-add").hidden = !edit && !repository();
+  el("open-add").textContent = edit ? "Ajouter une voiture" : "Connexion";
+  el("cta-band").hidden = !edit;
+  const button = el("session-button");
+  button.hidden = isLocal() || !edit;
+  button.textContent = "Déconnecter cet appareil";
+}
+
+function renderAll() {
+  renderSession();
+  renderHero();
+  renderBrands();
+  renderLibrary();
+  renderCompareBar();
+  renderRoute();
+}
+
+/* Fiche */
 function specRow(car, key, label) {
   const spec = car.specs[key];
   if (!spec) {
@@ -125,7 +226,6 @@ function specRow(car, key, label) {
   return `<div class="spec-row"><dt>${label}</dt><dd>${esc(spec.value)}${spec.from_text ? STAR : ""}</dd></div>`;
 }
 
-/** Les chiffres clés sous la photo : seulement ceux qui sont connus. */
 function specCells(car) {
   const cell = (value, label, fromText) =>
     `<div class="spec-cell"><div class="spec-value">${esc(value)}${fromText ? STAR : ""}</div><span class="label">${esc(label)}</span></div>`;
@@ -154,7 +254,7 @@ function detailHtml(car) {
 
   return `<section class="detail-hero">
       <div class="wrap detail-title">
-        <a class="back" href="#">‹ Toutes les voitures</a>
+        <a class="back" href="#">‹ Mon deck</a>
         <div class="detail-eyebrow">
           <span class="label">${esc(car.brand)}</span>
           ${car.example ? `<span class="badge">Exemple</span>` : ""}
@@ -180,8 +280,9 @@ function detailHtml(car) {
             <p class="summary">${esc(car.summary)}</p>
             <p class="summary-source">Source : <a href="${esc(safeUrl(car.summary_url))}" target="_blank" rel="noopener">Wikipédia${car.summary_lang === "en" ? " (en anglais)" : ""}</a></p>` : ""}
           <div class="actions">
-            ${repo ? `<a class="text-link" href="${esc(`${repo}/edit/main/data/cars/${car.slug}.json`)}" target="_blank" rel="noopener">Corriger cette fiche ›</a>` : ""}
-            <button type="button" class="text-link quiet" data-delete="${esc(car.slug)}">Supprimer cette voiture</button>
+            ${compareButton(car)}
+            ${repo && canEdit() ? `<a class="text-link" href="${esc(`https://github.com/${repo.owner}/${repo.name}/edit/main/data/cars/${car.slug}.json`)}" target="_blank" rel="noopener">Corriger cette fiche ›</a>` : ""}
+            ${canEdit() ? `<button type="button" class="text-link quiet" data-delete="${esc(car.slug)}">Supprimer cette voiture</button>` : ""}
           </div>
         </div>
         <div>
@@ -203,20 +304,524 @@ function detailHtml(car) {
     </div></section>` : ""}`;
 }
 
-function route() {
-  const slug = decodeURIComponent(location.hash.slice(1));
-  const car = state.cars.find((c) => c.slug === slug);
-  el("library").hidden = Boolean(car);
+/* Comparaison */
+function numberIn(text) {
+  const match = String(text || "").match(/\d+(?:[.,]\d+)?/);
+  return match ? parseFloat(match[0].replace(",", ".")) : null;
+}
+
+/** Temps d'accélération : comparables seulement sur le même exercice (0-100 ou 0-60). */
+function sprintParts(car) {
+  const value = car.specs.zero_100?.value || "";
+  const [target, time] = value.includes(" : ") ? value.split(" : ") : ["", value];
+  return { target, time: numberIn(time) };
+}
+
+function compareRow(label, cars, read) {
+  const cells = cars.map(read);
+  const numbers = cells.map((c) => c.num).filter((n) => n !== null && n !== undefined);
+  const direction = cells.find((c) => c.better)?.better;
+  let best = null;
+  if (direction && numbers.length >= 2 && new Set(numbers).size > 1) {
+    best = direction === "high" ? Math.max(...numbers) : Math.min(...numbers);
+  }
+  return `<tr><th scope="row">${esc(label)}</th>${cells.map((c) => {
+    if (!c.text) return `<td class="unknown">Non renseigné</td>`;
+    return `<td class="${c.num === best && best !== null ? "best" : ""}">${esc(c.text)}${c.star ? STAR : ""}</td>`;
+  }).join("")}</tr>`;
+}
+
+function compareHtml(cars) {
+  const sameSprint = new Set(cars.map((c) => sprintParts(c).target).filter(Boolean)).size === 1;
+  const specCell = (key, better) => (car) => {
+    const spec = car.specs[key];
+    return { text: spec?.value, star: spec?.from_text, num: better ? numberIn(spec?.value) : null, better };
+  };
+  const key = [
+    compareRow("Année", cars, (c) => ({ text: c.year })),
+    compareRow("Puissance", cars, (c) => ({ text: c.power_ch && `${c.power_ch} ch`, num: c.power_ch, star: c.specs.power?.from_text, better: "high" })),
+    compareRow("Poids/puissance", cars, (c) => ({ text: ratioOf(c) && `${ratioOf(c)} ch/t`, num: ratioOf(c), star: c.specs.power?.from_text, better: "high" })),
+    compareRow("Vitesse maximale", cars, specCell("top_speed", "high")),
+    compareRow("Accélération", cars, (c) => ({
+      text: c.specs.zero_100?.value,
+      star: c.specs.zero_100?.from_text,
+      num: sameSprint ? sprintParts(c).time : null,
+      better: sameSprint ? "low" : undefined,
+    })),
+    compareRow("Poids", cars, (c) => ({ text: c.weight_kg && `${c.weight_kg} kg`, num: c.weight_kg, star: c.specs.weight?.from_text, better: "low" })),
+  ].join("");
+  const shown = new Set(["top_speed", "zero_100", "weight", "power"]);
+  const groups = SPEC_GROUPS.map(([title, rows]) => {
+    const rest = rows.filter(([k]) => !shown.has(k));
+    if (!rest.length) return "";
+    return `<tr class="group"><th colspan="${cars.length + 1}" scope="colgroup">${title}</th></tr>`
+      + rest.map(([k, label]) => compareRow(label, cars, specCell(k))).join("");
+  }).join("");
+
+  return `<section class="compare-head"><div class="wrap">
+      <a class="back" href="#">‹ Mon deck</a>
+      <h1 class="display-xl">Comparaison</h1>
+    </div></section>
+    <section class="section"><div class="wrap">
+      <div class="compare-scroll"><table class="compare-table">
+        <thead><tr>
+          <td></td>
+          ${cars.map((car) => `<th scope="col" class="compare-car">
+            ${car.photos[0] ? `<img src="${esc(car.photos[0].file)}" alt="">` : ""}
+            <a href="#${esc(car.slug)}">${esc(car.name)}</a>
+            <button type="button" class="text-link quiet" data-uncompare="${esc(car.slug)}">Retirer</button>
+          </th>`).join("")}
+        </tr></thead>
+        <tbody>${key}${groups}</tbody>
+      </table></div>
+      <p class="legend">En bleu : la meilleure valeur. * Valeur extraite du texte de l'article, à vérifier.</p>
+    </div></section>`;
+}
+
+function renderCompareBar() {
+  const count = state.compare.length;
+  const onCompare = location.hash.startsWith("#comparer:");
+  const bar = el("compare-bar");
+  bar.hidden = count === 0 || onCompare;
+  document.body.classList.toggle("has-compare-bar", !bar.hidden);
+  if (bar.hidden) return;
+  el("compare-count").textContent = state.compareFull
+    ? `${MAX_COMPARE} voitures maximum : retires-en une pour en ajouter une autre.`
+    : count < 2
+      ? "1 voiture sélectionnée. Choisis-en au moins une autre."
+      : `${count} voitures sélectionnées.`;
+  const go = el("compare-go");
+  go.setAttribute("href", `#comparer:${state.compare.join(",")}`);
+  go.setAttribute("aria-disabled", String(count < 2));
+}
+
+function setCompare(list) {
+  state.compare = list;
+  state.compareFull = false;
+  save("compare", list);
+}
+
+function toggleCompare(slug) {
+  if (state.compare.includes(slug)) {
+    setCompare(state.compare.filter((s) => s !== slug));
+  } else if (state.compare.length >= MAX_COMPARE) {
+    state.compareFull = true;
+  } else {
+    setCompare([...state.compare, slug]);
+  }
+}
+
+/* Navigation */
+function renderRoute() {
+  const hash = decodeURIComponent(location.hash.slice(1));
+  const removing = new Set(state.removing.map((r) => r.name));
+  let compareCars = null;
+  if (hash.startsWith("comparer:")) {
+    compareCars = hash.slice(9).split(",").map(carBySlug).filter(Boolean).slice(0, MAX_COMPARE);
+    if (compareCars.length < 2) compareCars = null;
+  }
+  const found = carBySlug(hash);
+  const car = found && !removing.has(found.name) ? found : null;
+  el("library").hidden = Boolean(car || compareCars);
   el("detail").hidden = !car;
-  document.title = car ? `${car.name} · CarPocket` : "CarPocket";
+  el("compare").hidden = !compareCars;
+  document.title = car ? `${car.name} · CarPocket` : compareCars ? "Comparaison · CarPocket" : "CarPocket";
   if (car) el("detail").innerHTML = detailHtml(car);
+  if (compareCars) el("compare").innerHTML = compareHtml(compareCars);
+}
+
+function route() {
+  renderRoute();
+  renderCompareBar();
   window.scrollTo(0, 0);
 }
+
+/* Ajout et suppression */
+async function fetchCars() {
+  const response = await fetch(`cars.json?t=${Date.now()}`, { cache: "no-store" });
+  if (!response.ok) throw new Error(String(response.status));
+  return response.json();
+}
+
+function savePending() {
+  save("pending", state.pending);
+  save("removing", state.removing);
+}
+
+let pollTimer = null;
+function schedulePoll() {
+  clearTimeout(pollTimer);
+  const running = state.pending.some((p) => p.status !== "failed") || state.removing.length;
+  if (running) pollTimer = setTimeout(poll, POLL_MS);
+}
+
+async function findFailedRuns() {
+  if (isLocal() || !token()) return new Set();
+  const response = await github("/actions/runs?event=workflow_dispatch&per_page=30");
+  if (!response.ok) return new Set();
+  const { workflow_runs: runs } = await response.json();
+  // La tentative la plus récente pour chaque voiture fait foi.
+  const latest = new Map();
+  for (const run of runs) {
+    if (!latest.has(run.display_title)) latest.set(run.display_title, run);
+  }
+  const failed = new Set();
+  for (const item of state.pending) {
+    const run = latest.get(`Ajout de ${item.name}`);
+    if (run && Date.parse(run.created_at) >= item.at - 60000 && run.status === "completed" && run.conclusion === "failure") {
+      failed.add(item.name);
+    }
+  }
+  return failed;
+}
+
+async function poll() {
+  try {
+    state.cars = await fetchCars();
+  } catch { /* on réessaiera au prochain passage */ }
+  const titles = new Set(state.cars.map(titleOf));
+  const names = new Set(state.cars.map((c) => c.name));
+  const failed = await findFailedRuns().catch(() => new Set());
+  const now = Date.now();
+  state.pending = state.pending
+    .filter((p) => !titles.has(p.name))
+    .map((p) => {
+      if (failed.has(p.name)) return { ...p, status: "failed" };
+      if (p.status === "failed") return p;
+      return now - p.at > TIMEOUT_MS ? { ...p, status: "slow" } : p;
+    });
+  state.removing = state.removing.filter((r) => names.has(r.name) && now - r.at < TIMEOUT_MS);
+  state.compare = state.compare.filter((s) => carBySlug(s));
+  savePending();
+  renderAll();
+  schedulePoll();
+}
+
+async function addCar(name, thumb) {
+  state.pending = [{ name, thumb, at: Date.now(), status: "running" }, ...state.pending.filter((p) => p.name !== name)];
+  savePending();
+  el("search").value = "";
+  state.brand = "";
+  if (location.hash) location.hash = "";
+  renderAll();
+  el("library-title").scrollIntoView();
+
+  if (isLocal()) {
+    try {
+      const response = await fetch("/api/add", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name }),
+      });
+      if (!response.ok) throw new Error(String(response.status));
+      await poll();
+    } catch {
+      markFailed(name);
+    }
+    return;
+  }
+  try {
+    if (!(await runRobot("add-car.yml", name))) {
+      state.pending = state.pending.filter((p) => p.name !== name);
+      savePending();
+      renderLibrary();
+      requireLogin("Cette clé n'est plus valable. Donne-en une nouvelle.");
+      return;
+    }
+    schedulePoll();
+  } catch {
+    markFailed(name);
+  }
+}
+
+function markFailed(name) {
+  state.pending = state.pending.map((p) => (p.name === name ? { ...p, status: "failed" } : p));
+  savePending();
+  renderLibrary();
+  schedulePoll();
+}
+
+/* Suggestions pendant la frappe */
+const suggestCache = new Map();
+let suggestTimer = null;
+let suggestAbort = null;
+let suggestItems = [];
+let suggestIndex = -1;
+
+async function searchCars(query) {
+  const key = query.toLowerCase();
+  if (suggestCache.has(key)) return suggestCache.get(key);
+  suggestAbort?.abort();
+  suggestAbort = new AbortController();
+  const params = new URLSearchParams({
+    action: "query",
+    format: "json",
+    formatversion: "2",
+    origin: "*",
+    generator: "search",
+    gsrsearch: `${query}* hastemplate:"Infobox automobile"`,
+    gsrnamespace: "0",
+    gsrlimit: "10",
+    prop: "pageimages|description",
+    piprop: "thumbnail",
+    pithumbsize: "240",
+    pilimit: "10",
+  });
+  const response = await fetch(`https://en.wikipedia.org/w/api.php?${params}`, { signal: suggestAbort.signal });
+  if (!response.ok) throw new Error(String(response.status));
+  const data = await response.json();
+  const results = (data.query?.pages || [])
+    .sort((a, b) => a.index - b.index)
+    .map((p) => ({ name: p.title, description: p.description || "", thumb: p.thumbnail?.source || "" }));
+  suggestCache.set(key, results);
+  return results;
+}
+
+function inDeck(name) {
+  return deck().some((car) => titleOf(car) === name) || state.pending.some((p) => p.name === name);
+}
+
+function renderSuggestions() {
+  const list = el("suggestions");
+  list.innerHTML = suggestItems.map((item, i) => {
+    const taken = inDeck(item.name);
+    return `<li class="suggestion" id="suggestion-${i}" role="option" data-index="${i}" aria-selected="${i === suggestIndex}" aria-disabled="${taken}">
+      <div class="suggestion-photo">${safeUrl(item.thumb) ? `<img src="${esc(item.thumb)}" alt="">` : ""}</div>
+      <div><strong>${esc(item.name)}</strong><small>${taken ? "Déjà dans ton deck" : esc(item.description)}</small></div>
+    </li>`;
+  }).join("");
+  const input = el("add-name");
+  input.setAttribute("aria-expanded", String(suggestItems.length > 0));
+  if (suggestIndex >= 0) input.setAttribute("aria-activedescendant", `suggestion-${suggestIndex}`);
+  else input.removeAttribute("aria-activedescendant");
+}
+
+function setSuggestStatus(text) {
+  el("suggest-status").textContent = text;
+  el("suggest-status").hidden = !text;
+}
+
+el("add-name").addEventListener("input", () => {
+  clearTimeout(suggestTimer);
+  const query = el("add-name").value.trim();
+  suggestIndex = -1;
+  if (query.length < 2) {
+    suggestAbort?.abort();
+    suggestItems = [];
+    renderSuggestions();
+    setSuggestStatus("Tape au moins deux lettres.");
+    return;
+  }
+  setSuggestStatus("Recherche…");
+  suggestTimer = setTimeout(async () => {
+    try {
+      const results = await searchCars(query);
+      if (el("add-name").value.trim() !== query) return;
+      suggestItems = results;
+      renderSuggestions();
+      setSuggestStatus(results.length ? "" : "Aucune voiture trouvée. Essaie un autre nom, souvent en anglais sur Wikipédia.");
+    } catch (error) {
+      if (error.name !== "AbortError") setSuggestStatus("La recherche ne répond pas. Réessaie dans un instant.");
+    }
+  }, 350);
+});
+
+function pickSuggestion(index) {
+  const item = suggestItems[index];
+  if (!item || inDeck(item.name)) return;
+  el("add-dialog").close();
+  addCar(item.name, item.thumb);
+}
+
+el("add-name").addEventListener("keydown", (event) => {
+  if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+    if (!suggestItems.length) return;
+    event.preventDefault();
+    const step = event.key === "ArrowDown" ? 1 : -1;
+    suggestIndex = (suggestIndex + step + suggestItems.length) % suggestItems.length;
+    renderSuggestions();
+    el(`suggestion-${suggestIndex}`)?.scrollIntoView({ block: "nearest" });
+  } else if (event.key === "Enter") {
+    event.preventDefault();
+    pickSuggestion(suggestIndex >= 0 ? suggestIndex : 0);
+  }
+});
+el("suggestions").addEventListener("click", (event) => {
+  const item = event.target.closest("[data-index]");
+  if (item) pickSuggestion(Number(item.dataset.index));
+});
+el("add-form").addEventListener("submit", (event) => event.preventDefault());
+el("add-cancel").addEventListener("click", () => el("add-dialog").close());
+
+function openAdd() {
+  if (!canEdit()) {
+    openLogin();
+    return;
+  }
+  el("add-name").value = "";
+  suggestItems = [];
+  suggestIndex = -1;
+  renderSuggestions();
+  setSuggestStatus("Tape au moins deux lettres.");
+  el("add-dialog").showModal();
+  el("add-name").focus();
+}
+el("open-add").addEventListener("click", openAdd);
+el("open-add-cta").addEventListener("click", openAdd);
+
+/* Connexion de l'appareil */
+function openLogin(message) {
+  const repo = repository();
+  if (!repo) return;
+  const params = new URLSearchParams({
+    name: "CarPocket",
+    description: "Ajouter et supprimer des voitures depuis le site CarPocket",
+    target_name: repo.owner,
+    expires_in: "365",
+    actions: "write",
+  });
+  el("login-link").href = `https://github.com/settings/personal-access-tokens/new?${params}`;
+  el("login-error").hidden = !message;
+  el("login-error").textContent = message || "";
+  el("login-token").value = "";
+  el("login-dialog").showModal();
+}
+el("login-cancel").addEventListener("click", () => el("login-dialog").close());
+el("login-form").addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const value = el("login-token").value.trim();
+  if (!value) return;
+  el("login-submit").disabled = true;
+  try {
+    const response = await github("/actions/workflows", { tokenOverride: value });
+    if (!response.ok) {
+      el("login-error").textContent = "Cette clé n'est pas acceptée. Vérifie qu'elle donne accès au dépôt CarPocket.";
+      el("login-error").hidden = false;
+      return;
+    }
+    save("token", value);
+    el("login-dialog").close();
+    renderAll();
+  } catch {
+    el("login-error").textContent = "GitHub ne répond pas. Réessaie dans un instant.";
+    el("login-error").hidden = false;
+  } finally {
+    el("login-submit").disabled = false;
+  }
+});
+el("session-button").addEventListener("click", () => {
+  save("token", null);
+  renderAll();
+});
+
+/* Suppression */
+const deleteDialog = el("delete-dialog");
+let carToDelete = null;
+
+function showDeleteError(message) {
+  el("delete-error").textContent = message;
+  el("delete-error").hidden = false;
+}
+
+el("delete-cancel").addEventListener("click", () => deleteDialog.close());
+
+el("delete-form").addEventListener("submit", async (event) => {
+  event.preventDefault();
+  if (!carToDelete) return;
+  const car = carToDelete;
+  el("delete-submit").disabled = true;
+  try {
+    if (isLocal()) {
+      const response = await fetch("/api/remove", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ slug: car.slug }),
+      });
+      if (response.status === 501) {
+        showDeleteError("Ce serveur ne sait pas supprimer. Lance le site avec : python3 scripts/serve.py");
+        return;
+      }
+      if (!response.ok && response.status !== 404) {
+        showDeleteError("La suppression a échoué. Rien n'a été effacé.");
+        return;
+      }
+      state.cars = state.cars.filter((c) => c.slug !== car.slug);
+    } else {
+      if (!(await runRobot("remove-car.yml", car.name))) {
+        deleteDialog.close();
+        requireLogin("Cette clé n'est plus valable. Donne-en une nouvelle.");
+        return;
+      }
+      state.removing = [...state.removing, { name: car.name, at: Date.now() }];
+      savePending();
+      schedulePoll();
+    }
+  } catch {
+    showDeleteError("La suppression n'a pas pu être lancée. Rien n'a été effacé.");
+    return;
+  } finally {
+    el("delete-submit").disabled = false;
+  }
+  setCompare(state.compare.filter((s) => s !== car.slug));
+  deleteDialog.close();
+  if (location.hash.slice(1) === car.slug) location.hash = "";
+  renderAll();
+});
+
+/* Actions sur les cartes */
+document.addEventListener("click", (event) => {
+  const del = event.target.closest("[data-delete]");
+  if (del) {
+    carToDelete = carBySlug(del.dataset.delete);
+    if (!carToDelete) return;
+    el("delete-title").textContent = `Supprimer ${carToDelete.name} ?`;
+    el("delete-text").textContent = "La fiche et les photos seront effacées. Tu pourras ajouter de nouveau cette voiture, mais tes corrections seront perdues.";
+    el("delete-submit").disabled = false;
+    el("delete-error").hidden = true;
+    deleteDialog.showModal();
+    return;
+  }
+  const compare = event.target.closest("[data-compare]");
+  if (compare) {
+    toggleCompare(compare.dataset.compare);
+    renderLibrary();
+    renderRoute();
+    renderCompareBar();
+    return;
+  }
+  const uncompare = event.target.closest("[data-uncompare]");
+  if (uncompare) {
+    const list = state.compare.filter((s) => s !== uncompare.dataset.uncompare);
+    setCompare(list);
+    const shown = decodeURIComponent(location.hash.slice(10)).split(",").filter((s) => s !== uncompare.dataset.uncompare);
+    location.hash = shown.length >= 2 ? `comparer:${shown.join(",")}` : "";
+    return;
+  }
+  const retry = event.target.closest("[data-retry]");
+  if (retry) {
+    const item = state.pending.find((p) => p.name === retry.dataset.retry);
+    if (item) addCar(item.name, item.thumb);
+    return;
+  }
+  const dismiss = event.target.closest("[data-dismiss]");
+  if (dismiss) {
+    state.pending = state.pending.filter((p) => p.name !== dismiss.dataset.dismiss);
+    savePending();
+    renderLibrary();
+  }
+});
+
+el("compare-clear").addEventListener("click", () => {
+  setCompare([]);
+  renderLibrary();
+  renderRoute();
+  renderCompareBar();
+});
 
 el("detail").addEventListener("click", (event) => {
   const button = event.target.closest("[data-photo]");
   if (!button) return;
-  const car = state.cars.find((c) => c.slug === decodeURIComponent(location.hash.slice(1)));
+  const car = carBySlug(decodeURIComponent(location.hash.slice(1)));
   const photo = car.photos[Number(button.dataset.photo)];
   el("hero-photo").src = photo.file;
   el("hero-credit").textContent = creditText(photo);
@@ -233,105 +838,21 @@ el("brands").addEventListener("click", (event) => {
 });
 window.addEventListener("hashchange", route);
 
-/* Ajout */
-const dialog = el("add-dialog");
-function openAdd() {
-  el("add-hint").hidden = Boolean(repository());
-  el("add-submit").disabled = !repository();
-  dialog.showModal();
-  el("add-name").focus();
-}
-el("open-add").addEventListener("click", openAdd);
-el("open-add-cta").addEventListener("click", openAdd);
-el("add-cancel").addEventListener("click", () => dialog.close());
-el("add-form").addEventListener("submit", (event) => {
-  event.preventDefault();
-  const url = issueUrl("ajouter-voiture.yml", el("add-name").value.trim());
-  if (url) window.open(url, "_blank", "noopener");
-  dialog.close();
-  el("add-name").value = "";
-});
-
-/* Suppression : directe sur ce Mac, par le formulaire GitHub une fois en ligne. */
-const isLocal = () => ["localhost", "127.0.0.1"].includes(location.hostname);
-const deleteDialog = el("delete-dialog");
-let carToDelete = null;
-
-function showDeleteError(message) {
-  const error = el("delete-error");
-  error.textContent = message;
-  error.hidden = false;
-}
-
-document.addEventListener("click", (event) => {
-  const button = event.target.closest("[data-delete]");
-  if (!button) return;
-  carToDelete = state.cars.find((car) => car.slug === button.dataset.delete);
-  if (!carToDelete) return;
-  el("delete-title").textContent = `Supprimer ${carToDelete.name} ?`;
-  el("delete-text").textContent = isLocal()
-    ? "La fiche et les photos seront effacées. Tu pourras ajouter de nouveau cette voiture, mais tes corrections seront perdues."
-    : "Le formulaire s'ouvre sur GitHub. Valide-le : la voiture disparaît du site en deux minutes environ.";
-  el("delete-submit").textContent = isLocal() ? "Supprimer" : "Continuer sur GitHub";
-  el("delete-submit").disabled = false;
-  el("delete-error").hidden = true;
-  deleteDialog.showModal();
-});
-
-el("delete-cancel").addEventListener("click", () => deleteDialog.close());
-
-el("delete-form").addEventListener("submit", async (event) => {
-  event.preventDefault();
-  if (!carToDelete) return;
-  if (!isLocal()) {
-    const url = issueUrl("retirer-voiture.yml", carToDelete.name);
-    if (url) window.open(url, "_blank", "noopener");
-    deleteDialog.close();
-    return;
-  }
-  el("delete-submit").disabled = true;
-  try {
-    const response = await fetch("/api/remove", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ slug: carToDelete.slug }),
-    });
-    if (response.status === 501) {
-      showDeleteError("Ce serveur ne sait pas supprimer. Lance le site avec : python3 scripts/serve.py");
-      return;
-    }
-    if (!response.ok && response.status !== 404) {
-      showDeleteError("La suppression a échoué. Rien n'a été effacé.");
-      return;
-    }
-  } catch {
-    showDeleteError("Le serveur local ne répond pas. Rien n'a été effacé.");
-    return;
-  } finally {
-    el("delete-submit").disabled = false;
-  }
-  const slug = carToDelete.slug;
-  state.cars = state.cars.filter((car) => car.slug !== slug);
-  deleteDialog.close();
-  renderHero();
-  renderBrands();
-  renderLibrary();
-  if (location.hash.slice(1) === slug) location.hash = "";
-});
-
 async function start() {
+  state.pending = load("pending", []);
+  state.removing = load("removing", []);
+  state.compare = load("compare", []);
+  renderSession();
   try {
-    const response = await fetch("cars.json", { cache: "no-cache" });
-    if (!response.ok) throw new Error(String(response.status));
-    state.cars = await response.json();
+    state.cars = await fetchCars();
   } catch {
     el("count").textContent = "Impossible de charger les voitures. Recharge la page dans un instant.";
     return;
   }
-  renderHero();
-  renderBrands();
-  renderLibrary();
-  route();
+  state.compare = state.compare.filter((s) => carBySlug(s)).slice(0, MAX_COMPARE);
+  renderAll();
+  window.scrollTo(0, 0);
+  if (state.pending.length || state.removing.length) poll();
 }
 
 start();

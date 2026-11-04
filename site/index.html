@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>CarPocket</title>
   <link rel="icon" href="logo.svg?v=__VERSION__" type="image/svg+xml">
-  <meta name="description" content="Ma bibliothèque de voitures préférées : photos et fiches techniques.">
+  <meta name="description" content="Mon deck de voitures préférées : photos et fiches techniques.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap">
@@ -29,7 +29,7 @@
       <section class="section" aria-labelledby="library-title">
         <div class="wrap">
           <div class="library-head">
-            <h2 class="display-lg" id="library-title">Toutes les voitures</h2>
+            <h2 class="display-lg" id="library-title">Mon deck</h2>
             <p class="count" id="count" aria-live="polite">Chargement des voitures…</p>
           </div>
           <div class="toolbar">
@@ -54,7 +54,7 @@
         </div>
       </section>
 
-      <section class="cta-band">
+      <section class="cta-band" id="cta-band">
         <div class="wrap">
           <h2 class="display-md">Une voiture manque à la collection ?</h2>
           <p>Donne son nom : la fiche technique et les photos se complètent toutes seules.</p>
@@ -64,26 +64,55 @@
     </div>
 
     <article id="detail" hidden></article>
+    <article id="compare" hidden></article>
   </main>
 
   <footer class="footer">
     <div class="wrap">
       <p>Textes et données issus de Wikipédia (CC BY-SA 4.0). Photos issues de Wikimedia Commons, avec leur auteur et leur licence sur chaque fiche.</p>
+      <button type="button" class="footer-link" id="session-button"></button>
     </div>
   </footer>
+
+  <div class="compare-bar" id="compare-bar" role="region" aria-label="Comparaison" hidden>
+    <div class="wrap compare-bar-inner">
+      <p id="compare-count" aria-live="polite"></p>
+      <div class="compare-bar-actions">
+        <button type="button" class="button button-on-dark" id="compare-clear">Effacer</button>
+        <a class="button button-primary" id="compare-go">Comparer</a>
+      </div>
+    </div>
+  </div>
 
   <dialog id="add-dialog" aria-labelledby="add-title">
     <form id="add-form" method="dialog">
       <h2 class="display-sm" id="add-title">Ajouter une voiture</h2>
-      <p>Donne le nom de la voiture. Le formulaire s'ouvre sur GitHub : valide-le, et la fiche et les photos arrivent ici en deux minutes environ.</p>
       <label class="field">
         <span class="label">Nom de la voiture</span>
-        <input id="add-name" type="text" required maxlength="120" placeholder="Ex. : Porsche 911 (993)" autocomplete="off">
+        <input id="add-name" type="search" role="combobox" aria-expanded="false" aria-controls="suggestions" aria-autocomplete="list" maxlength="120" placeholder="Ex. : Ferrari F, Golf GTI, Clio…" autocomplete="off">
       </label>
-      <p class="hint" id="add-hint" hidden>Ce bouton fonctionne une fois le site en ligne. En local, lance plutôt <code>python3 scripts/add_car.py "Nom"</code>.</p>
+      <p class="suggest-status" id="suggest-status" role="status">Tape au moins deux lettres.</p>
+      <ul class="suggestions" id="suggestions" role="listbox" aria-label="Voitures trouvées"></ul>
       <div class="dialog-actions">
-        <button type="button" class="button button-secondary" id="add-cancel">Annuler</button>
-        <button type="submit" class="button button-primary" id="add-submit">Continuer sur GitHub</button>
+        <button type="button" class="button button-secondary" id="add-cancel">Fermer</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="login-dialog" aria-labelledby="login-title">
+    <form id="login-form" method="dialog">
+      <h2 class="display-sm" id="login-title">Connecter cet appareil</h2>
+      <p>Pour modifier ton deck, le site a besoin d'une clé. Tu ne la donnes qu'une fois par appareil, et elle reste dans ce navigateur.</p>
+      <p><a id="login-link" target="_blank" rel="noopener">Créer la clé sur GitHub ›</a><br>
+      Sous « Repository access », choisis uniquement CarPocket. Laisse « Actions » en lecture et écriture, puis génère la clé et colle-la ici.</p>
+      <label class="field">
+        <span class="label">Clé d'accès</span>
+        <input id="login-token" type="password" required autocomplete="off" spellcheck="false">
+      </label>
+      <p class="form-error" id="login-error" role="alert" hidden></p>
+      <div class="dialog-actions">
+        <button type="button" class="button button-secondary" id="login-cancel">Annuler</button>
+        <button type="submit" class="button button-primary" id="login-submit">Connecter</button>
       </div>
     </form>
   </dialog>

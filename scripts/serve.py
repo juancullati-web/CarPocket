@@ -6,6 +6,7 @@ import functools
 import http.server
 import json
 
+import add_car
 import build_index
 import remove_car
 
@@ -24,7 +25,7 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         self.wfile.write(body)
 
     def do_POST(self) -> None:
-        if self.path != "/api/remove":
+        if self.path not in ("/api/remove", "/api/add"):
             self._answer(404, {"error": "Adresse inconnue."})
             return
         # Refuse les demandes venues d'un autre site ouvert dans le navigateur.
@@ -38,11 +39,15 @@ class Handler(http.server.SimpleHTTPRequestHandler):
             return
         try:
             length = min(int(self.headers.get("Content-Length", "0")), 4096)
-            slug = str(json.loads(self.rfile.read(length))["slug"])
-        except (ValueError, KeyError, TypeError):
+            payload = json.loads(self.rfile.read(length))
+        except (ValueError, TypeError):
             self._answer(400, {"error": "Demande illisible."})
             return
-        car = remove_car.remove(slug)
+        if self.path == "/api/add":
+            result = add_car.add(str(payload.get("name", "")))
+            self._answer(200 if result["status"] != "not_found" else 404, result)
+            return
+        car = remove_car.remove(str(payload.get("slug", "")))
         if car:
             self._answer(200, {"removed": car["slug"]})
         else:

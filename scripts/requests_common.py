@@ -12,13 +12,6 @@ def slugify(text: str) -> str:
     return re.sub(r"[^a-z0-9]+", "-", text.lower()).strip("-")
 
 
-def name_from_issue(body: str) -> str:
-    """Lit le champ « Nom de la voiture » d'un formulaire d'issue GitHub."""
-    match = re.search(r"###\s*Nom de la voiture\s*\n+(.+)", body or "")
-    name = match.group(1).strip() if match else ""
-    return "" if name == "_No response_" else name[:120]
-
-
 def site_url() -> str:
     repository = os.environ.get("GITHUB_REPOSITORY", "")
     if "/" not in repository:

@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import argparse
 import json
-import os
 import shutil
 import sys
 
@@ -42,7 +41,7 @@ def main() -> int:
     parser.add_argument("--comment-file")
     args = parser.parse_args()
 
-    name = args.name or common.name_from_issue(os.environ.get("ISSUE_BODY", ""))
+    name = args.name
     car = remove(name)
     if not car:
         common.write_comment(
