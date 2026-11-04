@@ -719,3 +719,35 @@ body.has-compare-bar { padding-bottom: 72px; }
 .profile-sharing { grid-column: 1 / -1; }
 .sharing-toggle { display: flex; align-items: flex-start; gap: 12px; margin-top: 12px; cursor: pointer; }
 .sharing-toggle input { flex: none; width: 20px; min-height: 20px; height: 20px; margin-top: 2px; padding: 0; accent-color: var(--primary); }
+
+/* Miniatures de la comparaison */
+.compare-summary { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.compare-thumbs { display: flex; flex: none; gap: 6px; }
+.compare-thumb {
+  position: relative;
+  width: 56px;
+  height: 36px;
+  border: 1px solid rgba(255, 255, 255, .35);
+  padding: 0;
+  overflow: hidden;
+  background: var(--surface-dark-elevated);
+  cursor: pointer;
+}
+.compare-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.compare-thumb span {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 15px;
+  height: 15px;
+  background: rgba(14, 19, 18, .8);
+  color: #fff;
+  font: 400 .75rem/15px var(--font);
+  text-align: center;
+}
+.compare-owner { display: block; margin-top: 2px; color: var(--muted); font-size: .8125rem; font-weight: 300; }
+@media (max-width: 640px) {
+  .compare-summary { flex-wrap: wrap; }
+  .compare-bar-actions { width: 100%; }
+  .compare-bar-actions .button { flex: 1; }
+}

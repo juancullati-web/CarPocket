@@ -12,7 +12,7 @@ const RELAUNCH_MS = 90000;
 const TIMEOUT_MS = 20 * 60 * 1000;
 
 const el = (id) => document.getElementById(id);
-const state = { catalog: [], cars: [], items: [], user: null, viewing: null, brand: "", compare: [], failed: new Set(), starting: new Set(), relaunched: new Set(), accounts: [], people: [], ownTitles: new Set() };
+const state = { catalog: [], cars: [], items: [], user: null, viewing: null, brand: "", compare: [], failed: new Set(), starting: new Set(), relaunched: new Set(), accounts: [], people: [], ownTitles: new Set(), compareInfo: {} };
 
 const esc = (value) =>
   String(value ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -26,6 +26,8 @@ const displayName = (username = "") => username.replace(/(^|[-_])([a-z])/g, (_, 
 const plural = (n, word) => `${n} ${word}${n > 1 ? "s" : ""}`;
 const STAR = `<abbr class="mark" title="Extrait du texte de l'article : à vérifier">*</abbr>`;
 const carBySlug = (slug) => state.cars.find((c) => c.slug === slug);
+const catalogCar = (slug) => state.catalog.find((c) => c.slug === slug);
+const inOwnDeck = (car) => state.ownTitles.has(titleOf(car));
 const titleOf = (car) => car.wikipedia_title || car.name;
 /** Une génération précise s'écrit « Page#Génération » dans les données. */
 const displayTitle = (title) => title.replace("#", " · ");
@@ -124,8 +126,8 @@ const backLabel = () => (state.viewing ? `‹ Collection de ${esc(displayName(st
 
 /** Sur la collection d'un ami : ajouter la voiture à la sienne, sans attente. */
 function friendAddButton(car) {
-  if (!state.viewing) return "";
   const title = titleOf(car);
+  if (state.ownTitles.has(title) && !state.viewing) return "";
   return state.ownTitles.has(title)
     ? `<span class="in-deck">Dans mon deck ✓</span>`
     : `<button type="button" class="text-link" data-add-title="${esc(title)}" aria-label="Ajouter ${esc(car.name)} à mon deck">+ Mon deck</button>`;
@@ -448,7 +450,7 @@ function detailHtml(car) {
           </button>`).join("")}</div>` : ""}
         ${photos.length ? `<div class="photo-bar">
           <p class="photo-credit" id="hero-credit">${esc(creditText(photos[0]))}</p>
-          ${canEdit() && photos.length > 1 ? `<div id="main-photo-slot">${mainPhotoControl(car, 0)}</div>` : ""}
+          ${canEdit() && inOwnDeck(car) && photos.length > 1 ? `<div id="main-photo-slot">${mainPhotoControl(car, 0)}</div>` : ""}
         </div>` : ""}
       </div></div>
     </section>
@@ -461,7 +463,7 @@ function detailHtml(car) {
             <p class="summary-source">Source : <a href="${esc(safeUrl(car.summary_url))}" target="_blank" rel="noopener">Wikipédia${car.summary_lang === "en" ? " (en anglais)" : ""}</a></p>` : ""}
           <div class="actions">
             ${compareButton(car)}
-            ${canEdit() ? `<button type="button" class="text-link quiet" data-delete="${esc(car.slug)}">Retirer de ma collection</button>` : ""}
+            ${canEdit() && inOwnDeck(car) ? `<button type="button" class="text-link quiet" data-delete="${esc(car.slug)}">Retirer de ma collection</button>` : ""}
             ${friendAddButton(car)}
             ${isAdmin() ? `<a class="text-link" href="https://github.com/juancullati-web/CarPocket/edit/main/data/cars/${esc(car.slug)}.json" target="_blank" rel="noopener">Corriger cette fiche ›</a>
             <button type="button" class="text-link quiet" data-remove-sheet="${esc(titleOf(car))}">Supprimer la fiche pour tout le monde</button>` : ""}
@@ -513,6 +515,15 @@ function compareRow(label, cars, read) {
   }).join("")}</tr>`;
 }
 
+function comparePhoto(car) {
+  return state.compareInfo[car.slug]?.photo || car.photos[0]?.file || "";
+}
+
+function compareOwner(car) {
+  const owner = state.compareInfo[car.slug]?.owner;
+  return owner ? `Collection de ${owner}` : inOwnDeck(car) ? "Mon deck" : "";
+}
+
 function compareHtml(cars) {
   const sameSprint = new Set(cars.map((c) => sprintParts(c).target).filter(Boolean)).size === 1;
   const specCell = (key, better) => (car) => {
@@ -549,8 +560,9 @@ function compareHtml(cars) {
         <thead><tr>
           <td></td>
           ${cars.map((car) => `<th scope="col" class="compare-car">
-            ${car.photos[0] ? `<img src="${esc(car.photos[0].file)}" alt="">` : ""}
+            ${comparePhoto(car) ? `<img src="${esc(comparePhoto(car))}" alt="">` : ""}
             <a href="#${esc(car.slug)}">${esc(car.name)}</a>
+            <span class="compare-owner">${esc(compareOwner(car))}</span>
             <button type="button" class="text-link quiet" data-uncompare="${esc(car.slug)}">Retirer</button>
           </th>`).join("")}
         </tr></thead>
@@ -567,6 +579,14 @@ function renderCompareBar() {
   bar.hidden = count === 0 || onCompare;
   document.body.classList.toggle("has-compare-bar", !bar.hidden);
   if (bar.hidden) return;
+  el("compare-thumbs").innerHTML = state.compare.map((slug) => {
+    const car = catalogCar(slug);
+    if (!car) return "";
+    const photo = comparePhoto(car);
+    return `<button type="button" class="compare-thumb" data-unselect="${esc(slug)}" aria-label="Retirer ${esc(car.name)} de la comparaison" title="${esc(car.name)}">
+      ${photo ? `<img src="${esc(photo)}" alt="">` : ""}<span aria-hidden="true">×</span>
+    </button>`;
+  }).join("");
   el("compare-count").textContent = state.compareFull
     ? `${MAX_COMPARE} voitures maximum : retires-en une pour en ajouter une autre.`
     : count < 2
@@ -580,7 +600,10 @@ function renderCompareBar() {
 function setCompare(list) {
   state.compare = list;
   state.compareFull = false;
-  if (state.user && !state.viewing) save(`compare.${state.user.id}`, list);
+  if (state.user) {
+    save(`compare.${state.user.id}`, list);
+    save(`compareInfo.${state.user.id}`, state.compareInfo);
+  }
 }
 
 function toggleCompare(slug) {
@@ -589,6 +612,11 @@ function toggleCompare(slug) {
   } else if (state.compare.length >= MAX_COMPARE) {
     state.compareFull = true;
   } else {
+    const car = carBySlug(slug) || catalogCar(slug);
+    state.compareInfo[slug] = {
+      owner: state.viewing ? displayName(state.viewing.username) : null,
+      photo: car?.photos[0]?.file || null,
+    };
     setCompare([...state.compare, slug]);
   }
 }
@@ -598,13 +626,14 @@ function renderRoute() {
   const hash = decodeURIComponent(location.hash.slice(1));
   let compareCars = null;
   if (hash.startsWith("comparer:")) {
-    compareCars = hash.slice(9).split(",").map(carBySlug).filter(Boolean).slice(0, MAX_COMPARE);
+    compareCars = hash.slice(9).split(",").map(catalogCar).filter(Boolean).slice(0, MAX_COMPARE);
     if (compareCars.length < 2) compareCars = null;
   }
   const accounts = hash === "comptes" && isAdmin();
   const profile = hash === "profil" && Boolean(state.user);
   const discover = hash === "decouvrir" && Boolean(state.user);
-  const car = carBySlug(hash) || null;
+  // Une voiture ouverte depuis une comparaison peut venir de la collection d'un ami.
+  const car = carBySlug(hash) || catalogCar(hash) || null;
   el("library").hidden = Boolean(car || compareCars || accounts || profile || discover);
   el("discover").hidden = !discover;
   el("profile").hidden = !profile;
@@ -654,7 +683,7 @@ async function poll() {
       }
     }));
   } catch { /* on réessaiera au prochain passage */ }
-  state.compare = state.compare.filter((slug) => carBySlug(slug));
+  state.compare = state.compare.filter((slug) => catalogCar(slug));
   renderAll();
   schedulePoll();
 }
@@ -952,8 +981,8 @@ async function enterApp(session) {
   state.viewing = null;
   state.catalog = await fetchCatalog();
   await loadItems();
-  state.compare = load(`compare.${profile.id}`, []).slice(0, MAX_COMPARE);
-  state.compare = state.compare.filter((slug) => carBySlug(slug));
+  state.compareInfo = load(`compareInfo.${profile.id}`, {});
+  state.compare = load(`compare.${profile.id}`, []).filter((slug) => catalogCar(slug)).slice(0, MAX_COMPARE);
   showroom.key = "";
   profileRendered = false;
   renderAll();
@@ -1381,6 +1410,15 @@ document.addEventListener("click", (event) => {
     renderCompareBar();
     return;
   }
+  const unselect = event.target.closest("[data-unselect]");
+  if (unselect) {
+    setCompare(state.compare.filter((slug) => slug !== unselect.dataset.unselect));
+    renderHero();
+    renderLibrary();
+    renderRoute();
+    renderCompareBar();
+    return;
+  }
   const uncompare = event.target.closest("[data-uncompare]");
   if (uncompare) {
     const list = state.compare.filter((s) => s !== uncompare.dataset.uncompare);
@@ -1411,6 +1449,7 @@ async function addFromCollection(title) {
   // Déjà présente (ajout depuis un autre appareil) : le résultat voulu est atteint.
   if (error && error.code !== "23505") return;
   state.ownTitles.add(title);
+  if (!state.viewing) await loadItems().catch(() => {});
   renderLibrary();
   renderRoute();
 }
@@ -1425,7 +1464,6 @@ async function viewCollection(userId) {
   } catch { /* la liste reste vide : le message de collection vide s'affiche */ }
   showroom.key = "";
   state.compareFull = false;
-  state.compare = state.viewing ? [] : load(`compare.${state.user.id}`, []).filter((slug) => carBySlug(slug));
   if (location.hash) location.hash = "";
   renderAll();
   window.scrollTo(0, 0);
@@ -1481,7 +1519,8 @@ el("compare-clear").addEventListener("click", () => {
 });
 
 el("detail").addEventListener("click", (event) => {
-  const car = carBySlug(decodeURIComponent(location.hash.slice(1)));
+  const slug = decodeURIComponent(location.hash.slice(1));
+  const car = carBySlug(slug) || catalogCar(slug);
   const main = event.target.closest("[data-main-photo]");
   if (main && car) {
     chooseMainPhoto(car, Number(main.dataset.mainPhoto));

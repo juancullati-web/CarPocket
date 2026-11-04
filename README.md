@@ -20,7 +20,7 @@ Clique sur **Ajouter une voiture**, ou sur le **+** en haut de page, tape quelqu
 
 ## Comparer
 
-Clique sur **Comparer** sur 2 ou 3 cartes, puis sur le bouton de comparaison en bas de l'écran.
+Clique sur **Comparer** sur 2 ou 3 cartes, puis sur le bouton de comparaison en bas de l'écran. La sélection te suit quand tu visites la collection d'un ami : tu peux donc comparer tes voitures avec les siennes.
 
 ## Retirer une voiture
 
