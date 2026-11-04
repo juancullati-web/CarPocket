@@ -673,3 +673,9 @@ body.has-compare-bar { padding-bottom: 72px; }
 .avatar-choice[aria-pressed="true"] { border-color: var(--accent-text); }
 .account-name { display: inline-flex; align-items: center; gap: 10px; }
 .account-avatar { display: block; flex: none; width: 32px; height: 32px; }
+
+/* Avatars en image */
+.avatar-picture { background: var(--surface-soft); }
+.avatar-picture img { width: 82%; height: 82%; object-fit: contain; }
+.avatar-logo { background: #fff; box-shadow: inset 0 0 0 1px var(--hairline); }
+.avatar-logo img { width: 66%; height: 66%; object-fit: contain; }

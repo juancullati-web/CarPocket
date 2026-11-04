@@ -49,6 +49,11 @@ Champs possibles : `engine`, `power`, `torque`, `transmission`, `layout`, `top_s
 - Les fiches et les photos sont publiques. Les collections ne sont visibles qu'après connexion, par leur propriétaire et l'administrateur.
 - Le projet Supabase gratuit se met en pause après une semaine sans activité. Une tâche automatique le sollicite deux fois par semaine. Si la connexion échoue, regarde s'il faut le réactiver dans le tableau de bord.
 
+## Crédits des avatars
+
+- Logos : [Simple Icons](https://simpleicons.org) (CC0). Ces logos restent des marques de leurs propriétaires, et CarPocket n'est affilié à aucune d'elles.
+- Personnages et objets : [Fluent Emoji](https://github.com/microsoft/fluentui-emoji), Copyright (c) Microsoft Corporation, licence MIT.
+
 ## En local
 
 ```bash

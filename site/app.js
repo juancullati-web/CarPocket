@@ -968,57 +968,65 @@ el("session-button").addEventListener("click", async () => {
   renderCompareBar();
 });
 
-/* Avatars : emoji, badges de marque (lettres et couleurs, pas de logos) et personnages maison. */
-const AVATAR_EMOJIS = {
-  bolide: "🏎️", voiture: "🚗", suv: "🚙", drapeau: "🏁", roue: "🛞", cle: "🔧",
-  flamme: "🔥", eclair: "⚡", etoile: "⭐", trophee: "🏆", fusee: "🚀", couronne: "👑",
+/* Avatars : logos Simple Icons (CC0), personnages et objets Fluent Emoji (MIT). */
+const AVATAR_CHARACTERS = {
+  superheros: "Super-héros", superheroine: "Super-héroïne", supervilain: "Super-vilain", supervilaine: "Super-vilaine",
+  ninja: "Ninja", magicien: "Magicien", magicienne: "Magicienne", vampire: "Vampire", vampirefemme: "Vampire (femme)",
+  zombie: "Zombie", genie: "Génie", elfe: "Elfe", fee: "Fée", astronaute: "Astronaute",
+  detective: "Détective", pilote: "Pilote", mecano: "Mécano", pompier: "Pompier", policier: "Policier", chef: "Chef",
+  prince: "Prince", princesse: "Princesse", robot: "Robot", alien: "Extraterrestre", monstre: "Petit monstre",
+  fantome: "Fantôme", ogre: "Ogre", lutin: "Lutin", clown: "Clown", renard: "Renard", ours: "Ours", lion: "Lion",
+  tigre: "Tigre", loup: "Loup", panda: "Panda", dragon: "Dragon", licorne: "Licorne", aigle: "Aigle",
 };
 const AVATAR_BRANDS = {
-  ferrari: ["Ferrari", "FE", "#c8102e", "#fff"],
-  porsche: ["Porsche", "PO", "#1a1a1a", "#d5b26b"],
-  lamborghini: ["Lamborghini", "LA", "#111", "#e6b800"],
+  ferrari: "Ferrari", porsche: "Porsche", lamborghini: "Lamborghini", bugatti: "Bugatti", koenigsegg: "Koenigsegg",
+  mclaren: "McLaren", astonmartin: "Aston Martin", maserati: "Maserati", bmw: "BMW", audi: "Audi", tesla: "Tesla",
+  volkswagen: "Volkswagen", peugeot: "Peugeot", renault: "Renault", dacia: "Dacia", citroen: "Citroën", toyota: "Toyota",
+  honda: "Honda", nissan: "Nissan", mazda: "Mazda", subaru: "Subaru", suzuki: "Suzuki", hyundai: "Hyundai", kia: "Kia",
+  ford: "Ford", chevrolet: "Chevrolet", cadillac: "Cadillac", jeep: "Jeep", fiat: "Fiat", mini: "Mini", volvo: "Volvo",
+  seat: "SEAT", opel: "Opel",
+};
+// Pas de logo dans la bibliothèque libre : ces marques gardent leur badge en lettres.
+const AVATAR_BADGES = {
   alpine: ["Alpine", "AL", "#0a5fb4", "#fff"],
-  bmw: ["BMW", "BM", "#1c69d4", "#fff"],
   mercedes: ["Mercedes-Benz", "ME", "#3c4148", "#fff"],
-  audi: ["Audi", "AU", "#bb0a30", "#fff"],
-  peugeot: ["Peugeot", "PE", "#14213d", "#fff"],
-  renault: ["Renault", "RE", "#efdf00", "#111"],
-  citroen: ["Citroën", "CI", "#a6192e", "#fff"],
-  aston: ["Aston Martin", "AM", "#00594f", "#fff"],
-  mclaren: ["McLaren", "MC", "#ff8000", "#111"],
 };
-const AVATAR_CHARACTERS = {
-  pilote: ["Pilote", "#1c69d4", '<circle cx="20" cy="21" r="12" fill="#f4f6f8"/><path d="M8 21a12 12 0 0 1 24 0v3H8z" fill="#e22718"/><rect x="11" y="18" width="18" height="7" rx="3" fill="#1a2129"/><path d="M13 20h7" stroke="#7ab0f8" stroke-width="2"/>'],
-  mecano: ["Mécano", "#f2c230", '<circle cx="20" cy="23" r="10" fill="#e8b48c"/><path d="M9 20a11 9 0 0 1 22 0z" fill="#1a2129"/><rect x="24" y="18" width="11" height="3" fill="#1a2129"/><circle cx="16.5" cy="24" r="1.5" fill="#1a2129"/><circle cx="23.5" cy="24" r="1.5" fill="#1a2129"/><path d="M16 29q4 3 8 0" fill="none" stroke="#1a2129" stroke-width="1.5"/>'],
-  robot: ["Robot", "#46525e", '<path d="M20 6v5" stroke="#d6dce2" stroke-width="2"/><circle cx="20" cy="6" r="2" fill="#e22718"/><rect x="9" y="11" width="22" height="20" rx="3" fill="#d6dce2"/><circle cx="15" cy="20" r="3" fill="#1c69d4"/><circle cx="25" cy="20" r="3" fill="#1c69d4"/><rect x="14" y="26" width="12" height="2" fill="#46525e"/>'],
-  renard: ["Renard", "#21443c", '<path d="M8 9l6 8h12l6-8 1 16-13 10L7 25z" fill="#e87722"/><path d="M12 25l8 10 8-10-8-3z" fill="#fff"/><circle cx="15" cy="22" r="1.7" fill="#1a2129"/><circle cx="25" cy="22" r="1.7" fill="#1a2129"/><circle cx="20" cy="30" r="1.8" fill="#1a2129"/>'],
-  ours: ["Ours", "#6ea3c7", '<circle cx="11" cy="12" r="5" fill="#7a4e2d"/><circle cx="29" cy="12" r="5" fill="#7a4e2d"/><circle cx="20" cy="22" r="13" fill="#7a4e2d"/><ellipse cx="20" cy="27" rx="6" ry="5" fill="#e3c6a5"/><circle cx="15" cy="19" r="1.7" fill="#1a2129"/><circle cx="25" cy="19" r="1.7" fill="#1a2129"/><circle cx="20" cy="25" r="1.8" fill="#1a2129"/>'],
-  alien: ["Extraterrestre", "#2a1f4d", '<ellipse cx="20" cy="21" rx="12" ry="14" fill="#7ed957"/><ellipse cx="14.5" cy="20" rx="3.5" ry="5" fill="#1a2129" transform="rotate(-15 14.5 20)"/><ellipse cx="25.5" cy="20" rx="3.5" ry="5" fill="#1a2129" transform="rotate(15 25.5 20)"/><path d="M17 29h6" stroke="#1a2129" stroke-width="1.5"/>'],
+const AVATAR_EMOJIS = {
+  bolide: "Bolide", voiture: "Voiture", suv: "SUV", drapeau: "Drapeau à damier", roue: "Roue", cle: "Clé",
+  flamme: "Flamme", eclair: "Éclair", etoile: "Étoile", trophee: "Trophée", fusee: "Fusée", couronne: "Couronne",
 };
+const AVATAR_ALIASES = { "marque:aston": "marque:astonmartin" };
 
-function avatarHtml(avatar, username = "") {
+function avatarHtml(avatarValue, username = "") {
+  const avatar = AVATAR_ALIASES[avatarValue] || avatarValue;
   const [kind, id] = String(avatar || "").split(":");
+  const image = (folder, file) => `<img src="avatars/${folder}/${file}" alt="" loading="lazy">`;
+  if (kind === "perso" && AVATAR_CHARACTERS[id]) {
+    return `<span class="avatar avatar-picture" aria-hidden="true">${image("perso", `${id}.png`)}</span>`;
+  }
   if (kind === "emoji" && AVATAR_EMOJIS[id]) {
-    return `<span class="avatar avatar-emoji" aria-hidden="true">${AVATAR_EMOJIS[id]}</span>`;
+    return `<span class="avatar avatar-picture" aria-hidden="true">${image("emoji", `${id}.png`)}</span>`;
   }
   if (kind === "marque" && AVATAR_BRANDS[id]) {
-    const [, letters, background, color] = AVATAR_BRANDS[id];
-    return `<span class="avatar avatar-brand" style="background:${background};color:${color}" aria-hidden="true">${letters}</span>`;
+    return `<span class="avatar avatar-logo" aria-hidden="true">${image("marques", `${id}.svg`)}</span>`;
   }
-  if (kind === "perso" && AVATAR_CHARACTERS[id]) {
-    const [, background, drawing] = AVATAR_CHARACTERS[id];
-    return `<span class="avatar" style="background:${background}" aria-hidden="true"><svg viewBox="0 0 40 40">${drawing}</svg></span>`;
+  if (kind === "marque" && AVATAR_BADGES[id]) {
+    const [, letters, background, color] = AVATAR_BADGES[id];
+    return `<span class="avatar avatar-brand" style="background:${background};color:${color}" aria-hidden="true">${letters}</span>`;
   }
   return `<span class="avatar avatar-initial" aria-hidden="true">${esc(username.charAt(0).toUpperCase())}</span>`;
 }
 
 function avatarChoices() {
-  const button = (value, label) => `<button type="button" class="avatar-choice" data-avatar="${value}" aria-label="${esc(label)}" title="${esc(label)}" aria-pressed="${(state.user.avatar || "") === value}">${avatarHtml(value, state.user.username)}</button>`;
+  const current = AVATAR_ALIASES[state.user.avatar] || state.user.avatar || "";
+  const button = (value, label) => `<button type="button" class="avatar-choice" data-avatar="${value}" aria-label="${esc(label)}" title="${esc(label)}" aria-pressed="${current === value}">${avatarHtml(value, state.user.username)}</button>`;
   const group = (title, items) => `<h3 class="avatar-group">${title}</h3><div class="avatar-grid">${items}</div>`;
+  const list = (prefix, table) => Object.entries(table).map(([id, label]) => button(`${prefix}:${id}`, label)).join("");
   return group("Par défaut", button("", "Mon initiale"))
-    + group("Personnages", Object.entries(AVATAR_CHARACTERS).map(([id, [label]]) => button(`perso:${id}`, label)).join(""))
-    + group("Marques", Object.entries(AVATAR_BRANDS).map(([id, [label]]) => button(`marque:${id}`, label)).join(""))
-    + group("Emoji", Object.keys(AVATAR_EMOJIS).map((id) => button(`emoji:${id}`, id)).join(""));
+    + group("Personnages", list("perso", AVATAR_CHARACTERS))
+    + group("Marques", list("marque", AVATAR_BRANDS)
+      + Object.entries(AVATAR_BADGES).map(([id, [label]]) => button(`marque:${id}`, label)).join(""))
+    + group("Objets", list("emoji", AVATAR_EMOJIS));
 }
 
 /* Menu et page du profil */

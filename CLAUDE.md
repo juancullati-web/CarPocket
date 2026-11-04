@@ -15,4 +15,6 @@ Site statique (GitHub Pages) d'une bibliothèque de voitures, avec comptes et co
 - Le nom reçu par un workflow n'est jamais interpolé dans une commande : il passe par une variable d'environnement.
 - Design : page blanche, bandes bleu nuit `#1a2129`, un seul bleu d'action `#1c69d4`, angles droits, aucune ombre, Inter en 700 et 300. Pas de logo ni de nom de marque d'un constructeur. Thème clair uniquement.
 
+Avatars (`site/avatars`) : logos de [Simple Icons](https://simpleicons.org) en CC0, personnages et objets de [Fluent Emoji](https://github.com/microsoft/fluentui-emoji) sous licence MIT. Les logos restent des marques de leurs propriétaires.
+
 Tests : `python3 -m unittest discover -s tests`. Aperçu avec suppression : `python3 scripts/serve.py`.
