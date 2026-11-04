@@ -311,8 +311,7 @@ input:focus, select:focus, textarea:focus { outline: 2px solid var(--ink); outli
 .model-actions {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 8px 16px;
+  gap: 8px;
   margin-top: auto;
   padding-top: 16px;
 }
@@ -949,3 +948,9 @@ dialog.photo-viewer[open] { display: grid; grid-template-rows: minmax(0, 1fr) au
 @media (prefers-reduced-motion: reduce) {
   .gauge-fill, .gauge-needle { transition: none; }
 }
+
+/* Actions des cartes */
+.model-actions .theme-toggle[aria-pressed="true"] { border-color: var(--primary); background: var(--primary); color: #fff; }
+.model-actions .card-owned { color: var(--accent-text); cursor: default; }
+.model-actions .card-owned:hover { background: transparent; }
+.model-actions .card-remove:hover { border-color: var(--error); color: var(--error); }

@@ -176,6 +176,54 @@ function friendAddButton(car) {
     : `<button type="button" class="text-link" data-add-title="${esc(title)}" aria-label="Ajouter ${esc(car.name)} à mon deck" data-tip="Ajouter cette voiture à mon deck">+ Mon deck</button>`;
 }
 
+const CARD_ICONS = {
+  sheet: '<path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 16h7"/>',
+  compare: '<path d="M4 8h13M13 4l4 4-4 4M20 16H7M11 12l-4 4 4 4"/>',
+  share: '<path d="M12 15V4M8 8l4-4 4 4M5 12v8h14v-8"/>',
+  trash: '<path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v5M14 11v5"/>',
+  add: '<path d="M12 5v14M5 12h14"/>',
+  check: '<path d="M5 12l5 5 9-10"/>',
+};
+
+function cardActions(car) {
+  const name = esc(car.name);
+  const title = titleOf(car);
+  const selected = state.compare.includes(car.slug);
+  const compareLabel = selected ? "Retirer cette voiture de la comparaison" : "Ajouter cette voiture à la comparaison";
+  const actions = [
+    `<a class="theme-toggle" href="#${esc(car.slug)}" aria-label="Voir la fiche de ${name}" data-tip="Voir la fiche">${photoIcon(CARD_ICONS.sheet)}</a>`,
+    `<button type="button" class="theme-toggle" data-compare="${esc(car.slug)}" aria-pressed="${selected}" aria-label="${compareLabel} : ${name}" data-tip="${compareLabel}">${photoIcon(CARD_ICONS.compare)}</button>`,
+    `<button type="button" class="theme-toggle" data-share="${esc(car.slug)}" aria-label="Partager ${name} avec un ami" data-tip="Partager avec un ami">${photoIcon(CARD_ICONS.share)}</button>`,
+  ];
+  if (canEdit()) {
+    actions.push(`<button type="button" class="theme-toggle card-remove" data-delete="${esc(car.slug)}" aria-label="Retirer ${name} de ma collection" data-tip="Retirer de ma collection">${photoIcon(CARD_ICONS.trash)}</button>`);
+  } else if (state.ownTitles.has(title)) {
+    actions.push(`<span class="theme-toggle card-owned" role="img" aria-label="Déjà dans mon deck" data-tip="Déjà dans mon deck">${photoIcon(CARD_ICONS.check)}</span>`);
+  } else if (state.user) {
+    actions.push(`<button type="button" class="theme-toggle" data-add-title="${esc(title)}" aria-label="Ajouter ${name} à mon deck" data-tip="Ajouter à mon deck">${photoIcon(CARD_ICONS.add)}</button>`);
+  }
+  return actions.join("");
+}
+
+/** Partage le lien de la fiche : le menu du téléphone, sinon une copie du lien. */
+async function shareCar(car, button) {
+  const url = `${location.origin}${location.pathname}#${encodeURIComponent(car.slug)}`;
+  if (navigator.share) {
+    try {
+      await navigator.share({ title: car.name, text: `${car.name} sur CarPocket`, url });
+    } catch (error) {
+      if (error.name !== "AbortError") flashTip(button, "Le partage n'a pas abouti. Réessaie.");
+    }
+    return;
+  }
+  try {
+    await navigator.clipboard.writeText(url);
+    flashTip(button, "Lien copié : colle-le à ton ami");
+  } catch {
+    flashTip(button, "Le lien n'a pas pu être copié.");
+  }
+}
+
 function cardHtml(car) {
   const photo = car.photos[0];
   return `<div class="model-card">
@@ -186,12 +234,7 @@ function cardHtml(car) {
     <div class="model-body">
       <h3><a href="#${esc(car.slug)}">${esc(car.name)}</a></h3>
       <p>${esc(tagline(car))}</p>
-      <div class="model-actions">
-        ${compareButton(car)}
-        <a class="text-link" href="#${esc(car.slug)}">Fiche ›</a>
-        ${canEdit() ? `<button type="button" class="text-link quiet" data-delete="${esc(car.slug)}" aria-label="Retirer ${esc(car.name)} de ma collection">Retirer</button>` : ""}
-        ${friendAddButton(car)}
-      </div>
+      <div class="model-actions">${cardActions(car)}</div>
     </div>
   </div>`;
 }
@@ -1773,6 +1816,12 @@ document.addEventListener("click", (event) => {
     addFromCollection(addTitle.dataset.addTitle);
     return;
   }
+  const share = event.target.closest("[data-share]");
+  if (share) {
+    const car = carBySlug(share.dataset.share) || catalogCar(share.dataset.share);
+    if (car) shareCar(car, share);
+    return;
+  }
   const compare = event.target.closest("[data-compare]");
   if (compare) {
     const source = comparisonSource(compare);
@@ -2172,8 +2221,13 @@ window.addEventListener("hashchange", () => {
 const tooltip = el("tooltip");
 const hideTip = () => { tooltip.hidden = true; };
 
-function showTip(target) {
-  tooltip.textContent = target.dataset.tip;
+function flashTip(target, text) {
+  showTip(target, text);
+  setTimeout(hideTip, 2500);
+}
+
+function showTip(target, text = target.dataset.tip) {
+  tooltip.textContent = text;
   tooltip.hidden = false;
   const box = target.getBoundingClientRect();
   const { width, height } = tooltip.getBoundingClientRect();
