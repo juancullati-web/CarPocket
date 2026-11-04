@@ -1,0 +1,123 @@
+{
+  "slug": "porsche-911-gt3-992-gt3",
+  "name": "Porsche 992 GT3",
+  "brand": "Porsche",
+  "variant": "992 GT3",
+  "example": false,
+  "added": "2026-11-04T19:47:45+00:00",
+  "summary": "La Porsche 911 GT3 est une automobile de sport du constructeur allemand Porsche mise sur le marché en 1999. C'est une version haute performance de la 911. Elle est assemblée à Stuttgart (Zuffenhausen), en Allemagne. Elle connaît plusieurs évolutions majeures, avec la 911 type 996, 997, 991 et 992.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Porsche_911_GT3",
+  "wikipedia_title": "Porsche 911 GT3#992 GT3",
+  "specs": {
+    "engine": {
+      "value": "3,996 cc Porsche MA2.75 naturally-aspirated flat-6 (including GT3 RS)",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 6 rapports (not available on the GT3 RS) · 7-speed PDK (all variant models)",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur arrière, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "2021–present",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Stéphane Lenglin, Fabian Schmölz (GT3 RS)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Germany: Zuffenhausen (Zuffenhausen Porsche) Flacht, Weissach (Motorsport Centre Flacht)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1,435 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4,573 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1,852 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1,279 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2,457 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "510 PS",
+      "from_text": false
+    },
+    "torque": {
+      "value": "470 Nm",
+      "from_text": false
+    },
+    "top_speed": {
+      "value": "311 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-100 km/h : 3,4 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/porsche-911-gt3-992-gt3/1.jpg",
+      "author": "Alexander Migl",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Porsche_992_GT3_1X7A0323.jpg"
+    },
+    {
+      "file": "photos/porsche-911-gt3-992-gt3/2.jpg",
+      "author": "Alexander Migl",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Porsche_992_GT3_with_touring_package_1X7A6511.jpg"
+    },
+    {
+      "file": "photos/porsche-911-gt3-992-gt3/3.jpg",
+      "author": "Alexander-93",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Porsche_992_GT3_with_touring_package_L%C3%ABtzebuerg_Legacy_IAA_2025_DSC_2023.jpg"
+    },
+    {
+      "file": "photos/porsche-911-gt3-992-gt3/4.jpg",
+      "author": "Alexander-93",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Porsche_992_GT3_with_touring_package_L%C3%ABtzebuerg_Legacy_IAA_2025_DSC_2024.jpg"
+    },
+    {
+      "file": "photos/porsche-911-gt3-992-gt3/5.jpg",
+      "author": "Alexandre Prevot from Nancy, France",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Porsche_992_GT3_RS_Manthey_Racing_(55114456429).jpg"
+    },
+    {
+      "file": "photos/porsche-911-gt3-992-gt3/6.jpg",
+      "author": "NutzerAusBerlin",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Beelitz-Heilst%C3%A4tten_20261018_Porsche_992_GT3.jpg"
+    }
+  ]
+}
