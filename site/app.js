@@ -118,7 +118,7 @@ function rebuildDeck() {
   state.cars = state.items.flatMap((item) => {
     const car = byTitle.get(item.title);
     if (!car) return [];
-    return [{ ...car, added: item.added_at, hiddenCount: (item.hidden_photos || []).length, photos: itemPhotos(item, car) }];
+    return [{ ...car, added: item.added_at, hiddenCount: car.photos.filter((photo) => (item.hidden_photos || []).includes(photo.file)).length, photos: itemPhotos(item, car) }];
   });
 }
 
@@ -446,6 +446,17 @@ function specCells(car) {
   return cells.join("");
 }
 
+const photoTag = (photo) => (photo.custom
+  ? (photo.author === "toi" ? "Ma photo" : `Photo de ${photo.author}`)
+  : "");
+
+function setPhotoTag(id, photo) {
+  const tag = el(id);
+  if (!tag) return;
+  tag.textContent = photoTag(photo);
+  tag.hidden = !photo.custom;
+}
+
 const creditText = (photo) => (photo.custom
   ? `Photo de ${photo.author}`
   : `Photo : ${photo.author}, ${photo.license}`);
@@ -494,12 +505,13 @@ function detailHtml(car) {
         <h1 class="display-xl">${esc(car.name)}</h1>
       </div>
       <div class="stage">
-        ${photos.length ? `<button type="button" class="stage-zoom" data-zoom aria-label="Agrandir la photo" data-tip="Agrandir la photo"><img id="hero-photo" src="${esc(photos[0].file)}" alt="${esc(car.name)}"></button>` : `<div class="no-photo">Pas de photo libre trouvée</div>`}
+        ${photos.length ? `<button type="button" class="stage-zoom" data-zoom aria-label="Agrandir la photo" data-tip="Agrandir la photo"><img id="hero-photo" src="${esc(photos[0].file)}" alt="${esc(car.name)}"></button><span class="photo-tag" id="hero-tag"${photos[0].custom ? "" : " hidden"}>${esc(photoTag(photos[0]))}</span>` : `<div class="no-photo">Pas de photo libre trouvée</div>`}
       </div>
       <div class="thumbs-band"><div class="wrap">
         ${photos.length > 1 ? `<div class="thumbs">${photos.map((photo, i) => `
           <button type="button" data-photo="${i}" aria-label="Voir la photo ${i + 1}" data-tip="Voir la photo ${i + 1}" aria-current="${i === 0}">
             <img src="${esc(photo.file)}" alt="" loading="lazy">
+            ${photo.custom ? `<span class="thumb-tag" aria-label="Photo personnelle">${photoIcon('<path d="M3 8h4l2-3h6l2 3h4v11H3z"/><circle cx="12" cy="13" r="3"/>')}</span>` : ""}
           </button>`).join("")}</div>` : ""}
         ${photos.length ? `<div class="photo-bar">
           <p class="photo-credit" id="hero-credit">${esc(creditText(photos[0]))}</p>
@@ -1787,6 +1799,7 @@ el("detail").addEventListener("click", (event) => {
   const photo = car.photos[Number(button.dataset.photo)];
   el("hero-photo").src = photo.file;
   el("hero-photo").dataset.index = button.dataset.photo;
+  setPhotoTag("hero-tag", photo);
   el("hero-credit").textContent = creditText(photo);
   const slot = el("main-photo-slot");
   if (slot) slot.innerHTML = mainPhotoControl(car, Number(button.dataset.photo));
@@ -1813,6 +1826,7 @@ function showViewerPhoto(index) {
   el("viewer-photo").src = photo.file;
   el("viewer-photo").alt = viewer.car.name;
   el("viewer-credit").textContent = creditText(photo);
+  setPhotoTag("viewer-tag", photo);
   el("viewer-count").textContent = photos.length > 1 ? `${viewer.index + 1} / ${photos.length}` : "";
   // La photo suivante est prête avant qu'on la demande.
   new Image().src = photos[(viewer.index + 1) % photos.length].file;

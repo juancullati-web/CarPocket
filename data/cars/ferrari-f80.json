@@ -74,46 +74,11 @@
   "overrides": {},
   "photos": [
     {
-      "file": "photos/ferrari-f80/1.jpg",
-      "author": "Pauls.127",
-      "license": "CC0",
-      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-      "source_url": "https://commons.wikimedia.org/wiki/File:FerrariF80_(resized)_(cropped).jpg"
-    },
-    {
-      "file": "photos/ferrari-f80/2.jpg",
-      "author": "Asgaw",
-      "license": "CC BY 4.0",
-      "license_url": "https://creativecommons.org/licenses/by/4.0",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Ferrari_F80.jpg"
-    },
-    {
-      "file": "photos/ferrari-f80/3.jpg",
-      "author": "Pauls.127",
-      "license": "CC0",
-      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
-      "source_url": "https://commons.wikimedia.org/wiki/File:FerrariF80_(resized).jpg"
-    },
-    {
       "file": "photos/ferrari-f80/4.jpg",
       "author": "Calreyn88",
       "license": "CC BY-SA 4.0",
       "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
       "source_url": "https://commons.wikimedia.org/wiki/File:2025_Ferrari_F80.jpg"
-    },
-    {
-      "file": "photos/ferrari-f80/5.jpg",
-      "author": "Calreyn88",
-      "license": "CC BY-SA 4.0",
-      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-      "source_url": "https://commons.wikimedia.org/wiki/File:2025_Ferrari_F80_3.jpg"
-    },
-    {
-      "file": "photos/ferrari-f80/6.jpg",
-      "author": "Calreyn88",
-      "license": "CC BY-SA 4.0",
-      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
-      "source_url": "https://commons.wikimedia.org/wiki/File:Ferrari_F80_1.jpg"
     }
   ]
 }

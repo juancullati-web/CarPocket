@@ -855,3 +855,31 @@ dialog.photo-viewer[open] { display: grid; grid-template-rows: minmax(0, 1fr) au
 .viewer-prev { left: calc(12px + env(safe-area-inset-left)); }
 .viewer-next { right: calc(12px + env(safe-area-inset-right)); }
 .photo-viewer .viewer-caption { display: flex; justify-content: space-between; gap: 16px; margin: 0; padding: 10px 16px; color: #bbb; font-size: .875rem; font-weight: 300; }
+
+/* Repère des photos personnelles */
+.stage { position: relative; }
+.photo-tag {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  border: 1px solid rgba(255, 255, 255, .35);
+  padding: 4px 8px;
+  background: #1a2129;
+  color: #fff;
+  font: 700 .75rem/1.2 var(--font);
+  pointer-events: none;
+}
+.viewer-tag { left: calc(12px + env(safe-area-inset-left)); bottom: auto; top: calc(12px + env(safe-area-inset-top)); }
+.thumbs button { position: relative; }
+.thumb-tag {
+  position: absolute;
+  left: 4px;
+  bottom: 4px;
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  background: #1a2129;
+  color: #fff;
+}
+.thumb-tag svg { width: 14px; height: 14px; }

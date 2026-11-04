@@ -19,7 +19,8 @@ MIN_INTERVAL = 1.5
 FREE_LICENSE = re.compile(r"^(cc[ -]?by|cc0|cc-zero|public domain|pd\b|pdm|fal\b|attribution)", re.I)
 EXCLUDED_NAME = re.compile(
     r"logo|icon|badge|emblem|flag|diagram|schema|map\b|sketch|drawing|blueprint|"
-    r"\.svg|commons-|wiki|poster|stamp|\bnew\b|replica|concept|tribute|homage|hommage|restomod|\btoy\b|lego|scale model",
+    r"\.svg|commons-|wiki|poster|stamp|\bnew\b|replica|concept|tribute|homage|hommage|restomod|\btoy\b|lego|scale model|"
+    r"bburago|diecast|die-cast|maquette|miniature|\b1[ _:]18\b|\b1[ _:]43\b",
     re.I,
 )
 DETAIL_NAME = re.compile(
@@ -204,6 +205,20 @@ def model_tokens(title: str, brand: str) -> list:
     return [token for token in map(_normalize, name.split()) if token]
 
 
+# « First generation » ne désigne aucune voiture : ces mots trouvent les photos d'autres modèles.
+GENERIC_VARIANT = re.compile(
+    r"\b(first|second|third|fourth|fifth|sixth|seventh|eighth|ninth|tenth|\d+(st|nd|rd|th)|generation|series)\b",
+    re.I,
+)
+
+
+def photo_tokens(title: str, brand: str, variant=None) -> list:
+    """Les mots qu'un fichier doit citer : ceux de la génération si elle a un vrai nom."""
+    if variant and GENERIC_VARIANT.sub("", variant).strip():
+        return model_tokens(variant, brand)
+    return model_tokens(title, brand)
+
+
 def _is_usable(file: dict, tokens: list) -> bool:
     if EXCLUDED_NAME.search(file["name"]):
         return False
@@ -222,10 +237,9 @@ def _evenly(items: list, count: int) -> list:
 
 
 def choose_photos(
-    title: str, brand: str, main_image, wikidata_id, variant=None, count: int = 6
+    title: str, brand: str, main_image, wikidata_id, variant=None, count: int = 1
 ) -> list:
-    # Une seule génération décrite : son nom suffit, et écarte les photos des autres.
-    tokens = model_tokens(variant, brand) if variant else model_tokens(title, brand)
+    tokens = photo_tokens(title, brand, variant)
     chosen, seen = [], set()
 
     def add(file):
@@ -239,6 +253,9 @@ def choose_photos(
         for file in commons_info([name]):
             if not EXCLUDED_NAME.search(file["name"]):
                 add(file)
+    # L'image principale de l'article est la seule sûre de montrer la bonne voiture.
+    if len(chosen) >= count:
+        return chosen
 
     candidates = [f for f in commons_info(article_files(title)) if _is_usable(f, tokens)]
     category = commons_category(wikidata_id) or re.sub(r"\s*\(.*?\)", "", title)
