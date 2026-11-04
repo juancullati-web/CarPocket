@@ -912,3 +912,23 @@ dialog.photo-viewer[open] { display: grid; grid-template-rows: minmax(0, 1fr) au
 .spec-input input { flex: 1; min-width: 0; }
 .spec-input .text-link { flex: none; }
 .spec-origin { margin: 0; color: var(--muted); font-size: .8125rem; overflow-wrap: anywhere; }
+
+/* Compteurs du deck */
+.gauges { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; width: 100%; }
+.gauge { min-width: 0; text-align: center; }
+.gauge svg { display: block; width: 100%; max-width: 180px; margin-inline: auto; }
+.gauge-track, .gauge-fill { fill: none; stroke-width: 6; }
+.gauge-track { stroke: var(--hairline-strong); }
+.gauge-fill { stroke: var(--primary); transition: stroke-dasharray 1.1s cubic-bezier(.2, .8, .3, 1); }
+.gauge-ticks path { fill: none; stroke: var(--muted); stroke-width: 1.5; }
+.gauge-needle { transform-origin: 60px 60px; transition: transform 1.1s cubic-bezier(.2, 1.25, .4, 1); }
+.gauge-needle path, .gauge-hub { fill: var(--ink); }
+.gauge svg text { fill: var(--ink); font-family: var(--font); }
+.gauge svg .gauge-value { font-size: 20px; font-weight: 700; }
+.gauge svg .gauge-unit { fill: var(--muted); font-size: 8px; font-weight: 300; }
+.gauge svg .gauge-scale { fill: var(--muted); font-size: 7px; font-weight: 300; }
+.app-intro .gauge-label { margin-top: 4px; color: var(--ink); font-size: .875rem; font-weight: 700; line-height: 1.25; }
+.app-intro .gauge-detail { margin-top: 2px; color: var(--muted); font-size: .75rem; line-height: 1.3; overflow-wrap: anywhere; }
+@media (prefers-reduced-motion: reduce) {
+  .gauge-fill, .gauge-needle { transition: none; }
+}

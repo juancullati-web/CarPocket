@@ -382,6 +382,7 @@ function renderBrands() {
 }
 
 function renderLibrary() {
+  renderGauges();
   const all = deck();
   const query = el("search").value.trim().toLowerCase();
   const visible = all
@@ -434,6 +435,99 @@ function renderAll() {
   renderLibrary();
   renderCompareBar();
   renderRoute();
+}
+
+/* Compteurs du deck */
+const GAUGE_SWEEP = 240;
+
+function gaugePoint(radius, angle) {
+  const radians = (angle - 90) * Math.PI / 180;
+  return `${(60 + radius * Math.cos(radians)).toFixed(2)} ${(60 + radius * Math.sin(radians)).toFixed(2)}`;
+}
+
+function gaugeHtml({ value, unit, max, label, detail, tip, mark = "" }) {
+  const start = -GAUGE_SWEEP / 2;
+  const share = value === null ? 0 : Math.min(value / max, 1);
+  const arc = `M ${gaugePoint(50, start)} A 50 50 0 1 1 ${gaugePoint(50, -start)}`;
+  const ticks = Array.from({ length: 9 }, (_, i) => {
+    const angle = start + GAUGE_SWEEP * i / 8;
+    return `<path d="M ${gaugePoint(43, angle)} L ${gaugePoint(i % 2 ? 40 : 37, angle)}"/>`;
+  }).join("");
+  const reading = value === null ? "Non renseigné" : `${value} ${unit}`;
+  return `<div class="gauge" data-tip="${esc(tip)}">
+    <svg viewBox="0 0 120 112" role="img" aria-label="${esc(`${label} : ${reading}. ${detail}`)}">
+      <path class="gauge-track" d="${arc}" pathLength="100"/>
+      <path class="gauge-fill" d="${arc}" pathLength="100" data-share="${share * 100}" stroke-dasharray="0 100"/>
+      <g class="gauge-ticks">${ticks}</g>
+      <text class="gauge-scale" x="${gaugePoint(35, start).split(" ")[0]}" y="104" text-anchor="middle">0</text>
+      <text class="gauge-scale" x="${gaugePoint(35, -start).split(" ")[0]}" y="104" text-anchor="middle">${max}</text>
+      <g class="gauge-needle" data-angle="${start + GAUGE_SWEEP * share}" style="transform: rotate(${start}deg)">
+        <path d="M 58.5 66 L 60 22 L 61.5 66 Z"/>
+      </g>
+      <circle class="gauge-hub" cx="60" cy="60" r="4"/>
+      <text class="gauge-value" x="60" y="89" text-anchor="middle">${value === null ? "–" : value}</text>
+      <text class="gauge-unit" x="60" y="101" text-anchor="middle">${esc(unit)}</text>
+    </svg>
+    <p class="gauge-label">${esc(label)}${mark}</p>
+    <p class="gauge-detail">${esc(detail)}</p>
+  </div>`;
+}
+
+/** La graduation suit la taille du deck : 25, 50, 100, 200… */
+function countScale(count) {
+  let max = 25;
+  while (count > max) max *= 2;
+  return max;
+}
+
+function deckGauges() {
+  const cars = deck();
+  const powers = cars.map((car) => car.power_ch).filter(Boolean);
+  const average = powers.length ? Math.round(powers.reduce((sum, power) => sum + power, 0) / powers.length) : null;
+  const fastest = cars
+    .map((car) => ({ car, speed: parseInt(car.specs.top_speed?.value, 10) }))
+    .filter(({ speed }) => speed)
+    .sort((a, b) => b.speed - a.speed)[0];
+  return [
+    {
+      value: cars.length, unit: "voitures", max: countScale(cars.length), label: "Mon deck",
+      detail: plural(new Set(cars.map((car) => car.brand)).size, "marque"),
+      tip: "Nombre de voitures dans mon deck",
+    },
+    {
+      value: average, unit: "ch", max: 1500, label: "Puissance moyenne",
+      detail: powers.length ? `sur ${plural(powers.length, "voiture")}` : "Non renseigné",
+      tip: "Moyenne des voitures dont la puissance est connue",
+    },
+    {
+      value: fastest?.speed ?? null, unit: "km/h", max: 500, label: "Vitesse record",
+      detail: fastest?.car.name ?? "Non renseigné",
+      tip: "La voiture la plus rapide de mon deck",
+      mark: specMark(fastest?.car.specs.top_speed),
+    },
+  ];
+}
+
+let gaugesKey = "";
+
+function renderGauges() {
+  const root = el("deck-gauges");
+  const gauges = deck().length ? deckGauges() : [];
+  root.hidden = !gauges.length;
+  const key = JSON.stringify(gauges);
+  if (key === gaugesKey) return;
+  gaugesKey = key;
+  root.innerHTML = gauges.map(gaugeHtml).join("");
+  const settle = () => {
+    root.querySelectorAll(".gauge-needle").forEach((needle) => {
+      needle.style.transform = `rotate(${needle.dataset.angle}deg)`;
+    });
+    root.querySelectorAll(".gauge-fill").forEach((fill) => {
+      fill.setAttribute("stroke-dasharray", `${fill.dataset.share} 100`);
+    });
+  };
+  if (calmMotion()) settle();
+  else requestAnimationFrame(() => requestAnimationFrame(settle));
 }
 
 /* Fiche */
