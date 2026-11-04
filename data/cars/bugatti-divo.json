@@ -1,0 +1,119 @@
+{
+  "slug": "bugatti-divo",
+  "name": "Bugatti Divo",
+  "brand": "Bugatti",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-04T21:01:56+00:00",
+  "summary": "La Bugatti Divo est une hypercar commercialisée par le constructeur automobile français Bugatti. Produite de 2019 à 2021, son nom rend hommage à l'un des pilotes emblématiques de la marque, Albert Divo (1895-1966), vice champion d'Europe de course automobile.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Bugatti_Divo",
+  "wikipedia_title": "Bugatti Divo",
+  "specs": {
+    "engine": {
+      "value": "8.0 L quad-turbocharged W16",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Double embrayage 7 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Mid-engine, all-wheel-drive",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "2019–2021 · 40 exemplaires",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Achim Anscheidt, Frank Heyl, Nils Sajonz",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "France: Alsace, Molsheim",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1961 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4641 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "2018 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1212 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2711 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "1103 kW",
+      "from_text": false
+    },
+    "top_speed": {
+      "value": "380 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-100 km/h : 2,4 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/bugatti-divo/1.jpg",
+      "author": "Matti Blume",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Bugatti_Divo,_GIMS_2019,_Le_Grand-Saconnex_(GIMS0029).jpg"
+    },
+    {
+      "file": "photos/bugatti-divo/2.jpg",
+      "author": "Thesupermat",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Bugatti_Divo_-_Mondial_de_l%27Automobile_de_Paris_2018_-_005.jpg"
+    },
+    {
+      "file": "photos/bugatti-divo/3.jpg",
+      "author": "Matti Blume",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Bugatti_Divo,_GIMS_2019,_Le_Grand-Saconnex_(GIMS0958).jpg"
+    },
+    {
+      "file": "photos/bugatti-divo/4.jpg",
+      "author": "Calreyn88",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Bugatti_Divo_2.jpg"
+    },
+    {
+      "file": "photos/bugatti-divo/5.jpg",
+      "author": "MrWalkr",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2021_Bugatti_Divo_Yellow.jpg"
+    },
+    {
+      "file": "photos/bugatti-divo/6.jpg",
+      "author": "メイド理世",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Bburago_1_18_Bugatti_Divo.jpg"
+    }
+  ]
+}
