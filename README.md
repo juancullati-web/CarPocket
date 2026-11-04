@@ -30,9 +30,16 @@ Clique sur **Comparer** sur 2 ou 3 cartes, puis sur le bouton de comparaison en 
 
 Clique sur **Retirer** sur la carte ou sur la fiche, puis confirme. La fiche reste disponible pour les autres comptes. Seul l'administrateur peut supprimer une fiche pour tout le monde.
 
-## Choisir la photo principale
+## Gérer ses photos
 
-Sur une fiche, clique sur une miniature, puis sur **Choisir comme photo principale**. Ce choix ne concerne que ta collection.
+Sur la fiche d'une voiture de ta collection, tu peux :
+
+- **ajouter tes photos**, depuis ta galerie ou avec l'appareil photo du téléphone. Elles sont réduites et leur position GPS est retirée avant l'envoi ;
+- **masquer** une photo du catalogue pour ta collection, puis la rétablir quand tu veux ;
+- **supprimer** tes propres photos ;
+- **choisir la photo principale**, utilisée sur la carte et dans le carrousel.
+
+Tes photos sont privées : seuls les comptes connectés qui peuvent voir ta collection peuvent les voir.
 
 ## Corriger une fiche
 

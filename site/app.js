@@ -12,7 +12,7 @@ const RELAUNCH_MS = 90000;
 const TIMEOUT_MS = 20 * 60 * 1000;
 
 const el = (id) => document.getElementById(id);
-const state = { catalog: [], cars: [], items: [], user: null, viewing: null, brand: "", compare: [], failed: new Set(), starting: new Set(), relaunched: new Set(), accounts: [], people: [], ownTitles: new Set(), compareInfo: {} };
+const state = { catalog: [], cars: [], items: [], user: null, viewing: null, brand: "", compare: [], failed: new Set(), starting: new Set(), relaunched: new Set(), accounts: [], people: [], ownTitles: new Set(), compareInfo: {}, signed: {} };
 
 const esc = (value) =>
   String(value ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -81,6 +81,36 @@ async function server(action, input = {}) {
   return body;
 }
 
+const ITEM_FIELDS = "title, thumb, main_photo, added_at, custom_photos, hidden_photos";
+const PHOTO_BUCKET = "user-photos";
+const SIGNED_SECONDS = 6 * 60 * 60;
+
+/** Les photos personnelles sont privées : on demande une adresse temporaire pour les afficher. */
+async function signPhotos(paths) {
+  const missing = [...new Set(paths)].filter((path) => !state.signed[path]);
+  if (!missing.length) return;
+  const { data } = await db.storage.from(PHOTO_BUCKET).createSignedUrls(missing, SIGNED_SECONDS);
+  (data || []).forEach((entry) => {
+    if (entry.signedUrl) state.signed[entry.path] = entry.signedUrl;
+  });
+}
+
+/** Les photos d'une voiture dans une collection : les siennes, puis le catalogue sans celles masquées. */
+function itemPhotos(item, car) {
+  const owner = state.viewing ? displayName(state.viewing.username) : null;
+  const custom = (item.custom_photos || []).filter((path) => state.signed[path]).map((path) => ({
+    key: path,
+    file: state.signed[path],
+    custom: true,
+    author: owner || "toi",
+  }));
+  const hidden = new Set(item.hidden_photos || []);
+  const shared = car.photos.filter((photo) => !hidden.has(photo.file)).map((photo) => ({ ...photo, key: photo.file }));
+  const photos = [...custom, ...shared];
+  const chosen = photos.find((photo) => photo.key === item.main_photo);
+  return chosen ? [chosen, ...photos.filter((photo) => photo !== chosen)] : photos;
+}
+
 /** La collection affichée : la fiche partagée, plus les choix de la personne. */
 function rebuildDeck() {
   if (!state.viewing) state.ownTitles = new Set(state.items.map((item) => item.title));
@@ -88,12 +118,7 @@ function rebuildDeck() {
   state.cars = state.items.flatMap((item) => {
     const car = byTitle.get(item.title);
     if (!car) return [];
-    const chosen = car.photos.find((photo) => photo.file === item.main_photo);
-    return [{
-      ...car,
-      added: item.added_at,
-      photos: chosen ? [chosen, ...car.photos.filter((photo) => photo !== chosen)] : car.photos,
-    }];
+    return [{ ...car, added: item.added_at, hiddenCount: (item.hidden_photos || []).length, photos: itemPhotos(item, car) }];
   });
 }
 
@@ -109,10 +134,11 @@ function pendingItems() {
 
 async function loadItems() {
   const { data, error } = await db.from("deck_items")
-    .select("title, thumb, main_photo, added_at")
+    .select(ITEM_FIELDS)
     .eq("user_id", owner().id);
   if (error) throw error;
   state.items = data;
+  await signPhotos(data.flatMap((item) => item.custom_photos || []));
   rebuildDeck();
 }
 
@@ -420,12 +446,33 @@ function specCells(car) {
   return cells.join("");
 }
 
-const creditText = (photo) => `Photo : ${photo.author}, ${photo.license}`;
+const creditText = (photo) => (photo.custom
+  ? `Photo de ${photo.author}`
+  : `Photo : ${photo.author}, ${photo.license}`);
 
+/** Actions sur la photo affichée, puis ajout de photos. */
 function mainPhotoControl(car, index) {
-  if (index === 0) return `<span class="main-photo-state">Photo principale ✓</span>`;
-  return `<button type="button" class="button button-on-dark main-photo-button" data-main-photo="${index}">Choisir comme photo principale</button>`;
+  const photo = car.photos[index];
+  const buttons = [];
+  if (photo) {
+    buttons.push(index === 0
+      ? `<span class="main-photo-state">Photo principale ✓</span>`
+      : `<button type="button" class="photo-action" data-main-photo="${index}">Choisir comme principale</button>`);
+    buttons.push(photo.custom
+      ? `<button type="button" class="photo-action" data-delete-photo="${index}">Supprimer</button>`
+      : `<button type="button" class="photo-action" data-hide-photo="${index}">Masquer</button>`);
+  }
+  buttons.push(`<label class="photo-action photo-add">Ajouter une photo<input type="file" accept="image/*" data-add-photo></label>`);
+  if (isTouchDevice()) {
+    buttons.push(`<label class="photo-action photo-add">Prendre une photo<input type="file" accept="image/*" capture="environment" data-add-photo></label>`);
+  }
+  if (car.hiddenCount) {
+    buttons.push(`<button type="button" class="photo-action" data-restore-photos>Rétablir ${car.hiddenCount > 1 ? `${car.hiddenCount} photos masquées` : "1 photo masquée"}</button>`);
+  }
+  return buttons.join("");
 }
+
+const isTouchDevice = () => window.matchMedia("(pointer: coarse)").matches;
 
 function detailHtml(car) {
   const hasTextValues = Object.values(car.specs).some((s) => s.from_text);
@@ -451,8 +498,8 @@ function detailHtml(car) {
           </button>`).join("")}</div>` : ""}
         ${photos.length ? `<div class="photo-bar">
           <p class="photo-credit" id="hero-credit">${esc(creditText(photos[0]))}</p>
-          ${canEdit() && inOwnDeck(car) && photos.length > 1 ? `<div id="main-photo-slot">${mainPhotoControl(car, 0)}</div>` : ""}
-        </div>` : ""}
+          </div>` : ""}
+        ${canEdit() && inOwnDeck(car) ? `<div class="photo-actions" id="main-photo-slot">${mainPhotoControl(car, 0)}</div><p class="main-photo-state" id="photo-notice" role="status"></p>` : ""}
       </div></div>
     </section>
     ${cells ? `<div class="wrap"><div class="spec-strip">${cells}</div></div>` : ""}
@@ -480,9 +527,9 @@ function detailHtml(car) {
         </div>
       </div>
     </section>
-    ${photos.length ? `<section class="credits"><div class="wrap">
+    ${photos.some((photo) => !photo.custom) ? `<section class="credits"><div class="wrap">
       <h2>Crédits photos</h2>
-      <ol>${photos.map((photo) => `<li>${esc(photo.author)}, ${safeUrl(photo.license_url)
+      <ol>${photos.filter((photo) => !photo.custom).map((photo) => `<li>${esc(photo.author)}, ${safeUrl(photo.license_url)
         ? `<a href="${esc(photo.license_url)}" target="_blank" rel="noopener">${esc(photo.license)}</a>`
         : esc(photo.license)}${safeUrl(photo.source_url)
         ? ` (<a href="${esc(photo.source_url)}" target="_blank" rel="noopener">Wikimedia Commons</a>)` : ""}</li>`).join("")}</ol>
@@ -620,7 +667,7 @@ function toggleCompare(slug) {
     const car = carBySlug(slug) || catalogCar(slug);
     state.compareInfo[slug] = {
       owner: state.viewing ? displayName(state.viewing.username) : null,
-      photo: car?.photos[0]?.file || null,
+      photo: car?.photos[0] && !car.photos[0].custom ? car.photos[0].file : null,
     };
     setCompare([...state.compare, slug]);
   }
@@ -760,7 +807,7 @@ async function startRobot(name) {
 
 async function addCar(name, thumb) {
   const row = { user_id: state.user.id, title: name, thumb: safeUrl(thumb) || null };
-  const { data, error } = await db.from("deck_items").insert(row).select("title, thumb, main_photo, added_at").single();
+  const { data, error } = await db.from("deck_items").insert(row).select(ITEM_FIELDS).single();
   if (error) {
     el("add-dialog").showModal();
     setSuggestStatus("Cette voiture n'a pas pu être ajoutée. Réessaie dans un instant.");
@@ -776,15 +823,93 @@ async function addCar(name, thumb) {
   if (!state.catalog.some((car) => titleOf(car) === name)) startRobot(name);
 }
 
+function photoNotice(text) {
+  const notice = el("photo-notice");
+  if (notice) notice.textContent = text;
+}
+
+/** Enregistre une modification des photos, puis met l'écran à jour. */
+async function updateItem(car, changes) {
+  const title = titleOf(car);
+  const { error } = await db.from("deck_items").update(changes).eq("user_id", state.user.id).eq("title", title);
+  if (error) return false;
+  state.items = state.items.map((item) => (item.title === title ? { ...item, ...changes } : item));
+  renderAll();
+  return true;
+}
+
+const itemOf = (car) => state.items.find((item) => item.title === titleOf(car));
+
+/** Réduit la photo et efface ses métadonnées, dont la position GPS du téléphone. */
+async function preparePhoto(file) {
+  const bitmap = await createImageBitmap(file);
+  const scale = Math.min(1, 1600 / Math.max(bitmap.width, bitmap.height));
+  const canvas = document.createElement("canvas");
+  canvas.width = Math.round(bitmap.width * scale);
+  canvas.height = Math.round(bitmap.height * scale);
+  canvas.getContext("2d").drawImage(bitmap, 0, 0, canvas.width, canvas.height);
+  bitmap.close();
+  return new Promise((resolve, reject) => {
+    canvas.toBlob((blob) => (blob ? resolve(blob) : reject(new Error("photo"))), "image/jpeg", 0.85);
+  });
+}
+
+async function addPhoto(car, file) {
+  const item = itemOf(car);
+  if (!item || !file) return;
+  if ((item.custom_photos || []).length >= 20) {
+    photoNotice("20 photos maximum par voiture : supprimes-en une pour en ajouter une autre.");
+    return;
+  }
+  photoNotice("Envoi de la photo…");
+  let path = null;
+  try {
+    const blob = await preparePhoto(file);
+    path = `${state.user.id}/${crypto.randomUUID()}.jpg`;
+    const { error } = await db.storage.from(PHOTO_BUCKET).upload(path, blob, { contentType: "image/jpeg" });
+    if (error) throw error;
+    await signPhotos([path]);
+    const saved = await updateItem(car, {
+      custom_photos: [path, ...(item.custom_photos || [])],
+      main_photo: path,
+    });
+    if (!saved) {
+      await db.storage.from(PHOTO_BUCKET).remove([path]);
+      throw new Error("enregistrement");
+    }
+    photoNotice("Photo ajoutée.");
+  } catch {
+    photoNotice("La photo n'a pas pu être ajoutée. Vérifie ta connexion et réessaie.");
+  }
+}
+
+async function hidePhoto(car, index) {
+  const photo = car.photos[index];
+  const item = itemOf(car);
+  if (!photo || !item) return;
+  const changes = { hidden_photos: [...(item.hidden_photos || []), photo.key] };
+  if (item.main_photo === photo.key) changes.main_photo = null;
+  if (!(await updateItem(car, changes))) photoNotice("La photo n'a pas pu être masquée. Réessaie.");
+}
+
+async function deletePhoto(car, index) {
+  const photo = car.photos[index];
+  const item = itemOf(car);
+  if (!photo?.custom || !item) return;
+  const changes = { custom_photos: (item.custom_photos || []).filter((path) => path !== photo.key) };
+  if (item.main_photo === photo.key) changes.main_photo = null;
+  if (!(await updateItem(car, changes))) throw new Error("Cette photo n'a pas pu être supprimée. Réessaie.");
+  await db.storage.from(PHOTO_BUCKET).remove([photo.key]);
+}
+
 async function chooseMainPhoto(car, index) {
-  const file = car.photos[index]?.file;
+  const file = car.photos[index]?.key;
   if (!file) return;
   const title = titleOf(car);
   const { error } = await db.from("deck_items").update({ main_photo: file })
     .eq("user_id", state.user.id).eq("title", title);
   if (error) {
-    const slot = el("main-photo-slot");
-    if (slot) slot.innerHTML = `<span class="main-photo-state failed">Le choix n'a pas pu être enregistré. Réessaie.</span>`;
+    photoNotice("Le choix n'a pas pu être enregistré. Réessaie.");
     return;
   }
   state.items = state.items.map((item) => (item.title === title ? { ...item, main_photo: file } : item));
@@ -1401,6 +1526,8 @@ async function removeFromDeck(car) {
   const title = titleOf(car);
   const { error } = await db.from("deck_items").delete().eq("user_id", state.user.id).eq("title", title);
   if (error) throw new Error("Cette voiture n'a pas pu être retirée. Réessaie.");
+  const ownPhotos = itemOf(car)?.custom_photos || [];
+  if (ownPhotos.length) await db.storage.from(PHOTO_BUCKET).remove(ownPhotos);
   state.items = state.items.filter((item) => item.title !== title);
   setCompare(state.compare.filter((slug) => slug !== car.slug));
   if (location.hash.slice(1) === car.slug) location.hash = "";
@@ -1563,7 +1690,7 @@ async function renderDiscover() {
     <section class="section"><div class="wrap"><p class="count" id="discover-status">Chargement des collections…</p><div class="people-grid" id="people-grid"></div></div></section>`;
   const [{ data: people, error }, { data: items, error: itemsError }] = await Promise.all([
     db.from("profiles").select("id, username, avatar, shared").eq("shared", true).neq("id", state.user.id).order("username"),
-    db.from("deck_items").select("user_id, title, main_photo, added_at").order("added_at", { ascending: false }),
+    db.from("deck_items").select("user_id, title, main_photo, added_at, hidden_photos").order("added_at", { ascending: false }),
   ]);
   if (el("discover").hidden) return;
   if (error || itemsError) {
@@ -1577,12 +1704,17 @@ async function renderDiscover() {
   el("discover-status").textContent = visible.length
     ? `${plural(visible.length, "collection")} à découvrir`
     : "Aucun ami n'a encore de collection visible.";
+  await signPhotos(items.map((item) => item.main_photo).filter((path) => path && !path.startsWith("photos/")));
+  if (el("discover").hidden) return;
   el("people-grid").innerHTML = visible.map((person) => {
     const cars = items.filter((item) => item.user_id === person.id && catalog.has(item.title));
     const photos = cars.slice(0, 3).map((item) => {
       const car = catalog.get(item.title);
-      const photo = car.photos.find((p) => p.file === item.main_photo) || car.photos[0];
-      return photo ? `<img src="${esc(photo.file)}" alt="" loading="lazy">` : "";
+      const hidden = new Set(item.hidden_photos || []);
+      const file = state.signed[item.main_photo]
+        || car.photos.find((p) => p.file === item.main_photo)?.file
+        || car.photos.find((p) => !hidden.has(p.file))?.file;
+      return file ? `<img src="${esc(file)}" alt="" loading="lazy">` : "";
     }).join("");
     return `<button type="button" class="person-card" data-view-user="${esc(person.id)}">
       <span class="person-photos" data-count="${Math.min(cars.length, 3)}">${photos}</span>
@@ -1602,12 +1734,42 @@ el("compare-clear").addEventListener("click", () => {
   renderCompareBar();
 });
 
+el("detail").addEventListener("change", (event) => {
+  if (!event.target.matches("[data-add-photo]")) return;
+  const slug = decodeURIComponent(location.hash.slice(1));
+  const car = carBySlug(slug);
+  if (car) addPhoto(car, event.target.files[0]);
+  event.target.value = "";
+});
+
 el("detail").addEventListener("click", (event) => {
   const slug = decodeURIComponent(location.hash.slice(1));
   const car = carBySlug(slug) || catalogCar(slug);
   const main = event.target.closest("[data-main-photo]");
   if (main && car) {
     chooseMainPhoto(car, Number(main.dataset.mainPhoto));
+    return;
+  }
+  const hide = event.target.closest("[data-hide-photo]");
+  if (hide && car) {
+    hidePhoto(car, Number(hide.dataset.hidePhoto));
+    return;
+  }
+  const remove = event.target.closest("[data-delete-photo]");
+  if (remove && car) {
+    const index = Number(remove.dataset.deletePhoto);
+    askConfirm({
+      title: "Supprimer cette photo ?",
+      text: "Elle sera effacée définitivement de ta collection.",
+      label: "Supprimer",
+      action: () => deletePhoto(car, index),
+    });
+    return;
+  }
+  if (event.target.closest("[data-restore-photos]") && car) {
+    updateItem(car, { hidden_photos: [] }).then((saved) => {
+      if (!saved) photoNotice("Les photos n'ont pas pu être rétablies. Réessaie.");
+    });
     return;
   }
   const button = event.target.closest("[data-photo]");

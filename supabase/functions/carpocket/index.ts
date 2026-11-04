@@ -101,6 +101,41 @@ async function inDeck(userId: string, title: string): Promise<boolean> {
   return rows.ok && (await rows.json()).length > 0;
 }
 
+const PHOTOS_URL = `${SUPABASE_URL}/storage/v1/object`;
+
+async function removePhotos(paths: string[]): Promise<void> {
+  if (!paths.length) return;
+  await fetch(`${PHOTOS_URL}/user-photos`, {
+    method: "DELETE",
+    headers: serverHeaders(),
+    body: JSON.stringify({ prefixes: paths }),
+  });
+}
+
+/** Efface tout le dossier de photos d'un compte supprimé. */
+async function removeUserPhotos(userId: string): Promise<void> {
+  for (let page = 0; page < 20; page += 1) {
+    const response = await fetch(`${PHOTOS_URL}/list/user-photos`, {
+      method: "POST",
+      headers: serverHeaders(),
+      body: JSON.stringify({ prefix: userId, limit: 100 }),
+    });
+    if (!response.ok) return;
+    const files: { name: string }[] = await response.json();
+    if (!files.length) return;
+    await removePhotos(files.map((file) => `${userId}/${file.name}`));
+  }
+}
+
+/** Efface les photos personnelles liées à une fiche retirée du catalogue. */
+async function removeSheetPhotos(title: string): Promise<void> {
+  const url = `${SUPABASE_URL}/rest/v1/deck_items?title=eq.${encodeURIComponent(title)}&select=custom_photos`;
+  const rows = await fetch(url, { headers: serverHeaders() });
+  if (!rows.ok) return;
+  const items: { custom_photos: string[] }[] = await rows.json();
+  await removePhotos(items.flatMap((item) => item.custom_photos));
+}
+
 type Answer = { status: number; body: Record<string, unknown> };
 
 /** Traduit le refus du service de comptes, et le garde dans les journaux. */
@@ -168,12 +203,15 @@ async function adminAction(action: string, input: Record<string, unknown>, self:
     if (!validId(input.user_id)) return { status: 400, body: { error: "Compte invalide." } };
     if (input.user_id === self.id) return { status: 400, body: { error: "Tu ne peux pas supprimer ton propre compte." } };
     const response = await fetch(`${authUrl}/${input.user_id}`, { method: "DELETE", headers: serverHeaders() });
-    return response.ok ? { status: 200, body: { deleted: true } } : await authFailure(response, "Ce compte n'a pas pu être supprimé.");
+    if (!response.ok) return await authFailure(response, "Ce compte n'a pas pu être supprimé.");
+    await removeUserPhotos(input.user_id);
+    return { status: 200, body: { deleted: true } };
   }
   if (action === "remove-sheet") {
     if (!validTitle(input.title)) return { status: 400, body: { error: "Nom de voiture invalide." } };
     const response = await runRobot("remove-car.yml", input.title);
     if (!response.ok) return { status: 502, body: { error: "Le robot n'a pas pu être lancé." } };
+    await removeSheetPhotos(input.title);
     await fetch(`${SUPABASE_URL}/rest/v1/deck_items?title=eq.${encodeURIComponent(input.title)}`, {
       method: "DELETE",
       headers: serverHeaders(),
