@@ -1446,10 +1446,12 @@ async function renderDiscover() {
   }
   state.people = people;
   const catalog = new Map(state.catalog.map((car) => [titleOf(car), car]));
-  el("discover-status").textContent = people.length
-    ? `${plural(people.length, "collection")} à découvrir`
+  // Une collection vide n'a rien à montrer, comme celle du compte administrateur.
+  const visible = people.filter((person) => items.some((item) => item.user_id === person.id && catalog.has(item.title)));
+  el("discover-status").textContent = visible.length
+    ? `${plural(visible.length, "collection")} à découvrir`
     : "Aucune autre collection n'est visible pour l'instant.";
-  el("people-grid").innerHTML = people.map((person) => {
+  el("people-grid").innerHTML = visible.map((person) => {
     const cars = items.filter((item) => item.user_id === person.id && catalog.has(item.title));
     const photos = cars.slice(0, 3).map((item) => {
       const car = catalog.get(item.title);
@@ -1457,7 +1459,7 @@ async function renderDiscover() {
       return photo ? `<img src="${esc(photo.file)}" alt="" loading="lazy">` : "";
     }).join("");
     return `<button type="button" class="person-card" data-view-user="${esc(person.id)}">
-      <span class="person-photos" data-count="${Math.min(cars.length, 3)}">${photos || `<span class="person-empty">Collection vide</span>`}</span>
+      <span class="person-photos" data-count="${Math.min(cars.length, 3)}">${photos}</span>
       <span class="person-info">
         <span class="person-avatar">${avatarHtml(person.avatar, person.username)}</span>
         <span><strong>${esc(person.username)}</strong><small>${plural(cars.length, "voiture")}</small></span>

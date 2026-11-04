@@ -708,7 +708,6 @@ body.has-compare-bar { padding-bottom: 72px; }
 .person-photos img:first-child { grid-row: 1 / 3; }
 .person-photos[data-count="1"] img:first-child { grid-column: 1 / 3; }
 .person-photos[data-count="2"] img:nth-child(2) { grid-row: 1 / 3; }
-.person-empty { display: grid; grid-column: 1 / 3; grid-row: 1 / 3; place-items: center; color: var(--muted); font-size: .875rem; }
 .person-info { display: flex; align-items: center; gap: 12px; padding-top: 12px; }
 .person-info strong { display: block; color: var(--ink); font-size: 1.125rem; line-height: 1.3; overflow-wrap: anywhere; }
 .person-info small { display: block; color: var(--muted); font-size: .875rem; }
