@@ -7,73 +7,91 @@
   <meta name="description" content="Ma bibliothèque de voitures préférées : photos et fiches techniques.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header class="masthead">
-    <a class="brand" href="#">Carnet de garage</a>
-    <button class="add-button" id="open-add" type="button">Ajouter une voiture</button>
+  <header class="top-nav">
+    <div class="wrap top-nav-inner">
+      <a class="wordmark" href="#">Carnet de garage</a>
+      <button class="button button-primary" id="open-add" type="button">Ajouter une voiture</button>
+    </div>
   </header>
 
   <main id="app">
-    <section id="library" aria-label="Bibliothèque">
-      <div class="toolbar">
-        <p class="count" id="count" aria-live="polite">Chargement des voitures…</p>
-        <label class="field grow">
-          <span>Rechercher</span>
-          <input id="search" type="search" placeholder="Nom, marque, moteur…" autocomplete="off">
-        </label>
-        <label class="field">
-          <span>Marque</span>
-          <select id="brand"><option value="">Toutes</option></select>
-        </label>
-        <label class="field">
-          <span>Trier par</span>
-          <select id="sort">
-            <option value="added">Ajout récent</option>
-            <option value="name">Nom</option>
-            <option value="power">Puissance</option>
-            <option value="ratio">Rapport poids/puissance</option>
-            <option value="year">Année</option>
-          </select>
-        </label>
-      </div>
-      <div class="grid" id="grid"></div>
-      <p class="empty" id="empty" hidden></p>
-    </section>
+    <div id="library">
+      <section class="hero-band" id="hero" aria-label="Voiture à la une" hidden></section>
+
+      <section class="section" aria-labelledby="library-title">
+        <div class="wrap">
+          <div class="library-head">
+            <h2 class="display-lg" id="library-title">Toutes les voitures</h2>
+            <p class="count" id="count" aria-live="polite">Chargement des voitures…</p>
+          </div>
+          <div class="toolbar">
+            <label class="field grow">
+              <span class="label">Rechercher</span>
+              <input id="search" type="search" placeholder="Nom, marque, moteur…" autocomplete="off">
+            </label>
+            <label class="field">
+              <span class="label">Trier par</span>
+              <select id="sort">
+                <option value="added">Ajout récent</option>
+                <option value="name">Nom</option>
+                <option value="power">Puissance</option>
+                <option value="ratio">Rapport poids/puissance</option>
+                <option value="year">Année</option>
+              </select>
+            </label>
+          </div>
+          <div class="chips" id="brands" role="group" aria-label="Filtrer par marque"></div>
+          <div class="grid" id="grid"></div>
+          <p class="empty" id="empty" hidden></p>
+        </div>
+      </section>
+
+      <section class="cta-band">
+        <div class="wrap">
+          <h2 class="display-md">Une voiture manque à la collection ?</h2>
+          <p>Donne son nom : la fiche technique et les photos se complètent toutes seules.</p>
+          <button class="button button-on-dark" id="open-add-cta" type="button">Ajouter une voiture</button>
+        </div>
+      </section>
+    </div>
 
     <article id="detail" hidden></article>
   </main>
 
-  <footer class="colophon">
-    Textes et données issus de Wikipédia (CC BY-SA 4.0). Photos issues de Wikimedia Commons, avec leur auteur et leur licence sur chaque fiche.
+  <footer class="footer">
+    <div class="wrap">
+      <p>Textes et données issus de Wikipédia (CC BY-SA 4.0). Photos issues de Wikimedia Commons, avec leur auteur et leur licence sur chaque fiche.</p>
+    </div>
   </footer>
 
   <dialog id="add-dialog" aria-labelledby="add-title">
     <form id="add-form" method="dialog">
-      <h2 id="add-title">Ajouter une voiture</h2>
+      <h2 class="display-sm" id="add-title">Ajouter une voiture</h2>
       <p>Donne le nom de la voiture. Le formulaire s'ouvre sur GitHub : valide-le, et la fiche et les photos arrivent ici en deux minutes environ.</p>
       <label class="field">
-        <span>Nom de la voiture</span>
-        <input id="add-name" type="text" required maxlength="120" placeholder="Ex. : Aston Martin DB5" autocomplete="off">
+        <span class="label">Nom de la voiture</span>
+        <input id="add-name" type="text" required maxlength="120" placeholder="Ex. : Porsche 911 (993)" autocomplete="off">
       </label>
       <p class="hint" id="add-hint" hidden>Ce bouton fonctionne une fois le site en ligne. En local, lance plutôt <code>python3 scripts/add_car.py "Nom"</code>.</p>
       <div class="dialog-actions">
-        <button type="button" class="ghost" id="add-cancel">Annuler</button>
-        <button type="submit" class="add-button" id="add-submit">Continuer sur GitHub</button>
+        <button type="button" class="button button-secondary" id="add-cancel">Annuler</button>
+        <button type="submit" class="button button-primary" id="add-submit">Continuer sur GitHub</button>
       </div>
     </form>
   </dialog>
 
   <dialog id="delete-dialog" aria-labelledby="delete-title">
     <form id="delete-form" method="dialog">
-      <h2 id="delete-title">Supprimer cette voiture ?</h2>
+      <h2 class="display-sm" id="delete-title">Supprimer cette voiture ?</h2>
       <p id="delete-text"></p>
       <p class="form-error" id="delete-error" role="alert" hidden></p>
       <div class="dialog-actions">
-        <button type="button" class="ghost" id="delete-cancel">Annuler</button>
-        <button type="submit" class="danger" id="delete-submit">Supprimer</button>
+        <button type="button" class="button button-secondary" id="delete-cancel">Annuler</button>
+        <button type="submit" class="button button-danger" id="delete-submit">Supprimer</button>
       </div>
     </form>
   </dialog>

@@ -9,5 +9,6 @@ Site statique (GitHub Pages) d'une bibliothèque de voitures. Parle français à
 - Ne jamais inventer de valeur technique : un champ inconnu reste absent et s'affiche « Non renseigné ». Une valeur lue dans le texte de l'article garde `from_text: true`.
 - Photos : uniquement Wikimedia Commons sous licence libre, avec auteur et licence conservés.
 - Le texte d'une issue n'est jamais interpolé dans une commande de workflow : il passe par une variable d'environnement.
+- Design : page blanche, bandes bleu nuit `#1a2129`, un seul bleu d'action `#1c69d4`, angles droits, aucune ombre, Inter en 700 et 300. Pas de logo ni de nom de marque d'un constructeur. Thème clair uniquement.
 
 Tests : `python3 -m unittest discover -s tests`. Aperçu avec suppression : `python3 scripts/serve.py`.
