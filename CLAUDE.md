@@ -1,4 +1,4 @@
-# Carnet de garage
+# CarPocket
 
 Site statique (GitHub Pages) d'une bibliothèque de voitures. Parle français à l'utilisateur.
 

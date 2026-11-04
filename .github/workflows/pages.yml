@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url || steps.deployment_retry.outputs.page_url || steps.deployment_last.outputs.page_url }}
     steps:
       # Toujours la dernière version : le robot vient peut-être d'ajouter une voiture.
       - uses: actions/checkout@v4
@@ -33,5 +33,19 @@ jobs:
       - uses: actions/upload-pages-artifact@v3
         with:
           path: site
+      # GitHub refuse une publication tant que la précédente n'est pas terminée :
+      # on patiente et on réessaie plutôt que de laisser le site en retard.
       - id: deployment
+        uses: actions/deploy-pages@v4
+        continue-on-error: true
+      - if: steps.deployment.outcome == 'failure'
+        run: sleep 60
+      - id: deployment_retry
+        if: steps.deployment.outcome == 'failure'
+        uses: actions/deploy-pages@v4
+        continue-on-error: true
+      - if: steps.deployment_retry.outcome == 'failure'
+        run: sleep 180
+      - id: deployment_last
+        if: steps.deployment_retry.outcome == 'failure'
         uses: actions/deploy-pages@v4

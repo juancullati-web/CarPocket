@@ -1,4 +1,4 @@
-# Carnet de garage
+# CarPocket
 
 Ma bibliothèque de voitures préférées : photos et fiches techniques, complétées automatiquement depuis Wikipédia et Wikimedia Commons.
 

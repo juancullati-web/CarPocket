@@ -9,7 +9,7 @@ import urllib.error
 import urllib.parse
 import urllib.request
 
-USER_AGENT = "CarnetDeGarage/1.0 (personal car library; python-urllib)"
+USER_AGENT = "CarPocket/1.0 (personal car library; python-urllib)"
 EN = "en.wikipedia.org"
 FR = "fr.wikipedia.org"
 COMMONS = "commons.wikimedia.org"

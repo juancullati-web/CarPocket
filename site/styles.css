@@ -1,4 +1,4 @@
-/* Design : DESIGN-bmw.md. Page blanche, bandes bleu nuit, un seul bleu d'action,
+/* CarPocket. Design : DESIGN-bmw.md. Page blanche, bandes bleu nuit, un seul bleu d'action,
    angles droits, aucune ombre, contraste de graisses 700 / 300. */
 :root {
   --primary: #1c69d4;
@@ -111,7 +111,8 @@ strong { font-weight: 700; }
   gap: 16px;
   min-height: 64px;
 }
-.wordmark { color: var(--ink); font-size: 1.125rem; font-weight: 700; text-decoration: none; }
+.wordmark { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); font-size: 1.375rem; font-weight: 300; line-height: 1; text-decoration: none; }
+.wordmark img { flex: none; }
 .top-nav .button { min-height: 40px; padding: 9px 20px; }
 
 /* Voiture à la une */
@@ -326,6 +327,7 @@ dialog p { margin-bottom: 16px; }
   .grid { grid-template-columns: minmax(0, 1fr); }
   .toolbar .field { flex: 1 1 100%; }
   .top-nav .button { padding-inline: 14px; font-size: .8125rem; }
-  .wordmark { font-size: 1rem; }
+  .wordmark { font-size: 1.125rem; gap: 8px; }
+  .wordmark img { width: 30px; height: 30px; }
   .spec-strip { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }

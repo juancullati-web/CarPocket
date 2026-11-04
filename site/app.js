@@ -208,7 +208,7 @@ function route() {
   const car = state.cars.find((c) => c.slug === slug);
   el("library").hidden = Boolean(car);
   el("detail").hidden = !car;
-  document.title = car ? `${car.name} · Carnet de garage` : "Carnet de garage";
+  document.title = car ? `${car.name} · CarPocket` : "CarPocket";
   if (car) el("detail").innerHTML = detailHtml(car);
   window.scrollTo(0, 0);
 }
