@@ -1,0 +1,119 @@
+{
+  "slug": "lancia-stratos",
+  "name": "Lancia Stratos",
+  "brand": "Lancia",
+  "variant": null,
+  "example": true,
+  "added": "2026-11-04",
+  "summary": "La Lancia Stratos ou Lancia Stratos HF (High Fidelity) est une voiture de rallye (et version GT Stradale) construite par la marque italienne Lancia. Construite de 1973 à 1978, elle a largement dominé les épreuves de rallye de la deuxième moitié des années 1970. Elle a remporté trois titres consécutifs (classement constructeurs) du championnat du monde des Rallyes, en 1974, 1975 et 1976 (vainqueurs d'épreuves Andruet, Munari, Darniche et Waldegård, Alén et Tony Fassina remportant aussi chacun une course en 1978-79, ainsi que Tony Carello une autre en Coupe FIA pilotes de 1978). Elle a aussi remporté trois titres consécutifs en championnat d'Europe des rallyes, en 1976, 1977 et 1978 (deux avec le français Bernard Darniche, un autre avec Carello).",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Lancia_Stratos",
+  "wikipedia_title": "Lancia Stratos",
+  "specs": {
+    "engine": {
+      "value": "Lancia 2418 cc Tipo 829A.000 V6 24v",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur transversal, moteur central, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1973–1978 · ca. 492 exemplaires",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Marcello Gandini at Bertone",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Italy: Turin",
+      "from_text": false
+    },
+    "weight": {
+      "value": "Stradale: 980 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "3710 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1750 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1110 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2180 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "190 hp",
+      "from_text": false
+    },
+    "top_speed": {
+      "value": "232 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-100 km/h : 6,8 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/lancia-stratos/1.jpg",
+      "author": "Mr.choppers",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1974_Lancia_Stratos_Stradale_at_Greenwich_2021,_front_left.jpg"
+    },
+    {
+      "file": "photos/lancia-stratos/2.jpg",
+      "author": "estoril",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Lancia_Stratos_HF_-_Goodwood_2008.jpg"
+    },
+    {
+      "file": "photos/lancia-stratos/3.jpg",
+      "author": "Tony Harrison",
+      "license": "CC BY-SA 2.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Lancia_Stratos_HF_02.jpg"
+    },
+    {
+      "file": "photos/lancia-stratos/4.jpg",
+      "author": "https://www.flickr.com/people/66926737@N08",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Lancia_Stratos_Turbo_in_Berlin.jpg"
+    },
+    {
+      "file": "photos/lancia-stratos/5.jpg",
+      "author": "Dylan Johnson",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1974_Lancia_Stratos_HF_Stradale_2.4.jpg"
+    },
+    {
+      "file": "photos/lancia-stratos/6.jpg",
+      "author": "Aethonatic",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Lancia_Stratos_(V300_STR)_-_4_July_2026.jpg"
+    }
+  ]
+}

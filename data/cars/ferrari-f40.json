@@ -1,0 +1,119 @@
+{
+  "slug": "ferrari-f40",
+  "name": "Ferrari F40",
+  "brand": "Ferrari",
+  "variant": null,
+  "example": true,
+  "added": "2026-11-04",
+  "summary": "La Ferrari F40 est une supercar du constructeur automobile italien Ferrari, produite de 1987 à 1992. Elle succède à la Ferrari 288 GTO, et est commercialisée pour fêter les quarante ans de la marque. Ultime création d'Enzo Ferrari, elle est au moment de sa sortie la voiture de série la plus rapide (324 km/h), la plus puissante (478 cheveaux d'origine) et la plus chère (1.5 millions de francs soit environ 1.6 millions d'euro) de son époque.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Ferrari_F40",
+  "wikipedia_title": "Ferrari F40",
+  "specs": {
+    "engine": {
+      "value": "2936 cc twin-turbocharged Tipo F120A/F120D 90° V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur longitudinal, moteur central arrière, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1987–1996 · 1,311 exemplaires (including LM, Competizione, and GTE)",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Pietro Camardella under the supervision of Aldo Brovarone at Pininfarina, Nicola Materazzi (Chief Engineer)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Italy: Maranello",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1254 kg (Europe)",
+      "from_text": false
+    },
+    "length": {
+      "value": "4430 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1970 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1124 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2450 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "478 PS",
+      "from_text": false
+    },
+    "top_speed": {
+      "value": "321 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-100 km/h : 4,7 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/ferrari-f40/1.jpg",
+      "author": "Will ainsworth",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:F40_Ferrari_20090509.jpg"
+    },
+    {
+      "file": "photos/ferrari-f40/2.jpg",
+      "author": "Spanish Coches",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1991_Ferrari_F40_(Explored)_Jan_27,_2014_-463_(12179815295).jpg"
+    },
+    {
+      "file": "photos/ferrari-f40/3.jpg",
+      "author": "Vauxford",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1990_Ferrari_F40_2.9.jpg"
+    },
+    {
+      "file": "photos/ferrari-f40/4.jpg",
+      "author": "Calreyn88",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1990_Ferrari_F40.jpg"
+    },
+    {
+      "file": "photos/ferrari-f40/5.jpg",
+      "author": "Alexander Migl",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1989_Ferrari_F40_Paul_Pietsch_Classic_2025_DSC_9082.jpg"
+    },
+    {
+      "file": "photos/ferrari-f40/6.jpg",
+      "author": "MrWalkr",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1990_Ferrari_F40_SP24.jpg"
+    }
+  ]
+}

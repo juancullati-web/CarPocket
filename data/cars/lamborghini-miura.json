@@ -1,0 +1,111 @@
+{
+  "slug": "lamborghini-miura",
+  "name": "Lamborghini Miura",
+  "brand": "Lamborghini",
+  "variant": null,
+  "example": true,
+  "added": "2026-11-04",
+  "summary": "La Lamborghini Miura est un modèle automobile du constructeur italien Ferruccio Lamborghini, produit de 1966 à 1973. Il s'agit de l'une des premières voitures de série dotées d'un moteur en position centrale arrière. Elle est devenue un des modèles majeurs de l'histoire de l'automobile. Cette voiture est le fruit du travail de l'ingénieur Gian Paolo Dallara, arrivé en 1963 dans la firme au taureau, et du designer Marcello Gandini, jeune ingénieur-designer du carrossier Bertone. C'est la première voiture qui a été considérée comme une supercar dans l'histoire automobile en Europe.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Lamborghini_Miura",
+  "wikipedia_title": "Lamborghini Miura",
+  "specs": {
+    "engine": {
+      "value": "3929 cc L406 V12",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur transversal, moteur central arrière, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1966–1973 · 764 made",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Marcello Gandini at Bertone",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Italy: Sant'Agata Bolognese",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1292 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4360 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1760 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1055 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2500 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "350 PS",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/lamborghini-miura/1.jpg",
+      "author": "Chelsea Jay",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1971_Lamborghini_Miura_P400_SV.jpg"
+    },
+    {
+      "file": "photos/lamborghini-miura/2.jpg",
+      "author": "No machine-readable author provided. Guevara~commonswiki assumed (based on copyright claims).",
+      "license": "Public domain",
+      "license_url": "",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Lamborghini_miura_svj_spider_4808.jpg"
+    },
+    {
+      "file": "photos/lamborghini-miura/3.jpg",
+      "author": "MrWalkr",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Lamborghini_Miura_SV_J.jpg"
+    },
+    {
+      "file": "photos/lamborghini-miura/4.jpg",
+      "author": "Shane K from Mississauga, Canada",
+      "license": "CC BY-SA 2.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Lamborghini_Miura_(5483494392).jpg"
+    },
+    {
+      "file": "photos/lamborghini-miura/5.jpg",
+      "author": "Carfanatic2019",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1972_Lamborghini_Miura_(LUC_38K).jpg"
+    },
+    {
+      "file": "photos/lamborghini-miura/6.jpg",
+      "author": "Thomas Vogt from Paderborn, Deutschland",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Lamborghini_Miura_(53273990661).jpg"
+    }
+  ]
+}

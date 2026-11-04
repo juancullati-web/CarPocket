@@ -1,0 +1,68 @@
+name: Retirer une voiture
+
+on:
+  issues:
+    types: [opened]
+
+concurrency:
+  group: library
+  cancel-in-progress: false
+
+jobs:
+  remove:
+    # Seules les demandes ouvertes par le propriétaire du dépôt sont traitées.
+    if: github.event.issue.user.login == github.repository_owner && startsWith(github.event.issue.title, 'Retirer une voiture')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+    outputs:
+      changed: ${{ steps.save.outputs.changed }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Supprimer la fiche et les photos
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: python3 scripts/remove_car.py --comment-file "$RUNNER_TEMP/comment.md"
+      - name: Enregistrer dans le dépôt
+        id: save
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A data site
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "Retire une voiture (demande #$ISSUE_NUMBER)"
+            git pull --rebase origin main
+            git push origin HEAD:main
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+        env:
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+      - name: Répondre et fermer la demande
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: |
+          gh issue comment "$ISSUE_NUMBER" --body-file "$RUNNER_TEMP/comment.md"
+          gh issue close "$ISSUE_NUMBER"
+      - name: Signaler un échec
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          gh issue comment "$ISSUE_NUMBER" --body "Le retrait a échoué. Détail du problème : $RUN_URL"
+
+  deploy:
+    needs: remove
+    if: needs.remove.outputs.changed == 'true'
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/pages.yml

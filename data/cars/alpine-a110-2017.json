@@ -1,0 +1,123 @@
+{
+  "slug": "alpine-a110-2017",
+  "name": "Alpine A110 (2017)",
+  "brand": "Alpine",
+  "variant": null,
+  "example": true,
+  "added": "2026-11-04",
+  "summary": "L'Alpine A110 est un coupé sportif du constructeur automobile français Alpine, présenté en mars 2017, pour une commercialisation en mars 2018. Il marque la renaissance de la marque Alpine (propriété de Renault), plus de 60 ans après sa création en 1955, et plus de 20 ans après sa disparition en 1995. L'A110 est la seconde génération d'Alpine à porter ce nom. Le 15 décembre 2017, la production de l'Alpine A110 démarre officiellement avec l'inauguration de la ligne de production par Carlos Ghosn et Bruno Le Maire, ministre de l'Économie. La fabrication s'arrête le 1er juillet 2026 après 28 701 unités produites.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Alpine_A110_%282017%29",
+  "wikipedia_title": "Alpine A110 (2017)",
+  "specs": {
+    "engine": {
+      "value": "1.8 L M5Pt turbo I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Double embrayage 7 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur central arrière, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "2017–2026",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Deyan Denkov (exterior), Laurent Negroni (interior)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "France: Dieppe",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1103 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4178 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1798 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1252 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2419 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "252 PS",
+      "from_text": false
+    },
+    "torque": {
+      "value": "320 Nm",
+      "from_text": false
+    },
+    "top_speed": {
+      "value": "250 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-100 km/h : 4,5 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/alpine-a110-2017/1.jpg",
+      "author": "Alexander Migl",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Alpine_A110_S_Automesse_Ludwigsburg_2022_1X7A5946.jpg"
+    },
+    {
+      "file": "photos/alpine-a110-2017/2.jpg",
+      "author": "Guillaume Vachey from Chalon sur Saone, France",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Alpine_A110_Cup_(Gr%C3%A9gory_Romano)_(43523371222).jpg"
+    },
+    {
+      "file": "photos/alpine-a110-2017/3.jpg",
+      "author": "Alexandre Prevot from Nancy, France",
+      "license": "CC BY-SA 2.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Alpine_A110_GT_(53026628652).jpg"
+    },
+    {
+      "file": "photos/alpine-a110-2017/4.jpg",
+      "author": "Calreyn88",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2020Renault_Alpine_A110_Legende_Auto.jpg"
+    },
+    {
+      "file": "photos/alpine-a110-2017/5.jpg",
+      "author": "Calreyn88",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2023_Alpine_A110.jpg"
+    },
+    {
+      "file": "photos/alpine-a110-2017/6.jpg",
+      "author": "Calreyn88",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2023_Alpine_A110_GT_Auto_(13053).jpg"
+    }
+  ]
+}
