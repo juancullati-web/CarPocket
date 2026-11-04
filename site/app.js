@@ -8,10 +8,11 @@ const SPEC_GROUPS = [
 ];
 const MAX_COMPARE = 3;
 const POLL_MS = 15000;
+const RELAUNCH_MS = 90000;
 const TIMEOUT_MS = 20 * 60 * 1000;
 
 const el = (id) => document.getElementById(id);
-const state = { catalog: [], cars: [], items: [], user: null, viewing: null, brand: "", compare: [], failed: new Set(), starting: new Set(), accounts: [] };
+const state = { catalog: [], cars: [], items: [], user: null, viewing: null, brand: "", compare: [], failed: new Set(), starting: new Set(), relaunched: new Set(), accounts: [] };
 
 const esc = (value) =>
   String(value ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -614,8 +615,15 @@ async function poll() {
     state.catalog = await fetchCatalog();
     const running = pendingItems().filter((item) => item.status !== "failed" && !state.starting.has(item.name));
     await Promise.all(running.map(async (item) => {
-      const { failed } = await server("car-status", { title: item.name });
+      const { failed, found } = await server("car-status", { title: item.name });
       if (failed) state.failed.add(item.name);
+      // Le lancement a pu se perdre (page fermée, GitHub lent) : on le relance une fois.
+      const row = state.items.find((entry) => entry.title === item.name);
+      const waited = row ? Date.now() - Date.parse(row.added_at) : 0;
+      if (found === false && waited > RELAUNCH_MS && !state.relaunched.has(item.name)) {
+        state.relaunched.add(item.name);
+        await startRobot(item.name);
+      }
     }));
   } catch { /* on réessaiera au prochain passage */ }
   state.compare = state.compare.filter((slug) => carBySlug(slug));

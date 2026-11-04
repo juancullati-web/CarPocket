@@ -120,7 +120,7 @@ async function memberAction(user: { id: string }, action: string, input: Record<
     const run = runs.find((r: { display_title: string }) => r.display_title === `Ajout de ${input.title}`);
     return {
       status: 200,
-      body: { failed: Boolean(run && run.status === "completed" && run.conclusion === "failure") },
+      body: { found: Boolean(run), failed: Boolean(run && run.status === "completed" && run.conclusion === "failure") },
     };
   }
   return null;
