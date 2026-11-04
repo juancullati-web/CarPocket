@@ -13,11 +13,7 @@ def slugify(text: str) -> str:
 
 
 def site_url() -> str:
-    repository = os.environ.get("GITHUB_REPOSITORY", "")
-    if "/" not in repository:
-        return ""
-    owner, repo = repository.split("/", 1)
-    return f"https://{owner.lower()}.github.io/{repo}/"
+    return "https://carpocket.inzight.fr/" if os.environ.get("GITHUB_ACTIONS") else ""
 
 
 def write_comment(path: str | None, text: str) -> None:

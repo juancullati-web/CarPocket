@@ -1,5 +1,7 @@
 # CarPocket
 
+Adresse : https://carpocket.inzight.fr (sous-domaine pointant vers GitHub Pages). `inzight.fr` est le site personnel du propriétaire, hébergé chez Hostinger : ne pas y toucher.
+
 Site statique (GitHub Pages) d'une bibliothèque de voitures, avec comptes et collections sur Supabase. Parle français à l'utilisateur.
 
 - `data/cars/<slug>.json` est la source de vérité. `site/cars.json` est généré par `scripts/build_index.py` à chaque publication et au lancement de `scripts/serve.py` : il n'est pas versionné.

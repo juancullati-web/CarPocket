@@ -2,7 +2,7 @@
 // À déployer avec « Verify JWT » désactivé : chaque action vérifie ici la connexion.
 
 const REPO = "juancullati-web/CarPocket";
-const ALLOWED_ORIGINS = ["https://juancullati-web.github.io", "http://localhost:8765"];
+const ALLOWED_ORIGINS = ["https://carpocket.inzight.fr", "https://juancullati-web.github.io", "http://localhost:8765"];
 const LOGIN_DOMAIN = "users.carpocket.example";
 
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
