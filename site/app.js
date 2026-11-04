@@ -453,24 +453,31 @@ const creditText = (photo) => (photo.custom
 /** Actions sur la photo affichée, puis ajout de photos. */
 function mainPhotoControl(car, index) {
   const photo = car.photos[index];
-  const buttons = [];
-  if (photo) {
-    buttons.push(index === 0
-      ? `<span class="main-photo-state">Photo principale ✓</span>`
-      : `<button type="button" class="photo-action" data-main-photo="${index}">Choisir comme principale</button>`);
-    buttons.push(photo.custom
-      ? `<button type="button" class="photo-action" data-delete-photo="${index}">Supprimer</button>`
-      : `<button type="button" class="photo-action" data-hide-photo="${index}">Masquer</button>`);
-  }
-  buttons.push(`<label class="add-icon photo-add" title="Ajouter une photo">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M3 8h4l2-3h6l2 3h4v11H3z"/><path d="M12 10v6M9 13h6"/></svg>
+  const buttons = [`<label class="add-icon photo-add" title="Ajouter une photo">
+    ${photoIcon('<path d="M3 8h4l2-3h6l2 3h4v11H3z"/><path d="M12 10v6M9 13h6"/>')}
     <input type="file" accept="image/*" aria-label="Ajouter une photo" data-add-photo>
-  </label>`);
+  </label>`];
+  if (photo) {
+    buttons.push(photo.custom
+      ? iconButton("Supprimer cette photo", `data-delete-photo="${index}"`, '<path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v5M14 11v5"/>')
+      : iconButton("Masquer cette photo", `data-hide-photo="${index}"`, '<path d="M3 3l18 18M10 6a9 9 0 0 1 12 6 12 12 0 0 1-3 4M6 7a13 13 0 0 0-4 5 10 10 0 0 0 14 5M10 10a3 3 0 0 0 4 4"/>'));
+    buttons.push(index === 0
+      ? `<span class="photo-icon is-main" role="img" aria-label="Photo principale" title="Photo principale">${photoIcon(STAR_PATH, "currentColor")}</span>`
+      : iconButton("Choisir comme photo principale", `data-main-photo="${index}"`, STAR_PATH));
+  }
   if (car.hiddenCount) {
-    buttons.push(`<button type="button" class="photo-action" data-restore-photos>Rétablir ${car.hiddenCount > 1 ? `${car.hiddenCount} photos masquées` : "1 photo masquée"}</button>`);
+    const label = car.hiddenCount > 1 ? `Rétablir ${car.hiddenCount} photos masquées` : "Rétablir 1 photo masquée";
+    buttons.push(`<button type="button" class="photo-icon" data-restore-photos aria-label="${label}" title="${label}">
+      ${photoIcon('<path d="M2 12a11 11 0 0 1 20 0 11 11 0 0 1-20 0z"/><circle cx="12" cy="12" r="3"/>')}
+      <span class="photo-count" aria-hidden="true">${car.hiddenCount}</span>
+    </button>`);
   }
   return buttons.join("");
 }
+
+const STAR_PATH = '<path d="M12 3l2.8 5.9 6.2.8-4.5 4.4 1.1 6.4-5.6-3.1-5.6 3.1 1.1-6.4L3 9.7l6.2-.8z"/>';
+const photoIcon = (paths, fill = "none") => `<svg viewBox="0 0 24 24" fill="${fill}" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">${paths}</svg>`;
+const iconButton = (label, attribute, paths) => `<button type="button" class="photo-icon" ${attribute} aria-label="${label}" title="${label}">${photoIcon(paths)}</button>`;
 
 function detailHtml(car) {
   const hasTextValues = Object.values(car.specs).some((s) => s.from_text);
@@ -887,7 +894,7 @@ async function hidePhoto(car, index) {
   if (!photo || !item) return;
   const changes = { hidden_photos: [...(item.hidden_photos || []), photo.key] };
   if (item.main_photo === photo.key) changes.main_photo = null;
-  if (!(await updateItem(car, changes))) photoNotice("La photo n'a pas pu être masquée. Réessaie.");
+  photoNotice(await updateItem(car, changes) ? "Photo masquée." : "La photo n'a pas pu être masquée. Réessaie.");
 }
 
 async function deletePhoto(car, index) {
@@ -912,6 +919,7 @@ async function chooseMainPhoto(car, index) {
   }
   state.items = state.items.map((item) => (item.title === title ? { ...item, main_photo: file } : item));
   renderAll();
+  photoNotice("Photo principale choisie.");
 }
 
 /* Suggestions pendant la frappe */
@@ -1766,7 +1774,7 @@ el("detail").addEventListener("click", (event) => {
   }
   if (event.target.closest("[data-restore-photos]") && car) {
     updateItem(car, { hidden_photos: [] }).then((saved) => {
-      if (!saved) photoNotice("Les photos n'ont pas pu être rétablies. Réessaie.");
+      photoNotice(saved ? "Photos rétablies." : "Les photos n'ont pas pu être rétablies. Réessaie.");
     });
     return;
   }

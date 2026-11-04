@@ -769,20 +769,37 @@ body.has-compare-bar { padding-bottom: 72px; }
 
 /* Photos d'une voiture */
 .photo-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding-block: 8px 4px; }
-.photo-action {
-  display: inline-flex;
-  align-items: center;
-  min-height: 36px;
+.photo-icon {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
   border: 1px solid rgba(255, 255, 255, .45);
-  padding: 7px 14px;
+  border-radius: 50%;
+  padding: 0;
   background: transparent;
   color: var(--on-dark);
-  font: 700 .8125rem/1.2 var(--font);
   cursor: pointer;
 }
-.photo-action:hover { background: var(--on-dark); color: var(--surface-dark); }
+.photo-icon svg { width: 20px; height: 20px; }
+button.photo-icon:hover { background: var(--on-dark); color: var(--surface-dark); }
+.photo-icon.is-main { cursor: default; }
+.photo-count {
+  position: absolute;
+  top: -4px;
+  right: -4px;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 9px;
+  padding-inline: 4px;
+  background: var(--primary);
+  color: #fff;
+  font: 700 .6875rem/18px var(--font);
+  text-align: center;
+}
+.photo-actions .add-icon { width: 40px; height: 40px; }
 .photo-add { position: relative; cursor: pointer; }
 .photo-add input { position: absolute; width: 1px; height: 1px; opacity: 0; }
 .photo-add:focus-within { outline: 2px solid var(--on-dark); outline-offset: 2px; }
-.thumbs-band .main-photo-state { display: inline-block; }
 #photo-notice { padding-bottom: 4px; min-height: 0; }
