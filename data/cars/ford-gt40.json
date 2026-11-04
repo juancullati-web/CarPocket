@@ -1,0 +1,107 @@
+{
+  "slug": "ford-gt40",
+  "name": "Ford GT40",
+  "brand": "Ford",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-04T20:53:17+00:00",
+  "summary": "La Ford GT40, parfois appelée Ford GT40 Mk I est une voiture de sport du constructeur américain Ford qui a été fabriquée à 126 exemplaires, de 1964 à 1968. Elle a permis à la firme américaine de remporter, entre autres, les 24 Heures du Mans à quatre reprises successives, de 1966 à 1969. L'appellation GT40 vient des initiales « GT » de la catégorie « Grand Touring » (Grand Tourisme), complétées par le nombre « 40 » pour sa hauteur de caisse de 40 pouces (soit 1,02 m).",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Ford_GT40",
+  "wikipedia_title": "Ford GT40",
+  "specs": {
+    "engine": {
+      "value": "255 CID (4181 cc) V-8 · 289 CID (4737 cc) V-8 · 302 CID (4942 cc) V-8 · 427 CID (6997 cc) V-8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Mk1 & Mk3: Manuelle 5 rapports · Mk2 & Mk4: Manuelle 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "MR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes · Cabriolet 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1964–1969 · 105 exemplaires",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Ron Bradshaw",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United Kingdom: Slough (Mk I, Mk II, and Mk III) United States: Los Angeles (Mk I & Mk II Modifications) and Wixom, Michigan (Wixom Assembly Plant: Mk IV)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1800-2300 lb (1966, Mk IIA)",
+      "from_text": false
+    },
+    "length": {
+      "value": "4064 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1778 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1029 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2413 mm",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/ford-gt40/1.jpg",
+      "author": "edvvc from London, UK",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:GT40_at_Goodwood.jpg"
+    },
+    {
+      "file": "photos/ford-gt40/2.jpg",
+      "author": "Auteur non indiqué",
+      "license": "CC BY-SA 2.5",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.5",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1965_Ford_GT40.jpg"
+    },
+    {
+      "file": "photos/ford-gt40/3.jpg",
+      "author": "Mr.choppers",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1965_Ford_GT40_Mark_I_at_Greenwich,_front_right_1.jpg"
+    },
+    {
+      "file": "photos/ford-gt40/4.jpg",
+      "author": "David Merrett from Daventry, England",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1965_Ford_GT40_(31948552456).jpg"
+    },
+    {
+      "file": "photos/ford-gt40/5.jpg",
+      "author": "David Merrett from Daventry, England",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1968_Ford_GT_40_(6192232364).jpg"
+    },
+    {
+      "file": "photos/ford-gt40/6.jpg",
+      "author": "Calreyn88",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1966_Ford_GT40_5.jpg"
+    }
+  ]
+}
