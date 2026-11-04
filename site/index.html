@@ -3,6 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script>
+    // Le mot de passe ne doit jamais passer par une page en http.
+    if (location.protocol === "http:" && location.hostname === "carpocket.inzight.fr") {
+      location.replace("https://carpocket.inzight.fr" + location.pathname + location.search + location.hash);
+    }
+  </script>
   <title>CarPocket</title>
   <link rel="icon" href="logo.svg?v=__VERSION__" type="image/svg+xml">
   <meta name="description" content="Mon deck de voitures préférées : photos et fiches techniques.">
