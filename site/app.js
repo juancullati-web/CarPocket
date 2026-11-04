@@ -462,17 +462,15 @@ function mainPhotoControl(car, index) {
       ? `<button type="button" class="photo-action" data-delete-photo="${index}">Supprimer</button>`
       : `<button type="button" class="photo-action" data-hide-photo="${index}">Masquer</button>`);
   }
-  buttons.push(`<label class="photo-action photo-add">Ajouter une photo<input type="file" accept="image/*" data-add-photo></label>`);
-  if (isTouchDevice()) {
-    buttons.push(`<label class="photo-action photo-add">Prendre une photo<input type="file" accept="image/*" capture="environment" data-add-photo></label>`);
-  }
+  buttons.push(`<label class="add-icon photo-add" title="Ajouter une photo">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M3 8h4l2-3h6l2 3h4v11H3z"/><circle cx="12" cy="13" r="3.5"/></svg>
+    <input type="file" accept="image/*" aria-label="Ajouter une photo" data-add-photo>
+  </label>`);
   if (car.hiddenCount) {
     buttons.push(`<button type="button" class="photo-action" data-restore-photos>Rétablir ${car.hiddenCount > 1 ? `${car.hiddenCount} photos masquées` : "1 photo masquée"}</button>`);
   }
   return buttons.join("");
 }
-
-const isTouchDevice = () => window.matchMedia("(pointer: coarse)").matches;
 
 function detailHtml(car) {
   const hasTextValues = Object.values(car.specs).some((s) => s.from_text);

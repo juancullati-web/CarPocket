@@ -781,8 +781,7 @@ body.has-compare-bar { padding-bottom: 72px; }
   cursor: pointer;
 }
 .photo-action:hover { background: var(--on-dark); color: var(--surface-dark); }
-.photo-add { background: var(--primary); border-color: var(--primary); color: #fff; }
-.photo-add:hover { background: var(--primary-active); border-color: var(--primary-active); color: #fff; }
+.photo-add { position: relative; cursor: pointer; }
 .photo-add input { position: absolute; width: 1px; height: 1px; opacity: 0; }
 .photo-add:focus-within { outline: 2px solid var(--on-dark); outline-offset: 2px; }
 .thumbs-band .main-photo-state { display: inline-block; }
