@@ -1,0 +1,119 @@
+{
+  "slug": "ford-gt-second-generation",
+  "name": "Ford Second generation",
+  "brand": "Ford",
+  "variant": "Second generation",
+  "example": false,
+  "added": "2026-11-04T23:15:04+00:00",
+  "summary": "La Ford GT est une supercar du constructeur automobile américain Ford.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Ford_GT",
+  "wikipedia_title": "Ford GT#Second generation",
+  "specs": {
+    "engine": {
+      "value": "3.5 L twin-turbocharged Ford EcoBoost D35 V6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "7-speed Getrag 7DCL750 (PowerShift) dual-clutch",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur central arrière, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "December 2016 – December 2022 (1,350 units planned)",
+      "from_text": false
+    },
+    "designer": {
+      "value": "J Mays (concept), Craig Metros (exterior), Amko Leenarts (interior)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Canada: Markham, Ontario (Multimatic)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "GT: 3354 lbs",
+      "from_text": false
+    },
+    "length": {
+      "value": "4762 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "2004 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1110 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2710 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "647-660 hp",
+      "from_text": false
+    },
+    "top_speed": {
+      "value": "348 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-60 mph : 3,0 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/ford-gt-second-generation/1.jpg",
+      "author": "Ruben de Rijcke",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2018_Ford_GT.jpg"
+    },
+    {
+      "file": "photos/ford-gt-second-generation/2.jpg",
+      "author": "Dinkun Chen",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:FORD_KUGA_SECOND_GENERATION_China.jpg"
+    },
+    {
+      "file": "photos/ford-gt-second-generation/3.jpg",
+      "author": "Dinkun Chen",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:FORD_KUGA_SECOND_GENERATION_China_(16).jpg"
+    },
+    {
+      "file": "photos/ford-gt-second-generation/4.jpg",
+      "author": "Dinkun Chen",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:FORD_KUGA_SECOND_GENERATION_China_(6).jpg"
+    },
+    {
+      "file": "photos/ford-gt-second-generation/5.jpg",
+      "author": "Dinkun Chen",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:FORD_EDGE_SECOND_GENERATION_China_(24).jpg"
+    },
+    {
+      "file": "photos/ford-gt-second-generation/6.jpg",
+      "author": "Dinkun Chen",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:FORD_EDGE_SECOND_GENERATION_China_(23).jpg"
+    }
+  ]
+}
