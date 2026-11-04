@@ -1,0 +1,115 @@
+{
+  "slug": "mercedes-benz-sls-amg",
+  "name": "Mercedes-Benz SLS AMG",
+  "brand": "Mercedes-Benz",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-04T22:39:55+00:00",
+  "summary": "La Mercedes-Benz SLS AMG est un modèle du constructeur allemand Mercedes-Benz. Elle reprend les portes papillon de la 300 SL des années 1950. 5000 Mercedes SLS AMG ont été produites de 2009 à 2015 toutes versions et modèles confondus, dont 4000 coupés et 1000 roadsters.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Mercedes-Benz_SLS_AMG",
+  "wikipedia_title": "Mercedes-Benz SLS AMG",
+  "specs": {
+    "engine": {
+      "value": "6.2 L M159 V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Getrag 7DCL750 Double embrayage 7 rapports automatic",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Front moteur central, propulsion\nQuad-motor, all-wheel drive (SLS AMG Electric drive only)",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes · Cabriolet 2 portes (soft top convertible)",
+      "from_text": false
+    },
+    "production": {
+      "value": "January 2010–2014",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Mark Fetherston (2007)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Germany: Sindelfingen",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1619 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4638 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1939 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "Coupé: 1252 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2680 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "571 PS",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "315 km/h",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/mercedes-benz-sls-amg/1.jpg",
+      "author": "M 93",
+      "license": "CC BY-SA 3.0 de",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Mercedes-Benz_SLS_AMG_(C_197)_%E2%80%93_Frontansicht_ge%C3%B6ffnet,_10._August_2011,_D%C3%BCsseldorf.jpg"
+    },
+    {
+      "file": "photos/mercedes-benz-sls-amg/2.jpg",
+      "author": "OSX",
+      "license": "Public domain",
+      "license_url": "",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2010_Mercedes-Benz_SLS_AMG_(C_197)_Blackbird_coupe_(2010-10-16)_02.jpg"
+    },
+    {
+      "file": "photos/mercedes-benz-sls-amg/3.jpg",
+      "author": "The Car Spy",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Mercedes_Benz_SLS_AMG_-_Flickr_-_The_Car_Spy_(40).jpg"
+    },
+    {
+      "file": "photos/mercedes-benz-sls-amg/4.jpg",
+      "author": "Tokumeigakarinoaoshima",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Mercedes-Benz_SLS_AMG_GT_front.jpg"
+    },
+    {
+      "file": "photos/mercedes-benz-sls-amg/5.jpg",
+      "author": "OSX",
+      "license": "Public domain",
+      "license_url": "",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2012_Mercedes-Benz_SLS_AMG_(R_197)_roadster_(2012-10-26)_02.jpg"
+    },
+    {
+      "file": "photos/mercedes-benz-sls-amg/6.jpg",
+      "author": "Thesupermat",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:RM_Sotheby%E2%80%99s_2017_-_Mercedes-Benz_SLS_AMG_black_series_-_2014_-_008.jpg"
+    }
+  ]
+}
