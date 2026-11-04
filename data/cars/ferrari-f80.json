@@ -1,0 +1,119 @@
+{
+  "slug": "ferrari-f80",
+  "name": "Ferrari F80",
+  "brand": "Ferrari",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-04T19:11:54+00:00",
+  "summary": "La Ferrari F80 (également appelée « F250 » en interne) est une hypercar du constructeur automobile italien Ferrari produite à partir de 2025 en 799 exemplaires. Elle succède à la Ferrari LaFerrari, et elle est aujourd’hui la voiture la plus puissante créée par la marque, avec une puissance cumulée de 1 200 ch.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Ferrari_F80",
+  "wikipedia_title": "Ferrari F80",
+  "specs": {
+    "engine": {
+      "value": "2992 cc F163 CF 120° twin-turbo V6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Double embrayage 8 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Rear mid-engine, all-wheel-drive",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "2025–present (799 units planned)",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Ferrari Styling Centre under Flavio Manzoni",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Italy: Maranello",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1525 kg (dry)",
+      "from_text": false
+    },
+    "length": {
+      "value": "4840 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "2065 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1138 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2665 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "900 PS",
+      "from_text": false
+    },
+    "top_speed": {
+      "value": "350 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-100 km/h : 2,15 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/ferrari-f80/1.jpg",
+      "author": "Pauls.127",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source_url": "https://commons.wikimedia.org/wiki/File:FerrariF80_(resized)_(cropped).jpg"
+    },
+    {
+      "file": "photos/ferrari-f80/2.jpg",
+      "author": "Asgaw",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Ferrari_F80.jpg"
+    },
+    {
+      "file": "photos/ferrari-f80/3.jpg",
+      "author": "Pauls.127",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source_url": "https://commons.wikimedia.org/wiki/File:FerrariF80_(resized).jpg"
+    },
+    {
+      "file": "photos/ferrari-f80/4.jpg",
+      "author": "Calreyn88",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2025_Ferrari_F80.jpg"
+    },
+    {
+      "file": "photos/ferrari-f80/5.jpg",
+      "author": "Calreyn88",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2025_Ferrari_F80_3.jpg"
+    },
+    {
+      "file": "photos/ferrari-f80/6.jpg",
+      "author": "Calreyn88",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Ferrari_F80_1.jpg"
+    }
+  ]
+}
