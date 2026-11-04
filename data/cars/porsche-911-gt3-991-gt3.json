@@ -1,0 +1,104 @@
+{
+  "slug": "porsche-911-gt3-991-gt3",
+  "name": "Porsche 991 GT3",
+  "brand": "Porsche",
+  "variant": "991 GT3",
+  "example": false,
+  "added": "2026-11-04T19:52:19+00:00",
+  "summary": "La Porsche 911 GT3 est une automobile de sport du constructeur allemand Porsche mise sur le marché en 1999. C'est une version haute performance de la 911. Elle est assemblée à Stuttgart (Zuffenhausen), en Allemagne. Elle connaît plusieurs évolutions majeures, avec la 911 type 996, 997, 991 et 992.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Porsche_911_GT3",
+  "wikipedia_title": "Porsche 911 GT3#991 GT3",
+  "specs": {
+    "engine": {
+      "value": "3.8 L Porsche MA1.75/MDG.GA Flat-6 (991.1 - gasoline indirect injection) · 4.0 L Porsche MA1.76/MDG.G Flat-6 (991.2 - gasoline direct injection)",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 6 rapports (991.2 only) · 7-speed PDK",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur arrière, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "2013–2019",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Germany: Zuffenhausen (Zuffenhausen Porsche) Flacht, Weissach (Motorsport Centre Flacht)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1430 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4545 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1852 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1269 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2457 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "475-500 PS",
+      "from_text": false
+    },
+    "top_speed": {
+      "value": "325 km/h",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/porsche-911-gt3-991-gt3/1.jpg",
+      "author": "Alexandre Prévot from Nancy, France",
+      "license": "CC BY-SA 2.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Porsche_991_GT3_MkII_(37601199836)_(cropped).jpg"
+    },
+    {
+      "file": "photos/porsche-911-gt3-991-gt3/2.jpg",
+      "author": "Mr.choppers",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2015_Porsche_911_GT3_(991),_rear_left.jpg"
+    },
+    {
+      "file": "photos/porsche-911-gt3-991-gt3/3.jpg",
+      "author": "Mr.choppers",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2019_Porsche_991.2_GT3_in_Chalk,_front_right.jpg"
+    },
+    {
+      "file": "photos/porsche-911-gt3-991-gt3/4.jpg",
+      "author": "Alexandre Prévot from Nancy, France",
+      "license": "CC BY-SA 2.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Porsche_991_GT3_RS_(36534382161)_(cropped).jpg"
+    },
+    {
+      "file": "photos/porsche-911-gt3-991-gt3/5.jpg",
+      "author": "Alexander-93",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Porsche_991.2_GT3_RS_Weissach-Paket_IMG_7683.jpg"
+    }
+  ]
+}
