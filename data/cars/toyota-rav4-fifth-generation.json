@@ -1,0 +1,111 @@
+{
+  "slug": "toyota-rav4-fifth-generation",
+  "name": "Toyota Fifth generation",
+  "brand": "Toyota",
+  "variant": "Fifth generation",
+  "example": false,
+  "added": "2026-11-04T20:51:23+00:00",
+  "summary": "Le Toyota RAV4 (Recreational Active Vehicle with 4-wheels Drive, soit en français « véhicule de loisirs actif à quatre roues motrices ») est un SUV compact, produit par le constructeur automobile japonais Toyota, et sorti en 1994. La cinquième génération est apparue en 2018.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Toyota_RAV4",
+  "wikipedia_title": "Toyota RAV4#Fifth generation",
+  "specs": {
+    "engine": {
+      "value": "Petrol: · 2.0 L M20A-FKS I4 · 2.0 L M20C-FKS I4 (Wildlander, China) · 2.0 L M20D-FKS I4 (China) · 2.5 L A25A-FKS I4 · 2.5 L A25C-FKS I4 (Wildlander, China) · 2.5 L A25G-FKS I4 (China) · Petrol hybrid: · 2.5 L A25A-FXS I4 · 2.5 L A25D-FXS I4 (Wildlander, China) · 2.5 L A25F-FXS I4 (China) · Petrol plug-in hybrid (PHEV): · 2.5 L A25A-FXS I4 · 2.5 L A25D-FXS I4 (Wildlander, China) · 2.5 L A25F-FXS I4 (China)",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 6 rapports · Automatique 8 rapports · K120 CVT with physical first gear · Aisin Seiki T110 eCVT with sequential shift mode (hybrid)",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, traction\nFront-engine, four-wheel-drive",
+      "from_text": false
+    },
+    "body": {
+      "value": "SUV 5 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "November 2018 – December 2025 · 2018–2022 (Russia)",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Hideo Koyama, Daisuke Iguchi, Shun Kawaguchi, Junya Furuta and Tatsuya Sonoda",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Japan: Ōbu, Aichi (Toyota Industries Nagakusa plant); Toyota, Aichi (Takaoka Plant) Canada: Woodstock, Ontario; Cambridge, Ontario (TMMC) China: Changchun, Jilin (FAW Toyota); Guangzhou (GAC Toyota) United States: Georgetown, Kentucky (TMMK) Russia: Saint Petersburg (TMMR; 2018–2022)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1530-1640 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4570-4600 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1855 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1660 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2690 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "126 kW",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/toyota-rav4-fifth-generation/1.jpg",
+      "author": "Kevauto",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2019_Toyota_RAV4_LE_2.5L_front_4.14.19.jpg"
+    },
+    {
+      "file": "photos/toyota-rav4-fifth-generation/2.jpg",
+      "author": "Dinkun Chen",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:HONDA_CR-V_FIFTH_GENERATION_%26_TOYOTA_RAV4_PHEV_RAV4_PRIME_(XA50)_China.jpg"
+    },
+    {
+      "file": "photos/toyota-rav4-fifth-generation/3.jpg",
+      "author": "User:Two hundred percent.",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Toyota_Camry_(fifth_generation)_(front),_Serdang.jpg"
+    },
+    {
+      "file": "photos/toyota-rav4-fifth-generation/4.jpg",
+      "author": "Zynos958",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Fifth_generation_Toyota_Crown_coupe_-1-.jpg"
+    },
+    {
+      "file": "photos/toyota-rav4-fifth-generation/5.jpg",
+      "author": "User:Two hundred percent",
+      "license": "CC BY-SA 2.5",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.5",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Toyota_Unser_(fifth_generation)_(front),_Kajang.jpg"
+    },
+    {
+      "file": "photos/toyota-rav4-fifth-generation/6.jpg",
+      "author": "User:Two hundred percent",
+      "license": "CC BY-SA 2.5",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.5",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Toyota_Unser_(fifth_generation)_(rear),_Kajang.jpg"
+    }
+  ]
+}
