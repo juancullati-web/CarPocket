@@ -1,67 +1,19 @@
 #!/usr/bin/env python3
-"""Aperçu local du site, avec suppression de voitures. Accessible depuis ce Mac uniquement."""
+"""Aperçu local du site. Accessible depuis ce Mac uniquement."""
 from __future__ import annotations
 
 import functools
 import http.server
-import json
 
-import add_car
 import build_index
-import remove_car
-import set_photo
 
 PORT = 8765
-ALLOWED_HOSTS = {f"localhost:{PORT}", f"127.0.0.1:{PORT}"}
 SITE = build_index.ROOT / "site"
-
-
-class Handler(http.server.SimpleHTTPRequestHandler):
-    def _answer(self, code: int, payload: dict) -> None:
-        body = json.dumps(payload, ensure_ascii=False).encode("utf-8")
-        self.send_response(code)
-        self.send_header("Content-Type", "application/json; charset=utf-8")
-        self.send_header("Content-Length", str(len(body)))
-        self.end_headers()
-        self.wfile.write(body)
-
-    def do_POST(self) -> None:
-        if self.path not in ("/api/remove", "/api/add", "/api/photo"):
-            self._answer(404, {"error": "Adresse inconnue."})
-            return
-        # Refuse les demandes venues d'un autre site ouvert dans le navigateur.
-        origin = self.headers.get("Origin", "")
-        if (
-            self.headers.get("Host") not in ALLOWED_HOSTS
-            or origin.replace("http://", "", 1) not in ALLOWED_HOSTS
-            or self.headers.get("Content-Type") != "application/json"
-        ):
-            self._answer(403, {"error": "Demande refusée."})
-            return
-        try:
-            length = min(int(self.headers.get("Content-Length", "0")), 4096)
-            payload = json.loads(self.rfile.read(length))
-        except (ValueError, TypeError):
-            self._answer(400, {"error": "Demande illisible."})
-            return
-        if self.path == "/api/photo":
-            done = set_photo.set_main(str(payload.get("slug", "")), str(payload.get("file", "")))
-            self._answer(200 if done else 404, {"done": done})
-            return
-        if self.path == "/api/add":
-            result = add_car.add(str(payload.get("name", "")))
-            self._answer(200 if result["status"] != "not_found" else 404, result)
-            return
-        car = remove_car.remove(str(payload.get("slug", "")))
-        if car:
-            self._answer(200, {"removed": car["slug"]})
-        else:
-            self._answer(404, {"error": "Cette voiture n'existe plus."})
 
 
 def main() -> None:
     build_index.build()
-    handler = functools.partial(Handler, directory=str(SITE))
+    handler = functools.partial(http.server.SimpleHTTPRequestHandler, directory=str(SITE))
     with http.server.ThreadingHTTPServer(("127.0.0.1", PORT), handler) as server:
         print(f"Site disponible sur http://localhost:{PORT}")
         server.serve_forever()

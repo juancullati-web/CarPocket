@@ -11,7 +11,7 @@ const POLL_MS = 15000;
 const TIMEOUT_MS = 20 * 60 * 1000;
 
 const el = (id) => document.getElementById(id);
-const state = { cars: [], brand: "", pending: [], removing: [], compare: [], mainPhotos: [] };
+const state = { catalog: [], cars: [], items: [], user: null, viewing: null, brand: "", compare: [], failed: new Set(), starting: new Set(), accounts: [] };
 
 const esc = (value) =>
   String(value ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -47,47 +47,64 @@ function save(key, value) {
   } catch { /* navigation privée : rien n'est mémorisé */ }
 }
 
-/* Où envoyer les changements */
-const isLocal = () => ["localhost", "127.0.0.1"].includes(location.hostname);
+/* Comptes et données */
+const SUPABASE_URL = "https://rrdexsaqgzwsqphmrtgk.supabase.co";
+const SUPABASE_KEY = "sb_publishable_zhNyHSEJORbLdKBK8hLlng_3SHFwxO5";
+const LOGIN_DOMAIN = "users.carpocket.example";
+const db = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-/** Le dépôt se déduit de l'adresse GitHub Pages : <compte>.github.io/<dépôt>/. */
-function repository() {
-  const host = location.hostname.match(/^([^.]+)\.github\.io$/i);
-  const repo = location.pathname.split("/").filter(Boolean)[0];
-  return host && repo ? { owner: host[1], name: repo } : null;
-}
-const token = () => load("token", null);
-const canEdit = () => isLocal() || Boolean(token());
+const isAdmin = () => state.user?.role === "admin";
+const owner = () => state.viewing || state.user;
+const canEdit = () => Boolean(state.user) && !state.viewing;
 
-async function github(path, options = {}) {
-  const repo = repository();
-  return fetch(`https://api.github.com/repos/${repo.owner}/${repo.name}${path}`, {
-    ...options,
-    headers: {
-      Accept: "application/vnd.github+json",
-      "X-GitHub-Api-Version": "2022-11-28",
-      Authorization: `Bearer ${options.tokenOverride || token()}`,
-      ...(options.headers || {}),
-    },
-  });
-}
-
-/** Lance le robot. Renvoie false si la clé doit être redonnée. */
-async function runRobot(workflow, name) {
-  const response = await github(`/actions/workflows/${workflow}/dispatches`, {
+/** Appelle la fonction serveur, seule à détenir la clé GitHub et les droits d'administration. */
+async function server(action, input = {}) {
+  const { data } = await db.auth.getSession();
+  const response = await fetch(`${SUPABASE_URL}/functions/v1/carpocket`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ ref: "main", inputs: { name } }),
+    headers: {
+      "Content-Type": "application/json",
+      apikey: SUPABASE_KEY,
+      Authorization: `Bearer ${data.session?.access_token}`,
+    },
+    body: JSON.stringify({ action, ...input }),
   });
-  if (response.status === 401 || response.status === 403 || response.status === 404) return false;
-  if (!response.ok) throw new Error(String(response.status));
-  return true;
+  const body = await response.json().catch(() => ({}));
+  if (!response.ok) throw new Error(body.error || "Le serveur ne répond pas. Réessaie dans un instant.");
+  return body;
 }
 
-function requireLogin(message) {
-  save("token", null);
-  renderSession();
-  openLogin(message);
+/** La collection affichée : la fiche partagée, plus les choix de la personne. */
+function rebuildDeck() {
+  const byTitle = new Map(state.catalog.map((car) => [titleOf(car), car]));
+  state.cars = state.items.flatMap((item) => {
+    const car = byTitle.get(item.title);
+    if (!car) return [];
+    const chosen = car.photos.find((photo) => photo.file === item.main_photo);
+    return [{
+      ...car,
+      added: item.added_at,
+      photos: chosen ? [chosen, ...car.photos.filter((photo) => photo !== chosen)] : car.photos,
+    }];
+  });
+}
+
+function pendingItems() {
+  const known = new Set(state.catalog.map(titleOf));
+  return state.items.filter((item) => !known.has(item.title)).map((item) => {
+    const failed = state.failed.has(item.title);
+    const slow = Date.now() - Date.parse(item.added_at) > TIMEOUT_MS;
+    return { name: item.title, thumb: item.thumb, status: failed ? "failed" : slow ? "slow" : "running" };
+  });
+}
+
+async function loadItems() {
+  const { data, error } = await db.from("deck_items")
+    .select("title, thumb, main_photo, added_at")
+    .eq("user_id", owner().id);
+  if (error) throw error;
+  state.items = data;
+  rebuildDeck();
 }
 
 /* Cartes */
@@ -109,7 +126,7 @@ function cardHtml(car) {
       <div class="model-actions">
         ${compareButton(car)}
         <a class="text-link" href="#${esc(car.slug)}">Fiche ›</a>
-        ${canEdit() ? `<button type="button" class="text-link quiet" data-delete="${esc(car.slug)}" aria-label="Supprimer ${esc(car.name)}">Supprimer</button>` : ""}
+        ${canEdit() ? `<button type="button" class="text-link quiet" data-delete="${esc(car.slug)}" aria-label="Retirer ${esc(car.name)} de ma collection">Retirer</button>` : ""}
       </div>
     </div>
   </div>`;
@@ -144,11 +161,7 @@ const SORTERS = {
   year: (a, b) => (b.year ?? -1) - (a.year ?? -1),
 };
 
-/** Les voitures qu'on doit afficher : celles en cours de retrait sont déjà masquées. */
-function deck() {
-  const removing = new Set(state.removing.map((r) => r.name));
-  return state.cars.filter((car) => !removing.has(car.name));
-}
+const deck = () => state.cars;
 
 /* Le showroom d'accueil : les voitures du deck défilent, dans un ordre différent à chaque visite. */
 const SHOWROOM_MAX = 8;
@@ -316,29 +329,35 @@ function renderLibrary() {
     })
     .sort(SORTERS[el("sort").value]);
 
-  el("grid").innerHTML = state.pending.map(pendingCardHtml).join("") + visible.map(cardHtml).join("");
+  const pending = pendingItems();
+  el("grid").innerHTML = pending.map(pendingCardHtml).join("") + visible.map(cardHtml).join("");
   el("count").textContent = visible.length === all.length
     ? plural(all.length, "voiture")
     : `${visible.length} sur ${plural(all.length, "voiture")}`;
 
   const empty = el("empty");
-  empty.hidden = visible.length + state.pending.length > 0;
+  empty.hidden = visible.length + pending.length > 0;
   empty.textContent = all.length
     ? "Aucune voiture ne correspond à cette recherche."
-    : "Ton deck est vide pour l'instant.";
+    : canEdit() ? "Ta collection est vide. Ajoute ta première voiture avec le bouton en haut." : "Cette collection est vide.";
 }
 
 function renderSession() {
-  const edit = canEdit();
-  el("open-add").hidden = !edit && !repository();
-  el("open-add").textContent = edit ? "Ajouter une voiture" : "Connexion";
-  el("cta-band").hidden = !edit;
-  const button = el("session-button");
-  button.hidden = isLocal() || !edit;
-  button.textContent = "Déconnecter cet appareil";
+  const signedIn = Boolean(state.user);
+  el("login-view").hidden = signedIn;
+  el("app").hidden = !signedIn;
+  el("open-add").hidden = !canEdit();
+  el("footer-links").hidden = !signedIn;
+  el("cta-band").hidden = !canEdit();
+  el("accounts-link").hidden = !isAdmin();
+  el("session-name").textContent = signedIn ? `Connecté : ${state.user.username}` : "";
+  el("library-title").textContent = state.viewing ? `Collection de ${state.viewing.username}` : "Mon deck";
+  const note = el("viewing-note");
+  note.hidden = !state.viewing;
 }
 
 function renderAll() {
+  rebuildDeck();
   renderSession();
   renderHero();
   renderBrands();
@@ -383,7 +402,6 @@ function mainPhotoControl(car, index) {
 
 function detailHtml(car) {
   const hasTextValues = Object.values(car.specs).some((s) => s.from_text);
-  const repo = repository();
   const photos = car.photos;
   const cells = specCells(car);
 
@@ -419,8 +437,9 @@ function detailHtml(car) {
             <p class="summary-source">Source : <a href="${esc(safeUrl(car.summary_url))}" target="_blank" rel="noopener">Wikipédia${car.summary_lang === "en" ? " (en anglais)" : ""}</a></p>` : ""}
           <div class="actions">
             ${compareButton(car)}
-            ${repo && canEdit() ? `<a class="text-link" href="${esc(`https://github.com/${repo.owner}/${repo.name}/edit/main/data/cars/${car.slug}.json`)}" target="_blank" rel="noopener">Corriger cette fiche ›</a>` : ""}
-            ${canEdit() ? `<button type="button" class="text-link quiet" data-delete="${esc(car.slug)}">Supprimer cette voiture</button>` : ""}
+            ${canEdit() ? `<button type="button" class="text-link quiet" data-delete="${esc(car.slug)}">Retirer de ma collection</button>` : ""}
+            ${isAdmin() ? `<a class="text-link" href="https://github.com/juancullati-web/CarPocket/edit/main/data/cars/${esc(car.slug)}.json" target="_blank" rel="noopener">Corriger cette fiche ›</a>
+            <button type="button" class="text-link quiet" data-remove-sheet="${esc(titleOf(car))}">Supprimer la fiche pour tout le monde</button>` : ""}
           </div>
         </div>
         <div>
@@ -536,7 +555,7 @@ function renderCompareBar() {
 function setCompare(list) {
   state.compare = list;
   state.compareFull = false;
-  save("compare", list);
+  if (state.user && !state.viewing) save(`compare.${state.user.id}`, list);
 }
 
 function toggleCompare(slug) {
@@ -552,20 +571,21 @@ function toggleCompare(slug) {
 /* Navigation */
 function renderRoute() {
   const hash = decodeURIComponent(location.hash.slice(1));
-  const removing = new Set(state.removing.map((r) => r.name));
   let compareCars = null;
   if (hash.startsWith("comparer:")) {
     compareCars = hash.slice(9).split(",").map(carBySlug).filter(Boolean).slice(0, MAX_COMPARE);
     if (compareCars.length < 2) compareCars = null;
   }
-  const found = carBySlug(hash);
-  const car = found && !removing.has(found.name) ? found : null;
-  el("library").hidden = Boolean(car || compareCars);
+  const accounts = hash === "comptes" && isAdmin();
+  const car = carBySlug(hash) || null;
+  el("library").hidden = Boolean(car || compareCars || accounts);
   el("detail").hidden = !car;
   el("compare").hidden = !compareCars;
-  document.title = car ? `${car.name} · CarPocket` : compareCars ? "Comparaison · CarPocket" : "CarPocket";
+  el("accounts").hidden = !accounts;
+  document.title = car ? `${car.name} · CarPocket` : compareCars ? "Comparaison · CarPocket" : accounts ? "Comptes · CarPocket" : "CarPocket";
   if (car) el("detail").innerHTML = detailHtml(car);
   if (compareCars) el("compare").innerHTML = compareHtml(compareCars);
+  if (accounts) renderAccounts();
 }
 
 function route() {
@@ -574,176 +594,78 @@ function route() {
   window.scrollTo(0, 0);
 }
 
-/* Ajout et suppression */
-async function fetchCars() {
+/* Ajout, retrait et photo principale */
+async function fetchCatalog() {
   const response = await fetch(`cars.json?t=${Date.now()}`, { cache: "no-store" });
   if (!response.ok) throw new Error(String(response.status));
   return response.json();
 }
 
-function savePending() {
-  save("pending", state.pending);
-  save("removing", state.removing);
-  save("mainPhotos", state.mainPhotos);
-}
-
-/** Affiche tout de suite la photo choisie, sans attendre la publication. */
-function applyMainPhotos() {
-  state.mainPhotos.forEach(({ slug, file }) => {
-    const car = carBySlug(slug);
-    const chosen = car?.photos.find((photo) => photo.file === file);
-    if (chosen) car.photos = [chosen, ...car.photos.filter((photo) => photo !== chosen)];
-  });
-}
-
 let pollTimer = null;
 function schedulePoll() {
   clearTimeout(pollTimer);
-  const running = state.pending.some((p) => p.status !== "failed") || state.removing.length || state.mainPhotos.length;
-  if (running) pollTimer = setTimeout(poll, POLL_MS);
-}
-
-async function findFailedRuns() {
-  if (isLocal() || !token()) return new Set();
-  const response = await github("/actions/runs?event=workflow_dispatch&per_page=30");
-  if (!response.ok) return new Set();
-  const { workflow_runs: runs } = await response.json();
-  // La tentative la plus récente pour chaque voiture fait foi.
-  const latest = new Map();
-  for (const run of runs) {
-    if (!latest.has(run.display_title)) latest.set(run.display_title, run);
-  }
-  const failed = new Set();
-  for (const item of state.pending) {
-    const run = latest.get(`Ajout de ${item.name}`);
-    if (run && Date.parse(run.created_at) >= item.at - 60000 && run.status === "completed" && run.conclusion === "failure") {
-      failed.add(item.name);
-    }
-  }
-  return failed;
-}
-
-async function findFailedPhotoRuns() {
-  if (isLocal() || !token() || !state.mainPhotos.length) return new Set();
-  const response = await github("/actions/runs?event=workflow_dispatch&per_page=30");
-  if (!response.ok) return new Set();
-  const { workflow_runs: runs } = await response.json();
-  const failed = new Set();
-  for (const { slug, at } of state.mainPhotos) {
-    const run = runs.find((r) => r.display_title === `Photo de ${slug}`);
-    if (run && Date.parse(run.created_at) >= at - 60000 && run.status === "completed" && run.conclusion === "failure") {
-      failed.add(slug);
-    }
-  }
-  return failed;
-}
-
-async function chooseMainPhoto(car, index) {
-  const file = car.photos[index]?.file;
-  if (!file) return;
-  const slot = el("main-photo-slot");
-  try {
-    if (isLocal()) {
-      const response = await fetch("/api/photo", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ slug: car.slug, file }),
-      });
-      if (!response.ok) throw new Error(String(response.status));
-      state.cars = await fetchCars();
-    } else {
-      const response = await github("/actions/workflows/set-photo.yml/dispatches", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ref: "main", inputs: { slug: car.slug, file } }),
-      });
-      if (response.status === 401 || response.status === 403 || response.status === 404) {
-        requireLogin("Cette clé n'est plus valable. Donne-en une nouvelle.");
-        return;
-      }
-      if (!response.ok) throw new Error(String(response.status));
-      state.mainPhotos = [...state.mainPhotos.filter((m) => m.slug !== car.slug), { slug: car.slug, file, at: Date.now() }];
-      savePending();
-      applyMainPhotos();
-      schedulePoll();
-    }
-    renderAll();
-  } catch {
-    if (slot) slot.innerHTML = `<span class="main-photo-state failed">Le choix n'a pas pu être enregistré. Réessaie.</span>`;
-  }
+  if (state.user && pendingItems().some((item) => item.status !== "failed")) pollTimer = setTimeout(poll, POLL_MS);
 }
 
 async function poll() {
   try {
-    state.cars = await fetchCars();
+    state.catalog = await fetchCatalog();
+    const running = pendingItems().filter((item) => item.status !== "failed" && !state.starting.has(item.name));
+    await Promise.all(running.map(async (item) => {
+      const { failed } = await server("car-status", { title: item.name });
+      if (failed) state.failed.add(item.name);
+    }));
   } catch { /* on réessaiera au prochain passage */ }
-  // Une photo reste affichée jusqu'à sa publication, ou abandonnée si le robot a échoué.
-  const failedPhotos = await findFailedPhotoRuns().catch(() => new Set());
-  state.mainPhotos = state.mainPhotos.filter(({ slug, file, at }) => {
-    const car = carBySlug(slug);
-    return car && car.photos[0]?.file !== file && !failedPhotos.has(slug) && Date.now() - at < TIMEOUT_MS;
-  });
-  applyMainPhotos();
-  const titles = new Set(state.cars.map(titleOf));
-  const names = new Set(state.cars.map((c) => c.name));
-  const failed = await findFailedRuns().catch(() => new Set());
-  const now = Date.now();
-  state.pending = state.pending
-    .filter((p) => !titles.has(p.name))
-    .map((p) => {
-      if (failed.has(p.name)) return { ...p, status: "failed" };
-      if (p.status === "failed") return p;
-      return now - p.at > TIMEOUT_MS ? { ...p, status: "slow" } : p;
-    });
-  state.removing = state.removing.filter((r) => names.has(r.name) && now - r.at < TIMEOUT_MS);
-  state.compare = state.compare.filter((s) => carBySlug(s));
-  savePending();
+  state.compare = state.compare.filter((slug) => carBySlug(slug));
   renderAll();
   schedulePoll();
 }
 
+async function startRobot(name) {
+  state.failed.delete(name);
+  state.starting.add(name);
+  try {
+    await server("request-car", { title: name });
+  } catch {
+    state.failed.add(name);
+  } finally {
+    state.starting.delete(name);
+  }
+  renderLibrary();
+  schedulePoll();
+}
+
 async function addCar(name, thumb) {
-  state.pending = [{ name, thumb, at: Date.now(), status: "running" }, ...state.pending.filter((p) => p.name !== name)];
-  savePending();
+  const row = { user_id: state.user.id, title: name, thumb: safeUrl(thumb) || null };
+  const { data, error } = await db.from("deck_items").insert(row).select("title, thumb, main_photo, added_at").single();
+  if (error) {
+    el("add-dialog").showModal();
+    setSuggestStatus("Cette voiture n'a pas pu être ajoutée. Réessaie dans un instant.");
+    return;
+  }
+  state.items = [data, ...state.items];
   el("search").value = "";
   state.brand = "";
   if (location.hash) location.hash = "";
   renderAll();
   el("library-title").scrollIntoView();
-
-  if (isLocal()) {
-    try {
-      const response = await fetch("/api/add", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name }),
-      });
-      if (!response.ok) throw new Error(String(response.status));
-      await poll();
-    } catch {
-      markFailed(name);
-    }
-    return;
-  }
-  try {
-    if (!(await runRobot("add-car.yml", name))) {
-      state.pending = state.pending.filter((p) => p.name !== name);
-      savePending();
-      renderLibrary();
-      requireLogin("Cette clé n'est plus valable. Donne-en une nouvelle.");
-      return;
-    }
-    schedulePoll();
-  } catch {
-    markFailed(name);
-  }
+  // Déjà dans le catalogue : rien à préparer, l'ajout est immédiat.
+  if (!state.catalog.some((car) => titleOf(car) === name)) startRobot(name);
 }
 
-function markFailed(name) {
-  state.pending = state.pending.map((p) => (p.name === name ? { ...p, status: "failed" } : p));
-  savePending();
-  renderLibrary();
-  schedulePoll();
+async function chooseMainPhoto(car, index) {
+  const file = car.photos[index]?.file;
+  if (!file) return;
+  const title = titleOf(car);
+  const { error } = await db.from("deck_items").update({ main_photo: file })
+    .eq("user_id", state.user.id).eq("title", title);
+  if (error) {
+    const slot = el("main-photo-slot");
+    if (slot) slot.innerHTML = `<span class="main-photo-state failed">Le choix n'a pas pu être enregistré. Réessaie.</span>`;
+    return;
+  }
+  state.items = state.items.map((item) => (item.title === title ? { ...item, main_photo: file } : item));
+  renderAll();
 }
 
 /* Suggestions pendant la frappe */
@@ -783,7 +705,7 @@ async function searchCars(query) {
 }
 
 function inDeck(name) {
-  return deck().some((car) => titleOf(car) === name) || state.pending.some((p) => p.name === name);
+  return state.items.some((item) => item.title === name);
 }
 
 function renderSuggestions() {
@@ -859,10 +781,6 @@ el("add-form").addEventListener("submit", (event) => event.preventDefault());
 el("add-cancel").addEventListener("click", () => el("add-dialog").close());
 
 function openAdd() {
-  if (!canEdit()) {
-    openLogin();
-    return;
-  }
   el("add-name").value = "";
   suggestItems = [];
   suggestIndex = -1;
@@ -874,116 +792,222 @@ function openAdd() {
 el("open-add").addEventListener("click", openAdd);
 el("open-add-cta").addEventListener("click", openAdd);
 
-/* Connexion de l'appareil */
-function openLogin(message) {
-  const repo = repository();
-  if (!repo) return;
-  const params = new URLSearchParams({
-    name: "CarPocket",
-    description: "Ajouter et supprimer des voitures depuis le site CarPocket",
-    target_name: repo.owner,
-    expires_in: "365",
-    actions: "write",
-  });
-  el("login-link").href = `https://github.com/settings/personal-access-tokens/new?${params}`;
-  el("login-error").hidden = !message;
-  el("login-error").textContent = message || "";
-  el("login-token").value = "";
-  el("login-dialog").showModal();
+/* Connexion */
+const toEmail = (username) => `${username.trim().toLowerCase()}@${LOGIN_DOMAIN}`;
+
+async function enterApp(session) {
+  const { data: profile, error } = await db.from("profiles")
+    .select("id, username, role").eq("id", session.user.id).single();
+  if (error) throw error;
+  state.user = profile;
+  state.viewing = null;
+  state.catalog = await fetchCatalog();
+  await loadItems();
+  state.compare = load(`compare.${profile.id}`, []).slice(0, MAX_COMPARE);
+  state.compare = state.compare.filter((slug) => carBySlug(slug));
+  showroom.key = "";
+  renderAll();
+  if (pendingItems().length) poll();
 }
-el("login-cancel").addEventListener("click", () => el("login-dialog").close());
-el("login-form").addEventListener("submit", async (event) => {
+
+el("session-form").addEventListener("submit", async (event) => {
   event.preventDefault();
-  const value = el("login-token").value.trim();
-  if (!value) return;
-  el("login-submit").disabled = true;
+  const errorBox = el("session-error");
+  errorBox.hidden = true;
+  el("session-submit").disabled = true;
   try {
-    const response = await github("/actions/workflows", { tokenOverride: value });
-    if (!response.ok) {
-      el("login-error").textContent = "Cette clé n'est pas acceptée. Vérifie qu'elle donne accès au dépôt CarPocket.";
-      el("login-error").hidden = false;
-      return;
-    }
-    save("token", value);
-    el("login-dialog").close();
-    renderAll();
-  } catch {
-    el("login-error").textContent = "GitHub ne répond pas. Réessaie dans un instant.";
-    el("login-error").hidden = false;
+    const { data, error } = await db.auth.signInWithPassword({
+      email: toEmail(el("session-username").value),
+      password: el("session-password").value,
+    });
+    if (error) throw error;
+    el("session-password").value = "";
+    await enterApp(data.session);
+  } catch (error) {
+    errorBox.textContent = error.status === 400
+      ? "Identifiant ou mot de passe incorrect."
+      : "La connexion n'a pas abouti. Si le problème continue, le projet est peut-être en pause.";
+    errorBox.hidden = false;
   } finally {
-    el("login-submit").disabled = false;
+    el("session-submit").disabled = false;
   }
 });
-el("session-button").addEventListener("click", () => {
-  save("token", null);
-  renderAll();
+
+el("session-button").addEventListener("click", async () => {
+  clearTimeout(pollTimer);
+  await db.auth.signOut();
+  Object.assign(state, { user: null, viewing: null, items: [], cars: [], compare: [], accounts: [] });
+  state.failed.clear();
+  showroom.key = "";
+  if (location.hash) location.hash = "";
+  renderSession();
+  renderCompareBar();
 });
 
-/* Suppression */
-const deleteDialog = el("delete-dialog");
-let carToDelete = null;
-
-function showDeleteError(message) {
-  el("delete-error").textContent = message;
-  el("delete-error").hidden = false;
+/* Comptes (administrateur) */
+async function renderAccounts() {
+  const box = el("accounts");
+  const { data: profiles, error } = await db.from("profiles").select("id, username, role").order("username");
+  if (error) {
+    box.innerHTML = `<section class="section"><div class="wrap"><p class="notice failed">Les comptes n'ont pas pu être chargés.</p></div></section>`;
+    return;
+  }
+  state.accounts = profiles;
+  box.innerHTML = `<section class="compare-head"><div class="wrap">
+      <a class="back" href="#">‹ Mon deck</a>
+      <h1 class="display-xl">Comptes</h1>
+    </div></section>
+    <section class="section"><div class="wrap">
+      <div class="compare-scroll"><table class="accounts-table">
+        <thead><tr><th>Identifiant</th><th>Rôle</th><th>Actions</th></tr></thead>
+        <tbody>${profiles.map((p) => `<tr>
+          <td>${esc(p.username)}</td>
+          <td>${p.role === "admin" ? "Administrateur" : "Membre"}</td>
+          <td><div class="account-actions">
+            <button type="button" class="text-link" data-view-user="${esc(p.id)}">Voir la collection</button>
+            <button type="button" class="text-link quiet" data-password-user="${esc(p.id)}">Changer le mot de passe</button>
+            ${p.id === state.user.id ? "" : `<button type="button" class="text-link quiet" data-delete-user="${esc(p.id)}">Supprimer</button>`}
+          </div></td>
+        </tr>`).join("")}</tbody>
+      </table></div>
+      <h2 class="display-sm" style="margin-top:48px">Créer un compte</h2>
+      <form class="account-form" id="account-form">
+        <label class="field"><span class="label">Identifiant</span><input id="account-username" required pattern="[a-z0-9_\\-]{2,30}" autocomplete="off" autocapitalize="none" spellcheck="false"></label>
+        <label class="field"><span class="label">Mot de passe (10 caractères minimum)</span><input id="account-password" type="password" required minlength="10" autocomplete="new-password"></label>
+        <button type="submit" class="button button-primary">Créer</button>
+      </form>
+      <p class="notice" id="account-notice" role="status"></p>
+    </div></section>`;
 }
 
-el("delete-cancel").addEventListener("click", () => deleteDialog.close());
+function accountNotice(text, failed = false) {
+  const notice = el("account-notice");
+  if (!notice) return;
+  notice.textContent = text;
+  notice.classList.toggle("failed", failed);
+}
 
+el("accounts").addEventListener("submit", async (event) => {
+  if (event.target.id !== "account-form") return;
+  event.preventDefault();
+  try {
+    await server("create-user", { username: el("account-username").value.trim(), password: el("account-password").value });
+    await renderAccounts();
+    accountNotice("Compte créé.");
+  } catch (error) {
+    accountNotice(error.message, true);
+  }
+});
+
+/* Fenêtre de confirmation commune */
+let confirmAction = null;
+function askConfirm({ title, text, label, action, password = false }) {
+  confirmAction = action;
+  el("delete-title").textContent = title;
+  el("delete-text").textContent = text;
+  el("delete-submit").textContent = label;
+  el("delete-submit").disabled = false;
+  el("delete-error").hidden = true;
+  el("delete-password-field").hidden = !password;
+  el("delete-password").required = password;
+  el("delete-password").value = "";
+  el("delete-dialog").showModal();
+}
+
+el("delete-cancel").addEventListener("click", () => el("delete-dialog").close());
 el("delete-form").addEventListener("submit", async (event) => {
   event.preventDefault();
-  if (!carToDelete) return;
-  const car = carToDelete;
+  if (!confirmAction) return;
   el("delete-submit").disabled = true;
   try {
-    if (isLocal()) {
-      const response = await fetch("/api/remove", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ slug: car.slug }),
-      });
-      if (response.status === 501) {
-        showDeleteError("Ce serveur ne sait pas supprimer. Lance le site avec : python3 scripts/serve.py");
-        return;
-      }
-      if (!response.ok && response.status !== 404) {
-        showDeleteError("La suppression a échoué. Rien n'a été effacé.");
-        return;
-      }
-      state.cars = state.cars.filter((c) => c.slug !== car.slug);
-    } else {
-      if (!(await runRobot("remove-car.yml", car.name))) {
-        deleteDialog.close();
-        requireLogin("Cette clé n'est plus valable. Donne-en une nouvelle.");
-        return;
-      }
-      state.removing = [...state.removing, { name: car.name, at: Date.now() }];
-      savePending();
-      schedulePoll();
-    }
-  } catch {
-    showDeleteError("La suppression n'a pas pu être lancée. Rien n'a été effacé.");
-    return;
+    await confirmAction(el("delete-password").value);
+    el("delete-dialog").close();
+  } catch (error) {
+    el("delete-error").textContent = error.message || "L'action n'a pas abouti. Réessaie.";
+    el("delete-error").hidden = false;
   } finally {
     el("delete-submit").disabled = false;
   }
-  setCompare(state.compare.filter((s) => s !== car.slug));
-  deleteDialog.close();
+});
+
+async function removeFromDeck(car) {
+  const title = titleOf(car);
+  const { error } = await db.from("deck_items").delete().eq("user_id", state.user.id).eq("title", title);
+  if (error) throw new Error("Cette voiture n'a pas pu être retirée. Réessaie.");
+  state.items = state.items.filter((item) => item.title !== title);
+  setCompare(state.compare.filter((slug) => slug !== car.slug));
   if (location.hash.slice(1) === car.slug) location.hash = "";
   renderAll();
-});
+}
 
 /* Actions sur les cartes */
 document.addEventListener("click", (event) => {
   const del = event.target.closest("[data-delete]");
   if (del) {
-    carToDelete = carBySlug(del.dataset.delete);
-    if (!carToDelete) return;
-    el("delete-title").textContent = `Supprimer ${carToDelete.name} ?`;
-    el("delete-text").textContent = "La fiche et les photos seront effacées. Tu pourras ajouter de nouveau cette voiture, mais tes corrections seront perdues.";
-    el("delete-submit").disabled = false;
-    el("delete-error").hidden = true;
-    deleteDialog.showModal();
+    const car = carBySlug(del.dataset.delete);
+    if (!car) return;
+    askConfirm({
+      title: `Retirer ${car.name} ?`,
+      text: "Elle disparaît de ta collection. Tu pourras l'ajouter de nouveau, mais ton choix de photo sera perdu.",
+      label: "Retirer",
+      action: () => removeFromDeck(car),
+    });
+    return;
+  }
+  const sheet = event.target.closest("[data-remove-sheet]");
+  if (sheet) {
+    const title = sheet.dataset.removeSheet;
+    askConfirm({
+      title: `Supprimer la fiche ${title} ?`,
+      text: "Elle disparaît de toutes les collections, avec ses photos. C'est irréversible.",
+      label: "Supprimer pour tout le monde",
+      action: async () => {
+        await server("remove-sheet", { title });
+        state.catalog = state.catalog.filter((car) => titleOf(car) !== title);
+        state.items = state.items.filter((item) => item.title !== title);
+        location.hash = "";
+        renderAll();
+      },
+    });
+    return;
+  }
+  const view = event.target.closest("[data-view-user]");
+  if (view) {
+    viewCollection(view.dataset.viewUser);
+    return;
+  }
+  const pass = event.target.closest("[data-password-user]");
+  if (pass) {
+    const account = state.accounts.find((p) => p.id === pass.dataset.passwordUser);
+    askConfirm({
+      title: `Nouveau mot de passe pour ${account.username}`,
+      text: "10 caractères minimum.",
+      label: "Changer",
+      password: true,
+      action: async (password) => {
+        await server("set-password", { user_id: account.id, password });
+        accountNotice("Mot de passe changé.");
+      },
+    });
+    return;
+  }
+  const removeUser = event.target.closest("[data-delete-user]");
+  if (removeUser) {
+    const account = state.accounts.find((p) => p.id === removeUser.dataset.deleteUser);
+    askConfirm({
+      title: `Supprimer le compte ${account.username} ?`,
+      text: "Le compte et sa collection seront effacés. C'est irréversible. Les fiches partagées restent.",
+      label: "Supprimer",
+      action: async () => {
+        await server("delete-user", { user_id: account.id });
+        await renderAccounts();
+      },
+    });
+    return;
+  }
+  const leave = event.target.closest("#viewing-leave");
+  if (leave) {
+    viewCollection(null);
     return;
   }
   const compare = event.target.closest("[data-compare]");
@@ -1005,17 +1029,33 @@ document.addEventListener("click", (event) => {
   }
   const retry = event.target.closest("[data-retry]");
   if (retry) {
-    const item = state.pending.find((p) => p.name === retry.dataset.retry);
-    if (item) addCar(item.name, item.thumb);
+    startRobot(retry.dataset.retry);
     return;
   }
   const dismiss = event.target.closest("[data-dismiss]");
   if (dismiss) {
-    state.pending = state.pending.filter((p) => p.name !== dismiss.dataset.dismiss);
-    savePending();
-    renderLibrary();
+    const title = dismiss.dataset.dismiss;
+    db.from("deck_items").delete().eq("user_id", state.user.id).eq("title", title).then(({ error }) => {
+      if (error) return;
+      state.items = state.items.filter((item) => item.title !== title);
+      state.failed.delete(title);
+      renderLibrary();
+    });
   }
 });
+
+async function viewCollection(userId) {
+  const account = state.accounts.find((p) => p.id === userId);
+  state.viewing = account && account.id !== state.user.id ? account : null;
+  el("viewing-name").textContent = state.viewing ? `Tu regardes la collection de ${state.viewing.username}, sans pouvoir la modifier.` : "";
+  try {
+    await loadItems();
+  } catch { /* la liste reste vide : le message de collection vide s'affiche */ }
+  showroom.key = "";
+  setCompare([]);
+  if (location.hash) location.hash = "";
+  renderAll();
+}
 
 el("compare-clear").addEventListener("click", () => {
   setCompare([]);
@@ -1053,22 +1093,21 @@ el("brands").addEventListener("click", (event) => {
 window.addEventListener("hashchange", route);
 
 async function start() {
-  state.pending = load("pending", []);
-  state.removing = load("removing", []);
-  state.compare = load("compare", []);
-  state.mainPhotos = load("mainPhotos", []);
-  renderSession();
-  try {
-    state.cars = await fetchCars();
-    applyMainPhotos();
-  } catch {
-    el("count").textContent = "Impossible de charger les voitures. Recharge la page dans un instant.";
-    return;
+  const { data } = await db.auth.getSession();
+  if (data.session) {
+    try {
+      await enterApp(data.session);
+      return;
+    } catch { /* on revient à la page de connexion */ }
   }
-  state.compare = state.compare.filter((s) => carBySlug(s)).slice(0, MAX_COMPARE);
-  renderAll();
-  window.scrollTo(0, 0);
-  if (state.pending.length || state.removing.length || state.mainPhotos.length) poll();
+  renderSession();
+  fetchCatalog().then((catalog) => {
+    const photos = catalog.flatMap((car) => car.photos.slice(0, 1).map((photo) => photo.file));
+    if (!photos.length) return;
+    const image = el("login-photo");
+    image.src = photos[Math.floor(Math.random() * photos.length)];
+    image.hidden = false;
+  }).catch(() => {});
 }
 
 start();

@@ -18,12 +18,37 @@
         <img src="logo.svg?v=__VERSION__" alt="" width="36" height="36">
         <span><strong>Car</strong>Pocket</span>
       </a>
-      <button class="button button-primary" id="open-add" type="button">Ajouter une voiture</button>
+      <button class="button button-primary" id="open-add" type="button" hidden>Ajouter une voiture</button>
     </div>
   </header>
 
-  <main id="app">
+  <section class="login-view" id="login-view" hidden>
+    <img class="login-photo" id="login-photo" alt="" hidden>
+    <div class="login-scrim"></div>
+    <form class="login-card" id="session-form">
+      <img src="logo.svg?v=__VERSION__" alt="" width="48" height="48">
+      <h1 class="display-md">Bienvenue sur CarPocket</h1>
+      <label class="field">
+        <span class="label">Identifiant</span>
+        <input id="session-username" type="text" autocomplete="username" autocapitalize="none" spellcheck="false" required>
+      </label>
+      <label class="field">
+        <span class="label">Mot de passe</span>
+        <input id="session-password" type="password" autocomplete="current-password" required>
+      </label>
+      <p class="form-error" id="session-error" role="alert" hidden></p>
+      <button type="submit" class="button button-primary" id="session-submit">Se connecter</button>
+    </form>
+  </section>
+
+  <main id="app" hidden>
     <div id="library">
+      <div class="viewing-note" id="viewing-note" hidden>
+        <div class="wrap">
+          <span id="viewing-name"></span>
+          <button type="button" class="footer-link" id="viewing-leave" style="margin:0">Revenir à ma collection</button>
+        </div>
+      </div>
       <section class="showroom" id="hero" aria-roledescription="carrousel" aria-label="Les voitures du deck" hidden></section>
 
       <section class="section" aria-labelledby="library-title">
@@ -65,12 +90,17 @@
 
     <article id="detail" hidden></article>
     <article id="compare" hidden></article>
+    <article id="accounts" hidden></article>
   </main>
 
   <footer class="footer">
     <div class="wrap">
       <p>Textes et données issus de Wikipédia (CC BY-SA 4.0). Photos issues de Wikimedia Commons, avec leur auteur et leur licence sur chaque fiche.</p>
-      <button type="button" class="footer-link" id="session-button"></button>
+      <div class="footer-links" id="footer-links" hidden>
+        <span id="session-name"></span>
+        <a class="footer-link" id="accounts-link" href="#comptes" hidden>Gérer les comptes</a>
+        <button type="button" class="footer-link" id="session-button">Se déconnecter</button>
+      </div>
     </div>
   </footer>
 
@@ -99,28 +129,14 @@
     </form>
   </dialog>
 
-  <dialog id="login-dialog" aria-labelledby="login-title">
-    <form id="login-form" method="dialog">
-      <h2 class="display-sm" id="login-title">Connecter cet appareil</h2>
-      <p>Pour modifier ton deck, le site a besoin d'une clé. Tu ne la donnes qu'une fois par appareil, et elle reste dans ce navigateur.</p>
-      <p><a id="login-link" target="_blank" rel="noopener">Créer la clé sur GitHub ›</a><br>
-      Sous « Repository access », choisis uniquement CarPocket. Laisse « Actions » en lecture et écriture, puis génère la clé et colle-la ici.</p>
-      <label class="field">
-        <span class="label">Clé d'accès</span>
-        <input id="login-token" type="password" required autocomplete="off" spellcheck="false">
-      </label>
-      <p class="form-error" id="login-error" role="alert" hidden></p>
-      <div class="dialog-actions">
-        <button type="button" class="button button-secondary" id="login-cancel">Annuler</button>
-        <button type="submit" class="button button-primary" id="login-submit">Connecter</button>
-      </div>
-    </form>
-  </dialog>
-
   <dialog id="delete-dialog" aria-labelledby="delete-title">
     <form id="delete-form" method="dialog">
       <h2 class="display-sm" id="delete-title">Supprimer cette voiture ?</h2>
       <p id="delete-text"></p>
+      <label class="field" id="delete-password-field" hidden>
+        <span class="label">Nouveau mot de passe</span>
+        <input id="delete-password" type="password" minlength="10" autocomplete="new-password">
+      </label>
       <p class="form-error" id="delete-error" role="alert" hidden></p>
       <div class="dialog-actions">
         <button type="button" class="button button-secondary" id="delete-cancel">Annuler</button>
@@ -129,6 +145,7 @@
     </form>
   </dialog>
 
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.118.0/dist/umd/supabase.js" integrity="sha384-TcHRA3zBbn+Lexh5n+Oil4guNPOS3rjNDpGRAN46u/s/mB2IZ50ceC6TYDU2yvgK" crossorigin="anonymous"></script>
   <script src="app.js?v=__VERSION__"></script>
 </body>
 </html>

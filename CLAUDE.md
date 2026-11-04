@@ -1,10 +1,12 @@
 # CarPocket
 
-Site statique (GitHub Pages) d'une bibliothèque de voitures. Parle français à l'utilisateur.
+Site statique (GitHub Pages) d'une bibliothèque de voitures, avec comptes et collections sur Supabase. Parle français à l'utilisateur.
 
 - `data/cars/<slug>.json` est la source de vérité. `site/cars.json` est généré par `scripts/build_index.py` à chaque publication et au lancement de `scripts/serve.py` : il n'est pas versionné.
 - Les corrections manuelles vont dans `overrides` et priment sur `specs`.
-- `scripts/add_car.py` et `remove_car.py` sont lancés par GitHub Actions (`workflow_dispatch`) depuis le site, avec une clé limitée aux Actions de ce dépôt gardée dans le navigateur du propriétaire. Ils fonctionnent aussi en local.
+- `data/cars` est un catalogue partagé et public. Les collections sont dans la table Supabase `deck_items`, liées au catalogue par le titre Wikipédia. Le choix de photo principale est propre à chaque personne (`main_photo`).
+- `scripts/add_car.py` et `remove_car.py` sont lancés par GitHub Actions (`workflow_dispatch`) depuis la fonction `supabase/functions/carpocket`, seule à détenir la clé GitHub (secret `GH_ACTIONS_TOKEN`) et les droits d'administration. Toute modification de `supabase/` se redéploie à la main dans le tableau de bord.
+- Les accès reposent sur les règles de `supabase/schema.sql`. Les inscriptions libres sont fermées et un compte a l'adresse `identifiant@users.carpocket.example`. Ne jamais mettre de clé `sb_secret_` ni la clé GitHub dans le site.
 - Python 3.9 sans dépendance pour les scripts ; HTML, CSS et JS sans framework pour le site.
 - Ne jamais inventer de valeur technique : un champ inconnu reste absent et s'affiche « Non renseigné ». Une valeur lue dans le texte de l'article garde `from_text: true`.
 - Photos : uniquement Wikimedia Commons sous licence libre, avec auteur et licence conservés.

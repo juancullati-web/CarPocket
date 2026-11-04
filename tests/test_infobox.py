@@ -5,7 +5,6 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
 
 import infobox  # noqa: E402
-import set_photo  # noqa: E402
 
 F40 = """{{Infobox automobile
 | name = Ferrari F40
@@ -145,17 +144,6 @@ class Numbers(unittest.TestCase):
         self.assertEqual(
             infobox.brand_from("Alpine A110 (2017)", "[[Automobiles Alpine|Alpine]]"), "Alpine"
         )
-
-
-class MainPhoto(unittest.TestCase):
-    PHOTOS = [{"file": "a.jpg"}, {"file": "b.jpg"}, {"file": "c.jpg"}]
-
-    def test_chosen_photo_moves_first_and_keeps_the_others(self):
-        result = set_photo.move_first(self.PHOTOS, "c.jpg")
-        self.assertEqual([p["file"] for p in result], ["c.jpg", "a.jpg", "b.jpg"])
-
-    def test_unknown_photo_is_refused(self):
-        self.assertIsNone(set_photo.move_first(self.PHOTOS, "../secret.jpg"))
 
 
 if __name__ == "__main__":
