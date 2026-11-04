@@ -1,0 +1,68 @@
+{
+  "slug": "hennessey-blackbird",
+  "name": "Hennessey Blackbird",
+  "brand": "Hennessey",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-04T17:48:05+00:00",
+  "summary": "The Hennessey Blackbird is an upcoming mid-engine grand touring sports car developed and manufactured by American vehicle manufacturer Hennessey Special Vehicles. It is the successor to the Hennessey Venom F5 and is limited to 71 units worldwide.",
+  "summary_lang": "en",
+  "summary_url": "https://en.wikipedia.org/wiki/Hennessey_Blackbird",
+  "wikipedia_title": "Hennessey Blackbird",
+  "specs": {
+    "engine": {
+      "value": "6.2 L naturally aspirated V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 6 rapports transmission",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur central arrière, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "2029 (to commence) · Limited to 71 units",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Nathan Malinick",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Sealy, Texas, United States",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1361 kg",
+      "from_text": false
+    },
+    "power": {
+      "value": "800-850 hp",
+      "from_text": false
+    },
+    "top_speed": {
+      "value": "354 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-60 mph : 2,5 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/hennessey-blackbird/1.jpg",
+      "author": "HJUdall",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source_url": "https://commons.wikimedia.org/wiki/File:27_Hennessey_Blackbird.jpg"
+    }
+  ]
+}
