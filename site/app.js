@@ -878,6 +878,37 @@ function openAdd() {
 el("open-add").addEventListener("click", openAdd);
 el("open-add-cta").addEventListener("click", openAdd);
 
+/* Thème clair ou sombre : suit l'appareil tant qu'aucun choix n'a été fait. */
+const themeQuery = window.matchMedia("(prefers-color-scheme: dark)");
+
+function savedTheme() {
+  try {
+    return localStorage.getItem("carpocket.theme");
+  } catch {
+    return null;
+  }
+}
+
+function applyTheme(theme) {
+  document.documentElement.dataset.theme = theme;
+  const label = theme === "dark" ? "Passer en thème clair" : "Passer en thème sombre";
+  const button = el("theme-toggle");
+  button.setAttribute("aria-label", label);
+  button.title = label;
+}
+
+el("theme-toggle").addEventListener("click", () => {
+  const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+  applyTheme(next);
+  try {
+    localStorage.setItem("carpocket.theme", next);
+  } catch { /* le choix vaut alors pour cette visite */ }
+});
+themeQuery.addEventListener("change", (event) => {
+  if (!savedTheme()) applyTheme(event.matches ? "dark" : "light");
+});
+applyTheme(document.documentElement.dataset.theme || "light");
+
 /* Connexion */
 const toEmail = (username) => `${username.trim().toLowerCase()}@${LOGIN_DOMAIN}`;
 

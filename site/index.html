@@ -9,6 +9,15 @@
       location.replace("https://carpocket.inzight.fr" + location.pathname + location.search + location.hash);
     }
   </script>
+  <script>
+    // Avant tout affichage, pour éviter un éclair de la mauvaise couleur.
+    (function () {
+      var saved = null;
+      try { saved = localStorage.getItem("carpocket.theme"); } catch (error) { /* navigation privée */ }
+      var dark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+      document.documentElement.dataset.theme = dark ? "dark" : "light";
+    })();
+  </script>
   <title>CarPocket</title>
   <link rel="icon" href="logo.svg?v=__VERSION__" type="image/svg+xml">
   <meta name="description" content="Mon deck de voitures préférées : photos et fiches techniques.">
@@ -24,7 +33,13 @@
         <img src="logo.svg?v=__VERSION__" alt="" width="36" height="36">
         <span><strong>Car</strong>Pocket</span>
       </a>
-      <button class="button button-primary" id="open-add" type="button" hidden>Ajouter une voiture</button>
+      <div class="top-nav-actions">
+        <button class="theme-toggle" id="theme-toggle" type="button">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M21 13a9 9 0 1 1-10-10 7 7 0 0 0 10 10z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg>
+        </button>
+        <button class="button button-primary" id="open-add" type="button" hidden>Ajouter une voiture</button>
+      </div>
     </div>
   </header>
 
