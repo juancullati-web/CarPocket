@@ -8,7 +8,7 @@ Chaque compte se connecte avec son identifiant et son mot de passe, et retrouve 
 
 ## Gérer son profil
 
-Clique sur la pastille avec ton initiale, en haut à droite. Le menu donne accès à **Mon profil**, où tu peux changer ton mot de passe, et à **Se déconnecter**. Pour l'administrateur, il donne aussi accès à **Gérer les comptes**.
+Clique sur la pastille de ton avatar, en haut à droite. Le menu donne accès à **Mon profil**, où tu peux choisir ton avatar et changer ton mot de passe, et à **Se déconnecter**. Pour l'administrateur, il donne aussi accès à **Gérer les comptes**.
 
 ## Ajouter une voiture
 

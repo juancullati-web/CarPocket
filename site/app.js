@@ -352,7 +352,7 @@ function renderSession() {
   el("open-add").hidden = !canEdit();
   el("profile-menu").hidden = !signedIn;
   if (!signedIn) closeProfileMenu();
-  el("profile-initial").textContent = signedIn ? state.user.username.charAt(0).toUpperCase() : "";
+  el("profile-initial").innerHTML = signedIn ? avatarHtml(state.user.avatar, state.user.username) : "";
   el("profile-name").textContent = signedIn ? state.user.username : "";
   el("cta-band").hidden = !canEdit();
   el("accounts-link").hidden = !isAdmin();
@@ -919,7 +919,7 @@ const toEmail = (username) => `${username.trim().toLowerCase()}@${LOGIN_DOMAIN}`
 
 async function enterApp(session) {
   const { data: profile, error } = await db.from("profiles")
-    .select("id, username, role").eq("id", session.user.id).single();
+    .select("id, username, role, avatar").eq("id", session.user.id).single();
   if (error) throw error;
   state.user = profile;
   state.viewing = null;
@@ -968,6 +968,59 @@ el("session-button").addEventListener("click", async () => {
   renderCompareBar();
 });
 
+/* Avatars : emoji, badges de marque (lettres et couleurs, pas de logos) et personnages maison. */
+const AVATAR_EMOJIS = {
+  bolide: "🏎️", voiture: "🚗", suv: "🚙", drapeau: "🏁", roue: "🛞", cle: "🔧",
+  flamme: "🔥", eclair: "⚡", etoile: "⭐", trophee: "🏆", fusee: "🚀", couronne: "👑",
+};
+const AVATAR_BRANDS = {
+  ferrari: ["Ferrari", "FE", "#c8102e", "#fff"],
+  porsche: ["Porsche", "PO", "#1a1a1a", "#d5b26b"],
+  lamborghini: ["Lamborghini", "LA", "#111", "#e6b800"],
+  alpine: ["Alpine", "AL", "#0a5fb4", "#fff"],
+  bmw: ["BMW", "BM", "#1c69d4", "#fff"],
+  mercedes: ["Mercedes-Benz", "ME", "#3c4148", "#fff"],
+  audi: ["Audi", "AU", "#bb0a30", "#fff"],
+  peugeot: ["Peugeot", "PE", "#14213d", "#fff"],
+  renault: ["Renault", "RE", "#efdf00", "#111"],
+  citroen: ["Citroën", "CI", "#a6192e", "#fff"],
+  aston: ["Aston Martin", "AM", "#00594f", "#fff"],
+  mclaren: ["McLaren", "MC", "#ff8000", "#111"],
+};
+const AVATAR_CHARACTERS = {
+  pilote: ["Pilote", "#1c69d4", '<circle cx="20" cy="21" r="12" fill="#f4f6f8"/><path d="M8 21a12 12 0 0 1 24 0v3H8z" fill="#e22718"/><rect x="11" y="18" width="18" height="7" rx="3" fill="#1a2129"/><path d="M13 20h7" stroke="#7ab0f8" stroke-width="2"/>'],
+  mecano: ["Mécano", "#f2c230", '<circle cx="20" cy="23" r="10" fill="#e8b48c"/><path d="M9 20a11 9 0 0 1 22 0z" fill="#1a2129"/><rect x="24" y="18" width="11" height="3" fill="#1a2129"/><circle cx="16.5" cy="24" r="1.5" fill="#1a2129"/><circle cx="23.5" cy="24" r="1.5" fill="#1a2129"/><path d="M16 29q4 3 8 0" fill="none" stroke="#1a2129" stroke-width="1.5"/>'],
+  robot: ["Robot", "#46525e", '<path d="M20 6v5" stroke="#d6dce2" stroke-width="2"/><circle cx="20" cy="6" r="2" fill="#e22718"/><rect x="9" y="11" width="22" height="20" rx="3" fill="#d6dce2"/><circle cx="15" cy="20" r="3" fill="#1c69d4"/><circle cx="25" cy="20" r="3" fill="#1c69d4"/><rect x="14" y="26" width="12" height="2" fill="#46525e"/>'],
+  renard: ["Renard", "#21443c", '<path d="M8 9l6 8h12l6-8 1 16-13 10L7 25z" fill="#e87722"/><path d="M12 25l8 10 8-10-8-3z" fill="#fff"/><circle cx="15" cy="22" r="1.7" fill="#1a2129"/><circle cx="25" cy="22" r="1.7" fill="#1a2129"/><circle cx="20" cy="30" r="1.8" fill="#1a2129"/>'],
+  ours: ["Ours", "#6ea3c7", '<circle cx="11" cy="12" r="5" fill="#7a4e2d"/><circle cx="29" cy="12" r="5" fill="#7a4e2d"/><circle cx="20" cy="22" r="13" fill="#7a4e2d"/><ellipse cx="20" cy="27" rx="6" ry="5" fill="#e3c6a5"/><circle cx="15" cy="19" r="1.7" fill="#1a2129"/><circle cx="25" cy="19" r="1.7" fill="#1a2129"/><circle cx="20" cy="25" r="1.8" fill="#1a2129"/>'],
+  alien: ["Extraterrestre", "#2a1f4d", '<ellipse cx="20" cy="21" rx="12" ry="14" fill="#7ed957"/><ellipse cx="14.5" cy="20" rx="3.5" ry="5" fill="#1a2129" transform="rotate(-15 14.5 20)"/><ellipse cx="25.5" cy="20" rx="3.5" ry="5" fill="#1a2129" transform="rotate(15 25.5 20)"/><path d="M17 29h6" stroke="#1a2129" stroke-width="1.5"/>'],
+};
+
+function avatarHtml(avatar, username = "") {
+  const [kind, id] = String(avatar || "").split(":");
+  if (kind === "emoji" && AVATAR_EMOJIS[id]) {
+    return `<span class="avatar avatar-emoji" aria-hidden="true">${AVATAR_EMOJIS[id]}</span>`;
+  }
+  if (kind === "marque" && AVATAR_BRANDS[id]) {
+    const [, letters, background, color] = AVATAR_BRANDS[id];
+    return `<span class="avatar avatar-brand" style="background:${background};color:${color}" aria-hidden="true">${letters}</span>`;
+  }
+  if (kind === "perso" && AVATAR_CHARACTERS[id]) {
+    const [, background, drawing] = AVATAR_CHARACTERS[id];
+    return `<span class="avatar" style="background:${background}" aria-hidden="true"><svg viewBox="0 0 40 40">${drawing}</svg></span>`;
+  }
+  return `<span class="avatar avatar-initial" aria-hidden="true">${esc(username.charAt(0).toUpperCase())}</span>`;
+}
+
+function avatarChoices() {
+  const button = (value, label) => `<button type="button" class="avatar-choice" data-avatar="${value}" aria-label="${esc(label)}" title="${esc(label)}" aria-pressed="${(state.user.avatar || "") === value}">${avatarHtml(value, state.user.username)}</button>`;
+  const group = (title, items) => `<h3 class="avatar-group">${title}</h3><div class="avatar-grid">${items}</div>`;
+  return group("Par défaut", button("", "Mon initiale"))
+    + group("Personnages", Object.entries(AVATAR_CHARACTERS).map(([id, [label]]) => button(`perso:${id}`, label)).join(""))
+    + group("Marques", Object.entries(AVATAR_BRANDS).map(([id, [label]]) => button(`marque:${id}`, label)).join(""))
+    + group("Emoji", Object.keys(AVATAR_EMOJIS).map((id) => button(`emoji:${id}`, id)).join(""));
+}
+
 /* Menu et page du profil */
 function closeProfileMenu() {
   el("profile-dropdown").hidden = true;
@@ -1010,6 +1063,11 @@ function renderProfile() {
         <div class="spec-row"><dt>Rôle</dt><dd>${isAdmin() ? "Administrateur" : "Membre"}</dd></div>
         <div class="spec-row"><dt>Collection</dt><dd id="profile-count">${plural(deck().length + pendingItems().length, "voiture")}</dd></div>
       </dl>
+      <section class="profile-avatar">
+        <h2 class="display-sm">Mon avatar</h2>
+        <div id="avatar-picker">${avatarChoices()}</div>
+        <p class="notice" id="avatar-notice" role="status"></p>
+      </section>
       <form class="profile-form" id="profile-form" novalidate>
         <h2 class="display-sm">Changer mon mot de passe</h2>
         <label class="field"><span class="label">Mot de passe actuel</span><input id="profile-current" type="password" autocomplete="current-password"></label>
@@ -1020,6 +1078,28 @@ function renderProfile() {
       </form>
     </div></section>`;
 }
+
+el("profile").addEventListener("click", async (event) => {
+  const choice = event.target.closest("[data-avatar]");
+  if (!choice) return;
+  const avatar = choice.dataset.avatar || null;
+  const previous = state.user.avatar;
+  state.user.avatar = avatar;
+  el("avatar-picker").innerHTML = avatarChoices();
+  renderSession();
+  const { error } = await db.from("profiles").update({ avatar }).eq("id", state.user.id);
+  const notice = el("avatar-notice");
+  if (error) {
+    state.user.avatar = previous;
+    el("avatar-picker").innerHTML = avatarChoices();
+    renderSession();
+    notice.textContent = "L'avatar n'a pas pu être enregistré. Réessaie.";
+    notice.classList.add("failed");
+    return;
+  }
+  notice.textContent = "Avatar enregistré.";
+  notice.classList.remove("failed");
+});
 
 function profileNotice(text, failed = false) {
   el("profile-notice").textContent = text;
@@ -1058,7 +1138,7 @@ el("profile").addEventListener("submit", async (event) => {
 /* Comptes (administrateur) */
 async function renderAccounts() {
   const box = el("accounts");
-  const { data: profiles, error } = await db.from("profiles").select("id, username, role").order("username");
+  const { data: profiles, error } = await db.from("profiles").select("id, username, role, avatar").order("username");
   if (error) {
     box.innerHTML = `<section class="section"><div class="wrap"><p class="notice failed">Les comptes n'ont pas pu être chargés.</p></div></section>`;
     return;
@@ -1072,7 +1152,7 @@ async function renderAccounts() {
       <div class="compare-scroll"><table class="accounts-table">
         <thead><tr><th>Identifiant</th><th>Rôle</th><th>Actions</th></tr></thead>
         <tbody>${profiles.map((p) => `<tr>
-          <td>${esc(p.username)}</td>
+          <td><span class="account-name"><span class="account-avatar">${avatarHtml(p.avatar, p.username)}</span>${esc(p.username)}</span></td>
           <td>${p.role === "admin" ? "Administrateur" : "Membre"}</td>
           <td><div class="account-actions">
             <button type="button" class="text-link" data-view-user="${esc(p.id)}">Voir la collection</button>

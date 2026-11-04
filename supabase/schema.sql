@@ -21,6 +21,12 @@ alter table public.deck_items drop constraint if exists deck_items_thumb_check;
 alter table public.deck_items add constraint deck_items_thumb_check
   check (thumb is null or thumb ~ '^https://[a-z]+\.wikimedia\.org/');
 
+-- L'avatar est un identifiant choisi dans la liste du site, jamais une image envoyée.
+alter table public.profiles add column if not exists avatar text;
+alter table public.profiles drop constraint if exists profiles_avatar_check;
+alter table public.profiles add constraint profiles_avatar_check
+  check (avatar is null or avatar ~ '^(emoji|marque|perso):[a-z0-9-]{1,30}$');
+
 -- Le profil se crée tout seul avec le compte, toujours en simple membre.
 create or replace function public.handle_new_user()
 returns trigger
@@ -67,8 +73,9 @@ alter table public.deck_items enable row level security;
 
 revoke all on public.profiles from anon, authenticated;
 revoke all on public.deck_items from anon, authenticated;
--- Personne ne peut modifier un profil depuis le site, donc ni changer son rôle.
+-- Seul l'avatar est modifiable depuis le site : personne ne peut changer son rôle.
 grant select on public.profiles to authenticated;
+grant update (avatar) on public.profiles to authenticated;
 grant select, insert, delete on public.deck_items to authenticated;
 grant update (main_photo) on public.deck_items to authenticated;
 
@@ -76,6 +83,12 @@ drop policy if exists "profil lisible par soi ou l'admin" on public.profiles;
 create policy "profil lisible par soi ou l'admin" on public.profiles
   for select to authenticated
   using (id = (select auth.uid()) or (select public.is_admin()));
+
+drop policy if exists "avatar modifiable par soi" on public.profiles;
+create policy "avatar modifiable par soi" on public.profiles
+  for update to authenticated
+  using (id = (select auth.uid()))
+  with check (id = (select auth.uid()));
 
 drop policy if exists "collection lisible par soi ou l'admin" on public.deck_items;
 create policy "collection lisible par soi ou l'admin" on public.deck_items
