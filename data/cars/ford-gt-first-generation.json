@@ -1,0 +1,119 @@
+{
+  "slug": "ford-gt-first-generation",
+  "name": "Ford First generation",
+  "brand": "Ford",
+  "variant": "First generation",
+  "example": false,
+  "added": "2026-11-04T23:07:08+00:00",
+  "summary": "La Ford GT est une supercar du constructeur automobile américain Ford.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Ford_GT",
+  "wikipedia_title": "Ford GT#First generation",
+  "specs": {
+    "engine": {
+      "value": "5.4 L supercharged Ford Modular V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 6 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur central arrière, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "June 2004 – September 2006 · 4,038 exemplaires",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Camilo Pardo under J Mays",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United States: Wixom, Michigan (Wixom Assembly Plant; interior) Troy, Michigan (SSV Inc.; Body Paint facility) Norwalk, Ohio (Mayflower Vehicle Systems; Production and assembly) Romeo, Michigan (Ford Romeo Engine Plant; Engine and transmission)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1581 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4643 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1953 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1125 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2710 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "550 hp",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "330 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-60 mph : 3,3 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/ford-gt-first-generation/1.jpg",
+      "author": "Winning Automotive Photography",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Ford_GT_Carmel.jpg"
+    },
+    {
+      "file": "photos/ford-gt-first-generation/2.jpg",
+      "author": "Dinkun Chen",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:FORD_ESCAPE_FIRST_GENERATION_China.jpg"
+    },
+    {
+      "file": "photos/ford-gt-first-generation/3.jpg",
+      "author": "Dinkun Chen",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:FORD_EDGE_FIRST_GENERATION_China_(4).jpg"
+    },
+    {
+      "file": "photos/ford-gt-first-generation/4.jpg",
+      "author": "Thorsten Lindner",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1957_Ford_T-Bird_first_generation_06.jpg"
+    },
+    {
+      "file": "photos/ford-gt-first-generation/5.jpg",
+      "author": "Dinkun Chen",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:FORD_ESCAPE_FIRST_GENERATION_China_(6).jpg"
+    },
+    {
+      "file": "photos/ford-gt-first-generation/6.jpg",
+      "author": "Dinkun Chen",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:FORD_S-MAX_FIRST_GENERATION_China.jpg"
+    }
+  ]
+}
