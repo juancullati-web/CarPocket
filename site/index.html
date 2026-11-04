@@ -209,6 +209,13 @@
     </form>
   </dialog>
 
+  <dialog class="photo-viewer" id="photo-viewer" aria-label="Photo en grand">
+    <button type="button" class="viewer-button viewer-close" id="viewer-close" aria-label="Fermer" title="Fermer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+    <button type="button" class="viewer-button viewer-prev" id="viewer-prev" aria-label="Photo précédente" title="Photo précédente"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <img id="viewer-photo" alt="">
+    <button type="button" class="viewer-button viewer-next" id="viewer-next" aria-label="Photo suivante" title="Photo suivante"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+    <p class="viewer-caption"><span id="viewer-credit"></span><span id="viewer-count"></span></p>
+  </dialog>
   <div class="tooltip" id="tooltip" aria-hidden="true" hidden></div>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.118.0/dist/umd/supabase.js" integrity="sha384-TcHRA3zBbn+Lexh5n+Oil4guNPOS3rjNDpGRAN46u/s/mB2IZ50ceC6TYDU2yvgK" crossorigin="anonymous"></script>
   <script src="app.js?v=__VERSION__"></script>

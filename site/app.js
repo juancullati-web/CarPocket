@@ -494,7 +494,7 @@ function detailHtml(car) {
         <h1 class="display-xl">${esc(car.name)}</h1>
       </div>
       <div class="stage">
-        ${photos.length ? `<img id="hero-photo" src="${esc(photos[0].file)}" alt="${esc(car.name)}">` : `<div class="no-photo">Pas de photo libre trouvée</div>`}
+        ${photos.length ? `<button type="button" class="stage-zoom" data-zoom aria-label="Agrandir la photo" data-tip="Agrandir la photo"><img id="hero-photo" src="${esc(photos[0].file)}" alt="${esc(car.name)}"></button>` : `<div class="no-photo">Pas de photo libre trouvée</div>`}
       </div>
       <div class="thumbs-band"><div class="wrap">
         ${photos.length > 1 ? `<div class="thumbs">${photos.map((photo, i) => `
@@ -1778,10 +1778,15 @@ el("detail").addEventListener("click", (event) => {
     });
     return;
   }
+  if (event.target.closest("[data-zoom]") && car) {
+    openViewer(car, Number(el("hero-photo").dataset.index || 0));
+    return;
+  }
   const button = event.target.closest("[data-photo]");
   if (!button) return;
   const photo = car.photos[Number(button.dataset.photo)];
   el("hero-photo").src = photo.file;
+  el("hero-photo").dataset.index = button.dataset.photo;
   el("hero-credit").textContent = creditText(photo);
   const slot = el("main-photo-slot");
   if (slot) slot.innerHTML = mainPhotoControl(car, Number(button.dataset.photo));
@@ -1798,6 +1803,62 @@ el("brands").addEventListener("click", (event) => {
 });
 window.addEventListener("hashchange", route);
 
+/* Photo en grand */
+const viewer = { car: null, index: 0, swipe: null };
+
+function showViewerPhoto(index) {
+  const { photos } = viewer.car;
+  viewer.index = (index + photos.length) % photos.length;
+  const photo = photos[viewer.index];
+  el("viewer-photo").src = photo.file;
+  el("viewer-photo").alt = viewer.car.name;
+  el("viewer-credit").textContent = creditText(photo);
+  el("viewer-count").textContent = photos.length > 1 ? `${viewer.index + 1} / ${photos.length}` : "";
+  // La photo suivante est prête avant qu'on la demande.
+  new Image().src = photos[(viewer.index + 1) % photos.length].file;
+}
+
+function openViewer(car, index) {
+  viewer.car = car;
+  const several = car.photos.length > 1;
+  el("viewer-prev").hidden = !several;
+  el("viewer-next").hidden = !several;
+  showViewerPhoto(index);
+  el("photo-viewer").showModal();
+}
+
+el("viewer-close").addEventListener("click", () => el("photo-viewer").close());
+el("viewer-prev").addEventListener("click", () => showViewerPhoto(viewer.index - 1));
+el("viewer-next").addEventListener("click", () => showViewerPhoto(viewer.index + 1));
+el("photo-viewer").addEventListener("click", (event) => {
+  if (event.target === el("photo-viewer")) el("photo-viewer").close();
+});
+el("photo-viewer").addEventListener("keydown", (event) => {
+  if (viewer.car.photos.length < 2) return;
+  if (event.key === "ArrowLeft") showViewerPhoto(viewer.index - 1);
+  if (event.key === "ArrowRight") showViewerPhoto(viewer.index + 1);
+});
+el("photo-viewer").addEventListener("touchstart", (event) => {
+  viewer.swipe = event.touches.length === 1 ? { x: event.touches[0].clientX, y: event.touches[0].clientY } : null;
+}, { passive: true });
+el("photo-viewer").addEventListener("touchend", (event) => {
+  const start = viewer.swipe;
+  viewer.swipe = null;
+  // Une photo zoomée aux doigts se déplace : ce n'est pas un changement de photo.
+  if (!start || viewer.car.photos.length < 2 || (window.visualViewport?.scale || 1) > 1.01) return;
+  const dx = event.changedTouches[0].clientX - start.x;
+  const dy = event.changedTouches[0].clientY - start.y;
+  if (Math.abs(dx) > 50 && Math.abs(dx) > Math.abs(dy)) showViewerPhoto(viewer.index + (dx < 0 ? 1 : -1));
+}, { passive: true });
+// En refermant, la fiche montre la dernière photo regardée.
+el("photo-viewer").addEventListener("close", () => {
+  if (decodeURIComponent(location.hash.slice(1)) !== viewer.car.slug) return;
+  el("detail").querySelector(`[data-photo="${viewer.index}"]`)?.click();
+});
+window.addEventListener("hashchange", () => {
+  if (el("photo-viewer").open) el("photo-viewer").close();
+});
+
 /* Info-bulles : l'action de chaque bouton au survol à la souris ou au clavier. */
 const tooltip = el("tooltip");
 const hideTip = () => { tooltip.hidden = true; };
@@ -1811,7 +1872,7 @@ function showTip(target) {
   const left = Math.min(Math.max(margin, box.left + box.width / 2 - width / 2), innerWidth - width - margin);
   const below = box.bottom + margin;
   tooltip.style.left = `${left}px`;
-  tooltip.style.top = `${below + height > innerHeight ? box.top - height - margin : below}px`;
+  tooltip.style.top = `${Math.max(margin, below + height > innerHeight ? box.top - height - margin : below)}px`;
 }
 
 document.addEventListener("pointerover", (event) => {
