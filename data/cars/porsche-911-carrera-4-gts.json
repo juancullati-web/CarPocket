@@ -1,0 +1,34 @@
+{
+  "slug": "porsche-911-carrera-4-gts",
+  "name": "Porsche 911 Carrera 4 GTS",
+  "brand": "Porsche",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-05T10:23:36+00:00",
+  "summary": "",
+  "summary_lang": "",
+  "summary_url": "",
+  "wikipedia_title": "Porsche 911 Carrera 4 GTS",
+  "specs": {
+    "layout": {
+      "value": "Transmission intégrale",
+      "from_text": false,
+      "source": "EPA"
+    },
+    "production": {
+      "value": "2015–2026",
+      "from_text": false,
+      "source": "EPA"
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/porsche-911-carrera-4-gts/1.jpg",
+      "author": "Calreyn88",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Porsche_911_Carrera_4_GTS_(40562).jpg"
+    }
+  ]
+}
