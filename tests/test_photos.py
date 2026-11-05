@@ -26,6 +26,12 @@ class CarNameTest(unittest.TestCase):
     def test_generic_generation_keeps_the_model(self):
         self.assertEqual(wiki.car_name("Ford GT", "Ford", "First generation"), "Ford GT (First generation)")
 
+    def test_generation_with_a_code_keeps_the_model(self):
+        self.assertEqual(
+            wiki.car_name("Nissan Skyline GT-R", "Nissan", "Fifth generation (R34)"),
+            "Nissan Skyline GT-R Fifth generation (R34)",
+        )
+
     def test_named_generation_keeps_its_name(self):
         self.assertEqual(wiki.car_name("Porsche 911 GT3", "Porsche", "991 GT3"), "Porsche 991 GT3")
 

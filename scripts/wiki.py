@@ -213,7 +213,8 @@ GENERIC_VARIANT = re.compile(
 
 
 def is_generic_variant(variant: str) -> bool:
-    return not GENERIC_VARIANT.sub("", variant).strip()
+    """« Fifth generation (R34) » reste générique : la parenthèse précise, elle ne nomme pas le modèle."""
+    return not GENERIC_VARIANT.sub("", re.sub(r"\(.*?\)", "", variant)).strip()
 
 
 def photo_tokens(title: str, brand: str, variant=None) -> list:
@@ -228,7 +229,7 @@ def car_name(title: str, brand: str, wanted=None) -> str:
     if not wanted:
         return title
     if is_generic_variant(wanted):
-        return f"{title} ({wanted})"
+        return f"{title} {wanted}" if "(" in wanted else f"{title} ({wanted})"
     return wanted if wanted.lower().startswith(brand.lower()) else f"{brand} {wanted}"
 
 
