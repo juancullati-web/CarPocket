@@ -1,0 +1,68 @@
+{
+  "slug": "mg-gt",
+  "name": "MG GT",
+  "brand": "MG",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-05T10:20:41+00:00",
+  "summary": "The MG GT is a compact car produced by SAIC Motor under the MG marque from 2014 to 2019.",
+  "summary_lang": "en",
+  "summary_url": "https://en.wikipedia.org/wiki/MG_GT",
+  "wikipedia_title": "MG GT",
+  "specs": {
+    "engine": {
+      "value": "Petrol: · 1.4 L I4 · 1.5 L 15S4C VTi-Tech I4 · 1.5 L 15S4G TCI-TECH I4 turbo",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, traction",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes car",
+      "from_text": false
+    },
+    "production": {
+      "value": "2014–2019",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "China: Pukou, Nanjing Thailand: Laem Chabang (SAIC-CP)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1473-1539 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4612 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1855 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1488 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2650 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "154 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/mg-gt/1.jpg",
+      "author": "Navigator84",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:MG_GT_0001_China_2015-04-20.jpg"
+    }
+  ]
+}
