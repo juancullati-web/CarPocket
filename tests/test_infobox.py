@@ -178,5 +178,42 @@ class Numbers(unittest.TestCase):
         )
 
 
+class PlausibleTest(unittest.TestCase):
+    def test_impossible_values_are_refused(self):
+        self.assertFalse(infobox.plausible("zero_100", "0-100 km/h : 0,2 s"))
+        self.assertFalse(infobox.plausible("top_speed", "100 km/h", 2022))
+        self.assertFalse(infobox.plausible("top_speed", "900 km/h", 2022))
+        self.assertFalse(infobox.plausible("power", "9000 kW"))
+        self.assertFalse(infobox.plausible("weight", "12 kg"))
+
+    def test_real_values_stay(self):
+        self.assertTrue(infobox.plausible("zero_100", "0-60 mph : 2,5 s"))
+        self.assertTrue(infobox.plausible("top_speed", "100 km/h", 1925))
+        self.assertTrue(infobox.plausible("top_speed", "447 km/h", 2010))
+        self.assertTrue(infobox.plausible("power", "960-2220 kW"))
+        self.assertTrue(infobox.plausible("weight", "1,435 kg"))
+        self.assertTrue(infobox.plausible("weight", "59 kg"))
+
+    def test_the_number_next_to_the_unit_is_read(self):
+        self.assertEqual(infobox.weight_in_kg("SP1: 1500 kg"), 1500)
+        self.assertEqual(infobox.weight_in_kg("10.6 tonnes"), 10600)
+        self.assertEqual(infobox.weight_in_kg("3354 lbs"), 1521)
+        self.assertEqual(infobox.power_in_ch("P400: 350 PS"), 350)
+        self.assertEqual(infobox.power_in_ch("647-660 hp"), 656)
+        self.assertEqual(infobox.weight_in_kg("1470-1540 kg"), 1470)
+
+    def test_an_impossible_time_read_in_the_text_is_dropped(self):
+        text = """{{Infobox automobile
+| name = Essai
+| engine = V8
+| production = 2020
+}}
+The Essai goes from 0-100 km/h in 0.2 s, and has a top speed of 100 km/h."""
+        specs = infobox.extract_specs(text)["specs"]
+        self.assertNotIn("zero_100", specs)
+        self.assertNotIn("top_speed", specs)
+        self.assertEqual(specs["engine"]["value"], "V8")
+
+
 if __name__ == "__main__":
     unittest.main()

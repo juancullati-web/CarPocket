@@ -354,6 +354,11 @@ def extract_specs(wikitext: str, wanted=None) -> dict:
     put("top_speed", to_metric(find_top_speed(prose)), from_text=True)
     put("zero_100", find_acceleration(prose).replace(".", ","), from_text=True)
 
+    # Une valeur impossible est une erreur de lecture : mieux vaut « Non renseigné » qu'un faux chiffre.
+    year = first_year((specs.get("production") or {}).get("value", ""))
+    for key in [key for key, spec in specs.items() if not plausible(key, spec["value"], year)]:
+        del specs[key]
+
     variant = wanted
     if not variant and box is not boxes[0]:
         variant = box_name(box) or None
@@ -375,6 +380,26 @@ def brand_from(title: str, manufacturer_raw: str) -> str:
     return words[0] if words else title
 
 
+def plausible(key: str, value: str, year=None) -> bool:
+    """Écarte seulement l'impossible : le doute reste affiché, avec son astérisque si besoin."""
+    if key == "zero_100":
+        seconds = to_number(value.split(" : ")[-1])
+        return seconds is None or 1.5 <= seconds <= 60
+    if key == "top_speed":
+        speed = to_number(value)
+        if speed is None:
+            return True
+        # Depuis 1970, une voiture de série dépasse largement 100 km/h : ce chiffre vient d'ailleurs.
+        return (120 if year and year >= 1970 else 60) <= speed <= 600
+    if key == "power":
+        power = power_in_ch(value)
+        return power is None or 5 <= power <= 4000
+    if key == "weight":
+        weight = weight_in_kg(value)
+        return weight is None or 40 <= weight <= 20000
+    return True
+
+
 def to_number(text: str):
     if not text:
         return None
@@ -391,9 +416,17 @@ def to_number(text: str):
         return None
 
 
+def _number_before(text: str, units: str):
+    """Le nombre devant son unité : « SP1: 1500 kg » donne 1500, et une fourchette son bas."""
+    match = re.search(rf"(\d[\d,. ]*?)(?:\s*[-–—]\s*\d[\d,. ]*?)?\s*(?:{units})\b", text, re.I)
+    return to_number(match.group(1)) if match else None
+
+
 def power_in_ch(text: str):
     """Convertit une puissance en chevaux (ch)."""
-    value = to_number(text)
+    value = _number_before(text or "", r"kw|hp|bhp|ps|ch|cv")
+    if value is None:
+        value = to_number(text)
     if value is None:
         return None
     lowered = text.lower()
@@ -405,11 +438,15 @@ def power_in_ch(text: str):
 
 
 def weight_in_kg(text: str):
-    value = to_number(text)
+    value = _number_before(text or "", r"kg|lbs?|tonnes?|t")
+    if value is None:
+        value = to_number(text)
     if value is None:
         return None
     if re.search(r"\blbs?\b", text, re.I):
         value *= 0.453592
+    elif re.search(r"\d\s*(?:tonnes?|t)\b", text, re.I):
+        value *= 1000
     return round(value)
 
 
