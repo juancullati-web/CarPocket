@@ -1,0 +1,58 @@
+{
+  "slug": "porsche-911",
+  "name": "Porsche 911",
+  "brand": "Porsche",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-05T10:22:51+00:00",
+  "summary": "La Porsche 911 est une voiture de sport haut de gamme fabriquée par le constructeur automobile allemand Porsche. La première génération est commercialisée en 1964, intégralement conçue par la firme de Stuttgart. Soixante ans plus tard, ce modèle, emblématique de la marque, a conservé son esthétique générale. Il est toujours produit et commercialisé dans sa dernière version en date, la Porsche 911 type 992. L'architecture du moteur demeure inchangée, un 6-cylindres à plat (flat-six) disposé en porte-à-faux arrière, à l'exception des Porsche 911 GT1 et Porsche 991 RSR, voitures de course dotées d'un moteur central arrière. La 911 compte, à ce jour, huit générations. Les anciens modèles font partie des voitures de sport les plus recherchées par les collectionneurs. Le jeudi 11 mai 2017, le millionième exemplaire de la Porsche 911 est sorti des chaînes de montage de l'usine de Zuffenhausen.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Porsche_911",
+  "wikipedia_title": "Porsche 911",
+  "specs": {
+    "layout": {
+      "value": "Propulsion",
+      "from_text": false,
+      "source": "EPA"
+    },
+    "body": {
+      "value": "2-door, 2+2 or 2-seat coupé · 2-door 2+2 or 2-seat convertible · 2-door 2+2 targa top · 2-door 2-seat speedster",
+      "from_text": false
+    },
+    "production": {
+      "value": "1986–1987",
+      "from_text": false,
+      "source": "EPA"
+    },
+    "designer": {
+      "value": "Ferdinand Butzi Porsche (original design)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Germany: Stuttgart, Baden-Württemberg",
+      "from_text": false
+    },
+    "power": {
+      "value": "130 PS",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "236 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-100 km/h : 6,1 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/porsche-911/1.jpg",
+      "author": "Matti Blume",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Porsche_911_No_1000000,_70_Years_Porsche_Sports_Car,_Berlin_(1X7A3888).jpg"
+    }
+  ]
+}
