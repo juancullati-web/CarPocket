@@ -82,7 +82,7 @@ async function server(action, input = {}) {
   return body;
 }
 
-const ITEM_FIELDS = "title, thumb, main_photo, added_at, custom_photos, hidden_photos, notes, custom_specs, custom_sources";
+const ITEM_FIELDS = "title, thumb, main_photo, added_at, custom_photos, hidden_photos, notes, custom_specs, custom_sources, custom_summary";
 const PHOTO_BUCKET = "user-photos";
 const SIGNED_SECONDS = 6 * 60 * 60;
 
@@ -135,7 +135,7 @@ function rebuildDeck() {
   state.cars = state.items.flatMap((item) => {
     const car = byTitle.get(item.title);
     if (!car) return [];
-    return [{ ...withEditedSpecs(car, item.custom_specs, item.custom_sources), notes: item.notes || "", added: item.added_at, hiddenCount: car.photos.filter((photo) => (item.hidden_photos || []).includes(photo.file)).length, photos: itemPhotos(item, car) }];
+    return [{ ...withEditedSpecs(car, item.custom_specs, item.custom_sources), notes: item.notes || "", summary: item.custom_summary || car.summary, summaryEdited: Boolean(item.custom_summary), added: item.added_at, hiddenCount: car.photos.filter((photo) => (item.hidden_photos || []).includes(photo.file)).length, photos: itemPhotos(item, car) }];
   });
 }
 
@@ -698,6 +698,26 @@ function officialSources(car) {
   return `<p class="legend">Valeurs issues de sources officielles : ${esc(names)}. Une valeur absente n'y figure pas, ou varie selon les variantes de cette version.${sources.includes("EPA") ? " Les années de l'EPA sont les années-modèles américaines." : ""}</p>`;
 }
 
+/** La présentation : celle de Wikipédia, ou celle écrite par la personne pour sa collection. */
+function summaryHtml(car) {
+  const editable = canEdit() && inOwnDeck(car);
+  if (!car.summary) {
+    if (!editable) return "";
+    return `<h2 class="display-md">Présentation</h2>
+      <p class="summary-empty">Aucune présentation pour cette voiture.</p>
+      <button type="button" class="button button-secondary" data-edit-summary>Écrire une présentation</button>`;
+  }
+  const edit = editable ? `<button type="button" class="theme-toggle" data-edit-summary aria-label="Modifier la présentation" data-tip="Modifier la présentation">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M4 20l1-5L16 4l4 4L9 19z"/></svg>
+    </button>` : "";
+  const source = car.summaryEdited
+    ? `<p class="summary-source">Texte écrit pour cette collection.</p>`
+    : safeUrl(car.summary_url) ? `<p class="summary-source">Source : <a href="${esc(safeUrl(car.summary_url))}" target="_blank" rel="noopener" data-tip="Lire l'article sur Wikipédia">Wikipédia${car.summary_lang === "en" ? " (en anglais)" : ""}</a></p>` : "";
+  return `<div class="summary-head"><h2 class="display-md">Présentation${car.summaryEdited ? `<span class="edited-mark">Modifié</span>` : ""}</h2>${edit}</div>
+    <p class="summary${car.summaryEdited ? " summary-own" : ""}">${esc(car.summary)}</p>
+    ${source}`;
+}
+
 function notesHtml(car) {
   if (canEdit() && inOwnDeck(car)) {
     return `<section class="car-notes">
@@ -745,9 +765,7 @@ function detailHtml(car) {
       <div class="wrap detail-body">
         <div>
           <div class="model-actions sheet-actions">${cardActions(car, { sheet: false })}</div>
-          ${car.summary ? `<h2 class="display-md">Présentation</h2>
-            <p class="summary">${esc(car.summary)}</p>
-            <p class="summary-source">Source : <a href="${esc(safeUrl(car.summary_url))}" target="_blank" rel="noopener" data-tip="Lire l'article sur Wikipédia">Wikipédia${car.summary_lang === "en" ? " (en anglais)" : ""}</a></p>` : ""}
+          ${summaryHtml(car)}
           ${notesHtml(car)}
           ${isAdmin() ? `<div class="actions"><a class="text-link" href="https://github.com/juancullati-web/CarPocket/edit/main/data/cars/${esc(car.slug)}.json" target="_blank" rel="noopener" data-tip="Corriger cette fiche sur GitHub">Corriger cette fiche ›</a>
             <button type="button" class="text-link quiet" data-remove-sheet="${esc(titleOf(car))}" data-tip="Effacer cette fiche pour tous les comptes">Supprimer la fiche pour tout le monde</button></div>` : ""}
@@ -2215,6 +2233,10 @@ el("detail").addEventListener("click", (event) => {
     openSpecsEditor(car);
     return;
   }
+  if (event.target.closest("[data-edit-summary]") && car) {
+    openSummaryEditor(car);
+    return;
+  }
   if (event.target.closest("[data-enrich]") && car) {
     openEnrich(car);
     return;
@@ -2598,6 +2620,41 @@ el("enrich-submit").addEventListener("click", async () => {
   }
   el("enrich-dialog").close();
 });
+
+/* Présentation écrite par la personne */
+const summaryEditor = { car: null };
+
+function openSummaryEditor(car) {
+  summaryEditor.car = car;
+  const original = catalogCar(car.slug)?.summary || "";
+  el("summary-text").value = itemOf(car)?.custom_summary || original;
+  el("summary-error").hidden = true;
+  el("summary-reset").hidden = !(itemOf(car)?.custom_summary && original);
+  el("summary-dialog").showModal();
+  el("summary-text").focus();
+}
+
+async function saveSummary(text) {
+  const original = catalogCar(summaryEditor.car.slug)?.summary || "";
+  // Un texte identique à l'original ou vide revient simplement à l'original.
+  const custom = text === original ? "" : text;
+  el("summary-submit").disabled = true;
+  const saved = await updateItem(summaryEditor.car, { custom_summary: custom });
+  el("summary-submit").disabled = false;
+  if (!saved) {
+    el("summary-error").textContent = "La présentation n'a pas pu être enregistrée. Réessaie.";
+    el("summary-error").hidden = false;
+    return;
+  }
+  el("summary-dialog").close();
+}
+
+el("summary-form").addEventListener("submit", (event) => {
+  event.preventDefault();
+  saveSummary(el("summary-text").value.trim());
+});
+el("summary-cancel").addEventListener("click", () => el("summary-dialog").close());
+el("summary-reset").addEventListener("click", () => saveSummary(""));
 
 /* Modification des informations */
 const NUMERIC_SPECS = {

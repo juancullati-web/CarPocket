@@ -219,6 +219,22 @@
     <p id="toast-text"></p>
     <button type="button" class="text-link quiet" id="toast-close" aria-label="Fermer ce message">Fermer</button>
   </div>
+  <dialog class="specs-dialog" id="summary-dialog" aria-labelledby="summary-title">
+    <form id="summary-form" novalidate>
+      <h2 class="display-sm" id="summary-title">Présentation</h2>
+      <p>Ce texte ne s'applique qu'à ta collection. Tes amis le voient tant qu'elle est partagée.</p>
+      <label class="field">
+        <span class="label">Ton texte</span>
+        <textarea id="summary-text" rows="10" maxlength="5000"></textarea>
+      </label>
+      <p class="form-error" id="summary-error" role="alert" hidden></p>
+      <div class="dialog-actions">
+        <button type="button" class="text-link quiet" id="summary-reset" hidden>Revenir au texte d'origine</button>
+        <button type="button" class="button button-secondary" id="summary-cancel">Annuler</button>
+        <button type="submit" class="button button-primary" id="summary-submit">Enregistrer</button>
+      </div>
+    </form>
+  </dialog>
   <dialog class="specs-dialog" id="enrich-dialog" aria-labelledby="enrich-title">
     <h2 class="display-sm" id="enrich-title">Infos trouvées</h2>
     <p id="enrich-status" role="status"></p>

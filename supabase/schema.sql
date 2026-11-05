@@ -52,6 +52,9 @@ returns boolean language sql immutable set search_path = '' as $$
   );
 $$;
 
+alter table public.deck_items add column if not exists custom_summary text not null default '';
+alter table public.deck_items drop constraint if exists deck_items_custom_summary_check;
+alter table public.deck_items add constraint deck_items_custom_summary_check check (char_length(custom_summary) <= 5000);
 alter table public.deck_items drop constraint if exists deck_items_notes_check;
 alter table public.deck_items add constraint deck_items_notes_check check (char_length(notes) <= 2000);
 alter table public.deck_items drop constraint if exists deck_items_custom_specs_check;
@@ -155,7 +158,7 @@ revoke all on public.deck_items from anon, authenticated;
 grant select (id, username, avatar, shared) on public.profiles to authenticated;
 grant update (avatar, shared) on public.profiles to authenticated;
 grant select, insert, delete on public.deck_items to authenticated;
-grant update (main_photo, custom_photos, hidden_photos, notes, custom_specs, custom_sources) on public.deck_items to authenticated;
+grant update (main_photo, custom_photos, hidden_photos, notes, custom_specs, custom_sources, custom_summary) on public.deck_items to authenticated;
 
 drop policy if exists "profil lisible par soi ou l'admin" on public.profiles;
 drop policy if exists "profil lisible si partagé" on public.profiles;
