@@ -1,0 +1,52 @@
+{
+  "slug": "lamborghini-lambo-v12-vision-gran-turismo",
+  "name": "Lamborghini Lambo V12 Vision Gran Turismo",
+  "brand": "Lamborghini",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-05T09:33:06+00:00",
+  "summary": "La Lamborghini V12 Vision Gran Turismo est un concept car virtuel développé par le Centro Stile Lamborghini spécialement conçu pour le jeu vidéo Gran Turismo Sport.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Lamborghini_V12_Vision_Gran_Turismo",
+  "wikipedia_title": "Lamborghini Lambo V12 Vision Gran Turismo",
+  "specs": {
+    "engine": {
+      "value": "6.5 L L539 V12",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 7 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Mid-engine, all-wheel drive",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "2020",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Mitja Borkert",
+      "from_text": false
+    },
+    "power": {
+      "value": "785 PS",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/lamborghini-lambo-v12-vision-gran-turismo/1.jpg",
+      "author": "Alexander-93",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Lamborghini_Lambo_V12_Vision_Gran_Turismo_GIMS_2024_1X7A2043.jpg"
+    }
+  ]
+}
