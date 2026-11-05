@@ -1,0 +1,60 @@
+{
+  "slug": "apollo-project-evo",
+  "name": "Apollo Project EVO",
+  "brand": "Apollo",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-05T09:50:47+00:00",
+  "summary": "L'Apollo Project Evo, aussi appelée Apollo Evo, ou encore The Project EVO, est une supercar du constructeur automobile allemand Apollo. C'est l'évolution de l'Apollo Intensa Emozione.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Apollo_Project_Evo",
+  "wikipedia_title": "Apollo Project EVO",
+  "specs": {
+    "engine": {
+      "value": "6262 cc NA F140 V12",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "2022–present · 10 units planned, 1 prototype",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Jowyn Wong",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Germany: Affalterbach",
+      "from_text": false
+    },
+    "weight": {
+      "value": "~1,200 kg (2,446 lbs)",
+      "from_text": false
+    },
+    "power": {
+      "value": "780 PS",
+      "from_text": false
+    },
+    "torque": {
+      "value": "760 N.m",
+      "from_text": false
+    },
+    "zero_100": {
+      "value": "0-100 km/h : 2,8 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/apollo-project-evo/1.jpg",
+      "author": "Zhu2005125",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Apollo_Project_EVO_1.jpeg"
+    }
+  ]
+}
