@@ -1,0 +1,62 @@
+{
+  "slug": "chevrolet-camaro",
+  "name": "Chevrolet Camaro",
+  "brand": "Chevrolet",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-05T12:52:45+00:00",
+  "summary": "La Chevrolet Camaro est une automobile de type pony car du constructeur automobile américain Chevrolet construite par General Motors en quatre générations de 1967 à 2002. La production a repris en 2009 pour une cinquième version, suivie en 2016 par une sixième. La Camaro fut construite pour concurrencer la Ford Mustang. Lorsque Ford présente sa Mustang en avril 1964, l'état major de GM ne se montre pas vraiment impressionné, persuadé qu'il n'existe pas de marché pour ce type de véhicule et qu'avec son « petit » coupé le rival de toujours foncerait vers de sinistres destinées. Leurs espoirs seront de courte durée ; quatre mois seulement après son lancement, 100 000 Mustang sont sorties des chaînes de fabrication. L'ambiance au directoire de General Motors se dégradera considérablement. Il leur faut faire mieux, et vite, pour retrouver leur première place sur le marché national.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Chevrolet_Camaro",
+  "wikipedia_title": "Chevrolet Camaro",
+  "specs": {
+    "layout": {
+      "value": "Propulsion",
+      "from_text": false,
+      "source": "EPA"
+    },
+    "body": {
+      "value": "Coupé 2 portes · Cabriolet 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1984–2024",
+      "from_text": false,
+      "source": "EPA"
+    },
+    "power": {
+      "value": "202 kW",
+      "from_text": false,
+      "source": "OVD"
+    },
+    "top_speed": {
+      "value": "319 km/h",
+      "from_text": true
+    },
+    "weight": {
+      "value": "1614 kg (en ordre de marche)",
+      "from_text": false,
+      "source": "OVD"
+    },
+    "engine": {
+      "value": "1998 cm³",
+      "from_text": false,
+      "source": "OVD"
+    },
+    "wheelbase": {
+      "value": "2811 mm",
+      "from_text": false,
+      "source": "OVD"
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/chevrolet-camaro/1.jpg",
+      "author": "Kevauto",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2019_Chevrolet_Camaro_2SS_6.2L_front_3.16.19.jpg"
+    }
+  ]
+}
