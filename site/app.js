@@ -450,7 +450,9 @@ function renderSession() {
   el("cta-band").hidden = !canEdit();
   el("accounts-link").hidden = !isAdmin();
   el("library-title").textContent = state.viewing ? `Collection de ${displayName(state.viewing.username)}` : "Mon deck";
-  el("app-intro").hidden = Boolean(state.viewing);
+  // Chez un ami : seulement ses compteurs, ni la présentation ni les boutons d'ajout.
+  el("app-intro").hidden = Boolean(state.viewing) && !deck().length;
+  el("app-intro").classList.toggle("viewing", Boolean(state.viewing));
   el("search-label").textContent = state.viewing ? "Rechercher dans cette collection" : "Rechercher dans mon deck";
   const note = el("viewing-note");
   note.hidden = !state.viewing;
@@ -512,6 +514,7 @@ function countScale(count) {
 
 function deckGauges() {
   const cars = deck();
+  const owner = state.viewing ? displayName(state.viewing.username) : null;
   const powers = cars.map((car) => car.power_ch).filter(Boolean);
   const average = powers.length ? Math.round(powers.reduce((sum, power) => sum + power, 0) / powers.length) : null;
   const fastest = cars
@@ -520,9 +523,9 @@ function deckGauges() {
     .sort((a, b) => b.speed - a.speed)[0];
   return [
     {
-      value: cars.length, unit: "voitures", max: countScale(cars.length), label: "Mon deck",
+      value: cars.length, unit: "voitures", max: countScale(cars.length), label: owner ? "Sa collection" : "Mon deck",
       detail: plural(new Set(cars.map((car) => car.brand)).size, "marque"),
-      tip: "Nombre de voitures dans mon deck",
+      tip: owner ? `Nombre de voitures dans la collection de ${owner}` : "Nombre de voitures dans mon deck",
     },
     {
       value: average, unit: "ch", max: 1500, label: "Puissance moyenne",
@@ -532,7 +535,7 @@ function deckGauges() {
     {
       value: fastest?.speed ?? null, unit: "km/h", max: 500, label: "Vitesse record",
       detail: fastest?.car.name ?? "Non renseigné",
-      tip: "La voiture la plus rapide de mon deck",
+      tip: owner ? `La voiture la plus rapide de la collection de ${owner}` : "La voiture la plus rapide de mon deck",
       mark: specMark(fastest?.car.specs.top_speed),
     },
   ];
