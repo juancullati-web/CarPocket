@@ -1081,3 +1081,15 @@ a.completion-ring, button.completion-ring { cursor: pointer; }
 }
 .toast-actions { display: flex; flex: none; align-items: center; gap: 12px; }
 .toast-actions .button { min-height: 36px; padding: 6px 14px; font-size: .8125rem; }
+
+/* Statut d'une voiture */
+.status-tag { display: inline-block; align-self: flex-start; border: 1px solid var(--hairline-strong); padding: 1px 6px; color: var(--ink); font-size: .6875rem; font-weight: 700; line-height: 1.4; }
+.status-choice { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+.status-choice .chip { min-height: 36px; }
+.status-line { margin-bottom: 24px; }
+
+/* Carrousel discret */
+.showroom.is-compact { min-height: clamp(240px, 32vh, 320px); }
+.showroom.is-compact .showroom-stats { display: none; }
+.showroom.is-compact .display-xl { font-size: clamp(1.75rem, 4vw, 2.5rem); }
+.showroom.is-compact .showroom-actions { margin-top: 0; }

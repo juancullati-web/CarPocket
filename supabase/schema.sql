@@ -75,6 +75,10 @@ $$;
 
 alter table public.deck_items drop constraint if exists deck_items_custom_sources_check;
 alter table public.deck_items add constraint deck_items_custom_sources_check check (public.custom_sources_valid(custom_sources));
+-- Le lien avec la voiture : possédée, essayée ou rêvée.
+alter table public.deck_items add column if not exists status text;
+alter table public.deck_items drop constraint if exists deck_items_status_check;
+alter table public.deck_items add constraint deck_items_status_check check (status is null or status in ('owned', 'driven', 'dream'));
 alter table public.deck_items drop constraint if exists deck_items_main_photo_check;
 alter table public.deck_items add constraint deck_items_main_photo_check
   check (main_photo is null
@@ -158,7 +162,7 @@ revoke all on public.deck_items from anon, authenticated;
 grant select (id, username, avatar, shared) on public.profiles to authenticated;
 grant update (avatar, shared) on public.profiles to authenticated;
 grant select, insert, delete on public.deck_items to authenticated;
-grant update (main_photo, custom_photos, hidden_photos, notes, custom_specs, custom_sources, custom_summary) on public.deck_items to authenticated;
+grant update (main_photo, custom_photos, hidden_photos, notes, custom_specs, custom_sources, custom_summary, status) on public.deck_items to authenticated;
 
 drop policy if exists "profil lisible par soi ou l'admin" on public.profiles;
 drop policy if exists "profil lisible si partagé" on public.profiles;

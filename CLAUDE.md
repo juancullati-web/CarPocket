@@ -22,6 +22,8 @@ PWA : `site/manifest.webmanifest` et `site/sw.js`. Le service worker ne met jama
 
 Ajout d'une voiture : marque, modèle, puis version, depuis `site/reference` (généré chaque mois par `scripts/build_reference.py` : EPA, ADEME en Licence Ouverte, openvehicle-data en CC BY 4.0 à créditer, Wikidata et Wikipédia). Une version de la liste ou tapée à la main donne une fiche à son nom exact ; ses valeurs viennent de la liste si toutes ses variantes concordent (`source` sur la valeur) ; openvehicle-data donne une fourchette quand elles diffèrent, et les calculs retiennent le bas. Une fiche créée depuis Wikipédia ne reçoit ses valeurs que pour les champs manquants, à la même époque et hors fiche d'une seule génération. Pas de page Wikipédia voisine ni de photo d'une autre version : une photo Commons doit citer le nom exact dans son fichier.
 
+Statut d'une voiture dans une collection : colonne `status` de `deck_items` (`owned`, `driven`, `dream`), visible avec elle.
+
 Complétude : part des 16 champs de la fiche technique remplis, valeurs de la collection comprises. Rempli ne veut pas dire vérifié.
 
 Notes, présentation et valeurs modifiées : colonnes `notes`, `custom_summary` et `custom_specs` de `deck_items`, propres à chaque collection et visibles avec elle. Une valeur modifiée porte `edited: true` à l'affichage et ne touche jamais `data/cars`. Le bouton « Chercher les infos manquantes » lit la liste de référence et Wikipédia depuis le navigateur, propose des valeurs avec leur source (`custom_sources`) et n'écrit que ce que la personne coche.

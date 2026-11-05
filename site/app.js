@@ -82,7 +82,7 @@ async function server(action, input = {}) {
   return body;
 }
 
-const ITEM_FIELDS = "title, thumb, main_photo, added_at, custom_photos, hidden_photos, notes, custom_specs, custom_sources, custom_summary";
+const ITEM_FIELDS = "title, thumb, main_photo, added_at, custom_photos, hidden_photos, notes, custom_specs, custom_sources, custom_summary, status";
 const PHOTO_BUCKET = "user-photos";
 const SIGNED_SECONDS = 6 * 60 * 60;
 
@@ -135,7 +135,7 @@ function rebuildDeck() {
   state.cars = state.items.flatMap((item) => {
     const car = byTitle.get(item.title);
     if (!car) return [];
-    return [{ ...withEditedSpecs(car, item.custom_specs, item.custom_sources), notes: item.notes || "", summary: item.custom_summary || car.summary, summaryEdited: Boolean(item.custom_summary), added: item.added_at, hiddenCount: car.photos.filter((photo) => (item.hidden_photos || []).includes(photo.file)).length, photos: itemPhotos(item, car) }];
+    return [{ ...withEditedSpecs(car, item.custom_specs, item.custom_sources), notes: item.notes || "", summary: item.custom_summary || car.summary, summaryEdited: Boolean(item.custom_summary), status: item.status || null, added: item.added_at, hiddenCount: car.photos.filter((photo) => (item.hidden_photos || []).includes(photo.file)).length, photos: itemPhotos(item, car) }];
   });
 }
 
@@ -164,6 +164,9 @@ async function loadItems() {
 const backLabel = () => (state.viewing ? `‹ Collection de ${esc(displayName(state.viewing.username))}` : "‹ Mon deck");
 
 /** Sur la collection d'un ami : ajouter la voiture à la sienne, sans attente. */
+const CAR_STATUS = { owned: "Possédée", driven: "Essayée", dream: "Rêvée" };
+const statusTag = (car) => (CAR_STATUS[car.status] ? `<span class="status-tag">${CAR_STATUS[car.status]}</span>` : "");
+
 const CARD_ICONS = {
   sheet: '<path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 16h7"/>',
   compare: '<path d="M4 8h13M13 4l4 4-4 4M20 16H7M11 12l-4 4 4 4"/>',
@@ -260,6 +263,7 @@ function cardHtml(car) {
     </a>
     <div class="model-body">
       <h3><a href="#${esc(car.slug)}">${esc(car.name)}</a></h3>
+      ${statusTag(car)}
       <p>${esc(tagline(car))}</p>
       <div class="model-actions">${cardActions(car)}</div>
     </div>
@@ -422,14 +426,31 @@ function renderHero() {
       ${several ? `<div class="showroom-controls">
         <div class="showroom-segments">${showroom.cars.map((car, i) => `<button type="button" class="showroom-segment" data-slide="${i}" aria-label="Voir ${esc(car.name)}"><span class="showroom-fill"></span></button>`).join("")}</div>
         <div class="showroom-buttons">
+          <button type="button" class="showroom-button" id="showroom-size"></button>
           <button type="button" class="showroom-button" id="showroom-pause"></button>
           <button type="button" class="showroom-button" data-step="-1" aria-label="Voiture précédente">‹</button>
           <button type="button" class="showroom-button" data-step="1" aria-label="Voiture suivante">›</button>
         </div>
       </div>` : ""}
     </div>`;
+  applyShowroomSize();
   setShowroomPaused(calmMotion());
   showSlide(0);
+}
+
+/** Grand à la découverte, discret ensuite : le deck reste près du haut de la page. */
+function applyShowroomSize() {
+  const saved = load("showroomSize", null);
+  const compact = saved === "compact";
+  el("hero").classList.toggle("is-compact", compact);
+  const toggle = el("showroom-size");
+  if (toggle) {
+    const label = compact ? "Agrandir le carrousel" : "Réduire le carrousel";
+    toggle.textContent = compact ? "⤢" : "⤡";
+    toggle.setAttribute("aria-label", label);
+    toggle.dataset.tip = label;
+  }
+  if (saved === null) save("showroomSize", "compact");
 }
 
 el("hero").addEventListener("animationend", (event) => {
@@ -478,6 +499,10 @@ function renderLibrary() {
   const query = el("search").value.trim().toLowerCase();
   const visible = all
     .filter((car) => !state.brand || car.brand === state.brand)
+    .filter((car) => {
+      const wanted = el("status-filter").value;
+      return !wanted || (wanted === "none" ? !car.status : car.status === wanted);
+    })
     .filter((car) => {
       if (!query) return true;
       const specs = Object.values(car.specs).map((s) => s.value).join(" ");
@@ -760,6 +785,13 @@ function summaryHtml(car) {
     ${source}`;
 }
 
+function statusChoice(car) {
+  if (!canEdit() || !inOwnDeck(car)) return car.status ? `<p class="status-line">${statusTag(car)}</p>` : "";
+  const buttons = Object.entries(CAR_STATUS).map(([value, label]) =>
+    `<button type="button" class="chip" data-status="${value}" aria-pressed="${car.status === value}">${label}</button>`).join("");
+  return `<div class="status-choice" role="group" aria-label="Ma relation avec cette voiture">${buttons}</div>`;
+}
+
 function notesHtml(car) {
   if (canEdit() && inOwnDeck(car)) {
     return `<section class="car-notes">
@@ -807,6 +839,7 @@ function detailHtml(car) {
       <div class="wrap detail-body">
         <div>
           <div class="model-actions sheet-actions">${cardActions(car, { sheet: false })}</div>
+          ${statusChoice(car)}
           ${summaryHtml(car)}
           ${notesHtml(car)}
           ${isAdmin() ? `<div class="actions"><a class="text-link" href="https://github.com/juancullati-web/CarPocket/edit/main/data/cars/${esc(car.slug)}.json" target="_blank" rel="noopener" data-tip="Corriger cette fiche sur GitHub">Corriger cette fiche ›</a>
@@ -1691,6 +1724,7 @@ async function replaceCar(car, name, thumb) {
     custom_specs: old.custom_specs || {},
     custom_sources: old.custom_sources || {},
     custom_summary: old.custom_summary || "",
+    status: old.status || null,
   };
   const { data, error } = await db.from("deck_items").insert(row).select(ITEM_FIELDS).single();
   if (error) {
@@ -2406,6 +2440,15 @@ el("detail").addEventListener("click", (event) => {
     openSpecsEditor(car);
     return;
   }
+  const chosenStatus = event.target.closest("[data-status]");
+  if (chosenStatus && car) {
+    // Un second appui retire le statut.
+    const next = chosenStatus.dataset.status === car.status ? null : chosenStatus.dataset.status;
+    updateItem(car, { status: next }).then((saved) => {
+      if (!saved) showToast("Le statut n'a pas pu être enregistré. Réessaie.");
+    });
+    return;
+  }
   if (event.target.closest("[data-pick-version]") && car) {
     openVersionPicker(car);
     return;
@@ -2467,13 +2510,19 @@ el("detail").addEventListener("click", (event) => {
   el("detail").querySelectorAll("[data-photo]").forEach((b) => b.setAttribute("aria-current", String(b === button)));
 });
 
+document.addEventListener("click", (event) => {
+  if (!event.target.closest("#showroom-size")) return;
+  // Le premier affichage a déjà mémorisé « discret » : le bouton inverse ce qu'on voit à l'écran.
+  save("showroomSize", el("hero").classList.contains("is-compact") ? "large" : "compact");
+  applyShowroomSize();
+});
 el("toast-close").addEventListener("click", () => { el("toast").hidden = true; });
 el("toast-undo").addEventListener("click", undoRemoval);
 el("view-toggle").addEventListener("click", () => {
   save("deckView", deckView() === "compact" ? "wide" : "compact");
   renderLibrary();
 });
-["search", "sort"].forEach((id) => el(id).addEventListener("input", renderLibrary));
+["search", "sort", "status-filter"].forEach((id) => el(id).addEventListener("input", renderLibrary));
 el("brands").addEventListener("click", (event) => {
   if (event.target.closest("[data-brands-toggle]")) {
     brandsOpen = !brandsOpen;

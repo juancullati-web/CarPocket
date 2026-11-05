@@ -34,6 +34,10 @@ Clique sur **Retirer** sur la carte ou sur la fiche, puis confirme. La fiche res
 
 Tape directement le nom, par exemple « Ferrari 488 Pista », ou choisis la marque, le modèle, puis la version. Si elle manque, tape-la : la fiche est créée à ce nom et reste à compléter. Les listes viennent de l'EPA (États-Unis), de l'ADEME (France), d'[openvehicle-data](https://github.com/mirkobechini/openvehicle-data) (Mirko Bechini, CC BY 4.0), de Wikidata et de Wikipédia, et se mettent à jour chaque mois.
 
+## Statut d'une voiture
+
+Sur la fiche, indique si la voiture est **possédée**, **essayée** ou **rêvée**. Un second appui retire le statut. Le statut s'affiche sur la carte, et le filtre **Statut** trie ton deck.
+
 ## Choisir une version précise
 
 Sur la fiche d'une voiture de ta collection, l'icône **Choisir une version précise** remplace la fiche par la bonne version. Tes photos, ta présentation, tes notes et tes valeurs suivent.
