@@ -178,7 +178,7 @@ function cardActions(car, { sheet = true } = {}) {
   const selected = state.compare.includes(car.slug);
   const compareLabel = selected ? "Retirer cette voiture de la comparaison" : "Ajouter cette voiture à la comparaison";
   const actions = [
-    sheet ? `<a class="theme-toggle" href="#${esc(car.slug)}" aria-label="Voir la fiche de ${name}" data-tip="Voir la fiche">${photoIcon(CARD_ICONS.sheet)}</a>` : "",
+    sheet ? `<a class="add-icon" href="#${esc(car.slug)}" aria-label="Voir la fiche de ${name}" data-tip="Voir la fiche">${photoIcon(CARD_ICONS.sheet)}</a>` : "",
     `<button type="button" class="theme-toggle" data-compare="${esc(car.slug)}" aria-pressed="${selected}" aria-label="${compareLabel} : ${name}" data-tip="${compareLabel}">${photoIcon(CARD_ICONS.compare)}</button>`,
     `<button type="button" class="theme-toggle" data-share="${esc(car.slug)}" aria-label="Partager ${name} avec un ami" data-tip="Partager avec un ami">${photoIcon(CARD_ICONS.share)}</button>`,
   ];
