@@ -1,0 +1,40 @@
+{
+  "slug": "ferrari-575",
+  "name": "Ferrari 575",
+  "brand": "Ferrari",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-05T20:52:50+00:00",
+  "summary": "",
+  "summary_lang": "",
+  "summary_url": "",
+  "wikipedia_title": "Ferrari 575",
+  "specs": {
+    "engine": {
+      "value": "5,7 L, 12 cylindres",
+      "from_text": false,
+      "source": "EPA"
+    },
+    "layout": {
+      "value": "Propulsion",
+      "from_text": false,
+      "source": "EPA"
+    },
+    "production": {
+      "value": "2002",
+      "from_text": false,
+      "source": "EPA"
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/ferrari-575/1.jpg",
+      "thumb": "photos/ferrari-575/1-thumb.jpg",
+      "author": "Qwertytam",
+      "license": "CC BY 2.5",
+      "license_url": "https://creativecommons.org/licenses/by/2.5",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Ferrari_575M_Maranello.jpg"
+    }
+  ]
+}
