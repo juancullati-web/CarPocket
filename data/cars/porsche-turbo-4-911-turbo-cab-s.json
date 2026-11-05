@@ -1,0 +1,31 @@
+{
+  "slug": "porsche-turbo-4-911-turbo-cab-s",
+  "name": "Porsche Turbo 4 911 Turbo Cab S",
+  "brand": "Porsche",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-05T10:30:20+00:00",
+  "summary": "",
+  "summary_lang": "",
+  "summary_url": "",
+  "wikipedia_title": "Porsche Turbo 4 911 Turbo Cab S",
+  "specs": {
+    "engine": {
+      "value": "3,6 L, 6 cylindres",
+      "from_text": false,
+      "source": "EPA"
+    },
+    "layout": {
+      "value": "Transmission intégrale",
+      "from_text": false,
+      "source": "EPA"
+    },
+    "production": {
+      "value": "2005",
+      "from_text": false,
+      "source": "EPA"
+    }
+  },
+  "overrides": {},
+  "photos": []
+}
