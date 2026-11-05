@@ -635,7 +635,7 @@ function officialSources(car) {
   const sources = [...new Set(Object.values(car.specs).map((spec) => spec.source).filter(Boolean))];
   if (!sources.length) return "";
   const names = sources.map((source) => REFERENCE_SOURCES[source] || source).join(" et ");
-  return `<p class="legend">Valeurs issues de sources officielles : ${esc(names)}. Une valeur absente n'était pas la même pour toutes les variantes de cette version.${sources.includes("EPA") ? " Les années de l'EPA sont les années-modèles américaines." : ""}</p>`;
+  return `<p class="legend">Valeurs issues de sources officielles : ${esc(names)}. Une valeur absente n'y figure pas, ou varie selon les variantes de cette version.${sources.includes("EPA") ? " Les années de l'EPA sont les années-modèles américaines." : ""}</p>`;
 }
 
 function notesHtml(car) {
