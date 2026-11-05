@@ -1,0 +1,72 @@
+{
+  "slug": "bugatti-royale",
+  "name": "Bugatti Royale",
+  "brand": "Bugatti",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-05T09:47:47+00:00",
+  "summary": "La Bugatti Type 41 ou Bugatti Royale est une voiture limousine sportive de prestige du constructeur automobile Bugatti, construite entre 1927 et 1933 en sept exemplaires par Ettore Bugatti et son fils Jean Bugatti (le premier modèle prototype longtemps disparu et reconstruit d'origine est achevé en 2017, un modèle est assemblé par les frères Schlumpf dans les années 1960 à partir de pièces détachées d'origines, et une réplique exacte existe en Allemagne). Elle est considérée comme une des voitures de collection les plus exceptionnelles et chères de l'histoire de l'automobile, par son histoire, sa rareté, et par ses caractéristiques exceptionnelles pour son temps.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Bugatti_Type_41",
+  "wikipedia_title": "Bugatti Royale",
+  "specs": {
+    "engine": {
+      "value": "12763 cc I8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 3 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline, coupé, cabriolet, roadster, brougham, coupé de ville",
+      "from_text": false
+    },
+    "production": {
+      "value": "1927–1933 · 7 exemplaires",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "France: Molsheim, Alsace (Usine Bugatti de Molsheim)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "~3175 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "~6.4 m",
+      "from_text": false
+    },
+    "width": {
+      "value": "~2.1 m",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "~4.3 m",
+      "from_text": false
+    },
+    "power": {
+      "value": "275-300 hp",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "201 km/h",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/bugatti-royale/1.jpg",
+      "author": "Thesupermat",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:R%C3%A9tromobile_2015_-_Bugatti_Royale_Coup%C3%A9_Napol%C3%A9on_-_1929_-_002.jpg"
+    }
+  ]
+}
