@@ -1,0 +1,76 @@
+{
+  "slug": "yangwang-u9",
+  "name": "Yangwang U9",
+  "brand": "Yangwang",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-05T09:41:23+00:00",
+  "summary": "La Yangwang U9 est une supercar électrique développée par le constructeur automobile chinois Yangwang, filiale du groupe BYD, à partir de 2024. Une version de la U9 détient le record de la voiture autorisée sur route la plus rapide au monde avec 496,22 km/h.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Yangwang_U9",
+  "wikipedia_title": "Yangwang U9",
+  "specs": {
+    "layout": {
+      "value": "Four-motor, four-wheel-drive",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "August 2024 – present",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Under the lead of Wolfgang Egger",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "China: Shenzhen, Guangdong",
+      "from_text": false
+    },
+    "weight": {
+      "value": "2475-2480 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4966 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "2029 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1295 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2900 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "960-2220 kW",
+      "from_text": false
+    },
+    "top_speed": {
+      "value": "496 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-100 km/h : 2,36 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/yangwang-u9/1.jpg",
+      "author": "JustAnotherCarDesigner",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Yangwang_U9_003_(resized).jpg"
+    }
+  ]
+}
