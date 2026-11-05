@@ -1008,3 +1008,12 @@ dialog.photo-viewer[open] { display: grid; grid-template-rows: minmax(0, 1fr) au
 }
 .toast p { margin: 0; }
 .toast a { color: #fff; font-weight: 700; }
+
+/* Chercher les infos manquantes */
+.missing-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.enrich-row { display: flex; align-items: flex-start; gap: 12px; padding: 12px 0; border-top: 1px solid var(--hairline); cursor: pointer; }
+.enrich-row input { flex: none; width: 20px; height: 20px; min-height: 0; margin-top: 2px; padding: 0; }
+.enrich-row strong { display: block; color: var(--ink); overflow-wrap: anywhere; }
+.enrich-row small { display: block; color: var(--muted); font-size: .8125rem; overflow-wrap: anywhere; }
+.enrich-row .enrich-scope { color: var(--ink); }
+.spec-link { margin-left: 6px; font-size: .75rem; color: var(--muted); }

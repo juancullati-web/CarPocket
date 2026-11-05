@@ -82,17 +82,17 @@ async function server(action, input = {}) {
   return body;
 }
 
-const ITEM_FIELDS = "title, thumb, main_photo, added_at, custom_photos, hidden_photos, notes, custom_specs";
+const ITEM_FIELDS = "title, thumb, main_photo, added_at, custom_photos, hidden_photos, notes, custom_specs, custom_sources";
 const PHOTO_BUCKET = "user-photos";
 const SIGNED_SECONDS = 6 * 60 * 60;
 
 /** Les valeurs changées par la personne priment dans sa collection, sans toucher au catalogue. */
-function withEditedSpecs(car, custom) {
+function withEditedSpecs(car, custom, sources = {}) {
   const specs = { ...car.specs };
   const known = new Set(SPEC_GROUPS.flatMap(([, rows]) => rows.map(([key]) => key)));
   const edited = Object.entries(custom || {}).filter(([key, value]) => known.has(key) && typeof value === "string");
   if (!edited.length) return car;
-  edited.forEach(([key, value]) => { specs[key] = { value, from_text: false, edited: true }; });
+  edited.forEach(([key, value]) => { specs[key] = { value, from_text: false, edited: true, link: sources?.[key] || null }; });
   const result = { ...car, specs, customSpecs: Object.fromEntries(edited) };
   if (result.customSpecs.power) result.power_ch = Math.round(numberIn(result.customSpecs.power)) || null;
   if (result.customSpecs.weight) result.weight_kg = Math.round(numberIn(result.customSpecs.weight)) || null;
@@ -135,7 +135,7 @@ function rebuildDeck() {
   state.cars = state.items.flatMap((item) => {
     const car = byTitle.get(item.title);
     if (!car) return [];
-    return [{ ...withEditedSpecs(car, item.custom_specs), notes: item.notes || "", added: item.added_at, hiddenCount: car.photos.filter((photo) => (item.hidden_photos || []).includes(photo.file)).length, photos: itemPhotos(item, car) }];
+    return [{ ...withEditedSpecs(car, item.custom_specs, item.custom_sources), notes: item.notes || "", added: item.added_at, hiddenCount: car.photos.filter((photo) => (item.hidden_photos || []).includes(photo.file)).length, photos: itemPhotos(item, car) }];
   });
 }
 
@@ -592,7 +592,7 @@ function specRow(car, key, label) {
   if (!spec) {
     return `<div class="spec-row"><dt>${label}</dt><dd class="unknown">Non renseigné</dd></div>`;
   }
-  return `<div class="spec-row"><dt>${label}</dt><dd>${esc(spec.value)}${specMark(spec)}</dd></div>`;
+  return `<div class="spec-row"><dt>${label}</dt><dd>${esc(spec.value)}${specMark(spec)}${safeUrl(spec.link?.url) ? ` <a class="spec-link" href="${esc(safeUrl(spec.link.url))}" target="_blank" rel="noopener" data-tip="Source : ${esc(spec.link.label)}">source</a>` : ""}</dd></div>`;
 }
 
 function specCells(car) {
@@ -684,7 +684,10 @@ function specsHtml(car) {
   return `${groups}<details class="missing-specs"${groups ? "" : " open"}>
     <summary>${count} ${editable ? `à compléter` : `non ${missing.length > 1 ? "renseignées" : "renseignée"}`}</summary>
     <dl>${missing.map(([key, label]) => specRow(car, key, label)).join("")}</dl>
-    ${editable ? `<button type="button" class="button button-secondary" data-edit-specs>Compléter ces informations</button>` : ""}
+    ${editable ? `<div class="missing-actions">
+      <button type="button" class="button button-primary" data-enrich>Chercher les infos manquantes</button>
+      <button type="button" class="button button-secondary" data-edit-specs>Compléter à la main</button>
+    </div>` : ""}
   </details>`;
 }
 
@@ -2212,6 +2215,10 @@ el("detail").addEventListener("click", (event) => {
     openSpecsEditor(car);
     return;
   }
+  if (event.target.closest("[data-enrich]") && car) {
+    openEnrich(car);
+    return;
+  }
   if (event.target.closest("[data-reset-specs]") && car) {
     askConfirm({
       title: "Tout réinitialiser ?",
@@ -2316,6 +2323,276 @@ el("detail").addEventListener("focusout", (event) => {
 });
 window.addEventListener("pagehide", flushNotes);
 
+/* Chercher les infos manquantes : des propositions, que la personne valide une par une. */
+const ENRICH_LABELS = [
+  ["engine", /^(engine|moteur)/i],
+  ["power", /(power|puissance)(?!.*fiscale)/i],
+  ["torque", /(torque|couple)/i],
+  ["transmission", /^(transmission|bo[iî]te)/i],
+  ["layout", /^(layout|architecture)/i],
+  ["top_speed", /(top speed|vitesse max)/i],
+  ["zero_100", /(0\s*[-–à]\s*(100|60|62)|0\s*to\s*(100|60|62))/i],
+  ["weight", /(weight|poids|masse)/i],
+  ["length", /^(length|longueur)/i],
+  ["width", /^(width|largeur)/i],
+  ["height", /^(height|hauteur)/i],
+  ["wheelbase", /^(wheelbase|empattement)/i],
+  ["body", /^(body style|carrosserie)/i],
+  ["production", /^(production|ann[ée]es? de production)/i],
+  ["designer", /^(designer|design)/i],
+  ["assembly", /^(assembly|assemblage|usine)/i],
+];
+
+function readNumber(text) {
+  const raw = text.replace(/[\s\u00a0\u202f]/g, "");
+  return Number(/^\d{1,3}([.,]\d{3})+$/.test(raw) ? raw.replace(/[.,]/g, "") : raw.replace(",", "."));
+}
+
+function measure(text, pattern) {
+  const match = text.match(new RegExp(`(\\d[\\d\\s\\u00a0\\u202f.,]*?)\\s*(${pattern})(?![a-zé])`, "i"));
+  return match ? { value: readNumber(match[1]), unit: match[2].toLowerCase() } : null;
+}
+
+/** Ramène une valeur à l'unité du site : une conversion, jamais une estimation. */
+function normalizeSpec(key, text, label = "") {
+  const clean = text.replace(/\[[^\]]*\]/g, "").replace(/\s+/g, " ").trim();
+  if (!clean) return null;
+  if (key === "power") {
+    const found = measure(clean, "ch|cv|ps|bhp|hp|kw");
+    if (!found) return null;
+    const factor = found.unit === "kw" ? 1.35962 : /hp/.test(found.unit) ? 1.01387 : 1;
+    return `${Math.round(found.value * factor)} ch`;
+  }
+  if (key === "torque") {
+    const found = measure(clean, "n[·.⋅ ]?m|lb[·.\\- ]?ft");
+    return found ? `${Math.round(found.value * (found.unit.startsWith("lb") ? 1.35582 : 1))} N·m` : null;
+  }
+  if (key === "top_speed") {
+    const found = measure(clean, "km/h|mph");
+    return found ? `${Math.round(found.value * (found.unit === "mph" ? 1.60934 : 1))} km/h` : null;
+  }
+  if (key === "zero_100") {
+    const found = measure(clean, "secondes|seconds|sec|s");
+    if (!found) return null;
+    const target = /60|62/.test(label) ? "0-60 mph" : "0-100 km/h";
+    return `${target} : ${String(found.value).replace(".", ",")} s`;
+  }
+  if (key === "weight") {
+    const found = measure(clean, "kg|lbs?|tonnes?|t");
+    if (!found) return null;
+    return `${Math.round(found.value * (found.unit.startsWith("lb") ? 0.453592 : found.unit.startsWith("t") ? 1000 : 1))} kg`;
+  }
+  if (["length", "width", "height", "wheelbase"].includes(key)) {
+    const found = measure(clean, "mm|cm|m|in");
+    if (!found) return null;
+    return `${Math.round(found.value * { mm: 1, cm: 10, m: 1000, in: 25.4 }[found.unit])} mm`;
+  }
+  return clean.slice(0, 200);
+}
+
+/** Écarte l'impossible, avec les mêmes limites que le robot. */
+function plausibleSpec(key, value, year) {
+  const number = numberIn(key === "zero_100" ? value.split(" : ").pop() : value);
+  if (key === "zero_100") return number >= 1.5 && number <= 60;
+  if (key === "top_speed") return number >= (year >= 1970 ? 120 : 60) && number <= 600;
+  if (key === "power") return number >= 5 && number <= 4000;
+  if (key === "weight") return number >= 40 && number <= 20000;
+  if (["length", "width", "height", "wheelbase"].includes(key)) return number >= 300 && number <= 30000;
+  return true;
+}
+
+async function wikiInfobox(title, lang) {
+  const params = new URLSearchParams({
+    action: "parse", format: "json", formatversion: "2", origin: "*", page: title, prop: "text|langlinks", section: "0", redirects: "1",
+  });
+  const response = await fetch(`https://${lang}.wikipedia.org/w/api.php?${params}`);
+  if (!response.ok) return null;
+  const data = await response.json();
+  if (!data.parse) return null;
+  const doc = new DOMParser().parseFromString(data.parse.text, "text/html");
+  return {
+    title: data.parse.title,
+    tables: [...doc.querySelectorAll("table.infobox, table.infobox_v2, table.infobox_v3")],
+    french: data.parse.langlinks?.find((link) => link.lang === "fr")?.title,
+  };
+}
+
+/** Le texte d'une case, sans le style ni les renvois, et avec ses lignes séparées. */
+function cellText(cell) {
+  const copy = cell.cloneNode(true);
+  copy.querySelectorAll("style, script, sup").forEach((node) => node.remove());
+  copy.querySelectorAll("br, li").forEach((node) => node.append(" · "));
+  return copy.textContent.replace(/\s+/g, " ").replace(/(\s*·\s*)+$/, "").trim();
+}
+
+function infoboxRows(table) {
+  const rows = [];
+  table.querySelectorAll("tr").forEach((row) => {
+    const head = row.querySelector("th");
+    const cell = row.querySelector("td");
+    if (head && cell) rows.push([head.textContent.trim(), cellText(cell)]);
+  });
+  return rows;
+}
+
+function proposalsFrom(page, generation, lang, scope) {
+  const proposals = [];
+  if (!page?.tables.length) return proposals;
+  const tables = page.tables.map((table) => ({
+    table,
+    name: (table.querySelector("caption, .infobox-above, th[colspan]")?.textContent || "").trim(),
+  }));
+  const wanted = generation && tables.find(({ name }) => compactName(name).includes(compactName(generation)));
+  if (generation && !wanted && tables.length > 1) return proposals;
+  const chosen = wanted || tables[0];
+  const url = `https://${lang}.wikipedia.org/wiki/${encodeURIComponent(page.title.replace(/ /g, "_"))}`;
+  const label = `Wikipédia ${lang === "fr" ? "français" : "anglais"}, « ${page.title} »`;
+  infoboxRows(chosen.table).forEach(([head, text]) => {
+    let key = ENRICH_LABELS.find(([, pattern]) => pattern.test(head))?.[0];
+    if (!key) return;
+    // En français, « Transmission » désigne les roues motrices, et « Production » souvent un nombre d'exemplaires.
+    if (lang === "fr" && /^transmission/i.test(head)) key = "layout";
+    if (key === "production" && /exemplaire/i.test(text)) return;
+    const value = normalizeSpec(key, text, head);
+    if (value) proposals.push({ key, value, source: { label, url }, scope, read: text.replace(/\s+/g, " ").trim().slice(0, 120) });
+  });
+  return proposals;
+}
+
+/** La page du modèle parent, quand la version n'a pas sa propre page. */
+async function parentModel(car) {
+  const make = picker.makes.find((entry) => compactName(entry.n) === compactName(car.brand));
+  if (!make) return null;
+  if (!makeFiles.has(make.f)) {
+    const response = await fetch(`reference/${encodeURIComponent(make.f)}.json`);
+    if (!response.ok) return null;
+    makeFiles.set(make.f, (await response.json()).models);
+  }
+  const wanted = compactName(car.name);
+  const models = makeFiles.get(make.f);
+  const version = models.flatMap((model) => (model.v || []).map((entry) => ({ model, entry })))
+    .find(({ entry }) => compactName(withMake(make.n, entry.n)) === wanted);
+  const prefix = models
+    .filter((model) => model.w && wanted.startsWith(compactName(model.w)) && wanted !== compactName(model.w))
+    .sort((a, b) => b.w.length - a.w.length)[0];
+  return { wiki: version?.model.w || prefix?.w || null, version: version?.entry || null };
+}
+
+async function findMissing(car) {
+  const [page, generation] = titleOf(car).split("#");
+  const parent = await parentModel(car).catch(() => null);
+  const proposals = [];
+  if (parent?.version) {
+    const url = parent.version.src === "EPA" ? "https://www.fueleconomy.gov/" : "https://www.data.gouv.fr/datasets/ademe-car-labelling";
+    Object.entries(parent.version.s).forEach(([key, value]) => {
+      proposals.push({ key, value, source: { label: REFERENCE_SOURCES[parent.version.src], url }, scope: "", read: "" });
+    });
+  }
+  const exact = await wikiInfobox(page, "en").catch(() => null);
+  const isExact = exact && compactName(exact.title) === compactName(page);
+  const main = isExact ? exact : parent?.wiki ? await wikiInfobox(parent.wiki, "en").catch(() => null) : null;
+  const scope = isExact ? "" : main ? `Valeur de la page « ${main.title} », pas forcément de cette version.` : "";
+  // Une autre époque, c'est une autre voiture : l'Alpine A110 de 1963 ne décrit pas celle de 2017.
+  const carYear = car.year || parseInt(parent?.version?.y, 10) || (parent?.version?.src === "ADEME" ? new Date().getFullYear() : null);
+  const english = main ? proposalsFrom(main, generation, "en", scope) : [];
+  const period = english.find((item) => item.key === "production")?.value.match(/\b(?:18|19|20)\d{2}\b/g)?.map(Number);
+  const otherEra = !isExact && carYear && period && (carYear < Math.min(...period) - 1
+    || (carYear > Math.max(...period) + 1 && !/present|aujourd/i.test(english.find((item) => item.key === "production").value)));
+  if (main && !otherEra) {
+    proposals.push(...english);
+    if (main.french) {
+      const french = await wikiInfobox(main.french, "fr").catch(() => null);
+      proposals.push(...proposalsFrom(french, generation, "fr", scope));
+    }
+  }
+  const year = car.year || new Date().getFullYear();
+  const seen = new Set();
+  return proposals.filter((item) => {
+    const id = `${item.key}|${compactName(item.value)}`;
+    if (car.specs[item.key] || seen.has(id) || !plausibleSpec(item.key, item.value, year)) return false;
+    seen.add(id);
+    return true;
+  });
+}
+
+const enrich = { car: null, proposals: [] };
+
+function specLabel(key) {
+  return SPEC_GROUPS.flatMap(([, rows]) => rows).find(([id]) => id === key)?.[1] || key;
+}
+
+async function openEnrich(car) {
+  enrich.car = car;
+  enrich.proposals = [];
+  el("enrich-list").innerHTML = "";
+  el("enrich-error").hidden = true;
+  el("enrich-submit").hidden = true;
+  el("enrich-status").textContent = "Recherche sur l'EPA, l'ADEME et Wikipédia…";
+  el("enrich-dialog").showModal();
+  let found = [];
+  try {
+    if (!picker.makes.length) {
+      const response = await fetch("reference/makes.json");
+      if (response.ok) picker.makes = await response.json();
+    }
+    found = await findMissing(car);
+  } catch {
+    el("enrich-status").textContent = "La recherche n'a pas abouti. Vérifie ta connexion et réessaie.";
+    return;
+  }
+  if (enrich.car !== car || !el("enrich-dialog").open) return;
+  enrich.proposals = found;
+  if (!found.length) {
+    el("enrich-status").textContent = "Rien de fiable trouvé dans ces sources. Tu peux compléter à la main avec le crayon.";
+    return;
+  }
+  el("enrich-status").textContent = "Coche ce que tu gardes, après avoir vérifié si besoin. Rien n'est ajouté sans ton accord.";
+  el("enrich-list").innerHTML = found.map((item, index) => `<label class="enrich-row">
+    <input type="checkbox" data-enrich-index="${index}" data-enrich-key="${esc(item.key)}">
+    <span>
+      <strong>${esc(specLabel(item.key))} : ${esc(item.value)}</strong>
+      <small><a href="${esc(item.source.url)}" target="_blank" rel="noopener">${esc(item.source.label)}</a>${item.read && item.read !== item.value ? ` · lu : ${esc(item.read)}` : ""}</small>
+      ${item.scope ? `<small class="enrich-scope">${esc(item.scope)}</small>` : ""}
+    </span>
+  </label>`).join("");
+  el("enrich-submit").hidden = false;
+}
+
+el("enrich-list").addEventListener("change", (event) => {
+  const box = event.target;
+  if (!box.checked) return;
+  // Une seule valeur par information.
+  el("enrich-list").querySelectorAll(`[data-enrich-key="${box.dataset.enrichKey}"]`).forEach((other) => {
+    if (other !== box) other.checked = false;
+  });
+});
+el("enrich-cancel").addEventListener("click", () => el("enrich-dialog").close());
+el("enrich-submit").addEventListener("click", async () => {
+  const picked = [...el("enrich-list").querySelectorAll("input:checked")].map((box) => enrich.proposals[Number(box.dataset.enrichIndex)]);
+  const error = el("enrich-error");
+  if (!picked.length) {
+    error.textContent = "Coche au moins une valeur, ou ferme cette fenêtre.";
+    error.hidden = false;
+    return;
+  }
+  const item = itemOf(enrich.car);
+  const specs = { ...(item?.custom_specs || {}) };
+  const sources = {};
+  picked.forEach((proposal) => {
+    specs[proposal.key] = proposal.value;
+    sources[proposal.key] = proposal.source;
+  });
+  el("enrich-submit").disabled = true;
+  const saved = await saveSpecs(enrich.car, specs, sources);
+  el("enrich-submit").disabled = false;
+  if (!saved) {
+    error.textContent = "Ces valeurs n'ont pas pu être enregistrées. Réessaie.";
+    error.hidden = false;
+    return;
+  }
+  el("enrich-dialog").close();
+});
+
 /* Modification des informations */
 const NUMERIC_SPECS = {
   power: "ch",
@@ -2359,8 +2636,13 @@ function openSpecsEditor(car) {
 }
 
 /** Enregistre les valeurs de la personne ; la comparaison suit ses changements. */
-async function saveSpecs(car, specs) {
-  const saved = await updateItem(car, { custom_specs: specs });
+async function saveSpecs(car, specs, newSources = {}) {
+  const item = itemOf(car);
+  const sources = { ...newSources };
+  Object.entries(item?.custom_sources || {}).forEach(([key, source]) => {
+    if (!sources[key] && specs[key] === item.custom_specs?.[key]) sources[key] = source;
+  });
+  const saved = await updateItem(car, { custom_specs: specs, custom_sources: sources });
   if (saved && state.compareInfo[car.slug]) {
     state.compareInfo[car.slug].specs = Object.keys(specs).length ? specs : null;
     if (state.user) save(`compareInfo.${state.user.id}`, state.compareInfo);
@@ -2393,7 +2675,11 @@ el("specs-form").addEventListener("submit", async (event) => {
       specs[key] = value;
     } else if (/^\d+([.,]\d+)?$/.test(value)) {
       const number = value.replace(".", ",");
-      specs[key] = key === "zero_100" ? `0-100 km/h : ${number} s` : `${number} ${unit}`;
+      // Inchangée, une valeur garde son écriture : un 0-60 mph ne devient pas un 0-100 km/h.
+      const previous = specsEditor.car.customSpecs?.[key];
+      specs[key] = previous && editedNumber(key, previous) === number
+        ? previous
+        : key === "zero_100" ? `0-100 km/h : ${number} s` : `${number} ${unit}`;
     } else {
       invalid.push(el(`spec-${key}`).closest(".spec-field").querySelector("label").textContent);
     }

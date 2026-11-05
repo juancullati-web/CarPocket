@@ -56,6 +56,22 @@ alter table public.deck_items drop constraint if exists deck_items_notes_check;
 alter table public.deck_items add constraint deck_items_notes_check check (char_length(notes) <= 2000);
 alter table public.deck_items drop constraint if exists deck_items_custom_specs_check;
 alter table public.deck_items add constraint deck_items_custom_specs_check check (public.custom_specs_valid(custom_specs));
+-- La source d'une valeur retenue : { "power": { "label": "...", "url": "https://..." } }.
+alter table public.deck_items add column if not exists custom_sources jsonb not null default '{}';
+
+create or replace function public.custom_sources_valid(sources jsonb)
+returns boolean language sql immutable set search_path = '' as $$
+  select jsonb_typeof(sources) = 'object' and pg_column_size(sources) < 20000 and not exists (
+    select 1 from jsonb_each(sources) as field(key, value)
+    where jsonb_typeof(field.value) <> 'object'
+      or char_length(coalesce(field.value ->> 'label', '')) not between 1 and 200
+      or char_length(coalesce(field.value ->> 'url', '')) > 500
+      or coalesce(field.value ->> 'url', '') !~ '^https://[^[:space:]]+$'
+  );
+$$;
+
+alter table public.deck_items drop constraint if exists deck_items_custom_sources_check;
+alter table public.deck_items add constraint deck_items_custom_sources_check check (public.custom_sources_valid(custom_sources));
 alter table public.deck_items drop constraint if exists deck_items_main_photo_check;
 alter table public.deck_items add constraint deck_items_main_photo_check
   check (main_photo is null
@@ -139,7 +155,7 @@ revoke all on public.deck_items from anon, authenticated;
 grant select (id, username, avatar, shared) on public.profiles to authenticated;
 grant update (avatar, shared) on public.profiles to authenticated;
 grant select, insert, delete on public.deck_items to authenticated;
-grant update (main_photo, custom_photos, hidden_photos, notes, custom_specs) on public.deck_items to authenticated;
+grant update (main_photo, custom_photos, hidden_photos, notes, custom_specs, custom_sources) on public.deck_items to authenticated;
 
 drop policy if exists "profil lisible par soi ou l'admin" on public.profiles;
 drop policy if exists "profil lisible si partagé" on public.profiles;

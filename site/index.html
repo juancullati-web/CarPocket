@@ -219,6 +219,16 @@
     <p id="toast-text"></p>
     <button type="button" class="text-link quiet" id="toast-close" aria-label="Fermer ce message">Fermer</button>
   </div>
+  <dialog class="specs-dialog" id="enrich-dialog" aria-labelledby="enrich-title">
+    <h2 class="display-sm" id="enrich-title">Infos trouvées</h2>
+    <p id="enrich-status" role="status"></p>
+    <div id="enrich-list"></div>
+    <p class="form-error" id="enrich-error" role="alert" hidden></p>
+    <div class="dialog-actions">
+      <button type="button" class="button button-secondary" id="enrich-cancel">Fermer</button>
+      <button type="button" class="button button-primary" id="enrich-submit" hidden>Ajouter à ma fiche</button>
+    </div>
+  </dialog>
   <dialog class="specs-dialog" id="specs-dialog" aria-labelledby="specs-title">
     <form id="specs-form" novalidate>
       <h2 class="display-sm" id="specs-title">Modifier les informations</h2>
