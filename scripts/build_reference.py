@@ -3,6 +3,7 @@
 
 - EPA (États-Unis, fueleconomy.gov) : versions précises depuis 1984 ;
 - ADEME (France, Car Labelling, Licence Ouverte) : modèles vendus en France, puissance et poids ;
+- openvehicle-data (CC BY 4.0, Mirko Bechini) : voitures immatriculées en Italie de 2019 à 2025 ;
 - Wikidata et Wikipédia : modèles anciens ou rares, sans version.
 
 Une caractéristique n'est gardée que si toutes les lignes d'une version donnent la même valeur.
@@ -27,6 +28,7 @@ from vehicle_reference import REFERENCE_DIR, compact, full_name
 EPA_URL = "https://www.fueleconomy.gov/feg/epadata/vehicles.csv.zip"
 ADEME_URL = "https://data.ademe.fr/data-fair/api/v1/datasets/ademe-car-labelling/lines"
 ADEME_FIELDS = "Marque,Modèle,Description_Commerciale,Puissance_maximale,Poids_à_vide,Cylindrée,Carrosserie,Type_de_boite,Nombre_rapports"
+OVD_RELEASES = "https://api.github.com/repos/mirkobechini/openvehicle-data/releases?per_page=40"
 WIKIDATA_URL = "https://query.wikidata.org/sparql"
 WIKIDATA_QUERY = """SELECT ?title ?makeLabel WHERE {
   ?item wdt:P31/wdt:P279* wd:Q3231690; wdt:P176 ?make.
@@ -172,6 +174,47 @@ def ademe_entries(rows) -> list:
     return entries
 
 
+def ovd_entries(tables: dict) -> list:
+    """Regroupe les variantes d'homologation par nom commercial."""
+    brands = {row["id"]: row["name"] for row in tables["brands"]}
+    models = {row["id"]: row for row in tables["models"]}
+    generations = {row["id"]: row["model_id"] for row in tables["generations"]}
+    engines = {row["id"]: row for row in tables["engines"]}
+    groups = defaultdict(list)
+    for variant in tables["variants"]:
+        model = models.get(generations.get(variant["generation_id"]))
+        # Quelques immatriculations isolées : souvent des noms mal saisis.
+        if model and int(model.get("registrations") or 0) >= 5 and model.get("category", "M1") == "M1":
+            groups[model["id"]].append(variant)
+    entries = []
+    for model_id, variants in groups.items():
+        model = models[model_id]
+        make = clean_make(brands.get(model["brand_id"], ""))
+        name = smart_case(model["name"].strip())
+        if not make or not name:
+            continue
+        rows = [engines.get(variant["engine_id"], {}) for variant in variants]
+
+        def number(values, unit):
+            found = only_value(str(round(float(value))) for value in values if value)
+            return f"{found} {unit}" if found else None
+
+        years = set()
+        for variant in variants:
+            years.update(int(variant[key]) for key in ("year_from", "year_to") if variant.get(key))
+        weight = number((variant["mass_kg"] for variant in variants), "kg")
+        specs = {
+            "power": number((row.get("power_kw") for row in rows), "kW"),
+            "weight": f"{weight} (en ordre de marche)" if weight else None,
+            "engine": number((row.get("displacement_cc") for row in rows), "cm³"),
+            "wheelbase": number((variant["wheelbase_mm"] for variant in variants), "mm"),
+        }
+        entries.append({"make": make, "model": model_of(name), "version": name,
+                        "years": years_label(years) if years else "", "source": "OVD",
+                        "specs": {key: value for key, value in specs.items() if value}})
+    return entries
+
+
 def wikipedia_models(bindings, makes: set) -> list:
     """Garde un modèle seulement si le titre de sa page commence par sa marque."""
     by_compact = {compact(make): make for make in makes}
@@ -203,6 +246,9 @@ def merge(entries: list, wiki_models: list) -> dict:
         key = compact(entry["version"])
         if key not in node["v"]:
             node["v"][key] = {"n": entry["version"], "y": entry["years"], "src": entry["source"], "s": entry["specs"]}
+        elif entry["specs"]:
+            # Une même version dans une autre source : ses valeurs restent proposées, avec leur origine.
+            node["v"][key].setdefault("x", []).append({"src": entry["source"], "s": entry["specs"]})
     for item in wiki_models:
         models = catalogue[item["make"]]
         node = models.setdefault(compact(item["model"]), {"n": item["model"], "v": {}})
@@ -239,6 +285,17 @@ def download_ademe() -> list:
         rows += data["results"]
         url = data.get("next") if data["results"] else None
     return rows
+
+
+def download_ovd() -> dict:
+    releases = json.loads(fetch(OVD_RELEASES))
+    release = next(item for item in releases if item["tag_name"].startswith("data-v") and item["assets"])
+    urls = {asset["name"]: asset["browser_download_url"] for asset in release["assets"]}
+    tables = {}
+    for name in ("brands", "models", "generations", "variants", "engines"):
+        text = fetch(urls[f"{name}.csv"]).decode("utf-8")
+        tables[name] = list(csv.DictReader(io.StringIO(text)))
+    return tables
 
 
 def download_wikidata() -> list:
@@ -297,16 +354,17 @@ def write(catalogue: dict, directory: Path = REFERENCE_DIR) -> None:
 def main() -> int:
     epa = epa_entries(download_epa())
     ademe = ademe_entries(download_ademe())
+    ovd = ovd_entries(download_ovd())
     bindings = download_wikidata()
     # Une source muette ne doit pas effacer la liste déjà publiée.
-    if len(epa) < 3000 or len(ademe) < 500 or len(bindings) < 3000:
-        print(f"Liste incomplète : EPA {len(epa)}, ADEME {len(ademe)}, Wikidata {len(bindings)}", file=sys.stderr)
+    if len(epa) < 3000 or len(ademe) < 500 or len(ovd) < 500 or len(bindings) < 3000:
+        print(f"Liste incomplète : EPA {len(epa)}, ADEME {len(ademe)}, OVD {len(ovd)}, Wikidata {len(bindings)}", file=sys.stderr)
         return 1
-    entries = ademe + epa
+    entries = ademe + epa + ovd
     wiki_models = wikipedia_models(bindings, {entry["make"] for entry in entries})
     catalogue = merge(entries, wiki_models)
     write(catalogue)
-    print(f"{len(catalogue)} marques, EPA {len(epa)}, ADEME {len(ademe)}, Wikipédia {len(wiki_models)}")
+    print(f"{len(catalogue)} marques, EPA {len(epa)}, ADEME {len(ademe)}, OVD {len(ovd)}, Wikipédia {len(wiki_models)}")
     return 0
 
 

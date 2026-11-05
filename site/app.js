@@ -695,7 +695,7 @@ function officialSources(car) {
   const sources = [...new Set(Object.values(car.specs).map((spec) => spec.source).filter(Boolean))];
   if (!sources.length) return "";
   const names = sources.map((source) => REFERENCE_SOURCES[source] || source).join(" et ");
-  return `<p class="legend">Valeurs issues de sources officielles : ${esc(names)}. Une valeur absente n'y figure pas, ou varie selon les variantes de cette version.${sources.includes("EPA") ? " Les années de l'EPA sont les années-modèles américaines." : ""}</p>`;
+  return `<p class="legend">Valeurs issues de sources ouvertes : ${esc(names)}. Une valeur absente n'y figure pas, ou varie selon les variantes de cette version.${sources.includes("EPA") ? " Les années de l'EPA sont les années-modèles américaines." : ""}${sources.includes("OVD") ? " Pour openvehicle-data, les années sont celles des immatriculations en Italie." : ""}</p>`;
 }
 
 /** La présentation : celle de Wikipédia, ou celle écrite par la personne pour sa collection. */
@@ -1314,7 +1314,12 @@ function setSuggestStatus(text) {
 }
 
 /* Ajout en trois étapes : marque, modèle, puis version. */
-const REFERENCE_SOURCES = { EPA: "EPA, États-Unis", ADEME: "ADEME, France" };
+const REFERENCE_SOURCES = { EPA: "EPA, États-Unis", ADEME: "ADEME, France", OVD: "openvehicle-data, CC BY 4.0" };
+const REFERENCE_LINKS = {
+  EPA: "https://www.fueleconomy.gov/",
+  ADEME: "https://www.data.gouv.fr/datasets/ademe-car-labelling",
+  OVD: "https://github.com/mirkobechini/openvehicle-data",
+};
 const FREE_NAME = /^[\p{L}\p{N}][\p{L}\p{N} .,'’/()+&-]{1,79}$/u;
 const picker = { step: "make", makes: [], make: null, models: [], model: null };
 const makeFiles = new Map();
@@ -2492,8 +2497,11 @@ async function parentModel(car) {
   }
   const wanted = compactName(car.name);
   const models = makeFiles.get(make.f);
-  const version = models.flatMap((model) => (model.v || []).map((entry) => ({ model, entry })))
-    .find(({ entry }) => compactName(withMake(make.n, entry.n)) === wanted);
+  // Le nom d'une page Wikipédia désigne tout le modèle, pas sa version récente de même nom.
+  const version = models.some((model) => model.w && compactName(model.w) === wanted)
+    ? null
+    : models.flatMap((model) => (model.v || []).map((entry) => ({ model, entry })))
+      .find(({ entry }) => compactName(withMake(make.n, entry.n)) === wanted);
   const prefix = models
     .filter((model) => model.w && wanted.startsWith(compactName(model.w)) && wanted !== compactName(model.w))
     .sort((a, b) => b.w.length - a.w.length)[0];
@@ -2505,9 +2513,12 @@ async function findMissing(car) {
   const parent = await parentModel(car).catch(() => null);
   const proposals = [];
   if (parent?.version) {
-    const url = parent.version.src === "EPA" ? "https://www.fueleconomy.gov/" : "https://www.data.gouv.fr/datasets/ademe-car-labelling";
-    Object.entries(parent.version.s).forEach(([key, value]) => {
-      proposals.push({ key, value, source: { label: REFERENCE_SOURCES[parent.version.src], url }, scope: "", read: "" });
+    [{ src: parent.version.src, s: parent.version.s }, ...(parent.version.x || [])].forEach((origin) => {
+      Object.entries(origin.s).forEach(([key, raw]) => {
+        // La puissance d'une valeur modifiée se lit en chevaux : 530 kW ne doit pas devenir 530 ch.
+        const value = key === "power" ? normalizeSpec(key, raw) || raw : raw;
+        proposals.push({ key, value, source: { label: REFERENCE_SOURCES[origin.src], url: REFERENCE_LINKS[origin.src] }, scope: "", read: raw });
+      });
     });
   }
   const exact = await wikiInfobox(page, "en").catch(() => null);
@@ -2554,7 +2565,7 @@ async function openEnrich(car) {
   el("enrich-list").innerHTML = "";
   el("enrich-error").hidden = true;
   el("enrich-submit").hidden = true;
-  el("enrich-status").textContent = "Recherche sur l'EPA, l'ADEME et Wikipédia…";
+  el("enrich-status").textContent = "Recherche dans les sources officielles, openvehicle-data et Wikipédia…";
   el("enrich-links").innerHTML = lookupLink(car);
   el("enrich-dialog").showModal();
   let found = [];

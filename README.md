@@ -32,13 +32,13 @@ Clique sur **Retirer** sur la carte ou sur la fiche, puis confirme. La fiche res
 
 ## Ajouter une voiture
 
-Tape directement le nom, par exemple « Ferrari 488 Pista », ou choisis la marque, le modèle, puis la version. Si elle manque, tape-la : la fiche est créée à ce nom et reste à compléter. Les listes viennent de l'EPA (États-Unis), de l'ADEME (France), de Wikidata et de Wikipédia, et se mettent à jour chaque mois.
+Tape directement le nom, par exemple « Ferrari 488 Pista », ou choisis la marque, le modèle, puis la version. Si elle manque, tape-la : la fiche est créée à ce nom et reste à compléter. Les listes viennent de l'EPA (États-Unis), de l'ADEME (France), d'[openvehicle-data](https://github.com/mirkobechini/openvehicle-data) (Mirko Bechini, CC BY 4.0), de Wikidata et de Wikipédia, et se mettent à jour chaque mois.
 
 ## Notes et informations modifiées
 
 Sur la fiche d'une voiture de ta collection, écris tes notes : elles s'enregistrent toutes seules. Le bouton crayon change les valeurs de la fiche technique pour ta collection seulement, et chaque valeur changée porte la mention « Modifié ». Tu peux réinitialiser une valeur dans le formulaire, ou toutes les valeurs avec le bouton voisin.
 
-Sur une fiche incomplète, **Chercher les infos manquantes** propose des valeurs de l'EPA, de l'ADEME et de Wikipédia, avec leur source. Rien n'est ajouté sans que tu le coches.
+Sur une fiche incomplète, **Chercher les infos manquantes** propose des valeurs de l'EPA, de l'ADEME, d'openvehicle-data et de Wikipédia, avec leur source. Rien n'est ajouté sans que tu le coches.
 
 Tu peux aussi écrire ta propre présentation, ou modifier celle de Wikipédia, puis revenir au texte d'origine.
 

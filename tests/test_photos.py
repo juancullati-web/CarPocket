@@ -64,6 +64,14 @@ class ReferenceTest(unittest.TestCase):
         self.assertEqual(make["n"], "Ferrari")
         self.assertIsNone(version)
 
+    def test_a_wikipedia_model_name_is_not_a_version(self):
+        (self.directory / "ferrari.json").write_text(json.dumps({"make": "Ferrari", "models": [
+            {"n": "A110", "w": "Ferrari A110", "v": [{"n": "A110", "y": "2020", "src": "OVD", "s": {}}]},
+        ]}), "utf-8")
+        make, version = reference.find_version("Ferrari A110", self.directory)
+        self.assertEqual(make["n"], "Ferrari")
+        self.assertIsNone(version)
+
     def test_two_word_make(self):
         make, _ = reference.find_version("Alfa Romeo GTA", self.directory)
         self.assertEqual(make["n"], "Alfa Romeo")
@@ -101,6 +109,32 @@ class BuildReferenceTest(unittest.TestCase):
         self.assertIsNone(build_reference.clean_make("Superior Coaches Div E.p. Dutton"))
         self.assertEqual(build_reference.clean_make("B.M.W."), "BMW")
         self.assertEqual(build_reference.clean_make("PEUGEOT"), "Peugeot")
+
+    def test_ovd_keeps_only_what_all_variants_share(self):
+        tables = {
+            "brands": [{"id": "b", "name": "FERRARI"}],
+            "models": [{"id": "m", "name": "488 PISTA", "brand_id": "b", "category": "M1", "registrations": "200"}],
+            "generations": [{"id": "g", "model_id": "m"}],
+            "engines": [{"id": "e", "power_kw": "530.0", "displacement_cc": "3902"}],
+            "variants": [
+                {"generation_id": "g", "engine_id": "e", "mass_kg": "1530.0", "wheelbase_mm": "2650", "year_from": "2019", "year_to": "2021"},
+                {"generation_id": "g", "engine_id": "e", "mass_kg": "1540.0", "wheelbase_mm": "2650", "year_from": "2020", "year_to": "2022"},
+            ],
+        }
+        entry = build_reference.ovd_entries(tables)[0]
+        self.assertEqual((entry["make"], entry["model"], entry["version"]), ("Ferrari", "488", "488 Pista"))
+        self.assertEqual(entry["specs"]["power"], "530 kW")
+        self.assertNotIn("weight", entry["specs"])
+        self.assertEqual(entry["years"], "2019–2022")
+
+    def test_a_second_source_adds_to_the_same_version(self):
+        same = {"make": "Ferrari", "model": "488", "version": "488 Pista", "years": "2019"}
+        merged = build_reference.merge(
+            [{**same, "source": "EPA", "specs": {"engine": "V8"}}, {**same, "source": "OVD", "specs": {"power": "530 kW"}}], []
+        )
+        version = merged["Ferrari"][0]["v"][0]
+        self.assertEqual(version["src"], "EPA")
+        self.assertEqual(version["x"], [{"src": "OVD", "s": {"power": "530 kW"}}])
 
     def test_search_lists_full_names_without_repeating_the_page(self):
         catalogue = {"Ferrari": [{"n": "F 40", "w": "Ferrari F40", "v": [{"n": "F 40", "y": "1990", "src": "EPA", "s": {}}]},

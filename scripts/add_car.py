@@ -111,8 +111,10 @@ def add_precise(query: str, make: dict, version, page, example: bool) -> dict:
         summary = wiki.summary(page["title"], page["fr_title"])
         files = wiki.choose_photos(page["title"], make["n"], extracted["image"], page["wikidata"])
     if version:
-        for key, value in version["s"].items():
-            specs[key] = {"value": value, "from_text": False, "source": version["src"]}
+        for origin in [{"src": version["src"], "s": version["s"]}, *version.get("x", [])]:
+            for key, value in origin["s"].items():
+                if not specs.get(key, {}).get("source"):
+                    specs[key] = {"value": value, "from_text": False, "source": origin["src"]}
     if not files:
         files = wiki.exact_photo(query)
     photos = save_photos(files, slug)

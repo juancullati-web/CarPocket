@@ -46,6 +46,9 @@ def find_version(title: str, directory: Path = REFERENCE_DIR):
     data = json.loads((directory / f"{make['f']}.json").read_text("utf-8"))
     wanted = compact(title)
     for model in data["models"]:
+        # Le nom d'une page Wikipédia désigne tout le modèle, pas sa version récente de même nom.
+        if model.get("w") and compact(model["w"]) == wanted:
+            return make, None
         for version in model.get("v", []):
             if compact(full_name(make["n"], version["n"])) == wanted:
                 return make, version
