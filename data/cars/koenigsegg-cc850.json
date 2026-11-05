@@ -1,0 +1,76 @@
+{
+  "slug": "koenigsegg-cc850",
+  "name": "Koenigsegg CC850",
+  "brand": "Koenigsegg",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-05T09:40:37+00:00",
+  "summary": "La Koenigsegg CC850 est une hypercar produite à 70 exemplaires par le constructeur automobile suédois Koenigsegg dévoilée en août 2022.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Koenigsegg_CC850",
+  "wikipedia_title": "Koenigsegg CC850",
+  "specs": {
+    "engine": {
+      "value": "5065 cc twin-turbo aluminium DOHC V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "9-speed Koenigsegg LST multi-clutch with Engage Shifter System",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur central arrière, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "2-door targa top",
+      "from_text": false
+    },
+    "production": {
+      "value": "2024−present · 70 units sold",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Christian von Koenigsegg, Sasha Selipanov",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Sweden: Ängelholm",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1385 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4364 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "2024 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1127 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2700 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "1185 PS",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/koenigsegg-cc850/1.jpg",
+      "author": "Mr.choppers",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2026_Koenigsegg_CC850_in_Crystal_White_Pearl,_front_right_side.jpg"
+    }
+  ]
+}
