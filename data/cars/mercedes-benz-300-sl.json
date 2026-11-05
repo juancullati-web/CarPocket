@@ -1,0 +1,88 @@
+{
+  "slug": "mercedes-benz-300-sl",
+  "name": "Mercedes-Benz 300 SL",
+  "brand": "Mercedes-Benz",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-05T20:53:47+00:00",
+  "summary": "La Mercedes-Benz 300 SL (W198) « papillon » est un modèle d'automobiles à deux places coupé et cabriolet du constructeur automobile allemand Mercedes-Benz conçu et dessiné par le designer Friedrich Geiger, commercialisé de 1954 à 1963 et entré depuis dans la légende des automobiles de rêve. Elle est considérée comme la plus emblématique des Mercedes produites après la Seconde Guerre mondiale pour son originalité, ses qualités techniques et esthétiques.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Mercedes-Benz_300_SL",
+  "wikipedia_title": "Mercedes-Benz 300 SL",
+  "specs": {
+    "engine": {
+      "value": "3,0 L, 6 cylindres",
+      "from_text": false,
+      "source": "EPA"
+    },
+    "transmission": {
+      "value": "Manuelle 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Propulsion",
+      "from_text": false,
+      "source": "EPA"
+    },
+    "body": {
+      "value": "Coupé 2 portes, roadster",
+      "from_text": false
+    },
+    "production": {
+      "value": "1990–1993",
+      "from_text": false,
+      "source": "EPA"
+    },
+    "designer": {
+      "value": "Friedrich Geiger",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "West Germany: Stuttgart-Untertürkheim",
+      "from_text": false
+    },
+    "weight": {
+      "value": "Coupé 1295 kg, Roadster 1330 kg, from 1961 1370 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4520 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1790 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1300 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2400 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "20 hp",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "235 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-100 km/h : 9,3 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/mercedes-benz-300-sl/1.jpg",
+      "thumb": "photos/mercedes-benz-300-sl/1-thumb.jpg",
+      "author": "Bahnfrend",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Fox_Classic_Car_Collection,_2008_(02).JPG"
+    }
+  ]
+}
