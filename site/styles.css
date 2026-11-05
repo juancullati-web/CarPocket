@@ -1048,9 +1048,6 @@ a.completion-ring, button.completion-ring { cursor: pointer; }
 .ring-high .ring-fill { stroke: #1c69d4; }
 .completion-ring text { fill: #fff; font: 700 9.5px var(--font); transform: rotate(90deg); transform-origin: 18px 18px; }
 .ring-unit { font-size: 7px; }
-.detail-name { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-.detail-name h1 { min-width: 0; }
-.ring-sheet { width: 48px; height: 48px; border: 1px solid rgba(255, 255, 255, .25); }
 @media (max-width: 640px) {
 }
 .model-actions .completion-ring { width: 40px; height: 40px; }

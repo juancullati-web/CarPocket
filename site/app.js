@@ -215,6 +215,7 @@ function cardActions(car, { sheet = true } = {}) {
     sheet ? `<a class="add-icon" href="#${esc(car.slug)}" aria-label="Voir la fiche de ${name}" data-tip="Voir la fiche">${photoIcon(CARD_ICONS.sheet)}</a>` : "",
     sheet ? completionRing(car, { place: "card" }) : "",
     `<button type="button" class="${sheet ? "theme-toggle" : "add-icon"}" data-compare="${esc(car.slug)}" aria-pressed="${selected}" aria-label="${compareLabel} : ${name}" data-tip="${compareLabel}">${photoIcon(!sheet && selected ? CARD_ICONS.check : CARD_ICONS.compare)}</button>`,
+    sheet ? "" : completionRing(car, { place: "sheet" }),
     `<button type="button" class="theme-toggle" data-share="${esc(car.slug)}" aria-label="Partager ${name} avec un ami" data-tip="Partager avec un ami">${photoIcon(CARD_ICONS.share)}</button>`,
   ];
   if (canEdit() && inOwnDeck(car)) {
@@ -780,7 +781,7 @@ function detailHtml(car) {
           <span class="label">${esc(car.brand)}</span>
           ${car.example ? `<span class="badge">Exemple</span>` : ""}
         </div>
-        <div class="detail-name"><h1 class="display-xl">${esc(car.name)}</h1>${completionRing(car, { place: "sheet" })}</div>
+        <h1 class="display-xl">${esc(car.name)}</h1>
       </div>
       <div class="stage">
         ${photos.length ? `<button type="button" class="stage-zoom" data-zoom aria-label="Agrandir la photo" data-tip="Agrandir la photo"><img id="hero-photo" src="${esc(photos[0].file)}" alt="${esc(car.name)}"></button><span class="photo-tag" id="hero-tag"${photos[0].custom ? "" : " hidden"}>${esc(photoTag(photos[0]))}</span>` : emptyStage(car)}
