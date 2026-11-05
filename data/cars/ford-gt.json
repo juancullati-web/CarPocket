@@ -1,0 +1,87 @@
+{
+  "slug": "ford-gt",
+  "name": "Ford GT",
+  "brand": "Ford",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-05T13:52:40+00:00",
+  "summary": "La Ford GT est une supercar du constructeur automobile américain Ford.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Ford_GT",
+  "wikipedia_title": "Ford GT",
+  "specs": {
+    "engine": {
+      "value": "5.4 L supercharged Ford Modular V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 6 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Propulsion",
+      "from_text": false,
+      "source": "EPA"
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "2005–2022",
+      "from_text": false,
+      "source": "EPA"
+    },
+    "designer": {
+      "value": "Camilo Pardo under J Mays",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United States: Wixom, Michigan (Wixom Assembly Plant; interior) Troy, Michigan (SSV Inc.; Body Paint facility) Norwalk, Ohio (Mayflower Vehicle Systems; Production and assembly) Romeo, Michigan (Ford Romeo Engine Plant; Engine and transmission)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1581 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4643 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1953 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1125 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2710 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "550 hp",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "330 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-60 mph : 3,3 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/ford-gt/1.jpg",
+      "thumb": "photos/ford-gt/1-thumb.jpg",
+      "author": "Winning Automotive Photography",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Ford_GT_Carmel.jpg"
+    }
+  ]
+}
