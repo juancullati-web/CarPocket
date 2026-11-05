@@ -1024,3 +1024,33 @@ dialog.photo-viewer[open] { display: grid; grid-template-rows: minmax(0, 1fr) au
 .summary-head .theme-toggle { flex: none; }
 .summary-empty { margin: 12px 0 16px; color: var(--muted); }
 .summary-own { white-space: pre-wrap; overflow-wrap: anywhere; }
+
+/* Complétude d'une fiche */
+.model-card { position: relative; }
+.completion-ring {
+  display: block;
+  flex: none;
+  width: 40px;
+  height: 40px;
+  border: 0;
+  border-radius: 50%;
+  padding: 0;
+  background: #1a2129;
+  text-decoration: none;
+  cursor: default;
+}
+a.completion-ring, button.completion-ring { cursor: pointer; }
+.completion-ring svg { display: block; width: 100%; height: 100%; transform: rotate(-90deg); }
+.completion-ring circle { fill: none; stroke-width: 3; }
+.ring-track { stroke: rgba(255, 255, 255, .25); }
+.ring-low .ring-fill { stroke: #9aa3ad; }
+.ring-mid .ring-fill { stroke: #8fb8ee; }
+.ring-high .ring-fill { stroke: #1c69d4; }
+.completion-ring text { fill: #fff; font: 700 10.5px var(--font); transform: rotate(90deg); transform-origin: 18px 18px; }
+.ring-card { position: absolute; z-index: 1; top: 8px; right: 8px; }
+.detail-name { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.detail-name h1 { min-width: 0; }
+.ring-sheet { width: 48px; height: 48px; border: 1px solid rgba(255, 255, 255, .25); }
+@media (max-width: 640px) {
+  .grid.compact .ring-card { top: 4px; right: 4px; width: 34px; height: 34px; }
+}

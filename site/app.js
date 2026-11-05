@@ -172,6 +172,40 @@ const CARD_ICONS = {
   check: '<path d="M5 12l5 5 9-10"/>',
 };
 
+/* Complétude d'une fiche : ce qui est rempli, pas ce qui est vérifié. */
+const SPEC_KEYS = SPEC_GROUPS.flatMap(([, rows]) => rows.map(([key]) => key));
+
+function completeness(car) {
+  const filled = SPEC_KEYS.filter((key) => car.specs[key]).length;
+  return { filled, total: SPEC_KEYS.length, percent: Math.round((filled / SPEC_KEYS.length) * 100) };
+}
+
+function completionRing(car, { place }) {
+  const { filled, total, percent } = completeness(car);
+  const level = percent < 40 ? "low" : percent <= 80 ? "mid" : "high";
+  const label = `Fiche complète à ${percent} % : ${filled} informations sur ${total}. Rempli ne veut pas dire vérifié.`;
+  const art = `<svg viewBox="0 0 36 36" aria-hidden="true">
+      <circle class="ring-track" cx="18" cy="18" r="15.5" pathLength="100"/>
+      <circle class="ring-fill" cx="18" cy="18" r="15.5" pathLength="100" stroke-dasharray="${percent} 100"/>
+      <text x="18" y="21.5" text-anchor="middle">${percent}</text>
+    </svg>`;
+  const shared = `class="completion-ring ring-${level} ring-${place}" aria-label="${label}" data-tip="${label}"`;
+  // Sur ses propres fiches, l'anneau mène directement à ce qui manque.
+  if (canEdit() && inOwnDeck(car) && filled < total) {
+    return place === "card"
+      ? `<a ${shared} href="#${esc(car.slug)}" data-open-missing="${esc(car.slug)}">${art}</a>`
+      : `<button type="button" ${shared} data-open-missing="${esc(car.slug)}">${art}</button>`;
+  }
+  return `<span ${shared} role="img">${art}</span>`;
+}
+
+function revealMissing() {
+  const missing = el("detail").querySelector(".missing-specs");
+  if (!missing) return;
+  missing.open = true;
+  missing.scrollIntoView({ block: "center", behavior: calmMotion() ? "auto" : "smooth" });
+}
+
 function cardActions(car, { sheet = true } = {}) {
   const name = esc(car.name);
   const title = titleOf(car);
@@ -214,6 +248,7 @@ async function shareCar(car, button) {
 function cardHtml(car) {
   const photo = car.photos[0];
   return `<div class="model-card">
+    ${completionRing(car, { place: "card" })}
     <a class="model-photo" href="#${esc(car.slug)}" tabindex="-1" aria-hidden="true">
       ${photo ? `<img src="${esc(photo.file)}" alt="" loading="lazy">` : `<div class="no-photo">Pas encore de photo</div>`}
       ${car.example ? `<span class="badge">Exemple</span>` : ""}
@@ -260,6 +295,8 @@ const SORTERS = {
   power: (a, b) => (b.power_ch ?? -1) - (a.power_ch ?? -1),
   ratio: (a, b) => (ratioOf(b) ?? -1) - (ratioOf(a) ?? -1),
   year: (a, b) => (b.year ?? -1) - (a.year ?? -1),
+  emptiest: (a, b) => completeness(a).filled - completeness(b).filled || a.name.localeCompare(b.name, "fr"),
+  fullest: (a, b) => completeness(b).filled - completeness(a).filled || a.name.localeCompare(b.name, "fr"),
 };
 
 const deck = () => state.cars;
@@ -743,7 +780,7 @@ function detailHtml(car) {
           <span class="label">${esc(car.brand)}</span>
           ${car.example ? `<span class="badge">Exemple</span>` : ""}
         </div>
-        <h1 class="display-xl">${esc(car.name)}</h1>
+        <div class="detail-name"><h1 class="display-xl">${esc(car.name)}</h1>${completionRing(car, { place: "sheet" })}</div>
       </div>
       <div class="stage">
         ${photos.length ? `<button type="button" class="stage-zoom" data-zoom aria-label="Agrandir la photo" data-tip="Agrandir la photo"><img id="hero-photo" src="${esc(photos[0].file)}" alt="${esc(car.name)}"></button><span class="photo-tag" id="hero-tag"${photos[0].custom ? "" : " hidden"}>${esc(photoTag(photos[0]))}</span>` : emptyStage(car)}
@@ -1023,10 +1060,14 @@ function renderRoute() {
   if (discover) renderDiscover();
 }
 
+let openMissingNext = null;
+
 function route() {
   renderRoute();
   renderCompareBar();
   window.scrollTo(0, 0);
+  if (openMissingNext && decodeURIComponent(location.hash.slice(1)) === openMissingNext) revealMissing();
+  openMissingNext = null;
 }
 
 /* Ajout, retrait et photo principale */
@@ -2085,6 +2126,12 @@ document.addEventListener("click", (event) => {
   const addTitle = event.target.closest("[data-add-title]");
   if (addTitle) {
     addFromCollection(addTitle.dataset.addTitle);
+    return;
+  }
+  const toMissing = event.target.closest("[data-open-missing]");
+  if (toMissing) {
+    if (decodeURIComponent(location.hash.slice(1)) === toMissing.dataset.openMissing) revealMissing();
+    else openMissingNext = toMissing.dataset.openMissing;
     return;
   }
   const share = event.target.closest("[data-share]");
