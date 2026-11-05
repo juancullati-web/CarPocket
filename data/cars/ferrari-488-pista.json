@@ -1,0 +1,44 @@
+{
+  "slug": "ferrari-488-pista",
+  "name": "Ferrari 488 Pista",
+  "brand": "Ferrari",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-05T10:25:17+00:00",
+  "summary": "",
+  "summary_lang": "",
+  "summary_url": "",
+  "wikipedia_title": "Ferrari 488 Pista",
+  "specs": {
+    "engine": {
+      "value": "3,9 L, 8 cylindres",
+      "from_text": false,
+      "source": "EPA"
+    },
+    "transmission": {
+      "value": "Automatique 7 rapports",
+      "from_text": false,
+      "source": "EPA"
+    },
+    "layout": {
+      "value": "Propulsion",
+      "from_text": false,
+      "source": "EPA"
+    },
+    "production": {
+      "value": "2019–2020",
+      "from_text": false,
+      "source": "EPA"
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/ferrari-488-pista/1.jpg",
+      "author": "Alexander Migl",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Ferrari_488_Pista_Genf_2018.jpg"
+    }
+  ]
+}
