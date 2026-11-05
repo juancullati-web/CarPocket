@@ -1,0 +1,24 @@
+{
+  "slug": "ferrari-sf90-xx",
+  "name": "Ferrari SF90 XX",
+  "brand": "Ferrari",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-05T17:03:45+00:00",
+  "summary": "",
+  "summary_lang": "",
+  "summary_url": "",
+  "wikipedia_title": "Ferrari SF90 XX",
+  "specs": {},
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/ferrari-sf90-xx/1.jpg",
+      "thumb": "photos/ferrari-sf90-xx/1-thumb.jpg",
+      "author": "Calreyn88",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2024_Ferrari_SF90_XX_Spider_2.jpg"
+    }
+  ]
+}
