@@ -1,0 +1,64 @@
+{
+  "slug": "shelby-daytona",
+  "name": "Shelby Daytona",
+  "brand": "Shelby",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-05T09:34:22+00:00",
+  "summary": "La Shelby Cobra Daytona Coupé est un coupé basé sur le châssis de l'AC Cobra 289.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Shelby_Cobra_Daytona_Coup%C3%A9",
+  "wikipedia_title": "Shelby Daytona",
+  "specs": {
+    "engine": {
+      "value": "Ford 289 CID V8",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FMR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Pete Brock",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Venice, California, USA Modena, Italy",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1043 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4150 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1720 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1180 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2286 mm",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/shelby-daytona/1.jpg",
+      "author": "User:Jaydec",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Shelby_Daytona,_1964.JPG"
+    }
+  ]
+}
