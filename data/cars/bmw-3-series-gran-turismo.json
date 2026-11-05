@@ -1,0 +1,23 @@
+{
+  "slug": "bmw-3-series-gran-turismo",
+  "name": "BMW 3 Series Gran Turismo",
+  "brand": "BMW",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-05T10:10:59+00:00",
+  "summary": "",
+  "summary_lang": "",
+  "summary_url": "",
+  "wikipedia_title": "BMW 3 Series Gran Turismo",
+  "specs": {},
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/bmw-3-series-gran-turismo/1.jpg",
+      "author": "Dinkun Chen",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:BMW_3_SERIES_GRAN_TURISMO_(F34)_China.jpg"
+    }
+  ]
+}
