@@ -1,0 +1,73 @@
+{
+  "slug": "ferrari-250-gto",
+  "name": "Ferrari 250 GTO",
+  "brand": "Ferrari",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-05T20:54:35+00:00",
+  "summary": "La Ferrari 250 GTO est une voiture de course grand tourisme construite par Ferrari au début des années 1960. Elle est largement considérée comme la quintessence des modèles Ferrari, et l'une des voitures de sport les plus célèbres de tous les temps. Au-delà de son très important palmarès sportif, la GTO se caractérise par sa suspension sophistiquée et son esthétique originale et réussie. Le nombre « 250 » correspond au volume en centimètres cubes de chaque cylindre du moteur tandis que « GTO » signifie « Gran Turismo Omologata » en italien c'est-à-dire « homologuée pour courir en grand tourisme ». Au total, 36 exemplaires ont été produits : 33 en 1962 et 1963, plus trois autres en 1964. Dans l'intervalle, le modèle a été sacré triple champion du monde en GT consécutivement de 1962 à 1964.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Ferrari_250_GTO",
+  "wikipedia_title": "Ferrari 250 GTO",
+  "specs": {
+    "engine": {
+      "value": "2,953 cc · Tipo 168 Comp/62 60º V12 · SOHC 2 valves per cylinder valvetrain configuration · 6 Weber 38 DCN carburetors · Compression ratio 9.7:1",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1962–1964 · (36 exemplaires)",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Giotto Bizzarrini, Sergio Scaglietti",
+      "from_text": false
+    },
+    "weight": {
+      "value": "880-950 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4325 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1600 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1210 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2400 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "300 PS",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/ferrari-250-gto/1.jpg",
+      "thumb": "photos/ferrari-250-gto/1-thumb.jpg",
+      "author": "MrWalkr",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1962_Ferrari_250_GTO_SP25.jpg"
+    }
+  ]
+}
