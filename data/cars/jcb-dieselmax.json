@@ -1,0 +1,65 @@
+{
+  "slug": "jcb-dieselmax",
+  "name": "JCB Dieselmax",
+  "brand": "JCB",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-05T17:51:42+00:00",
+  "summary": "The JCB Dieselmax is a streamliner car designed for the purpose of breaking the land speed record for a diesel-engined vehicle. The car was built for JCB, a British multinational equipment company. As of 2018, the car holds the world diesel-powered land speed record, having been driven to over 350 miles per hour (560 km/h) by Wing Commander Andy Green in 2006.",
+  "summary_lang": "en",
+  "summary_url": "https://en.wikipedia.org/wiki/JCB_Dieselmax",
+  "wikipedia_title": "JCB Dieselmax",
+  "specs": {
+    "engine": {
+      "value": "Two JCB444 common rail injection diesel engines with twin compound turbochargers and intercoolers",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Forward transmission and final drive connected to forward engine; rear transmission and final drive unit connected to rear engine",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Dual-engine, 4-wheel drive",
+      "from_text": false
+    },
+    "body": {
+      "value": "Long",
+      "from_text": false
+    },
+    "weight": {
+      "value": "2.7 t",
+      "from_text": false
+    },
+    "length": {
+      "value": "9.1 m",
+      "from_text": false
+    },
+    "width": {
+      "value": "1.15 m",
+      "from_text": false
+    },
+    "height": {
+      "value": "0.98 m to canopy; 1.34 m to fin tip",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "5.9 m",
+      "from_text": false
+    },
+    "power": {
+      "value": "750 bhp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/jcb-dieselmax/1.jpg",
+      "thumb": "photos/jcb-dieselmax/1-thumb.jpg",
+      "author": "Mark Kobayashi-Hillary",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:JCB_Dieselmax.jpg"
+    }
+  ]
+}
