@@ -2,3 +2,8 @@ __pycache__/
 *.pyc
 .DS_Store
 site/cars.json
+
+# Copies créées par la synchronisation du bureau (« abarth 2.json »)
+* [0-9].*
+* [0-9]
+* [0-9][0-9].*
