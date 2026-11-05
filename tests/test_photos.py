@@ -102,6 +102,13 @@ class BuildReferenceTest(unittest.TestCase):
         self.assertEqual(build_reference.clean_make("B.M.W."), "BMW")
         self.assertEqual(build_reference.clean_make("PEUGEOT"), "Peugeot")
 
+    def test_search_lists_full_names_without_repeating_the_page(self):
+        catalogue = {"Ferrari": [{"n": "F 40", "w": "Ferrari F40", "v": [{"n": "F 40", "y": "1990", "src": "EPA", "s": {}}]},
+                                 {"n": "488", "v": [{"n": "488 Pista", "y": "2019", "src": "EPA", "s": {}}]}]}
+        self.assertEqual(build_reference.search_rows(catalogue), [
+            ["Ferrari 488 Pista", "2019", "EPA"], ["Ferrari F40", "", "W"],
+        ])
+
     def test_ademe_names_lose_their_capitals(self):
         self.assertEqual(build_reference.smart_case("MACAN GTS II"), "Macan GTS II")
 

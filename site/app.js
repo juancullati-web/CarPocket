@@ -12,7 +12,7 @@ const RELAUNCH_MS = 90000;
 const TIMEOUT_MS = 20 * 60 * 1000;
 
 const el = (id) => document.getElementById(id);
-const state = { catalog: [], cars: [], items: [], user: null, viewing: null, brand: "", compare: [], failed: new Set(), starting: new Set(), relaunched: new Set(), accounts: [], people: [], ownTitles: new Set(), compareInfo: {}, signed: {} };
+const state = { catalog: [], cars: [], items: [], user: null, viewing: null, brand: "", compare: [], failed: new Set(), starting: new Set(), relaunched: new Set(), accounts: [], people: [], ownTitles: new Set(), compareInfo: {}, signed: {}, robotStarted: new Set() };
 
 const esc = (value) =>
   String(value ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -215,7 +215,7 @@ function cardHtml(car) {
   const photo = car.photos[0];
   return `<div class="model-card">
     <a class="model-photo" href="#${esc(car.slug)}" tabindex="-1" aria-hidden="true">
-      ${photo ? `<img src="${esc(photo.file)}" alt="" loading="lazy">` : `<div class="no-photo">Pas de photo libre trouvée</div>`}
+      ${photo ? `<img src="${esc(photo.file)}" alt="" loading="lazy">` : `<div class="no-photo">Pas encore de photo</div>`}
       ${car.example ? `<span class="badge">Exemple</span>` : ""}
     </a>
     <div class="model-body">
@@ -231,14 +231,21 @@ function pendingCardHtml(item) {
   const slow = item.status === "slow";
   const text = failed
     ? "L'ajout n'a pas abouti."
-    : slow ? "Plus long que prévu, GitHub est peut-être ralenti." : "Ajout en cours, fiche et photos en préparation…";
+    : slow ? "Plus long que prévu, GitHub est peut-être ralenti." : "Tu peux continuer à naviguer, je te préviens quand elle est prête.";
+  const started = state.robotStarted.has(item.name);
+  const steps = failed || slow ? "" : `<ol class="pending-steps" aria-label="Avancement de l'ajout">
+      <li class="done">Demande envoyée</li>
+      <li class="${started ? "done" : ""}">Fiche en préparation</li>
+      <li>Voiture prête</li>
+    </ol>`;
   return `<div class="model-card">
     <div class="model-photo pending-photo">
-      ${safeUrl(item.thumb) ? `<img src="${esc(item.thumb)}" alt="">` : `<div class="no-photo">Photos en préparation</div>`}
+      ${safeUrl(item.thumb) ? `<img src="${esc(item.thumb)}" alt="">` : `<div class="no-photo">Fiche en préparation</div>`}
     </div>
     <div class="model-body">
       <h3>${esc(displayTitle(item.name))}</h3>
       <p class="pending-state${failed ? " failed" : ""}">${text}</p>
+      ${steps}
       ${failed || slow ? `<div class="pending-actions">
         ${failed ? `<button type="button" class="text-link" data-retry="${esc(item.name)}">Réessayer</button>` : ""}
         <button type="button" class="text-link quiet" data-dismiss="${esc(item.name)}">Retirer</button>
@@ -403,13 +410,25 @@ el("hero").addEventListener("touchend", (event) => {
   if (Math.abs(moved) > 50) showSlide(showroom.index + (moved < 0 ? 1 : -1));
 }, { passive: true });
 
+let brandsOpen = false;
+
 function renderBrands() {
   const brands = [...new Set(deck().map((car) => car.brand))].sort((a, b) => a.localeCompare(b, "fr"));
   if (!brands.includes(state.brand)) state.brand = "";
   const chip = (value, label) =>
     `<button type="button" class="chip" data-brand="${esc(value)}" aria-pressed="${state.brand === value}">${esc(label)}</button>`;
-  el("brands").innerHTML = chip("", "Toutes les marques") + brands.map((b) => chip(b, b)).join("");
+  const toggle = (label) => `<button type="button" class="chip chip-toggle" data-brands-toggle aria-expanded="${brandsOpen}">${label}</button>`;
+  if (brands.length <= 4 || brandsOpen) {
+    el("brands").innerHTML = chip("", "Toutes les marques") + brands.map((b) => chip(b, b)).join("")
+      + (brands.length > 4 ? toggle("Réduire") : "");
+    return;
+  }
+  // Repliées, seule la marque choisie reste visible : le deck remonte d'autant.
+  const active = state.brand ? chip(state.brand, state.brand) : "";
+  el("brands").innerHTML = chip("", "Toutes les marques") + active + toggle(`Filtrer par marque (${brands.length})`);
 }
+
+const deckView = () => load("deckView", "compact");
 
 function renderLibrary() {
   renderGauges();
@@ -425,6 +444,10 @@ function renderLibrary() {
     .sort(SORTERS[el("sort").value]);
 
   const pending = pendingItems();
+  el("grid").classList.toggle("compact", deckView() === "compact");
+  el("view-toggle").setAttribute("aria-pressed", String(deckView() === "compact"));
+  el("view-toggle").dataset.tip = deckView() === "compact" ? "Afficher en grand" : "Afficher en deux colonnes";
+  el("view-toggle").setAttribute("aria-label", el("view-toggle").dataset.tip);
   el("grid").innerHTML = pending.map(pendingCardHtml).join("") + visible.map(cardHtml).join("");
   el("count").textContent = visible.length === all.length
     ? plural(all.length, "voiture")
@@ -608,7 +631,8 @@ const creditText = (photo) => (photo.custom
 /** Actions sur la photo affichée, puis ajout de photos. */
 function mainPhotoControl(car, index) {
   const photo = car.photos[index];
-  const buttons = [`<label class="add-icon photo-add" data-tip="Ajouter une photo">
+  // Sans photo, le grand bouton du cadre suffit.
+  const buttons = !photo ? [] : [`<label class="add-icon photo-add" data-tip="Ajouter une photo">
     ${photoIcon('<path d="M3 8h4l2-3h6l2 3h4v11H3z"/><path d="M12 10v6M9 13h6"/>')}
     <input type="file" accept="image/*" aria-label="Ajouter une photo" data-add-photo>
   </label>`];
@@ -633,6 +657,36 @@ function mainPhotoControl(car, index) {
 const STAR_PATH = '<path d="M12 3l2.8 5.9 6.2.8-4.5 4.4 1.1 6.4-5.6-3.1-5.6 3.1 1.1-6.4L3 9.7l6.2-.8z"/>';
 const photoIcon = (paths, fill = "none") => `<svg viewBox="0 0 24 24" fill="${fill}" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">${paths}</svg>`;
 const iconButton = (label, attribute, paths) => `<button type="button" class="photo-icon" ${attribute} aria-label="${label}" data-tip="${label}">${photoIcon(paths)}</button>`;
+
+function emptyStage(car) {
+  if (!canEdit() || !inOwnDeck(car)) return `<div class="no-photo">Pas encore de photo</div>`;
+  return `<div class="no-photo empty-stage">
+    <p>Pas encore de photo pour cette version.</p>
+    <label class="button button-primary photo-add">Ajouter ma photo<input type="file" accept="image/*" data-add-photo></label>
+  </div>`;
+}
+
+/** Les valeurs connues d'abord : les manques sont regroupés, à compléter d'un geste. */
+function specsHtml(car) {
+  const missing = [];
+  const groups = SPEC_GROUPS.map(([title, rows]) => {
+    const known = rows.filter(([key]) => car.specs[key]);
+    rows.filter(([key]) => !car.specs[key]).forEach(([key, label]) => missing.push([key, label]));
+    if (!known.length) return "";
+    return `<section class="spec-group">
+      <h3>${title}</h3>
+      <dl>${known.map(([key, label]) => specRow(car, key, label)).join("")}</dl>
+    </section>`;
+  }).join("");
+  if (!missing.length) return groups;
+  const editable = canEdit() && inOwnDeck(car);
+  const count = missing.length > 1 ? `${missing.length} informations` : "1 information";
+  return `${groups}<details class="missing-specs"${groups ? "" : " open"}>
+    <summary>${count} ${editable ? `à compléter` : `non ${missing.length > 1 ? "renseignées" : "renseignée"}`}</summary>
+    <dl>${missing.map(([key, label]) => specRow(car, key, label)).join("")}</dl>
+    ${editable ? `<button type="button" class="button button-secondary" data-edit-specs>Compléter ces informations</button>` : ""}
+  </details>`;
+}
 
 function officialSources(car) {
   const sources = [...new Set(Object.values(car.specs).map((spec) => spec.source).filter(Boolean))];
@@ -669,7 +723,7 @@ function detailHtml(car) {
         <h1 class="display-xl">${esc(car.name)}</h1>
       </div>
       <div class="stage">
-        ${photos.length ? `<button type="button" class="stage-zoom" data-zoom aria-label="Agrandir la photo" data-tip="Agrandir la photo"><img id="hero-photo" src="${esc(photos[0].file)}" alt="${esc(car.name)}"></button><span class="photo-tag" id="hero-tag"${photos[0].custom ? "" : " hidden"}>${esc(photoTag(photos[0]))}</span>` : `<div class="no-photo">Pas de photo libre trouvée</div>`}
+        ${photos.length ? `<button type="button" class="stage-zoom" data-zoom aria-label="Agrandir la photo" data-tip="Agrandir la photo"><img id="hero-photo" src="${esc(photos[0].file)}" alt="${esc(car.name)}"></button><span class="photo-tag" id="hero-tag"${photos[0].custom ? "" : " hidden"}>${esc(photoTag(photos[0]))}</span>` : emptyStage(car)}
       </div>
       <div class="thumbs-band"><div class="wrap">
         ${photos.length > 1 ? `<div class="thumbs">${photos.map((photo, i) => `
@@ -705,10 +759,7 @@ function detailHtml(car) {
             </button>` : ""}
           </div>` : ""}
           ${car.variant ? `<p class="note">Ce modèle a plusieurs générations. Cette fiche décrit la version <strong>${esc(car.variant)}</strong>.</p>` : ""}
-          ${SPEC_GROUPS.map(([title, rows]) => `<section class="spec-group">
-            <h3>${title}</h3>
-            <dl>${rows.map(([key, label]) => specRow(car, key, label)).join("")}</dl>
-          </section>`).join("")}
+          ${specsHtml(car)}
           ${hasTextValues ? `<p class="legend">* Valeur extraite du texte de l'article, à vérifier. Elle peut concerner une autre version du modèle.</p>` : ""}
           ${officialSources(car)}
           ${car.customSpecs ? `<p class="legend">« Modifié » : valeur changée dans cette collection. Le catalogue n'a pas changé.</p>` : ""}
@@ -964,19 +1015,40 @@ async function fetchCatalog() {
   return response.json();
 }
 
+let toastTimer = null;
 let pollTimer = null;
 function schedulePoll() {
   clearTimeout(pollTimer);
   if (state.user && pendingItems().some((item) => item.status !== "failed")) pollTimer = setTimeout(poll, POLL_MS);
 }
 
+function showToast(html) {
+  const toast = el("toast");
+  el("toast-text").innerHTML = html;
+  toast.hidden = false;
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => { toast.hidden = true; }, 10000);
+}
+
+/** Les voitures qui viennent d'arriver au catalogue, annoncées avec un lien vers leur fiche. */
+function announceReady(waiting) {
+  const ready = waiting.map((title) => state.catalog.find((car) => titleOf(car) === title)).filter(Boolean);
+  if (!ready.length) return;
+  showToast(ready.length === 1
+    ? `<strong>${esc(ready[0].name)}</strong> est prête. <a href="#${esc(ready[0].slug)}">Voir la fiche</a>`
+    : `<strong>${ready.length} voitures</strong> sont prêtes dans ton deck.`);
+}
+
 async function poll() {
+  const waiting = pendingItems().filter((item) => item.status !== "failed").map((item) => item.name);
   try {
     state.catalog = await fetchCatalog();
+    announceReady(waiting);
     const running = pendingItems().filter((item) => item.status !== "failed" && !state.starting.has(item.name));
     await Promise.all(running.map(async (item) => {
       const { failed, found } = await server("car-status", { title: item.name });
       if (failed) state.failed.add(item.name);
+      if (found) state.robotStarted.add(item.name);
       // Le lancement a pu se perdre (page fermée, GitHub lent) : on le relance une fois.
       const row = state.items.find((entry) => entry.title === item.name);
       const waited = row ? Date.now() - Date.parse(row.added_at) : 0;
@@ -1225,6 +1297,54 @@ const REFERENCE_SOURCES = { EPA: "EPA, États-Unis", ADEME: "ADEME, France" };
 const FREE_NAME = /^[\p{L}\p{N}][\p{L}\p{N} .,'’/()+&-]{1,79}$/u;
 const picker = { step: "make", makes: [], make: null, models: [], model: null };
 const makeFiles = new Map();
+let searchRows = null;
+
+/** La recherche directe charge tous les noms une seule fois, à la première saisie. */
+async function loadSearchRows() {
+  if (searchRows) return;
+  searchRows = [];
+  try {
+    const response = await fetch("reference/search.json");
+    if (!response.ok) throw new Error(String(response.status));
+    searchRows = (await response.json()).map(([name, years, source]) => ({ name, years, source, key: compactName(name) }));
+    if (el("add-dialog").open && picker.step === "make") renderPicker();
+  } catch {
+    searchRows = null;
+  }
+}
+
+function directRows(text) {
+  const words = text.split(/\s+/).map(compactName).filter(Boolean);
+  if (!words.length || !searchRows) return [];
+  const whole = compactName(text);
+  return searchRows
+    .filter((row) => words.every((word) => row.key.includes(word)))
+    .sort((a, b) => Number(b.key.startsWith(whole)) - Number(a.key.startsWith(whole)) || a.name.length - b.name.length)
+    .slice(0, 30)
+    .map((row) => ({
+      name: catalogTitle(row.name),
+      label: row.name,
+      description: row.source === "W"
+        ? "Wikipédia"
+        : [row.years, `Source : ${REFERENCE_SOURCES[row.source] || row.source}`].filter(Boolean).join(" · "),
+      final: row.source !== "W",
+      plain: true,
+    }));
+}
+
+/** « Ferrari Speciale » n'est dans aucune liste, mais sa marque est connue : on peut le créer. */
+function freeRowFromMake(text, known) {
+  const typed = compactName(text);
+  const make = picker.makes
+    .filter((entry) => typed.startsWith(compactName(entry.n)) && typed !== compactName(entry.n))
+    .sort((a, b) => b.n.length - a.n.length)[0];
+  if (!make || !FREE_NAME.test(text)) return [];
+  const words = text.trim().split(/\s+/);
+  let count = 1;
+  while (count < words.length && compactName(words.slice(0, count).join(" ")) !== compactName(make.n)) count += 1;
+  if (count >= words.length) return [];
+  return freeRow(text, `${make.n} ${words.slice(count).join(" ")}`, known);
+}
 
 const compactName = (text) => text.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]/g, "");
 const withMake = (make, name) => (compactName(name).startsWith(compactName(make)) ? name : `${make} ${name}`);
@@ -1251,12 +1371,14 @@ function pickerRows(text) {
   const typed = compactName(text);
   const matches = (name) => !typed || compactName(name).includes(typed);
   if (picker.step === "make") {
-    return picker.makes.filter((make) => matches(make.n)).map((make) => ({
+    const makes = picker.makes.filter((make) => matches(make.n)).slice(0, typed ? 5 : undefined).map((make) => ({
       label: make.n,
-      description: plural(make.c, "modèle"),
+      description: `Marque · ${plural(make.c, "modèle")}`,
       plain: true,
       pick: () => chooseMake(make),
     }));
+    const direct = directRows(text);
+    return [...makes, ...direct, ...freeRowFromMake(text, direct.map((row) => row.label))];
   }
   const make = picker.make.n;
   if (picker.step === "model") {
@@ -1291,7 +1413,7 @@ function pickerRows(text) {
 function renderPicker() {
   const text = el("add-name").value.trim();
   const titles = {
-    make: ["Marque", "Ex. : Ferrari", "Choisis la marque."],
+    make: ["Marque ou voiture", "Ex. : Ferrari 488 Pista", "Tape un nom, ou choisis une marque."],
     model: [`${picker.make?.n} : modèle`, "Ex. : 488", "Choisis le modèle, ou tape-le s'il manque."],
     version: [`${picker.make?.n} ${picker.model?.n} : version`, "Ex. : Pista", "Choisis la version, ou tape-la si elle manque."],
   }[picker.step];
@@ -1303,8 +1425,9 @@ function renderPicker() {
   renderSuggestions();
   el("suggest-back").hidden = picker.step === "make";
   setSuggestStatus(suggestItems.length ? titles[2] : "Aucun résultat.");
+  if (picker.step === "make" && text && !searchRows) loadSearchRows();
   // Une marque absente de la liste : on cherche directement sur Wikipédia.
-  if (picker.step === "make" && !suggestItems.length && text.length >= 2) searchWikipedia(text);
+  if (picker.step === "make" && !suggestItems.length && text.length >= 2 && (searchRows === null || searchRows.length)) searchWikipedia(text);
 }
 
 function searchWikipedia(query) {
@@ -2138,8 +2261,18 @@ el("detail").addEventListener("click", (event) => {
   el("detail").querySelectorAll("[data-photo]").forEach((b) => b.setAttribute("aria-current", String(b === button)));
 });
 
+el("toast-close").addEventListener("click", () => { el("toast").hidden = true; });
+el("view-toggle").addEventListener("click", () => {
+  save("deckView", deckView() === "compact" ? "wide" : "compact");
+  renderLibrary();
+});
 ["search", "sort"].forEach((id) => el(id).addEventListener("input", renderLibrary));
 el("brands").addEventListener("click", (event) => {
+  if (event.target.closest("[data-brands-toggle]")) {
+    brandsOpen = !brandsOpen;
+    renderBrands();
+    return;
+  }
   const chip = event.target.closest("[data-brand]");
   if (!chip) return;
   state.brand = chip.dataset.brand;

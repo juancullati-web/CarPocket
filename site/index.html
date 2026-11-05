@@ -111,7 +111,12 @@
           </div>
           <div class="library-head">
             <h2 class="display-lg" id="library-title">Mon deck</h2>
-            <p class="count" id="count" aria-live="polite">Chargement des voitures…</p>
+            <div class="library-tools">
+              <p class="count" id="count" aria-live="polite">Chargement des voitures…</p>
+              <button type="button" class="theme-toggle view-toggle" id="view-toggle" aria-pressed="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg>
+              </button>
+            </div>
           </div>
           <div class="toolbar">
             <label class="field grow">
@@ -210,6 +215,10 @@
     </form>
   </dialog>
 
+  <div class="toast" id="toast" role="status" hidden>
+    <p id="toast-text"></p>
+    <button type="button" class="text-link quiet" id="toast-close" aria-label="Fermer ce message">Fermer</button>
+  </div>
   <dialog class="specs-dialog" id="specs-dialog" aria-labelledby="specs-title">
     <form id="specs-form" novalidate>
       <h2 class="display-sm" id="specs-title">Modifier les informations</h2>

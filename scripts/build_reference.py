@@ -23,7 +23,7 @@ import zipfile
 from collections import defaultdict
 from pathlib import Path
 
-from vehicle_reference import REFERENCE_DIR, compact
+from vehicle_reference import REFERENCE_DIR, compact, full_name
 
 EPA_URL = "https://www.fueleconomy.gov/feg/epadata/vehicles.csv.zip"
 ADEME_URL = "https://data.ademe.fr/data-fair/api/v1/datasets/ademe-car-labelling/lines"
@@ -255,6 +255,21 @@ def download_wikidata() -> list:
     return []
 
 
+def search_rows(catalogue: dict) -> list:
+    """Tous les noms pour la recherche directe : [nom complet, années, source]."""
+    rows = []
+    for make, models in catalogue.items():
+        for model in models:
+            wiki_title = model.get("w")
+            if wiki_title:
+                rows.append([wiki_title, "", "W"])
+            for version in model.get("v", []):
+                name = full_name(make, version["n"])
+                if not wiki_title or compact(name) != compact(wiki_title):
+                    rows.append([name, version["y"], version["src"]])
+    return sorted(rows, key=lambda row: row[0].lower())
+
+
 def write(catalogue: dict, directory: Path = REFERENCE_DIR) -> None:
     fresh = directory.with_name(directory.name + ".new")
     shutil.rmtree(fresh, ignore_errors=True)
@@ -263,7 +278,7 @@ def write(catalogue: dict, directory: Path = REFERENCE_DIR) -> None:
     used = set()
     for make in sorted(catalogue, key=str.lower):
         slug = re.sub(r"[^a-z0-9]+", "-", make.lower().replace("š", "s").replace("ë", "e")).strip("-")
-        if not slug or slug in used or slug == "makes":
+        if not slug or slug in used or slug in ("makes", "search"):
             continue
         used.add(slug)
         makes.append({"n": make, "f": slug, "c": len(catalogue[make])})
@@ -271,6 +286,9 @@ def write(catalogue: dict, directory: Path = REFERENCE_DIR) -> None:
             json.dumps({"make": make, "models": catalogue[make]}, ensure_ascii=False, separators=(",", ":")), "utf-8"
         )
     (fresh / "makes.json").write_text(json.dumps(makes, ensure_ascii=False, separators=(",", ":")), "utf-8")
+    (fresh / "search.json").write_text(
+        json.dumps(search_rows(catalogue), ensure_ascii=False, separators=(",", ":")), "utf-8"
+    )
     shutil.rmtree(directory, ignore_errors=True)
     fresh.rename(directory)
 

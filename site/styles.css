@@ -959,3 +959,52 @@ dialog.photo-viewer[open] { display: grid; grid-template-rows: minmax(0, 1fr) au
 .suggestion.plain { grid-template-columns: minmax(0, 1fr); }
 .app-intro.viewing { display: block; max-width: 420px; }
 .app-intro.viewing > p:not(#deck-gauges *), .app-intro.viewing .app-intro-actions { display: none; }
+
+/* Deck compact sur téléphone */
+.library-tools { display: flex; align-items: center; gap: 12px; }
+.view-toggle { display: none; }
+.view-toggle[aria-pressed="true"] { border-color: var(--primary); color: var(--accent-text); }
+.chip-toggle { border-style: dashed; }
+@media (max-width: 640px) {
+  .view-toggle { display: inline-grid; }
+  .grid.compact { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 12px; }
+  .grid.compact .model-body { padding-top: 8px; }
+  .grid.compact .model-body h3 { font-size: .9375rem; line-height: 1.3; overflow-wrap: anywhere; }
+  .grid.compact .model-body p { font-size: .75rem; }
+  .grid.compact .model-actions { gap: 4px; padding-top: 8px; }
+  .grid.compact .model-actions > * { width: 32px; height: 32px; }
+  .grid.compact .model-actions svg { width: 16px; height: 16px; }
+  .grid.compact .pending-steps { font-size: .6875rem; }
+}
+
+/* Fiches incomplètes */
+.empty-stage { gap: 12px; padding: 32px 16px; text-align: center; min-height: 220px; }
+.empty-stage .photo-add { display: inline-flex; width: auto; height: auto; border-radius: 0; }
+.missing-specs { margin-top: 24px; border: 1px solid var(--hairline); padding: 12px 16px; }
+.missing-specs summary { color: var(--ink); font-weight: 700; cursor: pointer; }
+.missing-specs dl { margin: 8px 0 16px; }
+
+/* Suivi d'un ajout */
+.pending-steps { display: grid; gap: 4px; margin: 8px 0 0; padding: 0; list-style: none; color: var(--muted); font-size: .8125rem; }
+.pending-steps li::before { content: "○"; margin-right: 6px; }
+.pending-steps li.done { color: var(--ink); }
+.pending-steps li.done::before { content: "●"; color: var(--accent-text); }
+.toast {
+  position: fixed;
+  z-index: 25;
+  left: 16px;
+  right: 16px;
+  bottom: calc(16px + env(safe-area-inset-bottom));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  max-width: 520px;
+  margin-inline: auto;
+  border: 1px solid var(--primary);
+  padding: 12px 16px;
+  background: var(--surface-dark);
+  color: var(--on-dark);
+}
+.toast p { margin: 0; }
+.toast a { color: #fff; font-weight: 700; }

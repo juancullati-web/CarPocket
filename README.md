@@ -32,7 +32,7 @@ Clique sur **Retirer** sur la carte ou sur la fiche, puis confirme. La fiche res
 
 ## Ajouter une voiture
 
-Choisis la marque, le modèle, puis la version. Si elle manque, tape-la : la fiche est créée à ce nom et reste à compléter. Les listes viennent de l'EPA (États-Unis), de l'ADEME (France), de Wikidata et de Wikipédia, et se mettent à jour chaque mois.
+Tape directement le nom, par exemple « Ferrari 488 Pista », ou choisis la marque, le modèle, puis la version. Si elle manque, tape-la : la fiche est créée à ce nom et reste à compléter. Les listes viennent de l'EPA (États-Unis), de l'ADEME (France), de Wikidata et de Wikipédia, et se mettent à jour chaque mois.
 
 ## Notes et informations modifiées
 
