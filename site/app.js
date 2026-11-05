@@ -847,7 +847,7 @@ function sprintParts(car) {
   return { target, time: numberIn(time) };
 }
 
-function compareRow(label, cars, read) {
+function compareRow(label, cars, read, { long = false } = {}) {
   const cells = cars.map(read);
   const numbers = cells.map((c) => c.num).filter((n) => n !== null && n !== undefined);
   const direction = cells.find((c) => c.better)?.better;
@@ -855,9 +855,12 @@ function compareRow(label, cars, read) {
   if (direction && numbers.length >= 2 && new Set(numbers).size > 1) {
     best = direction === "high" ? Math.max(...numbers) : Math.min(...numbers);
   }
-  return `<tr><th scope="row">${esc(label)}</th>${cells.map((c) => {
-    if (!c.text) return `<td class="unknown">Non renseigné</td>`;
-    return `<td class="${c.num === best && best !== null ? "best" : ""}">${esc(c.text)}${specMark(c.star)}</td>`;
+  // Sur téléphone, un texte long s'empile sous le nom de sa voiture, et une ligne toute vide disparaît.
+  const rowClass = [long && "long-row", cells.every((c) => !c.text) && "empty-row"].filter(Boolean).join(" ");
+  return `<tr${rowClass ? ` class="${rowClass}"` : ""}><th scope="row">${esc(label)}</th>${cells.map((c, i) => {
+    const owner = `data-car="${esc(cars[i].name)}"`;
+    if (!c.text) return `<td class="unknown" ${owner}>Non renseigné</td>`;
+    return `<td class="${c.num === best && best !== null ? "best" : ""}" ${owner}>${esc(c.text)}${specMark(c.star)}</td>`;
   }).join("")}</tr>`;
 }
 
@@ -903,7 +906,7 @@ function compareHtml(cars) {
     const rest = rows.filter(([k]) => !shown.has(k));
     if (!rest.length) return "";
     return `<tr class="group"><th colspan="${cars.length + 1}" scope="colgroup">${title}</th></tr>`
-      + rest.map(([k, label]) => compareRow(label, cars, specCell(k))).join("");
+      + rest.map(([k, label]) => compareRow(label, cars, specCell(k), { long: true })).join("");
   }).join("");
 
   return `<section class="compare-head"><div class="wrap">
@@ -911,7 +914,7 @@ function compareHtml(cars) {
       <h1 class="display-xl">Comparaison</h1>
     </div></section>
     <section class="section"><div class="wrap">
-      <div class="compare-scroll"><table class="compare-table">
+      <div class="compare-scroll"><table class="compare-table" style="--cars: ${cars.length}">
         <thead><tr>
           <td></td>
           ${cars.map((car) => `<th scope="col" class="compare-car">
