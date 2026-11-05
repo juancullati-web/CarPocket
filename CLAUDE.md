@@ -14,7 +14,7 @@ Site statique (GitHub Pages) d'une bibliothèque de voitures, avec comptes et co
 - Ne jamais inventer de valeur technique : un champ inconnu reste absent et s'affiche « Non renseigné ». Une valeur lue dans le texte de l'article garde `from_text: true`.
 - Photos : uniquement Wikimedia Commons sous licence libre, avec auteur et licence conservés. L'import automatique ne garde qu'une photo, l'image principale de l'article : les recherches élargies ramenaient d'autres voitures.
 - Le nom reçu par un workflow n'est jamais interpolé dans une commande : il passe par une variable d'environnement.
-- Design : page blanche, bandes bleu nuit `#1a2129`, un seul bleu d'action `#1c69d4`, angles droits, aucune ombre, Inter en 700 et 300. Pas de logo ni de nom de marque d'un constructeur. Thème clair uniquement.
+- Design : page blanche, bandes bleu nuit `#1a2129`, un seul bleu d'action `#1c69d4`, angles droits, aucune ombre, Inter en 700 et 300. Pas de logo ni de nom de marque d'un constructeur. Thèmes clair et sombre, au choix.
 
 Avatars (`site/avatars`) : logos de [Simple Icons](https://simpleicons.org) en CC0, Alpine et Mercedes-Benz de Wikimedia Commons, personnages et objets de [Fluent Emoji](https://github.com/microsoft/fluentui-emoji) sous licence MIT. Les logos restent des marques de leurs propriétaires.
 

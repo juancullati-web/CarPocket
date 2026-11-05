@@ -154,7 +154,8 @@ async function loadItems() {
     .select(ITEM_FIELDS)
     .eq("user_id", owner().id);
   if (error) throw error;
-  state.items = data;
+  // Un retrait encore annulable reste caché, même si la liste est rechargée.
+  state.items = data.filter((item) => item.title !== pendingRemoval?.item.title);
   await signPhotos(data.flatMap((item) => item.custom_photos || []));
   rebuildDeck();
 }
@@ -218,6 +219,9 @@ function cardActions(car, { sheet = true } = {}) {
     sheet ? "" : completionRing(car, { place: "sheet" }),
     `<button type="button" class="theme-toggle" data-share="${esc(car.slug)}" aria-label="Partager ${name} avec un ami" data-tip="Partager avec un ami">${photoIcon(CARD_ICONS.share)}</button>`,
   ];
+  if (!sheet && canEdit() && inOwnDeck(car)) {
+    actions.push(`<button type="button" class="theme-toggle" data-pick-version aria-label="Choisir une version précise" data-tip="Choisir une version précise, en gardant mes photos et mes notes">${photoIcon('<path d="M4 6h16M4 12h10M4 18h6M17 14l3 3-3 3"/>')}</button>`);
+  }
   if (canEdit() && inOwnDeck(car)) {
     actions.push(`<button type="button" class="theme-toggle card-remove" data-delete="${esc(car.slug)}" aria-label="Retirer ${name} de ma collection" data-tip="Retirer de ma collection">${photoIcon(CARD_ICONS.trash)}</button>`);
   } else if (state.ownTitles.has(title)) {
@@ -251,7 +255,7 @@ function cardHtml(car) {
   const photo = car.photos[0];
   return `<div class="model-card">
     <a class="model-photo" href="#${esc(car.slug)}" tabindex="-1" aria-hidden="true">
-      ${photo ? `<img src="${esc(photo.file)}" alt="" loading="lazy">` : `<div class="no-photo">Pas encore de photo</div>`}
+      ${photo ? `<img src="${esc(photo.thumb || photo.file)}" alt="" loading="lazy">` : `<div class="no-photo">Pas encore de photo</div>`}
       ${car.example ? `<span class="badge">Exemple</span>` : ""}
     </a>
     <div class="model-body">
@@ -789,7 +793,7 @@ function detailHtml(car) {
       <div class="thumbs-band"><div class="wrap">
         ${photos.length > 1 ? `<div class="thumbs">${photos.map((photo, i) => `
           <button type="button" data-photo="${i}" aria-label="Voir la photo ${i + 1}" data-tip="Voir la photo ${i + 1}" aria-current="${i === 0}">
-            <img src="${esc(photo.file)}" alt="" loading="lazy">
+            <img src="${esc(photo.thumb || photo.file)}" alt="" loading="lazy">
             ${photo.custom ? `<span class="thumb-tag" aria-label="Photo personnelle">${photoIcon('<path d="M3 8h4l2-3h6l2 3h4v11H3z"/><circle cx="12" cy="13" r="3"/>')}</span>` : ""}
           </button>`).join("")}</div>` : ""}
         ${photos.length ? `<div class="photo-bar">
@@ -1088,12 +1092,13 @@ function schedulePoll() {
   if (state.user && pendingItems().some((item) => item.status !== "failed")) pollTimer = setTimeout(poll, POLL_MS);
 }
 
-function showToast(html) {
+function showToast(html, { undo = false, duration = 10000 } = {}) {
   const toast = el("toast");
   el("toast-text").innerHTML = html;
+  el("toast-undo").hidden = !undo;
   toast.hidden = false;
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => { toast.hidden = true; }, 10000);
+  toastTimer = setTimeout(() => { toast.hidden = true; }, duration);
 }
 
 /** Les voitures qui viennent d'arriver au catalogue, annoncées avec un lien vers leur fiche. */
@@ -1581,7 +1586,8 @@ async function pickSuggestion(index) {
     }
   }
   el("add-dialog").close();
-  addCar(item.name, item.thumb);
+  if (picker.replacing) replaceCar(picker.replacing, item.name, item.thumb);
+  else addCar(item.name, item.thumb);
 }
 
 el("add-name").addEventListener("keydown", (event) => {
@@ -1620,21 +1626,92 @@ el("suggestions").addEventListener("click", (event) => {
 el("add-form").addEventListener("submit", (event) => event.preventDefault());
 el("add-cancel").addEventListener("click", () => el("add-dialog").close());
 
+async function loadMakes() {
+  if (picker.makes.length) return;
+  const response = await fetch("reference/makes.json");
+  if (!response.ok) throw new Error(String(response.status));
+  picker.makes = await response.json();
+}
+
 async function openAdd() {
+  picker.replacing = null;
+  el("add-title").textContent = "Ajouter une voiture";
   el("add-name").value = "";
   picker.step = "make";
   renderPicker();
   el("add-dialog").showModal();
   el("add-name").focus();
-  if (picker.makes.length) return;
   try {
-    const response = await fetch("reference/makes.json");
-    if (!response.ok) throw new Error(String(response.status));
-    picker.makes = await response.json();
+    await loadMakes();
     if (el("add-dialog").open && picker.step === "make") renderPicker();
   } catch {
     setSuggestStatus("La liste des marques n'a pas pu être chargée. Tape un nom pour chercher sur Wikipédia.");
   }
+}
+
+/** Part du modèle de la fiche : il ne reste qu'à choisir sa version. */
+async function openVersionPicker(car) {
+  picker.replacing = car;
+  el("add-title").textContent = `Version de ${car.name}`;
+  el("add-name").value = "";
+  picker.step = "make";
+  el("add-dialog").showModal();
+  try {
+    await loadMakes();
+    const make = picker.makes.find((entry) => compactName(entry.n) === compactName(car.brand));
+    if (!make) {
+      renderPicker();
+      return;
+    }
+    await chooseMake(make);
+    const wanted = compactName(titleOf(car).split("#")[0].replace(/\s*\(.*?\)/g, ""));
+    const model = picker.models.find((entry) => entry.w && compactName(entry.w) === compactName(titleOf(car).split("#")[0]))
+      || picker.models
+        .filter((entry) => wanted.startsWith(compactName(withMake(make.n, entry.n))))
+        .sort((a, b) => b.n.length - a.n.length)[0];
+    if (model) chooseModel(model);
+  } catch {
+    setSuggestStatus("La liste des versions n'a pas pu être chargée. Réessaie.");
+  }
+}
+
+/** Change de fiche sans rien perdre : photos, notes, présentation et valeurs suivent. */
+async function replaceCar(car, name, thumb) {
+  const old = itemOf(car);
+  if (!old || name === old.title) return;
+  const isCustom = old.main_photo && !old.main_photo.startsWith("photos/");
+  const row = {
+    user_id: state.user.id,
+    title: name,
+    thumb: safeUrl(thumb) || null,
+    added_at: old.added_at,
+    main_photo: isCustom ? old.main_photo : null,
+    custom_photos: old.custom_photos || [],
+    notes: old.notes || "",
+    custom_specs: old.custom_specs || {},
+    custom_sources: old.custom_sources || {},
+    custom_summary: old.custom_summary || "",
+  };
+  const { data, error } = await db.from("deck_items").insert(row).select(ITEM_FIELDS).single();
+  if (error) {
+    showToast(error.code === "23505" ? "Cette version est déjà dans ton deck." : "La version n'a pas pu être changée. Réessaie.");
+    return;
+  }
+  const removed = await db.from("deck_items").delete().eq("user_id", state.user.id).eq("title", old.title);
+  if (removed.error) {
+    // L'ancienne fiche reste : mieux vaut un doublon visible qu'une perte. Les photos ne sont pas effacées.
+    state.items = [data, ...state.items];
+    renderAll();
+    showToast("La nouvelle version est ajoutée, mais l'ancienne n'a pas pu être retirée. Retire-la à la main.");
+    return;
+  }
+  state.items = [data, ...state.items.filter((item) => item.title !== old.title)];
+  setCompare(state.compare.filter((slug) => slug !== car.slug));
+  const known = state.catalog.find((entry) => titleOf(entry) === name);
+  location.hash = known ? known.slug : "";
+  renderAll();
+  showToast(`Tes photos, tes notes et tes valeurs sont passées sur <strong>${esc(known?.name || displayTitle(name))}</strong>.`);
+  if (!known) startRobot(name);
 }
 el("open-add").addEventListener("click", openAdd);
 el("open-add-cta").addEventListener("click", openAdd);
@@ -1741,6 +1818,7 @@ el("session-form").addEventListener("submit", async (event) => {
 });
 
 el("session-button").addEventListener("click", async () => {
+  await commitRemoval();
   clearTimeout(pollTimer);
   if (state.user) save(`offline.${state.user.id}`, null);
   await db.auth.signOut();
@@ -2045,17 +2123,61 @@ el("delete-form").addEventListener("submit", async (event) => {
   }
 });
 
-async function removeFromDeck(car) {
-  const title = titleOf(car);
-  const { error } = await db.from("deck_items").delete().eq("user_id", state.user.id).eq("title", title);
-  if (error) throw new Error("Cette voiture n'a pas pu être retirée. Réessaie.");
-  const ownPhotos = itemOf(car)?.custom_photos || [];
+/* Retirer une voiture : effacé pour de bon seulement si la personne n'annule pas. */
+const UNDO_MS = 8000;
+let pendingRemoval = null;
+
+async function commitRemoval() {
+  const removal = pendingRemoval;
+  if (!removal) return;
+  pendingRemoval = null;
+  clearTimeout(removal.timer);
+  el("toast").hidden = true;
+  const { error } = await db.from("deck_items").delete().eq("user_id", state.user.id).eq("title", removal.item.title);
+  if (error) {
+    state.items = [removal.item, ...state.items];
+    renderAll();
+    showToast(`<strong>${esc(removal.name)}</strong> n'a pas pu être retirée. Réessaie.`);
+    return;
+  }
+  const ownPhotos = removal.item.custom_photos || [];
   if (ownPhotos.length) await db.storage.from(PHOTO_BUCKET).remove(ownPhotos);
-  state.items = state.items.filter((item) => item.title !== title);
-  setCompare(state.compare.filter((slug) => slug !== car.slug));
-  if (location.hash.slice(1) === car.slug) location.hash = "";
+}
+
+function undoRemoval() {
+  const removal = pendingRemoval;
+  if (!removal) return;
+  pendingRemoval = null;
+  clearTimeout(removal.timer);
+  el("toast").hidden = true;
+  state.items = [removal.item, ...state.items];
+  if (removal.compared) setCompare([...state.compare, removal.slug]);
   renderAll();
 }
+
+async function removeFromDeck(car) {
+  await commitRemoval();
+  const title = titleOf(car);
+  const item = itemOf(car);
+  if (!item) return;
+  pendingRemoval = {
+    item,
+    name: car.name,
+    slug: car.slug,
+    compared: state.compare.includes(car.slug),
+    timer: setTimeout(commitRemoval, UNDO_MS),
+  };
+  state.items = state.items.filter((entry) => entry.title !== title);
+  setCompare(state.compare.filter((slug) => slug !== car.slug));
+  if (decodeURIComponent(location.hash.slice(1)) === car.slug) location.hash = "";
+  renderAll();
+  showToast(`<strong>${esc(car.name)}</strong> est retirée.`, { undo: true, duration: UNDO_MS });
+}
+
+window.addEventListener("pagehide", () => {
+  // La page se ferme avant la fin du délai : on tente d'aller au bout du retrait.
+  if (pendingRemoval) commitRemoval();
+});
 
 /* Actions sur les cartes */
 document.addEventListener("click", (event) => {
@@ -2063,12 +2185,7 @@ document.addEventListener("click", (event) => {
   if (del) {
     const car = carBySlug(del.dataset.delete);
     if (!car) return;
-    askConfirm({
-      title: `Retirer ${car.name} ?`,
-      text: "Elle disparaît de ta collection. Tu pourras l'ajouter de nouveau, mais tes photos, tes notes et tes modifications seront perdues.",
-      label: "Retirer",
-      action: () => removeFromDeck(car),
-    });
+    removeFromDeck(car);
     return;
   }
   const sheet = event.target.closest("[data-remove-sheet]");
@@ -2289,6 +2406,10 @@ el("detail").addEventListener("click", (event) => {
     openSpecsEditor(car);
     return;
   }
+  if (event.target.closest("[data-pick-version]") && car) {
+    openVersionPicker(car);
+    return;
+  }
   if (event.target.closest("[data-edit-summary]") && car) {
     openSummaryEditor(car);
     return;
@@ -2347,6 +2468,7 @@ el("detail").addEventListener("click", (event) => {
 });
 
 el("toast-close").addEventListener("click", () => { el("toast").hidden = true; });
+el("toast-undo").addEventListener("click", undoRemoval);
 el("view-toggle").addEventListener("click", () => {
   save("deckView", deckView() === "compact" ? "wide" : "compact");
   renderLibrary();

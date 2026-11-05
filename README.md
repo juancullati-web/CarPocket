@@ -34,6 +34,10 @@ Clique sur **Retirer** sur la carte ou sur la fiche, puis confirme. La fiche res
 
 Tape directement le nom, par exemple « Ferrari 488 Pista », ou choisis la marque, le modèle, puis la version. Si elle manque, tape-la : la fiche est créée à ce nom et reste à compléter. Les listes viennent de l'EPA (États-Unis), de l'ADEME (France), d'[openvehicle-data](https://github.com/mirkobechini/openvehicle-data) (Mirko Bechini, CC BY 4.0), de Wikidata et de Wikipédia, et se mettent à jour chaque mois.
 
+## Choisir une version précise
+
+Sur la fiche d'une voiture de ta collection, l'icône **Choisir une version précise** remplace la fiche par la bonne version. Tes photos, ta présentation, tes notes et tes valeurs suivent.
+
 ## Notes et informations modifiées
 
 Sur la fiche d'une voiture de ta collection, écris tes notes : elles s'enregistrent toutes seules. Le bouton crayon change les valeurs de la fiche technique pour ta collection seulement, et chaque valeur changée porte la mention « Modifié ». Tu peux réinitialiser une valeur dans le formulaire, ou toutes les valeurs avec le bouton voisin.

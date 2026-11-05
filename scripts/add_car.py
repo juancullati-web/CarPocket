@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import datetime
 import json
+import re
 import shutil
 import sys
 from pathlib import Path
@@ -18,6 +19,7 @@ import wiki
 ROOT = build_index.ROOT
 CARS_DIR = build_index.CARS_DIR
 PHOTOS_DIR = ROOT / "site" / "photos"
+CARD_WIDTH = 500
 MAGIC = {b"\xff\xd8\xff": "jpg", b"\x89PNG": "png", b"RIFF": "webp"}
 LABELS = {
     "engine": "moteur", "power": "puissance", "torque": "couple", "transmission": "boîte",
@@ -62,6 +64,24 @@ def existing_car(slug: str, title: str):
     return None
 
 
+def save_thumbnail(url: str, folder: Path, number: int):
+    """Une image légère pour les cartes. Sans elle, la carte garde simplement la grande photo."""
+    small = re.sub(r"/\d+px-", f"/{CARD_WIDTH}px-", url)
+    if small == url:
+        return None
+    try:
+        content = wiki.download(small)
+    except Exception as error:
+        print(f"Miniature ignorée : {error}", file=sys.stderr)
+        return None
+    extension = next((e for magic, e in MAGIC.items() if content.startswith(magic)), None)
+    if not extension:
+        return None
+    filename = f"{number}-thumb.{extension}"
+    (folder / filename).write_bytes(content)
+    return filename
+
+
 def save_photos(files: list, slug: str) -> list:
     folder = PHOTOS_DIR / slug
     if folder.exists():
@@ -80,8 +100,10 @@ def save_photos(files: list, slug: str) -> list:
             continue
         filename = f"{len(photos) + 1}.{extension}"
         (folder / filename).write_bytes(content)
+        thumb = save_thumbnail(file["thumb"], folder, len(photos) + 1)
         photos.append({
             "file": f"photos/{slug}/{filename}",
+            **({"thumb": f"photos/{slug}/{thumb}"} if thumb else {}),
             "author": file["author"],
             "license": file["license"],
             "license_url": file["license_url"],

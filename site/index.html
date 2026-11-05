@@ -219,7 +219,10 @@
 
   <div class="toast" id="toast" role="status" hidden>
     <p id="toast-text"></p>
-    <button type="button" class="text-link quiet" id="toast-close" aria-label="Fermer ce message">Fermer</button>
+    <div class="toast-actions">
+      <button type="button" class="button button-primary" id="toast-undo" hidden>Annuler</button>
+      <button type="button" class="text-link quiet" id="toast-close" aria-label="Fermer ce message">Fermer</button>
+    </div>
   </div>
   <dialog class="specs-dialog" id="summary-dialog" aria-labelledby="summary-title">
     <form id="summary-form" novalidate>
