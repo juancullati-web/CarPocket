@@ -1,0 +1,77 @@
+{
+  "slug": "aston-martin-valkyrie",
+  "name": "Aston Martin Valkyrie",
+  "brand": "Aston Martin",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-05T17:08:12+00:00",
+  "summary": "L'Aston Martin Valkyrie, connue également sous ses noms de code internes AM-RB 001 (pour Aston Martin Red Bull 001) et Nebula, est une supercar produite par le constructeur automobile britannique Aston Martin à partir de novembre 2021. C'est un coupé deux-portes offrant deux places, dont le design est inspiré des monoplaces de la Formule 1. Le constructeur l'a créée en collaboration avec Red Bull Advanced Technologies.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Aston_Martin_Valkyrie",
+  "wikipedia_title": "Aston Martin Valkyrie",
+  "specs": {
+    "engine": {
+      "value": "6.5 L Aston Martin-Cosworth RA naturally-aspirated V12",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 7 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur central arrière, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes · 2-door targa top (Spider)",
+      "from_text": false
+    },
+    "production": {
+      "value": "2016 (AM-RB 001 Concept) · 2017 (Valkyrie Prototype VP-1) · 2019 (Valkyrie Prototype VP-2) · November 2021 – December 2024 (production model)",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Adrian Newey, Miles Nurnberger",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United Kingdom: Gaydon, Warwickshire",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1340-1355 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4500 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1965 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1070 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2770 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "1160 hp",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/aston-martin-valkyrie/1.jpg",
+      "thumb": "photos/aston-martin-valkyrie/1-thumb.jpg",
+      "author": "Alexander Migl",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Aston_Martin_Valkyrie_Verification_Prototype_001_Genf_2019_1Y7A5569.jpg"
+    }
+  ]
+}
