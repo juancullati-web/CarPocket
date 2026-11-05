@@ -1,0 +1,24 @@
+{
+  "slug": "pininfarina-battista",
+  "name": "Pininfarina Battista",
+  "brand": "Pininfarina",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-05T17:08:21+00:00",
+  "summary": "",
+  "summary_lang": "",
+  "summary_url": "",
+  "wikipedia_title": "Pininfarina Battista",
+  "specs": {},
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/pininfarina-battista/1.jpg",
+      "thumb": "photos/pininfarina-battista/1-thumb.jpg",
+      "author": "Alexander-93",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Pininfarina_Battista_Auto_Zuerich_2023_1X7A1447.jpg"
+    }
+  ]
+}
