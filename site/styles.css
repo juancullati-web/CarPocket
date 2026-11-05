@@ -1017,3 +1017,4 @@ dialog.photo-viewer[open] { display: grid; grid-template-rows: minmax(0, 1fr) au
 .enrich-row small { display: block; color: var(--muted); font-size: .8125rem; overflow-wrap: anywhere; }
 .enrich-row .enrich-scope { color: var(--ink); }
 .spec-link { margin-left: 6px; font-size: .75rem; color: var(--muted); }
+.enrich-links { margin: 16px 0 0; color: var(--muted); font-size: .875rem; }

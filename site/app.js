@@ -2516,6 +2516,17 @@ async function findMissing(car) {
 }
 
 const enrich = { car: null, proposals: [] };
+// Ces sites n'ouvrent pas leurs données : on y envoie la personne, sans rien recopier automatiquement.
+const LOOKUP_SITES = [
+  ["Motorlegend", (name) => `https://www.motorlegend.com/search/index.php?q=${encodeURIComponent(name)}`],
+  ["Auto-Data", (name) => `https://www.auto-data.net/en/results?search=${encodeURIComponent(name)}`],
+  ["Caradisiac", (name) => `https://www.google.com/search?q=${encodeURIComponent(`site:caradisiac.com ${name}`)}`],
+];
+
+function lookupLinks(car) {
+  const name = car.name.replace(/\s*\(.*?\)/g, "");
+  return LOOKUP_SITES.map(([label, link]) => `<a href="${esc(link(name))}" target="_blank" rel="noopener">${esc(label)}</a>`).join(" · ");
+}
 
 function specLabel(key) {
   return SPEC_GROUPS.flatMap(([, rows]) => rows).find(([id]) => id === key)?.[1] || key;
@@ -2528,6 +2539,7 @@ async function openEnrich(car) {
   el("enrich-error").hidden = true;
   el("enrich-submit").hidden = true;
   el("enrich-status").textContent = "Recherche sur l'EPA, l'ADEME et Wikipédia…";
+  el("enrich-links").innerHTML = `Chercher ailleurs : ${lookupLinks(car)}`;
   el("enrich-dialog").showModal();
   let found = [];
   try {
@@ -2543,7 +2555,7 @@ async function openEnrich(car) {
   if (enrich.car !== car || !el("enrich-dialog").open) return;
   enrich.proposals = found;
   if (!found.length) {
-    el("enrich-status").textContent = "Rien de fiable trouvé dans ces sources. Tu peux compléter à la main avec le crayon.";
+    el("enrich-status").textContent = "Rien de fiable trouvé dans ces sources. Regarde les liens ci-dessous, puis complète à la main avec le crayon.";
     return;
   }
   el("enrich-status").textContent = "Coche ce que tu gardes, après avoir vérifié si besoin. Rien n'est ajouté sans ton accord.";
