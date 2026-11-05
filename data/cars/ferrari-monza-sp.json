@@ -1,0 +1,88 @@
+{
+  "slug": "ferrari-monza-sp",
+  "name": "Ferrari Monza SP",
+  "brand": "Ferrari",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-05T09:44:05+00:00",
+  "summary": "Les Ferrari Monza SP1 et SP2 sont des barquettes produites par le constructeur automobile italien Ferrari à partir de 2019. La monoplace SP1 et la biplace SP2 font partie de la nouvelle gamme de supercar Icona du constructeur au cheval cabré. La Monza SP2 est élue « Plus belle supercar de l'année 2018 ».",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Ferrari_Monza_SP1_et_SP2",
+  "wikipedia_title": "Ferrari Monza SP",
+  "specs": {
+    "engine": {
+      "value": "6496 cc F140 GC V12",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Double embrayage 7 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "2-door speedster",
+      "from_text": false
+    },
+    "production": {
+      "value": "2019–2022 (499 Units)",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Ferrari Styling Centre under the direction of Flavio Manzoni",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Italy: Maranello",
+      "from_text": false
+    },
+    "weight": {
+      "value": "SP1: 1500 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4657 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1996 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1155 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2720 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "596 kW",
+      "from_text": false
+    },
+    "torque": {
+      "value": "719 Nm",
+      "from_text": false
+    },
+    "top_speed": {
+      "value": "300 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-97 km/h : 2,9 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/ferrari-monza-sp/1.jpg",
+      "author": "Thesupermat",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Festival_automobile_international_2019_-_Ferrari_Monza_SP1_-_005_(cropped).jpg"
+    }
+  ]
+}
