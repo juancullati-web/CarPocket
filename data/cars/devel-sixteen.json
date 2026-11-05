@@ -1,0 +1,56 @@
+{
+  "slug": "devel-sixteen",
+  "name": "Devel Sixteen",
+  "brand": "Devel",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-05T09:51:12+00:00",
+  "summary": "La Devel Sixteen est un prototype de supercar fabriqué aux Émirats arabes unis par Devel Motors en coopération avec des ingénieurs américains et italiens. Selon Devel Motors, trois modèles de la Sixteen sont prévus : un modèle de base avec un moteur V8, réglé à environ 1 500 ou 2 000 chevaux ; un véhicule pouvant circuler légalement sur route avec un moteur V16, réglé à 3 006 chevaux et 3 260 N m de couple ; et une version piste uniquement avec un moteur V16 et un quadriturbo, réglé à 5 007 chevaux et 5 094 N m de couple. Cette voiture est régulièrement critiquée pour manque de fiabilité. La version V16 n'a jamais existé et le projet s'est évaporé. La version V8 de 1 500 à 2 000 ch n'a jamais réellement existé en tant que telle.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Devel_Sixteen",
+  "wikipedia_title": "Devel Sixteen",
+  "specs": {
+    "engine": {
+      "value": "12.3 L Quad-turbo V16 · V8 (base model)",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Automatique 8 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Mid-engine, four-wheel-drive",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "2022",
+      "from_text": false
+    },
+    "power": {
+      "value": "1500 hp",
+      "from_text": false
+    },
+    "top_speed": {
+      "value": "563 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-60 mph : 1,8 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/devel-sixteen/1.jpg",
+      "author": "Chad Kainz",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Devel_Sixteen_V-8_Prototype_(cropped).jpg"
+    }
+  ]
+}
