@@ -1,0 +1,44 @@
+{
+  "slug": "ferrari-599-sa-aperta",
+  "name": "Ferrari 599 SA Aperta",
+  "brand": "Ferrari",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-05T10:12:34+00:00",
+  "summary": "",
+  "summary_lang": "",
+  "summary_url": "",
+  "wikipedia_title": "Ferrari 599 SA Aperta",
+  "specs": {
+    "engine": {
+      "value": "5,9 L, 12 cylindres",
+      "from_text": false,
+      "source": "EPA"
+    },
+    "transmission": {
+      "value": "Automatique 6 rapports",
+      "from_text": false,
+      "source": "EPA"
+    },
+    "layout": {
+      "value": "Propulsion",
+      "from_text": false,
+      "source": "EPA"
+    },
+    "production": {
+      "value": "2011",
+      "from_text": false,
+      "source": "EPA"
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/ferrari-599-sa-aperta/1.jpg",
+      "author": "Ben",
+      "license": "CC BY-SA 2.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Ferarri_Ferrari_599_SA_Aperta_(6735929739).jpg"
+    }
+  ]
+}
