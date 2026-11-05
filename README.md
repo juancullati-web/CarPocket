@@ -36,7 +36,7 @@ Tape directement le nom, par exemple « Ferrari 488 Pista », ou choisis la marq
 
 ## Photo libre
 
-Sur une fiche sans photo, **Chercher une photo libre** propose des images de Wikimedia Commons sous licence libre, dont le nom cite la voiture. Vérifie qu'elle montre la bonne voiture, puis choisis-la. Son auteur et sa licence s'affichent sur la fiche.
+Sur une fiche de ta collection, **Chercher une photo libre** (bouton sur une fiche sans photo, icône loupe sinon) propose des images de Wikimedia Commons sous licence libre, dont le nom cite la voiture. Vérifie qu'elle montre la bonne voiture, puis choisis-la. Son auteur et sa licence s'affichent sur la fiche.
 
 ## Statut d'une voiture
 

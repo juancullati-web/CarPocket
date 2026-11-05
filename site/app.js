@@ -705,6 +705,7 @@ function mainPhotoControl(car, index) {
     <input type="file" accept="image/*" aria-label="Ajouter une photo" data-add-photo>
   </label>`];
   if (photo) {
+    buttons.push(iconButton("Chercher une photo libre", "data-find-photo", '<circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21M10.5 7.5v6M7.5 10.5h6"/>'));
     buttons.push(photo.custom || photo.free
       ? iconButton("Supprimer cette photo", `data-delete-photo="${index}"`, '<path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v5M14 11v5"/>')
       : iconButton("Masquer cette photo", `data-hide-photo="${index}"`, '<path d="M3 3l18 18M10 6a9 9 0 0 1 12 6 12 12 0 0 1-3 4M6 7a13 13 0 0 0-4 5 10 10 0 0 0 14 5M10 10a3 3 0 0 0 4 4"/>'));
@@ -2652,9 +2653,12 @@ async function openFreePhotos(car) {
     return;
   }
   if (freePhotos.car !== car || !el("free-dialog").open) return;
+  // Une photo déjà sur la fiche n'est pas proposée une seconde fois.
+  const shown = new Set(car.photos.map((photo) => photo.source_url).filter(Boolean));
+  results = results.filter(({ photo }) => !shown.has(photo.source_url));
   freePhotos.results = results;
   if (!results.length) {
-    el("free-status").textContent = "Aucune photo libre dont le nom cite cette voiture. Tu peux ajouter la tienne.";
+    el("free-status").textContent = "Aucune nouvelle photo libre dont le nom cite cette voiture. Tu peux ajouter la tienne.";
     return;
   }
   el("free-status").textContent = `Vérifie que la photo montre bien ${car.name}, puis choisis-la. Le nom de fichier ne le garantit pas.`;
@@ -2671,7 +2675,13 @@ el("free-list").addEventListener("click", async (event) => {
   if (!choice) return;
   const { photo } = freePhotos.results[Number(choice.dataset.freeIndex)];
   const item = itemOf(freePhotos.car);
-  const list = [...(item?.free_photos || []).filter((entry) => entry.file !== photo.file), photo].slice(-5);
+  const current = (item?.free_photos || []).filter((entry) => entry.file !== photo.file);
+  if (current.length >= 5) {
+    el("free-error").textContent = "5 photos libres au maximum : supprimes-en une pour en choisir une autre.";
+    el("free-error").hidden = false;
+    return;
+  }
+  const list = [...current, photo];
   const saved = await updateItem(freePhotos.car, { free_photos: list });
   if (!saved) {
     el("free-error").textContent = "Cette photo n'a pas pu être enregistrée. Réessaie.";
