@@ -1,0 +1,80 @@
+{
+  "slug": "alfa-romeo-33-stradale",
+  "name": "Alfa Romeo 33 Stradale",
+  "brand": "Alfa Romeo",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-05T10:04:08+00:00",
+  "summary": "The Alfa Romeo 33 Stradale is a mid-engine sports car built by Italian automobile manufacturer Alfa Romeo. It was the fastest commercially available car for the standing kilometer upon its introduction. 18 examples were produced between 1967 and 1969. \"Stradale\" (Italian for \"road-going\") is a term often used by Italian car manufacturers to indicate a street-legal version of a racing car; indeed the 33 Stradale was derived from the Tipo 33 sports prototype. Built in an attempt by Alfa Romeo to make some of its racing technology available to the public, it was also the most expensive automobile for sale to the public in 1968 at US$17,000 (equivalent to $157,400 in 2025).",
+  "summary_lang": "en",
+  "summary_url": "https://en.wikipedia.org/wiki/Alfa_Romeo_33_Stradale",
+  "wikipedia_title": "Alfa Romeo 33 Stradale",
+  "specs": {
+    "engine": {
+      "value": "2.0 L Tipo 33/2 V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 6 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur central arrière, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "November 1967 – March 1969 · 18 exemplaires",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Franco Scaglione",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Italy: Milan (Carrozzeria Marazzi)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "700 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "3970 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1710 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "991 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2350 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "230 PS",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "260 km/h",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/alfa-romeo-33-stradale/1.jpg",
+      "author": "Mr.choppers",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1968_Alfa_Romeo_33_Stradale,_front_right_(Miller).jpg"
+    }
+  ]
+}
