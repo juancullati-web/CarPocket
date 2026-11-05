@@ -40,7 +40,7 @@ Sur la fiche d'une voiture de ta collection, écris tes notes : elles s'enregist
 
 Sur une fiche incomplète, **Chercher les infos manquantes** propose des valeurs de l'EPA, de l'ADEME, d'openvehicle-data et de Wikipédia, avec leur source. Rien n'est ajouté sans que tu le coches.
 
-Tu peux aussi écrire ta propre présentation, ou modifier celle de Wikipédia, puis revenir au texte d'origine. **Préparer avec Gemini** copie une demande prête à coller dans Gemini : tu relis sa réponse, puis tu la colles dans le formulaire.
+Tu peux aussi écrire ta propre présentation, ou modifier celle de Wikipédia, puis revenir au texte d'origine.
 
 Tes amis voient tes notes, ta présentation et tes valeurs modifiées tant que ta collection est partagée.
 
