@@ -13,7 +13,6 @@ import csv
 import io
 import json
 import re
-import shutil
 import sys
 import time
 import urllib.error
@@ -271,9 +270,9 @@ def search_rows(catalogue: dict) -> list:
 
 
 def write(catalogue: dict, directory: Path = REFERENCE_DIR) -> None:
-    fresh = directory.with_name(directory.name + ".new")
-    shutil.rmtree(fresh, ignore_errors=True)
-    fresh.mkdir(parents=True)
+    # Écrit sur place : renommer un dossier entier crée des copies « 2 » sur un bureau synchronisé.
+    directory.mkdir(parents=True, exist_ok=True)
+    wanted = {"makes.json", "search.json"}
     makes = []
     used = set()
     for make in sorted(catalogue, key=str.lower):
@@ -281,16 +280,18 @@ def write(catalogue: dict, directory: Path = REFERENCE_DIR) -> None:
         if not slug or slug in used or slug in ("makes", "search"):
             continue
         used.add(slug)
+        wanted.add(f"{slug}.json")
         makes.append({"n": make, "f": slug, "c": len(catalogue[make])})
-        (fresh / f"{slug}.json").write_text(
+        (directory / f"{slug}.json").write_text(
             json.dumps({"make": make, "models": catalogue[make]}, ensure_ascii=False, separators=(",", ":")), "utf-8"
         )
-    (fresh / "makes.json").write_text(json.dumps(makes, ensure_ascii=False, separators=(",", ":")), "utf-8")
-    (fresh / "search.json").write_text(
+    (directory / "makes.json").write_text(json.dumps(makes, ensure_ascii=False, separators=(",", ":")), "utf-8")
+    (directory / "search.json").write_text(
         json.dumps(search_rows(catalogue), ensure_ascii=False, separators=(",", ":")), "utf-8"
     )
-    shutil.rmtree(directory, ignore_errors=True)
-    fresh.rename(directory)
+    for path in directory.glob("*.json"):
+        if path.name not in wanted:
+            path.unlink()
 
 
 def main() -> int:
