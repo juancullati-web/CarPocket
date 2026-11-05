@@ -1,0 +1,72 @@
+{
+  "slug": "ultima-gtr",
+  "name": "Ultima GTR",
+  "brand": "Ultima",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-05T09:31:57+00:00",
+  "summary": "L'Ultima GTR est une automobile supersportive ou supercar fabriquée par Ultima Sports Ltd basée à Hinckley dans le Leicestershire en Angleterre. Elle est disponible à la vente à la fois en kit et en voiture prête à rouler. Elle est également disponible en version cabriolet sous le nom de Ultima Can-Am.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Ultima_GTR",
+  "wikipedia_title": "Ultima GTR",
+  "specs": {
+    "engine": {
+      "value": "See Table",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports Porsche G50 transaxle · Manuelle 6 rapports Porsche G52 transaxle",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur central arrière, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1999–2016",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Ted Marlow and Richard Marlow",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United Kingdom: Hinckley, Leicestershire",
+      "from_text": false
+    },
+    "length": {
+      "value": "4000 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1850 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1070 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2560 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "640 bhp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/ultima-gtr/1.jpg",
+      "author": "Pokemonprime",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2000_Ultima_GTR_Coupe.jpg"
+    }
+  ]
+}
