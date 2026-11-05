@@ -57,10 +57,6 @@
     "wheelbase": {
       "value": "2420 mm",
       "from_text": false
-    },
-    "power": {
-      "value": "59 bhp",
-      "from_text": true
     }
   },
   "overrides": {},

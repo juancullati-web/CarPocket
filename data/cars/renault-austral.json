@@ -61,10 +61,6 @@
     "power": {
       "value": "140 hp",
       "from_text": true
-    },
-    "top_speed": {
-      "value": "100 km/h",
-      "from_text": true
     }
   },
   "overrides": {},

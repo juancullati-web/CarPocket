@@ -65,10 +65,6 @@
     "top_speed": {
       "value": "330 km/h",
       "from_text": true
-    },
-    "zero_100": {
-      "value": "0-100 km/h : 0,2 s",
-      "from_text": true
     }
   },
   "overrides": {},

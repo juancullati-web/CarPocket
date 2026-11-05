@@ -13,10 +13,6 @@
     "production": {
       "value": "1969–1974 · 1977–1983 · 2008–2023",
       "from_text": false
-    },
-    "power": {
-      "value": "77-105 hp",
-      "from_text": true
     }
   },
   "overrides": {},
