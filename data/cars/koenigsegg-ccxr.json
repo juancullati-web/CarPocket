@@ -1,0 +1,23 @@
+{
+  "slug": "koenigsegg-ccxr",
+  "name": "Koenigsegg CCXR",
+  "brand": "Koenigsegg",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-05T09:38:22+00:00",
+  "summary": "",
+  "summary_lang": "",
+  "summary_url": "",
+  "wikipedia_title": "Koenigsegg CCXR",
+  "specs": {},
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/koenigsegg-ccxr/1.jpg",
+      "author": "Fpm",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Koenigsegg_CCXR_Edition_(1_von_2).jpg"
+    }
+  ]
+}
