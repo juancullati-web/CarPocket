@@ -954,5 +954,5 @@ dialog.photo-viewer[open] { display: grid; grid-template-rows: minmax(0, 1fr) au
 .model-actions .card-owned { color: var(--accent-text); cursor: default; }
 .model-actions .card-owned:hover { background: transparent; }
 .model-actions .card-remove:hover { border-color: var(--error); color: var(--error); }
-.sheet-actions { margin-top: 32px; padding-top: 0; }
+.sheet-actions { margin: 0 0 32px; padding-top: 0; }
 .model-actions .add-icon svg { width: 18px; height: 18px; }

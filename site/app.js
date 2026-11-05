@@ -179,7 +179,7 @@ function cardActions(car, { sheet = true } = {}) {
   const compareLabel = selected ? "Retirer cette voiture de la comparaison" : "Ajouter cette voiture à la comparaison";
   const actions = [
     sheet ? `<a class="add-icon" href="#${esc(car.slug)}" aria-label="Voir la fiche de ${name}" data-tip="Voir la fiche">${photoIcon(CARD_ICONS.sheet)}</a>` : "",
-    `<button type="button" class="theme-toggle" data-compare="${esc(car.slug)}" aria-pressed="${selected}" aria-label="${compareLabel} : ${name}" data-tip="${compareLabel}">${photoIcon(CARD_ICONS.compare)}</button>`,
+    `<button type="button" class="${sheet ? "theme-toggle" : "add-icon"}" data-compare="${esc(car.slug)}" aria-pressed="${selected}" aria-label="${compareLabel} : ${name}" data-tip="${compareLabel}">${photoIcon(!sheet && selected ? CARD_ICONS.check : CARD_ICONS.compare)}</button>`,
     `<button type="button" class="theme-toggle" data-share="${esc(car.slug)}" aria-label="Partager ${name} avec un ami" data-tip="Partager avec un ami">${photoIcon(CARD_ICONS.share)}</button>`,
   ];
   if (canEdit() && inOwnDeck(car)) {
@@ -677,11 +677,11 @@ function detailHtml(car) {
     <section class="section">
       <div class="wrap detail-body">
         <div>
+          <div class="model-actions sheet-actions">${cardActions(car, { sheet: false })}</div>
           ${car.summary ? `<h2 class="display-md">Présentation</h2>
             <p class="summary">${esc(car.summary)}</p>
             <p class="summary-source">Source : <a href="${esc(safeUrl(car.summary_url))}" target="_blank" rel="noopener" data-tip="Lire l'article sur Wikipédia">Wikipédia${car.summary_lang === "en" ? " (en anglais)" : ""}</a></p>` : ""}
           ${notesHtml(car)}
-          <div class="model-actions sheet-actions">${cardActions(car, { sheet: false })}</div>
           ${isAdmin() ? `<div class="actions"><a class="text-link" href="https://github.com/juancullati-web/CarPocket/edit/main/data/cars/${esc(car.slug)}.json" target="_blank" rel="noopener" data-tip="Corriger cette fiche sur GitHub">Corriger cette fiche ›</a>
             <button type="button" class="text-link quiet" data-remove-sheet="${esc(titleOf(car))}" data-tip="Effacer cette fiche pour tous les comptes">Supprimer la fiche pour tout le monde</button></div>` : ""}
         </div>
