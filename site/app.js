@@ -82,7 +82,7 @@ async function server(action, input = {}) {
   return body;
 }
 
-const ITEM_FIELDS = "title, thumb, main_photo, added_at, custom_photos, hidden_photos, notes, custom_specs, custom_sources, custom_summary, status";
+const ITEM_FIELDS = "title, thumb, main_photo, added_at, custom_photos, hidden_photos, notes, custom_specs, custom_sources, custom_summary, status, free_photos";
 const PHOTO_BUCKET = "user-photos";
 const SIGNED_SECONDS = 6 * 60 * 60;
 
@@ -123,7 +123,8 @@ function itemPhotos(item, car) {
   }));
   const hidden = new Set(item.hidden_photos || []);
   const shared = car.photos.filter((photo) => !hidden.has(photo.file)).map((photo) => ({ ...photo, key: photo.file }));
-  const photos = [...custom, ...shared];
+  const free = (item.free_photos || []).map((photo) => ({ ...photo, key: photo.file, free: true }));
+  const photos = [...custom, ...free, ...shared];
   const chosen = photos.find((photo) => photo.key === item.main_photo);
   return chosen ? [chosen, ...photos.filter((photo) => photo !== chosen)] : photos;
 }
@@ -704,7 +705,7 @@ function mainPhotoControl(car, index) {
     <input type="file" accept="image/*" aria-label="Ajouter une photo" data-add-photo>
   </label>`];
   if (photo) {
-    buttons.push(photo.custom
+    buttons.push(photo.custom || photo.free
       ? iconButton("Supprimer cette photo", `data-delete-photo="${index}"`, '<path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13M10 11v5M14 11v5"/>')
       : iconButton("Masquer cette photo", `data-hide-photo="${index}"`, '<path d="M3 3l18 18M10 6a9 9 0 0 1 12 6 12 12 0 0 1-3 4M6 7a13 13 0 0 0-4 5 10 10 0 0 0 14 5M10 10a3 3 0 0 0 4 4"/>'));
     buttons.push(index === 0
@@ -729,7 +730,10 @@ function emptyStage(car) {
   if (!canEdit() || !inOwnDeck(car)) return `<div class="no-photo">Pas encore de photo</div>`;
   return `<div class="no-photo empty-stage">
     <p>Pas encore de photo pour cette version.</p>
-    <label class="button button-primary photo-add">Ajouter ma photo<input type="file" accept="image/*" data-add-photo></label>
+    <div class="empty-actions">
+      <label class="button button-primary photo-add">Ajouter ma photo<input type="file" accept="image/*" data-add-photo></label>
+      <button type="button" class="button button-on-dark" data-find-photo>Chercher une photo libre</button>
+    </div>
   </div>`;
 }
 
@@ -1271,11 +1275,13 @@ async function hidePhoto(car, index) {
 async function deletePhoto(car, index) {
   const photo = car.photos[index];
   const item = itemOf(car);
-  if (!photo?.custom || !item) return;
-  const changes = { custom_photos: (item.custom_photos || []).filter((path) => path !== photo.key) };
+  if (!(photo?.custom || photo?.free) || !item) return;
+  const changes = photo.free
+    ? { free_photos: (item.free_photos || []).filter((entry) => entry.file !== photo.key) }
+    : { custom_photos: (item.custom_photos || []).filter((path) => path !== photo.key) };
   if (item.main_photo === photo.key) changes.main_photo = null;
   if (!(await updateItem(car, changes))) throw new Error("Cette photo n'a pas pu être supprimée. Réessaie.");
-  await db.storage.from(PHOTO_BUCKET).remove([photo.key]);
+  if (photo.custom) await db.storage.from(PHOTO_BUCKET).remove([photo.key]);
 }
 
 async function chooseMainPhoto(car, index) {
@@ -1712,6 +1718,7 @@ async function openVersionPicker(car) {
 async function replaceCar(car, name, thumb) {
   const old = itemOf(car);
   if (!old || name === old.title) return;
+  // Une photo du catalogue reste à l'ancienne fiche ; les siennes suivent.
   const isCustom = old.main_photo && !old.main_photo.startsWith("photos/");
   const row = {
     user_id: state.user.id,
@@ -1725,6 +1732,7 @@ async function replaceCar(car, name, thumb) {
     custom_sources: old.custom_sources || {},
     custom_summary: old.custom_summary || "",
     status: old.status || null,
+    free_photos: old.free_photos || [],
   };
   const { data, error } = await db.from("deck_items").insert(row).select(ITEM_FIELDS).single();
   if (error) {
@@ -2376,7 +2384,7 @@ async function renderDiscover() {
     <section class="section"><div class="wrap"><p class="count" id="discover-status">Chargement des collections…</p><div class="people-grid" id="people-grid"></div></div></section>`;
   const [{ data: people, error }, { data: items, error: itemsError }] = await Promise.all([
     db.from("profiles").select("id, username, avatar, shared").eq("shared", true).neq("id", state.user.id).order("username"),
-    db.from("deck_items").select("user_id, title, main_photo, added_at, hidden_photos").order("added_at", { ascending: false }),
+    db.from("deck_items").select("user_id, title, main_photo, added_at, hidden_photos, free_photos").order("added_at", { ascending: false }),
   ]);
   if (el("discover").hidden) return;
   if (error || itemsError) {
@@ -2397,8 +2405,11 @@ async function renderDiscover() {
     const photos = cars.slice(0, 3).map((item) => {
       const car = catalog.get(item.title);
       const hidden = new Set(item.hidden_photos || []);
+      const free = item.free_photos || [];
       const file = state.signed[item.main_photo]
+        || free.find((p) => p.file === item.main_photo)?.thumb
         || car.photos.find((p) => p.file === item.main_photo)?.file
+        || free[0]?.thumb
         || car.photos.find((p) => !hidden.has(p.file))?.file;
       return file ? `<img src="${esc(file)}" alt="" loading="lazy">` : "";
     }).join("");
@@ -2455,6 +2466,10 @@ el("detail").addEventListener("click", (event) => {
   }
   if (event.target.closest("[data-edit-summary]") && car) {
     openSummaryEditor(car);
+    return;
+  }
+  if (event.target.closest("[data-find-photo]") && car) {
+    openFreePhotos(car);
     return;
   }
   if (event.target.closest("[data-enrich]") && car) {
@@ -2571,6 +2586,100 @@ el("detail").addEventListener("focusout", (event) => {
   if (event.target.id === "car-notes") flushNotes();
 });
 window.addEventListener("pagehide", flushNotes);
+
+/* Chercher une photo libre sur Wikimedia Commons : la personne choisit ce qui correspond. */
+const FREE_LICENSE = /^(cc[ -]?by|cc0|cc-zero|public domain|pd\b|pdm|fal\b|attribution)/i;
+const NOT_A_CAR_PHOTO = /logo|icon|badge|emblem|flag|diagram|schema|map\b|sketch|drawing|blueprint|\.svg|poster|stamp|replica|concept|tribute|homage|hommage|restomod|\btoy\b|lego|scale model|bburago|diecast|die-cast|maquette|miniature|\b1[ _:]18\b|\b1[ _:]43\b|wheel|\brim\b|instrument|interior|cockpit|dash|seat|steering|engine|motor|detail|tail ?light|headlight|exhaust|mirror|nameplate|trunk/i;
+const plainText = (html) => new DOMParser().parseFromString(html || "", "text/html").body.textContent.replace(/\s+/g, " ").trim();
+
+async function searchFreePhotos(car) {
+  const name = titleOf(car).split("#")[0].replace(/\s*\(.*?\)/g, "");
+  const params = new URLSearchParams({
+    action: "query", format: "json", formatversion: "2", origin: "*",
+    generator: "search", gsrsearch: name, gsrnamespace: "6", gsrlimit: "40",
+    prop: "imageinfo", iiprop: "url|size|mime|extmetadata", iiurlwidth: "960",
+    iiextmetadatafilter: "Artist|LicenseShortName|LicenseUrl|NonFree",
+  });
+  const response = await fetch(`https://commons.wikimedia.org/w/api.php?${params}`);
+  if (!response.ok) throw new Error(String(response.status));
+  const pages = ((await response.json()).query?.pages || []).sort((a, b) => a.index - b.index);
+  const exact = compactName(name);
+  const words = name.split(/\s+/).map(compactName).filter(Boolean);
+  const results = [];
+  pages.forEach((page) => {
+    const info = page.imageinfo?.[0];
+    const meta = info?.extmetadata || {};
+    const license = (meta.LicenseShortName?.value || "").trim();
+    const fileName = page.title.replace(/^File:/, "");
+    const key = compactName(fileName);
+    if (!info || meta.NonFree?.value || !FREE_LICENSE.test(license)) return;
+    if (!["image/jpeg", "image/png", "image/webp"].includes(info.mime)) return;
+    if (info.width < 800 || info.width < info.height || NOT_A_CAR_PHOTO.test(fileName)) return;
+    // Le nom du fichier doit citer la voiture : sinon, elle n'est pas proposée.
+    const closeness = key.includes(exact) ? 0 : words.every((word) => key.includes(word)) ? 1 : 2;
+    const image = (info.thumburl || "").split("?")[0];
+    if (closeness === 2 || !/^https:\/\/(upload|thumb)\.wikimedia\.org\//.test(image)) return;
+    results.push({
+      closeness,
+      fileName,
+      photo: {
+        file: image,
+        thumb: image.replace(/\/\d+px-/, "/500px-"),
+        author: (plainText(meta.Artist?.value) || "Auteur non indiqué").slice(0, 300),
+        license: license.slice(0, 100),
+        license_url: safeUrl(meta.LicenseUrl?.value) || "",
+        source_url: info.descriptionurl,
+      },
+    });
+  });
+  return results.sort((a, b) => a.closeness - b.closeness).slice(0, 8);
+}
+
+const freePhotos = { car: null, results: [] };
+
+async function openFreePhotos(car) {
+  freePhotos.car = car;
+  freePhotos.results = [];
+  el("free-list").innerHTML = "";
+  el("free-error").hidden = true;
+  el("free-status").textContent = "Recherche sur Wikimedia Commons…";
+  el("free-dialog").showModal();
+  let results = [];
+  try {
+    results = await searchFreePhotos(car);
+  } catch {
+    el("free-status").textContent = "La recherche n'a pas abouti. Vérifie ta connexion et réessaie.";
+    return;
+  }
+  if (freePhotos.car !== car || !el("free-dialog").open) return;
+  freePhotos.results = results;
+  if (!results.length) {
+    el("free-status").textContent = "Aucune photo libre dont le nom cite cette voiture. Tu peux ajouter la tienne.";
+    return;
+  }
+  el("free-status").textContent = `Vérifie que la photo montre bien ${car.name}, puis choisis-la. Le nom de fichier ne le garantit pas.`;
+  el("free-list").innerHTML = results.map(({ photo, fileName, closeness }, index) => `<button type="button" class="free-choice" data-free-index="${index}">
+    <img src="${esc(photo.thumb)}" alt="" loading="lazy">
+    <span class="free-name">${esc(fileName)}</span>
+    <small>${esc(photo.author.slice(0, 60))} · ${esc(photo.license)}${closeness ? " · nom approchant" : ""}</small>
+  </button>`).join("");
+}
+
+el("free-cancel").addEventListener("click", () => el("free-dialog").close());
+el("free-list").addEventListener("click", async (event) => {
+  const choice = event.target.closest("[data-free-index]");
+  if (!choice) return;
+  const { photo } = freePhotos.results[Number(choice.dataset.freeIndex)];
+  const item = itemOf(freePhotos.car);
+  const list = [...(item?.free_photos || []).filter((entry) => entry.file !== photo.file), photo].slice(-5);
+  const saved = await updateItem(freePhotos.car, { free_photos: list });
+  if (!saved) {
+    el("free-error").textContent = "Cette photo n'a pas pu être enregistrée. Réessaie.";
+    el("free-error").hidden = false;
+    return;
+  }
+  el("free-dialog").close();
+});
 
 /* Chercher les infos manquantes : des propositions, que la personne valide une par une. */
 const ENRICH_LABELS = [

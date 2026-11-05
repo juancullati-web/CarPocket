@@ -1093,3 +1093,12 @@ a.completion-ring, button.completion-ring { cursor: pointer; }
 .showroom.is-compact .showroom-stats { display: none; }
 .showroom.is-compact .display-xl { font-size: clamp(1.75rem, 4vw, 2.5rem); }
 .showroom.is-compact .showroom-actions { margin-top: 0; }
+
+/* Photos libres */
+.empty-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
+.free-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.free-choice { display: block; min-width: 0; border: 1px solid var(--hairline); padding: 0 0 8px; background: none; color: inherit; font: inherit; text-align: left; cursor: pointer; }
+.free-choice:hover { border-color: var(--primary); }
+.free-choice img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; margin-bottom: 6px; }
+.free-choice .free-name { display: block; padding-inline: 8px; color: var(--ink); font-size: .8125rem; font-weight: 700; overflow-wrap: anywhere; }
+.free-choice small { display: block; padding-inline: 8px; color: var(--muted); font-size: .75rem; overflow-wrap: anywhere; }

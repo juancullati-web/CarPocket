@@ -83,7 +83,28 @@ alter table public.deck_items drop constraint if exists deck_items_main_photo_ch
 alter table public.deck_items add constraint deck_items_main_photo_check
   check (main_photo is null
     or main_photo ~ '^photos/[a-z0-9-]+/[0-9]+\.(jpg|png|webp)$'
-    or main_photo ~ '^[0-9a-f-]{36}/[a-z0-9-]+\.jpg$');
+    or main_photo ~ '^[0-9a-f-]{36}/[a-z0-9-]+\.jpg$'
+    or main_photo ~ '^https://(upload|thumb)\.wikimedia\.org/[^[:space:]]+$');
+
+-- Photos libres de Wikimedia Commons choisies par la personne, avec auteur et licence.
+alter table public.deck_items add column if not exists free_photos jsonb not null default '[]';
+
+create or replace function public.free_photos_valid(photos jsonb)
+returns boolean language sql immutable set search_path = '' as $$
+  select jsonb_typeof(photos) = 'array' and jsonb_array_length(photos) <= 5 and not exists (
+    select 1 from jsonb_array_elements(photos) as photo
+    where jsonb_typeof(photo) <> 'object'
+      or coalesce(photo ->> 'file', '') !~ '^https://(upload|thumb)\.wikimedia\.org/[^[:space:]]+$'
+      or coalesce(photo ->> 'thumb', '') !~ '^https://(upload|thumb)\.wikimedia\.org/[^[:space:]]+$'
+      or coalesce(photo ->> 'source_url', '') !~ '^https://commons\.wikimedia\.org/[^[:space:]]+$'
+      or char_length(coalesce(photo ->> 'author', '')) not between 1 and 300
+      or char_length(coalesce(photo ->> 'license', '')) not between 1 and 100
+      or char_length(photo::text) > 2000
+  );
+$$;
+
+alter table public.deck_items drop constraint if exists deck_items_free_photos_check;
+alter table public.deck_items add constraint deck_items_free_photos_check check (public.free_photos_valid(free_photos));
 
 -- Wikimedia peut servir ses vignettes depuis plusieurs sous-domaines.
 alter table public.deck_items drop constraint if exists deck_items_thumb_check;
@@ -162,7 +183,7 @@ revoke all on public.deck_items from anon, authenticated;
 grant select (id, username, avatar, shared) on public.profiles to authenticated;
 grant update (avatar, shared) on public.profiles to authenticated;
 grant select, insert, delete on public.deck_items to authenticated;
-grant update (main_photo, custom_photos, hidden_photos, notes, custom_specs, custom_sources, custom_summary, status) on public.deck_items to authenticated;
+grant update (main_photo, custom_photos, hidden_photos, notes, custom_specs, custom_sources, custom_summary, status, free_photos) on public.deck_items to authenticated;
 
 drop policy if exists "profil lisible par soi ou l'admin" on public.profiles;
 drop policy if exists "profil lisible si partagé" on public.profiles;

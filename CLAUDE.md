@@ -28,6 +28,8 @@ Complétude : part des 16 champs de la fiche technique remplis, valeurs de la co
 
 Notes, présentation et valeurs modifiées : colonnes `notes`, `custom_summary` et `custom_specs` de `deck_items`, propres à chaque collection et visibles avec elle. Une valeur modifiée porte `edited: true` à l'affichage et ne touche jamais `data/cars`. Le bouton « Chercher les infos manquantes » lit la liste de référence et Wikipédia depuis le navigateur, propose des valeurs avec leur source (`custom_sources`) et n'écrit que ce que la personne coche.
 
+Photos libres : `free_photos` de `deck_items`, choisies par la personne parmi les résultats Commons, avec auteur et licence. Le site affiche l'image depuis Wikimedia, elle ne rejoint pas le catalogue.
+
 Photos personnelles : bucket privé `user-photos`, dossier par compte, affichées par adresses signées. Les masquages et les choix sont dans `deck_items`. Le fichier ré-encodé en JPEG perd ses métadonnées avant l'envoi.
 
 Tests : `python3 -m unittest discover -s tests`. Aperçu avec suppression : `python3 scripts/serve.py`.
