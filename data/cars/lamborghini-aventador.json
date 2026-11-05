@@ -1,0 +1,84 @@
+{
+  "slug": "lamborghini-aventador",
+  "name": "Lamborghini Aventador",
+  "brand": "Lamborghini",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-05T09:34:00+00:00",
+  "summary": "La Lamborghini Aventador LP700-4 — connue en interne sous les noms de code « LB834 » (coupé) et « LB835 » (roadster) — est une supercar développée par le constructeur automobile italien Lamborghini, produite de 2012 à septembre 2025. Dévoilée au salon de Genève 2011, elle remplace la Lamborghini Murciélago.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Lamborghini_Aventador",
+  "wikipedia_title": "Lamborghini Aventador",
+  "specs": {
+    "engine": {
+      "value": "6.5 L L539 V12",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 7 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Mid-engine, all-wheel-drive",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes · 2-door Targa top roadster",
+      "from_text": false
+    },
+    "production": {
+      "value": "February 2011 – September 2022",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Filippo Perini (original), Mitja Borkert (Aventador S)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Italy: Sant'Agata Bolognese",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1575 kg LP 700-4, LP 740-4 S (dry)",
+      "from_text": false
+    },
+    "length": {
+      "value": "4780 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "2030 mm (with mirrors: 2265 mm)",
+      "from_text": false
+    },
+    "height": {
+      "value": "1136 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2700 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "700 PS",
+      "from_text": false
+    },
+    "top_speed": {
+      "value": "350 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-62 mph : 2,9 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/lamborghini-aventador/1.jpg",
+      "author": "Calreyn88",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Lamborghini_Aventador_S_(44554).jpg"
+    }
+  ]
+}
