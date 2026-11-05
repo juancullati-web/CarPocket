@@ -29,6 +29,21 @@
       "value": "2019–2020",
       "from_text": false,
       "source": "EPA"
+    },
+    "power": {
+      "value": "530 kW",
+      "from_text": false,
+      "source": "OVD"
+    },
+    "weight": {
+      "value": "1530 kg (en ordre de marche)",
+      "from_text": false,
+      "source": "OVD"
+    },
+    "wheelbase": {
+      "value": "2650 mm",
+      "from_text": false,
+      "source": "OVD"
     }
   },
   "overrides": {},

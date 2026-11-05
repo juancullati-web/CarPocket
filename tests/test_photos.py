@@ -119,22 +119,35 @@ class BuildReferenceTest(unittest.TestCase):
         self.assertEqual(build_reference.clean_make("B.M.W."), "BMW")
         self.assertEqual(build_reference.clean_make("PEUGEOT"), "Peugeot")
 
-    def test_ovd_keeps_only_what_all_variants_share(self):
+    def test_ovd_gives_a_range_when_variants_differ(self):
         tables = {
             "brands": [{"id": "b", "name": "FERRARI"}],
             "models": [{"id": "m", "name": "488 PISTA", "brand_id": "b", "category": "M1", "registrations": "200"}],
             "generations": [{"id": "g", "model_id": "m"}],
             "engines": [{"id": "e", "power_kw": "530.0", "displacement_cc": "3902"}],
             "variants": [
-                {"generation_id": "g", "engine_id": "e", "mass_kg": "1530.0", "wheelbase_mm": "2650", "year_from": "2019", "year_to": "2021"},
-                {"generation_id": "g", "engine_id": "e", "mass_kg": "1540.0", "wheelbase_mm": "2650", "year_from": "2020", "year_to": "2022"},
+                {"generation_id": "g", "engine_id": "e", "mass_kg": "1530.0", "wheelbase_mm": "2650", "year_from": "2019", "year_to": "2021", "registrations": "9"},
+                {"generation_id": "g", "engine_id": "e", "mass_kg": "1540.0", "wheelbase_mm": "2650", "year_from": "2020", "year_to": "2022", "registrations": "9"},
             ],
         }
         entry = build_reference.ovd_entries(tables)[0]
         self.assertEqual((entry["make"], entry["model"], entry["version"]), ("Ferrari", "488", "488 Pista"))
         self.assertEqual(entry["specs"]["power"], "530 kW")
-        self.assertNotIn("weight", entry["specs"])
+        self.assertEqual(entry["specs"]["weight"], "1530–1540 kg (en ordre de marche)")
         self.assertEqual(entry["years"], "2019–2022")
+
+    def test_a_single_odd_variant_does_not_widen_the_range(self):
+        tables = {
+            "brands": [{"id": "b", "name": "FERRARI"}],
+            "models": [{"id": "m", "name": "ROMA", "brand_id": "b", "category": "M1", "registrations": "50"}],
+            "generations": [{"id": "g", "model_id": "m"}],
+            "engines": [{"id": "e", "power_kw": "456", "displacement_cc": "3855"}, {"id": "x", "power_kw": "9", "displacement_cc": ""}],
+            "variants": [
+                {"generation_id": "g", "engine_id": "e", "mass_kg": "1570", "wheelbase_mm": "", "year_from": "2020", "year_to": "2024", "registrations": "49"},
+                {"generation_id": "g", "engine_id": "x", "mass_kg": "9", "wheelbase_mm": "", "year_from": "2021", "year_to": "2021", "registrations": "1"},
+            ],
+        }
+        self.assertEqual(build_reference.ovd_entries(tables)[0]["specs"]["power"], "456 kW")
 
     def test_a_second_source_adds_to_the_same_version(self):
         same = {"make": "Ferrari", "model": "488", "version": "488 Pista", "years": "2019"}

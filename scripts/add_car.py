@@ -175,7 +175,8 @@ def add(query: str, example: bool = False) -> dict:
     photos = save_photos(files, slug)
     name = wiki.car_name(title, brand, wanted)
     # Dès la création : ce que Wikipédia ne donne pas, si la liste ouverte décrit la même voiture.
-    if not wanted:
+    # Une fiche qui décrit une seule génération reste à part : la liste couvre tout le modèle.
+    if not wanted and not extracted["variant"]:
         production = (extracted["specs"].get("production") or {}).get("value", "")
         for spec, value in reference.open_values(title, production).items():
             extracted["specs"].setdefault(spec, {"value": value, "from_text": False, "source": "OVD"})

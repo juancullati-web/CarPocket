@@ -193,11 +193,17 @@ def ovd_entries(tables: dict) -> list:
         name = smart_case(model["name"].strip())
         if not make or not name:
             continue
+        # Une variante vue une seule fois peut être mal saisie : elle n'élargit pas la fourchette.
+        solid = [variant for variant in variants if int(variant.get("registrations") or 0) >= 2]
+        variants = solid or variants
         rows = [engines.get(variant["engine_id"], {}) for variant in variants]
 
         def number(values, unit):
-            found = only_value(str(round(float(value))) for value in values if value)
-            return f"{found} {unit}" if found else None
+            """Une valeur, ou la fourchette réelle quand les variantes diffèrent."""
+            found = sorted({round(float(value)) for value in values if value})
+            if not found:
+                return None
+            return f"{found[0]} {unit}" if len(found) == 1 else f"{found[0]}–{found[-1]} {unit}"
 
         years = set()
         for variant in variants:
@@ -301,11 +307,11 @@ def download_ovd() -> dict:
 def download_wikidata() -> list:
     url = f"{WIKIDATA_URL}?{urllib.parse.urlencode({'query': WIKIDATA_QUERY})}"
     # Le service limite parfois à une requête par minute : on patiente au lieu d'échouer.
-    for attempt in range(5):
+    for attempt in range(3):
         try:
             return json.loads(fetch(url, 280, {"Accept": "application/sparql-results+json"}))["results"]["bindings"]
         except urllib.error.HTTPError as error:
-            if error.code != 429 or attempt == 4:
+            if error.code != 429 or attempt == 2:
                 raise
             time.sleep(70)
     return []
@@ -324,6 +330,16 @@ def search_rows(catalogue: dict) -> list:
                 if not wiki_title or compact(name) != compact(wiki_title):
                     rows.append([name, version["y"], version["src"]])
     return sorted(rows, key=lambda row: row[0].lower())
+
+
+def published_wiki_models(directory: Path = REFERENCE_DIR) -> list:
+    models = []
+    for path in directory.glob("*.json"):
+        if path.stem in ("makes", "search"):
+            continue
+        data = json.loads(path.read_text("utf-8"))
+        models += [{"make": data["make"], "model": model["n"], "title": model["w"]} for model in data["models"] if model.get("w")]
+    return models
 
 
 def write(catalogue: dict, directory: Path = REFERENCE_DIR) -> None:
@@ -355,13 +371,22 @@ def main() -> int:
     epa = epa_entries(download_epa())
     ademe = ademe_entries(download_ademe())
     ovd = ovd_entries(download_ovd())
-    bindings = download_wikidata()
     # Une source muette ne doit pas effacer la liste déjà publiée.
-    if len(epa) < 3000 or len(ademe) < 500 or len(ovd) < 500 or len(bindings) < 3000:
-        print(f"Liste incomplète : EPA {len(epa)}, ADEME {len(ademe)}, OVD {len(ovd)}, Wikidata {len(bindings)}", file=sys.stderr)
+    if len(epa) < 3000 or len(ademe) < 500 or len(ovd) < 500:
+        print(f"Liste incomplète : EPA {len(epa)}, ADEME {len(ademe)}, OVD {len(ovd)}", file=sys.stderr)
         return 1
     entries = ademe + epa + ovd
-    wiki_models = wikipedia_models(bindings, {entry["make"] for entry in entries})
+    try:
+        bindings = download_wikidata()
+        if len(bindings) < 3000:
+            raise ValueError(f"Wikidata : {len(bindings)} lignes")
+        wiki_models = wikipedia_models(bindings, {entry["make"] for entry in entries})
+    except (urllib.error.URLError, ValueError, KeyError) as error:
+        # Wikidata est parfois en panne : ses pages changent peu, on garde celles déjà publiées.
+        print(f"Wikidata indisponible ({error}) : pages déjà publiées conservées", file=sys.stderr)
+        wiki_models = published_wiki_models()
+        if len(wiki_models) < 3000:
+            return 1
     catalogue = merge(entries, wiki_models)
     write(catalogue)
     print(f"{len(catalogue)} marques, EPA {len(epa)}, ADEME {len(ademe)}, OVD {len(ovd)}, Wikipédia {len(wiki_models)}")

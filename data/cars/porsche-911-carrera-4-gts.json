@@ -19,6 +19,26 @@
       "value": "2015–2026",
       "from_text": false,
       "source": "EPA"
+    },
+    "wheelbase": {
+      "value": "2450 mm",
+      "from_text": false,
+      "source": "OVD"
+    },
+    "power": {
+      "value": "331–357 kW",
+      "from_text": false,
+      "source": "OVD"
+    },
+    "weight": {
+      "value": "1590–1800 kg (en ordre de marche)",
+      "from_text": false,
+      "source": "OVD"
+    },
+    "engine": {
+      "value": "2981–3591 cm³",
+      "from_text": false,
+      "source": "OVD"
     }
   },
   "overrides": {},

@@ -2427,8 +2427,10 @@ function readNumber(text) {
 }
 
 function measure(text, pattern) {
-  const match = text.match(new RegExp(`(\\d[\\d\\s\\u00a0\\u202f.,]*?)\\s*(${pattern})(?![a-zé])`, "i"));
-  return match ? { value: readNumber(match[1]), unit: match[2].toLowerCase() } : null;
+  const number = "\\d[\\d\\s\\u00a0\\u202f.,]*?";
+  const match = text.match(new RegExp(`(${number})(?:\\s*[-–—]\\s*(${number}))?\\s*(${pattern})(?![a-zé])`, "i"));
+  if (!match) return null;
+  return { value: readNumber(match[1]), high: match[2] ? readNumber(match[2]) : null, unit: match[3].toLowerCase() };
 }
 
 /** Ramène une valeur à l'unité du site : une conversion, jamais une estimation. */
@@ -2439,7 +2441,9 @@ function normalizeSpec(key, text, label = "") {
     const found = measure(clean, "ch|cv|ps|bhp|hp|kw");
     if (!found) return null;
     const factor = found.unit === "kw" ? 1.35962 : /hp/.test(found.unit) ? 1.01387 : 1;
-    return `${Math.round(found.value * factor)} ch`;
+    const low = Math.round(found.value * factor);
+    // Une fourchette reste une fourchette : le premier nombre sert aux calculs, le second est affiché.
+    return found.high ? `${low}–${Math.round(found.high * factor)} ch` : `${low} ch`;
   }
   if (key === "torque") {
     const found = measure(clean, "n[·.⋅ ]?m|lb[·.\\- ]?ft");

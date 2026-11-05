@@ -19,6 +19,26 @@
       "value": "2007–2024",
       "from_text": false,
       "source": "EPA"
+    },
+    "engine": {
+      "value": "3996 cm³",
+      "from_text": false,
+      "source": "OVD"
+    },
+    "wheelbase": {
+      "value": "2453 mm",
+      "from_text": false,
+      "source": "OVD"
+    },
+    "power": {
+      "value": "383–386 kW",
+      "from_text": false,
+      "source": "OVD"
+    },
+    "weight": {
+      "value": "1500–1525 kg (en ordre de marche)",
+      "from_text": false,
+      "source": "OVD"
     }
   },
   "overrides": {},

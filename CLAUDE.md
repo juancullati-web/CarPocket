@@ -20,7 +20,7 @@ Avatars (`site/avatars`) : logos de [Simple Icons](https://simpleicons.org) en C
 
 PWA : `site/manifest.webmanifest` et `site/sw.js`. Le service worker ne met jamais en cache les appels Supabase. Il sert réseau d'abord pour les pages, et cache d'abord pour `photos/` et `avatars/`.
 
-Ajout d'une voiture : marque, modèle, puis version, depuis `site/reference` (généré chaque mois par `scripts/build_reference.py` : EPA, ADEME en Licence Ouverte, openvehicle-data en CC BY 4.0 à créditer, Wikidata et Wikipédia). Une version de la liste ou tapée à la main donne une fiche à son nom exact ; ses valeurs viennent de la liste seulement si toutes ses variantes concordent (`source` sur la valeur). Pas de page Wikipédia voisine ni de photo d'une autre version : une photo Commons doit citer le nom exact dans son fichier.
+Ajout d'une voiture : marque, modèle, puis version, depuis `site/reference` (généré chaque mois par `scripts/build_reference.py` : EPA, ADEME en Licence Ouverte, openvehicle-data en CC BY 4.0 à créditer, Wikidata et Wikipédia). Une version de la liste ou tapée à la main donne une fiche à son nom exact ; ses valeurs viennent de la liste si toutes ses variantes concordent (`source` sur la valeur) ; openvehicle-data donne une fourchette quand elles diffèrent, et les calculs retiennent le bas. Une fiche créée depuis Wikipédia ne reçoit ses valeurs que pour les champs manquants, à la même époque et hors fiche d'une seule génération. Pas de page Wikipédia voisine ni de photo d'une autre version : une photo Commons doit citer le nom exact dans son fichier.
 
 Complétude : part des 16 champs de la fiche technique remplis, valeurs de la collection comprises. Rempli ne veut pas dire vérifié.
 
