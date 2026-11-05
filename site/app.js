@@ -187,7 +187,7 @@ function completionRing(car, { place }) {
   const art = `<svg viewBox="0 0 36 36" aria-hidden="true">
       <circle class="ring-track" cx="18" cy="18" r="15.5" pathLength="100"/>
       <circle class="ring-fill" cx="18" cy="18" r="15.5" pathLength="100" stroke-dasharray="${percent} 100"/>
-      <text x="18" y="21.5" text-anchor="middle">${percent}</text>
+      <text x="18" y="21.3" text-anchor="middle">${percent}<tspan class="ring-unit">%</tspan></text>
     </svg>`;
   const shared = `class="completion-ring ring-${level} ring-${place}" aria-label="${label}" data-tip="${label}"`;
   // Sur ses propres fiches, l'anneau mène directement à ce qui manque.
@@ -213,6 +213,7 @@ function cardActions(car, { sheet = true } = {}) {
   const compareLabel = selected ? "Retirer cette voiture de la comparaison" : "Ajouter cette voiture à la comparaison";
   const actions = [
     sheet ? `<a class="add-icon" href="#${esc(car.slug)}" aria-label="Voir la fiche de ${name}" data-tip="Voir la fiche">${photoIcon(CARD_ICONS.sheet)}</a>` : "",
+    sheet ? completionRing(car, { place: "card" }) : "",
     `<button type="button" class="${sheet ? "theme-toggle" : "add-icon"}" data-compare="${esc(car.slug)}" aria-pressed="${selected}" aria-label="${compareLabel} : ${name}" data-tip="${compareLabel}">${photoIcon(!sheet && selected ? CARD_ICONS.check : CARD_ICONS.compare)}</button>`,
     `<button type="button" class="theme-toggle" data-share="${esc(car.slug)}" aria-label="Partager ${name} avec un ami" data-tip="Partager avec un ami">${photoIcon(CARD_ICONS.share)}</button>`,
   ];
@@ -248,7 +249,6 @@ async function shareCar(car, button) {
 function cardHtml(car) {
   const photo = car.photos[0];
   return `<div class="model-card">
-    ${completionRing(car, { place: "card" })}
     <a class="model-photo" href="#${esc(car.slug)}" tabindex="-1" aria-hidden="true">
       ${photo ? `<img src="${esc(photo.file)}" alt="" loading="lazy">` : `<div class="no-photo">Pas encore de photo</div>`}
       ${car.example ? `<span class="badge">Exemple</span>` : ""}
