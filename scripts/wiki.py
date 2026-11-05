@@ -306,5 +306,19 @@ def choose_photos(
     return chosen
 
 
+def exact_photo(name: str) -> list:
+    """Une photo dont le nom de fichier cite exactement cette version, sinon aucune."""
+    wanted = _normalize(re.sub(r"\s*\(.*?\)", "", name))
+    try:
+        files = search_files(name)
+    except (KeyError, ValueError):
+        return []
+    for file in files:
+        if (wanted in _normalize(file["name"]) and not EXCLUDED_NAME.search(file["name"])
+                and not DETAIL_NAME.search(file["name"]) and file["width"] >= max(800, file["height"])):
+            return [file]
+    return []
+
+
 def download(url: str) -> bytes:
     return _open(url, timeout=120)

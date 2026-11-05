@@ -174,11 +174,11 @@
     <form id="add-form" method="dialog">
       <h2 class="display-sm" id="add-title">Ajouter une voiture</h2>
       <label class="field">
-        <span class="label">Nom de la voiture</span>
+        <span class="label" id="add-step">Marque</span>
         <input id="add-name" type="search" role="combobox" aria-expanded="false" aria-controls="suggestions" aria-autocomplete="list" maxlength="120" placeholder="Ex. : Ferrari F, Golf GTI, Clio…" autocomplete="off">
       </label>
       <p class="suggest-status" id="suggest-status" role="status">Tape au moins deux lettres.</p>
-      <button type="button" class="text-link suggest-back" id="suggest-back" hidden>‹ Retour aux résultats</button>
+      <button type="button" class="text-link suggest-back" id="suggest-back" hidden>‹ Retour</button>
       <ul class="suggestions" id="suggestions" role="listbox" aria-label="Voitures trouvées"></ul>
       <div class="dialog-actions">
         <button type="button" class="button button-secondary" id="add-cancel">Fermer</button>

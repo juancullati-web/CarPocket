@@ -631,6 +631,13 @@ const STAR_PATH = '<path d="M12 3l2.8 5.9 6.2.8-4.5 4.4 1.1 6.4-5.6-3.1-5.6 3.1 
 const photoIcon = (paths, fill = "none") => `<svg viewBox="0 0 24 24" fill="${fill}" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true">${paths}</svg>`;
 const iconButton = (label, attribute, paths) => `<button type="button" class="photo-icon" ${attribute} aria-label="${label}" data-tip="${label}">${photoIcon(paths)}</button>`;
 
+function officialSources(car) {
+  const sources = [...new Set(Object.values(car.specs).map((spec) => spec.source).filter(Boolean))];
+  if (!sources.length) return "";
+  const names = sources.map((source) => REFERENCE_SOURCES[source] || source).join(" et ");
+  return `<p class="legend">Valeurs issues de sources officielles : ${esc(names)}. Une valeur absente n'était pas la même pour toutes les variantes de cette version.${sources.includes("EPA") ? " Les années de l'EPA sont les années-modèles américaines." : ""}</p>`;
+}
+
 function notesHtml(car) {
   if (canEdit() && inOwnDeck(car)) {
     return `<section class="car-notes">
@@ -700,6 +707,7 @@ function detailHtml(car) {
             <dl>${rows.map(([key, label]) => specRow(car, key, label)).join("")}</dl>
           </section>`).join("")}
           ${hasTextValues ? `<p class="legend">* Valeur extraite du texte de l'article, à vérifier. Elle peut concerner une autre version du modèle.</p>` : ""}
+          ${officialSources(car)}
           ${car.customSpecs ? `<p class="legend">« Modifié » : valeur changée dans cette collection. Le catalogue n'a pas changé.</p>` : ""}
         </div>
       </div>
@@ -1151,8 +1159,8 @@ function renderSuggestions() {
   const list = el("suggestions");
   list.innerHTML = suggestItems.map((item, i) => {
     const taken = inDeck(item.name);
-    return `<li class="suggestion" id="suggestion-${i}" role="option" data-index="${i}" aria-selected="${i === suggestIndex}" aria-disabled="${taken}">
-      <div class="suggestion-photo">${safeUrl(item.thumb) ? `<img src="${esc(item.thumb)}" alt="">` : ""}</div>
+    return `<li class="suggestion${item.plain ? " plain" : ""}" id="suggestion-${i}" role="option" data-index="${i}" aria-selected="${i === suggestIndex}" aria-disabled="${taken}">
+      ${item.plain ? "" : `<div class="suggestion-photo">${safeUrl(item.thumb) ? `<img src="${esc(item.thumb)}" alt="">` : ""}</div>`}
       <div><strong>${esc(item.label || item.name)}</strong><small>${taken ? "Déjà dans ton deck" : esc(item.description)}</small></div>
     </li>`;
   }).join("");
@@ -1209,35 +1217,152 @@ function setSuggestStatus(text) {
   el("suggest-status").hidden = !text;
 }
 
-el("add-name").addEventListener("input", () => {
-  clearTimeout(suggestTimer);
-  const query = el("add-name").value.trim();
+/* Ajout en trois étapes : marque, modèle, puis version. */
+const REFERENCE_SOURCES = { EPA: "EPA, États-Unis", ADEME: "ADEME, France" };
+const FREE_NAME = /^[\p{L}\p{N}][\p{L}\p{N} .,'’/()+&-]{1,79}$/u;
+const picker = { step: "make", makes: [], make: null, models: [], model: null };
+const makeFiles = new Map();
+
+const compactName = (text) => text.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9]/g, "");
+const withMake = (make, name) => (compactName(name).startsWith(compactName(make)) ? name : `${make} ${name}`);
+/** Une fiche déjà au catalogue sous une autre écriture (F 40, F40) est réutilisée. */
+const catalogTitle = (name) => {
+  const wanted = compactName(name);
+  const car = state.catalog.find((entry) => compactName(titleOf(entry)) === wanted || compactName(entry.name) === wanted);
+  return car ? titleOf(car) : name;
+};
+
+function freeRow(text, name, known) {
+  const typed = compactName(text);
+  if (!typed || !FREE_NAME.test(name) || known.some((entry) => compactName(entry) === typed)) return [];
+  return [{
+    name: catalogTitle(name),
+    label: `Ajouter « ${text} »`,
+    description: "Pas dans la liste : la fiche sera à compléter",
+    final: true,
+    plain: true,
+  }];
+}
+
+function pickerRows(text) {
+  const typed = compactName(text);
+  const matches = (name) => !typed || compactName(name).includes(typed);
+  if (picker.step === "make") {
+    return picker.makes.filter((make) => matches(make.n)).map((make) => ({
+      label: make.n,
+      description: plural(make.c, "modèle"),
+      plain: true,
+      pick: () => chooseMake(make),
+    }));
+  }
+  const make = picker.make.n;
+  if (picker.step === "model") {
+    const rows = picker.models.filter((model) => matches(model.n)).map((model) => ({
+      label: model.n,
+      description: model.v ? plural(model.v.length, "version") : "Wikipédia",
+      plain: true,
+      pick: () => chooseModel(model),
+    }));
+    return [...rows, ...freeRow(text, withMake(make, text), picker.models.map((model) => model.n))];
+  }
+  const { model } = picker;
+  const wiki = model.w;
+  const versions = (model.v || []).filter((version) => !wiki || compactName(withMake(make, version.n)) !== compactName(wiki));
+  const rows = versions.filter((version) => matches(version.n)).map((version) => ({
+    name: catalogTitle(withMake(make, version.n)),
+    label: version.n,
+    description: [version.y, `Source : ${REFERENCE_SOURCES[version.src] || version.src}`].filter(Boolean).join(" · "),
+    final: true,
+    plain: true,
+  }));
+  const general = wiki && !typed ? [{
+    name: catalogTitle(wiki),
+    label: `${model.n}, sans version précise`,
+    description: "Wikipédia : tu pourras choisir une génération si la page en décrit",
+    plain: true,
+  }] : [];
+  const fullName = compactName(text).startsWith(compactName(model.n)) ? withMake(make, text) : withMake(make, `${model.n} ${text}`);
+  return [...general, ...rows, ...freeRow(text, fullName, (model.v || []).map((version) => version.n))];
+}
+
+function renderPicker() {
+  const text = el("add-name").value.trim();
+  const titles = {
+    make: ["Marque", "Ex. : Ferrari", "Choisis la marque."],
+    model: [`${picker.make?.n} : modèle`, "Ex. : 488", "Choisis le modèle, ou tape-le s'il manque."],
+    version: [`${picker.make?.n} ${picker.model?.n} : version`, "Ex. : Pista", "Choisis la version, ou tape-la si elle manque."],
+  }[picker.step];
+  el("add-step").textContent = titles[0];
+  el("add-name").placeholder = titles[1];
+  suggestItems = pickerRows(text);
   suggestIndex = -1;
   suggestParents = null;
-  el("suggest-back").hidden = true;
-  if (query.length < 2) {
-    suggestAbort?.abort();
-    suggestItems = [];
-    renderSuggestions();
-    setSuggestStatus("Tape au moins deux lettres.");
-    return;
-  }
-  setSuggestStatus("Recherche…");
+  renderSuggestions();
+  el("suggest-back").hidden = picker.step === "make";
+  setSuggestStatus(suggestItems.length ? titles[2] : "Aucun résultat.");
+  // Une marque absente de la liste : on cherche directement sur Wikipédia.
+  if (picker.step === "make" && !suggestItems.length && text.length >= 2) searchWikipedia(text);
+}
+
+function searchWikipedia(query) {
+  clearTimeout(suggestTimer);
+  setSuggestStatus("Recherche sur Wikipédia…");
   suggestTimer = setTimeout(async () => {
     try {
       const results = await searchCars(query);
-      if (el("add-name").value.trim() !== query) return;
+      if (el("add-name").value.trim() !== query || picker.step !== "make") return;
       suggestItems = results;
+      suggestIndex = -1;
       renderSuggestions();
-      setSuggestStatus(results.length ? "" : "Aucune voiture trouvée. Essaie un autre nom, souvent en anglais sur Wikipédia.");
+      setSuggestStatus(results.length ? "Marque absente de la liste : résultats de Wikipédia." : "Aucun résultat.");
     } catch (error) {
-      if (error.name !== "AbortError") setSuggestStatus("La recherche ne répond pas. Réessaie dans un instant.");
+      if (error.name !== "AbortError") setSuggestStatus("La recherche n'a pas abouti. Réessaie.");
     }
   }, 350);
+}
+
+function goToStep(step) {
+  picker.step = step;
+  el("add-name").value = "";
+  el("suggestions").scrollTop = 0;
+  renderPicker();
+  el("add-name").focus();
+}
+
+async function chooseMake(make) {
+  setSuggestStatus("Chargement des modèles…");
+  try {
+    if (!makeFiles.has(make.f)) {
+      const response = await fetch(`reference/${encodeURIComponent(make.f)}.json`);
+      if (!response.ok) throw new Error(String(response.status));
+      makeFiles.set(make.f, (await response.json()).models);
+    }
+  } catch {
+    setSuggestStatus("Les modèles n'ont pas pu être chargés. Réessaie.");
+    return;
+  }
+  picker.make = make;
+  picker.models = makeFiles.get(make.f);
+  goToStep("model");
+}
+
+function chooseModel(model) {
+  picker.model = model;
+  goToStep("version");
+}
+
+el("add-name").addEventListener("input", () => {
+  clearTimeout(suggestTimer);
+  suggestAbort?.abort();
+  renderPicker();
 });
 
 async function pickSuggestion(index) {
   const item = suggestItems[index];
+  if (item?.pick) {
+    item.pick();
+    return;
+  }
   if (!item || inDeck(item.name)) return;
   if (!item.final) {
     setSuggestStatus("Recherche des générations…");
@@ -1276,12 +1401,17 @@ el("add-name").addEventListener("keydown", (event) => {
   }
 });
 el("suggest-back").addEventListener("click", () => {
-  suggestItems = suggestParents || [];
-  suggestParents = null;
-  suggestIndex = -1;
-  renderSuggestions();
-  setSuggestStatus("");
-  el("add-name").focus();
+  if (suggestParents) {
+    suggestItems = suggestParents;
+    suggestParents = null;
+    suggestIndex = -1;
+    renderSuggestions();
+    el("suggest-back").hidden = picker.step === "make";
+    setSuggestStatus("");
+    el("add-name").focus();
+    return;
+  }
+  goToStep(picker.step === "version" ? "model" : "make");
 });
 el("suggestions").addEventListener("error", (event) => {
   if (event.target.tagName === "IMG") event.target.remove();
@@ -1293,15 +1423,21 @@ el("suggestions").addEventListener("click", (event) => {
 el("add-form").addEventListener("submit", (event) => event.preventDefault());
 el("add-cancel").addEventListener("click", () => el("add-dialog").close());
 
-function openAdd() {
+async function openAdd() {
   el("add-name").value = "";
-  suggestParents = null;
-  suggestItems = [];
-  suggestIndex = -1;
-  renderSuggestions();
-  setSuggestStatus("Tape au moins deux lettres.");
+  picker.step = "make";
+  renderPicker();
   el("add-dialog").showModal();
   el("add-name").focus();
+  if (picker.makes.length) return;
+  try {
+    const response = await fetch("reference/makes.json");
+    if (!response.ok) throw new Error(String(response.status));
+    picker.makes = await response.json();
+    if (el("add-dialog").open && picker.step === "make") renderPicker();
+  } catch {
+    setSuggestStatus("La liste des marques n'a pas pu être chargée. Tape un nom pour chercher sur Wikipédia.");
+  }
 }
 el("open-add").addEventListener("click", openAdd);
 el("open-add-cta").addEventListener("click", openAdd);

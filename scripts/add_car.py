@@ -12,6 +12,7 @@ from pathlib import Path
 import build_index
 import infobox
 import requests_common as common
+import vehicle_reference as reference
 import wiki
 
 ROOT = build_index.ROOT
@@ -89,7 +90,68 @@ def save_photos(files: list, slug: str) -> list:
     return photos
 
 
+def exact_page(title: str):
+    """La page qui porte exactement ce nom : une redirection décrirait une autre version."""
+    page = wiki.fetch_page(title)
+    if page and reference.compact(page["title"]) == reference.compact(title) and has_car_infobox(page):
+        return page
+    return None
+
+
+def add_precise(query: str, make: dict, version, page, example: bool) -> dict:
+    """Une version précise : son nom, et seulement les valeurs qui la concernent bien."""
+    slug = common.slugify(query)
+    found = existing_car(slug, query)
+    if found:
+        return {"status": "duplicate", "name": found["name"], "slug": found["slug"]}
+    specs, summary, files = {}, {"text": "", "lang": "", "url": ""}, []
+    if page:
+        extracted = infobox.extract_specs(page["wikitext"])
+        specs = extracted["specs"]
+        summary = wiki.summary(page["title"], page["fr_title"])
+        files = wiki.choose_photos(page["title"], make["n"], extracted["image"], page["wikidata"])
+    if version:
+        for key, value in version["s"].items():
+            specs[key] = {"value": value, "from_text": False, "source": version["src"]}
+    if not files:
+        files = wiki.exact_photo(query)
+    photos = save_photos(files, slug)
+    car = {
+        "slug": slug,
+        "name": query,
+        "brand": make["n"],
+        "variant": None,
+        "example": example,
+        "added": datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds"),
+        "summary": summary["text"],
+        "summary_lang": summary["lang"],
+        "summary_url": summary["url"],
+        "wikipedia_title": query,
+        "specs": specs,
+        "overrides": {},
+        "photos": photos,
+    }
+    CARS_DIR.mkdir(parents=True, exist_ok=True)
+    (CARS_DIR / f"{slug}.json").write_text(json.dumps(car, ensure_ascii=False, indent=2) + "\n", "utf-8")
+    build_index.build()
+    missing = [key for key in infobox.SPEC_KEYS if key not in specs]
+    return {"status": "ok", "name": query, "slug": slug, "variant": None, "photos": len(photos), "missing": missing}
+
+
 def add(query: str, example: bool = False) -> dict:
+    if "#" not in query:
+        # Une marque seule n'est pas une voiture : la recherche approchée en choisirait une au hasard.
+        if any(reference.compact(item["n"]) == reference.compact(query) for item in reference.load_makes()):
+            return {"status": "not_found", "query": query, "candidates": []}
+        make, version = reference.find_version(query)
+        if make:
+            page = exact_page(query)
+            if version:
+                return add_precise(query, make, version, page, example)
+            if not page:
+                if reference.valid_free_name(query, make):
+                    return add_precise(query, make, None, None, example)
+                return {"status": "not_found", "query": query, "candidates": []}
     page, candidates = resolve(query)
     if not page:
         return {"status": "not_found", "query": query, "candidates": candidates}
