@@ -57,3 +57,37 @@ def find_version(title: str, directory: Path = REFERENCE_DIR):
 
 def valid_free_name(title: str, make: dict) -> bool:
     return bool(FREE_NAME.match(title)) and compact(title) != compact(make["n"])
+
+
+def _years(text: str) -> list:
+    return [int(year) for year in re.findall(r"\b(?:19|20)\d{2}\b", text or "")]
+
+
+def periods_overlap(first: str, second: str) -> bool:
+    """Faux si l'une des périodes est inconnue : dans le doute, on n'ajoute rien."""
+    a, b = _years(first), _years(second)
+    if not a or not b:
+        return False
+    # « 2020–present » n'a pas de fin écrite : elle court jusqu'à aujourd'hui.
+    end_a = 9999 if re.search(r"present|current", first or "", re.I) else max(a)
+    end_b = 9999 if re.search(r"present|current", second or "", re.I) else max(b)
+    return min(a) <= end_b and min(b) <= end_a
+
+
+def open_values(title: str, production: str, directory: Path = REFERENCE_DIR) -> dict:
+    """Les valeurs d'openvehicle-data pour une fiche créée depuis Wikipédia, à la même époque."""
+    make = make_of(title, load_makes(directory))
+    if not make:
+        return {}
+    data = json.loads((directory / f"{make['f']}.json").read_text("utf-8"))
+    wanted = compact(re.sub(r"\s*\(.*?\)", "", title))
+    for model in data["models"]:
+        for version in model.get("v", []):
+            if compact(full_name(make["n"], version["n"])) != wanted:
+                continue
+            origins = [{"src": version["src"], "s": version["s"], "y": version["y"]},
+                       *[{**extra, "y": extra.get("y", version["y"])} for extra in version.get("x", [])]]
+            for origin in origins:
+                if origin["src"] == "OVD" and periods_overlap(production, origin["y"] or "2019-2025"):
+                    return origin["s"]
+    return {}

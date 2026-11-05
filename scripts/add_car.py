@@ -174,6 +174,11 @@ def add(query: str, example: bool = False) -> dict:
     files = wiki.choose_photos(title, brand, extracted["image"], page["wikidata"], extracted["variant"])
     photos = save_photos(files, slug)
     name = wiki.car_name(title, brand, wanted)
+    # Dès la création : ce que Wikipédia ne donne pas, si la liste ouverte décrit la même voiture.
+    if not wanted:
+        production = (extracted["specs"].get("production") or {}).get("value", "")
+        for key, value in reference.open_values(title, production).items():
+            extracted["specs"].setdefault(key, {"value": value, "from_text": False, "source": "OVD"})
 
     car = {
         "slug": slug,

@@ -72,6 +72,15 @@ class ReferenceTest(unittest.TestCase):
         self.assertEqual(make["n"], "Ferrari")
         self.assertIsNone(version)
 
+    def test_open_values_need_the_same_period(self):
+        (self.directory / "ferrari.json").write_text(json.dumps({"make": "Ferrari", "models": [
+            {"n": "A110", "w": "Ferrari A110", "v": [{"n": "A110", "y": "2019–2025", "src": "OVD", "s": {"power": "185 kW"}}]},
+        ]}), "utf-8")
+        self.assertEqual(reference.open_values("Ferrari A110", "2017–2026", self.directory), {"power": "185 kW"})
+        self.assertEqual(reference.open_values("Ferrari A110 (2017)", "2017–present", self.directory), {"power": "185 kW"})
+        self.assertEqual(reference.open_values("Ferrari A110", "1963–1977", self.directory), {})
+        self.assertEqual(reference.open_values("Ferrari A110", "", self.directory), {})
+
     def test_two_word_make(self):
         make, _ = reference.find_version("Alfa Romeo GTA", self.directory)
         self.assertEqual(make["n"], "Alfa Romeo")
