@@ -1,0 +1,81 @@
+{
+  "slug": "bugatti-mistral",
+  "name": "Bugatti Mistral",
+  "brand": "Bugatti",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-05T17:04:43+00:00",
+  "summary": "La Bugatti Mistral est une supercar du constructeur automobile français Bugatti.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Bugatti_W16_Mistral",
+  "wikipedia_title": "Bugatti Mistral",
+  "specs": {
+    "engine": {
+      "value": "8,0 L, 16 cylindres",
+      "from_text": false,
+      "source": "EPA"
+    },
+    "transmission": {
+      "value": "Automatique 7 rapports",
+      "from_text": false,
+      "source": "EPA"
+    },
+    "layout": {
+      "value": "Transmission intégrale",
+      "from_text": false,
+      "source": "EPA"
+    },
+    "body": {
+      "value": "Cabriolet 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "2025",
+      "from_text": false,
+      "source": "EPA"
+    },
+    "designer": {
+      "value": "Frank Heyl, Achim Anscheidt (Head of Design), Florian Westermann",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "France: Molsheim (Bugatti Molsheim Plant)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1977 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4544 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "2162 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1212 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2711 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "1600 PS",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/bugatti-mistral/1.jpg",
+      "thumb": "photos/bugatti-mistral/1-thumb.jpg",
+      "author": "Calreyn88",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Bugatti_Mistral_2.jpg"
+    }
+  ]
+}
