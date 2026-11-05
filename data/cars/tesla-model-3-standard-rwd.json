@@ -1,0 +1,31 @@
+{
+  "slug": "tesla-model-3-standard-rwd",
+  "name": "Tesla Model 3 Standard RWD",
+  "brand": "Tesla",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-05T13:38:25+00:00",
+  "summary": "",
+  "summary_lang": "",
+  "summary_url": "",
+  "wikipedia_title": "Tesla Model 3 Standard RWD",
+  "specs": {
+    "transmission": {
+      "value": "Automatique 1 rapports",
+      "from_text": false,
+      "source": "EPA"
+    },
+    "layout": {
+      "value": "Propulsion",
+      "from_text": false,
+      "source": "EPA"
+    },
+    "production": {
+      "value": "2026",
+      "from_text": false,
+      "source": "EPA"
+    }
+  },
+  "overrides": {},
+  "photos": []
+}
