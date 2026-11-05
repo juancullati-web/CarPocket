@@ -736,6 +736,9 @@ function officialSources(car) {
   return `<p class="legend">Valeurs issues de sources ouvertes : ${esc(names)}. Une valeur absente n'y figure pas, ou varie selon les variantes de cette version.${sources.includes("EPA") ? " Les années de l'EPA sont les années-modèles américaines." : ""}${sources.includes("OVD") ? " Pour openvehicle-data, les années sont celles des immatriculations en Italie." : ""}</p>`;
 }
 
+// Fin du texte enregistré : elle indique sur la fiche que le texte vient de Gemini.
+const GEMINI_MARK = "\n\n[Généré avec Gemini]";
+
 /** La présentation : celle de Wikipédia, ou celle écrite par la personne pour sa collection. */
 function summaryHtml(car) {
   const editable = canEdit() && inOwnDeck(car);
@@ -748,11 +751,13 @@ function summaryHtml(car) {
   const edit = editable ? `<button type="button" class="theme-toggle" data-edit-summary aria-label="Modifier la présentation" data-tip="Modifier la présentation">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M4 20l1-5L16 4l4 4L9 19z"/></svg>
     </button>` : "";
+  const fromGemini = car.summary.endsWith(GEMINI_MARK);
+  const text = fromGemini ? car.summary.slice(0, -GEMINI_MARK.length) : car.summary;
   const source = car.summaryEdited
-    ? `<p class="summary-source">Texte écrit pour cette collection.</p>`
+    ? `<p class="summary-source">${fromGemini ? "Généré avec Gemini, à vérifier." : "Texte écrit pour cette collection."}</p>`
     : safeUrl(car.summary_url) ? `<p class="summary-source">Source : <a href="${esc(safeUrl(car.summary_url))}" target="_blank" rel="noopener" data-tip="Lire l'article sur Wikipédia">Wikipédia${car.summary_lang === "en" ? " (en anglais)" : ""}</a></p>` : "";
   return `<div class="summary-head"><h2 class="display-md">Présentation${car.summaryEdited ? `<span class="edited-mark">Modifié</span>` : ""}</h2>${edit}</div>
-    <p class="summary${car.summaryEdited ? " summary-own" : ""}">${esc(car.summary)}</p>
+    <p class="summary${car.summaryEdited ? " summary-own" : ""}">${esc(text)}</p>
     ${source}`;
 }
 
@@ -2693,17 +2698,47 @@ const summaryEditor = { car: null };
 function openSummaryEditor(car) {
   summaryEditor.car = car;
   const original = catalogCar(car.slug)?.summary || "";
-  el("summary-text").value = itemOf(car)?.custom_summary || original;
+  const saved = itemOf(car)?.custom_summary || "";
+  const fromGemini = saved.endsWith(GEMINI_MARK);
+  el("summary-text").value = (fromGemini ? saved.slice(0, -GEMINI_MARK.length) : saved) || original;
+  el("summary-ai").checked = fromGemini;
+  el("summary-prompt").hidden = true;
+  el("summary-gemini-status").textContent = "";
   el("summary-error").hidden = true;
   el("summary-reset").hidden = !(itemOf(car)?.custom_summary && original);
   el("summary-dialog").showModal();
   el("summary-text").focus();
 }
 
+function geminiPrompt(car) {
+  const period = car.specs.production?.value || car.year;
+  return `Rédige en français une présentation de cette voiture : ${car.name}${period ? ` (${period})` : ""}.
+Écris deux courts paragraphes, 120 mots au maximum, dans un ton neutre : son histoire et ce qui la distingue.
+Vérifie qu'il s'agit bien de cette version précise. N'invente rien : si tu n'es pas sûr d'une information ou d'un chiffre, ne le mentionne pas.
+Donne seulement le texte, sans titre, sans liste et sans citer tes sources.`;
+}
+
+el("summary-gemini").addEventListener("click", () => {
+  const prompt = geminiPrompt(summaryEditor.car);
+  el("summary-ai").checked = true;
+  const status = el("summary-gemini-status");
+  const copy = navigator.clipboard?.writeText(prompt) ?? Promise.reject(new Error("presse-papiers"));
+  // L'onglet s'ouvre tout de suite : un navigateur le bloquerait après une attente.
+  window.open("https://gemini.google.com/app", "_blank", "noopener");
+  copy.then(() => {
+    status.textContent = "Demande copiée : colle-la dans Gemini, puis colle sa réponse ci-dessous après l'avoir relue.";
+  }).catch(() => {
+    el("summary-prompt").value = prompt;
+    el("summary-prompt").hidden = false;
+    status.textContent = "Copie impossible : sélectionne cette demande et colle-la dans Gemini.";
+  });
+});
+
 async function saveSummary(text) {
   const original = catalogCar(summaryEditor.car.slug)?.summary || "";
   // Un texte identique à l'original ou vide revient simplement à l'original.
-  const custom = text === original ? "" : text;
+  const written = text === original ? "" : text;
+  const custom = written && el("summary-ai").checked ? `${written}${GEMINI_MARK}` : written;
   el("summary-submit").disabled = true;
   const saved = await updateItem(summaryEditor.car, { custom_summary: custom });
   el("summary-submit").disabled = false;

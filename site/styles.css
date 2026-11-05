@@ -1079,3 +1079,10 @@ a.completion-ring, button.completion-ring { cursor: pointer; }
   .compare-table .long-row td::before { content: attr(data-car); display: block; color: var(--muted); font-size: .75rem; font-weight: 700; }
   .compare-table .edited-mark { margin-left: 4px; }
 }
+
+/* Présentation préparée avec Gemini */
+.summary-gemini-status { margin: 8px 0; color: var(--muted); font-size: .875rem; }
+.summary-gemini-status:empty { display: none; }
+#summary-prompt { margin-bottom: 12px; font-size: .875rem; }
+.summary-ai { display: flex; align-items: center; gap: 8px; margin-top: 12px; color: var(--muted); font-size: .875rem; cursor: pointer; }
+.summary-ai input { flex: none; width: 18px; height: 18px; min-height: 0; padding: 0; }
