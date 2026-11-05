@@ -1,0 +1,77 @@
+{
+  "slug": "xiaomi-su7",
+  "name": "Xiaomi SU7",
+  "brand": "Xiaomi",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-05T17:10:27+00:00",
+  "summary": "La Xiaomi SU7 (pour Speed Ultra 7) est une berline électrique, produite à partir de 2023 par le néo-constructeur automobile Xiaomi Auto, filiale de l'entreprise chinoise d'électronique et d'informatique Xiaomi. Elle est la première voiture de Xiaomi Automobile Co Ltd.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Xiaomi_SU7",
+  "wikipedia_title": "Xiaomi SU7",
+  "specs": {
+    "transmission": {
+      "value": "Single-speed gear reduction",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Rear-motor, rear-wheel-drive\nDual-motor, all-wheel-drive\nTriple-motor, all-wheel-drive",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "December 2023 – February 2026 (pre-facelift) · March 2026 – present (facelift)",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Sawyer Li (chief designer), James Qiu (exterior), Chris Bangle (consultant)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "China: Beijing (Xiaomi Auto Factory)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1980-2205 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4997 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1963 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1440-1455 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "3000 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "220 kW",
+      "from_text": false
+    },
+    "zero_100": {
+      "value": "0-100 km/h : 5,28 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/xiaomi-su7/1.jpg",
+      "thumb": "photos/xiaomi-su7/1-thumb.jpg",
+      "author": "S5A-0043",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:(CHN-Shanghai)_Private_Xiaomi_SU7_%E6%B2%AAA7WE106_2024-11-24.jpg"
+    }
+  ]
+}
