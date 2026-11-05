@@ -160,22 +160,9 @@ async function loadItems() {
 }
 
 /* Cartes */
-function compareButton(car) {
-  const selected = state.compare.includes(car.slug);
-  return `<button type="button" class="text-link" data-compare="${esc(car.slug)}" data-tip="${selected ? "Retirer cette voiture de la comparaison" : "Ajouter cette voiture à la comparaison"}" aria-pressed="${selected}">${selected ? "Sélectionnée ✓" : "Comparer"}</button>`;
-}
-
 const backLabel = () => (state.viewing ? `‹ Collection de ${esc(displayName(state.viewing.username))}` : "‹ Mon deck");
 
 /** Sur la collection d'un ami : ajouter la voiture à la sienne, sans attente. */
-function friendAddButton(car) {
-  const title = titleOf(car);
-  if (state.ownTitles.has(title) && !state.viewing) return "";
-  return state.ownTitles.has(title)
-    ? `<span class="in-deck">Dans mon deck ✓</span>`
-    : `<button type="button" class="text-link" data-add-title="${esc(title)}" aria-label="Ajouter ${esc(car.name)} à mon deck" data-tip="Ajouter cette voiture à mon deck">+ Mon deck</button>`;
-}
-
 const CARD_ICONS = {
   sheet: '<path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 16h7"/>',
   compare: '<path d="M4 8h13M13 4l4 4-4 4M20 16H7M11 12l-4 4 4 4"/>',
@@ -185,17 +172,17 @@ const CARD_ICONS = {
   check: '<path d="M5 12l5 5 9-10"/>',
 };
 
-function cardActions(car) {
+function cardActions(car, { sheet = true } = {}) {
   const name = esc(car.name);
   const title = titleOf(car);
   const selected = state.compare.includes(car.slug);
   const compareLabel = selected ? "Retirer cette voiture de la comparaison" : "Ajouter cette voiture à la comparaison";
   const actions = [
-    `<a class="theme-toggle" href="#${esc(car.slug)}" aria-label="Voir la fiche de ${name}" data-tip="Voir la fiche">${photoIcon(CARD_ICONS.sheet)}</a>`,
+    sheet ? `<a class="theme-toggle" href="#${esc(car.slug)}" aria-label="Voir la fiche de ${name}" data-tip="Voir la fiche">${photoIcon(CARD_ICONS.sheet)}</a>` : "",
     `<button type="button" class="theme-toggle" data-compare="${esc(car.slug)}" aria-pressed="${selected}" aria-label="${compareLabel} : ${name}" data-tip="${compareLabel}">${photoIcon(CARD_ICONS.compare)}</button>`,
     `<button type="button" class="theme-toggle" data-share="${esc(car.slug)}" aria-label="Partager ${name} avec un ami" data-tip="Partager avec un ami">${photoIcon(CARD_ICONS.share)}</button>`,
   ];
-  if (canEdit()) {
+  if (canEdit() && inOwnDeck(car)) {
     actions.push(`<button type="button" class="theme-toggle card-remove" data-delete="${esc(car.slug)}" aria-label="Retirer ${name} de ma collection" data-tip="Retirer de ma collection">${photoIcon(CARD_ICONS.trash)}</button>`);
   } else if (state.ownTitles.has(title)) {
     actions.push(`<span class="theme-toggle card-owned" role="img" aria-label="Déjà dans mon deck" data-tip="Déjà dans mon deck">${photoIcon(CARD_ICONS.check)}</span>`);
@@ -694,13 +681,9 @@ function detailHtml(car) {
             <p class="summary">${esc(car.summary)}</p>
             <p class="summary-source">Source : <a href="${esc(safeUrl(car.summary_url))}" target="_blank" rel="noopener" data-tip="Lire l'article sur Wikipédia">Wikipédia${car.summary_lang === "en" ? " (en anglais)" : ""}</a></p>` : ""}
           ${notesHtml(car)}
-          <div class="actions">
-            ${compareButton(car)}
-            ${canEdit() && inOwnDeck(car) ? `<button type="button" class="text-link quiet" data-delete="${esc(car.slug)}" data-tip="Retirer cette voiture de ma collection">Retirer de ma collection</button>` : ""}
-            ${friendAddButton(car)}
-            ${isAdmin() ? `<a class="text-link" href="https://github.com/juancullati-web/CarPocket/edit/main/data/cars/${esc(car.slug)}.json" target="_blank" rel="noopener" data-tip="Corriger cette fiche sur GitHub">Corriger cette fiche ›</a>
-            <button type="button" class="text-link quiet" data-remove-sheet="${esc(titleOf(car))}" data-tip="Effacer cette fiche pour tous les comptes">Supprimer la fiche pour tout le monde</button>` : ""}
-          </div>
+          <div class="model-actions sheet-actions">${cardActions(car, { sheet: false })}</div>
+          ${isAdmin() ? `<div class="actions"><a class="text-link" href="https://github.com/juancullati-web/CarPocket/edit/main/data/cars/${esc(car.slug)}.json" target="_blank" rel="noopener" data-tip="Corriger cette fiche sur GitHub">Corriger cette fiche ›</a>
+            <button type="button" class="text-link quiet" data-remove-sheet="${esc(titleOf(car))}" data-tip="Effacer cette fiche pour tous les comptes">Supprimer la fiche pour tout le monde</button></div>` : ""}
         </div>
         <div>
           ${canEdit() && inOwnDeck(car) ? `<div class="spec-tools">
