@@ -1,0 +1,52 @@
+{
+  "slug": "mazda-mxr-01",
+  "name": "Mazda MXR-01",
+  "brand": "Mazda",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-05T09:34:47+00:00",
+  "summary": "The Mazda MXR-01 is a Group C sports prototype that was used by Mazda's factory team Mazdaspeed in the 1992 World Sportscar Championship season. It would be the final Mazda entry in sports car racing since the inception of its Le Mans project in 1983. It was based on the Jaguar XJR-14.",
+  "summary_lang": "en",
+  "summary_url": "https://en.wikipedia.org/wiki/Mazda_MXR-01",
+  "wikipedia_title": "Mazda MXR-01",
+  "specs": {
+    "engine": {
+      "value": "Judd GV10 derived 3.5 L Mazda MV10 V10",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "TWR Manuelle 6 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "RMR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1992",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Nigel Stroud",
+      "from_text": false
+    },
+    "weight": {
+      "value": "750 kg or more",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/mazda-mxr-01/1.jpg",
+      "author": "Morio",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Mazda_MXR-01_front-left_2014_WEC_Fuji.jpg"
+    }
+  ]
+}
