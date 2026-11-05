@@ -1,0 +1,26 @@
+{
+  "slug": "peugeot-e-2008-57kw",
+  "name": "Peugeot e-2008 (57Kw)",
+  "brand": "Peugeot",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-05T23:28:45+00:00",
+  "summary": "",
+  "summary_lang": "",
+  "summary_url": "",
+  "wikipedia_title": "Peugeot e-2008 (57Kw)",
+  "specs": {
+    "weight": {
+      "value": "1548 kg",
+      "from_text": false,
+      "source": "ADEME"
+    },
+    "body": {
+      "value": "SUV",
+      "from_text": false,
+      "source": "ADEME"
+    }
+  },
+  "overrides": {},
+  "photos": []
+}
