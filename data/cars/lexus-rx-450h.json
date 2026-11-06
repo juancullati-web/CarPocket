@@ -1,0 +1,61 @@
+{
+  "slug": "lexus-rx-450h",
+  "name": "Lexus RX 450h",
+  "brand": "Lexus",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-06T23:18:25+00:00",
+  "updated": "2026-11-06T23:18:25+00:00",
+  "summary": "",
+  "summary_lang": "",
+  "summary_url": "",
+  "wikipedia_title": "Lexus RX 450h",
+  "specs": {
+    "power": {
+      "value": "193 kW",
+      "from_text": false,
+      "source": "ADEME"
+    },
+    "weight": {
+      "value": "2100 kg",
+      "from_text": false,
+      "source": "ADEME"
+    },
+    "engine": {
+      "value": "3456 cm³",
+      "from_text": false,
+      "source": "ADEME"
+    },
+    "body": {
+      "value": "SUV",
+      "from_text": false,
+      "source": "ADEME"
+    },
+    "transmission": {
+      "value": "Automatique 6 rapports",
+      "from_text": false,
+      "source": "EPA"
+    },
+    "layout": {
+      "value": "Traction",
+      "from_text": false,
+      "source": "EPA"
+    },
+    "production": {
+      "value": "2010–2016",
+      "from_text": false,
+      "source": "EPA"
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/lexus-rx-450h/1.jpg",
+      "thumb": "photos/lexus-rx-450h/1-thumb.jpg",
+      "author": "Alexander-93",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Lexus_RX_450h%2B_(AALH16)_1X7A7074.jpg"
+    }
+  ]
+}
