@@ -42,6 +42,10 @@ Sur une fiche de ta collection, **Chercher une photo libre** (bouton sur une fic
 
 Sur la fiche d'une voiture de ta collection ou de celle d'un ami, écris un commentaire ou réagis. Une pastille sur l'icône des amis signale les nouveaux commentaires reçus. Chacun peut supprimer les siens, et le propriétaire ceux de sa collection. Retirer une voiture supprime aussi ses commentaires.
 
+## Dossiers
+
+Crée tes dossiers avec **+ Nouveau dossier** au-dessus de ton deck, puis range une voiture avec son icône dossier, sur sa carte ou sa fiche. Une voiture va dans un seul dossier. Supprimer un dossier garde ses voitures.
+
 ## Statut d'une voiture
 
 Sur la fiche, indique si la voiture est **possédée**, **essayée** ou **rêvée**. Un second appui retire le statut. Le statut s'affiche sur la carte, et le filtre **Statut** trie ton deck.

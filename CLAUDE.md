@@ -26,6 +26,8 @@ Statut d'une voiture dans une collection : colonne `status` de `deck_items` (`ow
 
 Commentaires et réactions : tables `car_comments` et `car_reactions`, liées à une voiture d'une collection et lisibles avec elle. L'auteur et la date viennent de la base, pas du navigateur. Ce qui est déjà vu est dans `user_state`, commun aux appareils du compte.
 
+Dossiers : table `deck_folders` et colonne `folder_id` de `deck_items`, une voiture dans un seul dossier. Supprimer un dossier garde ses voitures, et la clé inclut le compte pour interdire le dossier d'un autre.
+
 Complétude : part des 16 champs de la fiche technique remplis, valeurs de la collection comprises. Rempli ne veut pas dire vérifié.
 
 Notes, présentation et valeurs modifiées : colonnes `notes`, `custom_summary` et `custom_specs` de `deck_items`, propres à chaque collection et visibles avec elle. Une valeur modifiée porte `edited: true` à l'affichage et ne touche jamais `data/cars`. Le bouton « Chercher les infos manquantes » lit la liste de référence et Wikipédia depuis le navigateur, propose des valeurs avec leur source (`custom_sources`) et n'écrit que ce que la personne coche.

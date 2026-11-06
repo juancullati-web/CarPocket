@@ -1126,3 +1126,15 @@ button.reaction { cursor: pointer; }
 .new-comments ul { margin: 12px 0 0; padding: 0; list-style: none; }
 .new-comments li { padding-block: 12px; border-top: 1px solid var(--hairline); }
 .new-comments li p { margin: 4px 0 0; color: var(--muted); font-size: .875rem; overflow-wrap: anywhere; }
+
+/* Dossiers du deck */
+.folders { margin-bottom: 16px; }
+.folder-chips { margin-bottom: 8px; }
+.folder-count { margin-left: 8px; font-weight: 300; }
+.folder-tools { display: flex; flex-wrap: wrap; gap: 16px; margin-bottom: 8px; }
+.folder-line { margin: -12px 0 24px; color: var(--muted); font-size: .875rem; }
+.folder-line strong { color: var(--ink); }
+.move-list { display: grid; gap: 8px; margin-top: 12px; }
+.move-choice { min-height: 44px; border: 1px solid var(--hairline-strong); padding: 8px 14px; background: none; color: var(--ink); font: 700 .9375rem var(--font); text-align: left; cursor: pointer; overflow-wrap: anywhere; }
+.move-choice:hover { border-color: var(--primary); }
+.move-choice[aria-pressed="true"] { border-color: var(--primary); color: var(--accent-text); }

@@ -147,6 +147,7 @@
               </select>
             </label>
           </div>
+          <div class="folders" id="folders"></div>
           <div class="chips" id="brands" role="group" aria-label="Filtrer par marque"></div>
           <div class="grid" id="grid"></div>
           <p class="empty" id="empty" hidden></p>
@@ -259,6 +260,28 @@
     <div class="dialog-actions">
       <button type="button" class="button button-secondary" id="free-cancel">Fermer</button>
     </div>
+  </dialog>
+  <dialog id="move-dialog" aria-labelledby="move-title">
+    <h2 class="display-sm" id="move-title">Ranger</h2>
+    <div class="move-list" id="move-list"></div>
+    <div class="dialog-actions">
+      <button type="button" class="button button-secondary" id="move-cancel">Fermer</button>
+      <button type="button" class="button button-primary" id="move-new">Nouveau dossier</button>
+    </div>
+  </dialog>
+  <dialog id="folder-form-dialog" aria-labelledby="folder-form-title">
+    <form id="folder-form" novalidate>
+      <h2 class="display-sm" id="folder-form-title">Nouveau dossier</h2>
+      <label class="field">
+        <span class="label">Nom du dossier</span>
+        <input id="folder-name" type="text" maxlength="40" autocomplete="off" placeholder="Ex. : Mes italiennes">
+      </label>
+      <p class="form-error" id="folder-form-error" role="alert" hidden></p>
+      <div class="dialog-actions">
+        <button type="button" class="button button-secondary" id="folder-form-cancel">Annuler</button>
+        <button type="submit" class="button button-primary">Enregistrer</button>
+      </div>
+    </form>
   </dialog>
   <dialog class="specs-dialog" id="enrich-dialog" aria-labelledby="enrich-title">
     <h2 class="display-sm" id="enrich-title">Infos trouvées</h2>

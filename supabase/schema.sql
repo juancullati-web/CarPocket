@@ -354,3 +354,44 @@ grant insert (user_id, comments_seen_at), update (user_id, comments_seen_at) on 
 drop policy if exists "son propre état" on public.user_state;
 create policy "son propre état" on public.user_state
   for all to authenticated using (user_id = (select auth.uid())) with check (user_id = (select auth.uid()));
+
+-- Dossiers personnalisés d'une collection : une voiture est rangée dans un seul dossier, ou aucun.
+create table if not exists public.deck_folders (
+  id uuid primary key default gen_random_uuid(),
+  user_id uuid not null default auth.uid() references public.profiles (id) on delete cascade,
+  name text not null check (char_length(btrim(name)) between 1 and 40),
+  created_at timestamptz not null default now(),
+  unique (user_id, id)
+);
+create unique index if not exists deck_folders_name on public.deck_folders (user_id, lower(btrim(name)));
+
+alter table public.deck_items add column if not exists folder_id uuid;
+alter table public.deck_items drop constraint if exists deck_items_folder_fkey;
+-- La clé inclut le compte : on ne peut pas ranger une voiture dans le dossier d'un autre.
+alter table public.deck_items add constraint deck_items_folder_fkey
+  foreign key (user_id, folder_id) references public.deck_folders (user_id, id) on delete set null (folder_id);
+
+alter table public.deck_folders enable row level security;
+revoke all on public.deck_folders from anon, authenticated;
+grant select, delete on public.deck_folders to authenticated;
+grant insert (name), update (name) on public.deck_folders to authenticated;
+grant update (main_photo, custom_photos, hidden_photos, notes, custom_specs, custom_sources, custom_summary, status, free_photos, folder_id) on public.deck_items to authenticated;
+
+drop policy if exists "dossiers lisibles avec la collection" on public.deck_folders;
+create policy "dossiers lisibles avec la collection" on public.deck_folders
+  for select to authenticated using (
+    user_id = (select auth.uid()) or (select public.is_admin())
+    or exists (select 1 from public.profiles p where p.id = deck_folders.user_id and p.shared)
+  );
+drop policy if exists "créer ses dossiers" on public.deck_folders;
+create policy "créer ses dossiers" on public.deck_folders
+  for insert to authenticated with check (
+    user_id = (select auth.uid())
+    and (select count(*) from public.deck_folders f where f.user_id = (select auth.uid())) < 50
+  );
+drop policy if exists "renommer ses dossiers" on public.deck_folders;
+create policy "renommer ses dossiers" on public.deck_folders
+  for update to authenticated using (user_id = (select auth.uid())) with check (user_id = (select auth.uid()));
+drop policy if exists "supprimer ses dossiers" on public.deck_folders;
+create policy "supprimer ses dossiers" on public.deck_folders
+  for delete to authenticated using (user_id = (select auth.uid()));

@@ -12,7 +12,7 @@ const RELAUNCH_MS = 90000;
 const TIMEOUT_MS = 20 * 60 * 1000;
 
 const el = (id) => document.getElementById(id);
-const state = { catalog: [], cars: [], items: [], user: null, viewing: null, brand: "", compare: [], failed: new Set(), starting: new Set(), relaunched: new Set(), accounts: [], people: [], ownTitles: new Set(), compareInfo: {}, signed: {}, robotStarted: new Set() };
+const state = { catalog: [], cars: [], items: [], user: null, viewing: null, brand: "", compare: [], failed: new Set(), starting: new Set(), relaunched: new Set(), accounts: [], people: [], ownTitles: new Set(), compareInfo: {}, signed: {}, robotStarted: new Set(), folders: [], folder: "" };
 
 const esc = (value) =>
   String(value ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -82,7 +82,7 @@ async function server(action, input = {}) {
   return body;
 }
 
-const ITEM_FIELDS = "title, thumb, main_photo, added_at, custom_photos, hidden_photos, notes, custom_specs, custom_sources, custom_summary, status, free_photos";
+const ITEM_FIELDS = "title, thumb, main_photo, added_at, custom_photos, hidden_photos, notes, custom_specs, custom_sources, custom_summary, status, free_photos, folder_id";
 const PHOTO_BUCKET = "user-photos";
 const SIGNED_SECONDS = 6 * 60 * 60;
 
@@ -136,7 +136,7 @@ function rebuildDeck() {
   state.cars = state.items.flatMap((item) => {
     const car = byTitle.get(item.title);
     if (!car) return [];
-    return [{ ...withEditedSpecs(car, item.custom_specs, item.custom_sources), notes: item.notes || "", summary: item.custom_summary || car.summary, summaryEdited: Boolean(item.custom_summary), status: item.status || null, added: item.added_at, hiddenCount: car.photos.filter((photo) => (item.hidden_photos || []).includes(photo.file)).length, photos: itemPhotos(item, car) }];
+    return [{ ...withEditedSpecs(car, item.custom_specs, item.custom_sources), notes: item.notes || "", summary: item.custom_summary || car.summary, summaryEdited: Boolean(item.custom_summary), status: item.status || null, folderId: item.folder_id || null, added: item.added_at, hiddenCount: car.photos.filter((photo) => (item.hidden_photos || []).includes(photo.file)).length, photos: itemPhotos(item, car) }];
   });
 }
 
@@ -157,6 +157,9 @@ async function loadItems() {
   if (error) throw error;
   // Un retrait encore annulable reste caché, même si la liste est rechargée.
   state.items = data.filter((item) => item.title !== pendingRemoval?.item.title);
+  const folders = await db.from("deck_folders").select("id, name, created_at").eq("user_id", owner().id).order("name");
+  state.folders = folders.data || [];
+  if (state.folder && state.folder !== "none" && !state.folders.some((folder) => folder.id === state.folder)) state.folder = "";
   await signPhotos(data.flatMap((item) => item.custom_photos || []));
   rebuildDeck();
 }
@@ -223,6 +226,9 @@ function cardActions(car, { sheet = true } = {}) {
     sheet ? "" : completionRing(car, { place: "sheet" }),
     `<button type="button" class="theme-toggle" data-share="${esc(car.slug)}" aria-label="Partager ${name} avec un ami" data-tip="Partager avec un ami">${photoIcon(CARD_ICONS.share)}</button>`,
   ];
+  if (canEdit() && inOwnDeck(car)) {
+    actions.push(`<button type="button" class="theme-toggle" data-move-car="${esc(car.slug)}" aria-label="Ranger ${name} dans un dossier" data-tip="Ranger dans un dossier">${photoIcon('<path d="M3 6h6l2 3h10v10H3z"/>')}</button>`);
+  }
   if (!sheet && canEdit() && inOwnDeck(car)) {
     actions.push(`<button type="button" class="theme-toggle" data-pick-version aria-label="Choisir une version précise" data-tip="Choisir une version précise, en gardant mes photos et mes notes">${photoIcon('<path d="M4 6h16M4 12h10M4 18h6M17 14l3 3-3 3"/>')}</button>`);
   }
@@ -494,11 +500,167 @@ function renderBrands() {
 
 const deckView = () => load("deckView", "compact");
 
+/* Dossiers du deck */
+function renderFolders() {
+  const box = el("folders");
+  const editable = canEdit();
+  const count = (id) => deck().filter((car) => car.folderId === id).length;
+  // Chez un ami, un dossier vide n'apporte rien.
+  const shown = state.folders.filter((folder) => editable || count(folder.id));
+  if (!shown.length && !editable) {
+    box.hidden = true;
+    return;
+  }
+  box.hidden = false;
+  const chip = (value, label, total) =>
+    `<button type="button" class="chip" data-folder="${esc(value)}" aria-pressed="${state.folder === value}">${esc(label)}<span class="folder-count">${total}</span></button>`;
+  const loose = deck().filter((car) => !car.folderId).length;
+  const active = state.folders.find((folder) => folder.id === state.folder);
+  el("folders").innerHTML = `<div class="chips folder-chips" role="group" aria-label="Filtrer par dossier">
+      ${chip("", "Toutes", deck().length)}
+      ${shown.map((folder) => chip(folder.id, folder.name, count(folder.id))).join("")}
+      ${shown.length ? chip("none", "Sans dossier", loose) : ""}
+      ${editable ? `<button type="button" class="chip chip-toggle" data-new-folder>+ Nouveau dossier</button>` : ""}
+    </div>
+    ${editable && active ? `<div class="folder-tools">
+      <button type="button" class="text-link quiet" data-rename-folder>Renommer</button>
+      <button type="button" class="text-link quiet" data-delete-folder>Supprimer le dossier</button>
+    </div>` : ""}`;
+}
+
+const folderError = (error) => (error?.code === "23505"
+  ? "Tu as déjà un dossier à ce nom."
+  : "Ce dossier n'a pas pu être enregistré. Vérifie son nom (40 caractères maximum, 50 dossiers au plus).");
+
+async function createFolder(name) {
+  const { data, error } = await db.from("deck_folders").insert({ name }).select("id, name, created_at").single();
+  if (error) return { error: folderError(error) };
+  state.folders = [...state.folders, data].sort((a, b) => a.name.localeCompare(b.name, "fr"));
+  return { folder: data };
+}
+
+/* Fenêtre pour nommer un dossier, en création comme en renommage. */
+const folderForm = { rename: null, moveCar: null };
+
+function openFolderForm({ rename = null, moveCar = null } = {}) {
+  folderForm.rename = rename;
+  folderForm.moveCar = moveCar;
+  el("folder-form-title").textContent = rename ? "Renommer le dossier" : "Nouveau dossier";
+  el("folder-name").value = rename?.name || "";
+  el("folder-form-error").hidden = true;
+  el("folder-form-dialog").showModal();
+  el("folder-name").focus();
+}
+
+el("folder-form-cancel").addEventListener("click", () => el("folder-form-dialog").close());
+el("folder-form").addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const name = el("folder-name").value.trim();
+  const error = el("folder-form-error");
+  if (!name) return;
+  if (folderForm.rename) {
+    const id = folderForm.rename.id;
+    const result = await db.from("deck_folders").update({ name }).eq("id", id).eq("user_id", state.user.id);
+    if (result.error) {
+      error.textContent = folderError(result.error);
+      error.hidden = false;
+      return;
+    }
+    state.folders = state.folders.map((folder) => (folder.id === id ? { ...folder, name } : folder))
+      .sort((a, b) => a.name.localeCompare(b.name, "fr"));
+  } else {
+    const created = await createFolder(name);
+    if (created.error) {
+      error.textContent = created.error;
+      error.hidden = false;
+      return;
+    }
+    if (folderForm.moveCar) {
+      await moveCarToFolder(folderForm.moveCar, created.folder.id);
+    } else {
+      state.folder = created.folder.id;
+    }
+  }
+  el("folder-form-dialog").close();
+  renderAll();
+});
+
+/* Ranger une voiture dans un dossier. */
+async function moveCarToFolder(car, folderId) {
+  const saved = await updateItem(car, { folder_id: folderId });
+  if (!saved) {
+    showToast("Cette voiture n'a pas pu être rangée. Réessaie.");
+    return false;
+  }
+  const folder = state.folders.find((entry) => entry.id === folderId);
+  showToast(folder ? `<strong>${esc(car.name)}</strong> est rangée dans « ${esc(folder.name)} ».` : `<strong>${esc(car.name)}</strong> n'est plus dans un dossier.`);
+  return true;
+}
+
+function openMoveDialog(car) {
+  const current = itemOf(car)?.folder_id || "";
+  el("move-title").textContent = `Ranger ${car.name}`;
+  const row = (value, label) => `<button type="button" class="move-choice" data-move-to="${esc(value)}" aria-pressed="${current === value}">${esc(label)}${current === value ? " ✓" : ""}</button>`;
+  el("move-list").innerHTML = row("", "Aucun dossier") + state.folders.map((folder) => row(folder.id, folder.name)).join("");
+  el("move-dialog").dataset.slug = car.slug;
+  el("move-dialog").showModal();
+}
+
+el("move-cancel").addEventListener("click", () => el("move-dialog").close());
+el("move-new").addEventListener("click", () => {
+  const car = carBySlug(el("move-dialog").dataset.slug);
+  el("move-dialog").close();
+  openFolderForm({ moveCar: car });
+});
+el("move-list").addEventListener("click", async (event) => {
+  const choice = event.target.closest("[data-move-to]");
+  if (!choice) return;
+  const car = carBySlug(el("move-dialog").dataset.slug);
+  el("move-dialog").close();
+  if (car) await moveCarToFolder(car, choice.dataset.moveTo || null);
+});
+
+el("folders").addEventListener("click", (event) => {
+  const chip = event.target.closest("[data-folder]");
+  if (chip) {
+    state.folder = chip.dataset.folder;
+    renderLibrary();
+    return;
+  }
+  if (event.target.closest("[data-new-folder]")) {
+    openFolderForm();
+    return;
+  }
+  const active = state.folders.find((folder) => folder.id === state.folder);
+  if (!active) return;
+  if (event.target.closest("[data-rename-folder]")) {
+    openFolderForm({ rename: active });
+    return;
+  }
+  if (event.target.closest("[data-delete-folder]")) {
+    askConfirm({
+      title: `Supprimer le dossier « ${active.name} » ?`,
+      text: "Les voitures qu'il contient restent dans ton deck, simplement sans dossier.",
+      label: "Supprimer",
+      action: async () => {
+        const { error } = await db.from("deck_folders").delete().eq("id", active.id).eq("user_id", state.user.id);
+        if (error) throw new Error("Ce dossier n'a pas pu être supprimé. Réessaie.");
+        state.folders = state.folders.filter((folder) => folder.id !== active.id);
+        state.items = state.items.map((item) => (item.folder_id === active.id ? { ...item, folder_id: null } : item));
+        state.folder = "";
+        renderAll();
+      },
+    });
+  }
+});
+
 function renderLibrary() {
+  renderFolders();
   renderGauges();
   const all = deck();
   const query = el("search").value.trim().toLowerCase();
   const visible = all
+    .filter((car) => !state.folder || (state.folder === "none" ? !car.folderId : car.folderId === state.folder))
     .filter((car) => !state.brand || car.brand === state.brand)
     .filter((car) => {
       const wanted = el("status-filter").value;
@@ -794,7 +956,9 @@ function statusChoice(car) {
   if (!canEdit() || !inOwnDeck(car)) return car.status ? `<p class="status-line">${statusTag(car)}</p>` : "";
   const buttons = Object.entries(CAR_STATUS).map(([value, label]) =>
     `<button type="button" class="chip" data-status="${value}" aria-pressed="${car.status === value}">${label}</button>`).join("");
-  return `<div class="status-choice" role="group" aria-label="Ma relation avec cette voiture">${buttons}</div>`;
+  const folder = state.folders.find((entry) => entry.id === car.folderId);
+  return `<div class="status-choice" role="group" aria-label="Ma relation avec cette voiture">${buttons}</div>
+    ${folder ? `<p class="folder-line">Dossier : <strong>${esc(folder.name)}</strong></p>` : ""}`;
 }
 
 /* Commentaires et réactions : attachés à la voiture d'une collection, pas au catalogue. */
@@ -1858,6 +2022,7 @@ async function replaceCar(car, name, thumb) {
     custom_summary: old.custom_summary || "",
     status: old.status || null,
     free_photos: old.free_photos || [],
+    folder_id: old.folder_id || null,
   };
   const { data, error } = await db.from("deck_items").insert(row).select(ITEM_FIELDS).single();
   if (error) {
@@ -1925,7 +2090,7 @@ const toEmail = (username) => `${toLogin(username)}@${LOGIN_DOMAIN}`;
 
 /** Hors connexion, on retrouve la dernière collection enregistrée sur cet appareil. */
 function saveOfflineCopy() {
-  if (state.user && !state.viewing) save(`offline.${state.user.id}`, { user: state.user, items: state.items });
+  if (state.user && !state.viewing) save(`offline.${state.user.id}`, { user: state.user, items: state.items, folders: state.folders });
 }
 
 async function enterOffline(session) {
@@ -1934,6 +2099,7 @@ async function enterOffline(session) {
   state.catalog = await fetchCatalog();
   state.user = copy.user;
   state.items = copy.items;
+  state.folders = copy.folders || [];
   state.viewing = null;
   el("offline-note").hidden = false;
   rebuildDeck();
@@ -2426,6 +2592,12 @@ document.addEventListener("click", (event) => {
     else openMissingNext = toMissing.dataset.openMissing;
     return;
   }
+  const toMove = event.target.closest("[data-move-car]");
+  if (toMove) {
+    const car = carBySlug(toMove.dataset.moveCar);
+    if (car) openMoveDialog(car);
+    return;
+  }
   const share = event.target.closest("[data-share]");
   if (share) {
     const car = carBySlug(share.dataset.share) || catalogCar(share.dataset.share);
@@ -2492,6 +2664,7 @@ async function viewCollection(userId) {
   const account = state.people.find((p) => p.id === userId) || state.accounts.find((p) => p.id === userId);
   const leaving = !account || account.id === state.user.id;
   state.viewing = leaving ? null : account;
+  state.folder = "";
   el("viewing-name").textContent = state.viewing ? `Tu regardes la collection de ${displayName(state.viewing.username)}.` : "";
   try {
     await loadItems();
