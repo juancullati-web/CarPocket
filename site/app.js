@@ -159,7 +159,7 @@ async function loadItems() {
   state.items = data.filter((item) => item.title !== pendingRemoval?.item.title);
   const folders = await db.from("deck_folders").select("id, name, created_at").eq("user_id", owner().id).order("name");
   state.folders = folders.data || [];
-  if (state.folder && state.folder !== "none" && !state.folders.some((folder) => folder.id === state.folder)) state.folder = "";
+  if (state.folder && !state.folders.some((folder) => folder.id === state.folder)) state.folder = "";
   await signPhotos(data.flatMap((item) => item.custom_photos || []));
   rebuildDeck();
 }
@@ -263,7 +263,7 @@ async function shareCar(car, button) {
 
 function cardHtml(car) {
   const photo = car.photos[0];
-  return `<div class="model-card">
+  return `<div class="model-card"${canEdit() && inOwnDeck(car) ? ` draggable="true" data-drag-car="${esc(car.slug)}"` : ""}>
     <a class="model-photo" href="#${esc(car.slug)}" tabindex="-1" aria-hidden="true">
       ${photo ? `<img src="${esc(photo.thumb || photo.file)}" alt="" loading="lazy">` : `<div class="no-photo">Pas encore de photo</div>`}
       ${car.example ? `<span class="badge">Exemple</span>` : ""}
@@ -501,31 +501,53 @@ function renderBrands() {
 const deckView = () => load("deckView", "compact");
 
 /* Dossiers du deck */
+function folderCars(id) {
+  return deck().filter((car) => car.folderId === id);
+}
+
+/** À la racine : de vrais dossiers, avec un aperçu de leur contenu. Dans un dossier : son en-tête. */
 function renderFolders() {
   const box = el("folders");
   const editable = canEdit();
-  const count = (id) => deck().filter((car) => car.folderId === id).length;
+  const open = state.folders.find((folder) => folder.id === state.folder);
+  if (open) {
+    const count = folderCars(open.id).length;
+    box.hidden = false;
+    box.innerHTML = `<button type="button" class="text-link folder-back" data-folder="" data-drop-folder="">‹ ${state.viewing ? "Toute la collection" : "Mon deck"}</button>
+      <div class="folder-head">
+        <span class="folder-icon">${photoIcon('<path d="M3 6h6l2 3h10v10H3z"/>')}</span>
+        <div class="folder-title"><h3>${esc(open.name)}</h3><p>${plural(count, "voiture")}</p></div>
+        ${editable ? `<button type="button" class="theme-toggle" data-rename-folder aria-label="Renommer ce dossier" data-tip="Renommer ce dossier">${photoIcon('<path d="M4 20l1-5L16 4l4 4L9 19z"/>')}</button>
+        <button type="button" class="theme-toggle card-remove" data-delete-folder aria-label="Supprimer ce dossier" data-tip="Supprimer ce dossier, ses voitures restent dans le deck">${photoIcon(CARD_ICONS.trash)}</button>` : ""}
+      </div>`;
+    return;
+  }
   // Chez un ami, un dossier vide n'apporte rien.
-  const shown = state.folders.filter((folder) => editable || count(folder.id));
+  const shown = state.folders.filter((folder) => editable || folderCars(folder.id).length);
   if (!shown.length && !editable) {
     box.hidden = true;
     return;
   }
   box.hidden = false;
-  const chip = (value, label, total) =>
-    `<button type="button" class="chip" data-folder="${esc(value)}" aria-pressed="${state.folder === value}">${esc(label)}<span class="folder-count">${total}</span></button>`;
-  const loose = deck().filter((car) => !car.folderId).length;
-  const active = state.folders.find((folder) => folder.id === state.folder);
-  el("folders").innerHTML = `<div class="chips folder-chips" role="group" aria-label="Filtrer par dossier">
-      ${chip("", "Toutes", deck().length)}
-      ${shown.map((folder) => chip(folder.id, folder.name, count(folder.id))).join("")}
-      ${shown.length ? chip("none", "Sans dossier", loose) : ""}
-      ${editable ? `<button type="button" class="chip chip-toggle" data-new-folder>+ Nouveau dossier</button>` : ""}
-    </div>
-    ${editable && active ? `<div class="folder-tools">
-      <button type="button" class="text-link quiet" data-rename-folder>Renommer</button>
-      <button type="button" class="text-link quiet" data-delete-folder>Supprimer le dossier</button>
-    </div>` : ""}`;
+  const tile = (folder) => {
+    const cars = folderCars(folder.id);
+    const photos = cars.slice(0, 3).map((car) => car.photos[0]).filter(Boolean)
+      .map((photo) => `<img src="${esc(photo.thumb || photo.file)}" alt="" loading="lazy">`).join("");
+    return `<button type="button" class="folder-tile" data-folder="${esc(folder.id)}" data-drop-folder="${esc(folder.id)}">
+      <span class="folder-preview" data-count="${Math.min(cars.length, 3)}">${photos || photoIcon('<path d="M3 6h6l2 3h10v10H3z"/>')}</span>
+      <strong>${esc(folder.name)}</strong>
+      <small>${plural(cars.length, "voiture")}</small>
+    </button>`;
+  };
+  box.innerHTML = `<h3 class="folders-title">${state.viewing ? "Ses dossiers" : "Mes dossiers"}</h3>
+    <div class="folder-grid">
+      ${shown.map(tile).join("")}
+      ${editable ? `<button type="button" class="folder-tile folder-new" data-new-folder>
+        <span class="folder-preview">${photoIcon(CARD_ICONS.add)}</span>
+        <strong>Nouveau dossier</strong>
+        <small>Pour ranger comme tu veux</small>
+      </button>` : ""}
+    </div>`;
 }
 
 const folderError = (error) => (error?.code === "23505"
@@ -575,11 +597,7 @@ el("folder-form").addEventListener("submit", async (event) => {
       error.hidden = false;
       return;
     }
-    if (folderForm.moveCar) {
-      await moveCarToFolder(folderForm.moveCar, created.folder.id);
-    } else {
-      state.folder = created.folder.id;
-    }
+    if (folderForm.moveCar) await moveCarToFolder(folderForm.moveCar, created.folder.id);
   }
   el("folder-form-dialog").close();
   renderAll();
@@ -620,11 +638,39 @@ el("move-list").addEventListener("click", async (event) => {
   if (car) await moveCarToFolder(car, choice.dataset.moveTo || null);
 });
 
+/* Sur ordinateur, une carte se glisse sur un dossier. */
+el("grid").addEventListener("dragstart", (event) => {
+  const card = event.target.closest("[data-drag-car]");
+  if (!card) return;
+  event.dataTransfer.setData("text/plain", card.dataset.dragCar);
+  event.dataTransfer.effectAllowed = "move";
+  el("folders").classList.add("is-dragging");
+});
+el("grid").addEventListener("dragend", () => el("folders").classList.remove("is-dragging"));
+el("folders").addEventListener("dragover", (event) => {
+  const target = event.target.closest("[data-drop-folder]");
+  if (!target) return;
+  event.preventDefault();
+  target.classList.add("is-drop");
+});
+el("folders").addEventListener("dragleave", (event) => {
+  event.target.closest("[data-drop-folder]")?.classList.remove("is-drop");
+});
+el("folders").addEventListener("drop", async (event) => {
+  const target = event.target.closest("[data-drop-folder]");
+  if (!target) return;
+  event.preventDefault();
+  el("folders").classList.remove("is-dragging");
+  const car = carBySlug(event.dataTransfer.getData("text/plain"));
+  if (car) await moveCarToFolder(car, target.dataset.dropFolder || null);
+});
+
 el("folders").addEventListener("click", (event) => {
   const chip = event.target.closest("[data-folder]");
   if (chip) {
     state.folder = chip.dataset.folder;
     renderLibrary();
+    el("folders").scrollIntoView({ block: "nearest" });
     return;
   }
   if (event.target.closest("[data-new-folder]")) {
@@ -659,8 +705,13 @@ function renderLibrary() {
   renderGauges();
   const all = deck();
   const query = el("search").value.trim().toLowerCase();
+  const filtering = Boolean(query || state.brand || el("status-filter").value);
   const visible = all
-    .filter((car) => !state.folder || (state.folder === "none" ? !car.folderId : car.folderId === state.folder))
+    .filter((car) => {
+      if (state.folder) return car.folderId === state.folder;
+      // À la racine, une voiture rangée reste dans son dossier ; une recherche ou un filtre parcourt tout.
+      return filtering || !car.folderId;
+    })
     .filter((car) => !state.brand || car.brand === state.brand)
     .filter((car) => {
       const wanted = el("status-filter").value;
@@ -679,13 +730,18 @@ function renderLibrary() {
   el("view-toggle").dataset.tip = deckView() === "compact" ? "Afficher en grand" : "Afficher en deux colonnes";
   el("view-toggle").setAttribute("aria-label", el("view-toggle").dataset.tip);
   el("grid").innerHTML = pending.map(pendingCardHtml).join("") + visible.map(cardHtml).join("");
-  el("count").textContent = visible.length === all.length
+  const inRootView = !state.folder && !filtering;
+  el("count").textContent = visible.length === all.length || inRootView
     ? plural(all.length, "voiture")
     : `${visible.length} sur ${plural(all.length, "voiture")}`;
 
   const empty = el("empty");
   empty.hidden = visible.length + pending.length > 0;
-  empty.textContent = all.length
+  empty.textContent = state.folder && !filtering
+    ? (canEdit() ? "Ce dossier est vide. Range une voiture avec son icône dossier, ou fais-la glisser ici depuis ton deck." : "Ce dossier est vide.")
+    : inRootView && all.length
+      ? "Toutes les voitures sont rangées dans des dossiers."
+    : all.length
     ? "Aucune voiture ne correspond à cette recherche."
     : canEdit() ? "Ta collection est vide. Ajoute ta première voiture avec le bouton en haut." : "Cette collection est vide.";
 }

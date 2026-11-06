@@ -44,7 +44,7 @@ Sur la fiche d'une voiture de ta collection ou de celle d'un ami, écris un comm
 
 ## Dossiers
 
-Crée tes dossiers avec **+ Nouveau dossier** au-dessus de ton deck, puis range une voiture avec son icône dossier, sur sa carte ou sa fiche. Une voiture va dans un seul dossier. Supprimer un dossier garde ses voitures.
+Crée un dossier avec la tuile **Nouveau dossier** au-dessus de ton deck. Range une voiture avec son icône dossier, ou fais glisser sa carte sur un dossier depuis un ordinateur. Une voiture rangée quitte la liste principale et se retrouve en ouvrant son dossier. La recherche et les filtres parcourent tout le deck. Supprimer un dossier garde ses voitures.
 
 ## Statut d'une voiture
 
