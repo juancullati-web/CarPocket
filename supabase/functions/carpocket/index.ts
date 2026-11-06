@@ -71,6 +71,15 @@ async function github(path: string, options: RequestInit = {}): Promise<Response
   });
 }
 
+const SPEC_KEYS = ["engine", "power", "torque", "transmission", "layout", "top_speed", "zero_100", "weight", "length", "width", "height", "wheelbase", "body", "production", "designer", "assembly"];
+
+/** Les corrections d'une fiche : seulement les champs connus, en texte court. */
+function validChanges(value: unknown): value is Record<string, string> {
+  if (!value || typeof value !== "object" || Array.isArray(value)) return false;
+  const entries = Object.entries(value);
+  return entries.length > 0 && entries.every(([key, text]) => SPEC_KEYS.includes(key) && typeof text === "string" && text.length <= 200);
+}
+
 function runRobot(workflow: string, name: string): Promise<Response> {
   return github(`/actions/workflows/${workflow}/dispatches`, {
     method: "POST",
@@ -206,6 +215,16 @@ async function adminAction(action: string, input: Record<string, unknown>, self:
     if (!response.ok) return await authFailure(response, "Ce compte n'a pas pu être supprimé.");
     await removeUserPhotos(input.user_id);
     return { status: 200, body: { deleted: true } };
+  }
+  if (action === "edit-sheet") {
+    if (typeof input.slug !== "string" || !/^[a-z0-9-]{1,120}$/.test(input.slug)) return { status: 400, body: { error: "Fiche invalide." } };
+    if (!validChanges(input.changes)) return { status: 400, body: { error: "Corrections invalides." } };
+    const response = await github("/actions/workflows/edit-car.yml/dispatches", {
+      method: "POST",
+      body: JSON.stringify({ ref: "main", inputs: { slug: input.slug, changes: JSON.stringify(input.changes) } }),
+    });
+    if (!response.ok) return { status: 502, body: { error: "Le robot n'a pas pu être lancé." } };
+    return { status: 200, body: { started: true } };
   }
   if (action === "remove-sheet") {
     if (!validTitle(input.title)) return { status: 400, body: { error: "Nom de voiture invalide." } };

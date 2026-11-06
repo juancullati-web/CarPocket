@@ -38,4 +38,6 @@ Photos personnelles : bucket privé `user-photos`, dossier par compte, affichée
 
 Dates d'une fiche : `updated` dans `data/cars` change seulement si une valeur change (`scripts/car_dates.py`, lancé par `stamp-cars.yml` pour une correction à la main). `custom_updated_at` de `deck_items` est posée par la base pour les changements de la collection, et vide s'il n'en reste aucun. Ni l'une ni l'autre ne veut dire vérifié.
 
+Administration (`site/admin.js`, routes `#admin:…` et `#comptes`) : l'accueil du compte admin, qui n'a pas de deck. Fiches, indicateurs, réserve, comptes. Les collections n'y servent qu'à compter. Une correction de fiche passe par l'action `edit-sheet`, le workflow `edit-car.yml` et `scripts/edit_car.py` : elle va dans `overrides` et ne touche jamais les valeurs d'une collection.
+
 Tests : `python3 -m unittest discover -s tests`. Aperçu avec suppression : `python3 scripts/serve.py`.

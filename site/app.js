@@ -165,7 +165,9 @@ async function loadItems() {
 }
 
 /* Cartes */
-const backLabel = () => (state.viewing ? `‹ Collection de ${esc(displayName(state.viewing.username))}` : "‹ Mon deck");
+/* L'administrateur n'a pas de deck : l'administration est son accueil. */
+const homeLabel = () => (isAdmin() ? "‹ Administration" : "‹ Mon deck");
+const backLabel = () => (state.viewing ? `‹ Collection de ${esc(displayName(state.viewing.username))}` : homeLabel());
 
 /** Sur la collection d'un ami : ajouter la voiture à la sienne, sans attente. */
 const CAR_STATUS = { owned: "Possédée", driven: "Essayée", dream: "Rêvée" };
@@ -253,7 +255,7 @@ function cardActions(car, { sheet = true } = {}) {
     actions.push(`<button type="button" class="theme-toggle card-remove" data-delete="${esc(car.slug)}" aria-label="Retirer ${name} de ma collection" data-tip="Retirer de ma collection">${photoIcon(CARD_ICONS.trash)}</button>`);
   } else if (state.ownTitles.has(title)) {
     actions.push(`<span class="theme-toggle card-owned" role="img" aria-label="Déjà dans mon deck" data-tip="Déjà dans mon deck">${photoIcon(CARD_ICONS.check)}</span>`);
-  } else if (state.user) {
+  } else if (state.user && !isAdmin()) {
     actions.push(`<button type="button" class="theme-toggle" data-add-title="${esc(title)}" aria-label="Ajouter ${name} à mon deck" data-tip="Ajouter à mon deck">${photoIcon(CARD_ICONS.add)}</button>`);
   }
   return actions.join("");
@@ -718,6 +720,7 @@ el("folders").addEventListener("click", (event) => {
 });
 
 function renderLibrary() {
+  window.CarPocketBooster?.renderTile();
   renderFolders();
   renderGauges();
   const all = deck();
@@ -779,6 +782,7 @@ function renderSession() {
   el("profile-name").textContent = signedIn ? displayName(state.user.username) : "";
   el("cta-band").hidden = !canEdit();
   el("accounts-link").hidden = !isAdmin();
+  if (isAdmin()) el("open-add").hidden = true;
   el("library-title").textContent = state.viewing ? `Collection de ${displayName(state.viewing.username)}` : "Mon deck";
   // Chez un ami : seulement ses compteurs, ni la présentation ni les boutons d'ajout.
   el("app-intro").hidden = Boolean(state.viewing) && !deck().length;
@@ -1208,7 +1212,7 @@ function detailHtml(car) {
           ${summaryHtml(car)}
           ${notesHtml(car)}
           ${talkSlot(car)}
-          ${isAdmin() ? `<div class="actions"><a class="text-link" href="https://github.com/juancullati-web/CarPocket/edit/main/data/cars/${esc(car.slug)}.json" target="_blank" rel="noopener" data-tip="Corriger cette fiche sur GitHub">Corriger cette fiche ›</a>
+          ${isAdmin() ? `<div class="actions"><button type="button" class="text-link" data-edit-sheet="${esc(car.slug)}" data-tip="Corriger les valeurs de cette fiche pour tout le monde">Corriger cette fiche ›</button>
             <button type="button" class="text-link quiet" data-remove-sheet="${esc(titleOf(car))}" data-tip="Effacer cette fiche pour tous les comptes">Supprimer la fiche pour tout le monde</button></div>` : ""}
         </div>
         <div>
@@ -1442,6 +1446,7 @@ function flyToCompareBar(source, from, slug) {
 
 /* Navigation */
 function renderRoute() {
+  if (isAdmin() && !state.viewing && !location.hash) history.replaceState(null, "", "#admin:fiches");
   const hash = decodeURIComponent(location.hash.slice(1));
   let compareCars = null;
   if (hash.startsWith("comparer:")) {
@@ -1449,17 +1454,20 @@ function renderRoute() {
     if (compareCars.length < 2) compareCars = null;
   }
   const accounts = hash === "comptes" && isAdmin();
+  const admin = (hash === "admin" || hash.startsWith("admin:")) && isAdmin();
   const profile = hash === "profil" && Boolean(state.user);
   const discover = hash === "decouvrir" && Boolean(state.user);
   // Une voiture ouverte depuis une comparaison peut venir de la collection d'un ami.
-  const car = carBySlug(hash) || compareCar(hash) || null;
-  el("library").hidden = Boolean(car || compareCars || accounts || profile || discover);
+  // L'administration ouvre aussi les fiches qui ne sont dans aucun deck.
+  const car = carBySlug(hash) || compareCar(hash) || (isAdmin() ? catalogCar(hash) : null) || null;
+  el("library").hidden = Boolean(car || compareCars || accounts || admin || profile || discover);
   el("discover").hidden = !discover;
   el("profile").hidden = !profile;
   el("detail").hidden = !car;
   el("compare").hidden = !compareCars;
   el("accounts").hidden = !accounts;
-  document.title = car ? `${car.name} · CarPocket` : compareCars ? "Comparaison · CarPocket" : accounts ? "Comptes · CarPocket" : profile ? "Mon profil · CarPocket" : discover ? "Collections de mes amis · CarPocket" : "CarPocket";
+  el("admin").hidden = !admin;
+  document.title = car ? `${car.name} · CarPocket` : compareCars ? "Comparaison · CarPocket" : admin ? "Administration · CarPocket" : accounts ? "Comptes · CarPocket" : profile ? "Mon profil · CarPocket" : discover ? "Collections de mes amis · CarPocket" : "CarPocket";
   // Une actualisation ne doit pas effacer une note en cours de saisie.
   const active = document.activeElement;
   const typing = car && el("detail").contains(active)
@@ -1469,6 +1477,7 @@ function renderRoute() {
   if (context && talk.key !== context.key) loadTalk(context);
   if (compareCars) el("compare").innerHTML = compareHtml(compareCars);
   if (accounts) renderAccounts();
+  if (admin) window.CarPocketAdmin?.render(hash.slice(6));
   if (profile) renderProfile();
   if (discover) renderDiscover();
 }
@@ -2210,6 +2219,7 @@ async function enterApp(session) {
   renderAll();
   refreshCommentBadge();
   if (pendingItems().length) poll();
+  window.CarPocketBooster?.afterEnter();
 }
 
 el("session-form").addEventListener("submit", async (event) => {
@@ -2333,7 +2343,7 @@ function renderProfile() {
   }
   profileRendered = true;
   el("profile").innerHTML = `<section class="compare-head"><div class="wrap">
-      <a class="back" href="#">‹ Mon deck</a>
+      <a class="back" href="#">${homeLabel()}</a>
       <h1 class="display-xl">Mon profil</h1>
     </div></section>
     <section class="section"><div class="wrap profile-layout">
@@ -2452,10 +2462,7 @@ async function renderAccounts() {
     return;
   }
   state.accounts = profiles;
-  box.innerHTML = `<section class="compare-head"><div class="wrap">
-      <a class="back" href="#">‹ Mon deck</a>
-      <h1 class="display-xl">Comptes</h1>
-    </div></section>
+  box.innerHTML = `${window.CarPocketAdmin?.tabsHtml("comptes") || ""}
     <section class="section"><div class="wrap">
       <div class="compare-scroll"><table class="accounts-table">
         <thead><tr><th>Identifiant</th><th>Rôle</th><th>Actions</th></tr></thead>
@@ -2806,7 +2813,7 @@ function newCommentsHtml(comments) {
 async function renderDiscover() {
   const box = el("discover");
   box.innerHTML = `<section class="compare-head"><div class="wrap">
-      <a class="back" href="#" data-leave-viewing>‹ Mon deck</a>
+      <a class="back" href="#" data-leave-viewing>${homeLabel()}</a>
       <h1 class="display-xl">Les collections de mes amis</h1>
     </div></section>
     <section class="section"><div class="wrap"><div id="new-comments"></div><p class="count" id="discover-status">Chargement des collections…</p><div class="people-grid" id="people-grid"></div></div></section>`;

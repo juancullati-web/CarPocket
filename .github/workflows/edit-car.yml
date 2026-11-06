@@ -1,0 +1,60 @@
+name: Corriger une fiche
+run-name: Correction de ${{ inputs.slug }}
+
+# Lancé par l'administration du site, via la fonction serveur. Ne touche jamais aux valeurs des collections.
+on:
+  workflow_dispatch:
+    inputs:
+      slug:
+        description: Identifiant de la fiche
+        required: true
+        type: string
+      changes:
+        description: Corrections, en JSON
+        required: true
+        type: string
+
+jobs:
+  edit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    outputs:
+      changed: ${{ steps.save.outputs.changed }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Corriger la fiche
+        env:
+          CAR_SLUG: ${{ inputs.slug }}
+          CAR_CHANGES: ${{ inputs.changes }}
+        run: python3 scripts/edit_car.py --comment-file "$GITHUB_STEP_SUMMARY"
+      - name: Enregistrer dans le dépôt
+        id: save
+        env:
+          CAR_SLUG: ${{ inputs.slug }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/cars
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "Corrige : $CAR_SLUG"
+            for attempt in 1 2 3 4 5; do
+              git pull --rebase origin main && git push origin HEAD:main && pushed=yes && break
+              sleep $((attempt * 5))
+            done
+            test "$pushed" = yes
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+  deploy:
+    needs: edit
+    if: needs.edit.outputs.changed == 'true'
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/pages.yml

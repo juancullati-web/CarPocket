@@ -52,7 +52,7 @@
             <p class="profile-name" id="profile-name"></p>
             <a role="menuitem" href="#profil" data-tip="Voir et modifier mon profil">Mon profil</a>
             <a role="menuitem" href="#decouvrir" data-tip="Voir les collections de mes amis">Collections de mes amis</a>
-            <a role="menuitem" id="accounts-link" href="#comptes" data-tip="Créer ou supprimer des comptes" hidden>Gérer les comptes</a>
+            <a role="menuitem" id="accounts-link" href="#admin:fiches" data-tip="Voir toutes les fiches, les indicateurs et les comptes" hidden>Administration</a>
             <button role="menuitem" type="button" id="install-button" data-tip="Installer CarPocket sur cet appareil" hidden>Installer l'application</button>
             <button role="menuitem" type="button" id="session-button" data-tip="Me déconnecter de CarPocket">Se déconnecter</button>
           </div>
@@ -147,6 +147,7 @@
               </select>
             </label>
           </div>
+          <div id="booster-slot" hidden></div>
           <div class="folders" id="folders"></div>
           <div class="chips" id="brands" role="group" aria-label="Filtrer par marque"></div>
           <div class="grid" id="grid"></div>
@@ -166,6 +167,7 @@
     <article id="detail" hidden></article>
     <article id="compare" hidden></article>
     <article id="accounts" hidden></article>
+    <article id="admin" hidden></article>
     <article id="profile" hidden></article>
     <article id="discover" hidden></article>
   </main>
@@ -294,6 +296,18 @@
       <button type="button" class="button button-primary" id="enrich-submit" hidden>Ajouter à ma fiche</button>
     </div>
   </dialog>
+  <dialog class="specs-dialog" id="sheet-dialog" aria-labelledby="sheet-title">
+    <form id="sheet-form" novalidate>
+      <h2 class="display-sm" id="sheet-title">Corriger la fiche</h2>
+      <p>Ta correction s'applique à tout le monde, sauf aux valeurs qu'une personne a modifiées dans sa collection. Un champ vidé est effacé de la fiche. Visible après la publication, en quelques minutes.</p>
+      <div id="sheet-fields"></div>
+      <p class="form-error" id="sheet-error" role="alert" hidden></p>
+      <div class="dialog-actions">
+        <button type="button" class="button button-secondary" id="sheet-cancel">Annuler</button>
+        <button type="submit" class="button button-primary" id="sheet-submit">Enregistrer</button>
+      </div>
+    </form>
+  </dialog>
   <dialog class="specs-dialog" id="specs-dialog" aria-labelledby="specs-title">
     <form id="specs-form" novalidate>
       <h2 class="display-sm" id="specs-title">Modifier les informations</h2>
@@ -317,5 +331,7 @@
   <div class="tooltip" id="tooltip" aria-hidden="true" hidden></div>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.118.0/dist/umd/supabase.js" integrity="sha384-TcHRA3zBbn+Lexh5n+Oil4guNPOS3rjNDpGRAN46u/s/mB2IZ50ceC6TYDU2yvgK" crossorigin="anonymous"></script>
   <script src="app.js?v=__VERSION__"></script>
+  <script src="booster.js?v=__VERSION__"></script>
+  <script src="admin.js?v=__VERSION__"></script>
 </body>
 </html>
