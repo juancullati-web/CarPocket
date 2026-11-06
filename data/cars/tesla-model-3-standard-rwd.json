@@ -5,7 +5,7 @@
   "variant": null,
   "example": false,
   "added": "2026-11-05T13:38:25+00:00",
-  "updated": "2026-11-05T13:38:25Z",
+  "updated": "2026-11-06T23:58:47+00:00",
   "summary": "",
   "summary_lang": "",
   "summary_url": "",
@@ -28,5 +28,15 @@
     }
   },
   "overrides": {},
-  "photos": []
+  "photos": [
+    {
+      "file": "photos/tesla-model-3-standard-rwd/1.jpg",
+      "thumb": "photos/tesla-model-3-standard-rwd/1-thumb.jpg",
+      "author": "Ethan Llamas",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Tesla_Model_3_Highland_Standard_RWD_Stealth_Grey.jpg",
+      "scope": "model"
+    }
+  ]
 }
