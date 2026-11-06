@@ -36,4 +36,6 @@ Photos libres : `free_photos` de `deck_items`, choisies par la personne parmi le
 
 Photos personnelles : bucket privé `user-photos`, dossier par compte, affichées par adresses signées. Les masquages et les choix sont dans `deck_items`. Le fichier ré-encodé en JPEG perd ses métadonnées avant l'envoi.
 
+Dates d'une fiche : `updated` dans `data/cars` change seulement si une valeur change (`scripts/car_dates.py`, lancé par `stamp-cars.yml` pour une correction à la main). `custom_updated_at` de `deck_items` est posée par la base pour les changements de la collection, et vide s'il n'en reste aucun. Ni l'une ni l'autre ne veut dire vérifié.
+
 Tests : `python3 -m unittest discover -s tests`. Aperçu avec suppression : `python3 scripts/serve.py`.

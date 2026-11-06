@@ -42,6 +42,10 @@ Sur une fiche de ta collection, **Chercher une photo libre** (bouton sur une fic
 
 Sur ordinateur, passe la souris sur une icône pour voir son action. Sur téléphone, garde le doigt appuyé dessus : l'action s'affiche sans se déclencher.
 
+## Dates d'une fiche
+
+« Fiche mise à jour » indique le dernier changement des valeurs communes à tous. « Tes modifications » indique le dernier changement dans ta collection, et n'apparaît que s'il en reste. Aucune des deux ne veut dire que la fiche a été vérifiée.
+
 ## Commentaires et réactions
 
 Sur la fiche d'une voiture de ta collection ou de celle d'un ami, écris un commentaire ou réagis. Une pastille sur l'icône des amis signale les nouveaux commentaires reçus. Chacun peut supprimer les siens, et le propriétaire ceux de sa collection. Retirer une voiture supprime aussi ses commentaires.

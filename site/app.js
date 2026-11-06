@@ -82,7 +82,7 @@ async function server(action, input = {}) {
   return body;
 }
 
-const ITEM_FIELDS = "title, thumb, main_photo, added_at, custom_photos, hidden_photos, notes, custom_specs, custom_sources, custom_summary, status, free_photos, folder_id";
+const ITEM_FIELDS = "title, thumb, main_photo, added_at, custom_photos, hidden_photos, notes, custom_specs, custom_sources, custom_summary, status, free_photos, folder_id, custom_updated_at";
 const PHOTO_BUCKET = "user-photos";
 const SIGNED_SECONDS = 6 * 60 * 60;
 
@@ -136,7 +136,7 @@ function rebuildDeck() {
   state.cars = state.items.flatMap((item) => {
     const car = byTitle.get(item.title);
     if (!car) return [];
-    return [{ ...withEditedSpecs(car, item.custom_specs, item.custom_sources), notes: item.notes || "", summary: item.custom_summary || car.summary, summaryEdited: Boolean(item.custom_summary), status: item.status || null, folderId: item.folder_id || null, added: item.added_at, hiddenCount: car.photos.filter((photo) => (item.hidden_photos || []).includes(photo.file)).length, photos: itemPhotos(item, car) }];
+    return [{ ...withEditedSpecs(car, item.custom_specs, item.custom_sources), notes: item.notes || "", summary: item.custom_summary || car.summary, summaryEdited: Boolean(item.custom_summary), status: item.status || null, folderId: item.folder_id || null, added: item.added_at, customUpdated: item.custom_updated_at || null, hiddenCount: car.photos.filter((photo) => (item.hidden_photos || []).includes(photo.file)).length, photos: itemPhotos(item, car) }];
   });
 }
 
@@ -182,6 +182,23 @@ const CARD_ICONS = {
 
 /* Complétude d'une fiche : ce qui est rempli, pas ce qui est vérifié. */
 const SPEC_KEYS = SPEC_GROUPS.flatMap(([, rows]) => rows.map(([key]) => key));
+
+const frenchDay = (value) => {
+  const date = new Date(value || NaN);
+  return Number.isNaN(date.getTime()) ? "" : date.toLocaleDateString("fr-FR", { day: "numeric", month: "short", year: "numeric" });
+};
+
+/** Deux dates distinctes : la fiche commune à tous, et ce que cette collection y a changé. */
+function sheetDates(car) {
+  const shared = frenchDay(car.updated);
+  const custom = frenchDay(car.customUpdated);
+  const who = state.viewing ? `Modifications de ${esc(displayName(state.viewing.username))}` : "Tes modifications";
+  const lines = [
+    shared && `<span data-tip="Dernier changement des valeurs communes à tous. Cela ne veut pas dire qu'elles ont été revérifiées.">Fiche mise à jour le ${shared}</span>`,
+    custom && `<span data-tip="Notes, présentation, valeurs ou photos changées dans cette collection. Le catalogue n'a pas changé.">${who} : le ${custom}</span>`,
+  ].filter(Boolean);
+  return `<p class="legend sheet-dates" id="sheet-dates"${lines.length ? "" : " hidden"}>${lines.join("")}</p>`;
+}
 
 function completeness(car) {
   const filled = SPEC_KEYS.filter((key) => car.specs[key]).length;
@@ -1209,6 +1226,7 @@ function detailHtml(car) {
           ${hasTextValues ? `<p class="legend">* Valeur extraite du texte de l'article, à vérifier. Elle peut concerner une autre version du modèle.</p>` : ""}
           ${officialSources(car)}
           ${car.customSpecs ? `<p class="legend">« Modifié » : valeur changée dans cette collection. Le catalogue n'a pas changé.</p>` : ""}
+          ${sheetDates(car)}
         </div>
       </div>
     </section>
@@ -1561,9 +1579,10 @@ function photoNotice(text) {
 /** Enregistre une modification des photos, puis met l'écran à jour. */
 async function updateItem(car, changes) {
   const title = titleOf(car);
-  const { error } = await db.from("deck_items").update(changes).eq("user_id", state.user.id).eq("title", title);
+  const { data, error } = await db.from("deck_items").update(changes).eq("user_id", state.user.id).eq("title", title)
+    .select("custom_updated_at").maybeSingle();
   if (error) return false;
-  state.items = state.items.map((item) => (item.title === title ? { ...item, ...changes } : item));
+  state.items = state.items.map((item) => (item.title === title ? { ...item, ...changes, ...data } : item));
   renderAll();
   return true;
 }
@@ -1638,13 +1657,13 @@ async function chooseMainPhoto(car, index) {
   const file = car.photos[index]?.key;
   if (!file) return;
   const title = titleOf(car);
-  const { error } = await db.from("deck_items").update({ main_photo: file })
-    .eq("user_id", state.user.id).eq("title", title);
+  const { data, error } = await db.from("deck_items").update({ main_photo: file })
+    .eq("user_id", state.user.id).eq("title", title).select("custom_updated_at").maybeSingle();
   if (error) {
     photoNotice("Le choix n'a pas pu être enregistré. Réessaie.");
     return;
   }
-  state.items = state.items.map((item) => (item.title === title ? { ...item, main_photo: file } : item));
+  state.items = state.items.map((item) => (item.title === title ? { ...item, main_photo: file, ...data } : item));
   renderAll();
   photoNotice("Photo principale choisie.");
 }
@@ -2084,6 +2103,7 @@ async function replaceCar(car, name, thumb) {
     status: old.status || null,
     free_photos: old.free_photos || [],
     folder_id: old.folder_id || null,
+    custom_updated_at: old.custom_updated_at || null,
   };
   const { data, error } = await db.from("deck_items").insert(row).select(ITEM_FIELDS).single();
   if (error) {
@@ -3016,7 +3036,16 @@ async function flushNotes() {
   const { title, value } = notesDraft;
   if (title === null) return;
   notesDraft.title = null;
-  const { error } = await db.from("deck_items").update({ notes: value }).eq("user_id", state.user.id).eq("title", title);
+  const { data, error } = await db.from("deck_items").update({ notes: value }).eq("user_id", state.user.id).eq("title", title)
+    .select("custom_updated_at").maybeSingle();
+  if (data) {
+    // La date suit sans redessiner la fiche : la personne est peut-être encore en train d'écrire.
+    state.items = state.items.map((item) => (item.title === title ? { ...item, ...data } : item));
+    const car = state.cars.find((entry) => titleOf(entry) === title);
+    if (car) car.customUpdated = data.custom_updated_at;
+    const dates = el("sheet-dates");
+    if (car && dates && location.hash.slice(1) === car.slug) dates.outerHTML = sheetDates(car);
+  }
   const status = el("notes-status");
   if (status) status.textContent = error ? "Note non enregistrée : vérifie ta connexion et réessaie." : "Enregistré.";
 }

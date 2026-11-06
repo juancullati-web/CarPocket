@@ -407,3 +407,32 @@ create policy "renommer ses dossiers" on public.deck_folders
 drop policy if exists "supprimer ses dossiers" on public.deck_folders;
 create policy "supprimer ses dossiers" on public.deck_folders
   for delete to authenticated using (user_id = (select auth.uid()));
+
+-- Date des modifications d'une collection : posée par la base, vide quand il n'en reste aucune.
+alter table public.deck_items add column if not exists custom_updated_at timestamptz;
+create or replace function public.deck_items_custom_date()
+returns trigger language plpgsql set search_path = '' as $$
+begin
+  if tg_op = 'UPDATE' then
+    if (new.notes, new.custom_summary, new.custom_specs, new.custom_sources, new.custom_photos, new.hidden_photos, new.free_photos, new.main_photo)
+      is distinct from (old.notes, old.custom_summary, old.custom_specs, old.custom_sources, old.custom_photos, old.hidden_photos, old.free_photos, old.main_photo) then
+      new.custom_updated_at := now();
+    else
+      new.custom_updated_at := old.custom_updated_at;
+    end if;
+  elsif new.custom_updated_at > now() then
+    -- Changer de version recopie la ligne et garde sa date, jamais une date à venir.
+    new.custom_updated_at := now();
+  end if;
+  if new.notes = '' and new.custom_summary = '' and new.custom_specs = '{}' and new.custom_sources = '{}'
+    and cardinality(new.custom_photos) = 0 and cardinality(new.hidden_photos) = 0
+    and new.free_photos = '[]' and new.main_photo is null then
+    new.custom_updated_at := null;
+  end if;
+  return new;
+end;
+$$;
+revoke all on function public.deck_items_custom_date() from public, anon, authenticated;
+drop trigger if exists deck_items_custom_date on public.deck_items;
+create trigger deck_items_custom_date before insert or update on public.deck_items
+  for each row execute function public.deck_items_custom_date();

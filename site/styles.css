@@ -1180,3 +1180,6 @@ button.reaction { cursor: pointer; }
 .help-dot { display: inline-grid; flex: none; place-items: center; align-self: center; width: 36px; height: 36px; margin-right: auto; border: 1px solid var(--hairline-strong); border-radius: 50%; padding: 0; background: none; color: var(--muted); font: 700 .875rem var(--font); cursor: pointer; }
 .help-dot:hover { color: var(--ink); }
 #empty p { margin-bottom: 16px; }
+
+/* Dates de la fiche */
+.sheet-dates span { display: block; }

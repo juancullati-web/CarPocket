@@ -1,0 +1,51 @@
+name: Dater les fiches modifiées
+
+# Une correction faite à la main (site GitHub ou poussée) ne passe pas par add_car.py.
+# Le robot pousse avec le jeton d'Actions, ce qui ne relance pas ce workflow.
+on:
+  push:
+    branches: [main]
+    paths: ["data/cars/*.json"]
+
+jobs:
+  stamp:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    outputs:
+      changed: ${{ steps.save.outputs.changed }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+      - name: Dater et enregistrer
+        id: save
+        env:
+          BEFORE: ${{ github.event.before }}
+        run: |
+          git cat-file -e "$BEFORE^{commit}" || { echo "changed=false" >> "$GITHUB_OUTPUT"; exit 0; }
+          python3 scripts/car_dates.py "$BEFORE"
+          git add data/cars
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Date les fiches modifiées"
+          for attempt in 1 2 3 4 5; do
+            git pull --rebase origin main && git push origin HEAD:main && pushed=yes && break
+            sleep $((attempt * 5))
+          done
+          test "$pushed" = yes
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+  deploy:
+    needs: stamp
+    if: needs.stamp.outputs.changed == 'true'
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/pages.yml
