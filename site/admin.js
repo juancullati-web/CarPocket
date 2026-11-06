@@ -11,7 +11,10 @@
   const DAY_MS = 24 * 60 * 60 * 1000;
   const LOW_FILL = 50;
   const box = () => el("admin");
-  const list = { query: "", filter: "all", sort: "name" };
+  const PERIODS = [7, 30, 90];
+  const list = { query: "", filter: "all", sort: "name", missing: "" };
+  const fieldLabel = (key) => SPEC_GROUPS.flatMap(([, rows]) => rows).find(([id]) => id === key)?.[1] || key;
+  let period = 30;
   let figures = null;
   let shownTab = "";
 
@@ -22,28 +25,44 @@
       </nav>
     </div></section>`;
 
-  /** Ne garde que les titres et les dates : compter ne demande pas de lire une collection. */
+  /** Compter demande peu : le détail d'une collection masquée n'est jamais affiché, seulement compté. */
   async function loadFigures() {
-    const since = new Date(Date.now() - 30 * DAY_MS).toISOString();
+    const since = new Date(Date.now() - 2 * PERIODS.at(-1) * DAY_MS).toISOString();
     const [items, profiles, comments, reactions] = await Promise.all([
       db.from("deck_items").select("title, user_id, added_at"),
-      db.from("profiles").select("id, shared"),
-      db.from("car_comments").select("id", { count: "exact", head: true }).gte("created_at", since),
-      db.from("car_reactions").select("owner_id", { count: "exact", head: true }).gte("created_at", since),
+      db.from("profiles").select("id, username, shared").order("username"),
+      db.from("car_comments").select("id, owner_id, title, author_name, body, created_at").gte("created_at", since).order("created_at", { ascending: false }).limit(1000),
+      db.from("car_reactions").select("owner_id, title, user_id, kind, created_at").gte("created_at", since).order("created_at", { ascending: false }).limit(1000),
     ]);
     if (items.error || profiles.error) throw items.error || profiles.error;
     const decks = new Map();
     items.data.forEach((row) => decks.set(row.title, (decks.get(row.title) || 0) + 1));
     figures = {
       decks,
-      total: items.data.length,
-      owners: new Set(items.data.map((row) => row.user_id)).size,
-      recent: items.data.filter((row) => row.added_at >= since).length,
-      accounts: profiles.data.length,
-      hidden: profiles.data.filter((row) => !row.shared).length,
-      comments: comments.error ? null : comments.count,
-      reactions: reactions.error ? null : reactions.count,
+      items: items.data,
+      profiles: profiles.data,
+      comments: comments.error ? null : comments.data,
+      reactions: reactions.error ? null : reactions.data,
     };
+  }
+  const profileOf = (id) => figures.profiles.find((row) => row.id === id);
+  const isShared = (id) => Boolean(profileOf(id)?.shared);
+  const nameOf = (id) => {
+    const account = profileOf(id);
+    return account ? displayName(account.username) : "Compte supprimé";
+  };
+  /** Les lignes de la période, et le même nombre de jours juste avant, pour comparer. */
+  function inPeriod(rows, field) {
+    if (!rows) return { now: null, before: null };
+    const start = Date.now() - period * DAY_MS;
+    const previous = start - period * DAY_MS;
+    const at = (row) => Date.parse(row[field]);
+    return { now: rows.filter((row) => at(row) >= start), before: rows.filter((row) => at(row) >= previous && at(row) < start) };
+  }
+  function trend({ now, before }) {
+    if (!now) return "";
+    const gap = now.length - before.length;
+    return gap === 0 ? `autant que les ${period} jours d'avant` : `${gap > 0 ? "+" : ""}${gap} par rapport aux ${period} jours d'avant`;
   }
 
   const inDecks = (car) => figures?.decks.get(titleOf(car)) || 0;
@@ -58,6 +77,7 @@
     nophoto: (car) => !car.photos?.length,
     low: (car) => completeness(car).percent < LOW_FILL,
     orphan: (car) => inDecks(car) === 0,
+    missing: (car) => !car.specs?.[list.missing],
   };
 
   /* Les fiches de la réserve attendent leur booster : elles n'ont pas leur place dans cette liste. */
@@ -104,7 +124,7 @@
         <label class="field grow"><span class="label">Rechercher une fiche</span>
           <input id="admin-search" type="search" placeholder="Nom ou marque" autocomplete="off" value="${esc(list.query)}"></label>
         <label class="field"><span class="label">Afficher</span>
-          <select id="admin-filter">${options([["all", "Toutes"], ["nophoto", "Sans photo"], ["low", `Remplies à moins de ${LOW_FILL} %`], ["orphan", "Dans aucun deck"]], list.filter)}</select></label>
+          <select id="admin-filter">${options([["all", "Toutes"], ["nophoto", "Sans photo"], ["low", `Remplies à moins de ${LOW_FILL} %`], ["orphan", "Dans aucun deck"], ...(list.missing ? [["missing", `Sans : ${fieldLabel(list.missing)}`]] : [])], list.filter)}</select></label>
         <label class="field"><span class="label">Trier par</span>
           <select id="admin-sort">${options([["name", "Nom"], ["decks", "Les plus présentes"], ["emptiest", "Les moins remplies"], ["recent", "Mises à jour récentes"]], list.sort)}</select></label>
       </div>
@@ -114,37 +134,111 @@
     </div></section>`;
   }
 
-  function tile(value, label, detail = "") {
-    return `<div class="admin-figure"><strong>${value === null ? "Non disponible" : esc(String(value))}</strong><span>${esc(label)}</span>${detail ? `<small>${esc(detail)}</small>` : ""}</div>`;
+  function tile(value, label, href, detail = "") {
+    const body = `<strong>${value === null ? "Non disponible" : esc(String(value))}</strong><span>${esc(label)}</span>${detail ? `<small>${esc(detail)}</small>` : ""}`;
+    return value === null ? `<div class="admin-figure">${body}</div>` : `<a class="admin-figure" href="${href}">${body}<i aria-hidden="true">›</i></a>`;
   }
+  const count = (rows) => (rows ? rows.length : null);
 
   function figuresHtml() {
     const cars = sheets();
     const fill = cars.length ? Math.round(cars.reduce((sum, car) => sum + completeness(car).percent, 0) / cars.length) : 0;
-    const noPhoto = cars.filter(FILTERS.nophoto).length;
-    const orphans = cars.filter(FILTERS.orphan).length;
+    const owners = new Set(figures.items.map((row) => row.user_id)).size;
+    const hidden = figures.profiles.filter((row) => !row.shared).length;
+    const added = inPeriod(figures.items, "added_at");
+    const comments = inPeriod(figures.comments, "created_at");
+    const reactions = inPeriod(figures.reactions, "created_at");
     const top = [...cars].sort(SORTS.decks).filter((car) => inDecks(car)).slice(0, 5);
+    const brands = [...cars.reduce((map, car) => map.set(car.brand, (map.get(car.brand) || 0) + 1), new Map())].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0], "fr")).slice(0, 5);
+    const fields = SPEC_KEYS.map((key) => [key, cars.filter((car) => !car.specs?.[key]).length]).filter(([, missing]) => missing).sort((a, b) => b[1] - a[1]).slice(0, 5);
+    const ranked = (rows) => `<ol class="admin-top">${rows.join("")}</ol>`;
     return `<section class="section"><div class="wrap admin-groups">
+      <div><div class="admin-group-head"><h2 class="display-sm">Activité</h2>
+        <div class="admin-periods" role="group" aria-label="Période">${PERIODS.map((days) => `<button type="button" data-period="${days}" aria-pressed="${days === period}">${days} jours</button>`).join("")}</div></div>
+        <div class="admin-figures">
+        ${tile(count(added.now), "voitures ajoutées", "#admin:indicateurs:ajouts", trend(added))}
+        ${tile(count(comments.now), "commentaires", "#admin:indicateurs:commentaires", trend(comments))}
+        ${tile(count(reactions.now), "réactions", "#admin:indicateurs:reactions", trend(reactions))}
+      </div></div>
       <div><h2 class="display-sm">Comptes</h2><div class="admin-figures">
-        ${tile(figures.accounts, "comptes", figures.hidden ? `dont ${figures.hidden} avec une collection masquée` : "")}
-        ${tile(figures.owners, "ont au moins une voiture")}
+        ${tile(figures.profiles.length, "comptes", "#admin:indicateurs:comptes", hidden ? `dont ${hidden} avec une collection masquée` : "")}
+        ${tile(owners, "ont au moins une voiture", "#admin:indicateurs:avec-voitures")}
+        ${tile(owners ? (figures.items.length / owners).toFixed(1).replace(".", ",") : 0, "voitures par compte, en moyenne", "#admin:indicateurs:comptes")}
+        ${tile(figures.items.length, "voitures dans les decks", "#admin:fiches:decks", "tous comptes confondus")}
       </div></div>
       <div><h2 class="display-sm">Catalogue</h2><div class="admin-figures">
-        ${tile(cars.length, "fiches")}
-        ${tile(`${fill} %`, "de remplissage moyen", "Rempli ne veut pas dire vérifié.")}
-        ${tile(noPhoto, "sans photo")}
-        ${tile(orphans, "dans aucun deck")}
+        ${tile(cars.length, "fiches", "#admin:fiches:toutes")}
+        ${tile(`${fill} %`, "de remplissage moyen", "#admin:fiches:moins-remplies", "Rempli ne veut pas dire vérifié.")}
+        ${tile(cars.filter(FILTERS.nophoto).length, "sans photo", "#admin:fiches:nophoto")}
+        ${tile(cars.filter(FILTERS.orphan).length, "dans aucun deck", "#admin:fiches:orphan")}
       </div></div>
-      <div><h2 class="display-sm">Activité sur 30 jours</h2><div class="admin-figures">
-        ${tile(figures.recent, "voitures ajoutées")}
-        ${tile(figures.comments, "commentaires")}
-        ${tile(figures.reactions, "réactions")}
-        ${tile(figures.total, "voitures dans les decks", "au total, tous comptes confondus")}
-      </div></div>
-      <div><h2 class="display-sm">Les plus présentes</h2>
-        ${top.length ? `<ol class="admin-top">${top.map((car) => `<li><a href="#${esc(car.slug)}">${esc(car.name)}</a><span>${plural(inDecks(car), "deck")}</span></li>`).join("")}</ol>` : `<p class="admin-none">Aucune voiture dans les decks.</p>`}
+      <div class="admin-lists">
+        <div><h2 class="display-sm">Les plus présentes</h2>
+          ${top.length ? ranked(top.map((car) => `<li><a href="#${esc(car.slug)}">${esc(car.name)}</a><span>${plural(inDecks(car), "deck")}</span></li>`)) : `<p class="admin-none">Aucune voiture dans les decks.</p>`}</div>
+        <div><h2 class="display-sm">Marques</h2>
+          ${ranked(brands.map(([brand, total]) => `<li><a href="#admin:fiches:marque-${encodeURIComponent(brand)}">${esc(brand)}</a><span>${plural(total, "fiche")}</span></li>`))}</div>
+        <div><h2 class="display-sm">Champs les plus vides</h2>
+          ${fields.length ? ranked(fields.map(([key, missing]) => `<li><a href="#admin:fiches:manque-${key}">${esc(fieldLabel(key))}</a><span>${plural(missing, "fiche")}</span></li>`)) : `<p class="admin-none">Tous les champs sont remplis.</p>`}</div>
       </div>
     </div></section>`;
+  }
+
+  /* Le détail d'un chiffre. Ce qui vient d'une collection masquée est compté, jamais montré. */
+  const carLink = (title) => {
+    const car = state.catalog.find((entry) => titleOf(entry) === title);
+    return car ? `<a href="#${esc(car.slug)}">${esc(car.name)}</a>` : esc(title);
+  };
+  const hiddenNote = (total) => (total ? `<p class="admin-count">${total} de plus dans des collections masquées : ${total > 1 ? "elles restent comptées, sans détail" : "elle reste comptée, sans détail"}.</p>` : "");
+  const REACTION_LABEL = { like: "aime", want: "la veut" };
+
+  function detailHtml(key) {
+    const shell = (title, intro, content) => `<section class="section"><div class="wrap admin-detail">
+      <a class="back" href="#admin:indicateurs">‹ Indicateurs</a>
+      <h2 class="display-sm">${esc(title)}</h2>${intro ? `<p class="admin-count">${esc(intro)}</p>` : ""}${content}
+    </div></section>`;
+    if (key === "comptes" || key === "avec-voitures") {
+      const owned = new Map();
+      figures.items.forEach((row) => owned.set(row.user_id, (owned.get(row.user_id) || 0) + 1));
+      const rows = figures.profiles.filter((row) => key === "comptes" || owned.get(row.id))
+        .sort((a, b) => (owned.get(b.id) || 0) - (owned.get(a.id) || 0));
+      return shell(key === "comptes" ? "Comptes" : "Comptes avec au moins une voiture", plural(rows.length, "compte"),
+        `<ul class="admin-rows">${rows.map((row) => `<li class="admin-line">
+          <div><strong>${esc(displayName(row.username))}</strong><p>${plural(owned.get(row.id) || 0, "voiture")}${row.shared ? "" : " · collection masquée"}</p></div>
+          ${row.shared ? `<button type="button" class="text-link" data-view-user="${esc(row.id)}">Voir la collection ›</button>` : ""}
+        </li>`).join("")}</ul>`);
+    }
+    const scope = `Sur les ${period} derniers jours.`;
+    if (key === "ajouts") {
+      const rows = [...inPeriod(figures.items, "added_at").now].sort((a, b) => b.added_at.localeCompare(a.added_at));
+      const open = rows.filter((row) => isShared(row.user_id));
+      return shell("Voitures ajoutées", scope, `<ul class="admin-rows">${open.map((row) => `<li class="admin-line">
+          <div><strong>${carLink(row.title)}</strong><p>${esc(nameOf(row.user_id))} · ${frenchDay(row.added_at)}</p></div></li>`).join("") || `<li class="admin-none">Rien à montrer sur cette période.</li>`}</ul>${hiddenNote(rows.length - open.length)}`);
+    }
+    if (key === "commentaires") {
+      const rows = inPeriod(figures.comments, "created_at").now || [];
+      const open = rows.filter((row) => isShared(row.owner_id));
+      return shell("Commentaires", scope, `<ul class="admin-rows">${open.map((row) => `<li class="admin-line">
+          <div><strong>${carLink(row.title)}</strong><p>${esc(row.author_name || "Compte supprimé")} sur la collection de ${esc(nameOf(row.owner_id))} · ${frenchDay(row.created_at)}</p>
+          <blockquote>${esc(row.body)}</blockquote></div></li>`).join("") || `<li class="admin-none">Rien à montrer sur cette période.</li>`}</ul>${hiddenNote(rows.length - open.length)}`);
+    }
+    if (key === "reactions") {
+      const rows = inPeriod(figures.reactions, "created_at").now || [];
+      const open = rows.filter((row) => isShared(row.owner_id));
+      return shell("Réactions", scope, `<ul class="admin-rows">${open.map((row) => `<li class="admin-line">
+          <div><strong>${carLink(row.title)}</strong><p>${esc(nameOf(row.user_id))} ${REACTION_LABEL[row.kind] || esc(row.kind)} · collection de ${esc(nameOf(row.owner_id))} · ${frenchDay(row.created_at)}</p></div></li>`).join("") || `<li class="admin-none">Rien à montrer sur cette période.</li>`}</ul>${hiddenNote(rows.length - open.length)}`);
+    }
+    return figuresHtml();
+  }
+
+  /** Un chiffre mène à la liste des fiches déjà filtrée : le lien décrit le filtre. */
+  function applySheetLink(link) {
+    if (!link) return;
+    Object.assign(list, { query: "", filter: "all", sort: "name", missing: "" });
+    if (["nophoto", "orphan", "low"].includes(link)) list.filter = link;
+    else if (link === "decks") list.sort = "decks";
+    else if (link === "moins-remplies") list.sort = "emptiest";
+    else if (link.startsWith("manque-")) { list.missing = link.slice(7); list.filter = "missing"; }
+    else if (link.startsWith("marque-")) list.query = decodeURIComponent(link.slice(7));
   }
 
   const reserveHtml = () => `<section class="section"><div class="wrap admin-empty">
@@ -152,13 +246,17 @@
       <p>Elle arrivera avec les boosters. Tu y verras les voitures restantes, le prochain renouvellement, et tu pourras retirer une voiture ou la passer en remarquable.</p>
     </div></section>`;
 
-  async function render(tab) {
+  async function render(route) {
+    const [tab, ...rest] = route.split(":");
+    const extra = rest.join(":");
     const known = TABS.some(([id]) => id === tab) && tab !== "comptes";
     const active = known ? tab : "fiches";
     const target = box();
+    const view = `${active}:${extra}`;
     // Une actualisation du site ne doit pas effacer une recherche en cours.
-    if (shownTab === active && target.contains(document.activeElement) && document.activeElement.id === "admin-search") return;
-    shownTab = active;
+    if (shownTab === view && document.activeElement?.id === "admin-search") return;
+    if (active === "fiches" && shownTab !== view) applySheetLink(extra);
+    shownTab = view;
     if (active === "reserve") {
       target.innerHTML = tabsHtml(active) + reserveHtml();
       return;
@@ -170,8 +268,8 @@
       target.innerHTML = `${tabsHtml(active)}<section class="section"><div class="wrap"><p class="notice failed">Ces informations n'ont pas pu être chargées. Réessaie dans un instant.</p></div></section>`;
       return;
     }
-    if (shownTab !== active) return;
-    target.innerHTML = tabsHtml(active) + (active === "fiches" ? sheetsHtml() : figuresHtml());
+    if (shownTab !== view) return;
+    target.innerHTML = tabsHtml(active) + (active === "fiches" ? sheetsHtml() : extra ? detailHtml(extra) : figuresHtml());
     if (active === "fiches") sheetRows();
   }
 
@@ -205,6 +303,12 @@
     </fieldset>`).join("");
     el("sheet-dialog").showModal();
   }
+  box().addEventListener("click", (event) => {
+    const button = event.target.closest("[data-period]");
+    if (!button) return;
+    period = Number(button.dataset.period);
+    box().innerHTML = tabsHtml("indicateurs") + figuresHtml();
+  });
   /* Le retrait groupé rattrape ce que le nettoyage automatique a manqué (compte supprimé, robot en échec). */
   box().addEventListener("click", (event) => {
     if (!event.target.closest("#admin-purge-button")) return;

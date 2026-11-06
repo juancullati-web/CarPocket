@@ -1219,7 +1219,10 @@ button.reaction { cursor: pointer; }
 .admin-none { color: var(--muted); list-style: none; }
 .admin-groups { display: grid; gap: 40px; }
 .admin-figures { display: grid; grid-template-columns: repeat(auto-fill, minmax(170px, 1fr)); gap: 1px; margin-top: 14px; border: 1px solid var(--hairline); background: var(--hairline); }
-.admin-figure { display: flex; flex-direction: column; gap: 2px; min-width: 0; padding: 16px; background: var(--canvas); }
+.admin-figure { position: relative; display: flex; flex-direction: column; gap: 2px; min-width: 0; padding: 16px 28px 16px 16px; background: var(--canvas); color: inherit; text-decoration: none; }
+a.admin-figure:hover { background: var(--surface-card, var(--canvas)); box-shadow: inset 0 0 0 1px var(--primary); }
+a.admin-figure:hover strong { color: var(--primary); }
+.admin-figure i { position: absolute; top: 14px; right: 12px; color: var(--muted); font-style: normal; font-size: 1.25rem; line-height: 1; }
 .admin-figure strong { color: var(--ink); font-size: 1.75rem; font-weight: 700; line-height: 1.1; font-variant-numeric: tabular-nums; }
 .admin-figure span { color: var(--ink); }
 .admin-figure small { color: var(--muted); font-size: .8125rem; }
@@ -1235,3 +1238,15 @@ button.reaction { cursor: pointer; }
   .admin-row-photo { width: 64px; height: 44px; }
   .admin-row > .text-link { grid-column: 2; justify-self: start; }
 }
+.admin-group-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; }
+.admin-periods { display: flex; border: 1px solid var(--hairline-strong); }
+.admin-periods button { padding: 6px 12px; border: 0; background: none; color: var(--muted); font: inherit; font-size: .875rem; font-weight: 700; cursor: pointer; }
+.admin-periods button[aria-pressed="true"] { background: var(--primary); color: #fff; }
+.admin-lists { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 32px; }
+.admin-detail .back { display: inline-block; margin-bottom: 12px; color: var(--muted); text-decoration: none; }
+.admin-line { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 6px 16px; padding: 12px 0; border-top: 1px solid var(--hairline); }
+.admin-line > div { flex: 1 1 240px; min-width: 0; }
+.admin-line strong, .admin-line strong a { color: var(--ink); font-weight: 700; text-decoration: none; overflow-wrap: anywhere; }
+.admin-line strong a:hover { color: var(--primary); }
+.admin-line p { margin: 2px 0 0; color: var(--muted); font-size: .875rem; }
+.admin-line blockquote { margin: 8px 0 0; padding-left: 12px; border-left: 2px solid var(--hairline-strong); color: var(--ink); overflow-wrap: anywhere; white-space: pre-wrap; }
