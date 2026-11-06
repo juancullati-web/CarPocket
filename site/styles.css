@@ -1173,3 +1173,10 @@ button.reaction { cursor: pointer; }
   #grid .model-actions .completion-ring svg { width: 100%; height: 100%; }
 }
 /* Fin des styles */
+
+/* Aide contextuelle */
+[data-tip] { -webkit-touch-callout: none; }
+.theme-toggle[data-tip], .add-icon[data-tip], .photo-icon[data-tip], .completion-ring[data-tip] { -webkit-user-select: none; user-select: none; }
+.help-dot { display: inline-grid; flex: none; place-items: center; align-self: center; width: 36px; height: 36px; margin-right: auto; border: 1px solid var(--hairline-strong); border-radius: 50%; padding: 0; background: none; color: var(--muted); font: 700 .875rem var(--font); cursor: pointer; }
+.help-dot:hover { color: var(--ink); }
+#empty p { margin-bottom: 16px; }

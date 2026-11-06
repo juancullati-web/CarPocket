@@ -25,7 +25,7 @@ const ratioOf = (car) =>
 const displayName = (username = "") => username.replace(/(^|[-_])([a-z])/g, (_, separator, letter) => separator + letter.toUpperCase());
 const plural = (n, word) => `${n} ${word}${n > 1 ? "s" : ""}`;
 const STAR = `<abbr class="mark" title="Extrait du texte de l'article : à vérifier">*</abbr>`;
-const specMark = (spec) => (spec?.edited ? `<span class="edited-mark">Modifié</span>` : spec?.from_text ? STAR : "");
+const specMark = (spec) => (spec?.edited ? `<span class="edited-mark" data-tip="Valeur changée dans cette collection. Le catalogue n'a pas changé.">Modifié</span>` : spec?.from_text ? STAR : "");
 const carBySlug = (slug) => state.cars.find((c) => c.slug === slug);
 const catalogCar = (slug) => state.catalog.find((c) => c.slug === slug);
 const inOwnDeck = (car) => state.ownTitles.has(titleOf(car));
@@ -737,13 +737,17 @@ function renderLibrary() {
 
   const empty = el("empty");
   empty.hidden = visible.length + pending.length > 0;
-  empty.textContent = state.folder && !filtering
+  const emptyText = state.folder && !filtering
     ? (canEdit() ? "Ce dossier est vide. Range une voiture avec son icône dossier, ou fais-la glisser ici depuis ton deck." : "Ce dossier est vide.")
     : inRootView && all.length
       ? "Toutes les voitures sont rangées dans des dossiers."
     : all.length
     ? "Aucune voiture ne correspond à cette recherche."
-    : canEdit() ? "Ta collection est vide. Ajoute ta première voiture avec le bouton en haut." : "Cette collection est vide.";
+    : canEdit() ? "Ta collection est vide. Ajoute ta première voiture : tape son nom, ou choisis une marque." : "Cette collection est vide.";
+  const emptyAction = !all.length && canEdit()
+    ? `<button type="button" class="button button-primary" data-empty-add>Ajouter une voiture</button>`
+    : filtering ? `<button type="button" class="button button-secondary" data-clear-filters>Effacer la recherche et les filtres</button>` : "";
+  empty.innerHTML = `<p>${esc(emptyText)}</p>${emptyAction}`;
 }
 
 function renderSession() {
@@ -1058,7 +1062,7 @@ function talkHtml(context) {
   }).join("");
   return `<h2 class="display-sm">Commentaires</h2>
     ${reactions ? `<div class="reactions">${reactions}</div>` : ""}
-    ${list ? `<ol class="comments">${list}</ol>` : `<p class="notes-help">Pas encore de commentaire.</p>`}
+    ${list ? `<ol class="comments">${list}</ol>` : `<p class="notes-help">Pas encore de commentaire. ${context.mine ? "Tes amis pourront en laisser ici." : "Lance la conversation."}</p>`}
     <form class="comment-form" id="comment-form">
       <label class="label" for="comment-text">Ton commentaire</label>
       <textarea id="comment-text" rows="3" maxlength="1000" placeholder="Une question, un souvenir, un avis…">${esc(talk.draft)}</textarea>
@@ -1191,14 +1195,15 @@ function detailHtml(car) {
             <button type="button" class="text-link quiet" data-remove-sheet="${esc(titleOf(car))}" data-tip="Effacer cette fiche pour tous les comptes">Supprimer la fiche pour tout le monde</button></div>` : ""}
         </div>
         <div>
-          ${canEdit() && inOwnDeck(car) ? `<div class="spec-tools">
-            <button type="button" class="theme-toggle" data-edit-specs aria-label="Modifier les informations" data-tip="Modifier les informations">
+          <div class="spec-tools">
+            <button type="button" class="help-dot" aria-label="Comprendre cette fiche" data-help="${esc("Le pourcentage de complétude indique combien des 16 informations sont remplies, pas si elles sont vérifiées. * : valeur lue dans le texte de l'article, à vérifier. « Modifié » : valeur changée dans cette collection, le catalogue n'a pas changé.")}">?</button>
+            ${canEdit() && inOwnDeck(car) ? `<button type="button" class="theme-toggle" data-edit-specs aria-label="Modifier les informations" data-tip="Modifier les informations">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M4 20l1-5L16 4l4 4L9 19z"/></svg>
             </button>
             ${car.customSpecs ? `<button type="button" class="theme-toggle" data-reset-specs aria-label="Réinitialiser toutes les informations" data-tip="Réinitialiser toutes les informations">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M4 5v5h5M5 10a8 8 0 1 1-1 5"/></svg>
-            </button>` : ""}
-          </div>` : ""}
+            </button>` : ""}` : ""}
+          </div>
           ${car.variant ? `<p class="note">Ce modèle a plusieurs générations. Cette fiche décrit la version <strong>${esc(car.variant)}</strong>.</p>` : ""}
           ${specsHtml(car)}
           ${hasTextValues ? `<p class="legend">* Valeur extraite du texte de l'article, à vérifier. Elle peut concerner une autre version du modèle.</p>` : ""}
@@ -2857,6 +2862,11 @@ el("detail").addEventListener("click", (event) => {
     chooseMainPhoto(car, Number(main.dataset.mainPhoto));
     return;
   }
+  const help = event.target.closest("[data-help]");
+  if (help) {
+    flashTip(help, help.dataset.help, 7000);
+    return;
+  }
   if (event.target.closest("[data-edit-specs]") && car) {
     openSpecsEditor(car);
     return;
@@ -2965,6 +2975,19 @@ document.addEventListener("click", (event) => {
 });
 el("toast-close").addEventListener("click", () => { el("toast").hidden = true; });
 el("toast-undo").addEventListener("click", undoRemoval);
+el("empty").addEventListener("click", (event) => {
+  if (event.target.closest("[data-empty-add]")) {
+    openAdd();
+    return;
+  }
+  if (event.target.closest("[data-clear-filters]")) {
+    el("search").value = "";
+    el("status-filter").value = "";
+    state.brand = "";
+    renderBrands();
+    renderLibrary();
+  }
+});
 el("view-toggle").addEventListener("click", () => {
   save("deckView", deckView() === "compact" ? "wide" : "compact");
   renderLibrary();
@@ -3619,9 +3642,12 @@ window.addEventListener("hashchange", () => {
 const tooltip = el("tooltip");
 const hideTip = () => { tooltip.hidden = true; };
 
-function flashTip(target, text) {
+let flashTimer = null;
+
+function flashTip(target, text = target.dataset.tip, duration = 2500) {
   showTip(target, text);
-  setTimeout(hideTip, 2500);
+  clearTimeout(flashTimer);
+  flashTimer = setTimeout(hideTip, duration);
 }
 
 function showTip(target, text = target.dataset.tip) {
@@ -3645,6 +3671,42 @@ document.addEventListener("pointerover", (event) => {
 document.addEventListener("focusin", (event) => {
   const target = event.target.closest("[data-tip]");
   if (target && event.target.matches(":focus-visible")) showTip(target);
+});
+/* Sur téléphone, sans survol : un appui long affiche la bulle, sans déclencher le bouton. */
+const LONG_PRESS_MS = 450;
+const press = { timer: null, x: 0, y: 0, shown: false };
+
+function cancelPress() {
+  clearTimeout(press.timer);
+  press.timer = null;
+}
+
+document.addEventListener("pointerdown", (event) => {
+  cancelPress();
+  press.shown = false;
+  if (event.pointerType === "mouse") return;
+  const target = event.target.closest("[data-tip]");
+  if (!target) return;
+  press.x = event.clientX;
+  press.y = event.clientY;
+  press.timer = setTimeout(() => {
+    press.shown = true;
+    flashTip(target, target.dataset.tip, 3500);
+  }, LONG_PRESS_MS);
+});
+document.addEventListener("pointermove", (event) => {
+  if (press.timer && Math.hypot(event.clientX - press.x, event.clientY - press.y) > 10) cancelPress();
+});
+["pointerup", "pointercancel"].forEach((name) => document.addEventListener(name, cancelPress));
+// La bulle vient de s'afficher : ce relâchement ne doit pas agir comme un clic.
+document.addEventListener("click", (event) => {
+  if (!press.shown) return;
+  press.shown = false;
+  event.preventDefault();
+  event.stopPropagation();
+}, true);
+document.addEventListener("contextmenu", (event) => {
+  if (event.target.closest("[data-tip]") && matchMedia("(pointer: coarse)").matches) event.preventDefault();
 });
 document.addEventListener("focusout", hideTip);
 document.addEventListener("pointerdown", hideTip);
