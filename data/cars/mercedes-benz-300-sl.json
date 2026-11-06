@@ -5,7 +5,7 @@
   "variant": null,
   "example": false,
   "added": "2026-11-05T20:53:47+00:00",
-  "updated": "2026-11-06T23:14:08+00:00",
+  "updated": "2026-11-06T23:24:08+00:00",
   "summary": "La Mercedes-Benz 300 SL (W198) « papillon » est un modèle d'automobiles à deux places coupé et cabriolet du constructeur automobile allemand Mercedes-Benz conçu et dessiné par le designer Friedrich Geiger, commercialisé de 1954 à 1963 et entré depuis dans la légende des automobiles de rêve. Elle est considérée comme la plus emblématique des Mercedes produites après la Seconde Guerre mondiale pour son originalité, ses qualités techniques et esthétiques.",
   "summary_lang": "fr",
   "summary_url": "https://fr.wikipedia.org/wiki/Mercedes-Benz_300_SL",
@@ -76,8 +76,8 @@
     }
   },
   "overrides": {
-    "power": "215",
-    "torque": "275 hp"
+    "power": "215 hp",
+    "torque": "275"
   },
   "photos": [
     {
