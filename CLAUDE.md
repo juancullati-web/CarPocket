@@ -24,6 +24,8 @@ Ajout d'une voiture : marque, modèle, puis version, depuis `site/reference` (g�
 
 Statut d'une voiture dans une collection : colonne `status` de `deck_items` (`owned`, `driven`, `dream`), visible avec elle.
 
+Commentaires et réactions : tables `car_comments` et `car_reactions`, liées à une voiture d'une collection et lisibles avec elle. L'auteur et la date viennent de la base, pas du navigateur. La pastille « nouveau » est mémorisée par appareil.
+
 Complétude : part des 16 champs de la fiche technique remplis, valeurs de la collection comprises. Rempli ne veut pas dire vérifié.
 
 Notes, présentation et valeurs modifiées : colonnes `notes`, `custom_summary` et `custom_specs` de `deck_items`, propres à chaque collection et visibles avec elle. Une valeur modifiée porte `edited: true` à l'affichage et ne touche jamais `data/cars`. Le bouton « Chercher les infos manquantes » lit la liste de référence et Wikipédia depuis le navigateur, propose des valeurs avec leur source (`custom_sources`) et n'écrit que ce que la personne coche.

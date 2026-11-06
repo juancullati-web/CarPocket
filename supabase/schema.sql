@@ -252,3 +252,92 @@ drop policy if exists "carpocket photos suppression" on storage.objects;
 create policy "carpocket photos suppression" on storage.objects
   for delete to authenticated
   using (bucket_id = 'user-photos' and (storage.foldername(name))[1] = (select auth.uid())::text);
+
+-- Commentaires et réactions sur la voiture d'une collection : mêmes droits de lecture qu'elle.
+create table if not exists public.car_comments (
+  id uuid primary key default gen_random_uuid(),
+  owner_id uuid not null,
+  title text not null,
+  author_id uuid not null default auth.uid() references public.profiles (id) on delete cascade,
+  author_name text not null default '',
+  body text not null check (char_length(btrim(body)) between 1 and 1000),
+  created_at timestamptz not null default now(),
+  foreign key (owner_id, title) references public.deck_items (user_id, title) on delete cascade on update cascade
+);
+create index if not exists car_comments_item on public.car_comments (owner_id, title, created_at);
+
+create table if not exists public.car_reactions (
+  owner_id uuid not null,
+  title text not null,
+  user_id uuid not null default auth.uid() references public.profiles (id) on delete cascade,
+  kind text not null check (kind in ('like', 'want')),
+  created_at timestamptz not null default now(),
+  primary key (owner_id, title, user_id, kind),
+  foreign key (owner_id, title) references public.deck_items (user_id, title) on delete cascade on update cascade
+);
+
+-- L'auteur et la date ne viennent jamais du navigateur.
+create or replace function public.car_comment_author()
+returns trigger language plpgsql security definer set search_path = '' as $$
+begin
+  new.author_id := auth.uid();
+  new.created_at := now();
+  new.author_name := coalesce((select username from public.profiles where id = auth.uid()), '');
+  return new;
+end;
+$$;
+revoke all on function public.car_comment_author() from public, anon, authenticated;
+drop trigger if exists car_comment_author on public.car_comments;
+create trigger car_comment_author before insert on public.car_comments
+  for each row execute function public.car_comment_author();
+
+alter table public.car_comments enable row level security;
+alter table public.car_reactions enable row level security;
+revoke all on public.car_comments from anon, authenticated;
+revoke all on public.car_reactions from anon, authenticated;
+grant select, delete on public.car_comments to authenticated;
+grant insert (owner_id, title, body) on public.car_comments to authenticated;
+grant update (title) on public.car_comments to authenticated;
+grant select, delete on public.car_reactions to authenticated;
+grant insert (owner_id, title, kind) on public.car_reactions to authenticated;
+grant update (title) on public.car_reactions to authenticated;
+
+drop policy if exists "commentaires lisibles avec la collection" on public.car_comments;
+create policy "commentaires lisibles avec la collection" on public.car_comments
+  for select to authenticated using (
+    owner_id = (select auth.uid()) or (select public.is_admin())
+    or exists (select 1 from public.profiles p where p.id = car_comments.owner_id and p.shared)
+  );
+drop policy if exists "commenter une collection visible" on public.car_comments;
+create policy "commenter une collection visible" on public.car_comments
+  for insert to authenticated with check (
+    owner_id = (select auth.uid())
+    or exists (select 1 from public.profiles p where p.id = car_comments.owner_id and p.shared)
+  );
+drop policy if exists "retirer son commentaire ou ceux de sa collection" on public.car_comments;
+create policy "retirer son commentaire ou ceux de sa collection" on public.car_comments
+  for delete to authenticated using (
+    author_id = (select auth.uid()) or owner_id = (select auth.uid()) or (select public.is_admin())
+  );
+drop policy if exists "suivre le changement de version" on public.car_comments;
+create policy "suivre le changement de version" on public.car_comments
+  for update to authenticated using (owner_id = (select auth.uid())) with check (owner_id = (select auth.uid()));
+
+drop policy if exists "réactions lisibles avec la collection" on public.car_reactions;
+create policy "réactions lisibles avec la collection" on public.car_reactions
+  for select to authenticated using (
+    owner_id = (select auth.uid()) or (select public.is_admin())
+    or exists (select 1 from public.profiles p where p.id = car_reactions.owner_id and p.shared)
+  );
+drop policy if exists "réagir à une collection visible" on public.car_reactions;
+create policy "réagir à une collection visible" on public.car_reactions
+  for insert to authenticated with check (
+    user_id = (select auth.uid()) and owner_id <> (select auth.uid())
+    and exists (select 1 from public.profiles p where p.id = car_reactions.owner_id and p.shared)
+  );
+drop policy if exists "retirer sa réaction" on public.car_reactions;
+create policy "retirer sa réaction" on public.car_reactions
+  for delete to authenticated using (user_id = (select auth.uid()));
+drop policy if exists "suivre le changement de version" on public.car_reactions;
+create policy "suivre le changement de version" on public.car_reactions
+  for update to authenticated using (owner_id = (select auth.uid())) with check (owner_id = (select auth.uid()));

@@ -1102,3 +1102,27 @@ a.completion-ring, button.completion-ring { cursor: pointer; }
 .free-choice img { width: 100%; aspect-ratio: 16 / 10; object-fit: cover; margin-bottom: 6px; }
 .free-choice .free-name { display: block; padding-inline: 8px; color: var(--ink); font-size: .8125rem; font-weight: 700; overflow-wrap: anywhere; }
 .free-choice small { display: block; padding-inline: 8px; color: var(--muted); font-size: .75rem; overflow-wrap: anywhere; }
+
+/* Commentaires et réactions */
+.car-talk { margin-top: 32px; }
+.car-talk h2 { margin-bottom: 12px; }
+.reactions { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+.reaction { display: inline-flex; align-items: center; gap: 6px; min-height: 36px; border: 1px solid var(--hairline-strong); padding: 4px 12px; background: none; color: var(--ink); font: 700 .875rem var(--font); }
+button.reaction { cursor: pointer; }
+.reaction[aria-pressed="true"] { border-color: var(--primary); color: var(--accent-text); }
+.reaction svg { width: 16px; height: 16px; }
+.comments { margin: 0 0 16px; padding: 0; list-style: none; }
+.comment { padding-block: 12px; border-top: 1px solid var(--hairline); }
+.comment-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 8px; margin: 0 0 4px; font-size: .875rem; }
+.comment-head strong { color: var(--ink); }
+.comment-head span { color: var(--muted); font-size: .8125rem; }
+.comment-head .text-link { margin-left: auto; font-size: .6875rem; }
+.comment-body { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; }
+.comment-form { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
+.comment-form textarea { display: block; resize: vertical; }
+.friends-link { position: relative; }
+.friends-badge { position: absolute; top: -4px; right: -4px; min-width: 18px; height: 18px; border-radius: 9px; padding-inline: 4px; background: var(--primary); color: #fff; font: 700 .6875rem/18px var(--font); text-align: center; }
+.new-comments { margin-bottom: 40px; }
+.new-comments ul { margin: 12px 0 0; padding: 0; list-style: none; }
+.new-comments li { padding-block: 12px; border-top: 1px solid var(--hairline); }
+.new-comments li p { margin: 4px 0 0; color: var(--muted); font-size: .875rem; overflow-wrap: anywhere; }

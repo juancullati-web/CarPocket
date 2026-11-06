@@ -797,6 +797,125 @@ function statusChoice(car) {
   return `<div class="status-choice" role="group" aria-label="Ma relation avec cette voiture">${buttons}</div>`;
 }
 
+/* Commentaires et réactions : attachés à la voiture d'une collection, pas au catalogue. */
+const talk = { key: null, comments: [], reactions: [], draft: "", error: "" };
+const REACTIONS = {
+  like: ["J'aime", '<path d="M12 20l-7-7a4.6 4.6 0 0 1 7-6 4.6 4.6 0 0 1 7 6z"/>'],
+  want: ["Je veux la même", '<path d="M12 3l2.8 5.9 6.2.8-4.5 4.4 1.1 6.4-5.6-3.1-5.6 3.1 1.1-6.4L3 9.7l6.2-.8z"/>'],
+};
+
+/** La voiture ouverte, si elle appartient bien à la collection regardée. */
+function talkContext(car) {
+  if (!state.user || !car) return null;
+  const owner = state.viewing?.id || state.user.id;
+  if (!state.items.some((item) => item.title === titleOf(car))) return null;
+  return { owner, title: titleOf(car), key: `${owner}|${titleOf(car)}`, mine: owner === state.user.id };
+}
+
+function talkSlot(car) {
+  const context = talkContext(car);
+  if (!context) return "";
+  return `<section class="car-talk" id="car-talk" data-owner="${esc(context.owner)}" data-title="${esc(context.title)}">${talkHtml(context)}</section>`;
+}
+
+function talkHtml(context) {
+  if (talk.key !== context.key) return `<h2 class="display-sm">Commentaires</h2><p class="notes-help">Chargement…</p>`;
+  const counts = (kind) => talk.reactions.filter((row) => row.kind === kind);
+  const reactions = Object.entries(REACTIONS).map(([kind, [label, icon]]) => {
+    const rows = counts(kind);
+    const mine = rows.some((row) => row.user_id === state.user.id);
+    return context.mine
+      ? (rows.length ? `<span class="reaction" data-tip="${esc(label)}">${photoIcon(icon)} ${rows.length}</span>` : "")
+      : `<button type="button" class="reaction" data-reaction="${kind}" aria-pressed="${mine}" aria-label="${esc(label)}" data-tip="${esc(label)}">${photoIcon(icon, mine ? "currentColor" : "none")} ${rows.length}</button>`;
+  }).join("");
+  const list = talk.comments.map((comment) => {
+    const removable = comment.author_id === state.user.id || context.mine || isAdmin();
+    const day = new Date(comment.created_at).toLocaleDateString("fr-FR", { day: "numeric", month: "short", year: "numeric" });
+    return `<li class="comment">
+      <p class="comment-head"><strong>${esc(displayName(comment.author_name))}</strong> <span>${esc(day)}</span>${removable ? `<button type="button" class="text-link quiet" data-remove-comment="${esc(comment.id)}">Supprimer</button>` : ""}</p>
+      <p class="comment-body">${esc(comment.body)}</p>
+    </li>`;
+  }).join("");
+  return `<h2 class="display-sm">Commentaires</h2>
+    ${reactions ? `<div class="reactions">${reactions}</div>` : ""}
+    ${list ? `<ol class="comments">${list}</ol>` : `<p class="notes-help">Pas encore de commentaire.</p>`}
+    <form class="comment-form" id="comment-form">
+      <label class="label" for="comment-text">Ton commentaire</label>
+      <textarea id="comment-text" rows="3" maxlength="1000" placeholder="Une question, un souvenir, un avis…">${esc(talk.draft)}</textarea>
+      <p class="form-error" id="comment-error" role="alert"${talk.error ? "" : " hidden"}>${esc(talk.error)}</p>
+      <button type="submit" class="button button-primary" id="comment-submit">Publier</button>
+    </form>`;
+}
+
+function paintTalk(context) {
+  const slot = el("car-talk");
+  if (slot && slot.dataset.owner === context.owner && slot.dataset.title === context.title) slot.innerHTML = talkHtml(context);
+}
+
+async function loadTalk(context) {
+  const [comments, reactions] = await Promise.all([
+    db.from("car_comments").select("id, author_id, author_name, body, created_at").eq("owner_id", context.owner).eq("title", context.title).order("created_at"),
+    db.from("car_reactions").select("user_id, kind").eq("owner_id", context.owner).eq("title", context.title),
+  ]);
+  if (comments.error || reactions.error) {
+    const slot = el("car-talk");
+    if (slot && talk.key !== context.key) slot.innerHTML = `<h2 class="display-sm">Commentaires</h2><p class="notes-help">Les commentaires n'ont pas pu être chargés.</p>`;
+    return;
+  }
+  if (talk.key !== context.key) {
+    talk.draft = "";
+    talk.error = "";
+  }
+  talk.key = context.key;
+  talk.comments = comments.data;
+  talk.reactions = reactions.data;
+  paintTalk(context);
+}
+
+const currentTalk = () => {
+  const slug = decodeURIComponent(location.hash.slice(1));
+  return talkContext(carBySlug(slug) || catalogCar(slug));
+};
+
+async function submitComment(event) {
+  event.preventDefault();
+  const context = currentTalk();
+  const body = el("comment-text").value.trim();
+  if (!context || !body) return;
+  el("comment-submit").disabled = true;
+  const { data, error } = await db.from("car_comments")
+    .insert({ owner_id: context.owner, title: context.title, body })
+    .select("id, author_id, author_name, body, created_at").single();
+  if (error) {
+    talk.draft = body;
+    talk.error = "Ton commentaire n'a pas pu être publié. Réessaie.";
+    paintTalk(context);
+    return;
+  }
+  talk.comments = [...talk.comments, data];
+  talk.draft = "";
+  talk.error = "";
+  paintTalk(context);
+}
+
+async function toggleReaction(kind) {
+  const context = currentTalk();
+  if (!context) return;
+  const mine = talk.reactions.some((row) => row.kind === kind && row.user_id === state.user.id);
+  const table = db.from("car_reactions");
+  const { error } = mine
+    ? await table.delete().eq("owner_id", context.owner).eq("title", context.title).eq("user_id", state.user.id).eq("kind", kind)
+    : await table.insert({ owner_id: context.owner, title: context.title, kind });
+  if (error) {
+    showToast("Ta réaction n'a pas pu être enregistrée. Réessaie.");
+    return;
+  }
+  talk.reactions = mine
+    ? talk.reactions.filter((row) => !(row.kind === kind && row.user_id === state.user.id))
+    : [...talk.reactions, { user_id: state.user.id, kind }];
+  paintTalk(context);
+}
+
 function notesHtml(car) {
   if (canEdit() && inOwnDeck(car)) {
     return `<section class="car-notes">
@@ -847,6 +966,7 @@ function detailHtml(car) {
           ${statusChoice(car)}
           ${summaryHtml(car)}
           ${notesHtml(car)}
+          ${talkSlot(car)}
           ${isAdmin() ? `<div class="actions"><a class="text-link" href="https://github.com/juancullati-web/CarPocket/edit/main/data/cars/${esc(car.slug)}.json" target="_blank" rel="noopener" data-tip="Corriger cette fiche sur GitHub">Corriger cette fiche ›</a>
             <button type="button" class="text-link quiet" data-remove-sheet="${esc(titleOf(car))}" data-tip="Effacer cette fiche pour tous les comptes">Supprimer la fiche pour tout le monde</button></div>` : ""}
         </div>
@@ -1098,8 +1218,12 @@ function renderRoute() {
   el("accounts").hidden = !accounts;
   document.title = car ? `${car.name} · CarPocket` : compareCars ? "Comparaison · CarPocket" : accounts ? "Comptes · CarPocket" : profile ? "Mon profil · CarPocket" : discover ? "Collections de mes amis · CarPocket" : "CarPocket";
   // Une actualisation ne doit pas effacer une note en cours de saisie.
-  const typing = document.activeElement?.id === "car-notes" && document.activeElement.dataset.slug === car?.slug;
+  const active = document.activeElement;
+  const typing = car && el("detail").contains(active)
+    && ((active.id === "car-notes" && active.dataset.slug === car.slug) || active.id === "comment-text");
   if (car && !typing) el("detail").innerHTML = detailHtml(car);
+  const context = car ? talkContext(car) : null;
+  if (context && talk.key !== context.key) loadTalk(context);
   if (compareCars) el("compare").innerHTML = compareHtml(compareCars);
   if (accounts) renderAccounts();
   if (profile) renderProfile();
@@ -1740,6 +1864,9 @@ async function replaceCar(car, name, thumb) {
     showToast(error.code === "23505" ? "Cette version est déjà dans ton deck." : "La version n'a pas pu être changée. Réessaie.");
     return;
   }
+  // Les commentaires et réactions suivent la voiture avant que l'ancienne fiche disparaisse.
+  await Promise.all(["car_comments", "car_reactions"].map((table) =>
+    db.from(table).update({ title: name }).eq("owner_id", state.user.id).eq("title", old.title)));
   const removed = await db.from("deck_items").delete().eq("user_id", state.user.id).eq("title", old.title);
   if (removed.error) {
     // L'ancienne fiche reste : mieux vaut un doublon visible qu'une perte. Les photos ne sont pas effacées.
@@ -1834,6 +1961,7 @@ async function enterApp(session) {
   showroom.key = "";
   profileRendered = false;
   renderAll();
+  refreshCommentBadge();
   if (pendingItems().length) poll();
 }
 
@@ -2376,13 +2504,57 @@ async function viewCollection(userId) {
 }
 
 /* Découvrir les collections des autres */
+/* Nouveaux commentaires reçus : mémorisés sur cet appareil. */
+const seenKey = () => `commentsSeen.${state.user.id}`;
+
+async function loadNewComments() {
+  if (!state.user) return [];
+  const { data, error } = await db.from("car_comments")
+    .select("id, title, author_name, body, created_at")
+    .eq("owner_id", state.user.id)
+    .neq("author_id", state.user.id)
+    .gt("created_at", load(seenKey(), "1970-01-01T00:00:00Z"))
+    .order("created_at", { ascending: false })
+    .limit(20);
+  return error ? [] : data;
+}
+
+async function refreshCommentBadge() {
+  const count = (await loadNewComments()).length;
+  const badge = el("friends-badge");
+  badge.textContent = count > 19 ? "20+" : String(count);
+  badge.hidden = !count;
+  el("friends-link").setAttribute("aria-label", count
+    ? `Voir les collections de mes amis, ${plural(count, "nouveau commentaire").replace("nouveau commentaires", "nouveaux commentaires")}`
+    : "Voir les collections de mes amis");
+}
+
+function newCommentsHtml(comments) {
+  if (!comments.length) return "";
+  const catalog = new Map(state.catalog.map((car) => [titleOf(car), car]));
+  return `<section class="new-comments">
+    <h2 class="display-sm">Nouveaux commentaires sur tes voitures</h2>
+    <ul>${comments.map((comment) => {
+      const car = catalog.get(comment.title);
+      return `<li><a href="#${esc(car?.slug || "")}"><strong>${esc(displayName(comment.author_name))}</strong> sur ${esc(car?.name || displayTitle(comment.title))}</a><p>${esc(comment.body.slice(0, 140))}</p></li>`;
+    }).join("")}</ul>
+  </section>`;
+}
+
 async function renderDiscover() {
   const box = el("discover");
   box.innerHTML = `<section class="compare-head"><div class="wrap">
       <a class="back" href="#" data-leave-viewing>‹ Mon deck</a>
       <h1 class="display-xl">Les collections de mes amis</h1>
     </div></section>
-    <section class="section"><div class="wrap"><p class="count" id="discover-status">Chargement des collections…</p><div class="people-grid" id="people-grid"></div></div></section>`;
+    <section class="section"><div class="wrap"><div id="new-comments"></div><p class="count" id="discover-status">Chargement des collections…</p><div class="people-grid" id="people-grid"></div></div></section>`;
+  loadNewComments().then((comments) => {
+    const slot = el("new-comments");
+    if (slot) slot.innerHTML = newCommentsHtml(comments);
+    // Vus : la pastille disparaît, et ils restent listés jusqu'au prochain passage ici.
+    save(seenKey(), new Date().toISOString());
+    refreshCommentBadge();
+  });
   const [{ data: people, error }, { data: items, error: itemsError }] = await Promise.all([
     db.from("profiles").select("id, username, avatar, shared").eq("shared", true).neq("id", state.user.id).order("username"),
     db.from("deck_items").select("user_id, title, main_photo, added_at, hidden_photos, free_photos").order("added_at", { ascending: false }),
@@ -2450,6 +2622,28 @@ el("detail").addEventListener("click", (event) => {
   }
   if (event.target.closest("[data-edit-specs]") && car) {
     openSpecsEditor(car);
+    return;
+  }
+  const reaction = event.target.closest("[data-reaction]");
+  if (reaction) {
+    toggleReaction(reaction.dataset.reaction);
+    return;
+  }
+  const removeComment = event.target.closest("[data-remove-comment]");
+  if (removeComment) {
+    const id = removeComment.dataset.removeComment;
+    askConfirm({
+      title: "Supprimer ce commentaire ?",
+      text: "Il disparaîtra pour tout le monde.",
+      label: "Supprimer",
+      action: async () => {
+        const { error } = await db.from("car_comments").delete().eq("id", id);
+        if (error) throw new Error("Ce commentaire n'a pas pu être supprimé. Réessaie.");
+        talk.comments = talk.comments.filter((comment) => comment.id !== id);
+        const context = currentTalk();
+        if (context) paintTalk(context);
+      },
+    });
     return;
   }
   const chosenStatus = event.target.closest("[data-status]");
@@ -2567,7 +2761,11 @@ async function flushNotes() {
   if (status) status.textContent = error ? "Note non enregistrée : vérifie ta connexion et réessaie." : "Enregistré.";
 }
 
+el("detail").addEventListener("submit", (event) => {
+  if (event.target.id === "comment-form") submitComment(event);
+});
 el("detail").addEventListener("input", (event) => {
+  if (event.target.id === "comment-text") talk.draft = event.target.value;
   if (event.target.id !== "car-notes") return;
   const car = carBySlug(event.target.dataset.slug);
   if (!car) return;

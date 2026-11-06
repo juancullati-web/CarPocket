@@ -38,6 +38,10 @@ Tape directement le nom, par exemple « Ferrari 488 Pista », ou choisis la marq
 
 Sur une fiche de ta collection, **Chercher une photo libre** (bouton sur une fiche sans photo, icône loupe sinon) propose des images de Wikimedia Commons sous licence libre, dont le nom cite la voiture. Vérifie qu'elle montre la bonne voiture, puis choisis-la. Son auteur et sa licence s'affichent sur la fiche.
 
+## Commentaires et réactions
+
+Sur la fiche d'une voiture de ta collection ou de celle d'un ami, écris un commentaire ou réagis. Une pastille sur l'icône des amis signale les nouveaux commentaires reçus. Chacun peut supprimer les siens, et le propriétaire ceux de sa collection. Retirer une voiture supprime aussi ses commentaires.
+
 ## Statut d'une voiture
 
 Sur la fiche, indique si la voiture est **possédée**, **essayée** ou **rêvée**. Un second appui retire le statut. Le statut s'affiche sur la carte, et le filtre **Statut** trie ton deck.
