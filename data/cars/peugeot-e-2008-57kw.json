@@ -5,7 +5,7 @@
   "variant": null,
   "example": false,
   "added": "2026-11-05T23:28:45+00:00",
-  "updated": "2026-11-05T23:28:45Z",
+  "updated": "2026-11-06T23:58:34+00:00",
   "summary": "",
   "summary_lang": "",
   "summary_url": "",
@@ -23,5 +23,14 @@
     }
   },
   "overrides": {},
-  "photos": []
+  "photos": [
+    {
+      "file": "photos/peugeot-e-2008-57kw/1.jpg",
+      "thumb": "photos/peugeot-e-2008-57kw/1-thumb.jpg",
+      "author": "Alexander Migl",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Peugeot_e-2008_Automesse_Ludwigsburg_2022_1X7A5981.jpg"
+    }
+  ]
 }
