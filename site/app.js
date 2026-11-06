@@ -2504,16 +2504,24 @@ async function viewCollection(userId) {
 }
 
 /* Découvrir les collections des autres */
-/* Nouveaux commentaires reçus : mémorisés sur cet appareil. */
-const seenKey = () => `commentsSeen.${state.user.id}`;
+/* Nouveaux commentaires reçus : ce qui est vu est commun à tous les appareils du compte. */
+async function commentsSeenAt() {
+  const { data } = await db.from("user_state").select("comments_seen_at").eq("user_id", state.user.id).maybeSingle();
+  return data?.comments_seen_at || "1970-01-01T00:00:00Z";
+}
+
+async function markCommentsSeen() {
+  await db.from("user_state").upsert({ user_id: state.user.id, comments_seen_at: new Date().toISOString() });
+}
 
 async function loadNewComments() {
   if (!state.user) return [];
+  const seen = await commentsSeenAt();
   const { data, error } = await db.from("car_comments")
     .select("id, title, author_name, body, created_at")
     .eq("owner_id", state.user.id)
     .neq("author_id", state.user.id)
-    .gt("created_at", load(seenKey(), "1970-01-01T00:00:00Z"))
+    .gt("created_at", seen)
     .order("created_at", { ascending: false })
     .limit(20);
   return error ? [] : data;
@@ -2548,11 +2556,11 @@ async function renderDiscover() {
       <h1 class="display-xl">Les collections de mes amis</h1>
     </div></section>
     <section class="section"><div class="wrap"><div id="new-comments"></div><p class="count" id="discover-status">Chargement des collections…</p><div class="people-grid" id="people-grid"></div></div></section>`;
-  loadNewComments().then((comments) => {
+  loadNewComments().then(async (comments) => {
     const slot = el("new-comments");
     if (slot) slot.innerHTML = newCommentsHtml(comments);
-    // Vus : la pastille disparaît, et ils restent listés jusqu'au prochain passage ici.
-    save(seenKey(), new Date().toISOString());
+    // Vus : la pastille disparaît partout, et ils restent listés jusqu'au prochain passage ici.
+    await markCommentsSeen();
     refreshCommentBadge();
   });
   const [{ data: people, error }, { data: items, error: itemsError }] = await Promise.all([
@@ -2785,6 +2793,9 @@ el("detail").addEventListener("focusout", (event) => {
   if (event.target.id === "car-notes") flushNotes();
 });
 window.addEventListener("pagehide", flushNotes);
+document.addEventListener("visibilitychange", () => {
+  if (!document.hidden && state.user) refreshCommentBadge();
+});
 
 /* Chercher une photo libre sur Wikimedia Commons : la personne choisit ce qui correspond. */
 const FREE_LICENSE = /^(cc[ -]?by|cc0|cc-zero|public domain|pd\b|pdm|fal\b|attribution)/i;

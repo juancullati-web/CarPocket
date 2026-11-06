@@ -341,3 +341,16 @@ create policy "retirer sa réaction" on public.car_reactions
 drop policy if exists "suivre le changement de version" on public.car_reactions;
 create policy "suivre le changement de version" on public.car_reactions
   for update to authenticated using (owner_id = (select auth.uid())) with check (owner_id = (select auth.uid()));
+
+-- Ce qu'un compte a déjà vu, commun à tous ses appareils et lisible par lui seul.
+create table if not exists public.user_state (
+  user_id uuid primary key default auth.uid() references public.profiles (id) on delete cascade,
+  comments_seen_at timestamptz not null default now()
+);
+alter table public.user_state enable row level security;
+revoke all on public.user_state from anon, authenticated;
+grant select on public.user_state to authenticated;
+grant insert (user_id, comments_seen_at), update (user_id, comments_seen_at) on public.user_state to authenticated;
+drop policy if exists "son propre état" on public.user_state;
+create policy "son propre état" on public.user_state
+  for all to authenticated using (user_id = (select auth.uid())) with check (user_id = (select auth.uid()));
