@@ -385,10 +385,22 @@ create policy "dossiers lisibles avec la collection" on public.deck_folders
   );
 drop policy if exists "créer ses dossiers" on public.deck_folders;
 create policy "créer ses dossiers" on public.deck_folders
-  for insert to authenticated with check (
-    user_id = (select auth.uid())
-    and (select count(*) from public.deck_folders f where f.user_id = (select auth.uid())) < 50
-  );
+  for insert to authenticated with check (user_id = (select auth.uid()));
+
+-- La limite passe par un déclencheur : compter dans la règle d'accès la ferait boucler sur elle-même.
+create or replace function public.deck_folders_limit()
+returns trigger language plpgsql security definer set search_path = '' as $$
+begin
+  if (select count(*) from public.deck_folders where user_id = new.user_id) >= 50 then
+    raise exception '50 dossiers au maximum';
+  end if;
+  return new;
+end;
+$$;
+revoke all on function public.deck_folders_limit() from public, anon, authenticated;
+drop trigger if exists deck_folders_limit on public.deck_folders;
+create trigger deck_folders_limit before insert on public.deck_folders
+  for each row execute function public.deck_folders_limit();
 drop policy if exists "renommer ses dossiers" on public.deck_folders;
 create policy "renommer ses dossiers" on public.deck_folders
   for update to authenticated using (user_id = (select auth.uid())) with check (user_id = (select auth.uid()));
