@@ -2131,6 +2131,7 @@ async function replaceCar(car, name, thumb) {
     return;
   }
   state.items = [data, ...state.items.filter((item) => item.title !== old.title)];
+  releaseSheet(old.title);
   setCompare(state.compare.filter((slug) => slug !== car.slug));
   const known = state.catalog.find((entry) => titleOf(entry) === name);
   location.hash = known ? known.slug : "";
@@ -2567,6 +2568,12 @@ async function commitRemoval() {
   }
   const ownPhotos = removal.item.custom_photos || [];
   if (ownPhotos.length) await db.storage.from(PHOTO_BUCKET).remove(ownPhotos);
+  releaseSheet(removal.item.title);
+}
+
+/** Le serveur retire la fiche si plus personne ne l'a. Un échec n'empêche rien : l'admin la retrouvera dans sa liste. */
+function releaseSheet(title) {
+  server("release-sheet", { title }).catch(() => {});
 }
 
 function undoRemoval() {

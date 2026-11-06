@@ -40,4 +40,6 @@ Dates d'une fiche : `updated` dans `data/cars` change seulement si une valeur ch
 
 Administration (`site/admin.js`, routes `#admin:…` et `#comptes`) : l'accueil du compte admin, qui n'a pas de deck. Fiches, indicateurs, réserve, comptes. Les collections n'y servent qu'à compter. Une correction de fiche passe par l'action `edit-sheet`, le workflow `edit-car.yml` et `scripts/edit_car.py` : elle va dans `overrides` et ne touche jamais les valeurs d'une collection.
 
+Une fiche que plus personne n'a est retirée par l'action `release-sheet`, sauf si elle porte une correction de l'admin ou `reserve: true`. Le serveur revérifie toujours qu'elle n'est dans aucun deck.
+
 Tests : `python3 -m unittest discover -s tests`. Aperçu avec suppression : `python3 scripts/serve.py`.

@@ -795,6 +795,7 @@
     state.items = add
       ? [result.data, ...state.items]
       : state.items.filter((item) => item.title !== car.title);
+    if (!add) releaseSheet(car.title);
     void wanted;
   }
 

@@ -60,13 +60,27 @@
     orphan: (car) => inDecks(car) === 0,
   };
 
+  /* Les fiches de la réserve attendent leur booster : elles n'ont pas leur place dans cette liste. */
+  const sheets = () => state.catalog.filter((car) => !car.reserve);
+  const isCorrected = (car) => Object.values(car.specs || {}).some((spec) => spec.corrected);
+  const removable = () => sheets().filter((car) => inDecks(car) === 0 && !isCorrected(car));
+
+  function purgeBar() {
+    const bar = el("admin-purge");
+    const count = removable().length;
+    bar.hidden = list.filter !== "orphan" || !count;
+    bar.innerHTML = count ? `<button type="button" class="button button-secondary" id="admin-purge-button">Supprimer ${plural(count, "fiche")} sans deck</button>
+      <span>Celles que tu as corrigées restent.</span>` : "";
+  }
+
   function sheetRows() {
     const query = list.query.trim().toLowerCase();
-    const cars = state.catalog
+    const cars = sheets()
       .filter(FILTERS[list.filter])
       .filter((car) => !query || `${car.name} ${car.brand}`.toLowerCase().includes(query))
       .sort(SORTS[list.sort]);
-    el("admin-count").textContent = `${plural(cars.length, "fiche")} sur ${state.catalog.length}`;
+    el("admin-count").textContent = `${plural(cars.length, "fiche")} sur ${sheets().length}`;
+    purgeBar();
     el("admin-rows").innerHTML = cars.length ? cars.map((car) => {
       const photo = car.photos?.[0];
       const { percent } = completeness(car);
@@ -95,6 +109,7 @@
           <select id="admin-sort">${options([["name", "Nom"], ["decks", "Les plus présentes"], ["emptiest", "Les moins remplies"], ["recent", "Mises à jour récentes"]], list.sort)}</select></label>
       </div>
       <p class="admin-count" id="admin-count" role="status"></p>
+      <div class="admin-purge" id="admin-purge" hidden></div>
       <ul class="admin-rows" id="admin-rows"></ul>
     </div></section>`;
   }
@@ -104,7 +119,7 @@
   }
 
   function figuresHtml() {
-    const cars = state.catalog;
+    const cars = sheets();
     const fill = cars.length ? Math.round(cars.reduce((sum, car) => sum + completeness(car).percent, 0) / cars.length) : 0;
     const noPhoto = cars.filter(FILTERS.nophoto).length;
     const orphans = cars.filter(FILTERS.orphan).length;
@@ -190,6 +205,25 @@
     </fieldset>`).join("");
     el("sheet-dialog").showModal();
   }
+  /* Le retrait groupé rattrape ce que le nettoyage automatique a manqué (compte supprimé, robot en échec). */
+  box().addEventListener("click", (event) => {
+    if (!event.target.closest("#admin-purge-button")) return;
+    const cars = removable();
+    askConfirm({
+      title: `Supprimer ${plural(cars.length, "fiche")} ?`,
+      text: "Ces fiches ne sont dans aucun deck. Elles disparaissent avec leurs photos. Quelqu'un pourra les rajouter, le robot les recréera.",
+      label: "Supprimer",
+      action: async () => {
+        // Le serveur revérifie chaque fiche : il ne retire que celles que personne n'a.
+        const results = await Promise.allSettled(cars.map((car) => server("release-sheet", { title: titleOf(car) })));
+        const started = results.filter((result) => result.status === "fulfilled" && result.value.removing).length;
+        const startedTitles = new Set(cars.filter((_, index) => results[index].status === "fulfilled" && results[index].value.removing).map(titleOf));
+        state.catalog = state.catalog.filter((car) => !startedTitles.has(titleOf(car)));
+        sheetRows();
+        showToast(`${plural(started, "suppression")} lancée${started > 1 ? "s" : ""}. Le catalogue sera à jour après la publication.`);
+      },
+    });
+  });
   document.addEventListener("click", (event) => {
     const button = event.target.closest("[data-edit-sheet]");
     if (button && isAdmin()) openSheetEditor(button.dataset.editSheet);

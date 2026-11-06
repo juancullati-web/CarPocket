@@ -161,7 +161,27 @@ async function authFailure(response: Response, fallback: string): Promise<Answer
   return { status: 400, body: { error: `${fallback} (code : ${code})` } };
 }
 
+/** Une fiche que plus personne n'a disparaît, sauf si l'admin l'a corrigée ou si elle attend dans la réserve. */
+async function releaseSheet(title: string): Promise<Answer> {
+  const rows = await fetch(`${SUPABASE_URL}/rest/v1/deck_items?title=eq.${encodeURIComponent(title)}&select=title&limit=1`, { headers: serverHeaders() });
+  if (!rows.ok) return { status: 502, body: { error: "La vérification a échoué." } };
+  if ((await rows.json()).length) return { status: 200, body: { kept: "in-deck" } };
+  const response = await fetch(`https://carpocket.inzight.fr/cars.json?t=${Date.now()}`);
+  if (!response.ok) return { status: 502, body: { error: "Le catalogue est injoignable." } };
+  const cars: { slug: string; name: string; wikipedia_title?: string; reserve?: boolean; specs?: Record<string, { corrected?: boolean }> }[] = await response.json();
+  const car = cars.find((entry) => (entry.wikipedia_title || entry.name) === title);
+  if (!car) return { status: 200, body: { kept: "unknown" } };
+  if (car.reserve) return { status: 200, body: { kept: "reserve" } };
+  if (Object.values(car.specs ?? {}).some((spec) => spec.corrected)) return { status: 200, body: { kept: "corrected" } };
+  const robot = await runRobot("remove-car.yml", car.slug);
+  return robot.ok ? { status: 200, body: { removing: true } } : { status: 502, body: { error: "Le robot n'a pas pu être lancé." } };
+}
+
 async function memberAction(user: { id: string }, action: string, input: Record<string, unknown>): Promise<Answer | null> {
+  if (action === "release-sheet") {
+    if (!validTitle(input.title)) return { status: 400, body: { error: "Nom de voiture invalide." } };
+    return await releaseSheet(input.title);
+  }
   if (action === "request-car") {
     if (!validTitle(input.title)) return { status: 400, body: { error: "Nom de voiture invalide." } };
     if (!(await inDeck(user.id, input.title))) return { status: 403, body: { error: "Cette voiture n'est pas dans ta collection." } };

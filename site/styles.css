@@ -1206,6 +1206,8 @@ button.reaction { cursor: pointer; }
 .admin-tabs a:hover { opacity: 1; }
 .admin-tabs a[aria-current="page"] { border-color: var(--primary); opacity: 1; }
 .admin-count { margin: 20px 0 8px; color: var(--muted); font-size: .875rem; }
+.admin-purge { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin: 4px 0 12px; }
+.admin-purge span { color: var(--muted); font-size: .875rem; }
 .admin-rows { margin: 0; padding: 0; list-style: none; }
 .admin-row { display: grid; grid-template-columns: 72px minmax(0, 1fr) auto; gap: 14px; align-items: center; padding: 12px 0; border-top: 1px solid var(--hairline); }
 .admin-row-photo { display: block; width: 72px; height: 48px; background: var(--hairline); }
