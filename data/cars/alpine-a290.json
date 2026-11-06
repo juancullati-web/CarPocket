@@ -1,0 +1,35 @@
+{
+  "slug": "alpine-a290",
+  "name": "Alpine A290",
+  "brand": "Alpine",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-06T13:58:42+00:00",
+  "summary": "",
+  "summary_lang": "",
+  "summary_url": "",
+  "wikipedia_title": "Alpine A290",
+  "specs": {
+    "power": {
+      "value": "130–160 kW",
+      "from_text": false,
+      "source": "OVD"
+    },
+    "weight": {
+      "value": "1554 kg (en ordre de marche)",
+      "from_text": false,
+      "source": "OVD"
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/alpine-a290/1.jpg",
+      "thumb": "photos/alpine-a290/1-thumb.jpg",
+      "author": "Alexander Migl",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Alpine_A290_GTS_DSC_9346.jpg"
+    }
+  ]
+}
