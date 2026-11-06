@@ -51,7 +51,27 @@ class ApplyChanges(unittest.TestCase):
         self.assertEqual(c["updated"], "2026-01-01")
 
 
+class AddPhoto(unittest.TestCase):
+    def test_refuses_an_odd_title(self):
+        for title in ("Tesla.jpg", "File:a|b.jpg", "File:../x.svg", "File:a.gif"):
+            with self.assertRaises(edit_car.Refused):
+                edit_car.add_photo({"name": "x"}, "x", title)
+
+    def test_refuses_a_sheet_that_has_a_photo(self):
+        with self.assertRaises(edit_car.Refused):
+            edit_car.add_photo({"name": "x", "photos": [{"file": "a"}]}, "x", "File:a.jpg")
+
+    def test_tells_an_exact_photo_from_a_model_photo(self):
+        self.assertTrue(edit_car.cites_exact_name("Tesla Model 3", "File:2023 Tesla Model 3 RWD.jpg"))
+        self.assertTrue(edit_car.cites_exact_name("Peugeot e-2008 (57Kw)", "File:Peugeot e-2008 GT.jpg"))
+        self.assertFalse(edit_car.cites_exact_name("Tesla Model 3 Standard RWD", "File:2023 Tesla Model 3 RWD.jpg"))
+
+
 class Edit(unittest.TestCase):
+    def test_needs_a_change_or_a_photo(self):
+        with self.assertRaises(edit_car.Refused):
+            edit_car.edit("ferrari-f40", {}, "")
+
     def test_a_slug_never_serves_as_a_path(self):
         for slug in ("../../etc/passwd", "", "a/b", "Ferrari F40"):
             with self.assertRaises(edit_car.Refused):

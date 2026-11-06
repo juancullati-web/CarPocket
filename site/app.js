@@ -1213,6 +1213,7 @@ function detailHtml(car) {
           ${notesHtml(car)}
           ${talkSlot(car)}
           ${isAdmin() ? `<div class="actions"><button type="button" class="text-link" data-edit-sheet="${esc(car.slug)}" data-tip="Corriger les valeurs de cette fiche pour tout le monde">Corriger cette fiche ›</button>
+            ${catalogCar(car.slug)?.photos?.length ? "" : `<button type="button" class="text-link" data-add-photo="${esc(car.slug)}" data-tip="Choisir une photo libre pour cette fiche">Ajouter une photo ›</button>`}
             <button type="button" class="text-link quiet" data-remove-sheet="${esc(titleOf(car))}" data-tip="Effacer cette fiche pour tous les comptes">Supprimer la fiche pour tout le monde</button></div>` : ""}
         </div>
         <div>
@@ -1230,6 +1231,7 @@ function detailHtml(car) {
           ${hasTextValues ? `<p class="legend">* Valeur extraite du texte de l'article, à vérifier. Elle peut concerner une autre version du modèle.</p>` : ""}
           ${officialSources(car)}
           ${car.customSpecs ? `<p class="legend">« Modifié » : valeur changée dans cette collection. Le catalogue n'a pas changé.</p>` : ""}
+          ${car.photos.some((photo) => photo.scope === "model") ? `<p class="legend">Photo du modèle, pas forcément de cette version.</p>` : ""}
           ${sheetDates(car)}
         </div>
       </div>
@@ -1446,7 +1448,7 @@ function flyToCompareBar(source, from, slug) {
 
 /* Navigation */
 function renderRoute() {
-  if (isAdmin() && !state.viewing && !location.hash) history.replaceState(null, "", "#admin:fiches");
+  if (isAdmin() && !state.viewing && !location.hash) history.replaceState(null, "", "#admin:indicateurs");
   const hash = decodeURIComponent(location.hash.slice(1));
   let compareCars = null;
   if (hash.startsWith("comparer:")) {
@@ -3097,8 +3099,8 @@ const FREE_LICENSE = /^(cc[ -]?by|cc0|cc-zero|public domain|pd\b|pdm|fal\b|attri
 const NOT_A_CAR_PHOTO = /logo|icon|badge|emblem|flag|diagram|schema|map\b|sketch|drawing|blueprint|\.svg|poster|stamp|replica|concept|tribute|homage|hommage|restomod|\btoy\b|lego|scale model|bburago|diecast|die-cast|maquette|miniature|\b1[ _:]18\b|\b1[ _:]43\b|wheel|\brim\b|instrument|interior|cockpit|dash|seat|steering|engine|motor|detail|tail ?light|headlight|exhaust|mirror|nameplate|trunk/i;
 const plainText = (html) => new DOMParser().parseFromString(html || "", "text/html").body.textContent.replace(/\s+/g, " ").trim();
 
-async function searchFreePhotos(car) {
-  const name = titleOf(car).split("#")[0].replace(/\s*\(.*?\)/g, "");
+async function searchFreePhotos(car, query = "") {
+  const name = query || titleOf(car).split("#")[0].replace(/\s*\(.*?\)/g, "");
   const params = new URLSearchParams({
     action: "query", format: "json", formatversion: "2", origin: "*",
     generator: "search", gsrsearch: name, gsrnamespace: "6", gsrlimit: "40",

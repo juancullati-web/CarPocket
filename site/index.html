@@ -52,7 +52,7 @@
             <p class="profile-name" id="profile-name"></p>
             <a role="menuitem" href="#profil" data-tip="Voir et modifier mon profil">Mon profil</a>
             <a role="menuitem" href="#decouvrir" data-tip="Voir les collections de mes amis">Collections de mes amis</a>
-            <a role="menuitem" id="accounts-link" href="#admin:fiches" data-tip="Voir toutes les fiches, les indicateurs et les comptes" hidden>Administration</a>
+            <a role="menuitem" id="accounts-link" href="#admin:indicateurs" data-tip="Voir les indicateurs, toutes les fiches et les comptes" hidden>Administration</a>
             <button role="menuitem" type="button" id="install-button" data-tip="Installer CarPocket sur cet appareil" hidden>Installer l'application</button>
             <button role="menuitem" type="button" id="session-button" data-tip="Me déconnecter de CarPocket">Se déconnecter</button>
           </div>
@@ -294,6 +294,20 @@
     <div class="dialog-actions">
       <button type="button" class="button button-secondary" id="enrich-cancel">Fermer</button>
       <button type="button" class="button button-primary" id="enrich-submit" hidden>Ajouter à ma fiche</button>
+    </div>
+  </dialog>
+  <dialog class="specs-dialog" id="pick-dialog" aria-labelledby="pick-title">
+    <h2 class="display-sm" id="pick-title">Choisir une photo</h2>
+    <p>Photos libres de Wikimedia Commons. Vérifie que c'est la bonne voiture : elle apparaîtra sur la fiche de tout le monde. Si son nom de fichier ne cite pas la version exacte, la fiche le signalera.</p>
+    <form class="pick-search" id="pick-form" novalidate>
+      <label class="field grow"><span class="label">Rechercher</span><input id="pick-query" type="search" autocomplete="off" spellcheck="false"></label>
+      <button type="submit" class="button button-secondary">Chercher</button>
+    </form>
+    <p id="pick-status" role="status"></p>
+    <div class="free-list" id="pick-list"></div>
+    <p class="form-error" id="pick-error" role="alert" hidden></p>
+    <div class="dialog-actions">
+      <button type="button" class="button button-secondary" id="pick-cancel">Fermer</button>
     </div>
   </dialog>
   <dialog class="specs-dialog" id="sheet-dialog" aria-labelledby="sheet-title">

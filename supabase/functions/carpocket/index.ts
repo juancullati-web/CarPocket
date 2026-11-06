@@ -238,10 +238,13 @@ async function adminAction(action: string, input: Record<string, unknown>, self:
   }
   if (action === "edit-sheet") {
     if (typeof input.slug !== "string" || !/^[a-z0-9-]{1,120}$/.test(input.slug)) return { status: 400, body: { error: "Fiche invalide." } };
-    if (!validChanges(input.changes)) return { status: 400, body: { error: "Corrections invalides." } };
+    const photo = typeof input.photo === "string" ? input.photo : "";
+    if (photo && !/^File:[^|#<>\[\]{}\n]{1,240}\.(jpe?g|png|webp)$/i.test(photo)) return { status: 400, body: { error: "Photo invalide." } };
+    if (!photo && !validChanges(input.changes)) return { status: 400, body: { error: "Corrections invalides." } };
+    if (photo && input.changes !== undefined && !validChanges(input.changes)) return { status: 400, body: { error: "Corrections invalides." } };
     const response = await github("/actions/workflows/edit-car.yml/dispatches", {
       method: "POST",
-      body: JSON.stringify({ ref: "main", inputs: { slug: input.slug, changes: JSON.stringify(input.changes) } }),
+      body: JSON.stringify({ ref: "main", inputs: { slug: input.slug, changes: JSON.stringify(input.changes ?? {}), photo } }),
     });
     if (!response.ok) return { status: 502, body: { error: "Le robot n'a pas pu être lancé." } };
     return { status: 200, body: { started: true } };

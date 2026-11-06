@@ -3,8 +3,8 @@
    Les collections ne servent ici qu'à compter : ni leurs notes ni leur contenu ne sont affichés. */
 (() => {
   const TABS = [
-    ["fiches", "Fiches", "#admin:fiches"],
     ["indicateurs", "Indicateurs", "#admin:indicateurs"],
+    ["fiches", "Fiches", "#admin:fiches"],
     ["reserve", "Réserve", "#admin:reserve"],
     ["comptes", "Comptes", "#comptes"],
   ];
@@ -112,7 +112,8 @@
           <a class="admin-row-name" href="#${esc(car.slug)}">${esc(car.name)}</a>
           <p>${percent} % rempli · ${decks ? `dans ${plural(decks, "deck")}` : "dans aucun deck"}${photo ? "" : " · sans photo"}${date ? ` · mise à jour le ${date}` : ""}</p>
         </div>
-        <button type="button" class="text-link" data-edit-sheet="${esc(car.slug)}" data-tip="Corriger les valeurs de cette fiche pour tout le monde">Corriger ›</button>
+        <div class="admin-row-actions">${photo ? "" : `<button type="button" class="text-link" data-add-photo="${esc(car.slug)}" data-tip="Choisir une photo libre pour cette fiche">Ajouter une photo ›</button>`}
+          <button type="button" class="text-link" data-edit-sheet="${esc(car.slug)}" data-tip="Corriger les valeurs de cette fiche pour tout le monde">Corriger ›</button></div>
       </li>`;
     }).join("") : `<li class="admin-none">Aucune fiche ne correspond.</li>`;
   }
@@ -250,7 +251,7 @@
     const [tab, ...rest] = route.split(":");
     const extra = rest.join(":");
     const known = TABS.some(([id]) => id === tab) && tab !== "comptes";
-    const active = known ? tab : "fiches";
+    const active = known ? tab : "indicateurs";
     const target = box();
     const view = `${active}:${extra}`;
     // Une actualisation du site ne doit pas effacer une recherche en cours.
@@ -356,6 +357,64 @@
       el("sheet-error").hidden = false;
     } finally {
       submit.disabled = false;
+    }
+  });
+
+  /* Une photo pour une fiche qui n'en a pas : l'admin choisit, le robot relit la licence sur Commons. */
+  const picking = { car: null, results: [] };
+  async function searchPick() {
+    const query = el("pick-query").value.trim();
+    if (!query || !picking.car) return;
+    el("pick-status").textContent = "Recherche…";
+    el("pick-list").innerHTML = "";
+    el("pick-error").hidden = true;
+    try {
+      picking.results = await searchFreePhotos(picking.car, query);
+    } catch {
+      el("pick-status").textContent = "";
+      el("pick-error").textContent = "Wikimedia Commons ne répond pas. Réessaie dans un instant.";
+      el("pick-error").hidden = false;
+      return;
+    }
+    el("pick-status").textContent = picking.results.length ? `${plural(picking.results.length, "photo")} trouvée${picking.results.length > 1 ? "s" : ""}.` : "Aucune photo pour ces mots. Essaie avec moins de mots, par exemple la marque et le modèle.";
+    el("pick-list").innerHTML = picking.results.map((result, index) => `<button type="button" class="free-choice" data-pick-photo="${index}">
+      <img src="${esc(result.photo.thumb)}" alt="" loading="lazy">
+      <span class="free-name">${esc(result.fileName)}</span>
+      <small>${esc(result.photo.author.slice(0, 60))} · ${esc(result.photo.license)}</small>
+    </button>`).join("");
+  }
+  function openPick(slug) {
+    const car = catalogCar(slug);
+    if (!car) return;
+    picking.car = car;
+    el("pick-title").textContent = `Une photo pour ${car.name}`;
+    el("pick-query").value = car.name.replace(/\s*\(.*?\)/g, "");
+    el("pick-dialog").showModal();
+    searchPick();
+  }
+  document.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-add-photo]");
+    if (button && isAdmin()) openPick(button.dataset.addPhoto);
+  });
+  el("pick-cancel").addEventListener("click", () => el("pick-dialog").close());
+  el("pick-form").addEventListener("submit", (event) => {
+    event.preventDefault();
+    searchPick();
+  });
+  el("pick-list").addEventListener("click", async (event) => {
+    const button = event.target.closest("[data-pick-photo]");
+    if (!button) return;
+    const result = picking.results[Number(button.dataset.pickPhoto)];
+    el("pick-list").querySelectorAll("button").forEach((other) => { other.disabled = true; });
+    el("pick-error").hidden = true;
+    try {
+      await server("edit-sheet", { slug: picking.car.slug, photo: `File:${result.fileName}` });
+      el("pick-dialog").close();
+      showToast(`Photo envoyée pour ${esc(picking.car.name)}. Elle sera visible après la publication, dans quelques minutes.`);
+    } catch (error) {
+      el("pick-error").textContent = error.message || "La photo n'a pas pu être envoyée. Réessaie dans un instant.";
+      el("pick-error").hidden = false;
+      el("pick-list").querySelectorAll("button").forEach((other) => { other.disabled = false; });
     }
   });
 
