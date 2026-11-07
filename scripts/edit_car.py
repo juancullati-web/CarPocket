@@ -63,8 +63,8 @@ def apply_changes(car: dict, changes: dict) -> bool:
 
 
 def cites_exact_name(name: str, file_name: str) -> bool:
-    """La règle du robot : le fichier cite le nom exact. Sinon, c'est une photo du modèle, choisie par un humain."""
-    return wiki._normalize(re.sub(r"\s*\(.*?\)", "", name)) in wiki._normalize(file_name)
+    """Le fichier cite le nom complet, parenthèses comprises. Sinon, c'est une photo du modèle, choisie par un humain."""
+    return wiki._normalize(name) in wiki._normalize(file_name)
 
 
 def add_photo(car: dict, slug: str, title: str) -> None:

@@ -63,7 +63,8 @@ class AddPhoto(unittest.TestCase):
 
     def test_tells_an_exact_photo_from_a_model_photo(self):
         self.assertTrue(edit_car.cites_exact_name("Tesla Model 3", "File:2023 Tesla Model 3 RWD.jpg"))
-        self.assertTrue(edit_car.cites_exact_name("Peugeot e-2008 (57Kw)", "File:Peugeot e-2008 GT.jpg"))
+        self.assertTrue(edit_car.cites_exact_name("Peugeot e-2008 (57Kw)", "File:Peugeot e-2008 (57Kw) front.jpg"))
+        self.assertFalse(edit_car.cites_exact_name("Peugeot e-2008 (57Kw)", "File:Peugeot e-2008 GT.jpg"))
         self.assertFalse(edit_car.cites_exact_name("Tesla Model 3 Standard RWD", "File:2023 Tesla Model 3 RWD.jpg"))
 
 
