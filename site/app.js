@@ -1213,7 +1213,7 @@ function detailHtml(car) {
           ${notesHtml(car)}
           ${talkSlot(car)}
           ${isAdmin() ? `<div class="actions"><button type="button" class="text-link" data-edit-sheet="${esc(car.slug)}" data-tip="Corriger les valeurs de cette fiche pour tout le monde">Corriger cette fiche ›</button>
-            ${catalogCar(car.slug)?.photos?.length ? "" : `<button type="button" class="text-link" data-add-photo="${esc(car.slug)}" data-tip="Choisir une photo libre pour cette fiche">Ajouter une photo ›</button>`}
+            ${catalogCar(car.slug)?.photos?.length || catalogCar(car.slug)?.photoSent ? "" : `<button type="button" class="text-link" data-add-photo="${esc(car.slug)}" data-tip="Choisir une photo libre pour cette fiche">Ajouter une photo ›</button>`}
             <button type="button" class="text-link quiet" data-remove-sheet="${esc(titleOf(car))}" data-tip="Effacer cette fiche pour tous les comptes">Supprimer la fiche pour tout le monde</button></div>` : ""}
         </div>
         <div>

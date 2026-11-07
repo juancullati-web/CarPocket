@@ -112,7 +112,7 @@
           <a class="admin-row-name" href="#${esc(car.slug)}">${esc(car.name)}</a>
           <p>${percent} % rempli · ${decks ? `dans ${plural(decks, "deck")}` : "dans aucun deck"}${photo ? "" : " · sans photo"}${date ? ` · mise à jour le ${date}` : ""}</p>
         </div>
-        <div class="admin-row-actions">${photo ? "" : `<button type="button" class="text-link" data-add-photo="${esc(car.slug)}" data-tip="Choisir une photo libre pour cette fiche">Ajouter une photo ›</button>`}
+        <div class="admin-row-actions">${photo || car.photoSent ? "" : `<button type="button" class="text-link" data-add-photo="${esc(car.slug)}" data-tip="Choisir une photo libre pour cette fiche">Ajouter une photo ›</button>`}
           <button type="button" class="text-link" data-edit-sheet="${esc(car.slug)}" data-tip="Corriger les valeurs de cette fiche pour tout le monde">Corriger ›</button></div>
       </li>`;
     }).join("") : `<li class="admin-none">Aucune fiche ne correspond.</li>`;
@@ -409,7 +409,11 @@
     el("pick-error").hidden = true;
     try {
       await server("edit-sheet", { slug: picking.car.slug, photo: `File:${result.fileName}` });
+      // La fiche ne change qu'après publication : sans ça, le bouton inviterait à recommencer pour rien.
+      picking.car.photoSent = true;
       el("pick-dialog").close();
+      if (document.getElementById("admin-rows")) sheetRows();
+      renderRoute();
       showToast(`Photo envoyée pour ${esc(picking.car.name)}. Elle sera visible après la publication, dans quelques minutes.`);
     } catch (error) {
       el("pick-error").textContent = error.message || "La photo n'a pas pu être envoyée. Réessaie dans un instant.";
