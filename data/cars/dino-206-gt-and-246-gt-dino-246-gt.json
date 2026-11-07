@@ -1,0 +1,82 @@
+{
+  "slug": "dino-206-gt-and-246-gt-dino-246-gt",
+  "name": "Dino 246 GT",
+  "brand": "Dino",
+  "variant": "Dino 246 GT",
+  "example": false,
+  "added": "2026-11-07T22:52:51+00:00",
+  "updated": "2026-11-07T22:52:51+00:00",
+  "summary": "La Dino 206 GT ou Ferrari Dino 206 GT est une voiture de sport GT, du constructeur automobile italien Dino (filiale des premières voitures à moteur V6 Dino de Ferrari, baptisée du nom de Dino Ferrari (1932-1956), fils aîné d'Enzo Ferrari (1898-1988)). Un concept car est présenté au Mondial de l'automobile de Paris 1965, avant d’être fabriquée en série à 153 exemplaires entre 1967 et 1969, à la suite du Salon de l'automobile de Turin 1967. La Dino 246 GT/GTS lui succède en 1969.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Dino_206_GT",
+  "wikipedia_title": "Dino 206 GT and 246 GT#Dino 246 GT",
+  "specs": {
+    "engine": {
+      "value": "2419.20 cc Dino 65° V6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports all-synchromesh",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Transverse, moteur central arrière, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes (GT)",
+      "from_text": false
+    },
+    "production": {
+      "value": "1969–1974 · 3,569 exemplaires",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Pininfarina, Aldo Brovarone, Leonardo Fioravanti",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Italy: Modena",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1080 kg (dry)",
+      "from_text": false
+    },
+    "length": {
+      "value": "4235 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1700 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1135 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2340 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "195 PS",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "235 km/h",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/dino-206-gt-and-246-gt-dino-246-gt/1.jpg",
+      "thumb": "photos/dino-206-gt-and-246-gt-dino-246-gt/1-thumb.jpg",
+      "author": "Marco 56",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Dino_246_GT_(24952494311).jpg"
+    }
+  ]
+}
