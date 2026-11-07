@@ -1,0 +1,25 @@
+{
+  "slug": "alpine-a290-gts",
+  "name": "Alpine A290 gts",
+  "brand": "Alpine",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T22:48:41+00:00",
+  "updated": "2026-11-07T22:48:41+00:00",
+  "summary": "",
+  "summary_lang": "",
+  "summary_url": "",
+  "wikipedia_title": "Alpine A290 gts",
+  "specs": {},
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/alpine-a290-gts/1.jpg",
+      "thumb": "photos/alpine-a290-gts/1-thumb.jpg",
+      "author": "Alexander Migl",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Alpine_A290_GTS_DSC_9346.jpg"
+    }
+  ]
+}
