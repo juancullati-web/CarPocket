@@ -1,0 +1,74 @@
+{
+  "slug": "peugeot-4008",
+  "name": "Peugeot 4008",
+  "brand": "Peugeot",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T12:23:26+00:00",
+  "updated": "2026-11-07T12:23:26+00:00",
+  "summary": "Le C4 Aircross est un crossover commercialisé par le constructeur automobile français Citroën de juin 2012 à novembre 2017 en Europe. La présentation officielle a eu lieu au grand public lors du Salon de Genève de mars 2012. Basé sur le Mitsubishi ASX, le crossover compact de Citroën se différencie du japonais par son style, la partie technique étant commune. En avril 2018, Citroën commercialise en Chine une version allongée du Citroën C3 Aircross qu'il nomme aussi Citroën C4 Aircross.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Peugeot_4008",
+  "wikipedia_title": "Peugeot 4008",
+  "specs": {
+    "engine": {
+      "value": "1.6–2.0 L I4 (petrol) · 1.6 L HDi I4 (diesel) · 1.8 L DI-D I4 (diesel)",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 6 rapports · Automatique 6 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, traction\nFront-engine, four-wheel-drive",
+      "from_text": false
+    },
+    "body": {
+      "value": "SUV 5 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "2012–2017",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Cristian Gudima",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Japan: Okazaki, Aichi (Mitsubishi Motors Okazaki Plant)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1440-1470 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4340 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1768 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1632 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2670 mm",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/peugeot-4008/1.jpg",
+      "thumb": "photos/peugeot-4008/1-thumb.jpg",
+      "author": "M 93",
+      "license": "CC BY-SA 3.0 de",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Peugeot_4008_HDi_FAP_150_Stop_%26_Start_Allure_%E2%80%93_Frontansicht,_8._Juli_2012,_D%C3%BCsseldorf.jpg"
+    }
+  ]
+}
