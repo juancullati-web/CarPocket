@@ -1,4 +1,5 @@
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -66,6 +67,43 @@ class AddPhoto(unittest.TestCase):
         self.assertTrue(edit_car.cites_exact_name("Peugeot e-2008 (57Kw)", "File:Peugeot e-2008 (57Kw) front.jpg"))
         self.assertFalse(edit_car.cites_exact_name("Peugeot e-2008 (57Kw)", "File:Peugeot e-2008 GT.jpg"))
         self.assertFalse(edit_car.cites_exact_name("Tesla Model 3 Standard RWD", "File:2023 Tesla Model 3 RWD.jpg"))
+
+
+class Upload(unittest.TestCase):
+    good = {"url": "https://abc.supabase.co/storage/v1/object/sign/user-photos/u/catalogue/a.jpg?token=x",
+            "author": "Juan", "license": "CC BY 4.0", "source": ""}
+
+    def test_accepts_a_complete_credit(self):
+        self.assertEqual(edit_car.clean_upload(self.good)["author"], "Juan")
+
+    def test_refuses_another_address(self):
+        for url in ("https://example.com/a.jpg", "http://abc.supabase.co/storage/v1/object/sign/user-photos/a", "file:///etc/passwd"):
+            with self.assertRaises(edit_car.Refused):
+                edit_car.clean_upload({**self.good, "url": url})
+
+    def test_refuses_an_incomplete_or_odd_credit(self):
+        for change in ({"author": ""}, {"author": "<b>"}, {"license": "Tous droits réservés"}, {"source": "javascript:x"}):
+            with self.assertRaises(edit_car.Refused):
+                edit_car.clean_upload({**self.good, **change})
+
+    def test_stores_a_jpeg_with_its_credit(self):
+        with tempfile.TemporaryDirectory() as folder:
+            saved = edit_car.add_car.PHOTOS_DIR
+            edit_car.add_car.PHOTOS_DIR = Path(folder)
+            try:
+                car = {"name": "x", "photos": []}
+                edit_car.store_upload(car, "essai", edit_car.clean_upload(self.good), fetch=lambda url: b"\xff\xd8\xff123")
+                self.assertTrue((Path(folder) / "essai" / "1.jpg").exists())
+            finally:
+                edit_car.add_car.PHOTOS_DIR = saved
+        self.assertEqual(car["photos"][0]["origin"], "upload")
+        self.assertEqual(car["photos"][0]["author"], "Juan")
+
+    def test_refuses_a_file_that_is_not_a_jpeg_and_a_sheet_with_a_photo(self):
+        with self.assertRaises(edit_car.Refused):
+            edit_car.store_upload({"photos": []}, "x", self.good, fetch=lambda url: b"<html>")
+        with self.assertRaises(edit_car.Refused):
+            edit_car.store_upload({"photos": [{"file": "a"}]}, "x", self.good, fetch=lambda url: b"\xff\xd8\xff")
 
 
 class Edit(unittest.TestCase):

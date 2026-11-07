@@ -1241,7 +1241,9 @@ function detailHtml(car) {
       <ol>${photos.filter((photo) => !photo.custom).map((photo) => `<li>${esc(photo.author)}, ${safeUrl(photo.license_url)
         ? `<a href="${esc(photo.license_url)}" target="_blank" rel="noopener" data-tip="Lire la licence de cette photo">${esc(photo.license)}</a>`
         : esc(photo.license)}${safeUrl(photo.source_url)
-        ? ` (<a href="${esc(photo.source_url)}" target="_blank" rel="noopener" data-tip="Voir la photo sur Wikimedia Commons">Wikimedia Commons</a>)` : ""}</li>`).join("")}</ol>
+        ? (photo.origin === "upload"
+          ? ` (<a href="${esc(photo.source_url)}" target="_blank" rel="noopener" data-tip="Voir la source de cette photo">source</a>)`
+          : ` (<a href="${esc(photo.source_url)}" target="_blank" rel="noopener" data-tip="Voir la photo sur Wikimedia Commons">Wikimedia Commons</a>)`) : ""}</li>`).join("")}</ol>
     </div></section>` : ""}`;
 }
 

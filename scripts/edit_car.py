@@ -23,6 +23,13 @@ import wiki
 CARS_DIR = build_index.CARS_DIR
 MAX_VALUE = 200
 SLUG = re.compile(r"^[a-z0-9-]{1,120}$")
+UPLOAD_URL = re.compile(r"^https://[a-z0-9]+\.supabase\.co/storage/v1/object/sign/user-photos/[^\s]+$")
+MAX_UPLOAD = 5 * 1024 * 1024
+LICENSES = {
+    "CC0": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "CC BY 4.0": "https://creativecommons.org/licenses/by/4.0/",
+    "CC BY-SA 4.0": "https://creativecommons.org/licenses/by-sa/4.0/",
+}
 PHOTO_TITLE = re.compile(r"^File:[^|#<>\[\]{}\n]{1,240}\.(jpe?g|png|webp)$", re.I)
 
 
@@ -85,11 +92,49 @@ def add_photo(car: dict, slug: str, title: str) -> None:
     car["updated"] = datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds")
 
 
-def edit(slug: str, changes, photo: str = "") -> dict:
+def clean_upload(upload) -> dict:
+    """Une photo envoyée par l'admin : Commons ne peut pas la vérifier, le crédit doit donc être complet."""
+    if not isinstance(upload, dict) or not UPLOAD_URL.match(str(upload.get("url", ""))):
+        raise Refused("Photo envoyée invalide.")
+    author = str(upload.get("author", "")).strip()
+    license_name = upload.get("license")
+    source = str(upload.get("source", "")).strip()
+    if not author or len(author) > 120 or re.search(r"[\x00-\x1f\x7f<>]", author):
+        raise Refused("Auteur invalide.")
+    if license_name not in LICENSES:
+        raise Refused("Licence invalide.")
+    if source and (len(source) > 500 or not re.match(r"^https://[^\s<>\"]+$", source)):
+        raise Refused("Source invalide.")
+    return {"url": upload["url"], "author": author, "license": license_name, "source": source}
+
+
+def store_upload(car: dict, slug: str, upload: dict, fetch=wiki.download) -> None:
+    if car.get("photos"):
+        raise Refused("Cette fiche a déjà une photo.")
+    content = fetch(upload["url"])
+    if not content.startswith(b"\xff\xd8\xff") or len(content) > MAX_UPLOAD:
+        raise Refused("Le fichier envoyé n'est pas une photo JPEG valide.")
+    folder = add_car.PHOTOS_DIR / slug
+    folder.mkdir(parents=True, exist_ok=True)
+    (folder / "1.jpg").write_bytes(content)
+    car["photos"] = [{
+        "file": f"photos/{slug}/1.jpg",
+        "author": upload["author"],
+        "license": upload["license"],
+        "license_url": LICENSES[upload["license"]],
+        "source_url": upload["source"],
+        "origin": "upload",
+    }]
+    car["updated"] = datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds")
+
+
+def edit(slug: str, changes, photo: str = "", upload=None) -> dict:
     if not SLUG.match(slug or ""):
         raise Refused("Fiche invalide.")
-    if not changes and not photo:
+    if not changes and not photo and not upload:
         raise Refused("Aucune correction reçue.")
+    if photo and upload:
+        raise Refused("Une seule photo à la fois.")
     # Le nom reçu ne sert jamais de chemin : il doit désigner un fichier existant.
     path = next((p for p in CARS_DIR.glob("*.json") if p.stem == slug), None)
     if not path:
@@ -98,6 +143,9 @@ def edit(slug: str, changes, photo: str = "") -> dict:
     changed = apply_changes(car, clean_changes(changes)) if changes else False
     if photo:
         add_photo(car, slug, photo)
+        changed = True
+    if upload:
+        store_upload(car, slug, clean_upload(upload))
         changed = True
     if changed:
         path.write_text(json.dumps(car, ensure_ascii=False, indent=2) + "\n", "utf-8")
@@ -111,7 +159,7 @@ def main() -> int:
     parser.add_argument("--comment-file")
     args = parser.parse_args()
     try:
-        result = edit(os.environ.get("CAR_SLUG", ""), json.loads(os.environ.get("CAR_CHANGES") or "{}"), os.environ.get("CAR_PHOTO", ""))
+        result = edit(os.environ.get("CAR_SLUG", ""), json.loads(os.environ.get("CAR_CHANGES") or "{}"), os.environ.get("CAR_PHOTO", ""), json.loads(os.environ.get("CAR_UPLOAD") or "null"))
     except (Refused, ValueError) as error:
         common.write_comment(args.comment_file, f"Correction refusée : {error}")
         return 1

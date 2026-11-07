@@ -389,6 +389,10 @@
     picking.car = car;
     el("pick-title").textContent = `Une photo pour ${car.name}`;
     el("pick-query").value = car.name.replace(/\s*\(.*?\)/g, "");
+    el("upload-form").reset();
+    el("upload-preview").hidden = true;
+    el("upload-error").hidden = true;
+    el("pick-dialog").querySelector(".pick-upload").open = false;
     el("pick-dialog").showModal();
     searchPick();
   }
@@ -419,6 +423,53 @@
       el("pick-error").textContent = error.message || "La photo n'a pas pu être envoyée. Réessaie dans un instant.";
       el("pick-error").hidden = false;
       el("pick-list").querySelectorAll("button").forEach((other) => { other.disabled = false; });
+    }
+  });
+
+  /* Une photo envoyée : ré-encodée sans ses métadonnées, puis récupérée par le robot depuis le stockage privé. */
+  function afterPhotoSent() {
+    picking.car.photoSent = true;
+    el("pick-dialog").close();
+    if (document.getElementById("admin-rows")) sheetRows();
+    renderRoute();
+    showToast(`Photo envoyée pour ${esc(picking.car.name)}. Elle sera visible après la publication, dans quelques minutes.`);
+  }
+  el("upload-file").addEventListener("change", () => {
+    const file = el("upload-file").files[0];
+    const preview = el("upload-preview");
+    if (preview.src) URL.revokeObjectURL(preview.src);
+    preview.hidden = !file;
+    if (file) preview.src = URL.createObjectURL(file);
+  });
+  el("upload-form").addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const failed = (text) => {
+      el("upload-error").textContent = text;
+      el("upload-error").hidden = false;
+    };
+    el("upload-error").hidden = true;
+    const file = el("upload-file").files[0];
+    const author = el("upload-author").value.trim();
+    const license = el("upload-license").value;
+    const source = el("upload-source").value.trim();
+    if (!file) return failed("Choisis une photo.");
+    if (!author) return failed("L'auteur est obligatoire.");
+    if (!license) return failed("Choisis une licence.");
+    if (source && !/^https:\/\//.test(source)) return failed("La source doit commencer par https://.");
+    if (!el("upload-rights").checked) return failed("Confirme que tu as le droit de publier cette photo.");
+    const submit = el("upload-submit");
+    submit.disabled = true;
+    try {
+      const blob = await preparePhoto(file);
+      const path = `${state.user.id}/catalogue/${crypto.randomUUID()}.jpg`;
+      const { error } = await db.storage.from(PHOTO_BUCKET).upload(path, blob, { contentType: "image/jpeg" });
+      if (error) throw new Error("La photo n'a pas pu être envoyée. Vérifie sa taille (5 Mo au maximum).");
+      await server("upload-sheet-photo", { slug: picking.car.slug, path, author, license, source, rights: true });
+      afterPhotoSent();
+    } catch (error) {
+      failed(error.message === "photo" ? "Ce fichier n'a pas pu être lu comme une photo." : error.message || "La photo n'a pas pu être envoyée. Réessaie dans un instant.");
+    } finally {
+      submit.disabled = false;
     }
   });
 

@@ -236,6 +236,33 @@ async function adminAction(action: string, input: Record<string, unknown>, self:
     await removeUserPhotos(input.user_id);
     return { status: 200, body: { deleted: true } };
   }
+  if (action === "upload-sheet-photo") {
+    if (typeof input.slug !== "string" || !/^[a-z0-9-]{1,120}$/.test(input.slug)) return { status: 400, body: { error: "Fiche invalide." } };
+    const folder = `${self.id}/catalogue`;
+    const path = String(input.path ?? "");
+    if (!new RegExp(`^${folder}/[0-9a-f-]{36}\\.jpg$`).test(path)) return { status: 400, body: { error: "Photo invalide." } };
+    const author = typeof input.author === "string" ? input.author.trim() : "";
+    const license = String(input.license ?? "");
+    const source = typeof input.source === "string" ? input.source.trim() : "";
+    if (!author || author.length > 120) return { status: 400, body: { error: "L'auteur est obligatoire." } };
+    if (!["CC0", "CC BY 4.0", "CC BY-SA 4.0"].includes(license)) return { status: 400, body: { error: "Licence invalide." } };
+    if (source && !/^https:\/\/[^\s<>"]{1,490}$/.test(source)) return { status: 400, body: { error: "La source doit être une adresse https." } };
+    if (input.rights !== true) return { status: 400, body: { error: "Confirme que tu as le droit de publier cette photo." } };
+    const signed = await fetch(`${PHOTOS_URL}/sign/user-photos/${path}`, {
+      method: "POST",
+      headers: serverHeaders(),
+      body: JSON.stringify({ expiresIn: 3600 }),
+    });
+    if (!signed.ok) return { status: 502, body: { error: "La photo envoyée est introuvable." } };
+    const { signedURL } = await signed.json();
+    const upload = { url: `${SUPABASE_URL}/storage/v1${signedURL}`, author, license, source };
+    const response = await github("/actions/workflows/edit-car.yml/dispatches", {
+      method: "POST",
+      body: JSON.stringify({ ref: "main", inputs: { slug: input.slug, changes: "{}", photo: "", upload: JSON.stringify(upload) } }),
+    });
+    if (!response.ok) return { status: 502, body: { error: "Le robot n'a pas pu être lancé." } };
+    return { status: 200, body: { started: true } };
+  }
   if (action === "edit-sheet") {
     if (typeof input.slug !== "string" || !/^[a-z0-9-]{1,120}$/.test(input.slug)) return { status: 400, body: { error: "Fiche invalide." } };
     const photo = typeof input.photo === "string" ? input.photo : "";

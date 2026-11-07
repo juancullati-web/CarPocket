@@ -306,6 +306,26 @@
     <p id="pick-status" role="status"></p>
     <div class="free-list" id="pick-list"></div>
     <p class="form-error" id="pick-error" role="alert" hidden></p>
+    <details class="pick-upload">
+      <summary>Envoyer une photo depuis mon ordinateur</summary>
+      <p>Commons ne pourra pas la vérifier : c'est toi qui garantis qu'elle est libre. Une photo trouvée sur Internet ne l'est souvent pas, et celles des constructeurs non plus.</p>
+      <form id="upload-form" novalidate>
+        <label class="field"><span class="label">Photo</span><input id="upload-file" type="file" accept="image/*" required></label>
+        <img id="upload-preview" alt="" hidden>
+        <label class="field"><span class="label">Auteur de la photo</span><input id="upload-author" maxlength="120" required autocomplete="off"></label>
+        <label class="field"><span class="label">Licence</span>
+          <select id="upload-license" required>
+            <option value="">Choisir</option>
+            <option value="CC BY 4.0">CC BY 4.0 : libre, en citant l'auteur</option>
+            <option value="CC BY-SA 4.0">CC BY-SA 4.0 : libre, en citant l'auteur et sous la même licence</option>
+            <option value="CC0">CC0 : libre, sans condition</option>
+          </select></label>
+        <label class="field"><span class="label">Source (si elle n'est pas de toi)</span><input id="upload-source" type="url" maxlength="490" placeholder="https://" autocomplete="off"></label>
+        <label class="pick-rights"><input id="upload-rights" type="checkbox" required> <span>J'ai le droit de publier cette photo pour tout le monde, sous cette licence.</span></label>
+        <p class="form-error" id="upload-error" role="alert" hidden></p>
+        <button type="submit" class="button button-primary" id="upload-submit">Envoyer la photo</button>
+      </form>
+    </details>
     <div class="dialog-actions">
       <button type="button" class="button button-secondary" id="pick-cancel">Fermer</button>
     </div>

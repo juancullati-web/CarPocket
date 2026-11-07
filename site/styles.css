@@ -1253,3 +1253,11 @@ a.admin-figure:hover strong { color: var(--primary); }
 .admin-row-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 4px 14px; }
 .pick-search { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 10px; margin-bottom: 12px; }
 @media (max-width: 520px) { .admin-row-actions { grid-column: 2; justify-content: flex-start; } }
+.pick-upload { margin-top: 18px; border-top: 1px solid var(--hairline); padding-top: 12px; }
+.pick-upload summary { color: var(--ink); font-weight: 700; cursor: pointer; }
+.pick-upload p { color: var(--muted); font-size: .875rem; }
+#upload-form { display: grid; gap: 12px; }
+#upload-preview { display: block; width: 100%; max-height: 240px; object-fit: contain; background: var(--hairline); }
+.pick-rights { display: flex; gap: 8px; align-items: flex-start; color: var(--ink); font-size: .875rem; }
+.pick-rights input { width: auto; flex: none; margin-top: 3px; }
+#upload-submit { justify-self: start; }
