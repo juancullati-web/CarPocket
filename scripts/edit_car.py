@@ -128,10 +128,12 @@ def store_upload(car: dict, slug: str, upload: dict, fetch=wiki.download) -> Non
     car["updated"] = datetime.datetime.now(datetime.timezone.utc).isoformat(timespec="seconds")
 
 
-def edit(slug: str, changes, photo: str = "", upload=None) -> dict:
+def edit(slug: str, changes, photo: str = "", upload=None, reserve_kind: str = "") -> dict:
     if not SLUG.match(slug or ""):
         raise Refused("Fiche invalide.")
-    if not changes and not photo and not upload:
+    if reserve_kind and reserve_kind not in ("discovery", "remarkable"):
+        raise Refused("Catégorie invalide.")
+    if not changes and not photo and not upload and not reserve_kind:
         raise Refused("Aucune correction reçue.")
     if photo and upload:
         raise Refused("Une seule photo à la fois.")
@@ -147,6 +149,11 @@ def edit(slug: str, changes, photo: str = "", upload=None) -> dict:
     if upload:
         store_upload(car, slug, clean_upload(upload))
         changed = True
+    if reserve_kind:
+        if not car.get("reserve"):
+            raise Refused("Cette fiche n'est pas dans la réserve.")
+        changed = car.get("reserve_kind") != reserve_kind or changed
+        car["reserve_kind"] = reserve_kind
     if changed:
         path.write_text(json.dumps(car, ensure_ascii=False, indent=2) + "\n", "utf-8")
         build_index.build()
@@ -159,7 +166,7 @@ def main() -> int:
     parser.add_argument("--comment-file")
     args = parser.parse_args()
     try:
-        result = edit(os.environ.get("CAR_SLUG", ""), json.loads(os.environ.get("CAR_CHANGES") or "{}"), os.environ.get("CAR_PHOTO", ""), json.loads(os.environ.get("CAR_UPLOAD") or "null"))
+        result = edit(os.environ.get("CAR_SLUG", ""), json.loads(os.environ.get("CAR_CHANGES") or "{}"), os.environ.get("CAR_PHOTO", ""), json.loads(os.environ.get("CAR_UPLOAD") or "null"), os.environ.get("CAR_RESERVE_KIND", ""))
     except (Refused, ValueError) as error:
         common.write_comment(args.comment_file, f"Correction refusée : {error}")
         return 1

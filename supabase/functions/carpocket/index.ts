@@ -177,7 +177,101 @@ async function releaseSheet(title: string): Promise<Answer> {
   return robot.ok ? { status: 200, body: { removing: true } } : { status: 502, body: { error: "Le robot n'a pas pu être lancé." } };
 }
 
+/* Les boosters : seul le serveur tire, pour qu'on ne puisse pas relancer jusqu'à obtenir mieux. */
+const BOOSTER_WEEK_MS = 7 * 24 * 60 * 60 * 1000;
+const LOW_STOCK = 9;
+type ReserveCar = { name: string; wikipedia_title?: string; reserve?: boolean; reserve_kind?: string };
+type Booster = { id: string; titles: string[]; seen_again: string[]; drawn_at: string; opened_at: string | null };
+const titleOfCar = (car: ReserveCar) => car.wikipedia_title || car.name;
+
+function shuffled<T>(items: T[]): T[] {
+  const copy = [...items];
+  for (let i = copy.length - 1; i > 0; i -= 1) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+}
+
+async function rest(path: string, options: RequestInit = {}): Promise<Response> {
+  return fetch(`${SUPABASE_URL}/rest/v1/${path}`, { ...options, headers: { ...serverHeaders(), ...(options.headers ?? {}) } });
+}
+
+async function reserveStock(): Promise<{ cars: ReserveCar[]; inDecks: Set<string> } | null> {
+  const [catalog, decks] = await Promise.all([
+    fetch(`https://carpocket.inzight.fr/cars.json?t=${Date.now()}`),
+    rest("deck_items?select=title&limit=100000"),
+  ]);
+  if (!catalog.ok || !decks.ok) return null;
+  const cars: ReserveCar[] = await catalog.json();
+  const rows: { title: string }[] = await decks.json();
+  return { cars: cars.filter((car) => car.reserve), inDecks: new Set(rows.map((row) => row.title)) };
+}
+
+async function growReserveIfNeeded(remaining: number): Promise<void> {
+  if (remaining >= LOW_STOCK) return;
+  const runs = await github("/actions/workflows/grow-reserve.yml/runs?status=in_progress&per_page=1");
+  if (!runs.ok || (await runs.json()).total_count > 0) return;
+  await github("/actions/workflows/grow-reserve.yml/dispatches", { method: "POST", body: JSON.stringify({ ref: "main" }) });
+}
+
+async function boosterCurrent(userId: string): Promise<Answer> {
+  const profile = await rest(`profiles?id=eq.${userId}&select=booster_enabled,role`);
+  const [account] = profile.ok ? await profile.json() : [];
+  if (!account?.booster_enabled || account.role === "admin") return { status: 200, body: { enabled: false } };
+  const past = await rest(`boosters?user_id=eq.${userId}&select=id,titles,seen_again,drawn_at,opened_at&order=drawn_at.desc`);
+  if (!past.ok) return { status: 502, body: { error: "Les boosters sont injoignables." } };
+  const boosters: Booster[] = await past.json();
+  const latest = boosters[0];
+  if (latest && !latest.opened_at) return { status: 200, body: { enabled: true, booster: latest } };
+  if (latest && Date.now() - Date.parse(latest.opened_at as string) < BOOSTER_WEEK_MS) {
+    return { status: 200, body: { enabled: true, booster: null, next_at: new Date(Date.parse(latest.opened_at as string) + BOOSTER_WEEK_MS).toISOString() } };
+  }
+  const stock = await reserveStock();
+  if (!stock) return { status: 502, body: { error: "Le catalogue est injoignable." } };
+  const seenOldestFirst = [...boosters].reverse().flatMap((booster) => booster.titles);
+  const seen = new Set(seenOldestFirst);
+  const fresh = shuffled(stock.cars.filter((car) => !seen.has(titleOfCar(car)) && !stock.inDecks.has(titleOfCar(car))));
+  const discoveries = fresh.filter((car) => car.reserve_kind !== "remarkable");
+  const remarkable = fresh.filter((car) => car.reserve_kind === "remarkable");
+  const picked = [...discoveries.slice(0, 2)];
+  const finale = remarkable[0] ?? fresh.find((car) => !picked.includes(car));
+  const chosen = picked.map(titleOfCar);
+  if (finale) chosen.push(titleOfCar(finale));
+  // Plus rien de nouveau : les voitures passées reviennent, les plus anciennes d'abord.
+  const again: string[] = [];
+  const available = new Set(stock.cars.map(titleOfCar));
+  for (const title of seenOldestFirst) {
+    if (chosen.length >= 3) break;
+    if (!chosen.includes(title) && !stock.inDecks.has(title) && available.has(title)) {
+      chosen.unshift(title);
+      again.push(title);
+    }
+  }
+  await growReserveIfNeeded(fresh.length - (chosen.length - again.length));
+  if (chosen.length < 3) return { status: 200, body: { enabled: true, booster: null, empty: true } };
+  const created = await rest("boosters?select=id,titles,seen_again,drawn_at,opened_at", {
+    method: "POST",
+    headers: { Prefer: "return=representation" },
+    body: JSON.stringify({ user_id: userId, titles: chosen.slice(-3), seen_again: again }),
+  });
+  if (created.ok) return { status: 200, body: { enabled: true, booster: (await created.json())[0] } };
+  // Deux tirages simultanés : l'index unique n'en garde qu'un, et c'est celui-là qu'on renvoie.
+  const waiting = await rest(`boosters?user_id=eq.${userId}&opened_at=is.null&select=id,titles,seen_again,drawn_at,opened_at`);
+  const [existing] = waiting.ok ? await waiting.json() : [];
+  return existing ? { status: 200, body: { enabled: true, booster: existing } } : { status: 502, body: { error: "Le tirage a échoué." } };
+}
+
 async function memberAction(user: { id: string }, action: string, input: Record<string, unknown>): Promise<Answer | null> {
+  if (action === "booster-current") return await boosterCurrent(user.id);
+  if (action === "booster-open") {
+    if (!validId(input.id)) return { status: 400, body: { error: "Booster invalide." } };
+    const response = await rest(`boosters?id=eq.${input.id}&user_id=eq.${user.id}&opened_at=is.null`, {
+      method: "PATCH",
+      body: JSON.stringify({ opened_at: new Date().toISOString() }),
+    });
+    return response.ok ? { status: 200, body: { opened: true } } : { status: 502, body: { error: "L'ouverture n'a pas pu être enregistrée." } };
+  }
   if (action === "release-sheet") {
     if (!validTitle(input.title)) return { status: 400, body: { error: "Nom de voiture invalide." } };
     return await releaseSheet(input.title);
@@ -236,6 +330,19 @@ async function adminAction(action: string, input: Record<string, unknown>, self:
     await removeUserPhotos(input.user_id);
     return { status: 200, body: { deleted: true } };
   }
+  if (action === "booster-accounts") {
+    const response = await rest("profiles?select=id,username,role,booster_enabled&order=username");
+    return response.ok ? { status: 200, body: { accounts: await response.json() } } : { status: 502, body: { error: "Les comptes sont injoignables." } };
+  }
+  if (action === "set-booster") {
+    if (!validId(input.user_id) || typeof input.enabled !== "boolean") return { status: 400, body: { error: "Demande invalide." } };
+    const response = await rest(`profiles?id=eq.${input.user_id}`, { method: "PATCH", body: JSON.stringify({ booster_enabled: input.enabled }) });
+    return response.ok ? { status: 200, body: { updated: true } } : { status: 502, body: { error: "L'accès n'a pas pu être changé." } };
+  }
+  if (action === "grow-reserve") {
+    const response = await github("/actions/workflows/grow-reserve.yml/dispatches", { method: "POST", body: JSON.stringify({ ref: "main" }) });
+    return response.ok ? { status: 200, body: { started: true } } : { status: 502, body: { error: "Le robot n'a pas pu être lancé." } };
+  }
   if (action === "upload-sheet-photo") {
     if (typeof input.slug !== "string" || !/^[a-z0-9-]{1,120}$/.test(input.slug)) return { status: 400, body: { error: "Fiche invalide." } };
     const folder = `${self.id}/catalogue`;
@@ -266,12 +373,14 @@ async function adminAction(action: string, input: Record<string, unknown>, self:
   if (action === "edit-sheet") {
     if (typeof input.slug !== "string" || !/^[a-z0-9-]{1,120}$/.test(input.slug)) return { status: 400, body: { error: "Fiche invalide." } };
     const photo = typeof input.photo === "string" ? input.photo : "";
+    const kind = typeof input.reserve_kind === "string" ? input.reserve_kind : "";
+    if (kind && !["discovery", "remarkable"].includes(kind)) return { status: 400, body: { error: "Catégorie invalide." } };
     if (photo && !/^File:[^|#<>\[\]{}\n]{1,240}\.(jpe?g|png|webp)$/i.test(photo)) return { status: 400, body: { error: "Photo invalide." } };
-    if (!photo && !validChanges(input.changes)) return { status: 400, body: { error: "Corrections invalides." } };
+    if (!photo && !kind && !validChanges(input.changes)) return { status: 400, body: { error: "Corrections invalides." } };
     if (photo && input.changes !== undefined && !validChanges(input.changes)) return { status: 400, body: { error: "Corrections invalides." } };
     const response = await github("/actions/workflows/edit-car.yml/dispatches", {
       method: "POST",
-      body: JSON.stringify({ ref: "main", inputs: { slug: input.slug, changes: JSON.stringify(input.changes ?? {}), photo } }),
+      body: JSON.stringify({ ref: "main", inputs: { slug: input.slug, changes: JSON.stringify(input.changes ?? {}), photo, reserve_kind: kind } }),
     });
     if (!response.ok) return { status: 502, body: { error: "Le robot n'a pas pu être lancé." } };
     return { status: 200, body: { started: true } };

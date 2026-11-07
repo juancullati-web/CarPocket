@@ -1,0 +1,50 @@
+name: Renouveler la réserve des boosters
+
+# Lancé par le serveur quand il reste peu de cartes inédites, ou depuis l'administration.
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: grow-reserve
+  cancel-in-progress: false
+
+jobs:
+  grow:
+    runs-on: ubuntu-latest
+    timeout-minutes: 320
+    permissions:
+      contents: write
+    outputs:
+      changed: ${{ steps.save.outputs.changed }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Préparer de nouvelles fiches
+        run: python3 scripts/build_reserve.py --into-repo --total 100 --minutes 290
+      - name: Enregistrer dans le dépôt
+        id: save
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/cars site/photos
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "Renouvelle la réserve des boosters"
+            for attempt in 1 2 3 4 5; do
+              git pull --rebase origin main && git push origin HEAD:main && pushed=yes && break
+              sleep $((attempt * 5))
+            done
+            test "$pushed" = yes
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+  deploy:
+    needs: grow
+    if: needs.grow.outputs.changed == 'true'
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/pages.yml

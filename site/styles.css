@@ -1261,3 +1261,18 @@ a.admin-figure:hover strong { color: var(--primary); }
 .pick-rights { display: flex; gap: 8px; align-items: flex-start; color: var(--ink); font-size: .875rem; }
 .pick-rights input { width: auto; flex: none; margin-top: 3px; }
 #upload-submit { justify-self: start; }
+.admin-switch { display: flex; align-items: center; gap: 8px; color: var(--ink); font-size: .875rem; }
+.admin-switch input { width: auto; }
+
+/* Mes découvertes */
+.discovery-list { margin: 0; padding: 0; list-style: none; }
+.discovery-list li { display: grid; grid-template-columns: 96px minmax(0, 1fr) auto; gap: 14px; align-items: center; padding: 12px 0; border-top: 1px solid var(--hairline); }
+.discovery-list img { display: block; width: 96px; height: 64px; object-fit: cover; }
+.discovery-list strong { display: block; color: var(--ink); font-weight: 700; overflow-wrap: anywhere; }
+.discovery-list small { color: var(--muted); font-size: .875rem; }
+.discovery-owned { color: var(--muted); font-size: .875rem; }
+@media (max-width: 520px) {
+  .discovery-list li { grid-template-columns: 72px minmax(0, 1fr); }
+  .discovery-list img { width: 72px; height: 48px; }
+  .discovery-list li > :last-child { grid-column: 2; justify-self: start; }
+}

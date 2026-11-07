@@ -436,3 +436,48 @@ revoke all on function public.deck_items_custom_date() from public, anon, authen
 drop trigger if exists deck_items_custom_date on public.deck_items;
 create trigger deck_items_custom_date before insert or update on public.deck_items
   for each row execute function public.deck_items_custom_date();
+
+-- Boosters : tirés par le serveur seul. Une personne lit les siens, sans pouvoir les écrire.
+alter table public.profiles add column if not exists booster_enabled boolean not null default false;
+create table if not exists public.boosters (
+  id uuid primary key default gen_random_uuid(),
+  user_id uuid not null references public.profiles (id) on delete cascade,
+  titles text[] not null check (cardinality(titles) = 3),
+  seen_again text[] not null default '{}',
+  drawn_at timestamptz not null default now(),
+  opened_at timestamptz
+);
+create index if not exists boosters_user on public.boosters (user_id, drawn_at desc);
+-- Un seul booster en attente par personne, même si deux tirages partent en même temps.
+create unique index if not exists boosters_one_waiting on public.boosters (user_id) where opened_at is null;
+alter table public.boosters enable row level security;
+revoke all on public.boosters from anon, authenticated;
+grant select on public.boosters to authenticated;
+drop policy if exists "boosters lisibles par leur destinataire" on public.boosters;
+create policy "boosters lisibles par leur destinataire" on public.boosters
+  for select to authenticated using (user_id = (select auth.uid()) or (select public.is_admin()));
+
+-- Signalements d'une fiche : l'auteur et la date viennent de la base, seul l'admin les traite.
+create table if not exists public.sheet_reports (
+  id uuid primary key default gen_random_uuid(),
+  title text not null check (char_length(title) between 1 and 200),
+  author_id uuid not null default auth.uid() references public.profiles (id) on delete cascade,
+  message text not null check (char_length(btrim(message)) between 1 and 500),
+  created_at timestamptz not null default now(),
+  resolved_at timestamptz
+);
+create index if not exists sheet_reports_open on public.sheet_reports (created_at desc) where resolved_at is null;
+alter table public.sheet_reports enable row level security;
+revoke all on public.sheet_reports from anon, authenticated;
+grant select on public.sheet_reports to authenticated;
+grant insert (title, message) on public.sheet_reports to authenticated;
+grant update (resolved_at) on public.sheet_reports to authenticated;
+drop policy if exists "signalements lisibles par l'admin ou leur auteur" on public.sheet_reports;
+create policy "signalements lisibles par l'admin ou leur auteur" on public.sheet_reports
+  for select to authenticated using (author_id = (select auth.uid()) or (select public.is_admin()));
+drop policy if exists "signaler une fiche" on public.sheet_reports;
+create policy "signaler une fiche" on public.sheet_reports
+  for insert to authenticated with check (author_id = (select auth.uid()));
+drop policy if exists "traiter un signalement" on public.sheet_reports;
+create policy "traiter un signalement" on public.sheet_reports
+  for update to authenticated using ((select public.is_admin())) with check ((select public.is_admin()));

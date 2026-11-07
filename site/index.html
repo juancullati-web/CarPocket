@@ -52,6 +52,7 @@
             <p class="profile-name" id="profile-name"></p>
             <a role="menuitem" href="#profil" data-tip="Voir et modifier mon profil">Mon profil</a>
             <a role="menuitem" href="#decouvrir" data-tip="Voir les collections de mes amis">Collections de mes amis</a>
+            <a role="menuitem" id="discoveries-link" href="#decouvertes" data-tip="Revoir les voitures sorties de mes boosters" hidden>Mes découvertes</a>
             <a role="menuitem" id="accounts-link" href="#admin:indicateurs" data-tip="Voir les indicateurs, toutes les fiches et les comptes" hidden>Administration</a>
             <button role="menuitem" type="button" id="install-button" data-tip="Installer CarPocket sur cet appareil" hidden>Installer l'application</button>
             <button role="menuitem" type="button" id="session-button" data-tip="Me déconnecter de CarPocket">Se déconnecter</button>
@@ -170,6 +171,7 @@
     <article id="admin" hidden></article>
     <article id="profile" hidden></article>
     <article id="discover" hidden></article>
+    <article id="discoveries" hidden></article>
   </main>
 
   <footer class="footer">
@@ -295,6 +297,18 @@
       <button type="button" class="button button-secondary" id="enrich-cancel">Fermer</button>
       <button type="button" class="button button-primary" id="enrich-submit" hidden>Ajouter à ma fiche</button>
     </div>
+  </dialog>
+  <dialog id="report-dialog" aria-labelledby="report-title">
+    <form id="report-form" novalidate>
+      <h2 class="display-sm" id="report-title">Signaler une erreur</h2>
+      <p>Une valeur fausse, une photo d'une autre voiture ? Dis-le ici : l'administrateur corrigera la fiche pour tout le monde.</p>
+      <label class="field"><span class="label">Ce qui ne va pas</span><textarea id="report-message" rows="4" maxlength="500" required></textarea></label>
+      <p class="form-error" id="report-error" role="alert" hidden></p>
+      <div class="dialog-actions">
+        <button type="button" class="button button-secondary" id="report-cancel">Annuler</button>
+        <button type="submit" class="button button-primary" id="report-submit">Envoyer</button>
+      </div>
+    </form>
   </dialog>
   <dialog class="specs-dialog" id="pick-dialog" aria-labelledby="pick-title">
     <h2 class="display-sm" id="pick-title">Choisir une photo</h2>

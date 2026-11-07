@@ -28,11 +28,12 @@
   /** Compter demande peu : le détail d'une collection masquée n'est jamais affiché, seulement compté. */
   async function loadFigures() {
     const since = new Date(Date.now() - 2 * PERIODS.at(-1) * DAY_MS).toISOString();
-    const [items, profiles, comments, reactions] = await Promise.all([
+    const [items, profiles, comments, reactions, reports] = await Promise.all([
       db.from("deck_items").select("title, user_id, added_at"),
       db.from("profiles").select("id, username, shared").order("username"),
       db.from("car_comments").select("id, owner_id, title, author_name, body, created_at").gte("created_at", since).order("created_at", { ascending: false }).limit(1000),
       db.from("car_reactions").select("owner_id, title, user_id, kind, created_at").gte("created_at", since).order("created_at", { ascending: false }).limit(1000),
+      db.from("sheet_reports").select("id, title, message, author_id, created_at").is("resolved_at", null).order("created_at", { ascending: false }).limit(500),
     ]);
     if (items.error || profiles.error) throw items.error || profiles.error;
     const decks = new Map();
@@ -43,6 +44,7 @@
       profiles: profiles.data,
       comments: comments.error ? null : comments.data,
       reactions: reactions.error ? null : reactions.data,
+      reports: reports.error ? null : reports.data,
     };
   }
   const profileOf = (id) => figures.profiles.find((row) => row.id === id);
@@ -81,7 +83,8 @@
   };
 
   /* Les fiches de la réserve attendent leur booster : elles n'ont pas leur place dans cette liste. */
-  const sheets = () => state.catalog.filter((car) => !car.reserve);
+  const sheets = () => state.catalog.filter((car) => !car.reserve || inDecks(car) > 0);
+  const reserveCars = () => state.catalog.filter((car) => car.reserve && inDecks(car) === 0);
   const isCorrected = (car) => Object.values(car.specs || {}).some((spec) => spec.corrected);
   const removable = () => sheets().filter((car) => inDecks(car) === 0 && !isCorrected(car));
 
@@ -160,6 +163,7 @@
         ${tile(count(added.now), "voitures ajoutées", "#admin:indicateurs:ajouts", trend(added))}
         ${tile(count(comments.now), "commentaires", "#admin:indicateurs:commentaires", trend(comments))}
         ${tile(count(reactions.now), "réactions", "#admin:indicateurs:reactions", trend(reactions))}
+        ${tile(count(figures.reports), "signalements à traiter", "#admin:indicateurs:signalements")}
       </div></div>
       <div><h2 class="display-sm">Comptes</h2><div class="admin-figures">
         ${tile(figures.profiles.length, "comptes", "#admin:indicateurs:comptes", hidden ? `dont ${hidden} avec une collection masquée` : "")}
@@ -208,6 +212,14 @@
           ${row.shared ? `<button type="button" class="text-link" data-view-user="${esc(row.id)}">Voir la collection ›</button>` : ""}
         </li>`).join("")}</ul>`);
     }
+    if (key === "signalements") {
+      const rows = figures.reports || [];
+      return shell("Signalements à traiter", plural(rows.length, "signalement"), `<ul class="admin-rows">${rows.map((row) => `<li class="admin-line">
+          <div><strong>${carLink(row.title)}</strong><p>${esc(nameOf(row.author_id))} · ${frenchDay(row.created_at)}</p>
+          <blockquote>${esc(row.message)}</blockquote></div>
+          <button type="button" class="text-link" data-resolve-report="${esc(row.id)}">Marquer comme traité</button>
+        </li>`).join("") || `<li class="admin-none">Aucun signalement à traiter.</li>`}</ul>`);
+    }
     const scope = `Sur les ${period} derniers jours.`;
     if (key === "ajouts") {
       const rows = [...inPeriod(figures.items, "added_at").now].sort((a, b) => b.added_at.localeCompare(a.added_at));
@@ -242,10 +254,57 @@
     else if (link.startsWith("marque-")) list.query = decodeURIComponent(link.slice(7));
   }
 
-  const reserveHtml = () => `<section class="section"><div class="wrap admin-empty">
-      <h2 class="display-sm">La réserve n'existe pas encore</h2>
-      <p>Elle arrivera avec les boosters. Tu y verras les voitures restantes, le prochain renouvellement, et tu pourras retirer une voiture ou la passer en remarquable.</p>
+  /* La réserve : ce qui attend dans les boosters, et qui y a accès. */
+  let boosterAccounts = null;
+  async function reserveHtml() {
+    if (!boosterAccounts) {
+      try {
+        boosterAccounts = (await server("booster-accounts")).accounts;
+      } catch {
+        boosterAccounts = [];
+      }
+    }
+    const cars = reserveCars();
+    const isRemarkable = (car) => car.reserve_kind === "remarkable";
+    const discoveries = cars.filter((car) => !isRemarkable(car)).length;
+    const remarkable = cars.length - discoveries;
+    const decades = [...cars.reduce((map, car) => {
+      const decade = car.year ? `${Math.floor(car.year / 10) * 10}` : "?";
+      return map.set(decade, (map.get(decade) || 0) + 1);
+    }, new Map())].sort((a, b) => a[0].localeCompare(b[0]));
+    const rows = [...cars].sort((a, b) => a.name.localeCompare(b.name, "fr"));
+    return `<section class="section"><div class="wrap admin-groups">
+      <div><div class="admin-group-head"><h2 class="display-sm">Stock</h2>
+        <button type="button" class="button button-secondary" id="admin-grow">Renouveler la réserve</button></div>
+        <div class="admin-figures">
+          <div class="admin-figure"><strong>${cars.length}</strong><span>voitures disponibles</span></div>
+          <div class="admin-figure"><strong>${discoveries}</strong><span>découvertes</span></div>
+          <div class="admin-figure"><strong>${remarkable}</strong><span>remarquables</span></div>
+        </div>
+        ${decades.length ? `<p class="admin-count">${decades.map(([decade, total]) => `${decade === "?" ? "Année inconnue" : `Années ${decade}`} : ${total}`).join(" · ")}</p>` : ""}
+      </div>
+      <div><h2 class="display-sm">Accès aux boosters</h2><p class="admin-count">Désactivé par défaut. Une personne activée reçoit un booster à sa prochaine connexion.</p>
+        <ul class="admin-rows">${boosterAccounts.filter((row) => row.role !== "admin").map((row) => `<li class="admin-line">
+          <div><strong>${esc(displayName(row.username))}</strong></div>
+          <label class="admin-switch"><input type="checkbox" data-booster-user="${esc(row.id)}"${row.booster_enabled ? " checked" : ""}> <span>Boosters activés</span></label>
+        </li>`).join("") || `<li class="admin-none">Les comptes n'ont pas pu être chargés.</li>`}</ul>
+      </div>
+      <div><h2 class="display-sm">Voitures en réserve</h2>
+        ${rows.length ? `<ul class="admin-rows">${rows.map((car) => {
+          const photo = car.photos?.[0];
+          return `<li class="admin-row">
+            <a class="admin-row-photo" href="#${esc(car.slug)}" tabindex="-1" aria-hidden="true">${photo ? `<img src="${esc(photo.thumb || photo.file)}" alt="" loading="lazy">` : ""}</a>
+            <div class="admin-row-main"><a class="admin-row-name" href="#${esc(car.slug)}">${esc(car.name)}</a>
+              <p>${isRemarkable(car) ? "Remarquable" : "Découverte"}${car.reserve_reasons?.length ? ` · ${esc(car.reserve_reasons.join(", "))}` : ""}</p></div>
+            <div class="admin-row-actions">
+              <button type="button" class="text-link" data-reserve-kind="${esc(car.slug)}" data-kind="${isRemarkable(car) ? "discovery" : "remarkable"}">${isRemarkable(car) ? "Passer en découverte" : "Passer en remarquable"}</button>
+              <button type="button" class="text-link quiet" data-remove-sheet="${esc(titleOf(car))}" data-tip="Retirer cette fiche du catalogue">Retirer</button>
+            </div>
+          </li>`;
+        }).join("")}</ul>` : `<p class="admin-none">La réserve est vide : ses voitures arriveront avec leur prochaine publication.</p>`}
+      </div>
     </div></section>`;
+  }
 
   async function render(route) {
     const [tab, ...rest] = route.split(":");
@@ -258,10 +317,6 @@
     if (shownTab === view && document.activeElement?.id === "admin-search") return;
     if (active === "fiches" && shownTab !== view) applySheetLink(extra);
     shownTab = view;
-    if (active === "reserve") {
-      target.innerHTML = tabsHtml(active) + reserveHtml();
-      return;
-    }
     if (!figures) target.innerHTML = `${tabsHtml(active)}<section class="section"><div class="wrap"><p class="admin-none">Chargement…</p></div></section>`;
     try {
       if (!figures) await loadFigures();
@@ -270,6 +325,12 @@
       return;
     }
     if (shownTab !== view) return;
+    if (active === "reserve") {
+      const html = await reserveHtml();
+      if (shownTab !== view) return;
+      target.innerHTML = tabsHtml(active) + html;
+      return;
+    }
     target.innerHTML = tabsHtml(active) + (active === "fiches" ? sheetsHtml() : extra ? detailHtml(extra) : figuresHtml());
     if (active === "fiches") sheetRows();
   }
@@ -304,6 +365,46 @@
     </fieldset>`).join("");
     el("sheet-dialog").showModal();
   }
+  box().addEventListener("change", async (event) => {
+    const input = event.target.closest("[data-booster-user]");
+    if (!input) return;
+    input.disabled = true;
+    try {
+      await server("set-booster", { user_id: input.dataset.boosterUser, enabled: input.checked });
+      const account = boosterAccounts?.find((row) => row.id === input.dataset.boosterUser);
+      if (account) account.booster_enabled = input.checked;
+    } catch (error) {
+      input.checked = !input.checked;
+      showToast(esc(error.message || "L'accès n'a pas pu être changé."));
+    } finally {
+      input.disabled = false;
+    }
+  });
+  box().addEventListener("click", async (event) => {
+    const grow = event.target.closest("#admin-grow");
+    const kind = event.target.closest("[data-reserve-kind]");
+    const resolve = event.target.closest("[data-resolve-report]");
+    if (!grow && !kind && !resolve) return;
+    const button = grow || kind || resolve;
+    button.disabled = true;
+    try {
+      if (grow) {
+        await server("grow-reserve");
+        showToast("Renouvellement lancé. Il peut durer plusieurs heures.");
+      } else if (kind) {
+        await server("edit-sheet", { slug: kind.dataset.reserveKind, reserve_kind: kind.dataset.kind });
+        showToast("Changement envoyé. Il sera visible après la publication, dans quelques minutes.");
+      } else {
+        const { error } = await db.from("sheet_reports").update({ resolved_at: new Date().toISOString() }).eq("id", resolve.dataset.resolveReport);
+        if (error) throw new Error("Ce signalement n'a pas pu être marqué comme traité.");
+        figures.reports = figures.reports.filter((row) => row.id !== resolve.dataset.resolveReport);
+        box().innerHTML = tabsHtml("indicateurs") + detailHtml("signalements");
+      }
+    } catch (error) {
+      showToast(esc(error.message || "L'action n'a pas abouti. Réessaie."));
+      button.disabled = false;
+    }
+  });
   box().addEventListener("click", (event) => {
     const button = event.target.closest("[data-period]");
     if (!button) return;

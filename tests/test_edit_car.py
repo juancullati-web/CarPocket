@@ -107,6 +107,10 @@ class Upload(unittest.TestCase):
 
 
 class Edit(unittest.TestCase):
+    def test_refuses_an_unknown_reserve_kind(self):
+        with self.assertRaises(edit_car.Refused):
+            edit_car.edit("ferrari-f40", {}, "", None, "autre")
+
     def test_needs_a_change_or_a_photo(self):
         with self.assertRaises(edit_car.Refused):
             edit_car.edit("ferrari-f40", {}, "")

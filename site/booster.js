@@ -1,12 +1,8 @@
 /* Le booster de la semaine : un sachet à déchirer, trois voitures à découvrir.
    Tout vit dans un arbre isolé (Shadow DOM), pour ne rien changer au reste du site.
    Le relief ne démarre qu'à l'ouverture : la connexion n'en paie jamais le prix.
-   Tant que la réserve et la base n'existent pas, tout ceci reste réservé à l'aperçu local. */
+   Le serveur tire les cartes et décide qui a accès : ici, on ne fait qu'afficher. */
 (() => {
-  if (!["localhost", "127.0.0.1"].includes(location.hostname)) {
-    window.CarPocketBooster = { afterEnter() {}, renderTile() {} };
-    return;
-  }
   const VERSION = document.querySelector('script[src^="booster.js"]')?.getAttribute("src").split("v=")[1] || "";
   const host = document.createElement("div");
   host.id = "booster-host";
@@ -668,7 +664,7 @@
     $("summary").hidden = false;
     $("rows").innerHTML = CARS.map((car, index) => `<div class="row">
         <img src="${car.photo}" alt="" draggable="false">
-        <div><div class="row-name">${safeText(car.maker)} ${safeText(car.model)}</div><div class="row-year">${safeText(car.year)}</div></div>
+        <div><div class="row-name">${safeText(car.brand)} ${safeText(car.model)}</div><div class="row-year">${safeText(car.year)}</div></div>
         <div class="choice">
           <button type="button" class="add" data-pick="${index}" data-value="add" aria-pressed="false">Ajouter à mon deck</button>
           <button type="button" data-pick="${index}" data-value="pass" aria-pressed="false">Passer</button>
@@ -714,62 +710,38 @@
   $("laterBtn").addEventListener("click", closeStage);
   addEventListener("resize", () => { if (host.hidden) return; fitCanvas(); if (!opened) layoutPack(); });
 
-  /* Le booster en cours. En attendant la réserve côté serveur, il est tiré dans le catalogue et gardé dans ce navigateur. */
-  const WEEK_MS = 7 * 24 * 60 * 60 * 1000;
-  const storeKey = () => `booster.${state.user.id}`;
-  const stored = () => load(storeKey(), null) || { titles: null, invited: false, openedAt: 0, everInvited: false };
-  const store = (value) => save(storeKey(), value);
+  /* Le booster en cours, tel que le serveur l'a tiré. Le navigateur ne retient que ce qui a déjà été proposé. */
+  const remote = { booster: null, enabled: false };
+  const inviteKey = () => `booster.${state.user.id}`;
+  const invitedState = () => load(inviteKey(), null) || { invited: "", ever: false };
 
   const first = (value) => {
     if (!value) return null;
     const parts = String(value).split(" · ").map((part) => part.trim()).filter((part) => part && !part.endsWith(":"));
     return parts.length ? parts[0] + (parts.length > 1 ? " …" : "") : null;
   };
-  /* Le même calcul que pour le lot test : rareté, carrosserie, âge. Rien n'est inventé. */
-  function score(car) {
-    const production = car.specs.production?.value || "";
-    const built = production.match(/(\d[\d,. ]*)\s*(?:units?\s+)?(built|made|produced|manufactured|exemplaires|units|cars)\b/i);
-    const count = built ? Number(built[1].replace(/\D/g, "")) : 0;
-    const body = (car.specs.body?.value || "").split(" · ")[0];
-    return (count && count < 5000 ? 2 : 0)
-      + (/coup[eé]|cabriolet|convertible|roadster|spider|spyder|targa/i.test(body) && !/utility|pick-?up/i.test(body) ? 1 : 0)
-      + (car.year && car.year < 1970 ? 1 : 0)
-      + (car.specs.power ? 1 : 0);
-  }
-  function draw() {
-    const own = new Set(state.items.map((item) => item.title));
-    const pool = state.catalog.filter((car) => car.photos?.length && car.specs.production && (car.specs.power || car.specs.engine) && !own.has(titleOf(car)));
-    if (pool.length < 3) return null;
-    const mixed = [...pool].sort(() => Math.random() - .5).slice(0, 12);
-    const best = [...mixed].sort((a, b) => score(b) - score(a))[0];
-    return [...mixed.filter((car) => car !== best).slice(0, 2), best].map(titleOf);
-  }
-  function asCard(car) {
+  function asCard(car, seenAgain) {
     const photo = car.photos[0];
     const name = car.name.toLowerCase().startsWith(car.brand.toLowerCase()) ? car.name.slice(car.brand.length).trim() : car.name;
-    return { title: titleOf(car), slug: car.slug, maker: car.brand, model: name || car.name, year: first(car.specs.production?.value),
+    return { title: titleOf(car), slug: car.slug, brand: car.brand, maker: seenAgain ? `${car.brand} · Déjà vue` : car.brand, model: name || car.name, year: first(car.specs.production?.value),
       engine: first(car.specs.engine?.value), power: first(car.specs.power?.value), weight: first(car.specs.weight?.value),
       photo: photo.file, author: photo.author, license: photo.license };
   }
   function currentBooster() {
-    if (!state.user || state.viewing || isAdmin()) return null;
-    const data = stored();
-    if (data.openedAt && Date.now() - data.openedAt < WEEK_MS) return null;
-    if (data.openedAt) { data.titles = null; data.openedAt = 0; data.invited = false; }
-    if (!data.titles) {
-      data.titles = draw();
-      if (!data.titles) return null;
-      store(data);
-    }
+    if (!state.user || state.viewing || isAdmin() || !remote.booster || remote.booster.opened_at) return null;
     const byTitle = new Map(state.catalog.map((car) => [titleOf(car), car]));
-    const cars = data.titles.map((title) => byTitle.get(title)).filter(Boolean);
+    const cars = remote.booster.titles.map((title) => byTitle.get(title)).filter((car) => car?.photos?.length);
     return cars.length === 3 ? cars : null;
   }
-  function markOpened() {
-    const data = stored();
-    if (data.openedAt) return;
-    data.openedAt = Date.now();
-    store(data);
+  async function markOpened() {
+    const booster = remote.booster;
+    if (!booster || booster.opened_at) return;
+    booster.opened_at = new Date().toISOString();
+    try {
+      await server("booster-open", { id: booster.id });
+    } catch {
+      booster.opened_at = null;
+    }
   }
 
   async function saveChoice(index, add, group) {
@@ -815,7 +787,7 @@
   async function openStage() {
     const cars = currentBooster();
     if (!cars) return;
-    CARS = cars.map(asCard);
+    CARS = cars.map((car) => asCard(car, remote.booster.seen_again.includes(titleOf(car))));
     previousOverflow = document.documentElement.style.overflow;
     document.documentElement.style.overflow = "hidden";
     host.hidden = false;
@@ -838,14 +810,12 @@
   /* La proposition à la connexion : une seule fois par booster, et jamais par-dessus une fiche ouverte. */
   const invite = $("invite");
   async function showInvite(data) {
-    const firstTime = !data.everInvited;
+    const firstTime = !data.ever;
     $("invite-title").textContent = firstTime ? "Ton premier booster est arrivé" : "Ton booster de la semaine est prêt";
     $("invite-text").textContent = firstTime
       ? "Chaque semaine, 3 voitures à découvrir. Tu choisis celles qui rejoignent ton deck, les autres restent de côté."
       : "3 nouvelles voitures à découvrir.";
-    data.invited = true;
-    data.everInvited = true;
-    store(data);
+    save(inviteKey(), { invited: remote.booster.id, ever: true });
     try { await document.fonts.load("700 112px Inter"); } catch (_) { /* police de secours */ }
     $("stage").hidden = true;
     host.hidden = false;
@@ -902,15 +872,60 @@
   });
 
   let entered = false;
-  function afterEnter() {
+  async function afterEnter() {
     renderTile();
-    if (entered || !state.user || state.viewing) return;
+    if (entered || !state.user || state.viewing || isAdmin()) return;
     entered = true;
-    if (location.hash || document.querySelector("dialog[open]")) return;
+    try {
+      const answer = await server("booster-current");
+      remote.enabled = Boolean(answer.enabled);
+      remote.booster = answer.booster || null;
+    } catch {
+      return; // Sans réponse du serveur, pas de booster : le reste du site n'en dépend pas.
+    }
+    document.getElementById("discoveries-link").hidden = !remote.enabled;
+    renderTile();
     const cars = currentBooster();
-    const data = stored();
-    if (cars && !data.invited) showInvite(data);
+    if (!cars) return;
+    const data = invitedState();
+    if (data.invited === remote.booster.id || location.hash || document.querySelector("dialog[open]")) return;
+    showInvite(data);
   }
+
+  /* Mes découvertes : tout ce qui est sorti des boosters ouverts. On peut y revenir sur une voiture passée. */
+  async function renderDiscoveries() {
+    const box = document.getElementById("discoveries");
+    const head = `<section class="compare-head"><div class="wrap"><a class="back" href="#">‹ Mon deck</a><h1 class="display-xl">Mes découvertes</h1></div></section>`;
+    box.innerHTML = `${head}<section class="section"><div class="wrap"><p>Chargement…</p></div></section>`;
+    const { data, error } = await db.from("boosters").select("titles, opened_at").eq("user_id", state.user.id).not("opened_at", "is", null).order("opened_at", { ascending: false });
+    if (error) {
+      box.innerHTML = `${head}<section class="section"><div class="wrap"><p class="notice failed">Tes découvertes n'ont pas pu être chargées.</p></div></section>`;
+      return;
+    }
+    const byTitle = new Map(state.catalog.map((car) => [titleOf(car), car]));
+    const own = new Set(state.items.map((item) => item.title));
+    const rows = data.flatMap((booster) => booster.titles.map((title) => ({ car: byTitle.get(title), title, date: booster.opened_at }))).filter((row) => row.car);
+    box.innerHTML = `${head}<section class="section"><div class="wrap">${rows.length ? `<ul class="discovery-list">${rows.map(({ car, title, date }) => `<li>
+        ${car.photos[0] ? `<img src="${esc(car.photos[0].thumb || car.photos[0].file)}" alt="" loading="lazy">` : ""}
+        <div><strong>${esc(car.name)}</strong><small>Découverte le ${frenchDay(date)}</small></div>
+        ${own.has(title) ? `<span class="discovery-owned">Dans mon deck</span>` : `<button type="button" class="button button-secondary" data-discovery-add="${esc(title)}">Ajouter à mon deck</button>`}
+      </li>`).join("")}</ul>` : `<p>Ouvre ton premier booster : ses voitures arriveront ici.</p>`}</div></section>`;
+  }
+  document.getElementById("discoveries").addEventListener("click", async (event) => {
+    const button = event.target.closest("[data-discovery-add]");
+    if (!button) return;
+    const title = button.dataset.discoveryAdd;
+    button.disabled = true;
+    const { data, error } = await db.from("deck_items").insert({ user_id: state.user.id, title }).select(ITEM_FIELDS).single();
+    if (error) {
+      button.disabled = false;
+      showToast("Cette voiture n'a pas pu être ajoutée. Réessaie.");
+      return;
+    }
+    state.items = [data, ...state.items];
+    rebuildDeck();
+    renderDiscoveries();
+  });
 
   /* S'il n'est pas ouvert, le booster attend dans le deck, sans limite de temps. */
   function renderTile() {
@@ -926,15 +941,6 @@
     if (waiting) document.getElementById("booster-tile").addEventListener("click", openStage);
   }
 
-  window.CarPocketBooster = {
-    afterEnter,
-    renderTile,
-    reset() {
-      if (!state.user) return;
-      save(storeKey(), null);
-      entered = false;
-      afterEnter();
-    },
-  };
+  window.CarPocketBooster = { afterEnter, renderTile, renderDiscoveries };
   if (state.user) afterEnter();
 })();

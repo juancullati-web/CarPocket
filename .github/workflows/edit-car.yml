@@ -24,6 +24,11 @@ on:
         required: false
         default: ""
         type: string
+      reserve_kind:
+        description: Catégorie dans la réserve
+        required: false
+        default: ""
+        type: string
 
 jobs:
   edit:
@@ -42,6 +47,7 @@ jobs:
           CAR_CHANGES: ${{ inputs.changes }}
           CAR_PHOTO: ${{ inputs.photo }}
           CAR_UPLOAD: ${{ inputs.upload }}
+          CAR_RESERVE_KIND: ${{ inputs.reserve_kind }}
         run: python3 scripts/edit_car.py --comment-file "$GITHUB_STEP_SUMMARY"
       - name: Enregistrer dans le dépôt
         id: save

@@ -42,4 +42,8 @@ Administration (`site/admin.js`, routes `#admin:…` et `#comptes`) : l'accueil 
 
 Une fiche que plus personne n'a est retirée par l'action `release-sheet`, sauf si elle porte une correction de l'admin ou `reserve: true`. Le serveur revérifie toujours qu'elle n'est dans aucun deck.
 
+Boosters (`site/booster.js`, table `boosters`, actions `booster-current` et `booster-open`) : seul le serveur tire et écrit. Une voiture de réserve porte `reserve: true` et `reserve_kind` (`discovery` ou `remarkable`) dans `data/cars` ; elle n'apparaît dans l'admin Fiches qu'une fois dans un deck. `profiles.booster_enabled` ouvre l'accès, compte par compte, depuis l'onglet Réserve. Sous 9 cartes inédites, le serveur lance `grow-reserve.yml`, qui utilise `scripts/build_reserve.py`.
+
+Signalements : table `sheet_reports`, un compte connecté signale, seul l'admin traite.
+
 Tests : `python3 -m unittest discover -s tests`. Aperçu avec suppression : `python3 scripts/serve.py`.

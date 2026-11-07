@@ -1212,6 +1212,7 @@ function detailHtml(car) {
           ${summaryHtml(car)}
           ${notesHtml(car)}
           ${talkSlot(car)}
+          ${state.user && !isAdmin() ? `<div class="actions"><button type="button" class="text-link quiet" data-report-sheet="${esc(titleOf(car))}" data-tip="Signaler une valeur fausse ou une mauvaise photo">Signaler une erreur</button></div>` : ""}
           ${isAdmin() ? `<div class="actions"><button type="button" class="text-link" data-edit-sheet="${esc(car.slug)}" data-tip="Corriger les valeurs de cette fiche pour tout le monde">Corriger cette fiche ›</button>
             ${catalogCar(car.slug)?.photos?.length || catalogCar(car.slug)?.photoSent ? "" : `<button type="button" class="text-link" data-add-photo="${esc(car.slug)}" data-tip="Choisir une photo libre pour cette fiche">Ajouter une photo ›</button>`}
             <button type="button" class="text-link quiet" data-remove-sheet="${esc(titleOf(car))}" data-tip="Effacer cette fiche pour tous les comptes">Supprimer la fiche pour tout le monde</button></div>` : ""}
@@ -1461,11 +1462,13 @@ function renderRoute() {
   const admin = (hash === "admin" || hash.startsWith("admin:")) && isAdmin();
   const profile = hash === "profil" && Boolean(state.user);
   const discover = hash === "decouvrir" && Boolean(state.user);
+  const discoveries = hash === "decouvertes" && Boolean(state.user) && !isAdmin();
   // Une voiture ouverte depuis une comparaison peut venir de la collection d'un ami.
   // L'administration ouvre aussi les fiches qui ne sont dans aucun deck.
   const car = carBySlug(hash) || compareCar(hash) || (isAdmin() ? catalogCar(hash) : null) || null;
-  el("library").hidden = Boolean(car || compareCars || accounts || admin || profile || discover);
+  el("library").hidden = Boolean(car || compareCars || accounts || admin || profile || discover || discoveries);
   el("discover").hidden = !discover;
+  el("discoveries").hidden = !discoveries;
   el("profile").hidden = !profile;
   el("detail").hidden = !car;
   el("compare").hidden = !compareCars;
@@ -1484,6 +1487,7 @@ function renderRoute() {
   if (admin) window.CarPocketAdmin?.render(hash.slice(6));
   if (profile) renderProfile();
   if (discover) renderDiscover();
+  if (discoveries) window.CarPocketBooster?.renderDiscoveries();
 }
 
 let openMissingNext = null;
@@ -3831,5 +3835,32 @@ async function start() {
     image.hidden = false;
   }).catch(() => {});
 }
+
+/* Signaler une erreur : la valeur fausse qu'aucun filtre ne peut attraper. */
+let reportingTitle = "";
+document.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-report-sheet]");
+  if (!button) return;
+  reportingTitle = button.dataset.reportSheet;
+  el("report-form").reset();
+  el("report-error").hidden = true;
+  el("report-dialog").showModal();
+});
+el("report-cancel").addEventListener("click", () => el("report-dialog").close());
+el("report-form").addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const message = el("report-message").value.trim();
+  const failed = (text) => {
+    el("report-error").textContent = text;
+    el("report-error").hidden = false;
+  };
+  if (!message) return failed("Écris ce qui ne va pas.");
+  el("report-submit").disabled = true;
+  const { error } = await db.from("sheet_reports").insert({ title: reportingTitle, message });
+  el("report-submit").disabled = false;
+  if (error) return failed("Ton signalement n'a pas pu être envoyé. Réessaie dans un instant.");
+  el("report-dialog").close();
+  showToast("Merci, ton signalement est envoyé.");
+});
 
 start();
