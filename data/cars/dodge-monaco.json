@@ -1,0 +1,75 @@
+{
+  "slug": "dodge-monaco",
+  "name": "Dodge Monaco",
+  "brand": "Dodge",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T02:47:00+00:00",
+  "updated": "2026-11-07T02:47:00+00:00",
+  "summary": "La Dodge Monaco est une voiture familiale de la marque américaine Dodge faisant partie du groupe Chrysler, produite entre 1965 et 1975 puis entre 1990 et 1992.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Dodge_Monaco",
+  "wikipedia_title": "Dodge Monaco",
+  "specs": {
+    "engine": {
+      "value": "225 cuin RG I6 (Canada) · 318 cuin A V8 (Canada) · 383 cuin B V8 · 440 cuin RB V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 3 rapports · Manuelle 4 rapports · Automatique 3 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Break 4 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1964–1968",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United States: Hamtramck, Michigan (Dodge Main Factory)",
+      "from_text": false
+    },
+    "length": {
+      "value": "5418 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "2032 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1433 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "3073 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "325 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/dodge-monaco/1.jpg",
+      "thumb": "photos/dodge-monaco/1-thumb.jpg",
+      "author": "dave_7 from Lethbridge, Canada",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1968_Dodge_Monaco_(3736056218).jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "avant 1970"
+  ]
+}

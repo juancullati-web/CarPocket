@@ -1,0 +1,88 @@
+{
+  "slug": "audi-tt",
+  "name": "Audi TT",
+  "brand": "Audi",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T04:45:11+00:00",
+  "updated": "2026-11-07T04:45:11+00:00",
+  "summary": "L'Audi TT est un coupé 2+2, également disponible en roadster, du constructeur automobile allemand Audi, produite du 18 février 1998 au 10 novembre 2023 à 662 762 exemplaires en trois générations. Le nom de TT provient du modèle NSU Prinz TT. Le sigle TT, pour Tourist Trophy, fait référence à la célèbre course motocycliste de l'île de Man, où NSU, l'un des constructeurs à l'origine d'Audi, s'est illustré par ses victoires avant de reprendre ces deux lettres pour baptiser sa Prinz TT. En effet, le 10 mars 1969, NSU et Auto Union fusionnent sous l'impulsion de Volkswagen pour donner naissance à Audi NSU Auto Union AG.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Audi_TT",
+  "wikipedia_title": "Audi TT",
+  "specs": {
+    "engine": {
+      "value": "1.8 L 20v turbocharged I4 · 3.2 L 24v VR6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports 02J (front-wheel drive 180 PS) · Manuelle 5 rapports 02M (all-wheel drive 180 PS) · Manuelle 6 rapports 02M (all models 225 PS) · Automatique 6 rapports · Double embrayage 6 rapports automatic (3.2 L Quattro only)",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, traction\nmoteur avant, transmission intégrale (quattro)",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 3 portes (first and second generations)",
+      "from_text": false
+    },
+    "production": {
+      "value": "Coupé: February 1998 – June 2006 · Roadster: August 1999 – June 2006",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Freeman Thomas, Peter Schreyer (1995)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Hungary: Győr (engines and final assembly)",
+      "from_text": false
+    },
+    "length": {
+      "value": "4041 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1764 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1346 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2422 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "180 PS",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "249 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-62 mph : 5,9 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/audi-tt/1.jpg",
+      "thumb": "photos/audi-tt/1-thumb.jpg",
+      "author": "Vauxford",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2000_Audi_TT_Quattro_1.8_Front.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "Coupé 3 portes (first and second generations)",
+    "décrite comme sportive ou de prestige"
+  ]
+}

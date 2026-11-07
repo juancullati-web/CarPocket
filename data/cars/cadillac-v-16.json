@@ -1,0 +1,64 @@
+{
+  "slug": "cadillac-v-16",
+  "name": "Cadillac V-16",
+  "brand": "Cadillac",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T03:17:12+00:00",
+  "updated": "2026-11-07T03:17:12+00:00",
+  "summary": "La Cadillac V-16 (parfois appelée Cadillac Sixteen) est l'automobile haut-de-gamme de la marque Cadillac depuis son lancement en janvier 1930 jusqu'à ce que sa production ne s'arrête en 1940 à cause de la guerre en Europe. Toutes les voitures produites ont été commandées personnellement par les clients et ainsi seulement 4 076 exemplaires ont été vendus. La majorité de ceux-ci ont été construits dans la seule année 1930, avant que la Grande Dépression ne prenne le pas sur les ventes. C'est la première voiture fonctionnant en V16 produite aux États-Unis. Elle a été dessinée par Harley J. Earl.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Cadillac_V-16",
+  "wikipedia_title": "Cadillac V-16",
+  "specs": {
+    "engine": {
+      "value": "Cadillac V16 engine",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 3 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Cabriolet 2 portes · Cabriolet 4 portes · Coupé 2 portes · Berline 4 portes · 4-door town car · 4-door limousine",
+      "from_text": false
+    },
+    "production": {
+      "value": "1930–1940",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Harley Earl",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United States: Detroit, Michigan (Detroit Assembly)",
+      "from_text": false
+    },
+    "power": {
+      "value": "185 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/cadillac-v-16/1.jpg",
+      "thumb": "photos/cadillac-v-16/1-thumb.jpg",
+      "author": "Rex Gray",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1931_Cadillac_V-16_Sport_Phaeton.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "Cabriolet 2 portes",
+    "avant 1970"
+  ]
+}

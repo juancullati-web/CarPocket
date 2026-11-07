@@ -1,0 +1,97 @@
+{
+  "slug": "apollo-intensa-emozione",
+  "name": "Apollo Intensa Emozione",
+  "brand": "Apollo",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T03:12:12+00:00",
+  "updated": "2026-11-07T03:12:12+00:00",
+  "summary": "L'Apollo Intensa Emozione, appelée « Apollo IE », est la première supercar produite par Apollo Automobil Gmbh, ex-Gumpert, le constructeur qui produisait l'Apollo.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Apollo_Intensa_Emozione",
+  "wikipedia_title": "Apollo Intensa Emozione",
+  "specs": {
+    "engine": {
+      "value": "6.3 L F140 V12",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Séquentielle 6 rapports with electro-pneumatic paddle-shift system",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur central arrière, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "April 2019–present · 10 exemplaires, 2 prototypes",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Jowyn Wong",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Germany: Affalterbach",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1250 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "5066 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1995 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1130 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2700 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "780 PS",
+      "from_text": false
+    },
+    "torque": {
+      "value": "760 Nm",
+      "from_text": false
+    },
+    "top_speed": {
+      "value": "335 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-60 mph : 2,7 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/apollo-intensa-emozione/1.jpg",
+      "thumb": "photos/apollo-intensa-emozione/1-thumb.jpg",
+      "author": "Kevauto",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Apollo_Intensa_Emozione_(IE)_Golden_Dragon,_front_2.1.20.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "10 exemplaires",
+    "Coupé 2 portes",
+    "décrite comme sportive ou de prestige"
+  ]
+}

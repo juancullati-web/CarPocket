@@ -1,0 +1,73 @@
+{
+  "slug": "nissan-sentra",
+  "name": "Nissan Sentra",
+  "brand": "Nissan",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T03:04:19+00:00",
+  "updated": "2026-11-07T03:04:19+00:00",
+  "summary": "La Sentra est une berline compacte fabriquée par Nissan et dont les origines remontent à 1983. La vente de la nouvelle génération de la Nissan Sentra 2013 a débuté à l'automne 2012. L'ancienne génération avait été dévoilée fin 2006 et produite jusqu'en 2012. Ses prix varient entre 15 000 $ à 23 000 $ dollars canadiens. La Sentra est assemblée à Aguascalientes, au Mexique.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Nissan_Sentra",
+  "wikipedia_title": "Nissan Sentra",
+  "specs": {
+    "engine": {
+      "value": "1.5 L E15 I4 (gasoline) · 1.6 L E16 I4 (gasoline) · 1.7 L CD17 I4 (diesel)",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "4/Manuelle 5 rapports · Automatique 3 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, traction",
+      "from_text": false
+    },
+    "body": {
+      "value": "2/Berline 4 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1982–1986 · 1984–1987 (Mexico)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Japan: Zama, Kanagawa Mexico: Cuernavaca, Morelos United States: Smyrna, Tennessee",
+      "from_text": false
+    },
+    "length": {
+      "value": "4249 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1618 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1384 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2400 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "67 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/nissan-sentra/1.jpg",
+      "thumb": "photos/nissan-sentra/1-thumb.jpg",
+      "author": "IFCAR",
+      "license": "Public domain",
+      "license_url": "",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1st-Nissan-Sentra-sedan.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

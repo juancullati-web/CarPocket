@@ -1,0 +1,75 @@
+{
+  "slug": "pontiac-grand-prix",
+  "name": "Pontiac Grand Prix",
+  "brand": "Pontiac",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T03:29:17+00:00",
+  "updated": "2026-11-07T03:29:17+00:00",
+  "summary": "La Pontiac Grand Prix est une automobile produite par la division Pontiac de General Motors. Introduite sur le marché en 1962 en tant que « voiture de luxe » (en fait un gros coupé équipée d'un V8 puissant et d'un intérieur original), dérivée de la LeMans, le nom de Grand Prix a ensuite été utilisé pour les voitures de taille moyenne ou mid-size à connotation luxueuse de la marque. Les moteurs disponibles en 1980 sont un V6 de 3,8 L, un V8 de 4,3 L et un V8 de 5,7 L diesel, tous partagés avec la Pontiac LeMans.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Pontiac_Grand_Prix",
+  "wikipedia_title": "Pontiac Grand Prix",
+  "specs": {
+    "engine": {
+      "value": "389 cid Pontiac V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 3 rapports · Manuelle 4 rapports · Automatique 3 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "2-door hardtop",
+      "from_text": false
+    },
+    "production": {
+      "value": "1962–1964",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Pontiac Assembly, Pontiac, Michigan Arlington Assembly, Arlington, Texas Fairfax Assembly, Kansas City, Kansas Linden Assembly, Linden, New Jersey South Gate Assembly, South Gate, California",
+      "from_text": false
+    },
+    "length": {
+      "value": "5375 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1996 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "3048 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "303 hp",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "154 km/h",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/pontiac-grand-prix/1.jpg",
+      "thumb": "photos/pontiac-grand-prix/1-thumb.jpg",
+      "author": "Dave Parker from Tracy, CA, USA",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1962_Pontiac_Grand_Prix_in_red.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "avant 1970"
+  ]
+}

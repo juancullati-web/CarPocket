@@ -1,0 +1,69 @@
+{
+  "slug": "aston-martin-v8-vantage-1977",
+  "name": "Aston Martin V8 Vantage (1977)",
+  "brand": "Aston Martin",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T06:19:57+00:00",
+  "updated": "2026-11-07T06:19:57+00:00",
+  "summary": "See also Aston Martin V8 Vantage (disambiguation) for other models sharing this name The Aston Martin V8 Vantage is a British grand tourer, a higher performance version of the Aston Martin V8. It was hailed at its 1977 introduction as \"Britain's First Supercar\" for its 170 mph (270 km/h) top speed. Its engine was shared with the Lagonda, but it used high-performance camshafts, increased compression ratio, larger inlet valves and bigger carburettors mounted on new manifolds for increased output. Straight-line performance was the best of the day, with acceleration from 0–60 mph (97 km/h) in 5.3 seconds, one-tenth of a second quicker than the Ferrari Daytona.",
+  "summary_lang": "en",
+  "summary_url": "https://en.wikipedia.org/wiki/Aston_Martin_V8_Vantage_%281977%29",
+  "wikipedia_title": "Aston Martin V8 Vantage (1977)",
+  "specs": {
+    "engine": {
+      "value": "5.3 L or 6.3 L V8",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes or convertible",
+      "from_text": false
+    },
+    "production": {
+      "value": "1977–1989 · 534 built · Saloon: 342 built · Volante: 192 built",
+      "from_text": false
+    },
+    "designer": {
+      "value": "William Towns",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United Kingdom: Newport Pagnell, Buckinghamshire, England",
+      "from_text": false
+    },
+    "power": {
+      "value": "380-450 bhp",
+      "from_text": false
+    },
+    "top_speed": {
+      "value": "270 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-60 mph : 5,2 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/aston-martin-v8-vantage-1977/1.jpg",
+      "thumb": "photos/aston-martin-v8-vantage-1977/1-thumb.jpg",
+      "author": "Calreyn88",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1985_Aston_Martin_Vantage_V8.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "534 exemplaires",
+    "Coupé 2 portes or convertible",
+    "décrite comme sportive ou de prestige"
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "slug": "mazda-rx-7",
+  "name": "Mazda RX-7",
+  "brand": "Mazda",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T01:09:00+00:00",
+  "updated": "2026-11-07T01:09:00+00:00",
+  "summary": "La Mazda RX-7 est un coupé à moteur à pistons rotatifs (composé de deux rotors lui conférant la particularité d'avoir une faible cylindrée tout en ayant une certaine puissance) produite par le constructeur automobile japonais Mazda. C'est un modèle de voiture qui évoluera au cours du temps et plusieurs versions de celle-ci verront le jour. Ainsi naîtront successivement la SA22C, la FB, puis la FC3S, et enfin la FD3S.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Mazda_RX-7",
+  "wikipedia_title": "Mazda RX-7",
+  "specs": {
+    "engine": {
+      "value": "1146 cc 12A twin-rotor · 1146 cc turbo 12A twin-rotor · 1308 cc 13B-RESI twin-rotor",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 4 rapports · Manuelle 5 rapports · Automatique 3 rapports · Automatique 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Front moteur central, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1978–1985 · 471,018 exemplaires",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Matasaburo Maeda (1976)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Japan: Hiroshima (Hiroshima Assembly)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "2300-2500 lb",
+      "from_text": false
+    },
+    "length": {
+      "value": "4285 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1675 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1260 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2420 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "130 PS",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-97 km/h : 9,2 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/mazda-rx-7/1.jpg",
+      "thumb": "photos/mazda-rx-7/1-thumb.jpg",
+      "author": "Riley from Christchurch, New Zealand",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1980_Mazda_RX-7_SE_Limited_(17888386539)_(cropped).jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "Coupé 2 portes",
+    "décrite comme sportive ou de prestige"
+  ]
+}

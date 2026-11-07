@@ -1,0 +1,68 @@
+{
+  "slug": "bristol-408",
+  "name": "Bristol 408",
+  "brand": "Bristol",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T02:31:08+00:00",
+  "updated": "2026-11-07T02:31:08+00:00",
+  "summary": "Attention : article traduit automatiquement de l'article en anglais, nombreux anglicismes et tournures incorrectes à chaque phrase. La Bristol 408 est une voiture de luxe fabriquée par la marque anglaise Bristol Cars entre 1963 et 1966. Exceptionnel pour Bristol, une version légèrement révisée a été lancée en 1965 sous le nom de 408 Mark II. Mécaniquement, la Bristol 408 était identique à son prédécesseur la 407, qui fut un symbole de renouveau pour Bristol, alimentée par un moteur Chrysler V8 et par une transmission automatique. Cependant, à l'extérieur, il y avait quelques changements majeurs. Le style frontal de la 407 – qui avait été reporté des six cylindres 406 et 405 – a été écarté et on trouve maintenant une calandre rectangulaire avec des barres horizontales prononcées.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Bristol_408",
+  "wikipedia_title": "Bristol 408",
+  "specs": {
+    "engine": {
+      "value": "5.1 L Chrysler A V8 · 5.2 L Chrysler A V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Automatique 3 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "production": {
+      "value": "1963–1966 · 83 units",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United Kingdom: Filton",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1600 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4915 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1727 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2896 mm",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/bristol-408/1.jpg",
+      "thumb": "photos/bristol-408/1-thumb.jpg",
+      "author": "Mr.choppers",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1964_Bristol_408_Saloon_in_Maroon,_front_left.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "83 exemplaires",
+    "avant 1970"
+  ]
+}

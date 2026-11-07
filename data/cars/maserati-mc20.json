@@ -1,0 +1,84 @@
+{
+  "slug": "maserati-mc20",
+  "name": "Maserati MC20",
+  "brand": "Maserati",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T03:09:05+00:00",
+  "updated": "2026-11-07T03:09:05+00:00",
+  "summary": "La Maserati MC20 (MC comme Maserati Corse et 20 pour 2020) est une supercar à moteur central du constructeur automobile italien Maserati produite de 2020 à 2025. Lors de son lancement, le constructeur a annoncé que le coupé serait vite suivi d'un spyder et, ensuite, d'une version électrique. En 2024, Maserati lance une variante de course Project 24 ainsi que version à propulsion électrique.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Maserati_MC20",
+  "wikipedia_title": "Maserati MC20",
+  "specs": {
+    "engine": {
+      "value": "3.0 L Maserati Nettuno 90° twin-turbocharged V6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Double embrayage 8 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur central arrière, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes · 2-door retractable hard-top convertible",
+      "from_text": false
+    },
+    "production": {
+      "value": "2020–present",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Klaus Busse at Centro Stile Maserati",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Italy: Modena",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1475-1540 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4669 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1965 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1224 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2700 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "463 kW",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/maserati-mc20/1.jpg",
+      "thumb": "photos/maserati-mc20/1-thumb.jpg",
+      "author": "Alexander Migl",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Maserati_MC20_IAA_2021_1X7A0087.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "Coupé 2 portes",
+    "décrite comme sportive ou de prestige"
+  ]
+}

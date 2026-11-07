@@ -1,0 +1,91 @@
+{
+  "slug": "alfa-romeo-giulia",
+  "name": "Alfa Romeo Giulia",
+  "brand": "Alfa Romeo",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T06:00:00+00:00",
+  "updated": "2026-11-07T06:00:00+00:00",
+  "summary": "L'Alfa Romeo Giulia est une berline commercialisée par le constructeur automobile italien Alfa Romeo, de 1962 à 1977. Alfa Romeo fut le premier fabricant à mettre un moteur puissant dans un véhicule de production courante. La Giulia pesait environ 1 000 kg. Elle était équipée d'un moteur 1,6 litre développant 75 kW avec une transmission manuelle à cinq rapports. Sa vitesse maximale était de 170 km/h, ce qui était une vraie référence au début des années 1960 et cette voiture est restée une des plus rapides et sûres jusqu'à la fin des années 1970. Elle atteignait les 100 km/h départ arrêté en environ 12 s. Son style était très simple mais très détaillé. Le capot moteur, l'habitacle et le coffre étaient carrés tous les trois. Cependant, la calandre scudetto, les lignes du toit et les détails du capot et du coffre unifiaient le design.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Alfa_Romeo_Giulia_%281962%29",
+  "wikipedia_title": "Alfa Romeo Giulia",
+  "specs": {
+    "engine": {
+      "value": "1.3 L Twin Cam I4 (petrol) · 1.6 L Twin Cam I4 (petrol) · 1.8 L Perkins 4.108 I4 (diesel)",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 4 rapports (Giulia 1300) · Manuelle 5 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "4-door notchback saloon",
+      "from_text": false
+    },
+    "production": {
+      "value": "1962–1978",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Giuseppe Scarnati",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Italy: Portello Plant, Milan (1962–1965) Italy: Arese Plant, Arese (MI) (1965–1978) Portugal: Setúbal (Movauto) South Africa: Rosslyn, Gauteng Rhodesia: Willowvale, Salisbury (Willowvale Motor Industries)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "978-1130 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4140 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1560 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1430 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2510 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "110 bhp",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "170 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-100 km/h : 12 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/alfa-romeo-giulia/1.jpg",
+      "thumb": "photos/alfa-romeo-giulia/1-thumb.jpg",
+      "author": "Kelebek",
+      "license": "Public domain",
+      "license_url": "",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Alfa_Romeo_Giulia_Super_(cropped).jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "avant 1970"
+  ]
+}

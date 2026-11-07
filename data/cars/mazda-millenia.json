@@ -1,0 +1,77 @@
+{
+  "slug": "mazda-millenia",
+  "name": "Mazda Millenia",
+  "brand": "Mazda",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T00:24:08+00:00",
+  "updated": "2026-11-07T00:24:08+00:00",
+  "summary": "La Xedos 9 est une grande berline développée par Mazda présentée à Francfort en septembre 1993 et commercialisée en mars 1994 sur le marché français. Au Japon, elle s'est d'abord appelée Eunos 800 puis Millenia, nom qu'elle a toujours porté aux États-Unis. La Xedos 9 arrive deux ans après la Xedos 6 conformément au plan décidé par Mazda pour opérer une montée en gamme pour répondre notamment aux labels de luxe Lexus de Toyota et Infiniti de Nissan. Les ventes de la Xedos 6 étant bien plus faibles que prévu, le constructeur sait toutefois, à la sortie de la Xedos 9, que le programme n'ira pas au-delà. La carrière très discrète de la Xedos 9 confortera Mazda dans cette décision. La Xedos 9 affiche une ligne plutôt élégante, mais plus classique que la Xedos 6 et seule sa petite calandre raffinée lui permet de considérer qu'elle forme un début de famille avec celle-ci.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Mazda_Xedos_9",
+  "wikipedia_title": "Mazda Millenia",
+  "specs": {
+    "engine": {
+      "value": "2.0L KF-DE V6 · 2.3L KJ-ZEM Miller cycle V6 · 2.5L KL-DE V6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports (European 2-liter and 2.5 liter only) · Automatique 4 rapports · 4-speed LJ4A-EL (Jatco RE4F04A) automatic",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, traction",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1993–2002",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Yujiro Daikoku (1990)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Japan: Hiroshima (Hiroshima Plant)",
+      "from_text": false
+    },
+    "length": {
+      "value": "4821 mm (1995-2000)",
+      "from_text": false
+    },
+    "width": {
+      "value": "1770 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1394 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2751 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "140 hp",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/mazda-millenia/1.jpg",
+      "thumb": "photos/mazda-millenia/1-thumb.jpg",
+      "author": "TTTNIS",
+      "license": "Public domain",
+      "license_url": "",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1998-2000_Mazda_Millenia.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

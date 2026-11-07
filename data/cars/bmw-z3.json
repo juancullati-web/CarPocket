@@ -1,0 +1,80 @@
+{
+  "slug": "bmw-z3",
+  "name": "BMW Z3",
+  "brand": "BMW",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T02:13:06+00:00",
+  "updated": "2026-11-07T02:13:06+00:00",
+  "summary": "La BMW Z3 est une voiture de sport BMW Série Z GT du constructeur automobile allemand BMW, présentée au salon international de l'automobile de Genève 1995 et commercialisée à 279 273 exemplaires jusqu'en 2002.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/BMW_Z3",
+  "wikipedia_title": "BMW Z3",
+  "specs": {
+    "engine": {
+      "value": "Gasoline: · 1.8–1.9 L M43/M44 I4 · 2.0–3.0 L M52/M52TÜ/M54 I6 · 3.2 L S50/S52/S54 I6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports · Automatique 4 rapports · Automatique 5 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Cabriolet 2 portes · 3-door shooting-brake",
+      "from_text": false
+    },
+    "production": {
+      "value": "September 1995 – June 2002",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Joji Nagashima, Burkhard Göschel",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United States: Greer, South Carolina (Plant Spartanburg)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1160-1400 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4025 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1692 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1293-1306 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2446 mm",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/bmw-z3/1.jpg",
+      "thumb": "photos/bmw-z3/1-thumb.jpg",
+      "author": "MercurySable99",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1999_BMW_Z3_2.3_roadster,_front_right,_08-24-2024.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "Cabriolet 2 portes",
+    "décrite comme sportive ou de prestige"
+  ]
+}

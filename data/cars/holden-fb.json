@@ -1,0 +1,75 @@
+{
+  "slug": "holden-fb",
+  "name": "Holden FB",
+  "brand": "Holden",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T04:47:15+00:00",
+  "updated": "2026-11-07T04:47:15+00:00",
+  "summary": "The Holden FB is an automobile produced by Holden in Australia from 1960 to 1961. Introduced on 14 January 1960, the FB series replaced the Holden FC range.",
+  "summary_lang": "en",
+  "summary_url": "https://en.wikipedia.org/wiki/Holden_FB",
+  "wikipedia_title": "Holden FB",
+  "specs": {
+    "engine": {
+      "value": "2.3L GMH '138' I6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 3 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes · Break 5 portes · Coupé 2 portes utility · 2-door panel van",
+      "from_text": false
+    },
+    "production": {
+      "value": "January 1960 – May 1961",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Alf Payze",
+      "from_text": false
+    },
+    "weight": {
+      "value": "Standard Sedan: 2473 lb (1122 kg)",
+      "from_text": false
+    },
+    "length": {
+      "value": "4610 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1702 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1524 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2667 mm",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/holden-fb/1.jpg",
+      "thumb": "photos/holden-fb/1-thumb.jpg",
+      "author": "OSX",
+      "license": "Public domain",
+      "license_url": "",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1960-1961_Holden_Special_(FB)_Station_Sedan_station_wagon_(2015-07-15)_01.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "avant 1970"
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "slug": "mazda-cx-90",
+  "name": "Mazda CX-90",
+  "brand": "Mazda",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T01:05:00+00:00",
+  "updated": "2026-11-07T01:05:00+00:00",
+  "summary": "La CX-90 est un grand SUV familial à 7 ou 8 places du constructeur automobile japonais Mazda produit à partir de 2023 et non commercialisée en Europe.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Mazda_CX-90",
+  "wikipedia_title": "Mazda CX-90",
+  "specs": {
+    "engine": {
+      "value": "Gasoline: · 3.3 L e-Skyactiv G H3T turbo I6 · Gasoline plug-in hybrid: (PHEV) · 2.5 L e-Skyactiv PHEV PY-VPS I4 · Diesel: · 3.3 L e-Skyactiv D T3-VPTS turbo I6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Automatique 8 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Longitudinal moteur avant, transmission intégrale",
+      "from_text": false
+    },
+    "body": {
+      "value": "SUV 5 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "CX-90: April 2023 – present · CX-70: 2024–2026",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Japan: Hōfu (Hōfu Plant No. 2)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "2136-2378 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "5100-5121 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1994 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1736-1745 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "3120 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "280 hp",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/mazda-cx-90/1.jpg",
+      "thumb": "photos/mazda-cx-90/1-thumb.jpg",
+      "author": "Elise240SX",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2024_Mazda_CX-90_Mild_Hybrid_Inline_6_Turbo_GS-L_AWD_in_Deep_Crystal_Blue_Mica,_Front_Left,_09-10-2023.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

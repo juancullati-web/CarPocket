@@ -1,0 +1,92 @@
+{
+  "slug": "porsche-924",
+  "name": "Porsche 924",
+  "brand": "Porsche",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T05:45:11+00:00",
+  "updated": "2026-11-07T05:45:11+00:00",
+  "summary": "La Porsche 924 est une automobile construite par le constructeur allemand Porsche à la fin des années 1970. Novatrice sur de nombreux points, cette automobile fut un succès commercial pour Porsche.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Porsche_924",
+  "wikipedia_title": "Porsche 924",
+  "specs": {
+    "engine": {
+      "value": "2.0 L VW EA831 I4 · 2.0 L VW EA831 turbo I4 · 2.5 L M44/40 I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Automatique 3 rapports · Manuelle 4 rapports · Manuelle 5 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "2-door 2+2 coupé",
+      "from_text": false
+    },
+    "production": {
+      "value": "1976–1988",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Harm Lagaay (Porsche AG)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Germany: Neckarsulm, Stuttgart",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1242 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4200 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1685 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1270 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2400 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "125 PS",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "229 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-60 mph : 6,9 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/porsche-924/1.jpg",
+      "thumb": "photos/porsche-924/1-thumb.jpg",
+      "author": "Alexander Migl",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Porsche_924_in_the_Porsche-Museum_(2009)_1X7A0347.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "2-door 2+2 coupé",
+    "décrite comme sportive ou de prestige"
+  ]
+}

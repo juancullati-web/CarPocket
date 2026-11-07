@@ -1,0 +1,81 @@
+{
+  "slug": "jeep-avenger",
+  "name": "Jeep Avenger",
+  "brand": "Jeep",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T00:43:07+00:00",
+  "updated": "2026-11-07T00:43:07+00:00",
+  "summary": "La Jeep Avenger est un crossover citadin du constructeur automobile américain Jeep présenté en 2022. Il s'agit du tout premier véhicule Jeep indisponible en 4 roues motrices à son lancement, et disponible en électrique. Elle est élue Voiture européenne de l'année 2023.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Jeep_Avenger",
+  "wikipedia_title": "Jeep Avenger",
+  "specs": {
+    "engine": {
+      "value": "Petrol: · 1.0 L GSE FireFly I3 flex fuel turbo mild hybrid · 1.2 THP (EB2ADTD) I3 turbo mild hybrid",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Variation continue 7 rapports · Manuelle 6 rapports · 6-speed e-DCT",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, traction\nmoteur avant, transmission intégrale (4xe)\nFront-motor, front-wheel-drive (EV)",
+      "from_text": false
+    },
+    "body": {
+      "value": "SUV 5 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "2023–present",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Daniele Calonaci",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Poland: Tychy (FCA Poland) Brazil: Porto Real (Stellantis do Brasil)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1182-1536 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4084 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1776 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1528 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2560 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "101 PS",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/jeep-avenger/1.jpg",
+      "thumb": "photos/jeep-avenger/1-thumb.jpg",
+      "author": "© M 93",
+      "license": "CC BY-SA 3.0 de",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Jeep_Avenger_Elektro_Summit_%E2%80%93_f_18052025.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

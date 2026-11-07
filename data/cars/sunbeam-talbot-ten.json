@@ -1,0 +1,67 @@
+{
+  "slug": "sunbeam-talbot-ten",
+  "name": "Sunbeam-Talbot Ten",
+  "brand": "Sunbeam-Talbot",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T04:08:08+00:00",
+  "updated": "2026-11-07T04:08:08+00:00",
+  "summary": "La Sunbeam-Talbot Ten est une automobile compacte de direction ou une petite berline sportive produite par le groupe Rootes dans son usine Clément-Talbot située à North Kensington. Sa production initiale s'étend de 1938 à 1939, puis elle est réintroduite après la Seconde Guerre mondiale, avec des ventes se poursuivant de 1945 à 1948. Cette voiture a d'abord été commercialisée en tant que berline sportive à deux portes, avant d'être proposée en version à quatre portes. Des variantes coupé cabriolet et sports tourer étaient également disponibles.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Sunbeam-Talbot_Ten",
+  "wikipedia_title": "Sunbeam-Talbot Ten",
+  "specs": {
+    "engine": {
+      "value": "1185 cc Straight-4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 4 rapports",
+      "from_text": false
+    },
+    "body": {
+      "value": "2-door and 4-door sports saloon · 2-door drophead coupe · 2-door open sports tourer",
+      "from_text": false
+    },
+    "production": {
+      "value": "1938-1948",
+      "from_text": false
+    },
+    "length": {
+      "value": "3962 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1524 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2388 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "41 bhp",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "109 km/h",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/sunbeam-talbot-ten/1.jpg",
+      "thumb": "photos/sunbeam-talbot-ten/1-thumb.jpg",
+      "author": "Charles01",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Sunbeam-Talbot_Ten_registered_May_1947_1185cc.JPG"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "avant 1970"
+  ]
+}

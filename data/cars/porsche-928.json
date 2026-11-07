@@ -1,0 +1,83 @@
+{
+  "slug": "porsche-928",
+  "name": "Porsche 928",
+  "brand": "Porsche",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T03:56:08+00:00",
+  "updated": "2026-11-07T03:56:08+00:00",
+  "summary": "La Porsche 928 est un modèle de voiture de sport produit de 1978 à 1995 par le constructeur allemand Porsche. C'est le premier modèle de la marque à recevoir un V8, installé en position avant. Elle a remporté le trophée européen de la voiture de l'année en 1978. Son design particulièrement innovant lui confère une allure moderne qui témoigne assez bien des tendances esthétiques de la fin des années 1970, début 1980. Le choix de la motorisation en fera une voiture « mal aimée » de bon nombre de Porschistes qui vouent un culte exclusif à la mythique 911 et son fameux Flat 6. La 928 connaîtra pourtant un certain succès, notamment aux États-Unis, marché pour lequel elle était prioritairement destinée, et bénéficiera d'une étonnante longévité.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Porsche_928",
+  "wikipedia_title": "Porsche 928",
+  "specs": {
+    "engine": {
+      "value": "4.5 L M28/01–M28/18 V8 · 4.7 L M28/19–M28/22 V8 · 5.0 L M28/41–M28/47 DOHC V8 · 5.4 L M28/49–M28/50 DOHC V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports · Automatique 3 rapports · Automatique 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "2-door 2+2 liftback coupé",
+      "from_text": false
+    },
+    "production": {
+      "value": "May 1977–1995 · 61,056 exemplaires",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Wolfgang Möbius, Anatole Lapine",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Germany: Zuffenhausen",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1450-1620 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4520 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1987–1992: 1837 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "Pre-1989: 1275 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2500 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "300 PS",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/porsche-928/1.jpg",
+      "thumb": "photos/porsche-928/1-thumb.jpg",
+      "author": "MrWalkr",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1991_Porsche_928_S4_LC24.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "2-door 2+2 liftback coupé"
+  ]
+}

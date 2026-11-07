@@ -1,0 +1,96 @@
+{
+  "slug": "mclaren-w1",
+  "name": "McLaren W1",
+  "brand": "McLaren",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T03:06:08+00:00",
+  "updated": "2026-11-07T03:06:08+00:00",
+  "summary": "La McLaren W1 est une 2-portes hypercar hybride du constructeur automobile britannique McLaren Automotive, produite à partir de 2025 en 399 exemplaires. Elle est héritière des McLaren F1 et ⁣ P1",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/McLaren_W1",
+  "wikipedia_title": "McLaren W1",
+  "specs": {
+    "engine": {
+      "value": "3988 cc McLaren MHP-8 twin-turbo V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "In-house robotic Double embrayage 8 rapports · + electric reverse",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Longitudinal moteur central, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "January 2026 -",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Tobias Sühlmann (Chief Design Officer), João Dias (Principal Exterior Designer), Patrick Carton (Exterior Designer), Alex Alexiev (Principal Interior Designer)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United Kingdom: Woking, Surrey",
+      "from_text": false
+    },
+    "weight": {
+      "value": "dry weight: 1399 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4635 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "2191 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1182 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2680 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "1275 PS",
+      "from_text": false
+    },
+    "torque": {
+      "value": "1340 Nm",
+      "from_text": false
+    },
+    "top_speed": {
+      "value": "350 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-100 km/h : 2,7 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/mclaren-w1/1.jpg",
+      "thumb": "photos/mclaren-w1/1-thumb.jpg",
+      "author": "MrWalkr",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2024_McLaren_W1_SP25.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "Coupé 2 portes",
+    "décrite comme sportive ou de prestige"
+  ]
+}

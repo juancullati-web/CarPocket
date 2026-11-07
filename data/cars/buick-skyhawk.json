@@ -1,0 +1,76 @@
+{
+  "slug": "buick-skyhawk",
+  "name": "Buick Skyhawk",
+  "brand": "Buick",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T05:20:04+00:00",
+  "updated": "2026-11-07T05:20:04+00:00",
+  "summary": "La Buick Skyhawk est une automobile produite par la marque américaine Buick. Elle était basée sur la Chevrolet Monza entre 1975 et 1980, puis sur la Chevrolet Cavalier entre 1982 à 1989. Entre 1975 et 1980 les Skyhawk étaient des coupés deux portes à hayon équipées du V6 Buick de 3,8 litres. Le modèle produit de 1982 à 1989 était disponible en versions break, coupé et berline et utilisait de petit moteur 4 cylindres (1.8L, 1.8L OHC, 1.8L OHC turbo, 2.0L, 2.0L OHC et 2.0L OHC turbo) fabriqué par d'autres divisions de General Motors.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Buick_Skyhawk",
+  "wikipedia_title": "Buick Skyhawk",
+  "specs": {
+    "engine": {
+      "value": "3.8 L 231/LD5 V6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 4 rapports · Manuelle 5 rapports · Automatique 3 rapports · Automatique 3 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Compacte 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1974–1979",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Lordstown, Ohio, U.S. (Lordstown Assembly) South Gate, California, U.S. (South Gate Assembly) Sainte-Thérèse, Quebec, Canada (Sainte-Thérèse Assembly)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1270 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4554 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1661 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1275 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2464 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "110 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/buick-skyhawk/1.jpg",
+      "author": "Bradley L. Conley",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1975_Buick_Skyhawk.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

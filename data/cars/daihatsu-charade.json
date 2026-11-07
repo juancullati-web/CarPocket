@@ -1,0 +1,81 @@
+{
+  "slug": "daihatsu-charade",
+  "name": "Daihatsu Charade",
+  "brand": "Daihatsu",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T05:48:16+00:00",
+  "updated": "2026-11-07T05:48:16+00:00",
+  "summary": "La Daihatsu Charade est une citadine produite par le constructeur automobile japonais Daihatsu entre 1977 et 2000. Son successeur est la Daihatsu Sirion. Son nom fait référence au Circuit de Charade, circuit automobile qui a accueilli le Grand Prix automobile de France en 1965, 1969, 1970 et 1972. Depuis, une nouvelle Daihatsu Charade a vu le jour en 2011, mais il s'agit en réalité d'une Toyota Yaris deuxième génération rebadgée, fabriqué en France à l'usine Onnaing, près de Valenciennes.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Daihatsu_Charade",
+  "wikipedia_title": "Daihatsu Charade",
+  "specs": {
+    "engine": {
+      "value": "843 cc CD I3 (Chile) · 993 cc CB10/11/20/31/32 I3",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "4/Manuelle 5 rapports · Automatique 2 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, traction",
+      "from_text": false
+    },
+    "body": {
+      "value": "3/Compacte 5 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "November 1977–1983 · 1979–1983 (Indonesia)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Japan: Ikeda, Osaka Greece: Thebes, Boeotia (Automeccanica) New Zealand: Trentham (General Motors NZ) Indonesia: Sunter, Jakarta (Gaya Motor) Malaysia: Shah Alam, Selangor (AMIM)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "630-705 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "3460-3530 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1520 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1360 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2300 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "50 PS",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-62 mph : 17 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/daihatsu-charade/1.jpg",
+      "thumb": "photos/daihatsu-charade/1-thumb.jpg",
+      "author": "SuFlyer",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Daihatsu_Charade_G10_at_Japan_Mobility_Show_2023.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

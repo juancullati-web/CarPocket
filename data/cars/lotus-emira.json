@@ -1,0 +1,84 @@
+{
+  "slug": "lotus-emira",
+  "name": "Lotus Emira",
+  "brand": "Lotus",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T02:22:23+00:00",
+  "updated": "2026-11-07T02:22:23+00:00",
+  "summary": "La Lotus Emira (code Type 131) est un coupé du constructeur automobile britannique Lotus produit à partir de l'été 2021 et commercialisé à partir d'avril 2022. Elle est la dernière voiture à propulsion thermique du constructeur avant son passage au tout électrique.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Lotus_Emira",
+  "wikipedia_title": "Lotus Emira",
+  "specs": {
+    "engine": {
+      "value": "2.0 L AMG M139 turbo I4 · 3.5 L Toyota 2GR-FE supercharged V6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 6 rapports (3.5 L) · Automatique 6 rapports (3.5 L) · 8-speed AMG Speedshift 8G DCT (2.0 L)",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur transversal, moteur central, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "2022–present",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Daniel Durrant under Russell Carr (exterior), Jon Statham (interior)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United Kingdom: Hethel, Norfolk",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1487 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4412 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1895 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1224 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2573 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "406 PS",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/lotus-emira/1.jpg",
+      "thumb": "photos/lotus-emira/1-thumb.jpg",
+      "author": "Mr.choppers",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2025_Lotus_Emira_V6_in_Vivid_Red,_front_right.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "Coupé 2 portes",
+    "décrite comme sportive ou de prestige"
+  ]
+}

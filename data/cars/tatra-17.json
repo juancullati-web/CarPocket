@@ -1,0 +1,72 @@
+{
+  "slug": "tatra-17",
+  "name": "Tatra 17",
+  "brand": "Tatra",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T04:40:08+00:00",
+  "updated": "2026-11-07T04:40:08+00:00",
+  "summary": "La Tatra 17 est une automobile produite par le fabricant tchèque Tatra , de 1925 à 1929. C'était le modèle haut de gamme, qui était au catalogue avec la voiture économique Tatra 12 et la routière moyenne Tatra 30.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Tatra_17",
+  "wikipedia_title": "Tatra 17",
+  "specs": {
+    "engine": {
+      "value": "1930 cc Tatra 17 I6 · 2310 cc Tatra 31 I6 (T17/31)",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "2+2, Roadster, Town car, Touring on Backbone chassis",
+      "from_text": false
+    },
+    "production": {
+      "value": "1925–1929",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Kopřivnice, Czech Republic (Czechoslovakia at the time)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1300-1500 kg",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "3450 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "35 hp",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "110 km/h",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/tatra-17/1.jpg",
+      "thumb": "photos/tatra-17/1-thumb.jpg",
+      "author": "Dr. Killer",
+      "license": "CC BY 2.5",
+      "license_url": "https://creativecommons.org/licenses/by/2.5",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Tatra_17.JPG"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "2+2, Roadster, Town car, Touring on Backbone chassis",
+    "avant 1970"
+  ]
+}

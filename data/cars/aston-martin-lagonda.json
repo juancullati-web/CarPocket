@@ -1,0 +1,75 @@
+{
+  "slug": "aston-martin-lagonda",
+  "name": "Aston Martin Lagonda",
+  "brand": "Aston Martin",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T05:57:14+00:00",
+  "updated": "2026-11-07T05:57:14+00:00",
+  "summary": "L'Aston Martin Lagonda est une berline quatre portes du constructeur automobile britannique Aston Martin. On distingue au cours de la production qui s'étale de 1974 à 1990 quatre phases principales dénommées séries. Alors que la série 1, qui est en fait une version quatre portes de l'Aston Martin V8, conserve les codes de la marque, l'arrivée de la série 2 est en revanche très remarquée à l'époque en raison de son design anguleux et de sa technologie avant-gardiste, faisant d'elle une voiture unique et la plus avancée de son temps. Imaginée dans le but de concurrencer les berlines de luxe telles que les Rolls-Royce ou les Maserati, son début de carrière sera compliqué par les chocs pétroliers de 1973 et 1979, par les difficultés financières d'Aston Martin et par les problèmes de développement, de coûts et de fiabilité de l'électronique de bord.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Aston_Martin_Lagonda",
+  "wikipedia_title": "Aston Martin Lagonda",
+  "specs": {
+    "engine": {
+      "value": "5340 cc V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports · Automatique 3 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1974–1990 · 645 exemplaires",
+      "from_text": false
+    },
+    "designer": {
+      "value": "William Towns",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United Kingdom: Newport Pagnell, Buckinghamshire, England",
+      "from_text": false
+    },
+    "length": {
+      "value": "5282 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1816 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1302 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2916 mm",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/aston-martin-lagonda/1.jpg",
+      "thumb": "photos/aston-martin-lagonda/1-thumb.jpg",
+      "author": "Alexander Migl",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1983_Aston_Martin_Lagonda_Series_2_Classic-Gala_2025_DSC_1111_(cropped).jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "645 exemplaires"
+  ]
+}

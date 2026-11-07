@@ -1,0 +1,88 @@
+{
+  "slug": "opel-tigra",
+  "name": "Opel Tigra",
+  "brand": "Opel",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T04:14:01+00:00",
+  "updated": "2026-11-07T04:14:01+00:00",
+  "summary": "L'Opel Tigra est un coupé très compact conçu et assemblé par le constructeur allemand Opel partageant une base commune à la Corsa B. Ce modèle original a été produit de 1994 à 2001, puis le nom a été repris pour un coupé cabriolet en 2004. La première génération de la Tigra a été vendue sous la marque Vauxhall au Royaume-Uni, par Holden en Australie et par Chevrolet dans certains marchés d'Amérique latine. Elle était fabriquée à Eisenach en Allemagne.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Opel_Tigra",
+  "wikipedia_title": "Opel Tigra",
+  "specs": {
+    "engine": {
+      "value": "Petrol: · 1.4 L X14XE I4 · 1.6 L X16XE I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Automatique 4 rapports · Manuelle 5 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, traction",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "September 1994 – July 2000",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Hideo Kodama",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Spain: Zaragoza (Opel Pirenauto Zaragoza)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "980-1075 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "3922 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1604 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1340 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2429 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "90 PS",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "203 km/h",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/opel-tigra/1.jpg",
+      "thumb": "photos/opel-tigra/1-thumb.jpg",
+      "author": "Rudolf Stricker",
+      "license": "CC BY-SA 3.0",
+      "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Opel_Tigra_front_20071212.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "Coupé 2 portes",
+    "décrite comme sportive ou de prestige"
+  ]
+}

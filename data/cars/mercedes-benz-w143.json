@@ -1,0 +1,67 @@
+{
+  "slug": "mercedes-benz-w143",
+  "name": "Mercedes-Benz W143",
+  "brand": "Mercedes-Benz",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T02:09:10+00:00",
+  "updated": "2026-11-07T02:09:10+00:00",
+  "summary": "La Mercedes-Benz Type 230 (N) est présentée en 1937 en tant que successeur de la Type 230 (W 21).",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Mercedes-Benz_W_143",
+  "wikipedia_title": "Mercedes-Benz W143",
+  "specs": {
+    "engine": {
+      "value": "2,229 cc M143 I6",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "2 or 4-door ”Limousine” (sedan) · Cabriolet “A” (2/3-seats) · Cabriolet “B” (2-doors / 4-seats) · Cabriolet “D” (4-doors / 4 seats) · Pullman-Limousine (6 seats) · Landaulet (6 seats ) · Tourenwagen (6 seats)",
+      "from_text": false
+    },
+    "production": {
+      "value": "1937–1941 · 20,336 exemplaires",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Germany: Stuttgart",
+      "from_text": false
+    },
+    "length": {
+      "value": "4400-4790 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1710 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2700 mm",
+      "from_text": false
+    },
+    "top_speed": {
+      "value": "116 km/h",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/mercedes-benz-w143/1.jpg",
+      "thumb": "photos/mercedes-benz-w143/1-thumb.jpg",
+      "author": "Alexander Migl",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Mercedes-Benz_W143_Retro_Classics_2020_IMG_0036.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "avant 1970"
+  ]
+}

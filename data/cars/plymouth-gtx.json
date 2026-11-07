@@ -1,0 +1,64 @@
+{
+  "slug": "plymouth-gtx",
+  "name": "Plymouth GTX",
+  "brand": "Plymouth",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T01:12:08+00:00",
+  "updated": "2026-11-07T01:12:08+00:00",
+  "summary": "La Plymouth GTX est une automobile introduite sous le nom de Belvedere GTX en 1967 par la division Plymouth. Elle a été positionnée comme une Muscle car de performance haut de gamme de taille moyenne jusqu'en 1971.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Plymouth_GTX",
+  "wikipedia_title": "Plymouth GTX",
+  "specs": {
+    "engine": {
+      "value": "426 cuin Hemi V8 · 440 cuin RB V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 4 rapports · Automatique 3 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "2-door hardtop",
+      "from_text": false
+    },
+    "production": {
+      "value": "1967",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United States: Detroit, Michigan (Lynch Road Assembly)",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2946 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "375 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/plymouth-gtx/1.jpg",
+      "thumb": "photos/plymouth-gtx/1-thumb.jpg",
+      "author": "Greg Gjerdingen from Willmar, USA",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:67_Plymouth_Belvedere_GTX_(8748507745).jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "avant 1970",
+    "décrite comme sportive ou de prestige"
+  ]
+}

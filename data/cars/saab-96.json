@@ -1,0 +1,87 @@
+{
+  "slug": "saab-96",
+  "name": "Saab 96",
+  "brand": "Saab",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T01:06:00+00:00",
+  "updated": "2026-11-07T01:06:00+00:00",
+  "summary": "La Saab 96 est un modèle d'automobile fabriqué par Saab, entre 1960 et 1980.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Saab_96",
+  "wikipedia_title": "Saab 96",
+  "specs": {
+    "engine": {
+      "value": "795 cc Saab 2-stroke I3 (US, 1968) · 841 cc Saab 2-stroke I3 · 1,498 cc Taunus V4 · 1,698 cc Taunus V4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 3 rapports · Manuelle 4 rapports · 3-speed Saxomat",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Longitudinal moteur avant, traction",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1960–1980",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Sixten Sason",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Sweden: Trollhättan (Trollhättan Assembly) Finland: Uusikaupunki (Saab-Valmet) Belgium: Antwerp",
+      "from_text": false
+    },
+    "weight": {
+      "value": "873-950 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4050 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1570 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1473 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2488 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "38 PS",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-100 km/h : 16 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/saab-96/1.jpg",
+      "thumb": "photos/saab-96/1-thumb.jpg",
+      "author": "Vauxford",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1972_Saab_96_V4_1.5.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "avant 1970"
+  ]
+}

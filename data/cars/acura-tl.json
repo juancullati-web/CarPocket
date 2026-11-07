@@ -1,0 +1,73 @@
+{
+  "slug": "acura-tl",
+  "name": "Acura TL",
+  "brand": "Acura",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T01:30:14+00:00",
+  "updated": "2026-11-07T01:30:14+00:00",
+  "summary": "L'Acura TL est une berline du constructeur automobile japonais Acura, label luxueux de Honda, qui appartient à la catégorie des Mid-size, l'équivalent nord-américain des routières. La TL est en fait une Honda Accord américaine rebadgée (à partir de la deuxième génération). Lancée en 1995, la TL succède à la Vigor qui avait été lancée en 1991. La TL est désormais l'une des Acura les plus vendues et lui permet d'asseoir la jeune marque dans le même monde que Lexus, Infiniti, BMW, Audi…",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Acura_TL",
+  "wikipedia_title": "Acura TL",
+  "specs": {
+    "engine": {
+      "value": "2.0 L G20A I5 · 2.5 L G25A/G25A4 I5 · 3.2 L C32A/C32A6 V6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Automatique 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Longitudinal moteur avant, traction",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1995–1998 (US model)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Sayama Plant, Sayama, Saitama, Japan",
+      "from_text": false
+    },
+    "length": {
+      "value": "2.5TL: 191.5 in",
+      "from_text": false
+    },
+    "width": {
+      "value": "2.5TL: 70.3 in",
+      "from_text": false
+    },
+    "height": {
+      "value": "2.5TL: 55.3 in",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2840 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "176 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/acura-tl/1.jpg",
+      "thumb": "photos/acura-tl/1-thumb.jpg",
+      "author": "IFCAR",
+      "license": "Public domain",
+      "license_url": "",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1st_Acura_TL_--_04-10-2011.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

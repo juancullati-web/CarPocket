@@ -1,0 +1,80 @@
+{
+  "slug": "chrysler-crossfire",
+  "name": "Chrysler Crossfire",
+  "brand": "Chrysler",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T04:37:07+00:00",
+  "updated": "2026-11-07T04:37:07+00:00",
+  "summary": "La Chrysler Crossfire est une voiture de sport commercialisée sur le marché par le constructeur automobile américain Chrysler. Produite de 2003 à 2007, elle est proposée en coupé ou roadster. En janvier 2001, lors du Salon international de l'automobile d'Amérique du Nord de Détroit, Chrysler dévoile au grand public le concept car Crossfire. En janvier 2002, au Salon de l'automobile de Los Angeles, la marque présente la version de production de ce coupé. Dessiné par Eric Stoddard, il arbore un design atypique et néo-rétro qui s'inscrit dans la stratégie de renouveau de Chrysler aux côtés des Chrysler PT Cruiser, Chrysler Pacifica et Chrysler 300C. Premier coupé deux places depuis la TC by Maserati, le modèle a pour mission de donner un nouveau souffle à l'image de la marque dont il est la première voiture de sport.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Chrysler_Crossfire",
+  "wikipedia_title": "Chrysler Crossfire",
+  "specs": {
+    "engine": {
+      "value": "3.2 L Mercedes-Benz M112 E32 (195 cu in) V6 · 3.2 L Mercedes-Benz M112 E32 ML Kompressor (195 cu in) s/c V6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Automatique 5 rapports (SRT-6) · Manuelle 6 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Cabriolet 2 portes · 2-door fastback coupe",
+      "from_text": false
+    },
+    "production": {
+      "value": "February 2003 – December 2007 (76,014 units)",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Eric Stoddard, Andrew Dyson",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Germany: Osnabrück (Karmann)",
+      "from_text": false
+    },
+    "length": {
+      "value": "4059 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1765 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1308 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2400 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "215 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/chrysler-crossfire/1.jpg",
+      "thumb": "photos/chrysler-crossfire/1-thumb.jpg",
+      "author": "Vauxford",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2004_Chrysler_Crossfire_3.2.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "Cabriolet 2 portes",
+    "décrite comme sportive ou de prestige"
+  ]
+}

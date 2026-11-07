@@ -1,0 +1,80 @@
+{
+  "slug": "bmw-3-series-e30",
+  "name": "BMW 3 Series (E30)",
+  "brand": "BMW",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T01:41:05+00:00",
+  "updated": "2026-11-07T01:41:05+00:00",
+  "summary": "Les véhicules de la deuxième génération de la Série 3 de BMW sont désignés par le code d'usine BMW E30. Le modèle Z1 roadster, dérivé de cette gamme, portait le même code d'usine. L’E30 a été produite dans beaucoup plus de variantes que la précédente BMW E21, qui n'était proposée qu'avec deux portes. La deuxième Série 3 a été lancée fin 1982 et elle était également disponible en version quatre portes à partir de septembre 1983. À l'automne 1985 - 670 000 E30 ont déjà été vendues jusqu’en août 1985 - le cabriolet complet (sans arceau de sécurité) et la première M3 ont été présentés. La petite 324d est entrée dans la gamme BMW en 1985 en tant que deuxième voiture diesel de BMW, après le modèle diesel 524td de la Série 5 présenté en 1983. Pour le lifting majeur de septembre 1987, une variante break a suivi avec le nom Touring, qui avait déjà été utilisé pour le modèle à hayon de la BMW 02.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/BMW_S%C3%A9rie_3_%28E30%29",
+  "wikipedia_title": "BMW 3 Series (E30)",
+  "specs": {
+    "engine": {
+      "value": "Petrol: · 1.6-1.8 L M10 I4 · 1.6-1.8 L M40 I4 · 1.8 L M42 16v I4 · 2.0-2.5 L S14 I4 · 2.0-2.7 L M20 I6 · 3.2 L M30 I6 · Diesel: · 2.4 L M21 I6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 4 rapports · Manuelle 5 rapports · Automatique 3 rapports · Automatique 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Rear-wheel drive\nAll-wheel drive (325iX only)",
+      "from_text": false
+    },
+    "body": {
+      "value": "2/Berline 4 portes · Cabriolet 2 portes · Break 5 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1982–1994",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Claus Luthe, Boyke Boyer",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "West Germany: Munich; Regensburg South Africa: Rosslyn (BMW SA)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1080-1200 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4320-4460 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1645 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1360-1400 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2570 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "55 kW",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/bmw-3-series-e30/1.jpg",
+      "author": "Bull-Doser",
+      "license": "Public domain",
+      "license_url": "",
+      "source_url": "https://commons.wikimedia.org/wiki/File:BMW_E30_3-Series_Sedan.JPG"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

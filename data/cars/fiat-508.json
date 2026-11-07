@@ -1,0 +1,78 @@
+{
+  "slug": "fiat-508",
+  "name": "Fiat 508",
+  "brand": "Fiat",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T03:58:08+00:00",
+  "updated": "2026-11-07T03:58:08+00:00",
+  "summary": "La Fiat 508 Balilla est une automobile construite par le constructeur italien Fiat au cours des années 1930 qui contribua fortement à la motorisation des classes moyennes du pays. La Fiat Balilla a représenté, aux yeux des italiens de cette époque, un « objet de désir ». Son succès est à attribuer à une décision très courageuse du constructeur italien de lancer cette voiture en une période peu faste et surtout à la qualité du travail de ses concepteurs, qui réalisèrent une automobile moyenne avec des prestations de classe supérieure et dont le coût d'utilisation était très modique.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Fiat_508_Balilla",
+  "wikipedia_title": "Fiat 508",
+  "specs": {
+    "engine": {
+      "value": "995 cc I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 3 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes · Berline 2 portes · 2-door spider · 4-door torpedo",
+      "from_text": false
+    },
+    "production": {
+      "value": "1932–1937",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Italy: Lingotto Czechoslovakia: Jinonice (Walter) Poland: Warsaw (PZInż) Germany: Neckarsulm (NSU) France: Suresnes (SAFAF) France: Nanterre (Simca)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "685 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "3140 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1400 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1530 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "20 hp",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "80 km/h",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/fiat-508/1.jpg",
+      "author": "KRZYSZTOF at Polish Wikipedia",
+      "license": "Public domain",
+      "license_url": "",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Fiat_508_rocznik_1934.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "avant 1970"
+  ]
+}

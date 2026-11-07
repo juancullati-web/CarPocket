@@ -1,0 +1,83 @@
+{
+  "slug": "triumph-gt6",
+  "name": "Triumph GT6",
+  "brand": "Triumph",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T05:09:14+00:00",
+  "updated": "2026-11-07T05:09:14+00:00",
+  "summary": "La Triumph GT6 est une voiture de sport GT du constructeur automobile britannique Triumph, version fastback 6 cylindres en ligne (straight-6) des Triumph Spitfire 4 de 1962, produite en 3 versions MK I à III, à environ 41 000 exemplaires, entre 1966 à 1973.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Triumph_GT6",
+  "wikipedia_title": "Triumph GT6",
+  "specs": {
+    "engine": {
+      "value": "1996 cc OHV I6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 4 rapports with optional overdrive",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "2-door fastback",
+      "from_text": false
+    },
+    "production": {
+      "value": "1966–1973",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Giovanni Michelotti",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United Kingdom: Canley, Coventry",
+      "from_text": false
+    },
+    "length": {
+      "value": "3717 mm (Mk 1)",
+      "from_text": false
+    },
+    "width": {
+      "value": "1450 mm (Mk 1/2/Plus)",
+      "from_text": false
+    },
+    "height": {
+      "value": "1193 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2128 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "95 hp",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-60 mph : 12 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/triumph-gt6/1.jpg",
+      "thumb": "photos/triumph-gt6/1-thumb.jpg",
+      "author": "Ddoherty958",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1971_Triumph_GT6_MK3_Stormont.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "avant 1970"
+  ]
+}

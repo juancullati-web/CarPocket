@@ -1,0 +1,76 @@
+{
+  "slug": "chevrolet-caprice",
+  "name": "Chevrolet Caprice",
+  "brand": "Chevrolet",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T03:57:14+00:00",
+  "updated": "2026-11-07T03:57:14+00:00",
+  "summary": "La Chevrolet Caprice est une voiture produite par Chevrolet puis par Holden et diffusée aux États-Unis et au Canada ainsi qu'au Mexique. Depuis sa création, la Caprice en est à six générations.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Chevrolet_Caprice",
+  "wikipedia_title": "Chevrolet Caprice",
+  "specs": {
+    "engine": {
+      "value": "283 cuin Small-Block V8 · 307 cuin Small-Block V8 · 327 cuin Small-Block V8 · 350 cuin Small-Block V8 · 396 cuin Big-Block V8 · 400 cuin Small-Block V8 · 427 cuin Big-Block V8 · 454 cuin Big-Block V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 3 rapports · Manuelle 4 rapports · Automatic Powerglide · Automatic Turbo Hydramatic",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1965–1970",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "(main plant) Flint, Michigan, United States (Flint Truck Assembly) (branch assembly) Atlanta, Georgia, United States (Lakewood Assembly) Arlington, Texas, United States (Arlington Assembly) Doraville, Georgia, United States (Doraville Assembly) Janesville, Wisconsin, United States (Janesville Assembly) Lordstown, Ohio, United States (Lordstown Assembly) Norwood, Ohio, United States (Norwood Assembly) South Gate, California, United States (South Gate Assembly) St. Louis, Missouri, United States (St. Louis Truck Assembly) Tarrytown, New York, United States (North Tarrytown Assembly) Van Nuys, California, United States (Van Nuys Assembly) Wilmington, Delaware, United States (Wilmington Assembly) Oshawa, Ontario, Canada (Oshawa Car Assembly)",
+      "from_text": false
+    },
+    "length": {
+      "value": "1966-67 wagon: 212.4 in",
+      "from_text": false
+    },
+    "width": {
+      "value": "2022 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "Wagon: 55.3 in",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "3023 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "325 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/chevrolet-caprice/1.jpg",
+      "thumb": "photos/chevrolet-caprice/1-thumb.jpg",
+      "author": "Mr.choppers",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1967_Chevrolet_Caprice_coup%C3%A9_283,_front_left.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "Coupé 2 portes",
+    "avant 1970"
+  ]
+}

@@ -1,0 +1,79 @@
+{
+  "slug": "mazda-mx-6",
+  "name": "Mazda MX-6",
+  "brand": "Mazda",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T03:59:14+00:00",
+  "updated": "2026-11-07T03:59:14+00:00",
+  "summary": "La Mazda MX-6 est un coupé du constructeur automobile japonais Mazda lancé fin 1991. Il s'agit d'un coupé directement dérivé de la 626 (Capella au japon). L'Europe et le Japon n'ont connu qu'une génération de MX-6, basée sur le duo 626 / Capella de la série 1991 - 1997. Certains pays, dont les États-Unis, avaient déjà associé cette appellation à la Mazda 626 coupé de la génération précédente dès 1987.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Mazda_MX-6",
+  "wikipedia_title": "Mazda MX-6",
+  "specs": {
+    "engine": {
+      "value": "1789 cc F8 I4 · 1789 cc F8 DOHC I4 · 1998 cc FE I4 · 1998 cc FE-DOHC DOHC I4 · 2184 cc F2 I4 · 2184 cc F2T turbo I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports · Automatique 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, traction",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1987–1992",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Hiroshi Yamamoto (1985)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Japan: Hiroshima/Hofu United States: Flat Rock, Michigan (AAI)",
+      "from_text": false
+    },
+    "length": {
+      "value": "4495 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1690 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1360 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2515 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "110 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/mazda-mx-6/1.jpg",
+      "thumb": "photos/mazda-mx-6/1-thumb.jpg",
+      "author": "OSX",
+      "license": "Public domain",
+      "license_url": "",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1989_Mazda_MX-6_(GD_Series_2)_coupe_(2011-06-15).jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "Coupé 2 portes"
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "slug": "daihatsu-terios",
+  "name": "Daihatsu Terios",
+  "brand": "Daihatsu",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T00:29:05+00:00",
+  "updated": "2026-11-07T00:29:05+00:00",
+  "summary": "La Daihatsu Terios est un 4x4 produit par le constructeur automobile japonais Daihatsu depuis 1997. Il remplace le Feroza. Le Terios connait trois générations, dont les deux premières sont commercialisées en Europe.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Daihatsu_Terios",
+  "wikipedia_title": "Daihatsu Terios",
+  "specs": {
+    "engine": {
+      "value": "Petrol: · 658 cc EF-DEM/DET turbo I3 (Terios Kid/Lucia) · 1.3 L HC-EJ I4 · 1.3 L K3-VE I4 · 1.3 L K3-VET turbo I4 (Terios/Cami) · 1.5 L HE-E I4 (Taruna) · 1.6 L HD-C/E I4 (Taruna)",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports · Automatique 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, propulsion\nFront-engine, four-wheel-drive",
+      "from_text": false
+    },
+    "body": {
+      "value": "SUV 5 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "April 1997 – January 2006 · October 1998 – May 2012 (Terios Kid) · May 1999 – January 2006 (Toyota Cami) · 2012–2015 (Premier Rio) · July 1999 – November 2006 (Taruna)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Japan: Nakatsu, Ōita (Daihatsu Auto Body) Venezuela: Cumaná, Sucre (Toyota de Venezuela) Malaysia: Rawang, Selangor (PMSB, Kembara) Indonesia: Sunter, North Jakarta (ADM, Taruna) China: Xiqing, Tianjin (Huali Dario)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1025-1090 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "3785-3865 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1555 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1675-1760 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2420 mm (Terios series/Perodua Kembara)",
+      "from_text": false
+    },
+    "power": {
+      "value": "44-47 kW",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/daihatsu-terios/1.jpg",
+      "thumb": "photos/daihatsu-terios/1-thumb.jpg",
+      "author": "Mick from Northamptonshire, England",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Daihatsu_Terios_(pre-facelift).jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

@@ -1,0 +1,81 @@
+{
+  "slug": "alfa-romeo-166",
+  "name": "Alfa Romeo 166",
+  "brand": "Alfa Romeo",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T01:52:08+00:00",
+  "updated": "2026-11-07T01:52:08+00:00",
+  "summary": "L'Alfa Romeo 166 est une voiture haut de gamme du constructeur automobile italien Alfa Romeo, qui a succédé à la 164 mais reposant sur la plate-forme commune avec la Lancia Kappa avec une carrosserie entièrement redessinée. Présentée en 1998, elle apporte un niveau de finition et d'équipement supérieur qui manquait à la 164 pour être une vraie voiture haut de gamme. L’équipement comporte, selon les modèles : régulateur de vitesses, 4 vitres électriques, toit ouvrant, alarme, télécommande, boîte 5 ou 6 rapports ou automatique ; ABS, antipatinage, phares au xénon, sellerie en cuir, sièges électriques et chauffants à mémoire, climatisation automatique, radio CD avec écran commun de l’ordinateur de bord et GPS cartographique, jantes alu 16\" et 17\", rétroviseurs rabattables électriques, etc. L'Alfa Romeo 166 a été déclinée en deux séries :",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Alfa_Romeo_166",
+  "wikipedia_title": "Alfa Romeo 166",
+  "specs": {
+    "engine": {
+      "value": "Petrol: · 2.0 L Twin Spark 16V I4 · 2.0 L Busso 12V turbo V6 · 2.5 L Busso 24V V6 · 3.0 L Busso 24V V6 · 3.2 L Busso 24V V6 · Diesel: · 2.4 L JTD 20V turbo-diesel I5",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "5/Manuelle 6 rapports · Automatique 4 rapports · Automatique 5 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, traction",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1996–2007",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Centro Stile Alfa Romeo:, Walter de Silva, Daniele Gaglione (facelift)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Italy: Rivalta, Turin (1998–2002) Mirafiori, Turin (2002–2007)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1420-1550 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4720 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1815 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1416 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2700 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "155 PS",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/alfa-romeo-166/1.jpg",
+      "thumb": "photos/alfa-romeo-166/1-thumb.jpg",
+      "author": "Calreyn88",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2005_Alfa_Romeo_166_T_Spark_Lusso.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

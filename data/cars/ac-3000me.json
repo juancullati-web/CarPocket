@@ -1,0 +1,84 @@
+{
+  "slug": "ac-3000me",
+  "name": "AC 3000ME",
+  "brand": "AC",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T03:50:08+00:00",
+  "updated": "2026-11-07T03:50:08+00:00",
+  "summary": "L'AC 3000ME, ou AC 3-litres, AC ME3000, AC3000, est une voiture sportive fabriquée par AC Cars de 1979 à 1985.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/AC_3000ME",
+  "wikipedia_title": "AC 3000ME",
+  "specs": {
+    "engine": {
+      "value": "2994 cc Ford Essex V6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "MR layout with Moteur transversal, ",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1979–1984 (AC Cars) · 1984–1985 (AC (Scotland) plc)",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Peter Bohanna, Robin Stables",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "England: Thames Ditton Scotland: Hillington",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1085 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "3988 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1651 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1143 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2300 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "200 bhp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/ac-3000me/1.jpg",
+      "thumb": "photos/ac-3000me/1-thumb.jpg",
+      "author": "Calreyn88",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1979_AC_3000ME.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "Coupé 2 portes",
+    "décrite comme sportive ou de prestige"
+  ]
+}

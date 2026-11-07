@@ -1,0 +1,65 @@
+{
+  "slug": "simca-9",
+  "name": "Simca 9",
+  "brand": "Simca",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T05:07:13+00:00",
+  "updated": "2026-11-07T05:07:13+00:00",
+  "summary": "The Simca 9 is a French sports car produced by French automaker Simca. It first appeared in June 1952 and was built until 1954. It was a development of the Simca 8, from which it differed by being lengthened a bit (a few centimetres or inches) between the rear edge of the door and the bulge of the rear fender, to provide more interior room. More importantly, the 9 Sport was of a unibody design. This meant that the car was not offered as a convertible, although a small number of 9 Sport convertibles were built, using the chassis of the earlier 8 Sport. The mechanics were the same as for the Simca Aronde, although the engine was upgraded from 45 to 50 CV (33 to 37 kW). Its running gear was similar to that of the Simca 8 Sport, with the same iteration of the engine, benefitting from a higher compression ratio. The car was built by Facel-Métallon in Colombes.",
+  "summary_lang": "en",
+  "summary_url": "https://en.wikipedia.org/wiki/Simca_9",
+  "wikipedia_title": "Simca 9",
+  "specs": {
+    "engine": {
+      "value": "1221 cc ohv I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "four-speed manual",
+      "from_text": false
+    },
+    "body": {
+      "value": "2-door hardtop coupé · Cabriolet 2 portes (rare)",
+      "from_text": false
+    },
+    "production": {
+      "value": "1952–1954",
+      "from_text": false
+    },
+    "weight": {
+      "value": "945 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4150 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2443 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "45-50 CV",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/simca-9/1.jpg",
+      "thumb": "photos/simca-9/1-thumb.jpg",
+      "author": "jean-pierre 60;Cropped, plates blanked, and levels adjusted by uploader Mr.choppers",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1954_Simca_9_Sport_Figoni_%26_Falaschi.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "2-door hardtop coupé",
+    "avant 1970",
+    "décrite comme sportive ou de prestige"
+  ]
+}

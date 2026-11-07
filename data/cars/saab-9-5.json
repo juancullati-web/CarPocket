@@ -1,0 +1,77 @@
+{
+  "slug": "saab-9-5",
+  "name": "Saab 9-5",
+  "brand": "Saab",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T00:37:05+00:00",
+  "updated": "2026-11-07T00:37:05+00:00",
+  "summary": "La Saab 9-5 est une grande routière du constructeur automobile suédois Saab, produite entre 1997 et 2010 pour la première génération, et entre 2009 et 2011 pour la seconde génération.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Saab_9-5",
+  "wikipedia_title": "Saab 9-5",
+  "specs": {
+    "engine": {
+      "value": "Petrol: · 2.0 L B205 turbo I4 · 2.3 L B235 turbo I4 · 3.0 L GM B308E turbo V6 · Diesel: · 1.9 L Fiat JTD Turbodiesel I4 · 2.2 L GM D223 Turbodiesel I4 · 3.0 L Isuzu 6DE1 Turbodiesel V6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Automatique 4 rapports (1997–2001) · Automatique 5 rapports (2002–2009) · Manuelle 5 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur transversal, moteur avant, traction",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1997–2009 (sedan) · 1998–2010 (wagon)",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Einar Hareide",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Sweden: Trollhättan (Trollhättan Assembly)",
+      "from_text": false
+    },
+    "length": {
+      "value": "1997–2000 Sedan: 4805 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1997–2000 Sedan: 1793 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1997–2005 Sedan, 2001–2005 Wagon: 1448 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2703 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "220 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/saab-9-5/1.jpg",
+      "thumb": "photos/saab-9-5/1-thumb.jpg",
+      "author": "Lukasz19930915",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Saab_9-5_I_SE_1998_front.JPG"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

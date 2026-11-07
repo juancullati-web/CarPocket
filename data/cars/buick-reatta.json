@@ -1,0 +1,88 @@
+{
+  "slug": "buick-reatta",
+  "name": "Buick Reatta",
+  "brand": "Buick",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T03:16:16+00:00",
+  "updated": "2026-11-07T03:16:16+00:00",
+  "summary": "La Buick Reatta est un modèle d'automobile produit par Buick de 1988 à 1991 en proposant uniquement le cabriolet lors des deux dernières années de production. Elle est équipée d'un moteur V6 de 3,8 litres et d'une version raccourcie de la plate-forme GM E, partagée avec la Buick Riviera de septième génération. En tant que première 2 places de Buick et premier cabriolet depuis la Riviera de 1985, le Reatta a été fabriquée dans le cadre d'un programme d'assemblage hautement spécialisé au Reatta Craft Center (plus tard connu sous le nom de Lansing Craft Center) à Lansing (Michigan), atteignant une production de plus de 21 751 modèles incluant 2 437 modèles convertibles.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Buick_Reatta",
+  "wikipedia_title": "Buick Reatta",
+  "specs": {
+    "engine": {
+      "value": "1988–90: 3.8 L LN3 Buick V6 · 1991: 3.8 L L27 Buick V6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "1988–89: 4-sp 440T-4 automatic · 1990: 4-sp 4T60 automatic · 1991: 4-sp 4T60-E automatic",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur transversal, moteur avant, traction",
+      "from_text": false
+    },
+    "body": {
+      "value": "1988–91: Coupé 2 portes · 1990–91: Cabriolet 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1988–1991",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Dave McIntosh (1983)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United States: Lansing, Michigan (Lansing Craft Center)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1532 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4666 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1854 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1988–89: 51.2 in",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2502 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "165–170 hp",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "201 km/h",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/buick-reatta/1.jpg",
+      "thumb": "photos/buick-reatta/1-thumb.jpg",
+      "author": "Mr.choppers",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1988_Buick_Reatta,_front_left.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "1988–91: Coupé 2 portes",
+    "décrite comme sportive ou de prestige"
+  ]
+}

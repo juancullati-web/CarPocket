@@ -1,0 +1,77 @@
+{
+  "slug": "genesis-gv70",
+  "name": "Genesis GV70",
+  "brand": "Genesis",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T01:29:12+00:00",
+  "updated": "2026-11-07T01:29:12+00:00",
+  "summary": "La Genesis GV70 est un SUV de luxe produit par le constructeur automobile sud-coréen Genesis à partir de 2021.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Genesis_GV70",
+  "wikipedia_title": "Genesis GV70",
+  "specs": {
+    "engine": {
+      "value": "Petrol: · 2.5 L Smartstream G2.5 T-GDi I4 · 3.5 L Smartstream G3.5 T-GDi V6 · Diesel: · 2.2 L Smartstream D2.2 CRDi I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Automatique 8 rapports · 1-speed reduction gear (Electrified GV70)",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, propulsion\nFront-engine, four-wheel-drive\nDual-motor, all-wheel-drive (Electrified GV70)",
+      "from_text": false
+    },
+    "body": {
+      "value": "SUV 5 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "2020–present",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Ki-Euk Kim (exterior)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "South Korea: Ulsan (Ulsan Plant 2) United States: Montgomery, Alabama (HMMA)",
+      "from_text": false
+    },
+    "length": {
+      "value": "4715 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1910 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1630 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2875 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "304 PS",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/genesis-gv70/1.jpg",
+      "thumb": "photos/genesis-gv70/1-thumb.jpg",
+      "author": "Alexander Migl",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Genesis_GV70_IAA_2021_1X7A0228.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

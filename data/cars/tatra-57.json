@@ -1,0 +1,72 @@
+{
+  "slug": "tatra-57",
+  "name": "Tatra 57",
+  "brand": "Tatra",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T02:22:14+00:00",
+  "updated": "2026-11-07T02:22:14+00:00",
+  "summary": "La Tatra 57 est une voiture de grand tourisme lancée par Tatra (en tchèque: Závody Tatra, nom officiel: Závody Tatra akciová společnost ou Société Ringhoffer-Tatra, également connu plus tard comme Tatra Kopřivnice, en allemand: Tatra Nesselsdorf, maintenant Tatra, a. s.) en 1932 comme remplacement pour le modèle Tatra 12.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Tatra_57",
+  "wikipedia_title": "Tatra 57",
+  "specs": {
+    "engine": {
+      "value": "1,155 cc Tatra 57 H4 (T57) · 1,155 cc Tatra 57a H4 (T57A) · 1,256 cc Tatra 57b H4 (T57B)",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Two-door sedan, convertible or coupé",
+      "from_text": false
+    },
+    "production": {
+      "value": "1932–1949 · T 57: 1932–36 · T 57A: 1936–38 · T 57B: 1938–49",
+      "from_text": false
+    },
+    "weight": {
+      "value": "730 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "3500 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1500 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1500 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "18 PS",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/tatra-57/1.jpg",
+      "thumb": "photos/tatra-57/1-thumb.jpg",
+      "author": "RomanM82",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Brno,_n%C3%A1m%C4%9Bst%C3%AD_Svobody_-_XXI._Sraz_historick%C3%BDch_vozidel_Vyso%C4%8Dina_2014_-_Tatra_57_obr1.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "Two-door sedan, convertible or coupé",
+    "avant 1970"
+  ]
+}

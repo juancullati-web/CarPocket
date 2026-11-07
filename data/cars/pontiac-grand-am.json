@@ -1,0 +1,71 @@
+{
+  "slug": "pontiac-grand-am",
+  "name": "Pontiac Grand Am",
+  "brand": "Pontiac",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T02:43:20+00:00",
+  "updated": "2026-11-07T02:43:20+00:00",
+  "summary": "La Pontiac Grand Am est une automobile produite par Pontiac sur trois séries : de 1973 à 1975, de 1978 à 1980 et de 1985 à 2005.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Pontiac_Grand_Am",
+  "wikipedia_title": "Pontiac Grand Am",
+  "specs": {
+    "engine": {
+      "value": "400 cuin Pontiac V8 · 455 cuin Pontiac V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "TH400 automatic or Manuelle 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "2-door hardtop coupe",
+      "from_text": false
+    },
+    "production": {
+      "value": "1972–1975",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United States: Pontiac, Michigan",
+      "from_text": false
+    },
+    "length": {
+      "value": "5298 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1974 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2845 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "170 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/pontiac-grand-am/1.jpg",
+      "thumb": "photos/pontiac-grand-am/1-thumb.jpg",
+      "author": "Mr.choppers",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1974_Pontiac_Grand_Am_two-door_Hardtop_in_red,_front_right.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "2-door hardtop coupe"
+  ]
+}

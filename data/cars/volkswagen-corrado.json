@@ -1,0 +1,79 @@
+{
+  "slug": "volkswagen-corrado",
+  "name": "Volkswagen Corrado",
+  "brand": "Volkswagen",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T03:32:06+00:00",
+  "updated": "2026-11-07T03:32:06+00:00",
+  "summary": "La Volkswagen Corrado est un coupé sportif du constructeur automobile allemand Volkswagen produit de 1988 à 1995.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Volkswagen_Corrado",
+  "wikipedia_title": "Volkswagen Corrado",
+  "specs": {
+    "engine": {
+      "value": "petrol: · 1.8 L I4 · 1.8 L supercharged I4 · 2.0 L I4 · 2.8 L VR6 · 2.9 L VR6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports · Automatique 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, traction",
+      "from_text": false
+    },
+    "body": {
+      "value": "3-door 2+2 coupé",
+      "from_text": false
+    },
+    "production": {
+      "value": "1988–1995",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Herbert Schäfer",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Germany: Osnabrück (Karmann)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1210-1274 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4049 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1989–1992: 65.9 in",
+      "from_text": false
+    },
+    "height": {
+      "value": "1310 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "1989–1992: 97.3 in",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/volkswagen-corrado/1.jpg",
+      "thumb": "photos/volkswagen-corrado/1-thumb.jpg",
+      "author": "Mr.choppers",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1993_Volkswagen_Corrado_SLC_in_Black,_front_left.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "3-door 2+2 coupé"
+  ]
+}

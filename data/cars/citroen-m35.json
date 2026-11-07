@@ -1,0 +1,65 @@
+{
+  "slug": "citroen-m35",
+  "name": "Citroën M35",
+  "brand": "Citroën",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T04:55:05+00:00",
+  "updated": "2026-11-07T04:55:05+00:00",
+  "summary": "La Citroën M35 est une voiture sortie en 1969, conçue sur la base de l'Ami 8. Il s'agit d'un prototype livré pour test de fiabilité à quelques clients triés sur le volet, s'engageant à effectuer au minimum 60 000 km par an, qui bénéficièrent d'une garantie totale sur le moteur de deux ans et d'un contrat de maintenance. Le moteur Comobil est un moteur de type Wankel mono-rotor étudié par la filiale Citroën-NSU COMOTOR. Autre spécificité, la M35 est dotée d'une suspension hydropneumatique.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Citro%C3%ABn_M35",
+  "wikipedia_title": "Citroën M35",
+  "specs": {
+    "engine": {
+      "value": "Comotor 498 cc with single rotor",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FF layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1969–1971 · 267 exemplaires",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "France: Cerizay (Heuliez)",
+      "from_text": false
+    },
+    "power": {
+      "value": "49 bhp",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "145 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-62 mph : 19 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/citroen-m35/1.jpg",
+      "thumb": "photos/citroen-m35/1-thumb.jpg",
+      "author": "Alf van Beem",
+      "license": "Public domain",
+      "license_url": "",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Citro%C3%ABn_M35_prototype_No6.JPG"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "267 exemplaires",
+    "Coupé 2 portes",
+    "avant 1970"
+  ]
+}

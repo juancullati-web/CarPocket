@@ -1,0 +1,77 @@
+{
+  "slug": "mercury-sable",
+  "name": "Mercury Sable",
+  "brand": "Mercury",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T04:16:17+00:00",
+  "updated": "2026-11-07T04:16:17+00:00",
+  "summary": "Le Mercury Sable est une gamme de voitures fabriquées et commercialisées par la marque Mercury de la Ford Motor Company. Il a été introduit le 26 décembre 1985 en remplacement de la Mercury Marquis, marquant ainsi la transition de la gamme de produits Mercury de taille moyenne vers la traction avant. Pendant sa période de production, le Sable était le pendant badge-engineered de Mercury à la Ford Taurus, positionné en dessous du Grand Marquis dans la gamme Mercury. De 1986 à 2005, il a été produit en tant que berline quatre portes et break cinq portes de taille moyenne. En 2006, le Sable a été remplacé par la Montego de taille pleine et la Milan de taille moyenne. Il a été réintroduit en 2008 en tant que voiture de taille pleine, proposée en berline quatre portes.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Mercury_Sable",
+  "wikipedia_title": "Mercury Sable",
+  "specs": {
+    "engine": {
+      "value": "2.5 L HSC I4 · 3.0 L Vulcan V6 · 3.8 L Essex V6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Automatique 3 rapports · Automatique 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FF layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "October 1985 – 1991",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Jack Telnack",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United States: Atlanta, Georgia (Atlanta Assembly) Chicago, Illinois (Chicago Assembly)",
+      "from_text": false
+    },
+    "length": {
+      "value": "4849 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1798 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1379 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2692 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "90 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/mercury-sable/1.jpg",
+      "thumb": "photos/mercury-sable/1-thumb.jpg",
+      "author": "Elise240SX",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1988_Mercury_Sable_GS_Sedan_in_Medium_Cabernet,_Front_Left,_07-08-2023.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

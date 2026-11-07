@@ -1,0 +1,85 @@
+{
+  "slug": "jaguar-xk150",
+  "name": "Jaguar XK150",
+  "brand": "Jaguar",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T03:05:18+00:00",
+  "updated": "2026-11-07T03:05:18+00:00",
+  "summary": "La Jaguar XK150 est une voiture produite par la marque automobile Jaguar. En 1957, presque 10 ans après le lancement de l’aînée de la famille, la 120, et après la 140 et sa direction à crémaillère, Jaguar dévoile la XK150 qui est une voiture dont la ligne est radicalement différente de ses devancières. Le profil de la voiture est adouci et le pare-brise est maintenant en un seul plan bombé, comme la vitre arrière du coupé. Sur le plan mécanique, la plus grande différence avec les modèles précédents est l’introduction de freins à disque en série. Les freins à disque ont fait leur apparition au Mans en 1954 sur la Jaguar D-Type. La direction est à crémaillère comme sur la 140, le moteur est toujours le 3,4 litres de 190 ch de base et 220 ch en version SE avec une culasse travaillée et peinte en bleu. Lancée d’abord en coupé et en cabriolet, la 150 voit arriver un roadster en 1958.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Jaguar_XK150",
+  "wikipedia_title": "Jaguar XK150",
+  "specs": {
+    "engine": {
+      "value": "3442 cc (210 CID) I6 · 3781 cc I6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 4 rapports · Automatique 3 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "2–3 seater coupé · 2–3 seater convertible or drophead coupé · 2 seater roadster or open two-seater",
+      "from_text": false
+    },
+    "production": {
+      "value": "May 1957 – March 1961",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United Kingdom: Coventry",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1346 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4496 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1580 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2591 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "220 hp",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "212 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-60 mph : 7,0 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/jaguar-xk150/1.jpg",
+      "thumb": "photos/jaguar-xk150/1-thumb.jpg",
+      "author": "Calreyn88",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1959_Jaguar_XK150_4.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "2–3 seater coupé",
+    "avant 1970",
+    "décrite comme sportive ou de prestige"
+  ]
+}

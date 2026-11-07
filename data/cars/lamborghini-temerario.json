@@ -1,0 +1,88 @@
+{
+  "slug": "lamborghini-temerario",
+  "name": "Lamborghini Temerario",
+  "brand": "Lamborghini",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T05:13:12+00:00",
+  "updated": "2026-11-07T05:13:12+00:00",
+  "summary": "La Lamborghini Temerario est une supercar du constructeur automobile italien Lamborghini produite à partir de 2024. Elle succède à la Lamborghini Huracán produite à partir de 2014.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Lamborghini_Temerario",
+  "wikipedia_title": "Lamborghini Temerario",
+  "specs": {
+    "engine": {
+      "value": "4.0 L L411 twin-turbocharged V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Double embrayage 8 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Longitudinal mid-engine, four-wheel-drive",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "2025–present",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Mitja Borkert",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Italy: Sant'Agata Bolognese",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1690 kg dry",
+      "from_text": false
+    },
+    "length": {
+      "value": "4706 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1996 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1201 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2658 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "920 PS",
+      "from_text": false
+    },
+    "zero_100": {
+      "value": "0-100 km/h : 2,7 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/lamborghini-temerario/1.jpg",
+      "thumb": "photos/lamborghini-temerario/1-thumb.jpg",
+      "author": "Alexander Migl",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Lamborghini_Temerario_IMG_5361.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "Coupé 2 portes",
+    "décrite comme sportive ou de prestige"
+  ]
+}

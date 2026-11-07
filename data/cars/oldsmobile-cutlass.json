@@ -1,0 +1,79 @@
+{
+  "slug": "oldsmobile-cutlass",
+  "name": "Oldsmobile Cutlass",
+  "brand": "Oldsmobile",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T03:11:13+00:00",
+  "updated": "2026-11-07T03:11:13+00:00",
+  "summary": "The Oldsmobile Cutlass was a series of automobiles produced by the General Motors' Oldsmobile division between 1961 and 1999. At its introduction, the Cutlass was Oldsmobile's entry-level model; it began as a unibody compact car, but saw its greatest success as a body-on-frame intermediate. The Cutlass was named after Vought F7U Cutlass, as well as the type of sword, which was common during the Age of Sail. Introduced as the top trim level in Oldsmobile's compact F-85 Series, the Cutlass evolved into a distinct series of its own, spawning numerous variants. These included the 4-4-2 muscle car in 1964, the upscale Cutlass Supreme in 1966, the high-performance Hurst/Olds in 1968, and the Vista Cruiser station wagon. By the 1980s, Oldsmobile was using the Cutlass as a sub-marque, with numerous vehicle lines bearing the name simultaneously.",
+  "summary_lang": "en",
+  "summary_url": "https://en.wikipedia.org/wiki/Oldsmobile_Cutlass",
+  "wikipedia_title": "Oldsmobile Cutlass",
+  "specs": {
+    "engine": {
+      "value": "215 cuin Rockette V8 · 215 cuin Turbo-Rocket turbocharged V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 3 rapports · Manuelle 4 rapports · 3-speed Roto Hydramatic",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1961–1963",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United States: (main plant) Lansing, Michigan (Lansing Car Assembly) (branch assembly) Kansas City, Kansas (Fairfax Assembly) South Gate, California (South Gate Assembly)",
+      "from_text": false
+    },
+    "length": {
+      "value": "1961–62: 188.2 in",
+      "from_text": false
+    },
+    "width": {
+      "value": "1961–62: 71.6 in",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2845 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "155 bhp",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "161 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-97 km/h : 14,5 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/oldsmobile-cutlass/1.jpg",
+      "thumb": "photos/oldsmobile-cutlass/1-thumb.jpg",
+      "author": "Greg Gjerdingen from Willmar, USA",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:61_Oldsmobile_F-85_Cutlass_(6087208791)_(cropped).jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "avant 1970"
+  ]
+}

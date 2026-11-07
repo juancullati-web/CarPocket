@@ -1,0 +1,93 @@
+{
+  "slug": "tvr-cerbera-speed-12",
+  "name": "TVR Cerbera Speed 12",
+  "brand": "TVR",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T05:00:08+00:00",
+  "updated": "2026-11-07T05:00:08+00:00",
+  "summary": "La TVR Cerbera Speed 12 est une supercar conçue par le constructeur britannique TVR et présentée en 1997 au Motorfair de Londres. Développée pour la compétition, cette supercar ne vit jamais le jour en version routière, puisqu'en dehors de quelques exemplaires réservés à la course, un seul exemplaire fut fabriqué. La légende raconte que c'est le patron de la marque, à l'époque Peter Wheeler, qui, après être allé faire un tour avec la voiture, a refusé de la mettre en vente car il l'estimait trop dangereuse et la qualifiée de terrifiante.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/TVR_Cerbera_Speed_12",
+  "wikipedia_title": "TVR Cerbera Speed 12",
+  "specs": {
+    "engine": {
+      "value": "7730 cc Speed 12 V12",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 6 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Front moteur central, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1996–1998 · 3 exemplaires",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Chris Stallard, Darren Hobbs",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United Kingdom: Blackpool, England",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1100 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4360 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1960 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1130 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2640 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "1000 hp",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "386 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-97 km/h : 2,9 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/tvr-cerbera-speed-12/1.jpg",
+      "thumb": "photos/tvr-cerbera-speed-12/1-thumb.jpg",
+      "author": "MrWalkr",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2000_TVR_Cerbera_Speed_12_Red.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "3 exemplaires",
+    "Coupé 2 portes",
+    "décrite comme sportive ou de prestige"
+  ]
+}

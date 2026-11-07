@@ -1,0 +1,71 @@
+{
+  "slug": "mercury-marquis",
+  "name": "Mercury Marquis",
+  "brand": "Mercury",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T02:37:14+00:00",
+  "updated": "2026-11-07T02:37:14+00:00",
+  "summary": "La Mercury Marquis est une automobile produite par Mercury entre 1967 et 1986. Son nom dérive du titre nobiliaire français et le véhicule fut décliné sur quatre générations de modèles. Initialement modèle phare de la marque Mercury, la ligne Marquis a été agrandie en incluant le modèle supérieur Grand Marquis ainsi que le Mercury Colony Park en tant que variante break. Les trois premières générations du modèle étaient des modèles full-size. En 1983, la génération finale a vu la ligne être séparée en deux : le modèle Marquis glissant vers le segment mid-size, et le Grand Marquis devenant modèle à part entière sur le segment full-size. Portail de l’automobile Portail des États-Unis",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Mercury_Marquis",
+  "wikipedia_title": "Mercury Marquis",
+  "specs": {
+    "engine": {
+      "value": "390 cuin FE V8 · 410 cuin FE V8 · 428 cuin Super Marauder V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Automatique 3 rapports (1967) · Automatique 3 rapports (1968)",
+      "from_text": false
+    },
+    "body": {
+      "value": "2-door hardtop",
+      "from_text": false
+    },
+    "production": {
+      "value": "1967–1968",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Hazelwood, Missouri (St. Louis Assembly Plant) Pico Rivera, California (Los Angeles Assembly) Hapeville, Georgia (Atlanta Assembly)",
+      "from_text": false
+    },
+    "length": {
+      "value": "5550 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1979 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1400 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "3124 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "330 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/mercury-marquis/1.jpg",
+      "thumb": "photos/mercury-marquis/1-thumb.jpg",
+      "author": "The original uploader was Sable232 at English Wikipedia.",
+      "license": "CC BY-SA 3.0",
+      "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1968_Mercury_Marquis_cropped.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "avant 1970"
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "slug": "chevrolet-celebrity",
+  "name": "Chevrolet Celebrity",
+  "brand": "Chevrolet",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T02:33:11+00:00",
+  "updated": "2026-11-07T02:33:11+00:00",
+  "summary": "La Chevrolet Celebrity est une automobile produite par la division Chevrolet de General Motors. Vendue des années modèles 1982 à 1990, une seule génération de la Celebrity a été produite, remplaçant la Malibu en tant que gamme de modèles Chevrolet de taille moyenne. Au début des années 1960, la plaque signalétique a été utilisée pour la première fois par Oldsmobile pour la version berline à colonnes de l'Oldsmobile 88. Elle est basée sur la plate-forme GM A à traction avant et a été produite aux côtés des Buick Century, Oldsmobile Cutlass Ciera et Pontiac 6000. L'espace intérieur et le train roulant sont les mêmes que ceux de la Citation compacte, mais la Celebrity est mieux taillé et équipé. La direction / les freins assistée et la transmission automatique étaient de série en 1982-83 et sont devenus optionnels en 1984.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Chevrolet_Celebrity",
+  "wikipedia_title": "Chevrolet Celebrity",
+  "specs": {
+    "engine": {
+      "value": "gasoline: · 2.5 L LR8 I4 · 2.8 L LE2/LH7/L44/LB6 V6 · 3.1 L LH0 V6 · diesel: · 4.3 L LT7 V6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Automatique 3 rapports · Automatique 4 rapports · Manuelle 5 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur transversal, moteur avant, traction",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes · Berline 4 portes · Break 4 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1981–1990",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Canada: Oshawa, Ontario (Oshawa Car Assembly: 1982–1987) Sainte-Thérèse, Quebec (Sainte-Thérèse Assembly: 1987–1990) Colombia: Bogotá, Distrito Capital (Bogotá Assembly) Mexico: Ramos Arizpe (Ramos Arizpe Assembly: 1982–1989; 1987–1989, export) United States: Framingham, Massachusetts (Framingham Assembly: 1982–1988) Fremont, California (Fremont Assembly: 1982) Oklahoma City, Oklahoma (Oklahoma City Assembly: 1983–1989) Venezuela: Valencia, Carabobo (Valencia Assembly)",
+      "from_text": false
+    },
+    "length": {
+      "value": "Coupe & Sedan: 188.3 in",
+      "from_text": false
+    },
+    "width": {
+      "value": "Coupe & Sedan: 69.2 in",
+      "from_text": false
+    },
+    "height": {
+      "value": "Coupe & Sedan: 54.2 in",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2662 mm",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/chevrolet-celebrity/1.jpg",
+      "thumb": "photos/chevrolet-celebrity/1-thumb.jpg",
+      "author": "Mr.choppers",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1986_Chevrolet_Celebrity_2.5.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "Coupé 2 portes"
+  ]
+}

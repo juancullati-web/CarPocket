@@ -1,0 +1,71 @@
+{
+  "slug": "pontiac-safari",
+  "name": "Pontiac Safari",
+  "brand": "Pontiac",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T01:34:13+00:00",
+  "updated": "2026-11-07T01:34:13+00:00",
+  "summary": "The Pontiac Safari is a line of station wagons that was produced by Pontiac from 1955 to 1989. Initially introduced as the Pontiac counterpart of the two-door Chevrolet Nomad, the division adopted the nameplate across its full-size wagon range in 1957. Through its production, the Safari was positioned between Chevrolet full-size station wagons and below its Buick and Oldsmobile counterparts. During the mid-1960s, the Safari added simulated woodgrain trim to the exterior, becoming a feature associated with the model line. The name \"safari\" is derived from the Swahili word safari, which means journey, originally from the Arabic سفر (safar) meaning a journey; the verb for \"to travel\" in Swahili is kusafiri.",
+  "summary_lang": "en",
+  "summary_url": "https://en.wikipedia.org/wiki/Pontiac_Safari",
+  "wikipedia_title": "Pontiac Safari",
+  "specs": {
+    "engine": {
+      "value": "287 cid Strato Streak V8 (1955) · 316.6 cid V8 (1956) · 347 cid V8 (1957)",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 3 rapports · 3-speed Strato-Flight Hydra-Matic",
+      "from_text": false
+    },
+    "body": {
+      "value": "Break 3 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1955–1957",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Pontiac Assembly, Pontiac, Michigan South Gate Assembly, South Gate, California Lakewood Assembly, Atlanta, Georgia Framingham Assembly, Framingham, Massachusetts Fairfax Assembly, Kansas City, Kansas Arlington Assembly, Arlington, Texas Linden Assembly, Linden, New Jersey Wilmington Assembly, Wilmington, Delaware",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1699 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "5189 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1946 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "3099 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "180 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/pontiac-safari/1.jpg",
+      "thumb": "photos/pontiac-safari/1-thumb.jpg",
+      "author": "Rex Gray",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1955_Pontiac_Star_Chief_Custom_Safari_-_copper_white_-_fvr2.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "avant 1970"
+  ]
+}

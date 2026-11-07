@@ -1,0 +1,77 @@
+{
+  "slug": "eagle-vista",
+  "name": "Eagle Vista",
+  "brand": "Eagle",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T02:57:15+00:00",
+  "updated": "2026-11-07T02:57:15+00:00",
+  "summary": "The Eagle Vista name has been used on two subcompact cars sold from 1988 to 1992 in Canada. Along with the Eagle Summit, the car replaced the Renault Alliance/Encore because of Renault's withdrawing from the United States and Canada at that time. It was a rebadged version of the second generation Mitsubishi Mirage (station wagons were rebadged Mitsubishi Space Wagons). The Vista hatchback and sedans were available with either a 1.5 L 4G15 straight-4 (69 hp or 51 kW), or a 1.6L turbocharged 4G32 (106 hp or 79 kW), and was available with either a 4 or 5-speed manual or a 3-speed automatic transmission. The turbo hatchback came in the GT equipment level, turbo sedans were called LX and carried taller gearing. Turbos were not available with the 4-speed transmission. Hatchbacks and sedans were replaced by the Eagle Summit.",
+  "summary_lang": "en",
+  "summary_url": "https://en.wikipedia.org/wiki/Eagle_Vista",
+  "wikipedia_title": "Eagle Vista",
+  "specs": {
+    "engine": {
+      "value": "1.5L 4G15 I4 · 1.6L 4G32 I4 (hatchback/sedan) · 2.0L 4G63 I4 (station wagon)",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 4 rapports · Manuelle 5 rapports · Automatique 3 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, traction / four-wheel drive",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes · Compacte 3 portes · Break 4 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1988–1992",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Japan: Kurashiki, Okayama Thailand: Laem Chabang (MMTh)",
+      "from_text": false
+    },
+    "length": {
+      "value": "Hatchback: 157.3 in",
+      "from_text": false
+    },
+    "width": {
+      "value": "1621 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1359 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2380 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "69 hp",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "155 km/h",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/eagle-vista/1.jpg",
+      "thumb": "photos/eagle-vista/1-thumb.jpg",
+      "author": "dave_7 from Lethbridge, Canada",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Eagle_Vista_(4857802371)_(crop).jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

@@ -1,0 +1,81 @@
+{
+  "slug": "lexus-es",
+  "name": "Lexus ES",
+  "brand": "Lexus",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T03:36:06+00:00",
+  "updated": "2026-11-07T03:36:06+00:00",
+  "summary": "La Lexus ES est une berline haut-de-gamme du constructeur automobile japonais Lexus. Elle appartient à la catégorie des familiales, concurrente des Mercedes Classe E, ou encore BMW Série 5. Lancée en 1989, c’est l'un des premiers modèles de la gamme Lexus, et se situe, après la disparition de la GS qu’elle remplace en Europe à partir de 2020, entre l'IS et la plus luxueuse LS. Elle s’est vendue uniquement aux États-Unis, au Canada et au Japon, sous le nom de Toyota Vista puis Toyota Windom jusqu’à fin 2018, puis également, depuis 2019, en Europe en version hybride. Elle est assemblée sur la même plate-forme que la Toyota Camry. Sur les premières générations, les chiffres après le sigle du modèle indiquaient la cylindrée, comme chez Infiniti, ou encore Mercedes.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Lexus_ES",
+  "wikipedia_title": "Lexus ES",
+  "specs": {
+    "engine": {
+      "value": "Gasoline: · 2.5 L 2VZ-FE V6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports · Automatique 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, traction",
+      "from_text": false
+    },
+    "body": {
+      "value": "4-door hardtop sedan",
+      "from_text": false
+    },
+    "production": {
+      "value": "June 1989 – July 1991",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Yoshiro Tada (1987)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Japan: Toyota, Aichi (Tsutsumi plant)",
+      "from_text": false
+    },
+    "length": {
+      "value": "4651 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1699 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1349 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2601 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "156 hp",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-60 mph : 7,9 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/lexus-es/1.jpg",
+      "thumb": "photos/lexus-es/1-thumb.jpg",
+      "author": "Altair78",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Lexus_ES_250_VZV21.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

@@ -1,0 +1,87 @@
+{
+  "slug": "alfa-romeo-sprint",
+  "name": "Alfa Romeo Sprint",
+  "brand": "Alfa Romeo",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T04:25:12+00:00",
+  "updated": "2026-11-07T04:25:12+00:00",
+  "summary": "The Alfa Romeo Alfasud Sprint (later only Alfa Romeo Sprint) is a boxer-engined coupé produced by the Italian manufacturer Alfa Romeo from 1976 to 1989, and based on the Alfa Romeo Alfasud. 116,552 units of the Alfasud Sprint and Sprint were built in total. The Sprint was sold in Europe, South Africa, Australia, and New Zealand.",
+  "summary_lang": "en",
+  "summary_url": "https://en.wikipedia.org/wiki/Alfa_Romeo_Sprint",
+  "wikipedia_title": "Alfa Romeo Sprint",
+  "specs": {
+    "engine": {
+      "value": "Petrol: · 1.2 L Boxer H4 · 1.3 L Boxer H4 · 1.5 L Boxer H4 · 1.7 L Boxer H4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, traction",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 3 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1976–1989",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Giorgetto Giugiaro at Italdesign",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Italy: Pomigliano d'Arco South Africa: Brits, North West",
+      "from_text": false
+    },
+    "weight": {
+      "value": "915 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4019-4024 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1610-1620 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1305-1297 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2455 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "76 PS",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-100 km/h : 9,3 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/alfa-romeo-sprint/1.jpg",
+      "thumb": "photos/alfa-romeo-sprint/1-thumb.jpg",
+      "author": "Riley from Christchurch, New Zealand",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1983_Alfa_Romeo_Alfasud_Sprint_(6981573552)_(cropped).jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "Coupé 3 portes"
+  ]
+}

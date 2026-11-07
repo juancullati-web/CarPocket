@@ -1,0 +1,81 @@
+{
+  "slug": "lancia-prisma",
+  "name": "Lancia Prisma",
+  "brand": "Lancia",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T00:45:07+00:00",
+  "updated": "2026-11-07T00:45:07+00:00",
+  "summary": "La Lancia Prisma est une voiture berline traditionnelle tricorps fabriquée par le constructeur italien Lancia entre 1982 et 1989.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Lancia_Prisma",
+  "wikipedia_title": "Lancia Prisma",
+  "specs": {
+    "engine": {
+      "value": "1.3 L I4 · 1.5 L I4 · 1.6 L I4 · 2.0 L I4 · 1.9 L diesel I4 · 1.9 L turbodiesel I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports · Automatique 3 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, traction\nFront-engine, four-wheel-drive",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1982–1989",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Giorgetto Giugiaro at Italdesign",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Italy: Chivasso, Piedmont (Chivasso plant)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "950-1050 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4180 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1620 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1385 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2475 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "78 PS",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/lancia-prisma/1.jpg",
+      "thumb": "photos/lancia-prisma/1-thumb.jpg",
+      "author": "Tony Harrison from Farnborough, UK",
+      "license": "CC BY-SA 2.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Lancia_Prisma_Auto_Italia_Stanford_Hall_June_2010_IMG_9712_(4679826573)_(cropped).jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

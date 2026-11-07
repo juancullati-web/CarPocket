@@ -1,0 +1,73 @@
+{
+  "slug": "jeep-patriot",
+  "name": "Jeep Patriot",
+  "brand": "Jeep",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T00:39:05+00:00",
+  "updated": "2026-11-07T00:39:05+00:00",
+  "summary": "La Jeep Patriot (MK74), est une automobile crossover SUV à quatre roues motrices, produite par le constructeur automobile américain Chrysler, sous sa marque Jeep. Présentée en avril 2006 au Salon de l'automobile de New York puis distribuée en 2007, elle occupe le marché entre la Jeep Compass et la Jeep Liberty dans la gamme Jeep. Elle est produite de 2006 à 2016. Le Patriot était fabriqué dans l'usine d'assemblage de Chrysler à Belvidere, dans l'Illinois, aux côtés du Compass. Bien que le modèle se soit toujours bien vendu alors qu'il était pratiquement inchangé à l'aube de sa 11e année, sa production a pris fin avec l'année-modèle 2017.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Jeep_Patriot",
+  "wikipedia_title": "Jeep Patriot",
+  "specs": {
+    "engine": {
+      "value": "2.0 L GEMA World I4 (gasoline) · 2.0 L VW EA188 CRD PD I4 (turbo-diesel) · 2.2 L Mercedes-Benz OM651 CRD I4 (t/c diesel) · 2.4 L GEMA World I4 (gasoline)",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports · Manuelle 6 rapports (Diesel only) · Automatique 6 rapports · CVT Jatco JF011E automatic",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, traction / all-wheel drive",
+      "from_text": false
+    },
+    "body": {
+      "value": "SUV 5 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "2006–2016",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United States: Belvidere, Illinois (Belvidere Assembly Plant)",
+      "from_text": false
+    },
+    "length": {
+      "value": "4409 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1755 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "2007–09: 64.4 in",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2635 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "163 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/jeep-patriot/1.jpg",
+      "thumb": "photos/jeep-patriot/1-thumb.jpg",
+      "author": "IFCAR",
+      "license": "Public domain",
+      "license_url": "",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Jeep_Patriot.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

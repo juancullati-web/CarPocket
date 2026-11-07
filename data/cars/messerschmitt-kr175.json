@@ -1,0 +1,87 @@
+{
+  "slug": "messerschmitt-kr175",
+  "name": "Messerschmitt KR175",
+  "brand": "Messerschmitt",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T01:56:15+00:00",
+  "updated": "2026-11-07T01:56:15+00:00",
+  "summary": "Les Messerschmitt KR 175 et KR 200 Kabinenroller sont des véhicules tricycles biplaces en tandem construit par Fritz Fend sous le nom de marque Messerschmitt au début des années 1950. L'abréviation KR est tirée du terme allemand Kabinenroller (scooter à cabine). Le nombre indique la cylindrée (175 ou 200 cm3).",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Messerschmitt_KR_175",
+  "wikipedia_title": "Messerschmitt KR175",
+  "specs": {
+    "engine": {
+      "value": "Fichtel & Sachs two-stroke single cylinder, pull start or optional electric start",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Four forward speeds, sequential, unsynchronized.",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur central arrière, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 1 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1953–1955",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Fritz Fend",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Regensburg, Germany Brescia, Italy (under license)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "220 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "2.820 m",
+      "from_text": false
+    },
+    "width": {
+      "value": "1.220 m",
+      "from_text": false
+    },
+    "height": {
+      "value": "1.200 m",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2.029 m",
+      "from_text": false
+    },
+    "power": {
+      "value": "6.7 kW",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "80 km/h",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/messerschmitt-kr175/1.jpg",
+      "author": "Mytho88",
+      "license": "CC BY-SA 3.0",
+      "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Messerschmitt_KR175_01.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "Coupé 1 portes",
+    "avant 1970"
+  ]
+}

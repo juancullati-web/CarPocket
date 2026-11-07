@@ -1,0 +1,69 @@
+{
+  "slug": "byd-m6-2010",
+  "name": "BYD M6 (2010)",
+  "brand": "BYD",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T00:42:08+00:00",
+  "updated": "2026-11-07T00:42:08+00:00",
+  "summary": "Le BYD M6 est un modèle monospace 7 places fabriqué par le constructeur automobile chinois BYD.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/BYD_M6",
+  "wikipedia_title": "BYD M6 (2010)",
+  "specs": {
+    "engine": {
+      "value": "2.0 L BYD483QB I4 (petrol) · 2.4 L BYD488QA I4 (petrol) · 2.4 L 4G69 I4 (petrol)",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports · Automatique 6 rapports · Automatique 4 rapports",
+      "from_text": false
+    },
+    "body": {
+      "value": "Minivan",
+      "from_text": false
+    },
+    "production": {
+      "value": "2010–2017",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "China",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1710-1760 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4820 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1810 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1765 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2960 mm",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/byd-m6-2010/1.jpg",
+      "thumb": "photos/byd-m6-2010/1-thumb.jpg",
+      "author": "Navigator84",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:BYD_M6_China_2012-04-28.JPG"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

@@ -1,0 +1,89 @@
+{
+  "slug": "mclaren-speedtail",
+  "name": "McLaren Speedtail",
+  "brand": "McLaren",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T05:06:08+00:00",
+  "updated": "2026-11-07T05:06:08+00:00",
+  "summary": "La Speedtail est une hypercar de la gamme « Ultimate Series » du constructeur automobile britannique Mclaren, dévoilée le 26 octobre 2018.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/McLaren_Speedtail",
+  "wikipedia_title": "McLaren Speedtail",
+  "specs": {
+    "engine": {
+      "value": "4.0 L M840T twin-turbocharged V8 with parallel hybrid system eMotor",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Double embrayage 7 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur central arrière, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "2020 · 106 exemplaires",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Rob Melville, Alex Alexiev",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United Kingdom: Woking, Surrey, England (McLaren Technology Centre)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1597 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "5137 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1120 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2730 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "1050 PS",
+      "from_text": false
+    },
+    "top_speed": {
+      "value": "403 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-60 mph : 2,9 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/mclaren-speedtail/1.jpg",
+      "thumb": "photos/mclaren-speedtail/1-thumb.jpg",
+      "author": "Alexander Migl",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:McLaren_Speedtail_Genf_2019_1Y7A5636.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "106 exemplaires",
+    "Coupé 2 portes",
+    "décrite comme sportive ou de prestige"
+  ]
+}

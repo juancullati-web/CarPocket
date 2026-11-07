@@ -1,0 +1,79 @@
+{
+  "slug": "dongfeng-ca71",
+  "name": "Dongfeng CA71",
+  "brand": "Dongfeng",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T02:27:01+00:00",
+  "updated": "2026-11-07T02:27:01+00:00",
+  "summary": "La Dongfeng CA71 est une automobile de catégorie grande routière, produite par le constructeur chinois First Automobile Works (FAW) en 1958. Cette voiture, produite en série limitée, revêt une importance historique puisqu'elle constitue la première voiture de tourisme intégralement réalisée en Chine.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Dongfeng_CA71",
+  "wikipedia_title": "Dongfeng CA71",
+  "specs": {
+    "engine": {
+      "value": "1930 cc I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 3 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1958–1961",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "China: Changchun",
+      "from_text": false
+    },
+    "length": {
+      "value": "4560 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1755 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1530 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2700 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "52 kW",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "130 km/h",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/dongfeng-ca71/1.jpg",
+      "thumb": "photos/dongfeng-ca71/1-thumb.jpg",
+      "author": "AMS061974",
+      "license": "Public domain",
+      "license_url": "",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Dongfeng_CA71_display.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "avant 1970"
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "slug": "mercedes-benz-600",
+  "name": "Mercedes-Benz 600",
+  "brand": "Mercedes-Benz",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T02:29:08+00:00",
+  "updated": "2026-11-07T02:29:08+00:00",
+  "summary": "La Mercedes-Benz W100 ou Mercedes-Benz 600 est une longue limousine, équipée d'un moteur V8 M 100 à injection de 6 332 cm3 (alésage-course : 103 × 95) développant 250 ch à 4 000 tr/min pour un couple de 500 N m, associé à une boîte automatique à 4 rapports. Elle fut disponible en 4 portes (5 540 ou 6 240 mm selon empattement) et 6 portes. Elle porte le code interne W100. Son moteur fut aussi utilisé dans la Mercedes-Benz 300 SEL 6.3. Cette voiture dessinée par le Français Paul Bracq n'a pas subi la moindre modification en 18 années de carrière, sans doute en raison de sa modernité. En effet, elle est équipée d'un alternateur (rarissime à l'époque où la dynamo reste la norme), de la climatisation et d'une centrale hydraulique gérant notamment la direction assistée, le freinage ou encore les vitres hydrauliques.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Mercedes-Benz_600",
+  "wikipedia_title": "Mercedes-Benz 600",
+  "specs": {
+    "engine": {
+      "value": "6.3 L M100 V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Automatique 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "4-door Limousine (SWB) · 4-door Pullman Limousine · 6-door Pullman Limousine · Landaulet",
+      "from_text": false
+    },
+    "production": {
+      "value": "1963–1981 · 2,677 built · SWB: 2,190 · LWB: 428 · Landaulet: 59",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Friedrich Geiger, Paul Bracq",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "West Germany: Stuttgart",
+      "from_text": false
+    },
+    "weight": {
+      "value": "2990-3280 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "SWB: 5540 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1950 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "SWB: 1500 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "SWB: 3200 mm",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/mercedes-benz-600/1.jpg",
+      "thumb": "photos/mercedes-benz-600/1-thumb.jpg",
+      "author": "Stahlkocher",
+      "license": "CC BY-SA 3.0",
+      "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Mercedes-Benz_600_vl_silver_TCE.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "2677 exemplaires",
+    "avant 1970"
+  ]
+}

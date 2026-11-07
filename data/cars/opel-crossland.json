@@ -1,0 +1,77 @@
+{
+  "slug": "opel-crossland",
+  "name": "Opel Crossland",
+  "brand": "Opel",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T01:03:01+00:00",
+  "updated": "2026-11-07T01:03:01+00:00",
+  "summary": "L'Opel Crossland X, puis Crossland à partir de 2021, est un crossover citadin produit par le constructeur automobile allemand Opel à partir de juin 2017 pour remplacer la Meriva. Il s'agit du premier modèle issu de la coopération entre GM-Opel et PSA avant le rachat de la marque allemande par le groupe français. Il est remplacé au second semestre 2024 par l'Opel Frontera.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Opel_Crossland",
+  "wikipedia_title": "Opel Crossland",
+  "specs": {
+    "engine": {
+      "value": "Petrol: · 1.2 L EB2F I3 · 1.2 L EB2DT/EB2DTS turbo I3 · Petrol CNG: · 1.2 L EB2FA I3 · Diesel: · 1.6 L DV6 BlueHDi I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "5/Manuelle 6 rapports · Automatique 6 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, traction",
+      "from_text": false
+    },
+    "body": {
+      "value": "SUV 5 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "2017–2024",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Spain: Zaragoza (Opel España de Automóviles)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1163-1319 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4212 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1765 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1605 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2605 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "130 PS",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/opel-crossland/1.jpg",
+      "thumb": "photos/opel-crossland/1-thumb.jpg",
+      "author": "Alexander Migl",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Opel_Crossland_IMG_4132.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

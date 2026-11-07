@@ -1,0 +1,73 @@
+{
+  "slug": "kia-joice",
+  "name": "Kia Joice",
+  "brand": "Kia",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T00:50:05+00:00",
+  "updated": "2026-11-07T00:50:05+00:00",
+  "summary": "The Kia Joice, or Kia Carstar, is a 7-seat compact MPV produced between 1999 and 2002 by the Korean manufacturer Kia Motors.",
+  "summary_lang": "en",
+  "summary_url": "https://en.wikipedia.org/wiki/Kia_Joice",
+  "wikipedia_title": "Kia Joice",
+  "specs": {
+    "engine": {
+      "value": "2.0L 16V I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports · Automatique 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, traction",
+      "from_text": false
+    },
+    "body": {
+      "value": "Break 5 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1999–2002",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "South Korea: Ulsan (Hyundai Ulsan Plant)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1325 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4570 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1735 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1645 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2720 mm",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/kia-joice/1.jpg",
+      "thumb": "photos/kia-joice/1-thumb.jpg",
+      "author": "Rudolf Stricker",
+      "license": "CC BY-SA 3.0",
+      "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Kia_Joice_front_20080123.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

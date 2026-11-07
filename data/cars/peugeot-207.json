@@ -1,0 +1,77 @@
+{
+  "slug": "peugeot-207",
+  "name": "Peugeot 207",
+  "brand": "Peugeot",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T01:11:00+00:00",
+  "updated": "2026-11-07T01:11:00+00:00",
+  "summary": "La Peugeot 207 est une citadine du segment B produite par le constructeur automobile français Peugeot entre le 6 avril 2006 et le 30 juin 2014. La 207 est la voiture la plus vendue en Europe en 2007 et la plus vendue en France de 2007à 2010, devant sa principale rivale qu'est la Renault Clio III. Du 22 octobre 2012 (apparition de la 208 I) au 30 juin 2014, elle prend l’appellation 207+.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Peugeot_207",
+  "wikipedia_title": "Peugeot 207",
+  "specs": {
+    "engine": {
+      "value": "Petrol: · 1.4 L TU3JP I4 8V · 1.4 L ET3J4 I4 16V · 1.4 L Prince I4 16V (VTi) · 1.6 L TU5JP4 I4 16V · 1.6 L Prince I4 16V (VTi) · 1.6 L Prince I4 16V turbo (THP) · Diesel: · 1.4 L PSA DV4 I4 8V (HDi) · 1.6 L PSA DV6 I4 16V (HDi)",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports · Manuelle 6 rapports · Automatique 5 rapports · Automatique 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, traction",
+      "from_text": false
+    },
+    "body": {
+      "value": "3/Compacte 5 portes · Coupé 2 portes cabriolet (207 CC) · Break 5 portes (207 SW)",
+      "from_text": false
+    },
+    "production": {
+      "value": "2006–2015",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "France: Poissy (Poissy Plant) Spain: Madrid (Madrid Plant) Slovakia: Trnava (Trnava Plant)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1243-1283 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4045 mm (hatchback)",
+      "from_text": false
+    },
+    "width": {
+      "value": "1748 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1472 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2540 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "90 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/peugeot-207/1.jpg",
+      "thumb": "photos/peugeot-207/1-thumb.jpg",
+      "author": "M 93",
+      "license": "CC BY-SA 3.0 de",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Peugeot_207_75_Forever_(Facelift)_%E2%80%93_Frontansicht,_5._Mai_2012,_Ratingen_(cropped).jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

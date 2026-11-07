@@ -1,0 +1,88 @@
+{
+  "slug": "lamborghini-countach",
+  "name": "Lamborghini Countach",
+  "brand": "Lamborghini",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T02:22:05+00:00",
+  "updated": "2026-11-07T02:22:05+00:00",
+  "summary": "La Lamborghini Countach est une supercar GT à moteur V12 du constructeur automobile italien Lamborghini, produite à 2 042 exemplaires entre 1974 et 1990. Elle est, après la Lamborghini Miura (1966-1973) et avant la Lamborghini Diablo (1990-2001), une des voitures de sport de série les plus rapides, performantes et emblématiques de son époque.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Lamborghini_Countach",
+  "wikipedia_title": "Lamborghini Countach",
+  "specs": {
+    "engine": {
+      "value": "Lamborghini V12 · LP400, LP400 S: 3929 cc · LP500 S: 4754 cc · 5000 QV, 25th Anniversary: 5167 cc",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Longitudinal moteur central, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1974–1990",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Marcello Gandini at Bertone",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Italy: Sant'Agata Bolognese",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1300.5 kg (LP400)",
+      "from_text": false
+    },
+    "length": {
+      "value": "4140 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "LP 400: 74.28 in",
+      "from_text": false
+    },
+    "height": {
+      "value": "1070 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2450 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "279 kW",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-60 mph : 4,7 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/lamborghini-countach/1.jpg",
+      "thumb": "photos/lamborghini-countach/1-thumb.jpg",
+      "author": "Brian Snelson from Hockley, Essex, England",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Lamborghini_Countach_-_Flickr_-_exfordy_(2)_(cropped-2).jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "Coupé 2 portes",
+    "décrite comme sportive ou de prestige"
+  ]
+}

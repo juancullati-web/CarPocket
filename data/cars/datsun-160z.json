@@ -1,0 +1,81 @@
+{
+  "slug": "datsun-160z",
+  "name": "Datsun 160Z",
+  "brand": "Datsun",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T03:15:01+00:00",
+  "updated": "2026-11-07T03:15:01+00:00",
+  "summary": "The Datsun 160Z is a sports car manufactured by Nissan-Datsun South Africa from 1978 to 1979, based on the Sunny (B210).",
+  "summary_lang": "en",
+  "summary_url": "https://en.wikipedia.org/wiki/Datsun_160Z",
+  "wikipedia_title": "Datsun 160Z",
+  "specs": {
+    "engine": {
+      "value": "1.6 L 4 CYL OHC",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1978–1979 · 241 built",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "South Africa: Rosslyn",
+      "from_text": false
+    },
+    "weight": {
+      "value": "970 kg (2,138.48 lb)",
+      "from_text": false
+    },
+    "length": {
+      "value": "4,045 mm (159.25 in)",
+      "from_text": false
+    },
+    "width": {
+      "value": "1,545 mm (60.83 in)",
+      "from_text": false
+    },
+    "height": {
+      "value": "1,370 mm (53.94 in)",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2,340 mm (92.13 in)",
+      "from_text": false
+    },
+    "power": {
+      "value": "71 kW",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/datsun-160z/1.jpg",
+      "thumb": "photos/datsun-160z/1-thumb.jpg",
+      "author": "Emile Gerber",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Datsun_160z_Profile.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "241 exemplaires",
+    "Coupé 2 portes",
+    "décrite comme sportive ou de prestige"
+  ]
+}

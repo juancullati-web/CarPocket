@@ -1,0 +1,88 @@
+{
+  "slug": "morgan-aero-8",
+  "name": "Morgan Aero 8",
+  "brand": "Morgan",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T04:51:05+00:00",
+  "updated": "2026-11-07T04:51:05+00:00",
+  "summary": "La Morgan Aero 8 est une voiture de sport construite par Morgan Motor à Malvern dans le Worcestershire en Angleterre. Elle est à l'origine de la renaissance de la marque[réf. nécessaire].",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Morgan_Aero_8",
+  "wikipedia_title": "Morgan Aero 8",
+  "specs": {
+    "engine": {
+      "value": "4.4 L BMW M62TUB44 V8 · 4.4 L BMW N62B44 V8 · 4.6 L BMW M62TUB46 V8 · 4.8 L BMW N62B48 V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 6 rapports/automatic",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Front moteur central, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes · Cabriolet 2 portes · 2-door targa top · 2-door speedster",
+      "from_text": false
+    },
+    "production": {
+      "value": "2000–2018",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Aero 8: Chris Lawrence, Charles Morgan and Norman Kent, AeroMax, Aero Supersports and Aero Coupe: Matthew Humphries",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United Kingdom: Malvern Link, England",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1180 kg (2596 lb)",
+      "from_text": false
+    },
+    "length": {
+      "value": "4.12 mt (162 in)",
+      "from_text": false
+    },
+    "width": {
+      "value": "1.77 mt (69 in)",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2.53 mt (100 in)",
+      "from_text": false
+    },
+    "power": {
+      "value": "210 kW",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "257 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-62 mph : 4,8 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/morgan-aero-8/1.jpg",
+      "thumb": "photos/morgan-aero-8/1-thumb.jpg",
+      "author": "Semnoz",
+      "license": "CC BY-SA 3.0",
+      "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2006_SAG_-_Morgan_aero_8_-03.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "Coupé 2 portes",
+    "décrite comme sportive ou de prestige"
+  ]
+}

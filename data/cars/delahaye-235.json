@@ -1,0 +1,75 @@
+{
+  "slug": "delahaye-235",
+  "name": "Delahaye 235",
+  "brand": "Delahaye",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T05:49:07+00:00",
+  "updated": "2026-11-07T05:49:07+00:00",
+  "summary": "La Delahaye type 235 est un modèle automobile de luxe du constructeur français Delahaye fabriqué d'octobre 1951 à mai 1954.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Delahaye_type_235",
+  "wikipedia_title": "Delahaye 235",
+  "specs": {
+    "engine": {
+      "value": "3,557 cc straight-6, 152 hp",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "4-speed pre-selector (Cotal)",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "production": {
+      "value": "1951–1954",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Philippe Charbonneaux",
+      "from_text": false
+    },
+    "weight": {
+      "value": "bare chassis: 1100 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "455 cm",
+      "from_text": false
+    },
+    "width": {
+      "value": "174 cm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "295 cm",
+      "from_text": false
+    },
+    "power": {
+      "value": "152 hp",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "170 km/h",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/delahaye-235/1.jpg",
+      "thumb": "photos/delahaye-235/1-thumb.jpg",
+      "author": "MPW57",
+      "license": "Public domain",
+      "license_url": "",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Delahaye_235.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "avant 1970"
+  ]
+}

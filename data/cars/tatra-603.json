@@ -1,0 +1,79 @@
+{
+  "slug": "tatra-603",
+  "name": "Tatra 603",
+  "brand": "Tatra",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T04:54:14+00:00",
+  "updated": "2026-11-07T04:54:14+00:00",
+  "summary": "La Tatra 603 est une routière tchécoslovaque, produite entre 1957 et 1975 par le constructeur automobile Tatra. Sa ligne atypique, son confort de haut niveau et son V8 arrière en faisaient l’une des voitures de l’Est les plus désirables de l’époque.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Tatra_603",
+  "wikipedia_title": "Tatra 603",
+  "specs": {
+    "engine": {
+      "value": "2,474 cc Tatra 603G/H air-cooled V8 (1962–1975) · 2,545 cc Tatra 603F air-cooled V8 (1956–1962)",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "RR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1956–1962 (Tatra 603) · 1962–1975 (Tatra 2-603)",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Julius Mackerle, František Kardaus, Vladimír Popelář, Josef Chalupa, Zdeněk Kovář",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Czechoslovakia: Kopřivnice, Moravia, (1956–1969) Czechoslovakia: Příbor, Moravia (1969–1975)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1400 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "5065 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1910 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1529 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2748 mm",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/tatra-603/1.jpg",
+      "thumb": "photos/tatra-603/1-thumb.jpg",
+      "author": "Michal Maňas",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Tatra_603.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "avant 1970"
+  ]
+}

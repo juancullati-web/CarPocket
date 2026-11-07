@@ -1,0 +1,93 @@
+{
+  "slug": "tvr-sagaris",
+  "name": "TVR Sagaris",
+  "brand": "TVR",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T02:25:09+00:00",
+  "updated": "2026-11-07T02:25:09+00:00",
+  "summary": "La TVR Sagaris est une voiture de sport conçue et construite par le constructeur britannique TVR dans son usine de Blackpool, Lancashire.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/TVR_Sagaris",
+  "wikipedia_title": "TVR Sagaris",
+  "specs": {
+    "engine": {
+      "value": "3996 cc Speed Six I6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Longitudinal-mounted, front moteur central, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "2005–2006 · 213 exemplaires",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Graham Browne, Lee Hodgetts, Darren Hobbs, Martin Smith",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United Kingdom: Blackpool, England",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1078 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4056 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1849 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1176 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2360 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "406 bhp",
+      "from_text": false
+    },
+    "torque": {
+      "value": "473 Nm",
+      "from_text": false
+    },
+    "top_speed": {
+      "value": "298 km/h",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/tvr-sagaris/1.jpg",
+      "thumb": "photos/tvr-sagaris/1-thumb.jpg",
+      "author": "Steve Glover",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:TVR_Sagaris_(2005)_-_15227507288.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "213 exemplaires",
+    "Coupé 2 portes",
+    "décrite comme sportive ou de prestige"
+  ]
+}

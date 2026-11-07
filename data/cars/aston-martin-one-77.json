@@ -1,0 +1,97 @@
+{
+  "slug": "aston-martin-one-77",
+  "name": "Aston Martin One-77",
+  "brand": "Aston Martin",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T05:55:07+00:00",
+  "updated": "2026-11-07T05:55:07+00:00",
+  "summary": "L’Aston Martin One-77 est une supercar développée par le constructeur automobile britannique Aston Martin. Dans un premier temps dénommée Aston Martin BDX, elle est finalement appelée One-77 lors de sa présentation, plutôt discrète, au Mondial de l'automobile de Paris 2008. Seulement 77 exemplaires seront produits, d'où l'origine du nom. L’Aston Martin One-77 est commercialisée depuis fin 2009.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Aston_Martin_One-77",
+  "wikipedia_title": "Aston Martin One-77",
+  "specs": {
+    "engine": {
+      "value": "7.3 L AM77 Cosworth V12",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 6 rapports · Manuelle 6 rapports (Victor) · Automatique 5 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Front moteur central, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "2009–2012 · 77 exemplaires",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Marek Reichman",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United Kingdom: Gaydon, Warwickshire",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1630 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4601 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "2204 mm (inc mirrors)",
+      "from_text": false
+    },
+    "height": {
+      "value": "1222 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2791 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "559 kW",
+      "from_text": false
+    },
+    "torque": {
+      "value": "750 Nm",
+      "from_text": false
+    },
+    "top_speed": {
+      "value": "349 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-97 km/h : 3,5 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/aston-martin-one-77/1.jpg",
+      "thumb": "photos/aston-martin-one-77/1-thumb.jpg",
+      "author": "MrWalkr",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2011_Aston_Martin_One-77_SCD_24.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "77 exemplaires",
+    "Coupé 2 portes",
+    "décrite comme sportive ou de prestige"
+  ]
+}

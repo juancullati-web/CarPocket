@@ -1,0 +1,90 @@
+{
+  "slug": "aston-martin-v8",
+  "name": "Aston Martin V8",
+  "brand": "Aston Martin",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T04:56:11+00:00",
+  "updated": "2026-11-07T04:56:11+00:00",
+  "summary": "L'Aston Martin V8 est une automobile produite de 1972 à 1989 par le constructeur britannique Aston Martin. C'est une évolution de la DBS V8, dont elle reprend la carrosserie et le moteur.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Aston_Martin_V8",
+  "wikipedia_title": "Aston Martin V8",
+  "specs": {
+    "engine": {
+      "value": "5.3 L V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports all-synchromesh · Automatique 3 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes · Cabriolet 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1969–1989 · 4,021 built · (incl. Vantage & Volante)",
+      "from_text": false
+    },
+    "designer": {
+      "value": "William Towns",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United Kingdom: Newport Pagnell, Buckinghamshire, England",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1820 kg(approx)",
+      "from_text": false
+    },
+    "length": {
+      "value": "4585 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1830 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1330 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2610 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "315 hp",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "242 km/h",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/aston-martin-v8/1.jpg",
+      "thumb": "photos/aston-martin-v8/1-thumb.jpg",
+      "author": "MrWalkr",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1974_Aston_Martin_V8_Vantage.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "4021 exemplaires",
+    "Coupé 2 portes",
+    "avant 1970",
+    "décrite comme sportive ou de prestige"
+  ]
+}

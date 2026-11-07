@@ -1,0 +1,63 @@
+{
+  "slug": "ford-model-y",
+  "name": "Ford Model Y",
+  "brand": "Ford",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T01:39:13+00:00",
+  "updated": "2026-11-07T01:39:13+00:00",
+  "summary": "La Ford Model Y est une automobile qui a été produite par Ford Grande-Bretagne, Ford France et Ford Allemagne de 1932 à 1937. C'était la première automobile de Ford spécialement conçue pour les marchés en dehors des États-Unis, remplaçant la Ford Model A en Europe.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Ford_Model_Y",
+  "wikipedia_title": "Ford Model Y",
+  "specs": {
+    "engine": {
+      "value": "0.9 L Ford Sidevalve engine",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 2 portes Berline 4 portes · Break 2 portes · 2-door van · 2-door pickup",
+      "from_text": false
+    },
+    "production": {
+      "value": "1932–1937",
+      "from_text": false
+    },
+    "weight": {
+      "value": "699 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "3581 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1397 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1626 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2286 mm",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/ford-model-y/1.jpg",
+      "thumb": "photos/ford-model-y/1-thumb.jpg",
+      "author": "SG2012",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Ford_8_or_Model_Y_2_door_saloon_(1937)_-_30215576355.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "avant 1970"
+  ]
+}

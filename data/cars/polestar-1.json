@@ -1,0 +1,89 @@
+{
+  "slug": "polestar-1",
+  "name": "Polestar 1",
+  "brand": "Polestar",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T01:38:20+00:00",
+  "updated": "2026-11-07T01:38:20+00:00",
+  "summary": "La Polestar 1 est une voiture hybride produite par le constructeur automobile suédois Polestar et commercialisée à partir de 2019. Elle a d'abord été présenté comme concept-car sous la marque Volvo, avant que Polestar, ancienne division performance du constructeur suédois, ne devienne une marque à part entière du groupe Geely.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Polestar_1",
+  "wikipedia_title": "Polestar 1",
+  "specs": {
+    "engine": {
+      "value": "2.0 L B4204T48 twincharged petrol I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Automatique 8 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Front-engine, rear-motor, all-wheel drive",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "2019–2022 · 1,500 exemplaires",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Jürgen Jose under Thomas Ingenlath (exterior), Thomas Lienhart, Niklas Palm (interior)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "China: Chengdu (Polestar Plant)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "2345 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4585 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1935 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1352 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2742 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "619 hp",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-100 km/h : 4,2 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/polestar-1/1.jpg",
+      "thumb": "photos/polestar-1/1-thumb.jpg",
+      "author": "Mr.choppers",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2021_Polestar_1_in_Magnesium,_front_left.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "1500 exemplaires",
+    "Coupé 2 portes",
+    "décrite comme sportive ou de prestige"
+  ]
+}

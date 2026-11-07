@@ -1,0 +1,93 @@
+{
+  "slug": "lotus-esprit",
+  "name": "Lotus Esprit",
+  "brand": "Lotus",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T03:19:13+00:00",
+  "updated": "2026-11-07T03:19:13+00:00",
+  "summary": "La Lotus Esprit est une voiture de sport GT du constructeur automobile britannique Lotus. Elle est dérivée d'un concept car Italdesign présenté au salon de l'automobile de Turin de 1972, avec moteur central, fabriquée à 10 675 exemplaires en vingt-quatre variantes, de 1976 à 2004, une des voitures de sport les plus longtemps fabriquées de l'histoire de la construction automobile de série.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Lotus_Esprit",
+  "wikipedia_title": "Lotus Esprit",
+  "specs": {
+    "engine": {
+      "value": "1973 cc type 907 I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Longitudinal, moteur central arrière, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "June 1976–1978 · 718 exemplaires",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Giorgetto Giugiaro at Italdesign Giugiaro",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United Kingdom: Hethel, Norfolk, England",
+      "from_text": false
+    },
+    "weight": {
+      "value": "900 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4260 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1861 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1111 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2438 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "160 hp",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "222 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-60 mph : 8 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/lotus-esprit/1.jpg",
+      "thumb": "photos/lotus-esprit/1-thumb.jpg",
+      "author": "Calreyn88",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1976_Lotus_Esprit.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "718 exemplaires",
+    "Coupé 2 portes",
+    "décrite comme sportive ou de prestige"
+  ]
+}

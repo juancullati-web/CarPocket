@@ -1,0 +1,75 @@
+{
+  "slug": "peugeot-403",
+  "name": "Peugeot 403",
+  "brand": "Peugeot",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T06:04:08+00:00",
+  "updated": "2026-11-07T06:04:08+00:00",
+  "summary": "La Peugeot 403 est une automobile de la marque Peugeot produite entre mai 1955 et octobre 1966 en plusieurs versions : berline, cabriolet, break, fourgonnette et camionnette bâchée (ou pick-up).",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Peugeot_403",
+  "wikipedia_title": "Peugeot 403",
+  "specs": {
+    "engine": {
+      "value": "1290 cc TM5 I4 · 1468 cc TN3/XB2 I4 · 1816 cc TMD85/XDP85 diesel I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes · Break 5 portes · Cabriolet 2 portes (1956–1961) · 2-door pickup · 3-door van",
+      "from_text": false
+    },
+    "production": {
+      "value": "May 1955 – October 1966 · 1,214,121 built",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Pininfarina",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "France: Sochaux (Sochaux Plant) Australia: Melbourne Argentina: Berazategui New Zealand: Ōtāhuhu (Motor Holdings) Uruguay: Montevideo (Nordex S.A.)",
+      "from_text": false
+    },
+    "length": {
+      "value": "4470 mm saloon",
+      "from_text": false
+    },
+    "width": {
+      "value": "1670 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1510 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2660 mm saloon",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/peugeot-403/1.jpg",
+      "thumb": "photos/peugeot-403/1-thumb.jpg",
+      "author": "Kev22",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Peugeot_403_berline_01.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "avant 1970"
+  ]
+}

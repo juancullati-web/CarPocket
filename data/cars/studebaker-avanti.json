@@ -1,0 +1,80 @@
+{
+  "slug": "studebaker-avanti",
+  "name": "Studebaker Avanti",
+  "brand": "Studebaker",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T02:12:05+00:00",
+  "updated": "2026-11-07T02:12:05+00:00",
+  "summary": "La Studebaker Avanti est un coupé de luxe fabriqué et commercialisé par Studebaker Corporation entre juin 1962 et décembre 1963. Le constructeur présentait l'Avanti comme « La seule voiture de série américaine à hautes performances pour quatre passagers ». Décrite comme « l'une des plus importantes étapes de l'industrie d'après-guerre », la voiture offrait une combinaison de sécurité et de performance. L'Avanti établit ou battit 34 records de vitesse sur le lac salé de Bonneville. À la fin de la production du modèle par Studebaker, une série de véhicules furent fabriqués et commercialisés par cinq propriétaires successifs ayant racheté les droits et l'outillage de l'Avanti.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Studebaker_Avanti",
+  "wikipedia_title": "Studebaker Avanti",
+  "specs": {
+    "engine": {
+      "value": "289 CID 240 hp V8 (1963)",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 3 rapports · Manuelle 4 rapports · Automatique 3 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1962: 1,200; · 1963: fewer than 4,600",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Raymond Loewy and Associates",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Studebaker Automotive Plant, South Bend, Indiana",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1404 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4887 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1786 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1367 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2769 mm",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/studebaker-avanti/1.jpg",
+      "thumb": "photos/studebaker-avanti/1-thumb.jpg",
+      "author": "CZmarlin — Christopher Ziemnowicz, releases all rights but a photo credit would be appreciated if this image is used anywhere other than Wikipedia. Please leave a note at Wikipedia here. Thank you!",
+      "license": "Public domain",
+      "license_url": "",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1963_Studebaker_Avanti_gold_at_Concord_University.JPG"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "Coupé 2 portes",
+    "avant 1970"
+  ]
+}

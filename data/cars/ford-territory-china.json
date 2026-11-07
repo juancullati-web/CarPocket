@@ -1,0 +1,73 @@
+{
+  "slug": "ford-territory-china",
+  "name": "Ford Territory (China)",
+  "brand": "Ford",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T01:10:01+00:00",
+  "updated": "2026-11-07T01:10:01+00:00",
+  "summary": "Cet article concerne le SUV Ford fabriqué en Chine. Pour le SUV Ford fabriqué en Australie, voir Ford Territory. Le Ford Territory est une automobile crossover compact construit par la coentreprise JMC-Ford et il a été présenté lors du salon de l'auto de Chengdu 2018 en septembre 2018. Bien qu'il utilise le même nom que le précédent crossover Ford Territory du marché australien, il n'y a aucune relation entre les deux modèles. Il est basé sur le Yusheng S330 développé par JMC et qui a été introduit pour le marché chinois en 2016. Le Territory a été mis en vente début 2019, Ford Chine le classant comme un SUV compact d'entrée de gamme entre les gammes actuelles de produits SUV, les Ford EcoSport et Ford Kuga. Le Territory est exporté dans toute l'Amérique du Sud et les marchés d'Asie du Sud-Est avec conduite à gauche.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Ford_Territory_%28Chine%29",
+  "wikipedia_title": "Ford Territory (China)",
+  "specs": {
+    "engine": {
+      "value": "Petrol: · 1.5 L JX4G15C6L I4 turbo",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 6 rapports · CVT · 1-speed direct drive (EV)",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, traction",
+      "from_text": false
+    },
+    "body": {
+      "value": "SUV 5 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "2018–2022",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "China: Nanchang (JMC Nanchang Assembly Plant)",
+      "from_text": false
+    },
+    "length": {
+      "value": "4580 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1936 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1674 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2716 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "138 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/ford-territory-china/1.jpg",
+      "thumb": "photos/ford-territory-china/1-thumb.jpg",
+      "author": "User3204",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2018_JMC-Ford_Territory_(front).jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

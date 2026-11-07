@@ -1,0 +1,75 @@
+{
+  "slug": "jeep-wrangler-jl",
+  "name": "Jeep Wrangler (JL)",
+  "brand": "Jeep",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T01:26:12+00:00",
+  "updated": "2026-11-07T01:26:12+00:00",
+  "summary": "The Jeep Wrangler (JL) is the fourth generation of the Wrangler off-road vehicle, available in two- and four-door body styles. Unveiled at the 2017 Los Angeles Auto Show on November 29, 2017, production of the vehicle began in November 2017.",
+  "summary_lang": "en",
+  "summary_url": "https://en.wikipedia.org/wiki/Jeep_Wrangler_%28JL%29",
+  "wikipedia_title": "Jeep Wrangler (JL)",
+  "specs": {
+    "engine": {
+      "value": "Gasoline: · 2.0 L GME T4 turbo I4 · 3.6 L Pentastar V6 · 6.4 L Hemi V8 · Gasoline plug-in hybrid: · 2.0 L GME T4 turbo I4 (4xe, 2021–2025) · Diesel: · 2.2 L Multijet II turbo I4 · 3.0 L EcoDiesel turbo V6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 6 rapports · Automatique 8 rapports · Automatique 8 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR/F4",
+      "from_text": false
+    },
+    "body": {
+      "value": "Cabriolet 2 portes SUV with removable roof and doors · Cabriolet 4 portes SUV with removable roof and doors",
+      "from_text": false
+    },
+    "production": {
+      "value": "November 2017–present",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United States: Toledo, Ohio (Toledo Complex) India: Ranjangaon, Maharashtra (FIAPL)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "3948-5103 lb",
+      "from_text": false
+    },
+    "length": {
+      "value": "4237 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1877 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1801 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2459 mm",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/jeep-wrangler-jl/1.jpg",
+      "thumb": "photos/jeep-wrangler-jl/1-thumb.jpg",
+      "author": "Alexander Migl",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Jeep_Wrangler_Unlimited_(JL)_PHEV_IMG_5808.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "Cabriolet 2 portes SUV with removable roof and doors"
+  ]
+}

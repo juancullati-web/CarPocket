@@ -1,0 +1,85 @@
+{
+  "slug": "peugeot-505",
+  "name": "Peugeot 505",
+  "brand": "Peugeot",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T02:07:09+00:00",
+  "updated": "2026-11-07T02:07:09+00:00",
+  "summary": "La Peugeot 505 est une automobile de la marque Peugeot produite entre mai 1979 et juin 1992 à 1 350 798 exemplaires. Son design extérieur est l’œuvre de Pininfarina et le design intérieur est signé Paul Bracq. Elle a été présentée officiellement en mai 1979.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Peugeot_505",
+  "wikipedia_title": "Peugeot 505",
+  "specs": {
+    "engine": {
+      "value": "petrol: · 1796 cc XM7A I4 · 1971 cc XN1/XN6 I4 · 1995 cc ZEJ \"Douvrin\" I4 · 2155 cc N9T \"Simca 180\" turbo I4 · 2165 cc ZDJ \"Douvrin\" I4 · 2849 cc ZN3J \"PRV\" V6 · diesel: · 2304 cc XD2 I4 (NA/turbo) · 2498 cc XD3 I4 (NA/turbo)",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Automatique 3 rapports ZF 3HP22 · Automatique 4 rapports ZF 4HP22 · Manuelle 4 rapports BA 7/4 · Manuelle 5 rapports BA 7/5 · Manuelle 5 rapports BA 10/5",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes · Break 5 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1979–1992 (Europe) · 1981–1987 (Indonesia) · 1981–1991 (Taiwan) · 1981–1995 (Argentina) · 1990–1997 (China)",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Pininfarina and Peugeot",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "France: Sochaux (Sochaux Plant) Argentina: Villa Bosch (Sevel) Australia: Heidelberg, Victoria (Renault Australia) Australia: Enfield (Leyland) Chile: Los Andes (Automotores Franco Chilena S.A.) China: Guangzhou (GPAC) Egypt: Cairo (AAV) Indonesia: Jakarta (Gaya Motor) Malaysia: Johor Bahru () Morocco: Casablanca (Sopriam) Nigeria: Kaduna (PAN) Portugal: Setúbal (Movauto) Spain: Vigo (Vigo Plant) Taiwan: Changhua (Yǔtián) Thailand: Bangkok (Yontrakit Group) Uruguay: Montevideo (Nordex S.A.)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1210-1410 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4579 mm (sedan)",
+      "from_text": false
+    },
+    "width": {
+      "value": "1737 mm (sedan)",
+      "from_text": false
+    },
+    "height": {
+      "value": "1424-1446 mm (sedan)",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2743 mm (sedan)",
+      "from_text": false
+    },
+    "power": {
+      "value": "110 hp",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-100 km/h : 10,0 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/peugeot-505/1.jpg",
+      "thumb": "photos/peugeot-505/1-thumb.jpg",
+      "author": "AlfvanBeem",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Peugeot_505_SR_Automatique_(1979),_Dutch_licence_registration_71-ZL-PS_pic2.JPG"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

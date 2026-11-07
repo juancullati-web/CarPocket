@@ -1,0 +1,84 @@
+{
+  "slug": "aston-martin-dbs-2007",
+  "name": "Aston Martin DBS (2007)",
+  "brand": "Aston Martin",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T05:27:09+00:00",
+  "updated": "2026-11-07T05:27:09+00:00",
+  "summary": "L'Aston Martin DBS, nom déjà utilisé auparavant pour un modèle des années 1960-1970, est une évolution plus sportive de la DB9. Produite par le constructeur britannique Aston Martin de 2007 à 2012, sa fabrication était basée à Gaydon en Angleterre.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Aston_Martin_DBS_V12",
+  "wikipedia_title": "Aston Martin DBS (2007)",
+  "specs": {
+    "engine": {
+      "value": "5.9 L AM08 V12",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "6-speed ZF 6HP26 (Touchtronic II) automatic · Manuelle 6 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Front moteur central, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes · Cabriolet 2 portes · 2-door 2+2 coupé and convertible",
+      "from_text": false
+    },
+    "production": {
+      "value": "2007–2012",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Marek Reichman",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United Kingdom: Gaydon, Warwickshire",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1695 kg (Coupé)",
+      "from_text": false
+    },
+    "length": {
+      "value": "4722 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "2060 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1280 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2741 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "517 PS",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/aston-martin-dbs-2007/1.jpg",
+      "thumb": "photos/aston-martin-dbs-2007/1-thumb.jpg",
+      "author": "Alexandre Prévot from Nancy, France",
+      "license": "CC BY-SA 2.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Aston_Martin_DBS_-_Flickr_-_Alexandre_Pr%C3%A9vot_(11)_(cropped).jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "Coupé 2 portes",
+    "décrite comme sportive ou de prestige"
+  ]
+}

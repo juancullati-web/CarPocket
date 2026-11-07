@@ -1,0 +1,91 @@
+{
+  "slug": "ferrari-328",
+  "name": "Ferrari 328",
+  "brand": "Ferrari",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T03:26:13+00:00",
+  "updated": "2026-11-07T03:26:13+00:00",
+  "summary": "La Ferrari 328 est une voiture sportive de grand tourisme du constructeur automobile italien Ferrari. Elle fut produite en série à 7 500 exemplaires en version GTB et GTS entre 1985 et 1989.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Ferrari_328",
+  "wikipedia_title": "Ferrari 328",
+  "specs": {
+    "engine": {
+      "value": "3.2 L Tipo F105CB V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Transverse, moteur central arrière, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berlinetta (GTB) · Spider / targa (GTS)",
+      "from_text": false
+    },
+    "production": {
+      "value": "1985–1989 · 7,412 exemplaires",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Leonardo Fioravanti at Pininfarina",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Italy: Maranello",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1263 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4255 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1730 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1128 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2350 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "270 PS",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "267 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-60 mph : 5,5 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/ferrari-328/1.jpg",
+      "thumb": "photos/ferrari-328/1-thumb.jpg",
+      "author": "Alexandre Prévot from Nancy, France",
+      "license": "CC BY-SA 2.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Ferrari_328_GTS_-_Flickr_-_Alexandre_Pr%C3%A9vot_(4)_(cropped).jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "décrite comme sportive ou de prestige"
+  ]
+}

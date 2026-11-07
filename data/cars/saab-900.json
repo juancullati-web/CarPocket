@@ -1,0 +1,87 @@
+{
+  "slug": "saab-900",
+  "name": "Saab 900",
+  "brand": "Saab",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T05:09:05+00:00",
+  "updated": "2026-11-07T05:09:05+00:00",
+  "summary": "La Saab 900 est une automobile produite par le constructeur suédois Saab, commercialisée à partir de 1978 (millésime 1979) jusqu'en 1994 dans sa version classique, puis de 1994 à 1998 pour la seconde génération.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Saab_900",
+  "wikipedia_title": "Saab 900",
+  "specs": {
+    "engine": {
+      "value": "2.0 L Saab B I4 · 2.0 L Saab B201 I4 · 2.0 L Saab B202 I4 · 2.1 L Saab B212 I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "4/Manuelle 5 rapports · Automatique 3 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, traction",
+      "from_text": false
+    },
+    "body": {
+      "value": "Cabriolet 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1978–1993",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Björn Envall",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Sweden: Trollhättan (until 1997) Arlöv (until 1989) Malmö (1989–1991) Finland: Uusikaupunki (Saab-Valmet)",
+      "from_text": false
+    },
+    "length": {
+      "value": "4685 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1690 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1425 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2517 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "100 PS",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "175 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-100 km/h : 11,4 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/saab-900/1.jpg",
+      "thumb": "photos/saab-900/1-thumb.jpg",
+      "author": "IFCAR",
+      "license": "Public domain",
+      "license_url": "",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Saab-900-3door.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "Cabriolet 2 portes"
+  ]
+}

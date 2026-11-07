@@ -1,0 +1,79 @@
+{
+  "slug": "citroen-dyane",
+  "name": "Citroën Dyane",
+  "brand": "Citroën",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T02:38:05+00:00",
+  "updated": "2026-11-07T02:38:05+00:00",
+  "summary": "La Citroën Dyane est une voiture fabriquée par le constructeur français Citroën à 1,4 million d'exemplaires d'août 1967 à 1983. La Dyane est basée sur la 2 CV (châssis plateforme, capote en toile) et s'en distingue notamment par son hayon et ses projecteurs intégrés aux ailes.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Citro%C3%ABn_Dyane",
+  "wikipedia_title": "Citroën Dyane",
+  "specs": {
+    "engine": {
+      "value": "425 cc H2 · 435 cc H2 · 602 cc H2",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FF layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Compacte 5 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1967–1983 · 1,443,583 units",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Robert Opron, Louis Bionier",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "France: Rennes (Rennes Plant) Iran: Tehran (SAIPA) Portugal: Mangualde (Mangualde Plant) Spain: Vigo (Vigo Plant) Yugoslavia: Koper, Slovenia (Cimos)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "594 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "3899 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1499 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2400 mm",
+      "from_text": false
+    },
+    "top_speed": {
+      "value": "115 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-60 mph : 30,8 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/citroen-dyane/1.jpg",
+      "thumb": "photos/citroen-dyane/1-thumb.jpg",
+      "author": "Txemari. (Navarra).",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Citro%C3%ABn_Dyane_6._(1977).jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "avant 1970"
+  ]
+}

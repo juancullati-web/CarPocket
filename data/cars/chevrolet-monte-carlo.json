@@ -1,0 +1,78 @@
+{
+  "slug": "chevrolet-monte-carlo",
+  "name": "Chevrolet Monte Carlo",
+  "brand": "Chevrolet",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T02:10:14+00:00",
+  "updated": "2026-11-07T02:10:14+00:00",
+  "summary": "La Chevrolet Monte Carlo est un modèle d'automobile de la marque Chevrolet. À l'origine, ce modèle était destiné à une clientèle désirant une « voiture de luxe abordable ».",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Chevrolet_Monte_Carlo",
+  "wikipedia_title": "Chevrolet Monte Carlo",
+  "specs": {
+    "engine": {
+      "value": "350 cuin Turbo-Fire V8 · 400 cuin Turbo-Fire V8 · 402 cuin Turbo-Jet V8 · 454 cuin Turbo-Jet V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 4 rapports · Manuelle 3 rapports · Automatique 2 rapports · Automatique 3 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "2-door hardtop",
+      "from_text": false
+    },
+    "production": {
+      "value": "1969–1972",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Terry Henline under Dave Holls",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Flint, Michigan (1970 only) Arlington, Texas (1970–1972) Baltimore, Maryland (1970–1972) Leeds, Missouri (1971–1972) Van Nuys, California (1970–1972) Oshawa, Ontario, Canada (1971–1972)",
+      "from_text": false
+    },
+    "length": {
+      "value": "5245 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1930 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1344 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2946 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "250 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/chevrolet-monte-carlo/1.png",
+      "author": "MercurySable99",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1970_Chevrolet_Monte_Carlo_front_view.png"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "avant 1970"
+  ]
+}

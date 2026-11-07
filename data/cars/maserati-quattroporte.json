@@ -1,0 +1,87 @@
+{
+  "slug": "maserati-quattroporte",
+  "name": "Maserati Quattroporte",
+  "brand": "Maserati",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T06:11:08+00:00",
+  "updated": "2026-11-07T06:11:08+00:00",
+  "summary": "La Maserati Quattroporte (quatre portes, en italien) est une berline de grand tourisme du constructeur automobile italien Maserati, déclinée en 6 générations depuis 1965.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Maserati_Quattroporte",
+  "wikipedia_title": "Maserati Quattroporte",
+  "specs": {
+    "engine": {
+      "value": "4.1 L Tipo AM 107 V8 · 4.7 L Tipo AM 107/1 V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports · Automatique 3 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1963–1969",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Pietro Frua",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Italy: Modena Italy: Grugliasco (Avv. Giovanni Agnelli Plant: 2013–2022) Italy: Turin (Stabilimento Mirafiori: 2022–2023)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1757 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "5000 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1720 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1360 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2750 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "260 PS",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "230 km/h",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/maserati-quattroporte/1.jpg",
+      "thumb": "photos/maserati-quattroporte/1-thumb.jpg",
+      "author": "Mick from Northamptonshire, England",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Maserati_4000_Quattro-porte_-_Flickr_-_mick_-_Lumix.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "avant 1970"
+  ]
+}

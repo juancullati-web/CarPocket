@@ -1,0 +1,92 @@
+{
+  "slug": "noble-m400",
+  "name": "Noble M400",
+  "brand": "Noble",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T00:57:06+00:00",
+  "updated": "2026-11-07T00:57:06+00:00",
+  "summary": "La Noble M400 est une voiture de sport construite par le constructeur britannique Noble. Son nom vient de son rapport poids-puissance de 400 ch/tonne.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Noble_M400",
+  "wikipedia_title": "Noble M400",
+  "specs": {
+    "engine": {
+      "value": "3.0 L Twin-turbocharged Ford Duratec V6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 6 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur central arrière, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "2006–2007 · 209 exemplaires (48 for UK Market, 133 for US Market, 28 for South African Market )",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Lee Noble",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "South Africa: Port Elizabeth",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1060 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4090 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1880 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1143 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2438 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "425 hp",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "301 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-60 mph : 3,3 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/noble-m400/1.jpg",
+      "author": "Mark Harkin",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Noble_M400_at_Riverside_Museum-1.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "209 exemplaires",
+    "Coupé 2 portes",
+    "décrite comme sportive ou de prestige"
+  ]
+}

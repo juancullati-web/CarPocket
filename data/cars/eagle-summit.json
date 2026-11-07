@@ -1,0 +1,77 @@
+{
+  "slug": "eagle-summit",
+  "name": "Eagle Summit",
+  "brand": "Eagle",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T02:04:09+00:00",
+  "updated": "2026-11-07T02:04:09+00:00",
+  "summary": "The Eagle Summit is a line of subcompact cars produced for two generations by Mitsubishi and sold by Eagle from 1989 until 1996. It was marketed as a captive import by the Jeep-Eagle sales division that was established after Chrysler Corporation purchased American Motors Corporation (AMC) in 1987.",
+  "summary_lang": "en",
+  "summary_url": "https://en.wikipedia.org/wiki/Eagle_Summit",
+  "wikipedia_title": "Eagle Summit",
+  "specs": {
+    "engine": {
+      "value": "1,468 cc 4G15 SOHC 8V/12V I4 · 1,595 cc 4G61 DOHC 16V I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Automatique 3 rapports · Automatique 4 rapports · Manuelle 4 rapports · Manuelle 5 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FF layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1989–1992",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Japan: Kurashiki, Okayama United States: Normal, Illinois (Diamond-Star Motors)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1030 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4321 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1669 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1341 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2385 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "81 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/eagle-summit/1.jpg",
+      "thumb": "photos/eagle-summit/1-thumb.jpg",
+      "author": "Bull-Doser",
+      "license": "Public domain",
+      "license_url": "",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Eagle_Summit_DL_Sedan.JPG"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

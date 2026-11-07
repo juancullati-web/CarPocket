@@ -1,0 +1,72 @@
+{
+  "slug": "ferrari-testarossa",
+  "name": "Ferrari Testarossa",
+  "brand": "Ferrari",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T00:30:05+00:00",
+  "updated": "2026-11-07T00:30:05+00:00",
+  "summary": "La Ferrari Testarossa (et ses évolutions Ferrari 512 TR et Ferrari F512 M) est une voiture de sport du constructeur automobile italien Ferrari, et du designer Pininfarina. Présentée au Mondial de l'automobile de Paris en 1984, et produite à 7 177 exemplaires jusqu'en 1996, elle est l'avant-dernière création du Commendatore Enzo Ferrari (1898-1988) avant la Ferrari F40 de 1987.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Ferrari_Testarossa",
+  "wikipedia_title": "Ferrari Testarossa",
+  "specs": {
+    "engine": {
+      "value": "4.9 L Tipo F113 flat-12",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur central arrière, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1984–1996 · 9,939 exemplaires",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Diego Ottina, Leonardo Fioravanti, Ian Cameron, Guido Campoli, Emanuele Nicosia at Pininfarina (Testarossa), Pietro Camardella at Pininfarina (512 TR)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Italy: Maranello",
+      "from_text": false
+    },
+    "power": {
+      "value": "287 kW",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "290 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-100 km/h : 5,8 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/ferrari-testarossa/1.jpg",
+      "thumb": "photos/ferrari-testarossa/1-thumb.jpg",
+      "author": "Alexander Migl",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Ferrari_Testarossa_IMG_3043.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "Coupé 2 portes",
+    "décrite comme sportive ou de prestige"
+  ]
+}

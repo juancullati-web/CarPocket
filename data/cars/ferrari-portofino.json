@@ -1,0 +1,92 @@
+{
+  "slug": "ferrari-portofino",
+  "name": "Ferrari Portofino",
+  "brand": "Ferrari",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T01:44:05+00:00",
+  "updated": "2026-11-07T01:44:05+00:00",
+  "summary": "La Ferrari Portofino est une voiture de sport grand tourisme du constructeur automobile italien Ferrari, présentée en 2017. Elle succède à la California T.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Ferrari_Portofino",
+  "wikipedia_title": "Ferrari Portofino",
+  "specs": {
+    "engine": {
+      "value": "3.9 L F154 BE twin-turbo V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Double embrayage 7 rapports (Portofino) · Double embrayage 8 rapports (Portofino M)",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Front moteur central, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "2-door, 2+2 retractable hardtop convertible",
+      "from_text": false
+    },
+    "production": {
+      "value": "2017–2023",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Ferrari Styling Centre under Flavio Manzoni",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Italy: Maranello",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1664 kg (with fluids)",
+      "from_text": false
+    },
+    "length": {
+      "value": "4586 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1938 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1318 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2670 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "600 PS",
+      "from_text": false
+    },
+    "top_speed": {
+      "value": "320 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-60 mph : 3,5 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/ferrari-portofino/1.jpg",
+      "thumb": "photos/ferrari-portofino/1-thumb.jpg",
+      "author": "Alexander Migl",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Ferrari_Portofino_M_IMG_4351.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "2-door, 2+2 retractable hardtop convertible",
+    "décrite comme sportive ou de prestige"
+  ]
+}

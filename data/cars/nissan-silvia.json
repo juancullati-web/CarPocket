@@ -1,0 +1,90 @@
+{
+  "slug": "nissan-silvia",
+  "name": "Nissan Silvia",
+  "brand": "Nissan",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T04:12:04+00:00",
+  "updated": "2026-11-07T04:12:04+00:00",
+  "summary": "The Nissan Silvia (Japanese: 日産・シルビア, Hepburn: Nissan Shirubia) is the series of small sports cars produced by Nissan. Versions of the Silvia have been marketed as the 200SX or 240SX for export, with some export versions being sold under the Datsun brand. The Gazelle was the twin-model of Silvia sold in Japan at different dealerships for the S110 and S12 generations; the Gazelle name was also used in Australia for the S12 generation. For the S13 generation in Japan, the Gazelle was replaced with the 180SX, which was a hatchback model of the Silvia with pop-up headlights that was also sold as the 200SX and 240SX for export purposes.",
+  "summary_lang": "en",
+  "summary_url": "https://en.wikipedia.org/wiki/Nissan_Silvia",
+  "wikipedia_title": "Nissan Silvia",
+  "specs": {
+    "engine": {
+      "value": "1.6 L R I4 OHV",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "September 1965–1968 · 554 exemplaires",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Kazuo Kimura, Fumio Yoshida",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Japan: Hiratsuka, Kanagawa (Nissan Shatai Plant)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "978 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "3985 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1508 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1275 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2280 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "96 PS",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "165 km/h",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/nissan-silvia/1.jpg",
+      "thumb": "photos/nissan-silvia/1-thumb.jpg",
+      "author": "Rikita",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Nissan_Silvia_CSP311.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "554 exemplaires",
+    "Coupé 2 portes",
+    "avant 1970",
+    "décrite comme sportive ou de prestige"
+  ]
+}

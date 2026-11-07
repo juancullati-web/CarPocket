@@ -1,0 +1,63 @@
+{
+  "slug": "lotus-cortina",
+  "name": "Lotus Cortina",
+  "brand": "Lotus",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T04:58:16+00:00",
+  "updated": "2026-11-07T04:58:16+00:00",
+  "summary": "La Lotus Cortina, de son vrai nom Ford Cortina Lotus, est une voiture sportive construite par Lotus Cars entre 1963 et 1966 à la demande de Ford Royaume-Uni pour participer aux Championnats britanniques des voitures de tourisme et au Championnat d'Europe des rallyes. Elle est dérivée de la Ford Cortina produite depuis 1962 et a été commercialisée par le réseau Ford. Les caisses de Cortina étaient livrées par Ford Royaume-Uni à Lotus Cars qui s´occupait de la préparation de la caisse et de l´installation du moteur 1600cm3 dérivé du Ford Kent dans son usine de Cheshunt. Ce moteur est doté d´une culasse à double arbre à cames en tête développée par Lotus. Il y a eu deux versions de la voiture, basées sur la Ford Cortina MkI de 1963 à 1966 puis sur la Ford Cortina MkII de 1966 à 1970.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Lotus_Cortina",
+  "wikipedia_title": "Lotus Cortina",
+  "specs": {
+    "engine": {
+      "value": "1557 cc Twin-Cam I4",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1963–1966",
+      "from_text": false
+    },
+    "length": {
+      "value": "4267 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1600 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1372 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2489 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "105 bhp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/lotus-cortina/1.jpg",
+      "thumb": "photos/lotus-cortina/1-thumb.jpg",
+      "author": "MrWalkr",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1965_Lotus_Cortina_LC25.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "avant 1970"
+  ]
+}

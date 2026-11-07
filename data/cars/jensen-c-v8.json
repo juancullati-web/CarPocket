@@ -1,0 +1,77 @@
+{
+  "slug": "jensen-c-v8",
+  "name": "Jensen C-V8",
+  "brand": "Jensen",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T02:43:07+00:00",
+  "updated": "2026-11-07T02:43:07+00:00",
+  "summary": "La Jensen C-V8 est une voiture GT à quatre places produite par Jensen Motors entre 1962 et 1966. Lancée en octobre 1962, la série C-V8 avait une carrosserie en fibre de verre avec des revêtements de porte en aluminium, comme la série 541 précédente. Tous les C-V8 utilisaient des moteurs à gros blocs provenant de Chrysler ; d'abord la version 361 ci puis, à partir de 1964, la version 383 ci (330 CV - 246 KW). La plupart des voitures avaient une transmission automatique Chrysler TorqueFlite à trois vitesses, mais sept Mk2 C-V8 ont été produits avec le moteur 6 litres et la boîte manuelle à quatre vitesses, suivis de deux Mk3 manuels. Le moteur est entièrement en retrait derrière la ligne de l'essieu avant, ce qui a fait du C-V8 l'une des premières voitures à moteur avant central.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Jensen_C-V8",
+  "wikipedia_title": "Jensen C-V8",
+  "specs": {
+    "engine": {
+      "value": "361 cid Golden Commando V8 · 383 cid Golden Commando V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 4 rapports · Automatique 3 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Front moteur central, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1962–1966 · 499 built",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Eric Neale",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "West Bromwich, England",
+      "from_text": false
+    },
+    "length": {
+      "value": "4674 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1702 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2667 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "330 bhp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/jensen-c-v8/1.jpg",
+      "thumb": "photos/jensen-c-v8/1-thumb.jpg",
+      "author": "Brian Snelson",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Jensen_CV8_red.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "499 exemplaires",
+    "Coupé 2 portes",
+    "avant 1970"
+  ]
+}

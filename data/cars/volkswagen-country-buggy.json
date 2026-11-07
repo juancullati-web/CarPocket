@@ -1,0 +1,79 @@
+{
+  "slug": "volkswagen-country-buggy",
+  "name": "Volkswagen Country Buggy",
+  "brand": "Volkswagen",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T00:40:03+00:00",
+  "updated": "2026-11-07T00:40:03+00:00",
+  "summary": "The Volkswagen Country Buggy is a small utility vehicle designed and built by Volkswagen in Australia. It used parts from the existing Type 1 and Type 2. Production ran from 1967 to 1968. A derivative of the Country Buggy called the Sakbayan was built in the Philippines for several years until 1980.",
+  "summary_lang": "en",
+  "summary_url": "https://en.wikipedia.org/wiki/Volkswagen_Country_Buggy",
+  "wikipedia_title": "Volkswagen Country Buggy",
+  "specs": {
+    "engine": {
+      "value": "1285 cc air-cooled H4 · 1192 cc air-cooled H4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "RR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "2-door utility roadster",
+      "from_text": false
+    },
+    "production": {
+      "value": "1967–1968 (Australia) · 1,956 built · 1968–1980 (Philippines)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Australia: Clayton Philippines: Mandaluyong (CKD)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "774 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "3718 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1643 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1557 mm (windshield up)",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2400 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "50 bhp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/volkswagen-country-buggy/1.jpg",
+      "author": "http://www.carsaroundadelaide.com Ferenghi",
+      "license": "CC BY 3.0",
+      "license_url": "https://creativecommons.org/licenses/by/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Volkswagen_Country_Buggy.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "1956 exemplaires",
+    "avant 1970"
+  ]
+}

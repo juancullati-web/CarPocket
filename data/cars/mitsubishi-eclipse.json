@@ -1,0 +1,83 @@
+{
+  "slug": "mitsubishi-eclipse",
+  "name": "Mitsubishi Eclipse",
+  "brand": "Mitsubishi",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T04:02:05+00:00",
+  "updated": "2026-11-07T04:02:05+00:00",
+  "summary": "L'Eclipse est un modèle d'automobile coupé du constructeur automobile japonais Mitsubishi produit de 1989 à 2012. La voiture est également vendue aux États-Unis par les marques Plymouth et Eagle, respectivement sous les noms de Plymouth Laser et Eagle Talon. Peu connue en Europe, la Mitsubishi Eclipse a en revanche rencontré un grand succès en Amérique du Nord, son marché de prédilection, et ce durant vingt ans. La Mitsubishi Eclipse est un petit coupé sport doté de lignes aérodynamiques et de motorisations puissantes, vendu à un prix très compétitif.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Mitsubishi_Eclipse",
+  "wikipedia_title": "Mitsubishi Eclipse",
+  "specs": {
+    "engine": {
+      "value": "1.8 L 4G37 I4 · 2.0 L 4G63 I4 · 2.0 L 4G63T turbo I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "F5M22 manual w/o Turbo (FWD) · F5M33 manual Turbo (FWD) · W5M33 manual Turbo (AWD) · KM175-5/F4A22-1 manual/automatic w/o Turbo (FWD) · F4A33-1 automatic Turbo (FWD) · Automatique 4 rapports (AWD)",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, traction\nFront-engine, four-wheel-drive",
+      "from_text": false
+    },
+    "body": {
+      "value": "3-door liftback coupé",
+      "from_text": false
+    },
+    "production": {
+      "value": "1989–1994",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Roger Zrimec and David O'Connell (1984), Nobutaka Imada (interior)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United States: Normal, Illinois (Diamond-Star Motors)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "Base: 2524 lb",
+      "from_text": false
+    },
+    "length": {
+      "value": "4389 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1695 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1306 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2470 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "92 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/mitsubishi-eclipse/1.jpg",
+      "thumb": "photos/mitsubishi-eclipse/1-thumb.jpg",
+      "author": "Rudolf Stricker",
+      "license": "CC BY-SA 3.0",
+      "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Mitsubishi_Eclipse_front_20080214.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "3-door liftback coupé"
+  ]
+}

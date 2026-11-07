@@ -1,0 +1,92 @@
+{
+  "slug": "bmw-z8",
+  "name": "BMW Z8",
+  "brand": "BMW",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T03:43:08+00:00",
+  "updated": "2026-11-07T03:43:08+00:00",
+  "summary": "La BMW Z8 (BMW E52) est une voiture de sport GT roadster BMW Série Z du constructeur automobile allemand BMW. Présentée au salon de l'automobile de Francfort 1999, elle est commercialisée à 5 703 exemplaires de 2000 à 2003, dont 555 unités de version BMW Alpina Roadster V8.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/BMW_Z8",
+  "wikipedia_title": "BMW Z8",
+  "specs": {
+    "engine": {
+      "value": "4.9 L S62 V8 · 4.8 L M62 V8 (Alpina version)",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 6 rapports · Automatique 5 rapports (Alpina version)",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur longitudinal, front moteur central, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Cabriolet 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1999–2003 · 5,703 exemplaires",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Henrik Fisker, Scott Lempert (interior)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Germany: Munich",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1585 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4399 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1829 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1318 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2504 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "400 PS",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "250 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-100 km/h : 4,7 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/bmw-z8/1.jpg",
+      "thumb": "photos/bmw-z8/1-thumb.jpg",
+      "author": "Calreyn88",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2002_BMW_Z8_4.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "Cabriolet 2 portes",
+    "décrite comme sportive ou de prestige"
+  ]
+}

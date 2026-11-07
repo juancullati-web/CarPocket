@@ -1,0 +1,92 @@
+{
+  "slug": "ferrari-458",
+  "name": "Ferrari 458",
+  "brand": "Ferrari",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T00:23:07+00:00",
+  "updated": "2026-11-07T00:23:07+00:00",
+  "summary": "La Ferrari 458 Italia est une voiture de sport produite par le constructeur italien Ferrari. Les deux premiers chiffres de son nom indiquent la cylindrée du moteur (4,5 litres) et le dernier, le nombre de cylindres (8). Le nom « Italia », succédant à « Modena » et « Maranello », rappelle les origines géographiques de la marque. La 458 Italia est propulsée par un moteur V8 atmosphérique de 4,5 litres dont la puissance spécifique atteint 127 chevaux par litre (95 kW par litre), une valeur très élevée pour un moteur atmosphérique. Très travaillée aérodynamiquement pour atteindre des vitesses élevées, elle est dotée d'aides électroniques à la conduite. Remplaçante de la Ferrari F430, elle est officiellement présentée au salon de l'automobile de Francfort 2009. Sa production a duré six ans, elle est remplacée en 2015 par la Ferrari 488.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Ferrari_458_Italia",
+  "wikipedia_title": "Ferrari 458",
+  "specs": {
+    "engine": {
+      "value": "4.5 L Ferrari F136 F V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Double embrayage 7 rapports automatic",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur central arrière, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes · 2-door retractable hard-top convertible",
+      "from_text": false
+    },
+    "production": {
+      "value": "2009–2015",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Donato Coco at Ferrari Styling Centre in collaboration with Pininfarina",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Italy: Maranello",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1565 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4527 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1937 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1213 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2650 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "570 PS",
+      "from_text": false
+    },
+    "top_speed": {
+      "value": "325 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-100 km/h : 3,4 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/ferrari-458/1.jpg",
+      "thumb": "photos/ferrari-458/1-thumb.jpg",
+      "author": "Michael Barera",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Ferrari_458_Fort_Worth_June_2016_56_(Ferrari)_(cropped-2).jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "Coupé 2 portes",
+    "décrite comme sportive ou de prestige"
+  ]
+}

@@ -1,0 +1,89 @@
+{
+  "slug": "bentley-azure",
+  "name": "Bentley Azure",
+  "brand": "Bentley",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T01:24:00+00:00",
+  "updated": "2026-11-07T01:24:00+00:00",
+  "summary": "La Bentley Azure est une automobile produite par le constructeur automobile britannique Bentley de 1995 à 2003 et de 2006 à 2009. La première génération est basée sur la Bentley Continental R (qu'elle remplace et qui était basée sur la plateforme du duo Silver Shadow-T1 des années 1960) et la seconde, sur la Bentley Arnage.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Bentley_Azure",
+  "wikipedia_title": "Bentley Azure",
+  "specs": {
+    "engine": {
+      "value": "6.75 L turbocharged Bentley L410 MT 1T V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Automatique 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Cabriolet 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1995–2003 · 1,403 Produced",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United Kingdom: Crewe (Bentley Crewe: final assembly) Italy: Cambiano (Pininfarina S.p.A.)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "2610 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "5350 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1880 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1475 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "3061 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "365 PS",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "241 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-97 km/h : 5,6 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/bentley-azure/1.jpg",
+      "thumb": "photos/bentley-azure/1-thumb.jpg",
+      "author": "Detectandpreserve",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Bentley_Continental_R_Azure_1995-2003_frontleft.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "1403 exemplaires",
+    "Cabriolet 2 portes",
+    "décrite comme sportive ou de prestige"
+  ]
+}

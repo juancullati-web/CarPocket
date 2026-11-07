@@ -1,0 +1,85 @@
+{
+  "slug": "peugeot-604",
+  "name": "Peugeot 604",
+  "brand": "Peugeot",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T02:56:08+00:00",
+  "updated": "2026-11-07T02:56:08+00:00",
+  "summary": "La Peugeot 604 est un modèle automobile du constructeur Peugeot. Produite entre les années 1975 et 1985, ce fut la grande routière de la marque, après la 601 quarante ans plus tôt. Le dessin de la carrosserie est signé Pininfarina, en collaboration avec Paul Bracq notamment pour le tableau de bord.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Peugeot_604",
+  "wikipedia_title": "Peugeot 604",
+  "specs": {
+    "engine": {
+      "value": "petrol; · 2.7 L PRV V6 · 2.8 L PRV V6 · diesel: · 2.3 L XD2S turbo I4 · 2.5 L XD3S/XD3T turbo I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 4 rapports · Manuelle 5 rapports · Automatique 3 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "March 1975 – November 1985",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Aldo Brovarone at Pininfarina",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "France: Sochaux (Sochaux Plant) France: Cerizay (Heuliez: Limousine) South Korea: Gwangmyeong (Kia: 1979–1981)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1450 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4720 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1770 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1435 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2800 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "144 PS",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "158 km/h",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/peugeot-604/1.jpg",
+      "thumb": "photos/peugeot-604/1-thumb.jpg",
+      "author": "Charles01",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Peugeot_604_near_Schaffen-Diest_2015.JPG"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

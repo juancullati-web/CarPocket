@@ -1,0 +1,73 @@
+{
+  "slug": "smart-forfour",
+  "name": "Smart Forfour",
+  "brand": "Smart",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T01:07:01+00:00",
+  "updated": "2026-11-07T01:07:01+00:00",
+  "summary": "La Smart Forfour est une voiture citadine produite par Smart entre avril 2004 et juin 2006. Une seconde génération est produite de 2014 à 2021 sur la base de la Renault Twingo III.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Smart_Forfour",
+  "wikipedia_title": "Smart Forfour",
+  "specs": {
+    "engine": {
+      "value": "petrol: · 1124 cc M134 E11 I3 · 1332 cc M135 E13 I4 · 1468 cc M122 E15 AL turbo I4 · 1499 cc M135 E15 I4 · diesel: · 1493 cc OM639 DE15 cdi I3",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports · Manuelle 6 rapports (Softouch)",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, traction",
+      "from_text": false
+    },
+    "body": {
+      "value": "Compacte 5 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "2003–2006",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Netherlands: Born (NedCar)",
+      "from_text": false
+    },
+    "length": {
+      "value": "3752 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1684 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1450 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2500 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "80 kW",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/smart-forfour/1.jpg",
+      "thumb": "photos/smart-forfour/1-thumb.jpg",
+      "author": "Vauxford",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2005_Smart_Forfour_Pulse_1.1.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

@@ -1,0 +1,77 @@
+{
+  "slug": "bristol-403",
+  "name": "Bristol 403",
+  "brand": "Bristol",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T04:05:05+00:00",
+  "updated": "2026-11-07T04:05:05+00:00",
+  "summary": "La Bristol 403 est une voiture de luxe produite de 1953 à 1955 par le fabricant anglais Bristol Aeroplane Co. (dont la division automobile est devenue plus tard Bristol Cars). La 403 est la troisième des cinq séries de Bristol propulsées par le moteur six cylindres dérivé du BMW M328 à soupapes en tête. Elle a remplacé les Bristol 401 et 402 en 1953 et fut produite pendant deux autres années. Elle a conservé beaucoup du style de la 401, mais a aussi reçu de nombreuses améliorations mécaniques par rapport à ce modèle. Le moteur de 1 971 cm3 à six cylindres a été modifié par l'utilisation de plus grandes soupapes et de plus grands paliers principaux, avec un diamètre de 54 mm contre 51 mm sur les 400 et 401, ce qui a augmenté la puissance de sortie, passant à 100 ch contre 85 ch pour la 401.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Bristol_403",
+  "wikipedia_title": "Bristol 403",
+  "specs": {
+    "engine": {
+      "value": "1971 cc OHV I6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1953–1955 · 287 units",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United Kingdom: Filton",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1265 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "15 ft",
+      "from_text": false
+    },
+    "width": {
+      "value": "5 ft",
+      "from_text": false
+    },
+    "power": {
+      "value": "100 hp",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "167 km/h",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/bristol-403/1.jpg",
+      "thumb": "photos/bristol-403/1-thumb.jpg",
+      "author": "Calreyn88",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1954_Bristol_403_1.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "287 exemplaires",
+    "Coupé 2 portes",
+    "avant 1970"
+  ]
+}

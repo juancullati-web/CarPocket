@@ -1,0 +1,81 @@
+{
+  "slug": "honda-s800",
+  "name": "Honda S800",
+  "brand": "Honda",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T01:23:00+00:00",
+  "updated": "2026-11-07T01:23:00+00:00",
+  "summary": "En 1966, le constructeur Honda présente en France ses coupés et ses cabriolets S800 dérivés des S500 et S600 déjà connus au Japon. Ils seront commercialisés à partir de 1967 dans une version plus aboutie. Ils se caractérisent par un très haut régime moteur (jusqu'à 9 000 tr/min), issu du monde de la moto et très supérieur à celui de ses concurrents (on dit du moteur qu'il « miaule »).",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Honda_S800",
+  "wikipedia_title": "Honda S800",
+  "specs": {
+    "engine": {
+      "value": "791 cc I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 4 rapports all-synchromesh",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Cabriolet 2 portes · Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1966–1970",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Suzuka Plant, Suzuka, Mie, Japan",
+      "from_text": false
+    },
+    "weight": {
+      "value": "782 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "3335 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1400 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1215 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2000 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "70 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/honda-s800/1.jpg",
+      "thumb": "photos/honda-s800/1-thumb.jpg",
+      "author": "TTTNIS",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1966_Honda_S800.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "Cabriolet 2 portes",
+    "avant 1970",
+    "décrite comme sportive ou de prestige"
+  ]
+}

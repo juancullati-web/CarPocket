@@ -1,0 +1,83 @@
+{
+  "slug": "honda-prelude",
+  "name": "Honda Prelude",
+  "brand": "Honda",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T03:00:11+00:00",
+  "updated": "2026-11-07T03:00:11+00:00",
+  "summary": "La Honda Prelude est un coupé sportif produit par le constructeur japonais Honda entre 1978 et 2001. Ce coupé deux portes a été décliné en cinq générations. Concurrente de la Toyota Celica, coupé sportif 4 cylindres apparu quelques années avant la Prelude, elle fait face aux autres Nissan Silvia, Isuzu Impulse, Mitsubishi FTO, Mitsubishi Cordia (en), Ford Probe et Mazda MX-6. Cette voiture a été classée plusieurs fois dans les dix meilleures voitures par le magazine Car and Driver.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Honda_Prelude",
+  "wikipedia_title": "Honda Prelude",
+  "specs": {
+    "engine": {
+      "value": "1,602 cc EL 8-valve I4 · 1,751 cc EK CVCC 12-valve I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports (1978-82) · Automatique 3 rapports (1979-82) · Automatique 2 rapports (Hondamatic) (1978-79)",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, traction",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1978–1982",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Shinya Iwakura, Hiroshi Kizawa (1976)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Japan: Sayama, Saitama (1978–2001); Yorii, Saitama (2025–present)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "900 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4090 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1635 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1290 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2320 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "80 PS",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/honda-prelude/1.jpg",
+      "thumb": "photos/honda-prelude/1-thumb.jpg",
+      "author": "Rikita",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Honda_Prelude_1978.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "Coupé 2 portes"
+  ]
+}

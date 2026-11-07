@@ -1,0 +1,76 @@
+{
+  "slug": "delahaye-175",
+  "name": "Delahaye 175",
+  "brand": "Delahaye",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T04:28:17+00:00",
+  "updated": "2026-11-07T04:28:17+00:00",
+  "summary": "Les Delahaye Type 175, 178, et 180 sont une série d'automobile de luxe du constructeur automobile Delahaye, produites à 105 exemplaires entre 1948 et 1951.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Delahaye_Type_175",
+  "wikipedia_title": "Delahaye 175",
+  "specs": {
+    "engine": {
+      "value": "4,455 cc type 183 OHV I6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "4-speed pre-selector (Cotal)",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coachbuilt styles",
+      "from_text": false
+    },
+    "production": {
+      "value": "1948–1951",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Various coachbuilders",
+      "from_text": false
+    },
+    "weight": {
+      "value": "2100 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4.62-metres",
+      "from_text": false
+    },
+    "width": {
+      "value": "1.69-metres",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2.95-metres",
+      "from_text": false
+    },
+    "power": {
+      "value": "161 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/delahaye-175/1.jpg",
+      "thumb": "photos/delahaye-175/1-thumb.jpg",
+      "author": "spencer77",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1948_Delahaye_175_S_Grand_Luxe_Chapron,_2019_Concours_of_Elegance,_Hampton_Court_Palace.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "avant 1970",
+    "décrite comme sportive ou de prestige"
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "slug": "venturi-atlantique",
+  "name": "Venturi Atlantique",
+  "brand": "Venturi",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T01:50:15+00:00",
+  "updated": "2026-11-07T01:50:15+00:00",
+  "summary": "La Venturi 300, présentée en 1994 dans sa version Atlantique, est un modèle automobile sportif du constructeur automobile français Venturi. Partageant son châssis avec la super-sportive 400 GT, le modèle sera décliné en 1998 dans une version Atlantique Bi-Turbo et en 1999 dans une version course ultime baptisée GTR.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Venturi_300",
+  "wikipedia_title": "Venturi Atlantique",
+  "specs": {
+    "engine": {
+      "value": "2849 cc PRV Z7W turbo V6 · 2946 cc ESL L7X biturbo V6 · 2975 cc PRV Z7X V6 · 2975 cc PRV Z7X turbo V6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports transmission",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur central, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1991-2000",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Claude Poiraud, Gérard Godfroy",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Couëron, Pays de la Loire, France",
+      "from_text": false
+    },
+    "length": {
+      "value": "4242 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1840 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1180 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2500 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "260 PS",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "269 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-60 mph : 5,2 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/venturi-atlantique/1.jpg",
+      "thumb": "photos/venturi-atlantique/1-thumb.jpg",
+      "author": "No machine-readable author provided. Mcassonnet assumed (based on copyright claims).",
+      "license": "CC BY-SA 2.5",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.5",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Venturi_300_Atlantique_3.4_front.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "Coupé 2 portes",
+    "décrite comme sportive ou de prestige"
+  ]
+}

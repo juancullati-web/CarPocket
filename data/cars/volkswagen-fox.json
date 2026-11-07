@@ -1,0 +1,73 @@
+{
+  "slug": "volkswagen-fox",
+  "name": "Volkswagen Fox",
+  "brand": "Volkswagen",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T00:27:00+00:00",
+  "updated": "2026-11-07T00:27:00+00:00",
+  "summary": "La Volkswagen Fox est une petite citadine produite par le constructeur automobile allemand Volkswagen de 2003 à 2021.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Volkswagen_Fox",
+  "wikipedia_title": "Volkswagen Fox",
+  "specs": {
+    "engine": {
+      "value": "1.2 L I3 (petrol) · 1.4 L I4 (petrol) · 1.6 L I4 (petrol) · 1.0 L I4 (petrol/ethanol) · 1.6 L I4 (petrol/ethanol) · 1.4 L I3 (diesel)",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports · 5-speed ASG",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, traction",
+      "from_text": false
+    },
+    "body": {
+      "value": "Compacte 3 portes · Compacte 5 portes · Break 5 portes (Suran)",
+      "from_text": false
+    },
+    "production": {
+      "value": "2003–2021 · 2005–2011 (Europe) · 2006–2018 (SpaceFox, SpaceCross and SportVan) · 2006–2019 (Suran, Argentina)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Brazil: São Bernardo do Campo, São Paulo; São José dos Pinhais, Paraná Argentina: General Pacheco, Buenos Aires Province",
+      "from_text": false
+    },
+    "length": {
+      "value": "2005–08: 3805 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1640 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1545 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2465 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "81 PS",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/volkswagen-fox/1.jpg",
+      "thumb": "photos/volkswagen-fox/1-thumb.jpg",
+      "author": "NaBUru38",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Volkswagen_Fox_2015_in_Punta_del_Este_01.JPG"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

@@ -1,0 +1,96 @@
+{
+  "slug": "mclaren-650s",
+  "name": "McLaren 650S",
+  "brand": "McLaren",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T01:25:17+00:00",
+  "updated": "2026-11-07T01:25:17+00:00",
+  "summary": "La 650S est une supercar du constructeur automobile britannique McLaren Automotive. Elle est présentée au salon international de l'automobile de Genève 2014 en versions coupé et spider. Au départ, la 650S est un nouveau modèle dans la gamme McLaren venant se placer entre la MP4-12C et la P1. Comme pour la MP4-12C, elle existe en deux variantes de carrosserie, coupé et spider. La 650 S est équipée du même moteur que la MP4-12C mais voit sa puissance élevée à 650 ch en lieu et place de 625 ch. Son appellation « 650 » représente le nombre de chevaux et le « S », Sport. En 2017, la 650S est remplacée par la 720S. Néanmoins, son châssis et son V8 3.8 biturbo de 650 ch vont servir de base pour l'ATS GT la même année.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/McLaren_650_S",
+  "wikipedia_title": "McLaren 650S",
+  "specs": {
+    "engine": {
+      "value": "3799 cc twin-turbocharged M838T V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Double embrayage 7 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Mid-engine, RWD",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes · 2-door retractable hard-top convertible (Spider)",
+      "from_text": false
+    },
+    "production": {
+      "value": "2014–2017",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Frank Stephenson",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United Kingdom: Woking, Surrey, England",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1428 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4511 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1895 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1199 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2670 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "650 PS",
+      "from_text": false
+    },
+    "torque": {
+      "value": "678 N.m",
+      "from_text": false
+    },
+    "top_speed": {
+      "value": "333 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-62 mph : 3,0 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/mclaren-650s/1.jpg",
+      "thumb": "photos/mclaren-650s/1-thumb.jpg",
+      "author": "Tokumeigakarinoaoshima",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:The_frontview_of_McLaren_650S_Coup%C3%A9_(cropped-2).JPG"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "Coupé 2 portes",
+    "décrite comme sportive ou de prestige"
+  ]
+}

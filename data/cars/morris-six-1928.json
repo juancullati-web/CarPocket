@@ -1,0 +1,66 @@
+{
+  "slug": "morris-six-1928",
+  "name": "Morris Six (1928)",
+  "brand": "Morris",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T05:24:04+00:00",
+  "updated": "2026-11-07T05:24:04+00:00",
+  "summary": "The Morris Six is a 2½-litre six-cylinder car with an overhead camshaft for its overhead valves first displayed at the October 1927 Motor Show at Olympia as Morris Light Six. When he bought Wolseley in February 1927 W R Morris gave Wolseley employees his reason. It was that he wanted to make good 6-cylinder cars and Wolseley could do that. He said he particularly admired their 2-litre Wolseley 16/45. The Morris Light Six was the first car to use the all steel body made by Pressed Steel at Cowley but on the road it proved too unstable to enter full production. Revised and given a wider track and longer wheelbase it was named Morris Six. It was replaced in the Morris catalogue by Morris Isis which was announced in July 1929 and had a new chassis for the engine.",
+  "summary_lang": "en",
+  "summary_url": "https://en.wikipedia.org/wiki/Morris_Six_%281928%29",
+  "wikipedia_title": "Morris Six (1928)",
+  "specs": {
+    "engine": {
+      "value": "2468 cc · OHV SOHC Straight-6 · engine clutch and 3-speed gearbox are one unit held through rubber to the frame.",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "The clutch runs in oil and has cork inserts. Drive is taken to the back axle through an enclosed propeller shaft to the spiral bevel final drive",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Saloon · coupé · * Club Coupé by Gordon England",
+      "from_text": false
+    },
+    "production": {
+      "value": "1927–1929",
+      "from_text": false
+    },
+    "weight": {
+      "value": "914 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "14' 9\" 177 in",
+      "from_text": false
+    },
+    "width": {
+      "value": "5' 9¼\" 69.25 in",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "9' 6\" 114 in (lt 6)",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/morris-six-1928/1.jpg",
+      "author": "Unknown authorUnknown author",
+      "license": "Public domain",
+      "license_url": "",
+      "source_url": "https://commons.wikimedia.org/wiki/File:MHV_Morris_Six_saloon_1929.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "avant 1970"
+  ]
+}

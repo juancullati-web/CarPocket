@@ -1,0 +1,69 @@
+{
+  "slug": "chrysler-executive",
+  "name": "Chrysler Executive",
+  "brand": "Chrysler",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T02:44:08+00:00",
+  "updated": "2026-11-07T02:44:08+00:00",
+  "summary": "La Chrysler Executive était une voiture offerte par le constructeur automobile américain Chrysler de 1983 à 1986. L'Executive était une version allongée de la Chrysler LeBaron destinée au segment de marché, alors en plein essor, des limousines. L'Executive et la Series 75 de Cadillac étaient les seuls modèles de limousine d'usine offertes au milieu des années 1980. Les deux prototypes originaux de la Chrysler Executive de 1982 étaient finis en rouge foncé avec des dessus en vinyle assortis et des intérieurs en tissu rouge. Bien que pleinement fonctionnels, ces deux véhicules étaient destinés à un usage promotionnel uniquement et ont été utilisés dans divers salons automobiles.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Chrysler_Executive",
+  "wikipedia_title": "Chrysler Executive",
+  "specs": {
+    "engine": {
+      "value": "2.2 LTurbo I I4 · 2.6 L Mitsubishi 4G54B I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Automatique 3 rapports · Automatique 3 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FF layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1983–1986",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United States: Fenton, Missouri (Saint Louis Assembly)",
+      "from_text": false
+    },
+    "length": {
+      "value": "5166 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1727 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1361 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "3150 mm",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/chrysler-executive/1.jpg",
+      "thumb": "photos/chrysler-executive/1-thumb.jpg",
+      "author": "Greg Gjerdingen from Willmar, USA",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1984_Chrysler_Executive_Limousine_(35086783516)_(cropped).jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

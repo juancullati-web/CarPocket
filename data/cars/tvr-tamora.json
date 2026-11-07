@@ -1,0 +1,89 @@
+{
+  "slug": "tvr-tamora",
+  "name": "TVR Tamora",
+  "brand": "TVR",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T03:42:17+00:00",
+  "updated": "2026-11-07T03:42:17+00:00",
+  "summary": "La TVR Tamora est une voiture de sport fabriquée et produite entre 2002 et 2006 par la firme anglaise TVR. Son prix était de 43 460 £ (52 477 €).",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/TVR_Tamora",
+  "wikipedia_title": "TVR Tamora",
+  "specs": {
+    "engine": {
+      "value": "3.6 L Speed Six I6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports",
+      "from_text": false
+    },
+    "body": {
+      "value": "Cabriolet 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "2002–2006 · 356 exemplaires",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Lee Hodgetts, Darren Hobbs (exterior), Damien McTaggart (interior)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United Kingdom: Blackpool, England",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1050 kg (dry)",
+      "from_text": false
+    },
+    "length": {
+      "value": "3925 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1715 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1204 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2361 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "350 hp",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "274 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-60 mph : 4,2 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/tvr-tamora/1.jpg",
+      "thumb": "photos/tvr-tamora/1-thumb.jpg",
+      "author": "Detectandpreserve",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:TVR_Tamora_000_from_2002_frontleft_2011-10-02_U.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "356 exemplaires",
+    "Cabriolet 2 portes",
+    "décrite comme sportive ou de prestige"
+  ]
+}

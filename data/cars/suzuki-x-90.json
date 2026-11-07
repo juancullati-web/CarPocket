@@ -1,0 +1,80 @@
+{
+  "slug": "suzuki-x-90",
+  "name": "Suzuki X-90",
+  "brand": "Suzuki",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T02:38:13+00:00",
+  "updated": "2026-11-07T02:38:13+00:00",
+  "summary": "Le Suzuki X-90 est un Coupé T-Top à deux portes et à deux places du constructeur automobile japonais Suzuki fabriqué et commercialisé par Suzuki de 1995 à 1997. Il fut un échec commercial total.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Suzuki_X-90",
+  "wikipedia_title": "Suzuki X-90",
+  "specs": {
+    "engine": {
+      "value": "1.6 L SOHC G16A",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Automatique 4 rapports · Manuelle 5 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, propulsion\nFront-engine, four-wheel-drive",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1995–1997",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Japan: Iwata, Shizuoka",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1100 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "3710 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1695 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1550 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2200 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "95 PS",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/suzuki-x-90/1.jpg",
+      "thumb": "photos/suzuki-x-90/1-thumb.jpg",
+      "author": "OSX",
+      "license": "Public domain",
+      "license_url": "",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1996-1997_Suzuki_X-90_coupe_(2009-09-04).jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "Coupé 2 portes",
+    "décrite comme sportive ou de prestige"
+  ]
+}

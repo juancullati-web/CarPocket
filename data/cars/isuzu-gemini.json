@@ -1,0 +1,75 @@
+{
+  "slug": "isuzu-gemini",
+  "name": "Isuzu Gemini",
+  "brand": "Isuzu",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T06:08:10+00:00",
+  "updated": "2026-11-07T06:08:10+00:00",
+  "summary": "La Isuzu Gemini est une automobile produite par Isuzu de 1974 à 2000. Elle est vendue aussi par Holden, mais de 1993 à 2000. La Saehan Gemini, de Saehan Motors, a été basée sur la Isuzu Gemini.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Isuzu_Gemini",
+  "wikipedia_title": "Isuzu Gemini",
+  "specs": {
+    "engine": {
+      "value": "petrol: · 1584 cc G161Z I4 · 1817 cc G180Z I4 · 1817 cc G180W DOHC I4 · diesel: · 1817 cc 4FB1 I4 · 1817 cc 4FB1T turbo I4",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "November 1974 – February 1987",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Japan: Kawasaki, Kanagawa (Kawasaki Plant: 1974–2000) Philippines: Dasmariñas, Cavite (GM Pilipinas; first and second generation models)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "930 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4135 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1570 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1365 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2405 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "110 PS",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/isuzu-gemini/1.jpg",
+      "thumb": "photos/isuzu-gemini/1-thumb.jpg",
+      "author": "Ignis",
+      "license": "CC BY-SA 3.0",
+      "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Isuzu_Gemini_PF_Osaka_JPN_001.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "Coupé 2 portes"
+  ]
+}

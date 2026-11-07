@@ -1,0 +1,78 @@
+{
+  "slug": "dodge-shadow",
+  "name": "Dodge Shadow",
+  "brand": "Dodge",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T00:20:00+00:00",
+  "updated": "2026-11-07T00:20:00+00:00",
+  "summary": "La Dodge Shadow et la Plymouth Sundance sont des voitures polyvalentes 3 et 5 portes à hayon, qui ont été introduites en 1987 par la Chrysler Corporation. Pour 1991, une variante cabriolet a été ajoutée à la gamme Shadow, mais pas à la gamme Sundance. Le modèle 3 portes à hayon a remplacé la Dodge charger (L-Body), alors que la 5 portes a remplacé la Dodge Omni. Avec l'acquisition d'American Motors par Chrysler en 1987, la Shadow/Sundance a également remplacé la Renault Alliance, marquant le retrait officiel de Renault aux États-Unis et des marchés Canadiens. Le premier véhicule est sorti de Sterling Heights Assembly le 25 août 1986. La Shadow/Sundance a été également vendue en Europe de 1988 à 1991, comme la Chrysler ES. La production a pris fin le 9 mars 1994, remplacées par la Dodge Neon.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Dodge_Shadow",
+  "wikipedia_title": "Dodge Shadow",
+  "specs": {
+    "engine": {
+      "value": "2.2 L K I4 · 2.2 L Turbo I turbo I4 · 2.2 L Turbo IV turbo I4 · 2.5 L K I4 · 2.5 L Turbo I turbo I4 · 3.0 L 6G72 V6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Automatique 3 rapports · Automatique 4 rapports · Manuelle 5 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur transversal, moteur avant, traction",
+      "from_text": false
+    },
+    "body": {
+      "value": "Cabriolet 2 portes (Shadow only) · 3/Compacte 5 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "August 1986 – March 1994",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United States: Sterling Heights, Michigan (Sterling Heights Assembly) Mexico: Toluca, Mexico State (Toluca Car Assembly)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1183 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4366 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1709 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1339 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2464 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "97 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/dodge-shadow/1.jpg",
+      "author": "IFCAR",
+      "license": "Public domain",
+      "license_url": "",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Dodge-Shadow-Coupe.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "Cabriolet 2 portes (Shadow only)"
+  ]
+}

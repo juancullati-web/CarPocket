@@ -1,0 +1,85 @@
+{
+  "slug": "lexus-rx",
+  "name": "Lexus RX",
+  "brand": "Lexus",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T02:12:14+00:00",
+  "updated": "2026-11-07T02:12:14+00:00",
+  "summary": "Le Lexus RX est un SUV du constructeur automobile japonais Lexus vendu depuis 1998 en Amérique du Nord. Ce modèle est commercialisé au Japon sous le nom de Toyota Harrier de 1997 à 2009 . Ce véhicule est le fer de lance de l'expansion de la marque appartenant au géant Toyota, avec notamment sa version hybride qui a fait de lui le premier SUV hybride au monde. Dans la gamme américaine de Lexus, le RX ouvre la gamme des SUV, mais il est le seul représentant de cette catégorie en Europe. NB : Les chiffres situés après le nom du modèle indiquent la cylindrée (sauf les versions hybrides), comme chez Infiniti, ou encore Mercedes.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Lexus_RX",
+  "wikipedia_title": "Lexus RX",
+  "specs": {
+    "engine": {
+      "value": "Gasoline: · 2.2 L 5S-FE I4 · 2.4 L 2AZ-FE I4 · 3.0 L 1MZ-FE V6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Automatique 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, traction\nFront-engine, four-wheel drive",
+      "from_text": false
+    },
+    "body": {
+      "value": "SUV 5 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "December 1997 – January 2003 (Toyota Harrier) · January 1998 – January 2003 (Lexus RX)",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Makoto Oshima (1995)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Japan: Miyawaka, Fukuoka (TMK)",
+      "from_text": false
+    },
+    "length": {
+      "value": "4580 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1815 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1670 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2615 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "164 kW",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "200 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-60 mph : 7,3 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/lexus-rx/1.jpg",
+      "thumb": "photos/lexus-rx/1-thumb.jpg",
+      "author": "IFCAR",
+      "license": "Public domain",
+      "license_url": "",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1st.Lexus.RX.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

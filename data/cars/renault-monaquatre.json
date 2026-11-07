@@ -1,0 +1,75 @@
+{
+  "slug": "renault-monaquatre",
+  "name": "Renault Monaquatre",
+  "brand": "Renault",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T04:18:08+00:00",
+  "updated": "2026-11-07T04:18:08+00:00",
+  "summary": "La Monaquatre est une automobile fabriquée par Renault de 1932 à 1936.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Renault_Monaquatre",
+  "wikipedia_title": "Renault Monaquatre",
+  "specs": {
+    "engine": {
+      "value": "1289 cc I4, 25 HP, 7 CV · 1463 cc I4, 30 HP, 8 CV · 2120 cc I4, 35 HP, 9 CV",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 3 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 2 portes · Berline 4 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1931–1936",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Louis Renault",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "France: Île Seguin, Boulogne-Billancourt Belgium: Haren-Vilvoorde (RIB)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "900-950 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "3900 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1570 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2650 mm",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/renault-monaquatre/1.jpg",
+      "thumb": "photos/renault-monaquatre/1-thumb.jpg",
+      "author": "AlfvanBeem",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Renault_MONA-QUATRE_dutch_licence_registration_DE-32-02_pic3.JPG"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "avant 1970"
+  ]
+}

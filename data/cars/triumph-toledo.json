@@ -1,0 +1,85 @@
+{
+  "slug": "triumph-toledo",
+  "name": "Triumph Toledo",
+  "brand": "Triumph",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T00:38:05+00:00",
+  "updated": "2026-11-07T00:38:05+00:00",
+  "summary": "La Triumph Toledo est une voiture compacte produite par British Leyland au Royaume-Uni de 1970 à 1976.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Triumph_Toledo",
+  "wikipedia_title": "Triumph Toledo",
+  "specs": {
+    "engine": {
+      "value": "1296/1493 cc I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 2 portes · Berline 4 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "August 1970 – March 1976 · 1300 cc: 113,294 made · 1500 cc: 5,888 made",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United Kingdom: Canley, Coventry United Kingdom: Speke, Merseyside New Zealand: Nelson (NZMC)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "889 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "3962 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1575 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1372 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2464 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "58 bhp",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "145 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-60 mph : 17,1 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/triumph-toledo/1.jpg",
+      "thumb": "photos/triumph-toledo/1-thumb.jpg",
+      "author": "Vauxford",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1975_Triumph_Toledo_1.3_Front.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

@@ -1,0 +1,77 @@
+{
+  "slug": "chrysler-centura",
+  "name": "Chrysler Centura",
+  "brand": "Chrysler",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T05:53:11+00:00",
+  "updated": "2026-11-07T05:53:11+00:00",
+  "summary": "La Chrysler Centura est une voiture intermédiaire produite par Chrysler Australia entre 1975 et 1978. Elle était basée sur le modèle Chrysler 180 de Chrysler Europe, mais était également disponible avec le plus gros moteurs Hemi Six fabriqués en Australie. 19 770 Centura ont été construites.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Chrysler_Centura",
+  "wikipedia_title": "Chrysler Centura",
+  "specs": {
+    "engine": {
+      "value": "2.0 L Type 180 I4 · 3.5 L Hemi I6 · 4.0 L Hemi I6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "3/Manuelle 4 rapports · Automatique 3 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "March 1975–1978",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Australia: Tonsley Park 19,770 produced",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1105-1125 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4580 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1730 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1430 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2660 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "122 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/chrysler-centura/1.jpg",
+      "thumb": "photos/chrysler-centura/1-thumb.jpg",
+      "author": "Jeremy from Sydney, Australia",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1976_Chrysler_Centura_(KB)_GL_sedan_(21462766005).jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

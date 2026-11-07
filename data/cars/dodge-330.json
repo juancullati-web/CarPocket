@@ -1,0 +1,67 @@
+{
+  "slug": "dodge-330",
+  "name": "Dodge 330",
+  "brand": "Dodge",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T03:33:14+00:00",
+  "updated": "2026-11-07T03:33:14+00:00",
+  "summary": "La Dodge 330 est une automobile full-size qui a été commercialisée par Dodge de 1962 à 1964. Disponible dans les conceptions de carrosserie berline 2 ou 4 portes utilisant la plate-forme B.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Dodge_330",
+  "wikipedia_title": "Dodge 330",
+  "specs": {
+    "engine": {
+      "value": "225 cuin Slant-6 I6 · 318 cuin A V8 · 361 cuin B V8 (1962) · 383 cuin B V8 (1963-1964) · 426 cuin RB V8 (1963-1964)",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 3 rapports Automatique 3 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 2 portes · Berline 4 portes · Break 4 portes · 2-door hardtop (1962)",
+      "from_text": false
+    },
+    "production": {
+      "value": "1962–1964 (until 1965 for Canada)",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Virgil Exner",
+      "from_text": false
+    },
+    "length": {
+      "value": "5286 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "3023 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "415 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/dodge-330/1.jpg",
+      "thumb": "photos/dodge-330/1-thumb.jpg",
+      "author": "Greg Gjerdingen from Willmar, USA",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1964_Dodge_330_(21399376379).jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "avant 1970"
+  ]
+}

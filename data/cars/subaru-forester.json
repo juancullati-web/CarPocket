@@ -1,0 +1,81 @@
+{
+  "slug": "subaru-forester",
+  "name": "Subaru Forester",
+  "brand": "Subaru",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T02:05:13+00:00",
+  "updated": "2026-11-07T02:05:13+00:00",
+  "summary": "La Subaru Forester est un crossover compact produit depuis 1997 par le constructeur automobile japonais Subaru. La cinquième génération du Forester est sortie en 2019.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Subaru_Forester",
+  "wikipedia_title": "Subaru Forester",
+  "specs": {
+    "engine": {
+      "value": "2.0 L EJ20 DOHC H4 · 2.0 L EJ20T DOHC turbo H4 · 2.5 L EJ25D DOHC H4 (1997-1998) · 2.5 L EJ251 SOHC (1998-2002)",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports · Automatique 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, transmission intégrale",
+      "from_text": false
+    },
+    "body": {
+      "value": "SUV 5 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1997–2002",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Japan: Ōta, Gunma",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1430 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "1997–2000: 4450 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1735 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1650 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2525 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "123 kW",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "225 km/h",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/subaru-forester/1.jpg",
+      "thumb": "photos/subaru-forester/1-thumb.jpg",
+      "author": "OSX",
+      "license": "Public domain",
+      "license_url": "",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1998_Subaru_Forester_(SF5)_GX_wagon_(2011-10-25).jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

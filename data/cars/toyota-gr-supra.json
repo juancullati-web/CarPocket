@@ -1,0 +1,88 @@
+{
+  "slug": "toyota-gr-supra",
+  "name": "Toyota GR Supra",
+  "brand": "Toyota",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T05:21:16+00:00",
+  "updated": "2026-11-07T05:21:16+00:00",
+  "summary": "La Toyota Supra de cinquième génération, dite GR Supra est un coupé sportif à deux portes produite par le constructeur automobile japonais Toyota à partir de 2019. Elle est la cinquième génération de Toyota Supra.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Toyota_GR_Supra",
+  "wikipedia_title": "Toyota GR Supra",
+  "specs": {
+    "engine": {
+      "value": "Petrol: · 1998 cc BMW B48B20 turbo I4 · 2998 cc BMW B58B30C turbo I6 · 2998 cc BMW B58B30O1 turbo I6 · 2998 cc BMW B58B30M1 turbo I6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Automatique 8 rapports (2019–2026) · Manuelle 6 rapports (2022–2026)",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "3-door liftback/fastback coupe",
+      "from_text": false
+    },
+    "production": {
+      "value": "March 2019 – March 2026",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Nobuo Nakamura (project chief designer)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Austria: Graz, Styria (Magna Steyr)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1410-1520 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4380 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1865 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1290-1295 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2470 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "145-190 kW",
+      "from_text": false
+    },
+    "zero_100": {
+      "value": "0-60 mph : 3,7 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/toyota-gr-supra/1.png",
+      "thumb": "photos/toyota-gr-supra/1-thumb.png",
+      "author": "Gold Pony",
+      "license": "CC BY 3.0",
+      "license_url": "https://creativecommons.org/licenses/by/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2020_Toyota_GR_Supra_(United_States).png"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "3-door liftback/fastback coupe",
+    "décrite comme sportive ou de prestige"
+  ]
+}

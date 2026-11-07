@@ -1,0 +1,80 @@
+{
+  "slug": "alpine-a110",
+  "name": "Alpine A110",
+  "brand": "Alpine",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T03:39:14+00:00",
+  "updated": "2026-11-07T03:39:14+00:00",
+  "summary": "L'Alpine A110 est un modèle d'automobile sportif produit par le constructeur français Alpine. Il est développé par Jean Rédélé et fabriqué à Dieppe entre 1962 et 1977 à partir de mécaniques Renault. Célèbre sous la forme de berlinette, l'A110 a été championne des rallyes en 1971 et 1973. Sur le marché français, l'auto entre dans la catégorie des CG 1200 S/1300 et Matra Djet.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Alpine_A110",
+  "wikipedia_title": "Alpine A110",
+  "specs": {
+    "engine": {
+      "value": "1.0–1.3 L Renault Cléon-Fonte I4 · 1.5–1.65 L Renault Cléon-Alu I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur arrière, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "2-door Berlinette",
+      "from_text": false
+    },
+    "production": {
+      "value": "1963–1977",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Giovanni Michelotti",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Dieppe, France",
+      "from_text": false
+    },
+    "weight": {
+      "value": "706 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "3850 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1471–1550 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2099–2180 mm",
+      "from_text": false
+    },
+    "top_speed": {
+      "value": "210 km/h",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/alpine-a110/1.jpg",
+      "thumb": "photos/alpine-a110/1-thumb.jpg",
+      "author": "Lothar Spurzem",
+      "license": "CC BY-SA 2.0 de",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.0/de/deed.en",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Renault_Alpine_A_110_(Sp).JPG"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "avant 1970",
+    "décrite comme sportive ou de prestige"
+  ]
+}

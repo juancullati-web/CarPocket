@@ -1,0 +1,92 @@
+{
+  "slug": "lamborghini-veneno",
+  "name": "Lamborghini Veneno",
+  "brand": "Lamborghini",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T02:48:16+00:00",
+  "updated": "2026-11-07T02:48:16+00:00",
+  "summary": "La Lamborghini Veneno LP750-4 est une supercar créée par le constructeur automobile italien Lamborghini et présentée le 5 mars 2013 au salon international de l'automobile de Genève.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Lamborghini_Veneno",
+  "wikipedia_title": "Lamborghini Veneno",
+  "specs": {
+    "engine": {
+      "value": "6.5 L L539 V12",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 7 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Mid-engine, all-wheel-drive",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes · Cabriolet 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "2013–2014 · (3 coupés, 9 roadsters)",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Filippo Perini, Michele Tinazzo",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Italy: Sant'Agata Bolognese",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1490 kg (Roadster; dry)",
+      "from_text": false
+    },
+    "length": {
+      "value": "5020 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "2075 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1165 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2700 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "750 PS",
+      "from_text": false
+    },
+    "top_speed": {
+      "value": "356 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-60 mph : 2,8 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/lamborghini-veneno/1.jpg",
+      "thumb": "photos/lamborghini-veneno/1-thumb.jpg",
+      "author": "Clément Bucco-Lechat",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Geneva_MotorShow_2013_-_Lamborghini_Veneno_1.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "Coupé 2 portes",
+    "décrite comme sportive ou de prestige"
+  ]
+}

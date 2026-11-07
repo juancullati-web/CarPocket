@@ -1,0 +1,89 @@
+{
+  "slug": "renault-5",
+  "name": "Renault 5",
+  "brand": "Renault",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T03:04:05+00:00",
+  "updated": "2026-11-07T03:04:05+00:00",
+  "summary": "Renault 5 est une voiture thermique produite par Renault de 1972 à 1984. Renault Supercinq est une voiture thermique produite par Renault de 1984 à 1996. Renault 5 E-Tech Electric est un modèle électrique du constructeur Renault produit depuis 2023. Portail de l’automobile",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Renault_5",
+  "wikipedia_title": "Renault 5",
+  "specs": {
+    "engine": {
+      "value": "782 cc Ventoux I4 · 845 cc Ventoux I4 · 956 cc C1C I4 · 1108 cc C1E I4 · 1289 cc 810 I4 · 1397 cc C1J I4 · 1397 cc C6J turbo I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "4/Manuelle 5 rapports · Automatique 3 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FMF layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "3/Compacte 5 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1972–1985",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Michel Boué",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "France: Flins France: Dieppe (Alpine) France: Douai Spain: Valladolid (FASA-Renault) Venezuela: Mariara Iran: Tehran (SAIPA/Pars Khodro) Mexico: Ciudad Sahagún South Africa: Durban (Motor Assemblies) Yugoslavia: Novo Mesto (IMV)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "730-810 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "3521 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1525 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1410 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2419 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "55 bhp",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "177 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-60 mph : 9,7 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/renault-5/1.jpg",
+      "thumb": "photos/renault-5/1-thumb.jpg",
+      "author": "Y.Leclercq©",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:50_ans_Renault_5_-_R%C3%A9tromobile_02_crop.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

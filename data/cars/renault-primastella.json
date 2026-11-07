@@ -1,0 +1,79 @@
+{
+  "slug": "renault-primastella",
+  "name": "Renault Primastella",
+  "brand": "Renault",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T02:48:07+00:00",
+  "updated": "2026-11-07T02:48:07+00:00",
+  "summary": "La Primastella est une automobile fabriquée par Renault entre 1932 et 1934. Le 8 septembre 1932, une Renault Primastella pilotée par Robert Guyot remporte le rallye international de régularité Paris-Antibes-Juan-les-Pins.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Renault_Primastella",
+  "wikipedia_title": "Renault Primastella",
+  "specs": {
+    "engine": {
+      "value": "3180cc 16CV I6, 65HP · 3620cc 16CV I6, 85HP",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 3 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes · Cabriolet 4 portes · Cabriolet 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1932–1935",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Louis Renault",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "France: Île Seguin, Boulogne-Billancourt, Paris",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1,150–1,200 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4250 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1800 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2950 mm",
+      "from_text": false
+    },
+    "top_speed": {
+      "value": "130 km/h",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/renault-primastella/1.jpg",
+      "thumb": "photos/renault-primastella/1-thumb.jpg",
+      "author": "Cjp24",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Renault_Primastella_(1).jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "avant 1970"
+  ]
+}

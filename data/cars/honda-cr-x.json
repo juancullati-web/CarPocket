@@ -1,0 +1,81 @@
+{
+  "slug": "honda-cr-x",
+  "name": "Honda CR-X",
+  "brand": "Honda",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T03:05:06+00:00",
+  "updated": "2026-11-07T03:05:06+00:00",
+  "summary": "La Honda Civic CRX (acronyme pour Civic Renaissance eXperimental) est un coupé sportif apparu en 1983. De conception compact 2+2, elle dispose d'un hayon donnant accès à un coffre relativement spacieux pour ce type de véhicule, d'autant plus que la banquette arrière est rabattable. Elle se démarque de ses concurrentes par une consommation raisonnable et une fiabilité remarquable. La CRX va perdurer durant deux générations, puis sera remplacée par le roadster CRX Del Sol en 1992.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Honda_CR-X",
+  "wikipedia_title": "Honda CR-X",
+  "specs": {
+    "engine": {
+      "value": "1.3 L EV1 I4 · 1.5 L EW1/D15A2/A3 I4 · 1.5 L EW3/4/5 I4 · 1.6 L ZC1/D16A1 DOHC I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports · Automatique 3 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, traction",
+      "from_text": false
+    },
+    "body": {
+      "value": "3-door liftback",
+      "from_text": false
+    },
+    "production": {
+      "value": "1983–1987",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Osamu Akimoto, Shinya Iwakura",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Japan: Suzuka Plant, Suzuka, Mie",
+      "from_text": false
+    },
+    "weight": {
+      "value": "760-860 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "3675 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1625 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1290 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2200 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "135 PS",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/honda-cr-x/1.jpg",
+      "thumb": "photos/honda-cr-x/1-thumb.jpg",
+      "author": "TTTNIS",
+      "license": "Public domain",
+      "license_url": "",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Honda_Ballade_CR-X.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

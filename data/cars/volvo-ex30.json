@@ -1,0 +1,77 @@
+{
+  "slug": "volvo-ex30",
+  "name": "Volvo EX30",
+  "brand": "Volvo",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T00:28:05+00:00",
+  "updated": "2026-11-07T00:28:05+00:00",
+  "summary": "L'EX30 est un crossover électrique produit par le constructeur automobile suédois Volvo à partir de 2023. Au troisième semestre 2024, la Volvo EX30 est la troisième voiture BEV la plus vendue sur le marché des 28 pays européens, avec 36980 ventes.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Volvo_EX30",
+  "wikipedia_title": "Volvo EX30",
+  "specs": {
+    "layout": {
+      "value": "Rear-motor, rear-wheel-drive\nDual-motor, all-wheel-drive",
+      "from_text": false
+    },
+    "body": {
+      "value": "Compacte 5 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "2023–present",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "China: Zhangjiakou (Zhangjiakou Volvo Motor Company) / Chengdu (; Final Assembly), from 2023 Belgium: Ghent (VCG) Malaysia: Shah Alam (VCMM)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1830-1943 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4233 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1836 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1550 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2650 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "200 kW",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "180 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-100 km/h : 3,4 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/volvo-ex30/1.jpg",
+      "thumb": "photos/volvo-ex30/1-thumb.jpg",
+      "author": "Alexander-93",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Volvo_EX30_IMG_8923.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

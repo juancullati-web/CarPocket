@@ -1,0 +1,85 @@
+{
+  "slug": "jensen-541",
+  "name": "Jensen 541",
+  "brand": "Jensen",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T04:51:23+00:00",
+  "updated": "2026-11-07T04:51:23+00:00",
+  "summary": "The Jensen 541 is an automobile which was produced by Jensen Motors from 1954 to 1959. It was first exhibited at the London Motor Show in October 1953, and production started in 1954. The 541 used fibreglass bodywork mounted on a steel chassis. It was fitted with a 4-litre Austin D-Series engine with three SU carburettors, mated to a four-speed manual transmission with optional Laycock de Normanville overdrive. The body consisted of three major mouldings. The entire front was rear-hinged and could be raised for engine access. The doors were aluminium. Suspension was independent at the front using coil springs, with a Panhard rod located rigid axle and leaf springs at the rear. A choice of wire-spoked or steel disc wheels with centre lock fitting was offered.",
+  "summary_lang": "en",
+  "summary_url": "https://en.wikipedia.org/wiki/Jensen_541",
+  "wikipedia_title": "Jensen 541",
+  "specs": {
+    "engine": {
+      "value": "4.0 L Austin D-Series I6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 4 rapports",
+      "from_text": false
+    },
+    "body": {
+      "value": "2-door, 4-seat coupé",
+      "from_text": false
+    },
+    "production": {
+      "value": "1954–1959 · 226 made",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Eric Neale",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1220 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4470 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1600 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1372 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2667 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "135 bhp",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "175 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-60 mph : 10,8 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/jensen-541/1.jpg",
+      "thumb": "photos/jensen-541/1-thumb.jpg",
+      "author": "GTHO",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Jensen_541_Deluxe_of_1957.JPG"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "226 exemplaires",
+    "2-door, 4-seat coupé",
+    "avant 1970"
+  ]
+}

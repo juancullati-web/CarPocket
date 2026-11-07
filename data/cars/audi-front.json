@@ -1,0 +1,67 @@
+{
+  "slug": "audi-front",
+  "name": "Audi Front",
+  "brand": "Audi",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T01:31:18+00:00",
+  "updated": "2026-11-07T01:31:18+00:00",
+  "summary": "L’Audi Front Type UW est une voiture particulière de la catégorie grande routière que la marque Audi, qui appartient à Auto Union, a présentée en février 1933 au 23e salon de l'automobile de Francfort en tant que première voiture allemande six cylindres avec traction avant. En tant que successeur de la Type T d’Audiwerke Zwickau, la lettre \"U\" a été utilisée, tandis que la lettre \"W\" représentait le moteur de 2 litres de la Wanderer W 22. Après la livraison de 1 817 voitures, la successeur, l’Audi 225 avec un moteur de 2,3 litres, a été présentée en février 1935 au 25e Salon de l’automobile de Berlin. Le moteur six cylindres en ligne de 2 litres de cylindrée de l’Audi UW, conçu par Ferdinand Porsche en 1931 pour la Wanderer W 20, développe 40 ch à 3 500 tr/min.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Audi-Front",
+  "wikipedia_title": "Audi Front",
+  "specs": {
+    "engine": {
+      "value": "1,950 cc straight-6 · 2,257 cc straight-6",
+      "from_text": false
+    },
+    "production": {
+      "value": "1933–1934 (UW 220) · 1935–1938 (UW 225)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Zwickau, Germany (Horch plant)",
+      "from_text": false
+    },
+    "length": {
+      "value": "4375 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1650 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1575 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "3050 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "40 PS",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "100 km/h",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/audi-front/1.jpg",
+      "thumb": "photos/audi-front/1-thumb.jpg",
+      "author": "Charles01",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Audi_Front_UW_220_exhibited_at_Autostadt_in_Wolfsburg.JPG"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "avant 1970"
+  ]
+}

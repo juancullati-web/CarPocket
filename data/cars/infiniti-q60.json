@@ -1,0 +1,79 @@
+{
+  "slug": "infiniti-q60",
+  "name": "Infiniti Q60",
+  "brand": "Infiniti",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T00:33:01+00:00",
+  "updated": "2026-11-07T00:33:01+00:00",
+  "summary": "L'Infiniti Q60 est une automobile du constructeur automobile japonais Infiniti produite à partir de 2014, et la deuxième génération du coupé G37. Elle est commercialisée fin 2008 en Europe en coupé et en cabriolet. Une seconde génération est lancée pour 2016.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Infiniti_Q60",
+  "wikipedia_title": "Infiniti Q60",
+  "specs": {
+    "engine": {
+      "value": "2.0 L M274 DE20 AL turbo I4 · 3.0 L VR30DDTT twin-turbo V6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Automatique 7 rapports · Automatique 7 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Front moteur central, propulsion / all-wheel-drive",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "2016–2022",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Japan: Kaminokawa, Tochigi",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1700-1836 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4685-4690 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1850 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1385-1395 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2850 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "406 PS",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/infiniti-q60/1.jpg",
+      "thumb": "photos/infiniti-q60/1-thumb.jpg",
+      "author": "Kevauto",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2017_Infiniti_Q60_(V37)_front_4.24.18.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "Coupé 2 portes"
+  ]
+}

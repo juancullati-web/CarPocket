@@ -1,0 +1,76 @@
+{
+  "slug": "kia-concord",
+  "name": "Kia Concord",
+  "brand": "Kia",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T03:56:15+00:00",
+  "updated": "2026-11-07T03:56:15+00:00",
+  "summary": "La Kia Concord est une automobile compacte du constructeur automobile sud-coréen Kia produite de 1987 à 1992. Elle est basée sur la Mazda Capella et elle est commercialisée sous le nom Capital à l'export. En 1992, elle est remplacée par la Kia Sephia pour la berline compacte et en 1995, c'est la Kia Credos qui lui succède sur le segment des familiales.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Kia_Concord",
+  "wikipedia_title": "Kia Concord",
+  "specs": {
+    "engine": {
+      "value": "1.5 L B5 I4 (Capital) · 1.8 L F8 I4 · 1.8 L F8 LPG I4 · 2.0 L FE SOHC I4 · 2.0 L FE DOHC I4 · 2.0 L RF Diesel I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports · 3/Automatique 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "production": {
+      "value": "October 1987 – June 1995 (Concord) · March 1989 – December 1996 (Capital)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "South Korea: Hwasung Plant, Hwasung",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1,140-1,180 kg (2,513-2,601 lb) (Concord)",
+      "from_text": false
+    },
+    "length": {
+      "value": "4,550-4,570 mm (179.1-179.9 in) (Concord)",
+      "from_text": false
+    },
+    "width": {
+      "value": "1,705-1,720 mm (67.1-67.7 in) (Concord)",
+      "from_text": false
+    },
+    "height": {
+      "value": "1,405 mm (55.3 in)",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2,520 mm (99.2 in)",
+      "from_text": false
+    },
+    "power": {
+      "value": "99 PS",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "170 km/h",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/kia-concord/1.jpg",
+      "author": "BS105",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Kia_Concord_2.0i_DGT_2.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

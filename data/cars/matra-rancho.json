@@ -1,0 +1,80 @@
+{
+  "slug": "matra-rancho",
+  "name": "Matra Rancho",
+  "brand": "Matra",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T03:21:03+00:00",
+  "updated": "2026-11-07T03:21:03+00:00",
+  "summary": "La Matra-Simca Rancho est une voiture de loisirs polyvalente, conçue et produite par Matra, et commercialisée sous la marque Matra-Simca jusqu'en 1979, puis sous la marque Talbot-Matra.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Matra-Simca_Rancho",
+  "wikipedia_title": "Matra Rancho",
+  "specs": {
+    "engine": {
+      "value": "1.4 L Type 315 ohv I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FF layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Break 3 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1977–1984",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Antonis Volanis",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "France: Romorantin-Lanthenay",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1130 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4315 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1665 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1735 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2520 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "80 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/matra-rancho/1.jpg",
+      "author": "unknown, affiliated with Garage de l'Est, uploaded by Bravada",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1977_Simca_Matra_Rancho.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

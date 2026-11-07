@@ -1,0 +1,89 @@
+{
+  "slug": "cadillac-seville",
+  "name": "Cadillac Seville",
+  "brand": "Cadillac",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T02:39:09+00:00",
+  "updated": "2026-11-07T02:39:09+00:00",
+  "summary": "La Cadillac Seville a été fabriquée par Cadillac entre 1975 et 2004 en tant que modèle haut de gamme de plus petite taille. La Cadillac STS lui a succédé.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Cadillac_Seville",
+  "wikipedia_title": "Cadillac Seville",
+  "specs": {
+    "engine": {
+      "value": "350 CID Oldsmobile V8 · 350 CID Oldsmobile diesel V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Automatique 3 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "May 1975–1979 · 1977–1987 (Iran)",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Bill Mitchell",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United States: Detroit, Michigan Iran: Pars Khodro",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1970 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "5182 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1824 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1387 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2903 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "180 hp",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "209 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-60 mph : 7,4 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/cadillac-seville/1.jpg",
+      "thumb": "photos/cadillac-seville/1-thumb.jpg",
+      "author": "Kieran White from Manchester, England",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Cadillac_Seville_(14401270109).jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

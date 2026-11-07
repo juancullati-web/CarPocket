@@ -1,0 +1,83 @@
+{
+  "slug": "polestar-4",
+  "name": "Polestar 4",
+  "brand": "Polestar",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T00:59:01+00:00",
+  "updated": "2026-11-07T00:59:01+00:00",
+  "summary": "La Polestar 4 est un crossover coupé électrique du constructeur automobile suédois Polestar produit à partir de 2023.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Polestar_4",
+  "wikipedia_title": "Polestar 4",
+  "specs": {
+    "layout": {
+      "value": "Rear-motor, rear-wheel drive\nDual-motor, all-wheel-drive",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 5 portes SUV (Coupe, 2023–present) · 5-door crossover wagon (SUV, 2026–present)",
+      "from_text": false
+    },
+    "production": {
+      "value": "November 2023 – present (Coupe) · September 2026 – present (SUV)",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Su-bum Lee (exterior)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "China: Ningbo South Korea: Busan (Renault Korea; 2025–present)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "2232-2351 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4839 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "2008 mm;",
+      "from_text": false
+    },
+    "height": {
+      "value": "1544 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2999 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "272 hp",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "180 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-62 mph : 3,8 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/polestar-4/1.jpg",
+      "thumb": "photos/polestar-4/1-thumb.jpg",
+      "author": "Alexander Migl",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Polestar_4_DSC_8232_(cropped_2).jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "Coupé 5 portes SUV (Coupe, 2023–present)"
+  ]
+}

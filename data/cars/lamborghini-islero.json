@@ -1,0 +1,94 @@
+{
+  "slug": "lamborghini-islero",
+  "name": "Lamborghini Islero",
+  "brand": "Lamborghini",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T03:24:16+00:00",
+  "updated": "2026-11-07T03:24:16+00:00",
+  "summary": "La Lamborghini Islero, également appelée Islero 400 GT, est un modèle du constructeur automobile italien Lamborghini. Présentée lors du Salon international de Genève en mars 1968, elle remplace la Lamborghini 400 GT 2+2. Le nom d'« Islero » est attribué en référence au taureau qui a tué dans l'arène le matador Manolete en 1947. Dessinée par la société de carrosserie Marazzi à la suite de la fermeture de la Carrozzeria Touring, l'Islero ne connaît pas le succès escompté, en raison d'un style jugé trop classique et d'une finition ne correspondant pas à l'image de Lamborghini. Malgré l'arrivée d'une version S qui atténue ces défauts, l'Islero n'est produite que durant un peu plus d'un an, avant d'être remplacée en 1970 par la Lamborghini Jarama.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Lamborghini_Islero",
+  "wikipedia_title": "Lamborghini Islero",
+  "specs": {
+    "engine": {
+      "value": "3929 cc Lamborghini V12",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports with all-synchromesh",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "2-door 2+2 coupé",
+      "from_text": false
+    },
+    "production": {
+      "value": "1968–1969 · 225 built",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Mario Marazzi at Carrozzeria Marazzi",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Italy: Sant'Agata Bolognese",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1315 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4525 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1730 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1300 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2550 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "325 bhp",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "248 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-60 mph : 6,4 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/lamborghini-islero/1.jpg",
+      "thumb": "photos/lamborghini-islero/1-thumb.jpg",
+      "author": "Matti Blume",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Lamborghini_Islero,_Techno_Classica_2018,_Essen_(IMG_9696).jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "225 exemplaires",
+    "2-door 2+2 coupé",
+    "avant 1970",
+    "décrite comme sportive ou de prestige"
+  ]
+}

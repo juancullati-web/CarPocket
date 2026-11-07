@@ -1,0 +1,74 @@
+{
+  "slug": "maserati-5000-gt",
+  "name": "Maserati 5000 GT",
+  "brand": "Maserati",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T03:03:09+00:00",
+  "updated": "2026-11-07T03:03:09+00:00",
+  "summary": "La Maserati 5000 GT est une automobile de grand tourisme produite par le constructeur italien Maserati. Sa naissance résulte de la coopération entre l'ingénieur Giulio Alfieri et le Shah d'Iran Reza Pahlavi. Ce dernier confie en effet à Maserati la mission de lui produire une voiture d'exception. En tant que telle, la 5000 GT, version très haut-de-gamme « sur mesures » de la 3500 GT, sera produite à une trentaine d'exemplaires entre 1959 et 1965 et vendue à un prix très élevé. Elle est propulsée par un V8, motorisation qui bénéficiera d'améliorations en 1960 dont l'augmentation de la cylindrée. Selon Keith Martin, rédacteur du magazine Sports Car, la 5000 GT serait la plus réussie des GT d'après-guerre ; « un patrimoine de course, une puissance immense, un comportement routier excellent, l'exclusivité et le luxe » seraient autant de ses qualités.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Maserati_5000_GT",
+  "wikipedia_title": "Maserati 5000 GT",
+  "specs": {
+    "engine": {
+      "value": "4937 cc V8 · 4940 cc V8 (1960 onwards)",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 4 rapports · Manuelle 5 rapports (1960 onwards)",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1959–1966 · 34 units",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Federico Formenti at Carrozzeria Touring (original design), Giovanni Michelotti at Carrozzeria Allemano (later production cars)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Italy: Modena",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1652 kg (dry)",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2600 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "340 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/maserati-5000-gt/1.jpg",
+      "thumb": "photos/maserati-5000-gt/1-thumb.jpg",
+      "author": "Herranderssvensson",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1959_Maserati_5000_GT_fl.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "34 exemplaires",
+    "Coupé 2 portes",
+    "avant 1970",
+    "décrite comme sportive ou de prestige"
+  ]
+}

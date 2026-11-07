@@ -1,0 +1,81 @@
+{
+  "slug": "ford-edge",
+  "name": "Ford Edge",
+  "brand": "Ford",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T01:00:08+00:00",
+  "updated": "2026-11-07T01:00:08+00:00",
+  "summary": "La Ford Edge est un crossover de la marque américaine Ford, produit depuis octobre 2006. Il est le premier représentant du segment des crossovers dans la gamme de Ford.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Ford_Edge",
+  "wikipedia_title": "Ford Edge",
+  "specs": {
+    "engine": {
+      "value": "Gasoline: · 2.0 L EcoBoost turbo I4 · 3.5 L Duratec V6 · 3.7 L Duratec V6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Automatique 6 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, traction / all-wheel drive",
+      "from_text": false
+    },
+    "body": {
+      "value": "SUV 5 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "January 2006–2014",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Sid Ramnarace",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Canada: Oakville, Ontario (Oakville Ford Assembly Plant)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1946 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "2007–2010: 4717 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "2007–2010: 1925 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1702 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2824 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "265 bhp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/ford-edge/1.jpg",
+      "thumb": "photos/ford-edge/1-thumb.jpg",
+      "author": "IFCAR",
+      "license": "Public domain",
+      "license_url": "",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2007-2010_Ford_Edge_--_07-13-2011.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

@@ -1,0 +1,81 @@
+{
+  "slug": "aston-martin-valour",
+  "name": "Aston Martin Valour",
+  "brand": "Aston Martin",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T01:33:11+00:00",
+  "updated": "2026-11-07T01:33:11+00:00",
+  "summary": "L'Aston Martin Valour est une voiture de sport du constructeur automobile britannique Aston Martin produite à 110 exemplaires à partir de 2023. Elle est basée sur la Vantage.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Aston_Martin_Valour",
+  "wikipedia_title": "Aston Martin Valour",
+  "specs": {
+    "engine": {
+      "value": "5.2 L AE31 twin-turbo V12",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 6 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Front moteur central, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "2023–2024 · Valour: 110 units · Valiant: 38 units",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United Kingdom: Gaydon, Warwickshire",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1780 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4599 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1987 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1274 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2705 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "705 bhp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/aston-martin-valour/1.jpg",
+      "thumb": "photos/aston-martin-valour/1-thumb.jpg",
+      "author": "Calreyn88",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2024_Aston_Martin_Valour.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "110 exemplaires",
+    "Coupé 2 portes",
+    "décrite comme sportive ou de prestige"
+  ]
+}

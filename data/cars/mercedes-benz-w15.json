@@ -1,0 +1,72 @@
+{
+  "slug": "mercedes-benz-w15",
+  "name": "Mercedes-Benz W15",
+  "brand": "Mercedes-Benz",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T05:41:07+00:00",
+  "updated": "2026-11-07T05:41:07+00:00",
+  "summary": "La Mercedes-Benz Type 170 est une voiture de la marque Mercedes-Benz et a été présentée par Daimler-Benz AG en octobre 1931 au Mondial de l'Automobile de Paris. La voiture est considérée comme la conception la plus importante de Hans Nibel, qui a succédé à Ferdinand Porsche en tant que directeur technique (designer en chef) chez Daimler-Benz en 1929.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Mercedes-Benz_W_15",
+  "wikipedia_title": "Mercedes-Benz W15",
+  "specs": {
+    "engine": {
+      "value": "1,692cc M15 I6",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "production": {
+      "value": "1931–1936 · 13,775 units",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Germany: Stuttgart",
+      "from_text": false
+    },
+    "length": {
+      "value": "3940 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1630 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1650 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2600 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "23.5 kW",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "90 km/h",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/mercedes-benz-w15/1.jpg",
+      "thumb": "photos/mercedes-benz-w15/1-thumb.jpg",
+      "author": "Alexander Migl",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Mercedes-Benz_W15_(1932)_Classic-Gala_2022_1X7A0282.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "avant 1970",
+    "décrite comme sportive ou de prestige"
+  ]
+}

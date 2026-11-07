@@ -1,0 +1,83 @@
+{
+  "slug": "ligier-js2",
+  "name": "Ligier JS2",
+  "brand": "Ligier",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T05:28:06+00:00",
+  "updated": "2026-11-07T05:28:06+00:00",
+  "summary": "La Ligier JS2 est un coupé sportif produit par le constructeur automobile français Ligier entre 1971 et 1975. L'objectif était de positionner Ligier en tant que constructeur de véhicules sportifs, tels Porsche et Ferrari.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Ligier_JS2",
+  "wikipedia_title": "Ligier JS2",
+  "specs": {
+    "engine": {
+      "value": "2675 cc Maserati C114-1 DOHC V6 · 2965 cc Maserati C114-11 DOHC V6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur central, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1971-1975",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Pietro Frua",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "France: Abrest, Allier",
+      "from_text": false
+    },
+    "weight": {
+      "value": "980 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4250 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1720 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1151 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2350 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "170 CV",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/ligier-js2/1.jpg",
+      "thumb": "photos/ligier-js2/1-thumb.jpg",
+      "author": "Alf van Beem",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1974_Ligier_JS2_pic1_(cropped).JPG"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "Coupé 2 portes"
+  ]
+}

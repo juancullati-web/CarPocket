@@ -1,0 +1,67 @@
+{
+  "slug": "noble-m500",
+  "name": "Noble M500",
+  "brand": "Noble",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T06:19:48+00:00",
+  "updated": "2026-11-07T06:19:48+00:00",
+  "summary": "The Noble M500 is a sports car that was unveiled by low volume automobile manufacturer Noble Automotive in 2018. Sales started in late 2022, but there were modifications from the original concept. The body work is made of carbon fibre but it is more lightweight than most super cars and is sometimes called a \"junior supercar\". The interior has three screens; one for the speedometer, tachometer and fuel gauge. One is a satnav and the last one controls the heat, which is close to the gearstick. The interior is quite minimalist, compared to the exterior.",
+  "summary_lang": "en",
+  "summary_url": "https://en.wikipedia.org/wiki/Noble_M500",
+  "wikipedia_title": "Noble M500",
+  "specs": {
+    "engine": {
+      "value": "3.5 L D35 twin-turbocharged V6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 6 rapports transmission",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur central arrière, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "2022–present",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Peter Boutwood",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United Kingdom: Leicestershire",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1350 kg",
+      "from_text": false
+    },
+    "power": {
+      "value": "550 PS",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/noble-m500/1.jpg",
+      "author": "Lyon84",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Noble_M500.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "Coupé 2 portes",
+    "décrite comme sportive ou de prestige"
+  ]
+}

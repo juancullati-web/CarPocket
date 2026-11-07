@@ -1,0 +1,96 @@
+{
+  "slug": "mclaren-720s",
+  "name": "McLaren 720S",
+  "brand": "McLaren",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T04:48:07+00:00",
+  "updated": "2026-11-07T04:48:07+00:00",
+  "summary": "La 720S est une supercar du constructeur automobile britannique McLaren Automotive, produite de 2017 à 2022. Elle appartient à la gamme des « Super Series » du constructeur. Elle succède à la 650S et elle est remplacée par la 765LT en 2020 puis par la 750S en 2023.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/McLaren_720S",
+  "wikipedia_title": "McLaren 720S",
+  "specs": {
+    "engine": {
+      "value": "4.0 L M840T twin-turbocharged V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Double embrayage 7 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur central arrière, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes · 2-door retractable hard-top convertible (Spider)",
+      "from_text": false
+    },
+    "production": {
+      "value": "2017–2023 (720S) · 2023–present (750S)",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Frank Stephenson, Rob Melville",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United Kingdom: Woking, Surrey, England",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1419 kg (720S Coupé)",
+      "from_text": false
+    },
+    "length": {
+      "value": "4544 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "2161 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1196 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2670 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "720 PS",
+      "from_text": false
+    },
+    "torque": {
+      "value": "770 N.m",
+      "from_text": false
+    },
+    "top_speed": {
+      "value": "330 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-60 mph : 2,5 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/mclaren-720s/1.jpg",
+      "thumb": "photos/mclaren-720s/1-thumb.jpg",
+      "author": "Vauxford",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2018_McLaren_720S_V8_S-A_4.0.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "Coupé 2 portes",
+    "décrite comme sportive ou de prestige"
+  ]
+}

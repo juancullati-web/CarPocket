@@ -1,0 +1,77 @@
+{
+  "slug": "mazda-mpv",
+  "name": "Mazda MPV",
+  "brand": "Mazda",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T03:27:09+00:00",
+  "updated": "2026-11-07T03:27:09+00:00",
+  "summary": "Le MPV est un monospace du constructeur Mazda. Il commence sa carrière d'abord aux États-Unis puis au Japon et enfin en Europe. Il en est actuellement à sa troisième génération, essentiellement diffusée en Asie.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Mazda_MPV",
+  "wikipedia_title": "Mazda MPV",
+  "specs": {
+    "engine": {
+      "value": "2.5 L G5 I4 (1995-1999) · 2.6 L G6 I4 (1988–1996) · 3.0 L JE V6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Automatique 4 rapports · Manuelle 5 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, propulsion / four-wheel drive",
+      "from_text": false
+    },
+    "body": {
+      "value": "Break 4 portes (1988–1995)",
+      "from_text": false
+    },
+    "production": {
+      "value": "1988–1999",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Japan: Hiroshima (Hiroshima Plant)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1801 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "1988–1994: 175.8 in",
+      "from_text": false
+    },
+    "width": {
+      "value": "1826 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1988–1992 & 1995–98 2WD: 68.1 in",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2804 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "170 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/mazda-mpv/1.jpg",
+      "thumb": "photos/mazda-mpv/1-thumb.jpg",
+      "author": "IFCAR",
+      "license": "Public domain",
+      "license_url": "",
+      "source_url": "https://commons.wikimedia.org/wiki/File:89-95_Mazda_MPV.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

@@ -1,0 +1,80 @@
+{
+  "slug": "mitsubishi-starion",
+  "name": "Mitsubishi Starion",
+  "brand": "Mitsubishi",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T03:24:04+00:00",
+  "updated": "2026-11-07T03:24:04+00:00",
+  "summary": "La Starion est une voiture de sport du constructeur automobile japonais Mitsubishi produite dans les années 1980. Le véhicule est équipé d'un moteur thermique à pistons d'une cylindrée de 2.0 L à 2.6 L avec turbo développant une puissance de 160 ch à 200 ch. La version 2.0 L (4G63T) dispose d'un bloc en fonte, d'une culasse et de pistons en alliage d'aluminium mais d'un vilebrequin et bielles forgées. À partir de 1985, elle est équipée d'un turbo avec intercooler et voit sa puissance gagner 10 ch soit 180 ch au lieu de 170 ch pour la version sans intercooler. Mitsubishi lance la campagne publicitaire de la Starion en 1983. La Starion a été commercialisée aux États-Unis sous licence Mitsubishi par Dodge, Plymouth et Chrysler sous le nom de Conquest. Au Royaume-Uni, elle porte le nom de Colt Starion. Elle est fabriquée en deux modèles de carrosserie : Narrowbody et Widebody.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Mitsubishi_Starion",
+  "wikipedia_title": "Mitsubishi Starion",
+  "specs": {
+    "engine": {
+      "value": "2.0 L G63B I4 · 2.0 L G63B turbo I4 · 2.6 L G54B turbo I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports · Automatique 4 rapports",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 3 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1982–1989",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Ryu Kaibuchi, Takashi Kono, Masaki Iwamoto, Hidetoshi Aoki",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Japan: Okazaki, Aichi (Nagoya Plant)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1260 kg (narrowbody)",
+      "from_text": false
+    },
+    "length": {
+      "value": "4410 mm (1982–87)",
+      "from_text": false
+    },
+    "width": {
+      "value": "1685 mm (narrowbody)",
+      "from_text": false
+    },
+    "height": {
+      "value": "1320 mm (1982–87)",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2435 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "145-200 PS",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/mitsubishi-starion/1.jpg",
+      "thumb": "photos/mitsubishi-starion/1-thumb.jpg",
+      "author": "Vauxford",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1988_Mitsubishi_Starion_Turbo_2.0_Front_(1).jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "Coupé 3 portes",
+    "décrite comme sportive ou de prestige"
+  ]
+}

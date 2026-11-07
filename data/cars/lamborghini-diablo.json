@@ -1,0 +1,89 @@
+{
+  "slug": "lamborghini-diablo",
+  "name": "Lamborghini Diablo",
+  "brand": "Lamborghini",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T04:51:14+00:00",
+  "updated": "2026-11-07T04:51:14+00:00",
+  "summary": "La Lamborghini Diablo est une supercar des années 1990 conçue par le constructeur automobile italien Lamborghini. Commercialisée en janvier 1990, elle succède à la Lamborghini Countach après seize ans de carrière et 2 200 exemplaires produits.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Lamborghini_Diablo",
+  "wikipedia_title": "Lamborghini Diablo",
+  "specs": {
+    "engine": {
+      "value": "5.7–6.0 L Lamborghini V12",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Longitudinal, moteur central, propulsion / all-wheel drive",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes · 2-door retractable hard-top convertible (roadster)",
+      "from_text": false
+    },
+    "production": {
+      "value": "1990–2001 · 2,903 built",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Marcello Gandini (initial design), Tom Gale at Chrysler Styling Center (final design), Luc Donckerwolke (Diablo VT 6.0)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Italy: Sant'Agata Bolognese",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1576 kg (Diablo)",
+      "from_text": false
+    },
+    "length": {
+      "value": "4460 mm–4470 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "2040 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1105 mm–1115 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2650 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "492 PS",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "322 km/h",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/lamborghini-diablo/1.jpg",
+      "thumb": "photos/lamborghini-diablo/1-thumb.jpg",
+      "author": "MrWalkr",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1995_Lamborghini_Diablo_SE_30.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "2903 exemplaires",
+    "Coupé 2 portes",
+    "décrite comme sportive ou de prestige"
+  ]
+}

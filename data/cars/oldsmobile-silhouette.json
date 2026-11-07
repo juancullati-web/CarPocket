@@ -1,0 +1,77 @@
+{
+  "slug": "oldsmobile-silhouette",
+  "name": "Oldsmobile Silhouette",
+  "brand": "Oldsmobile",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T02:51:12+00:00",
+  "updated": "2026-11-07T02:51:12+00:00",
+  "summary": "La Oldsmobile Silhouette est un monospace familial de la firme américaine Oldsmobile des années 1989-1990. Elle partage sa plateforme avec Pontiac et sa Trans Sport.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Oldsmobile_Silhouette",
+  "wikipedia_title": "Oldsmobile Silhouette",
+  "specs": {
+    "engine": {
+      "value": "3.1 L LG6 V6 · 3.4 L LA1 V6 · 3.8 L L27 V6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Automatique 3 rapports · Automatique 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur transversal, moteur avant, traction",
+      "from_text": false
+    },
+    "body": {
+      "value": "3-door minivan",
+      "from_text": false
+    },
+    "production": {
+      "value": "August 1, 1989 – June 26, 1996",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United States: North Tarrytown, New York (North Tarrytown Assembly)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "3599-3899 lb",
+      "from_text": false
+    },
+    "length": {
+      "value": "1989–93: 194.2 in",
+      "from_text": false
+    },
+    "width": {
+      "value": "1989–93: 73.9 in",
+      "from_text": false
+    },
+    "height": {
+      "value": "1989–91: 65.2 in",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2789 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "120 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/oldsmobile-silhouette/1.jpg",
+      "thumb": "photos/oldsmobile-silhouette/1-thumb.jpg",
+      "author": "Rderijcke",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Oldsmobile_Silhouette_minivan.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

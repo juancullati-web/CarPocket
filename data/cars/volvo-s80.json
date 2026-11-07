@@ -1,0 +1,81 @@
+{
+  "slug": "volvo-s80",
+  "name": "Volvo S80",
+  "brand": "Volvo",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T02:02:18+00:00",
+  "updated": "2026-11-07T02:02:18+00:00",
+  "summary": "La Volvo S80 est une berline de luxe du constructeur automobile Volvo. Elle est moins sportive que les autres modèles de la marque et s'oriente plus vers le confort et le luxe. La S80 est assemblée dans l'usine de Torslanda en Suède. La Volvo S80 peut se comparer aux berlines haut-de-gamme des constructeurs allemands comme les Audi A6, BMW série 5 ou les Mercedes Classe E, mais aussi au modèle GS du Japonais Lexus.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Volvo_S80",
+  "wikipedia_title": "Volvo S80",
+  "specs": {
+    "engine": {
+      "value": "2.0 L I5 turbo (petrol) · 2.3 L B5234T7 turbo I5 (petrol; Thailand) · 2.4 L I5 (petrol) · 2.4 L I5 (CNG/LPG) · 2.5 L I5 (petrol) · 2.8 L I6 twin-turbo (petrol) · 2.9 L I6 (petrol) · 2.9 L I6 twin-turbo (petrol) · 2.4 L I5 (turbodiesel) · 2.5 L I5 (turbodiesel)",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports · Manuelle 5 rapports · Automatique 4 rapports · Automatique 5 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, traction\nmoteur avant, transmission intégrale",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "August 1998–2006",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Doug Frasher, Peter Horbury",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Sweden: Torslanda (Torslandaverken) Canada: Halifax (VHA) Malaysia: Shah Alam (SMA)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1605-1712 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "1998–2004: 4822 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1831 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1435 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2791 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "104 kW",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/volvo-s80/1.jpg",
+      "thumb": "photos/volvo-s80/1-thumb.jpg",
+      "author": "Mr.choppers",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2004_Volvo_S80_in_Ice_White,_front_right.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

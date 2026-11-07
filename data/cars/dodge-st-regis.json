@@ -1,0 +1,77 @@
+{
+  "slug": "dodge-st-regis",
+  "name": "Dodge St. Regis",
+  "brand": "Dodge",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T00:34:01+00:00",
+  "updated": "2026-11-07T00:34:01+00:00",
+  "summary": "La Dodge St. Regis était une automobile 4 portes de grande taille vendue par la division Dodge de la Chrysler Corporation de 1979 à 1981.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Dodge_St._Regis",
+  "wikipedia_title": "Dodge St. Regis",
+  "specs": {
+    "engine": {
+      "value": "225 CID Slant 6 I6 · 318 CID LA V8 · 360 CID LA V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Automatique 3 rapports · Automatique 3 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "4-door notchback sedan",
+      "from_text": false
+    },
+    "production": {
+      "value": "1978–1981",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United States: Detroit, Michigan (Lynch Road Assembly)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1728 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "5593 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1958 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1384 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "3010 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "255 bhp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/dodge-st-regis/1.jpg",
+      "thumb": "photos/dodge-st-regis/1-thumb.jpg",
+      "author": "DVS1mn",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1980_Dodge_St.Regis.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

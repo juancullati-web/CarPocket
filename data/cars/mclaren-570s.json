@@ -1,0 +1,92 @@
+{
+  "slug": "mclaren-570s",
+  "name": "McLaren 570S",
+  "brand": "McLaren",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T05:17:16+00:00",
+  "updated": "2026-11-07T05:17:16+00:00",
+  "summary": "La 570S est une supercar produite par le constructeur automobile britannique McLaren de 2015 à 2021. Elle a été dévoilée en avril 2015 au New York International Auto Show.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/McLaren_570S",
+  "wikipedia_title": "McLaren 570S",
+  "specs": {
+    "engine": {
+      "value": "3.8 L M838T E twin-turbo V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Double embrayage 7 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur central arrière, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes · 2-door retractable hard-top convertible",
+      "from_text": false
+    },
+    "production": {
+      "value": "2015–2021",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Rob Melville",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United Kingdom: Woking, Surrey, England",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1356 kg (570S coupé) (dry)",
+      "from_text": false
+    },
+    "length": {
+      "value": "4529 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1915 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1201 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2670 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "570 PS",
+      "from_text": false
+    },
+    "top_speed": {
+      "value": "328 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-62 mph : 3,2 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/mclaren-570s/1.jpg",
+      "thumb": "photos/mclaren-570s/1-thumb.jpg",
+      "author": "Mr.choppers",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2017_McLaren_570S,_blue,_front_left.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "Coupé 2 portes",
+    "décrite comme sportive ou de prestige"
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "slug": "oldsmobile-toronado",
+  "name": "Oldsmobile Toronado",
+  "brand": "Oldsmobile",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T03:34:08+00:00",
+  "updated": "2026-11-07T03:34:08+00:00",
+  "summary": "L'Oldsmobile Toronado est un modèle de voiture du constructeur automobile américain General Motors et de sa marque Oldsmobile. Sortie en 1966, elle a été produite, en plusieurs générations, jusqu'en 1992. La Toronado est considérée comme la première voiture à traction de série produite avec succès par GM.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Oldsmobile_Toronado",
+  "wikipedia_title": "Oldsmobile Toronado",
+  "specs": {
+    "engine": {
+      "value": "425 cuin 385 hp Rocket V8 · 455 cuin Rocket V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Automatique 3 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FF layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1965–1970",
+      "from_text": false
+    },
+    "designer": {
+      "value": "David North, Bill Mitchell",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United States: Lansing, Michigan (Lansing Car Assembly)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "2039 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "5359 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1994 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1341 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "3023 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "385 hp",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-60 mph : 9,5 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/oldsmobile-toronado/1.jpg",
+      "thumb": "photos/oldsmobile-toronado/1-thumb.jpg",
+      "author": "Greg Gjerdingen from Willmar, USA",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1966_Oldsmobile_Toronado_(28862800095).jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "Coupé 2 portes",
+    "avant 1970"
+  ]
+}

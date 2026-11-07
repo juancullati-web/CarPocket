@@ -1,0 +1,63 @@
+{
+  "slug": "studebaker-lark",
+  "name": "Studebaker Lark",
+  "brand": "Studebaker",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T01:42:15+00:00",
+  "updated": "2026-11-07T01:42:15+00:00",
+  "summary": "The Studebaker Lark is a compact car that was produced by Studebaker from 1959 to 1966. From its introduction in early 1959 until 1962, the Lark was a product of the Studebaker-Packard Corporation. In mid-1962, the company dropped \"Packard\" from its name and reverted to its pre-1954 name, the Studebaker Corporation. In addition to being built in Studebaker's South Bend, Indiana, home plant, the Lark and its descendants were also built in Hamilton, Ontario, Canada, from 1959 to 1966 by Studebaker of Canada Limited. The cars were also exported to a number of countries around the world as completed units and completely knocked down (CKD) kits which were then assembled at a local factory. Lark-based variants represented the bulk of the range produced by Studebaker after 1958 and sold in far greater volume than the contemporary Hawk and Avanti models.",
+  "summary_lang": "en",
+  "summary_url": "https://en.wikipedia.org/wiki/Studebaker_Lark",
+  "wikipedia_title": "Studebaker Lark",
+  "specs": {
+    "engine": {
+      "value": "170 cuin Champion sv I6 · 170 cuin Skybolt OHV I6 · 259 cuin OHV V8 · 289 cuin OHV V8",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "2/Berline 4 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1959–1961",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "South Bend, Indiana Hamilton, Ontario, Canada Kaiser Frazer of Israel, Haifa, Israel Australia",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2756 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "90 hp",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-60 mph : 10 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/studebaker-lark/1.jpg",
+      "thumb": "photos/studebaker-lark/1-thumb.jpg",
+      "author": "Trekphiler",
+      "license": "CC BY 3.0",
+      "license_url": "https://creativecommons.org/licenses/by/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1961_Studebaker_Lark_VI_four-door_sedan.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "avant 1970"
+  ]
+}

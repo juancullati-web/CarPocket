@@ -1,0 +1,81 @@
+{
+  "slug": "mitsubishi-tredia",
+  "name": "Mitsubishi Tredia",
+  "brand": "Mitsubishi",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T03:21:12+00:00",
+  "updated": "2026-11-07T03:21:12+00:00",
+  "summary": "La Tredia est une berline du constructeur automobile japonais Mitsubishi produite de 1982 à 1990. Son nom est censé être dérive du logo Three diamonds de Mitsubishi. Aux côtés de la Cordia et de la Starion, il s'agissait d'une des premières Mitsubishi à être exportées en Amérique du Nord.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Mitsubishi_Tredia",
+  "wikipedia_title": "Mitsubishi Tredia",
+  "specs": {
+    "engine": {
+      "value": "1410 cc 4G12 I4 · 1597 cc 4G32 I4 · 1597 cc 4G32T turbo I4 · 1755 cc 4G37 I4 · 1795 cc 4G62 I4 · 1795 cc 4G62T turbo I4 · 1997 cc 4G63 I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports · Manuelle 8 rapports · Automatique 3 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Front engine, front-/four-wheel drive",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1982–1990",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Takio Nakagawa",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Japan: Okazaki, Aichi (Nagoya Plant) New Zealand: Porirua, Wellington (Todd Motors) Malaysia: Johor South Africa: Silverton, Pretoria (SMC)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "950-1086 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4280 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1660 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1310-1370 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2445 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "68 PS",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/mitsubishi-tredia/1.jpg",
+      "thumb": "photos/mitsubishi-tredia/1-thumb.jpg",
+      "author": "Riley from Christchurch, New Zealand",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1983_Mitsubishi_Tredia_1.6_GLS_(8153098021).jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

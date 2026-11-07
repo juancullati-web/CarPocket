@@ -1,0 +1,83 @@
+{
+  "slug": "renault-rafale",
+  "name": "Renault Rafale",
+  "brand": "Renault",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T00:21:07+00:00",
+  "updated": "2026-11-07T00:21:07+00:00",
+  "summary": "Le Renault Rafale est un SUV du constructeur automobile français Renault produit à partir de 2024. Elle est la version sportive fastback du Renault Austral. Le 14 juillet 2024, elle devient la voiture présidentielle lors du défilé de la fête nationale.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Renault_Rafale",
+  "wikipedia_title": "Renault Rafale",
+  "specs": {
+    "engine": {
+      "value": "Petrol hybrid: · 1.2 L HR12 turbo I3",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Automatique 6 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, traction (FHEV)\nmoteur avant, transmission intégrale (PHEV)",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 5 portes SUV",
+      "from_text": false
+    },
+    "production": {
+      "value": "2024–present",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Marco Brunori, Yang Fu, Pierre Sabas, Bertrand Grisard, Under the lead of Gilles Vidal",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Spain: Palencia (Renault España)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1653 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4710 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1866 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1610 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2740 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "149 kW",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/renault-rafale/1.jpg",
+      "thumb": "photos/renault-rafale/1-thumb.jpg",
+      "author": "© M 93",
+      "license": "CC BY-SA 3.0 de",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Renault_Rafale_E-Tech_Plug-in_Hybrid_300_4x4_Atelier_Alpine_%E2%80%93_f_30032025.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "Coupé 5 portes SUV"
+  ]
+}

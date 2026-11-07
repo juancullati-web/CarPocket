@@ -1,0 +1,84 @@
+{
+  "slug": "audi-s6",
+  "name": "Audi S6",
+  "brand": "Audi",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T02:09:16+00:00",
+  "updated": "2026-11-07T02:09:16+00:00",
+  "summary": "The Audi S6 is a high-performance variant of the Audi A6, an executive car produced by German automaker Audi. It went on sale in 1994, shortly after the \"A6\" designation was introduced, replacing the \"100\" nameplate. The original S6 was largely identical to the outgoing Audi S4 (C4) (Often referred to as the Ur-S4), with the only visible differences being new body-cladding and badging. In certain markets where the even-higher performance RS6 (which is also based on the A6) is not sold, the S6 serves as the most powerful trim level for the A6 lineup. The S6, like all Audi \"S\" models, is fitted as standard with Audi's trademark quattro four-wheel drive (4WD) system, using the Torsen-based permanent 4WD.",
+  "summary_lang": "en",
+  "summary_url": "https://en.wikipedia.org/wiki/Audi_S6",
+  "wikipedia_title": "Audi S6",
+  "specs": {
+    "engine": {
+      "value": "2.2 L 20v turbo I5 · 4.2 L 32v DOHC V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports, · Manuelle 6 rapports, · Automatique 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Front engine,\nquattro permanent four-wheel drive",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes/sedan,",
+      "from_text": false
+    },
+    "production": {
+      "value": "1994–1997",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Germany: Neckarsulm",
+      "from_text": false
+    },
+    "weight": {
+      "value": "saloon: 1730 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4892 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1803 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "saloon: 1435 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2692 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "169 kW",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "241 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-60 mph : 6,1 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/audi-s6/1.jpg",
+      "author": "Auteur non indiqué",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Audi_S6_C4.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

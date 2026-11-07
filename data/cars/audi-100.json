@@ -1,0 +1,87 @@
+{
+  "slug": "audi-100",
+  "name": "Audi 100",
+  "brand": "Audi",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T06:10:14+00:00",
+  "updated": "2026-11-07T06:10:14+00:00",
+  "summary": "Audi 100 été le nom de quatre générations d'automobiles du segment H. Ce modèle a été créé dans le but, pour Audi, de pouvoir s'imposer à terme sur le marché des véhicules « haut de gamme ».",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Audi_100",
+  "wikipedia_title": "Audi 100",
+  "specs": {
+    "engine": {
+      "value": "1588 cc OHC I4 · 1760 cc OHV I4 · 1782 cc OHV I4 (Swiss 100 LS only) · 1871 cc OHV I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 4 rapports all-synchromesh · Automatique 3 rapports optional",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FF layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "2-/Berline 4 portes/sedan",
+      "from_text": false
+    },
+    "production": {
+      "value": "1968–1976 · 827,474 built · Saloon: 796,787 · Coupé S: 30,687",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Ludwig Kraus",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "West Germany: Baden-Württemberg, Neckarsulm West Germany: Bavaria, Ingolstadt West Germany: Lower Saxony, Wolfsburg",
+      "from_text": false
+    },
+    "weight": {
+      "value": "2430-2490 lb (sedan)",
+      "from_text": false
+    },
+    "length": {
+      "value": "4638 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1727 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1417 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2675 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "100 PS",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "182 km/h",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/audi-100/1.jpg",
+      "thumb": "photos/audi-100/1-thumb.jpg",
+      "author": "JoachimKohler-HB",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Audi_100_-_20110617.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "avant 1970"
+  ]
+}

@@ -1,0 +1,81 @@
+{
+  "slug": "pontiac-gto",
+  "name": "Pontiac GTO",
+  "brand": "Pontiac",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T02:36:12+00:00",
+  "updated": "2026-11-07T02:36:12+00:00",
+  "summary": "La Pontiac GTO est une automobile sportive du constructeur automobile américain Pontiac, filiale de General Motors. Apparue comme un sous-modèle performant de la Pontiac LeMans, elle est souvent considérée comme le premier muscle car de l'histoire de l'automobile. Elle est le premier modèle de l'histoire automobile à recevoir des pare-chocs en plastique teintés dans la masse, en 1968.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Pontiac_GTO",
+  "wikipedia_title": "Pontiac GTO",
+  "specs": {
+    "engine": {
+      "value": "389 CID Pontiac V8 · 400 CID Pontiac V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 3 rapports · Manuelle 4 rapports · Automatique 2 rapports · Automatique 3 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Cabriolet 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1964–1967",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United States: Fremont, California Baltimore, Maryland Pontiac, Michigan Kansas City, Missouri Framingham, Massachusetts",
+      "from_text": false
+    },
+    "length": {
+      "value": "5243 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1890 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2921 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "325 hp",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "182.4 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-97 km/h : 5,8 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/pontiac-gto/1.jpg",
+      "thumb": "photos/pontiac-gto/1-thumb.jpg",
+      "author": "Greg Gjerdingen from Willmar, USA",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1966_Pontiac_GTO_(14229809133)_(cropped).jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "Cabriolet 2 portes",
+    "avant 1970",
+    "décrite comme sportive ou de prestige"
+  ]
+}

@@ -1,0 +1,67 @@
+{
+  "slug": "vauxhall-20-60",
+  "name": "Vauxhall 20-60",
+  "brand": "Vauxhall",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T02:20:17+00:00",
+  "updated": "2026-11-07T02:20:17+00:00",
+  "summary": "The Vauxhall 20-60 is a four or five-seater saloon, limousine, tourer or coupé-cabriolet manufactured by Vauxhall of Luton. It was announced on 28 September 1927 with a six-cylinder engine and a four-speed gearbox. A cautious move downmarket. \"The first time any six-cylinder Vauxhall has been sold under £1000!\" \"British & Vauxhall\". The initial 2.7-litre engine was enlarged to 3-litres after twelve months. Priced to be at the lower end of the luxury market with six cylinders, four speeds and five brakes, the better endowed 20-60 replaced the 4-cylinder Vauxhall 14-40. Though the new engine's capacity or swept volume was enlarged by just 465 cc, the vagaries of the RAC or tax formula moved its tax rating from 14HP to 20HP. This tax increase was a significant impost for owners.",
+  "summary_lang": "en",
+  "summary_url": "https://en.wikipedia.org/wiki/Vauxhall_20-60",
+  "wikipedia_title": "Vauxhall 20-60",
+  "specs": {
+    "engine": {
+      "value": "I6 · R-Type 2762 cc · T-Type 2916 cc",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "by single-plate dry clutch to the 4-speed gearbox coupled by a fabric joint and 2¼ in. diameter tubular propeller shaft to the spiral-bevel driven semi-floating rear axle with a banjo case",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Open 2-seater · 5 seater tourer · saloon · cabriolet · limousine · Chassis only also supplied",
+      "from_text": false
+    },
+    "production": {
+      "value": "1927–1930",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Luton, United Kingdom",
+      "from_text": false
+    },
+    "weight": {
+      "value": "chassis only 2520 lb 22½ cwt",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "10'3\" 123 in",
+      "from_text": false
+    },
+    "power": {
+      "value": "23.8 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/vauxhall-20-60/1.jpg",
+      "thumb": "photos/vauxhall-20-60/1-thumb.jpg",
+      "author": "Draco2008",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1930_Vauxhall_20-60_T-type_Cropped.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "avant 1970"
+  ]
+}

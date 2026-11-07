@@ -1,0 +1,81 @@
+{
+  "slug": "fiat-132",
+  "name": "Fiat 132",
+  "brand": "Fiat",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T04:52:18+00:00",
+  "updated": "2026-11-07T04:52:18+00:00",
+  "summary": "La Fiat 132 est une berline à trois volumes 4 portes avec un moteur placé longitudinalement à l'avant et à propulsion arrière produite par le constructeur italien Fiat à partir de 1972, en remplacement de la très classique Fiat 125. L'origine du projet 132 remonte en effet à 1965. La Fiat 125 fut développée justement à cette même époque et vit le jour très rapidement en raison du retard pris dans l'étude du projet 132. Cette berline moyenne a été déclinée en 3 séries.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Fiat_132",
+  "wikipedia_title": "Fiat 132",
+  "specs": {
+    "engine": {
+      "value": "Petrol: · 1585 cc 132C.000 DOHC I4 · 1592 cc 132A.000 DOHC I4 · 1756 cc 132A1.000/B1.000 DOHC I4 · 1995 cc 132C2.000/C3.000 DOHC I4 · Diesel: · 1995 cc Sofim 8144.65 I4 · 2445 cc Sofim 8144.61 I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "4 and Manuelle 5 rapports · Automatique 3 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1972–1981",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Marcello Gandini",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Italy: Turin Chile: Rancagua Poland: Warsaw (Polski Fiat) South Africa: Rosslyn South Korea: Hwaseong (Kia) Yugoslavia: Zagreb (Zastava)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1,120 – 1,170 kg (2469-2579 lb)",
+      "from_text": false
+    },
+    "length": {
+      "value": "4405 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1640 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1422 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2557 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "107 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/fiat-132/1.jpg",
+      "thumb": "photos/fiat-132/1-thumb.jpg",
+      "author": "Vincent van Zeijst",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Fiat_132_GLS_1600.JPG"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

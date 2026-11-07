@@ -1,0 +1,83 @@
+{
+  "slug": "holden-48-215",
+  "name": "Holden 48-215",
+  "brand": "Holden",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T05:31:17+00:00",
+  "updated": "2026-11-07T05:31:17+00:00",
+  "summary": "The Holden 48-215 is a mid-size sedan which was produced by the Australian automaker Holden between November 1948 and October 1953. The 50-2106, a coupé utility derivative of the model marketed as the Holden Coupe Utility, was produced from January 1951.",
+  "summary_lang": "en",
+  "summary_url": "https://en.wikipedia.org/wiki/Holden_48-215",
+  "wikipedia_title": "Holden 48-215",
+  "specs": {
+    "engine": {
+      "value": "2171 cc GMH '132' I6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 3 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes (48-215) · Coupé 2 portes utility (50-2106)",
+      "from_text": false
+    },
+    "production": {
+      "value": "November 1948–September 1953",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Frank Mathwin",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Sydney, New South Wales (Pagewood) Brisbane, Queensland (Fortitude Valley Adelaide, South Australia (Birkenhead) Perth, Western Australia (Holden Mosman Park Plant) Adelaide, South Australia (Woodville) Melbourne, Victoria (Fishermans Bend)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1012 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4369 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1699 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1570 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2616 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "60 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/holden-48-215/1.jpg",
+      "thumb": "photos/holden-48-215/1-thumb.jpg",
+      "author": "Peter Zyczynski from Melbourne, Victoria, Australia.",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1949_Holden_48-215_sedan_01.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "avant 1970"
+  ]
+}

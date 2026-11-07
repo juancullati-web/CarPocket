@@ -1,0 +1,84 @@
+{
+  "slug": "pagani-utopia",
+  "name": "Pagani Utopia",
+  "brand": "Pagani",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T00:18:08+00:00",
+  "updated": "2026-11-07T00:18:08+00:00",
+  "summary": "La Pagani Utopia est une Hypercar du constructeur automobile italien Pagani disponible à partir du 2022 en version coupé, produite en 99 exemplaires — et en version roadster à partir de 2024.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Pagani_Utopia",
+  "wikipedia_title": "Pagani Utopia",
+  "specs": {
+    "engine": {
+      "value": "5.98 L Mercedes-AMG M158 twin-turbo V12",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 7 rapports · Manuelle 7 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur central arrière, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes · Cabriolet 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "2022–present",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Horacio Pagani",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Italy: San Cesario sul Panaro",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1280 kg (dry)",
+      "from_text": false
+    },
+    "length": {
+      "value": "4597 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "2037 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1169 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2794 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "864 PS",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/pagani-utopia/1.jpg",
+      "thumb": "photos/pagani-utopia/1-thumb.jpg",
+      "author": "MrWalkr",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Pagani_Utopia.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "Coupé 2 portes",
+    "décrite comme sportive ou de prestige"
+  ]
+}

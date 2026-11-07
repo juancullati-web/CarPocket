@@ -1,0 +1,81 @@
+{
+  "slug": "bentley-arnage",
+  "name": "Bentley Arnage",
+  "brand": "Bentley",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T01:50:06+00:00",
+  "updated": "2026-11-07T01:50:06+00:00",
+  "summary": "La Bentley Arnage est une voiture de luxe du constructeur automobile britannique Bentley produite à Crewe de 1998 à 2009. Elle est développée conjointement à sa sœur jumelle, la Silver Seraph de Rolls-Royce. Cette berline prend le nom d’Arnage, une ville de la Sarthe, situé au sud du Mans, connue pour son célèbre virage du circuit des 24 heures du Mans (le plus lent du circuit).",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Bentley_Arnage",
+  "wikipedia_title": "Bentley Arnage",
+  "specs": {
+    "engine": {
+      "value": "4.4 L BMW M62 twin-turbo V8 (1998–2000) · 6.75 L L-series turbo/twin-turbo V8 (1999–2006) · 6.75 L L-series twin-turbo V8 (2006–2010)",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "1999–2006: Automatique 4 rapports · 1998–2000: Automatique 5 rapports · 2006–2010: Automatique 6 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes/sedan",
+      "from_text": false
+    },
+    "production": {
+      "value": "1998–2009",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Steve Harper under Graham Hull (1991)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United Kingdom: Crewe (Bentley Crewe)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "Green Label: 5120 lb",
+      "from_text": false
+    },
+    "length": {
+      "value": "5394 mm (Pre-facelift models)",
+      "from_text": false
+    },
+    "width": {
+      "value": "1932 mm (Pre-facelift models)",
+      "from_text": false
+    },
+    "height": {
+      "value": "1516 mm (Pre-facelift models)",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "3116 mm (Pre-facelift models)",
+      "from_text": false
+    },
+    "power": {
+      "value": "354 PS",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/bentley-arnage/1.jpg",
+      "thumb": "photos/bentley-arnage/1-thumb.jpg",
+      "author": "M 93",
+      "license": "CC BY-SA 3.0 de",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Bentley_Arnage_R_(Facelift)_%E2%80%93_Frontansicht_(1),_3._September_2012,_D%C3%BCsseldorf.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

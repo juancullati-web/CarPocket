@@ -1,0 +1,81 @@
+{
+  "slug": "alfa-romeo-giulietta-1977",
+  "name": "Alfa Romeo Giulietta (1977)",
+  "brand": "Alfa Romeo",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T04:53:17+00:00",
+  "updated": "2026-11-07T04:53:17+00:00",
+  "summary": "L'Alfa Romeo Giulietta est une automobile produite entre 1977 et 1985 dans les usines Alfa Romeo d'Arese au nord de Milan et qui reprend le nom de la mythique Alfa Romeo Giulietta des années 1950.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Alfa_Romeo_Giulietta_%281977%29",
+  "wikipedia_title": "Alfa Romeo Giulietta (1977)",
+  "specs": {
+    "engine": {
+      "value": "petrol: · 1357 cc Twin Cam I4 · 1570 cc Twin Cam I4 · 1779 cc Twin Cam I4 · 1962 cc Twin Cam I4 · 1962 cc Twin Cam turbo I4 · diesel: · 1995 cc VM HR488 turbo I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "November 1977–1985",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Ermanno Cressoni",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Italy: Arese Plant, Lombardy",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1100-1140 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4210 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1650 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1400 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2510 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "95 PS",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/alfa-romeo-giulietta-1977/1.jpg",
+      "thumb": "photos/alfa-romeo-giulietta-1977/1-thumb.jpg",
+      "author": "Charles01",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Alfa_Romeo_Giulietta_1984.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

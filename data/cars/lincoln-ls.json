@@ -1,0 +1,77 @@
+{
+  "slug": "lincoln-ls",
+  "name": "Lincoln LS",
+  "brand": "Lincoln",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T02:06:16+00:00",
+  "updated": "2026-11-07T02:06:16+00:00",
+  "summary": "La Lincoln LS est une berline de luxe quatre portes, cinq passagers fabriquée et commercialisée par la division du groupe Ford, Lincoln. Introduite en juin 1999 pour l'année-modèle 2000, la LS était équipée d'une propulsion arrière et une répartition du poids proche de 50/50 et était disponible avec un V8 ou un V6, ce dernier étant initialement proposé avec une transmission manuelle. La LS partage la plate-forme Ford DEW98 avec la Jaguar S-Type et la Ford Thunderbird. Les niveaux de finition allaient du modèle de base V6 aux versions Special Edition V8 LSE en 2004. Les modèles LS ont été fabriqués à l'usine d'assemblage de Ford à Wixom jusqu'au 3 avril 2006. Environ 262 900 ont été fabriqués, dont 2 331 avec des transmissions manuelles et 1 500 éditions LSE.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Lincoln_LS",
+  "wikipedia_title": "Lincoln LS",
+  "specs": {
+    "engine": {
+      "value": "3.0 L Jaguar AJ / (Ford Duratec) V6 (gasoline) · 3.9 L Jaguar AJ V8 (gasoline)",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "2000–2002 Getrag 221 Manuelle 5 rapports · 2000–2002 Ford 5R55N Automatique 5 rapports · 2003–2006 Ford 5R55S Automatique 5 rapports w/ SelectShift",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1999–2006",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Helmuth Schrader (1995)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Wixom, Michigan, U.S.",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1675 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "2000–2005: 193.9 in",
+      "from_text": false
+    },
+    "width": {
+      "value": "1859 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "2000–2002: 57.2 in",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2908 mm",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/lincoln-ls/1.jpg",
+      "thumb": "photos/lincoln-ls/1-thumb.jpg",
+      "author": "IFCAR",
+      "license": "Public domain",
+      "license_url": "",
+      "source_url": "https://commons.wikimedia.org/wiki/File:00-02_Lincoln_LS_2.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

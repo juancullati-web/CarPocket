@@ -1,0 +1,69 @@
+{
+  "slug": "plymouth-gran-fury",
+  "name": "Plymouth Gran Fury",
+  "brand": "Plymouth",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T04:59:17+00:00",
+  "updated": "2026-11-07T04:59:17+00:00",
+  "summary": "La Plymouth Gran Fury est un véhicule automobile du constructeur américain Plymouth qui fut produit de 1975 à 1977 puis de 1980 à 1989. Ce fut la plus grande berline de la gamme Plymouth de 1975 à 1977. A l'arrêt de sa production en 1989 et jusqu'en 1997, ce fut la dernière propulsion encore fabriquée par Plymouth alors que ce type de motorisation était caractéristique à Plymouth depuis la première voiture de la gamme en 1928, de même que ce fut son tout dernier V8. La Plymouth Gran Fury était précédée par la Plymouth Fury, qui arborait les dénominations \"Fury Gran Coupe\" et \"Fury Gran Sedan\" pour ses versions les plus élaborées, respectivement jusqu'en 1973 et 1974.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Plymouth_Gran_Fury",
+  "wikipedia_title": "Plymouth Gran Fury",
+  "specs": {
+    "engine": {
+      "value": "360 cuin LA V8 · 400 cuin B V8 · 440 cuin RB V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Automatique 3 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Break 4 portes (1975–1977)",
+      "from_text": false
+    },
+    "production": {
+      "value": "1974–1977",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Canada: Windsor, Ontario (Windsor Assembly) United States: Detroit, Michigan (Lynch Road Assembly: 1979–1981) United States: St. Louis, Missouri (Saint Louis Assembly) United States: Kenosha, Wisconsin (Kenosha Assembly: 1987–1988)",
+      "from_text": false
+    },
+    "length": {
+      "value": "5585 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "2029 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "3086 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "145 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/plymouth-gran-fury/1.jpg",
+      "thumb": "photos/plymouth-gran-fury/1-thumb.jpg",
+      "author": "Vauxford",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1977_Plymouth_Gran_Fury_5.9_Front.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

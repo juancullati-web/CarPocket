@@ -1,0 +1,69 @@
+{
+  "slug": "toyota-bz3",
+  "name": "Toyota bZ3",
+  "brand": "Toyota",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T01:04:00+00:00",
+  "updated": "2026-11-07T01:04:00+00:00",
+  "summary": "La Toyota bZ3 est une berline électrique issue de la co-entreprise entre le constructeur automobile japonais Toyota et le constructeur automobile chinois BYD et présentée fin 2022.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Toyota_bZ3",
+  "wikipedia_title": "Toyota bZ3",
+  "specs": {
+    "layout": {
+      "value": "Front-motor, front-wheel-drive",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "2023–present",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "China: Tianjin (FAW Toyota)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1710-1840 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4725 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1835 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1475 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2880 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "135-180 kW",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/toyota-bz3/1.jpg",
+      "thumb": "photos/toyota-bz3/1-thumb.jpg",
+      "author": "S5A-0043",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:(CHN-Zhejiang)_Private_FAW-Toyota_bZ3_%E6%B5%99ABT59A6_2024-12-15.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

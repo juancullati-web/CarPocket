@@ -1,0 +1,92 @@
+{
+  "slug": "aston-martin-db9",
+  "name": "Aston Martin DB9",
+  "brand": "Aston Martin",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T03:02:08+00:00",
+  "updated": "2026-11-07T03:02:08+00:00",
+  "summary": "L'Aston Martin DB9 est une automobile Grand Tourisme du constructeur automobile Britannique Aston Martin.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Aston_Martin_DB9",
+  "wikipedia_title": "Aston Martin DB9",
+  "specs": {
+    "engine": {
+      "value": "5.9 L Aston Martin V12",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "6-speed ZF 6HP 26 (Touchtronic) automatic · Manuelle 6 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Front moteur central, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "2+2 Coupé 2 portes · 2+2 Cabriolet 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "January 2004 – July 2016",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Ian Callum and Henrik Fisker (2001; initial design), Marek Reichman (facelifts)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United Kingdom: Gaydon, Warwickshire",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1710-1785 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4697-4720 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "2017-2061 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1270-1282 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2740-2745 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "456 PS",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "299 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-60 mph : 4,7 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/aston-martin-db9/1.jpg",
+      "thumb": "photos/aston-martin-db9/1-thumb.jpg",
+      "author": "Maksim Sidorov",
+      "license": "CC BY 3.0",
+      "license_url": "https://creativecommons.org/licenses/by/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Aston_Martin_DB9_coupe_03_(cropped).jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "2+2 Coupé 2 portes",
+    "décrite comme sportive ou de prestige"
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "slug": "plymouth-laser",
+  "name": "Plymouth Laser",
+  "brand": "Plymouth",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T04:15:14+00:00",
+  "updated": "2026-11-07T04:15:14+00:00",
+  "summary": "The Plymouth Laser is a two-door 2+2 sports coupe sold by Plymouth from 1989 until 1994. The Laser and its siblings, the Mitsubishi Eclipse and Eagle Talon, were the first vehicles produced under the newly-formed Diamond-Star Motors, a joint venture between the Chrysler Corporation and the Mitsubishi Motors Corporation.",
+  "summary_lang": "en",
+  "summary_url": "https://en.wikipedia.org/wiki/Plymouth_Laser",
+  "wikipedia_title": "Plymouth Laser",
+  "specs": {
+    "engine": {
+      "value": "1.8 L Mitsubishi 4G37 I4 · 2.0 L Mitsubishi 4G63 I4 · 2.0 L Mitsubishi 4G63T turbo I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports · Automatique 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur transversal, moteur avant, traction / all-wheel drive",
+      "from_text": false
+    },
+    "body": {
+      "value": "3-door liftback",
+      "from_text": false
+    },
+    "production": {
+      "value": "1989–1994",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United States: Normal, Illinois (Diamond-Star Motors)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1148 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "1993-94: 172.8 in",
+      "from_text": false
+    },
+    "width": {
+      "value": "1993-94: 66.7 in",
+      "from_text": false
+    },
+    "height": {
+      "value": "1306 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2469 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "92 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/plymouth-laser/1.jpg",
+      "author": "Distancerunner15",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1990_Plymouth_Laser_RS_Turbo_red.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

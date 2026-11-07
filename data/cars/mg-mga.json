@@ -1,0 +1,69 @@
+{
+  "slug": "mg-mga",
+  "name": "MG MGA",
+  "brand": "MG",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T03:20:11+00:00",
+  "updated": "2026-11-07T03:20:11+00:00",
+  "summary": "La MGA ou MG Type A est une voiture de sport roadster du constructeur automobile britannique MG (Morris Garages), présentée au salon de l'automobile de Francfort 1955, et construite jusqu'en 1962. Elle succède aux roadsters MG T-type de 1936, et fait alors du constructeur le leader mondial du marché de la voiture de sport.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/MG_A",
+  "wikipedia_title": "MG MGA",
+  "specs": {
+    "engine": {
+      "value": "1489 cc B-Series I4",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Cabriolet 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1955–1959",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Syd Enever",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United Kingdom: Abingdon, England Australia: Enfield (BMC Australia)",
+      "from_text": false
+    },
+    "power": {
+      "value": "68 hp",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "157 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-60 mph : 16,0 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/mg-mga/1.jpg",
+      "thumb": "photos/mg-mga/1-thumb.jpg",
+      "author": "SG2012",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:MG_A_1600_Coupe_(1960).jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "Cabriolet 2 portes",
+    "avant 1970",
+    "décrite comme sportive ou de prestige"
+  ]
+}

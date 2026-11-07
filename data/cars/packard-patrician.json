@@ -1,0 +1,78 @@
+{
+  "slug": "packard-patrician",
+  "name": "Packard Patrician",
+  "brand": "Packard",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T06:06:03+00:00",
+  "updated": "2026-11-07T06:06:03+00:00",
+  "summary": "The Packard Patrician is an automobile which was built by the Packard Motor Car Company of Detroit, Michigan, from model years 1951 through 1956. During its six years in production, the Patrician was built in Packard's Detroit facilities on East Grand Boulevard. The word \"patrician\" is Latin for a ruling class in Ancient Rome. It was the last \"senior level\" Packard until production ended in 1958. The Patrician was the last of the \"senior Packards\" and was briefly available as an extended length limousine for 1953 and 1954 called the Corporate Executive which found few buyers.",
+  "summary_lang": "en",
+  "summary_url": "https://en.wikipedia.org/wiki/Packard_Patrician",
+  "wikipedia_title": "Packard Patrician",
+  "specs": {
+    "engine": {
+      "value": "327 cuin Packard straight-eight",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Automatique 2 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR",
+      "from_text": false
+    },
+    "body": {
+      "value": "Sedan",
+      "from_text": false
+    },
+    "production": {
+      "value": "1951–1952",
+      "from_text": false
+    },
+    "designer": {
+      "value": "John Reinhart",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Packard Automotive Plant, Detroit, MI",
+      "from_text": false
+    },
+    "length": {
+      "value": "5580 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1989 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1580 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "3226 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "150 bhp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/packard-patrician/1.jpg",
+      "author": "Lars-Göran Lindgren Sweden",
+      "license": "CC BY-SA 3.0",
+      "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Packard_Patrician_400_2552_4-Door_Sedan_1952.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "avant 1970"
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "slug": "jeep-compass",
+  "name": "Jeep Compass",
+  "brand": "Jeep",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T00:47:08+00:00",
+  "updated": "2026-11-07T00:47:08+00:00",
+  "summary": "Le Jeep Compass est un SUV compact commercialisé par le constructeur automobile américain Jeep depuis 2006.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Jeep_Compass",
+  "wikipedia_title": "Jeep Compass",
+  "specs": {
+    "engine": {
+      "value": "Gasoline: · 2.0 L GEMA/Chrysler World I4 · 2.4 L GEMA/Chrysler World I4 · Diesel: · 2.0 L VAG EA188 CRD PD I4 turbo-diesel · 2.2 L Mercedes-Benz OM651 CRD I4 turbo",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports · Manuelle 6 rapports · Automatique 6 rapports · CVT Jatco JF011E automatic",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, traction or all-wheel drive",
+      "from_text": false
+    },
+    "body": {
+      "value": "SUV 5 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "2006–2016",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United States: Belvidere, Illinois (Belvidere Assembly Plant)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1460-1685 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4404 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1760 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1631 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2635 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "172 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/jeep-compass/1.jpg",
+      "thumb": "photos/jeep-compass/1-thumb.jpg",
+      "author": "OSX",
+      "license": "Public domain",
+      "license_url": "",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2008_Jeep_Compass_(MK_MY08)_Limited_2.4_wagon_(2015-11-11)_01.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

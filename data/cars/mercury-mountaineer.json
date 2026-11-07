@@ -1,0 +1,73 @@
+{
+  "slug": "mercury-mountaineer",
+  "name": "Mercury Mountaineer",
+  "brand": "Mercury",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T01:22:01+00:00",
+  "updated": "2026-11-07T01:22:01+00:00",
+  "summary": "The Mercury Mountaineer is a mid-size luxury sport utility vehicle (SUV) that was sold by Mercury from 1996 until 2010. The first Mercury SUV, the Mountaineer was a divisional counterpart of the Ford Explorer, marketed above it and between the Lincoln Aviator (ultimately replacing the latter). Across its three generations, the Mountaineer was marketed exclusively as a 5-door wagon, with no counterpart to the 3-door Explorer Sport or the Explorer Sport Trac pickup truck. For its entire production, the Mountaineer was assembled by Ford at its Louisville Assembly facility (Louisville, Kentucky); prior to 2007, additional production was sourced from St. Louis Assembly (Hazelwood, Missouri). After the 2010 model year, the Mountaineer was discontinued, becoming the second Mercury line (after the Sable) to be discontinued before Mercury was withdrawn at the end of 2010.",
+  "summary_lang": "en",
+  "summary_url": "https://en.wikipedia.org/wiki/Mercury_Mountaineer",
+  "wikipedia_title": "Mercury Mountaineer",
+  "specs": {
+    "engine": {
+      "value": "4.0 L Cologne V6 · 5.0 L Windsor V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Automatique 4 rapports (V8 models) · Automatique 5 rapports (V6 models)",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, propulsion / Four-wheel drive",
+      "from_text": false
+    },
+    "body": {
+      "value": "SUV 5 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "April 1996–2001",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Louisville, Kentucky St. Louis, Missouri",
+      "from_text": false
+    },
+    "length": {
+      "value": "1997: 188.5 in",
+      "from_text": false
+    },
+    "width": {
+      "value": "1783 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1997 2WD: 66.8 in",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "1997: 111.5 in",
+      "from_text": false
+    },
+    "power": {
+      "value": "215 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/mercury-mountaineer/1.jpg",
+      "thumb": "photos/mercury-mountaineer/1-thumb.jpg",
+      "author": "IFCAR",
+      "license": "Public domain",
+      "license_url": "",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1998-2001_Mercury_Mountaineer_--_03-21-2012.JPG"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

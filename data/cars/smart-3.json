@@ -1,0 +1,75 @@
+{
+  "slug": "smart-3",
+  "name": "Smart 3",
+  "brand": "Smart",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T01:08:01+00:00",
+  "updated": "2026-11-07T01:08:01+00:00",
+  "summary": "La Smart #3 (prononcé Hashtag-Three, en chinois : Smart 精灵#3 ; pinyin : Smart Jīnglíng #3) est un crossover coupé 100 % électrique produit par le constructeur automobile sino-allemand Smart Automobile à partir de 2023 en Chine.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Smart_Hashtag_3",
+  "wikipedia_title": "Smart 3",
+  "specs": {
+    "transmission": {
+      "value": "1-speed direct-drive",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Rear-motor, rear-wheel-drive\nDual-motor, four-wheel-drive (Brabus)",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 5 portes SUV",
+      "from_text": false
+    },
+    "production": {
+      "value": "2023–present",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "China: Xi'an, Shaanxi",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1820 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4440 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1844 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1556 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2785 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "268 hp",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/smart-3/1.jpg",
+      "thumb": "photos/smart-3/1-thumb.jpg",
+      "author": "Alexander Migl",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Smart_Hashtag_3_DSC_7992.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "Coupé 5 portes SUV"
+  ]
+}

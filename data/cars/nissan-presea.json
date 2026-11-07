@@ -1,0 +1,76 @@
+{
+  "slug": "nissan-presea",
+  "name": "Nissan Presea",
+  "brand": "Nissan",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T01:29:03+00:00",
+  "updated": "2026-11-07T01:29:03+00:00",
+  "summary": "The Nissan Presea (Japanese: 日産・プレセア, Hepburn: Nissan Puresea) is a compact car, produced for the Asian market from 1990 to 2000. It competed with the entry-level luxury 4-door hardtop sedans that were popular in Japan during the 1990s, notably the Toyota Corolla Ceres, the Toyota Sprinter Marino, the Honda Integra, and the Mazda Lantis. \"Presea\" is Spanish for \"jewel\" or \"important\".",
+  "summary_lang": "en",
+  "summary_url": "https://en.wikipedia.org/wiki/Nissan_Presea",
+  "wikipedia_title": "Nissan Presea",
+  "specs": {
+    "engine": {
+      "value": "1.5 L Nissan PLASMA I4, GA15DE · 1.6 L Nissan PLASMA I4, GA16DE · 1.8 L Nissan PLASMA I4, SR18DE · 2.0 L Nissan PLASMA I4, SR20DE",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Automatique 4 rapports · Manuelle 5 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FF layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "4-door hardtop",
+      "from_text": false
+    },
+    "production": {
+      "value": "1990–2000",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Satoshi Wada (1989)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Zama, Kanagawa, Japan (Zama Plant) (1990–1994) Musashimurayama, Tokyo, Japan (Musashimurayama Plant) (1995–1999)",
+      "from_text": false
+    },
+    "length": {
+      "value": "4420 mm (R10)",
+      "from_text": false
+    },
+    "width": {
+      "value": "1690 mm (R10)",
+      "from_text": false
+    },
+    "height": {
+      "value": "1320 mm (R10)",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2500 mm (R10)",
+      "from_text": false
+    },
+    "power": {
+      "value": "125 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/nissan-presea/1.jpg",
+      "author": "Kuha455405",
+      "license": "CC BY-SA 3.0",
+      "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Nissan_Presea_1990.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

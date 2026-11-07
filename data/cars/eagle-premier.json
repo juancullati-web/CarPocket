@@ -1,0 +1,80 @@
+{
+  "slug": "eagle-premier",
+  "name": "Eagle Premier",
+  "brand": "Eagle",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T01:31:09+00:00",
+  "updated": "2026-11-07T01:31:09+00:00",
+  "summary": "La Renault Premier, commercialisée dès 1987 et jusqu'en 1992 sous la marque Eagle: Eagle Premier, mais également sous Dodge Monaco en 1990-92. Elle était destinée à remplacer les Nash / AMC Ambassador. Elle est, avec la Medallion, la première voiture à porter le badge \"Eagle\". Elle ne fut jamais siglée Renault à la suite du rachat de AMC par Chrysler en 1987 (autre que dans les video de promotion des concessionnaires), ce dernier ayant décidé de commercialiser les Renault Premier sous la marque Eagle: les Eagle Premier. Les quelques supposés exemplaires déjà produits auraient été rebadgés Eagle avant leur distribution. Un contrat non dénoncé lors de l'achat d'AMC par Chrysler obligea Chrysler à produire ces Premier. Ce contrat liait Renault et AMC, ce dernier étant tenu d'écouler un nombre défini de véhicules équipés du moteur type PRV, vendu par Renault, au sein de son réseau.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Renault_Premier",
+  "wikipedia_title": "Eagle Premier",
+  "specs": {
+    "engine": {
+      "value": "2.5 L AMC I4 · 3.0 L PRV V6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Automatique 4 rapports · Automatique 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Longitudinal moteur avant, traction",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "September 1987 – 17 December 1991",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Giorgetto Giugiaro at Italdesign, Dick Teague",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Canada: Brampton, Ontario (Brampton Assembly)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "2991-3068 lb",
+      "from_text": false
+    },
+    "length": {
+      "value": "4897 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1778 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1354 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2692 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "111 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/eagle-premier/1.jpg",
+      "author": "RJHuffman",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1992_Eagle_Premier_ES_Limited.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

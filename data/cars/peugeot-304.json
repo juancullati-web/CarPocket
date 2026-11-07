@@ -1,0 +1,74 @@
+{
+  "slug": "peugeot-304",
+  "name": "Peugeot 304",
+  "brand": "Peugeot",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T03:27:00+00:00",
+  "updated": "2026-11-07T03:27:00+00:00",
+  "summary": "La Peugeot 304 est une voiture moyenne de catégorie 7 CV, elle est produite par le constructeur automobile Peugeot de 1969 à 1980. La 304 est une variante allongée et modernisée de la 204 lancée en 1969, en même temps que la Renault 12, sa principale concurrente française. La face avant, équipée de phares « trapézoïdaux », est inspirée par celle de la 504 sortie un an plus tôt, en 1968. À l'arrière, uniquement pour les berlines, le porte-à-faux est plus long avec des feux arrière (AR) différents. Cependant, pour les versions break, la longueur est identique à celle de la 204, ainsi que tout le bloc AR (feux identiques).",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Peugeot_304",
+  "wikipedia_title": "Peugeot 304",
+  "specs": {
+    "engine": {
+      "value": "Petrol: · 1,127 cc XK5 I4 · 1,130 cc XK4 I4 (Greece only) · 1,288 cc XL3/XL3S I4 · 1,290 cc XL5/XL5S I4 · Diesel: · 1,357 cc XL4D I4 · 1,548 cc XIDL I4",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FF layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes · Break 5 portes (\"break\") · Coupé 3 portes · Cabriolet 2 portes · 3-door van (\"fourgonette\")",
+      "from_text": false
+    },
+    "production": {
+      "value": "1969–1980 · 1,178,423 exemplaires",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Aldo Brovarone at Pininfarina",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "France: Sochaux (Sochaux Plant) France: Mulhouse (Mulhouse Plant)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "890-970 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4140 mm saloon",
+      "from_text": false
+    },
+    "width": {
+      "value": "1570 mm saloon",
+      "from_text": false
+    },
+    "height": {
+      "value": "1410 mm saloon",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2590 mm saloon",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/peugeot-304/1.jpg",
+      "author": "unknown, affiliated with Garage de l'Est, digitally modified and uploaded by User:328cia",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Peugeot_304_S_1974.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "avant 1970"
+  ]
+}

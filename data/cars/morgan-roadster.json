@@ -1,0 +1,76 @@
+{
+  "slug": "morgan-roadster",
+  "name": "Morgan Roadster",
+  "brand": "Morgan",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T00:17:08+00:00",
+  "updated": "2026-11-07T00:17:08+00:00",
+  "summary": "La Morgan Roadster est un modèle d'automobile du constructeur Morgan Motor. Elle a été lancée en 2004 en remplacement de la Morgan Plus 8. Les deux voitures sont identiques à l’exception de la nouvelle mécanique moderne Ford V6. Le nouveau moteur a une puissance de 220ch et est un peu plus léger que son prédécesseur, le Rover V8, ce qui améliore les performances de la voiture et réduit la consommation de carburant. La climatisation est désormais de série sur les modèles américains. Comme les précédents modèles, la Morgan Roadster est équipée d’un châssis échelle en acier galvanisé comportant cinq traverses tubulaires ou en caisson. La carrosserie, faite d’acier et d’aluminium, repose sur un châssis en frêne. À l’avant, les suspensions se composent du traditionnel essieu avant rigide et coulissant. À l’arrière, on retrouve les suspensions avec ressorts à lames.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Morgan_Roadster",
+  "wikipedia_title": "Morgan Roadster",
+  "specs": {
+    "engine": {
+      "value": "3.0 L Ford Duratec V6 · 3.7 L Ford Cyclone V6",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Cabriolet 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "2004–2019",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United Kingdom: Malvern, Worcestershire, England",
+      "from_text": false
+    },
+    "length": {
+      "value": "4010 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1610 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1220 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "209 kW",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "225 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-100 km/h : 5,5 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/morgan-roadster/1.jpg",
+      "thumb": "photos/morgan-roadster/1-thumb.jpg",
+      "author": "Semnoz",
+      "license": "CC BY-SA 3.0",
+      "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2006_SAG_-_Morgan_roadster_-_05.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "Cabriolet 2 portes",
+    "décrite comme sportive ou de prestige"
+  ]
+}

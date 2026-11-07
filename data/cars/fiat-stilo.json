@@ -1,0 +1,81 @@
+{
+  "slug": "fiat-stilo",
+  "name": "Fiat Stilo",
+  "brand": "Fiat",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T00:26:00+00:00",
+  "updated": "2026-11-07T00:26:00+00:00",
+  "summary": "La Fiat Stilo est une berline compacte du constructeur automobile italien Fiat, produite de 2001 à 2010 (2007 en Europe).",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Fiat_Stilo",
+  "wikipedia_title": "Fiat Stilo",
+  "specs": {
+    "engine": {
+      "value": "petrol: · 1.2 L Fire I4 · 1.4 L Fire I4 · 1.6 L Torque I4 · 1.6 L Ecotec I4 · 1.8 L Family B I4 · 2.4 L Family C I5 · diesel: · 1.9 L JTD I4 · 1.9 L MultiJet I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports · Manuelle 6 rapports · Manuelle 5 rapports (Selespeed)",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FF layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "3/Compacte 5 portes · Break 5 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "2000–2007 (Italy) · September 2002–2010 (Brazil)",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Centro Stile Fiat:, Peter Fassbender (design director), Mauro Basso (exterior), Peter Jansen (interior)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Italy: Cassino, Frosinone Brazil: Betim, Minas Gerais",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1090-1320 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4182 mm (3-door)",
+      "from_text": false
+    },
+    "width": {
+      "value": "1784 mm (3-door)",
+      "from_text": false
+    },
+    "height": {
+      "value": "1475 mm (3-door)",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2600 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "95 PS",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/fiat-stilo/1.jpg",
+      "thumb": "photos/fiat-stilo/1-thumb.jpg",
+      "author": "Rudolf Stricker",
+      "license": "Attribution",
+      "license_url": "",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Fiat_Stilo_front_20080711.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

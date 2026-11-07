@@ -1,0 +1,76 @@
+{
+  "slug": "mitsubishi-galant",
+  "name": "Mitsubishi Galant",
+  "brand": "Mitsubishi",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T02:55:12+00:00",
+  "updated": "2026-11-07T02:55:12+00:00",
+  "summary": "La Galant est une berline du constructeur automobile japonais Mitsubishi produite de 1969 à 2012 sous neuf générations distinctes. Elle est motorisée par un moteur 4-cylindres ou par un V6.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Mitsubishi_Galant",
+  "wikipedia_title": "Mitsubishi Galant",
+  "specs": {
+    "engine": {
+      "value": "1.3 L 4G30 I4 (A51) · 1.4 L 4G33 I4 (A54) · 1.5 L 4G31 I4 (A52) · 1.6 L 4G32 I4 (A53) · 1.7 L 4G35 I4 (A55)",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "2-door hardtop coupé",
+      "from_text": false
+    },
+    "production": {
+      "value": "1969–1973",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Shinichi Mitsuhashi",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Japan: Okazaki (Nagoya Plant: 1969–2006) Australia: Port Melbourne (1971–1972) Australia: Tonsley Park (MMAL: 1972–2008) United States: Normal, Illinois (Diamond-Star Motors/MMNA: 1993–2012) Indonesia: Jakarta (1977–2005) New Zealand: Petone (Todd Motors: 1972–1975) New Zealand: Porirua (MMNZ: 1975–1998) Philippines: Cainta (MMPC: 1973–2006) Thailand: Laem Chabang (MMTh: 1992–1998) China: Fuzhou (Soueast Motors) Malaysia: Pekan, Pahang (AMM: 1987–1994)",
+      "from_text": false
+    },
+    "length": {
+      "value": "4080 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1560 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1370 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2420 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "115 PS",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/mitsubishi-galant/1.jpg",
+      "thumb": "photos/mitsubishi-galant/1-thumb.jpg",
+      "author": "Riley from Christchurch, New Zealand",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1972_Mitsubishi_Galant_Colt_16L_(30526675374).jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "2-door hardtop coupé",
+    "avant 1970"
+  ]
+}

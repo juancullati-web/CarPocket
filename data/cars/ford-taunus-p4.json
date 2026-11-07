@@ -1,0 +1,83 @@
+{
+  "slug": "ford-taunus-p4",
+  "name": "Ford Taunus P4",
+  "brand": "Ford",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T01:32:12+00:00",
+  "updated": "2026-11-07T01:32:12+00:00",
+  "summary": "La Ford Taunus 12 M est une petite voiture familiale qui a été produite par Ford Allemagne entre septembre 1962 et août 1966. Le nom Taunus 12M a également été appliqué aux modèles Ford suivants, raison pour laquelle la voiture est généralement identifiée, rétrospectivement, en tant que Ford Taunus P4. C'était la quatrième Ford allemande nouvellement conçue à être lancée après la guerre et pour cette raison, elle était depuis sa création connue au sein de la société sous le nom de Ford Project 4 (P4) ou de Ford Taunus P4. Plus inhabituel, à l'origine la voiture n'a pas été conçue pour une production en Allemagne, mais pour être produite en Amérique du Nord et vendue sous le nom de Ford Cardinal, en tant que concurrente locale de la Volkswagen.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Ford_Taunus_P4",
+  "wikipedia_title": "Ford Taunus P4",
+  "specs": {
+    "engine": {
+      "value": "1183 cc V4 · 1498 cc V4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 4 rapports with column-shift",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, traction",
+      "from_text": false
+    },
+    "body": {
+      "value": "2-door or Berline 4 portes · 3-door \"Kombi\" estate car · Coupé 2 portes · Berline 3 portes delivery · 2-door coach-built (Karl Deutsch) cabriolet",
+      "from_text": false
+    },
+    "production": {
+      "value": "September 1962 – August 1966",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Germany: Cologne-Niehl Belgium: Genk",
+      "from_text": false
+    },
+    "weight": {
+      "value": "860-870 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4248 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1594 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1458 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2527 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "40 PS",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "123 km/h",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/ford-taunus-p4/1.jpg",
+      "thumb": "photos/ford-taunus-p4/1-thumb.jpg",
+      "author": "Charles01",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Ford_Taunus_P4_at_Schaffen-Diest_in_2018.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "avant 1970"
+  ]
+}

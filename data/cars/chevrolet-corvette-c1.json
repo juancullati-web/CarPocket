@@ -1,0 +1,89 @@
+{
+  "slug": "chevrolet-corvette-c1",
+  "name": "Chevrolet Corvette (C1)",
+  "brand": "Chevrolet",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T00:54:08+00:00",
+  "updated": "2026-11-07T00:54:08+00:00",
+  "summary": "La Chevrolet Corvette C1 est une voiture de sport GT roadster du constructeur automobile américain Chevrolet, 1re voiture de sport de General Motors, et 1re génération de Chevrolet Corvette, présentée au General Motors Motorama 1953, et commercialisée à 69 015 exemplaires jusqu'en 1962, une des voitures emblématiques de l'Amérique des années 1950.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Chevrolet_Corvette_%28C1%29",
+  "wikipedia_title": "Chevrolet Corvette (C1)",
+  "specs": {
+    "engine": {
+      "value": "235 CID Blue Flame I6 · 265 CID Small-block V8 · 283 CID Small-block V8 · 327 CID Small-block V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Automatique 2 rapports · Manuelle 3 rapports · Manuelle 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Cabriolet 2 portes/roadster",
+      "from_text": false
+    },
+    "production": {
+      "value": "June 1953–July 1962",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Harley Earl, Bob Cadaret (1956)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United States: Flint Assembly, Flint, Michigan (1953–early 1954) United States: St. Louis Assembly, St. Louis, Missouri (early 1954–1962)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1309 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4249 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1773 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1308 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2591 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "150 hp",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-60 mph : 11,5 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/chevrolet-corvette-c1/1.jpg",
+      "thumb": "photos/chevrolet-corvette-c1/1-thumb.jpg",
+      "author": "Morio",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Chevrolet_Corvette_C1_front-right_2016_Shanghai_Auto_Museum.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "Cabriolet 2 portes/roadster",
+    "avant 1970",
+    "décrite comme sportive ou de prestige"
+  ]
+}

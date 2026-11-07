@@ -1,0 +1,77 @@
+{
+  "slug": "merkur-scorpio",
+  "name": "Merkur Scorpio",
+  "brand": "Merkur",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T03:53:00+00:00",
+  "updated": "2026-11-07T03:53:00+00:00",
+  "summary": "The Merkur Scorpio is a mid-size luxury car produced by Ford of Europe and sold in North America as the flagship of the Ford Motor Company's new Merkur brand, established in 1985 when the Merkur XR4Ti went on sale. The Scorpio was only offered for the 1988 and 1989 model years.",
+  "summary_lang": "en",
+  "summary_url": "https://en.wikipedia.org/wiki/Merkur_Scorpio",
+  "wikipedia_title": "Merkur Scorpio",
+  "specs": {
+    "engine": {
+      "value": "2.9 L Cologne V6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports · Automatique 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "F/R",
+      "from_text": false
+    },
+    "body": {
+      "value": "Compacte 5 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1987–1989",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "West Germany: Cologne (Cologne Body & Assembly)",
+      "from_text": false
+    },
+    "length": {
+      "value": "4735 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1765 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1387 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2761 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "144 hp",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-60 mph : 9,6 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/merkur-scorpio/1.jpg",
+      "thumb": "photos/merkur-scorpio/1-thumb.jpg",
+      "author": "ilikewaffles11",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Merkur_Scorpio_2.9_Ghia_(35762979256).jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

@@ -1,0 +1,83 @@
+{
+  "slug": "standard-vanguard",
+  "name": "Standard Vanguard",
+  "brand": "Standard",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T05:52:14+00:00",
+  "updated": "2026-11-07T05:52:14+00:00",
+  "summary": "La Standard Vanguard est une voiture produite par la Standard Motor Company à Coventry, Angleterre entre 1947 et 1963. La voiture, présentée en juillet 1947, était totalement neuve, sans aucune ressemblance avec les modèles précédents. Conçue en 1945, elle fut la première Standard d'après la Seconde Guerre mondiale et était destinée à l'exportation à travers le monde. Elle fut également le premier modèle à porter le nouvel insigne Standard, une représentation très stylisée d'ailes de griffon. Dans le sillage de la Seconde Guerre mondiale, de nombreux clients potentiels au Royaume-Uni et sur les marchés anglais d'exportation avaient connu récemment plusieurs années de service militaire ou naval et donc un nom de voiture lié à la Marine britannique portait une plus grande résonance que pour les générations futures.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Standard_Vanguard",
+  "wikipedia_title": "Standard Vanguard",
+  "specs": {
+    "engine": {
+      "value": "2088 cc Standard I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 3 rapports · Overdrive optional from 1950.",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1947–1953 · 174,799 made",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Walter Belgrove",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United Kingdom Australia New Zealand (Motor Assemblies)",
+      "from_text": false
+    },
+    "length": {
+      "value": "4216 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1753 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1626 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2388 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "68 bhp",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "127 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-60 mph : 21,5 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/standard-vanguard/1.jpg",
+      "thumb": "photos/standard-vanguard/1-thumb.jpg",
+      "author": "Sicnag",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Standard_Vanguard_Phase_1_Saloon.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "avant 1970"
+  ]
+}

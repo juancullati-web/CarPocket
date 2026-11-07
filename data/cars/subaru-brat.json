@@ -1,0 +1,73 @@
+{
+  "slug": "subaru-brat",
+  "name": "Subaru BRAT",
+  "brand": "Subaru",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T01:59:09+00:00",
+  "updated": "2026-11-07T01:59:09+00:00",
+  "summary": "The Subaru BRAT is a four-wheel drive coupé utility by Subaru from 1978 to 1994, based on the Leone. Depending on the market it was known as the Brumby, MV Pickup or Shifter.",
+  "summary_lang": "en",
+  "summary_url": "https://en.wikipedia.org/wiki/Subaru_BRAT",
+  "wikipedia_title": "Subaru BRAT",
+  "specs": {
+    "engine": {
+      "value": "1.6 L EA71 OHV H4 (A33/34/67)",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 4 rapports · Automatique 3 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, traction\nmoteur avant, transmission intégrale (optional)",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes utility",
+      "from_text": false
+    },
+    "production": {
+      "value": "1978–1981",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Alex Tremulis",
+      "from_text": false
+    },
+    "weight": {
+      "value": "775 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "3995 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1500 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1385 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2455 mm",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/subaru-brat/1.jpg",
+      "thumb": "photos/subaru-brat/1-thumb.jpg",
+      "author": "NaBUru38",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Subaru_BRAT_Mk1_in_Uruguay_01.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

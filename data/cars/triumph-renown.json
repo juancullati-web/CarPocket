@@ -1,0 +1,76 @@
+{
+  "slug": "triumph-renown",
+  "name": "Triumph Renown",
+  "brand": "Triumph",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T05:34:00+00:00",
+  "updated": "2026-11-07T05:34:00+00:00",
+  "summary": "Les Triumph 1800, Triumph 2000 et Triumph Renown sont une série de grandes berlines produite par Triumph de 1949 à 1954, équipées d'un moteur à 4 cylindres en ligne et d'une carrosserie en aluminium montée sur un châssis en bois. Avec la Triumph Roadster, il s'agit du premier véhicule à avoir porté le nom de Triumph après la Seconde Guerre mondiale et le rachat de l'entreprise par la Standard Motor Company.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Triumph_Renown",
+  "wikipedia_title": "Triumph Renown",
+  "specs": {
+    "engine": {
+      "value": "1766 cc or 2088 cc OHV I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 3 rapports",
+      "from_text": false
+    },
+    "body": {
+      "value": "4 door saloon, limousine.",
+      "from_text": false
+    },
+    "production": {
+      "value": "1946–1954 · 15,491 made",
+      "from_text": false
+    },
+    "length": {
+      "value": "4267 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1626 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1651 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2743 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "65 bhp",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "121 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-60 mph : 24,3 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/triumph-renown/1.jpg",
+      "thumb": "photos/triumph-renown/1-thumb.jpg",
+      "author": "Charles01",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Triumph_Renown_first_registered_April_1954.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "avant 1970",
+    "décrite comme sportive ou de prestige"
+  ]
+}

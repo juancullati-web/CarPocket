@@ -1,0 +1,92 @@
+{
+  "slug": "maserati-granturismo",
+  "name": "Maserati GranTurismo",
+  "brand": "Maserati",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T02:23:15+00:00",
+  "updated": "2026-11-07T02:23:15+00:00",
+  "summary": "The Maserati GranTurismo and GranCabrio are a series of grand tourers produced by the Italian manufacturer Maserati, succeeding the Maserati Coupé and Spyder. The first generation GranTurismo (M145) was introduced at the 2007 Geneva Motor Show and was produced from 2007 to December 2019. It set a record for the fastest development of a car, going from design to production in just nine months. The model featured a 4.2-litre V8 engine initially, which was later upgraded to a 4.7-liter engine in the GranTurismo S variant. The GranTurismo MC, a racing version developed for the FIA GT4 European Cup, and the GranTurismo MC Sport Line, a customisation programme, were also part of the lineup. The GranTurismo Sport, introduced in 2012, replaced the GranTurismo S and featured a revised 4.7-litre engine.",
+  "summary_lang": "en",
+  "summary_url": "https://en.wikipedia.org/wiki/Maserati_GranTurismo",
+  "wikipedia_title": "Maserati GranTurismo",
+  "specs": {
+    "engine": {
+      "value": "4.2 L Ferrari-Maserati F136 U V8 · 4.7 L Ferrari-Maserati F136 Y V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Automatique 6 rapports · Manuelle 6 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Front-moteur central, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "2-door 2+2 coupé",
+      "from_text": false
+    },
+    "production": {
+      "value": "2007 – December 2019 · 40,520 units · 28,805 units (coupé) · 11,715 units (convertible)",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Pininfarina:, Jason Castriota, Lowie Vermeersch (GranCabrio)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Italy: Modena",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1880 kg (European version)",
+      "from_text": false
+    },
+    "length": {
+      "value": "4881 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1847 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1353 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2942 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "405 PS",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "303 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-100 km/h : 4,9 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/maserati-granturismo/1.jpg",
+      "thumb": "photos/maserati-granturismo/1-thumb.jpg",
+      "author": "Brian Snelson from Hockley, Essex, England",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Maserati_GranTurismo_-_Flickr_-_exfordy_(1).jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "2-door 2+2 coupé",
+    "décrite comme sportive ou de prestige"
+  ]
+}

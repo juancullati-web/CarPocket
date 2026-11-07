@@ -1,0 +1,71 @@
+{
+  "slug": "simca-8",
+  "name": "Simca 8",
+  "brand": "Simca",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T01:20:00+00:00",
+  "updated": "2026-11-07T01:20:00+00:00",
+  "summary": "La Simca 8 est une automobile produite entre 1938 et 1951 sous licence, par le constructeur français Simca, filiale de l'italien Fiat.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Simca_8",
+  "wikipedia_title": "Simca 8",
+  "specs": {
+    "engine": {
+      "value": "1,089 cc I4 · 1,221 cc I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 4 rapports with synchromesh on top 2 ratios",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 2 portes · Berline 4 portes · Coupé 2 portes · Cabriolet 2 portes · Break 3 portes (from 1948)",
+      "from_text": false
+    },
+    "production": {
+      "value": "1937–1951",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "France: Nanterre",
+      "from_text": false
+    },
+    "length": {
+      "value": "4000 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1480 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1530 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2420 mm",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/simca-8/1.jpg",
+      "thumb": "photos/simca-8/1-thumb.jpg",
+      "author": "Modified version of original by Berthold Werner (Cropping, brightness adjustment and minor changes made by Charles01).",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Simca_8_2013-07-21_13-47-30_cropped_to_remove_distracting_Neighbo(u)r.JPG"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "avant 1970"
+  ]
+}

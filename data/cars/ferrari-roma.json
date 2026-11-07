@@ -1,0 +1,92 @@
+{
+  "slug": "ferrari-roma",
+  "name": "Ferrari Roma",
+  "brand": "Ferrari",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T02:05:01+00:00",
+  "updated": "2026-11-07T02:05:01+00:00",
+  "summary": "La Ferrari Roma (Rome, en italien) est une voiture de sport GT 2+2 du constructeur automobile italien Ferrari, commercialisée depuis 2020 à 2025.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Ferrari_Roma",
+  "wikipedia_title": "Ferrari Roma",
+  "specs": {
+    "engine": {
+      "value": "3.9 L F154 BH twin-turbo V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Double embrayage 8 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Front moteur central, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "2-door 2+2 coupé · 2-door 2+2 convertible",
+      "from_text": false
+    },
+    "production": {
+      "value": "Coupé: 2020–2024 · Spider: 2023–2026",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Ferrari Styling Centre under Flavio Manzoni",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Italy: Maranello",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1570 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4656 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1974 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1301 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2670 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "620 PS",
+      "from_text": false
+    },
+    "top_speed": {
+      "value": "320 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-100 km/h : 3,4 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/ferrari-roma/1.jpg",
+      "thumb": "photos/ferrari-roma/1-thumb.jpg",
+      "author": "Mr.choppers",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2021_Ferrari_Roma_in_Rosso_Fiorano,_front_right.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "2-door 2+2 coupé",
+    "décrite comme sportive ou de prestige"
+  ]
+}

@@ -1,0 +1,92 @@
+{
+  "slug": "ferrari-488",
+  "name": "Ferrari 488",
+  "brand": "Ferrari",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T00:35:00+00:00",
+  "updated": "2026-11-07T00:35:00+00:00",
+  "summary": "La Ferrari 488 GTB est une supercar du constructeur italien Ferrari commercialisée à partir de 2015. C'est la première voiture de la marque à moteur V8 double turbo en position centrale arrière depuis la F40. Elle a été dévoilée à la presse le 3 février 2015. L'appellation « 488 » rompt avec la 458 Italia (mais aussi celles qui ont précédé cette dernière) dont le chiffre « 458 » signifiait une cylindrée de 4,5 litres avec huit cylindres. Cette fois-ci, le « 488 » indique la cylindrée unitaire des cylindres: 3 902 cm³ (cylindrée totale) divisé par 8 (nombre de cylindres), soit environ 488 cm³. Le « GTB » signifie quant à lui « Gran Turismo Berlinetta ». Une version décapotable appelée « 488 Spider » est présentée lors du salon de Francfort 2015. Sa production dure quatre ans. Elle est remplacée en 2019 par la Ferrari F8 Tributo.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Ferrari_488_GTB",
+  "wikipedia_title": "Ferrari 488",
+  "specs": {
+    "engine": {
+      "value": "3902 cc F154 CB twin-turbo V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Double embrayage 7 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur central arrière, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes · 2-door retractable hard-top convertible",
+      "from_text": false
+    },
+    "production": {
+      "value": "2015–2020",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Ferrari Styling Centre under Flavio Manzoni",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Italy: Maranello",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1470 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4568 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1952 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1213 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2650 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "670 PS",
+      "from_text": false
+    },
+    "top_speed": {
+      "value": "330 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-100 km/h : 3,0 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/ferrari-488/1.jpg",
+      "thumb": "photos/ferrari-488/1-thumb.jpg",
+      "author": "Vauxford",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2018_Ferrari_488_GTB_Spider_S-A_3.9_Front.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "Coupé 2 portes",
+    "décrite comme sportive ou de prestige"
+  ]
+}

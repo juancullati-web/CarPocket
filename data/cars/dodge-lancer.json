@@ -1,0 +1,67 @@
+{
+  "slug": "dodge-lancer",
+  "name": "Dodge Lancer",
+  "brand": "Dodge",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T03:13:01+00:00",
+  "updated": "2026-11-07T03:13:01+00:00",
+  "summary": "À ne pas confondre avec Mitsubishi Lancer ou Mitsubishi Lancer Evolution. La Dodge Lancer est une automobile construite par Dodge. Initialement introduite en tant que version à toit rigide full-size des Dodge de 1955, la version originale a été produite jusqu'en 1959. En 1961, Dodge a relancé la plaque signalétique Lancer sur la plate-forme A compacte de Chrysler, mais celle-ci n'est restée en production que deux années modèles avant d'être remplacée par la Dodge Dart. Pour 1985, Dodge a utilisé la plaque signalétique Lancer sur une voiture basée sur la plate-forme H de taille moyenne de Chrysler, et ce modèle est resté en production jusqu'à ce qu'il soit remplacé par la Dodge Spirit en 1989.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Dodge_Lancer",
+  "wikipedia_title": "Dodge Lancer",
+  "specs": {
+    "engine": {
+      "value": "170 cuin Slant-6 · 225 cuin Slant-6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 3 rapports · Automatique 3 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "2/Berline 4 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1960–1962",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United States: Los Angeles, California Newark, Delaware St. Louis, Missouri Mexico: Mexico City Switzerland: AMAG Automobil- und Motoren, Schinznach",
+      "from_text": false
+    },
+    "length": {
+      "value": "4796 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2705 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "101 bhp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/dodge-lancer/1.jpg",
+      "thumb": "photos/dodge-lancer/1-thumb.jpg",
+      "author": "GTHO",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1962_Dodge_Lancer_170_2-Door_Sedan.JPG"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "avant 1970"
+  ]
+}

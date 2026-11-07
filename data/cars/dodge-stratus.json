@@ -1,0 +1,77 @@
+{
+  "slug": "dodge-stratus",
+  "name": "Dodge Stratus",
+  "brand": "Dodge",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T02:02:06+00:00",
+  "updated": "2026-11-07T02:02:06+00:00",
+  "summary": "The Dodge Stratus is a mid-size car introduced by Dodge and Chrysler in December 1994, built on the four-door sedan Chrysler JA platform. Immediately recognized for its design and performance, the Stratus, alongside its platform mates, the Plymouth Breeze and Chrysler Cirrus, gained Car and Driver magazine's \"Ten Best list\" for 1996 and 1997. While initial critical acclaim was high, its ratings eventually declined. An updated version was introduced for the 2001 model year when the Cirrus was rebranded as the Chrysler Sebring, and a coupe body style was added to the lineup. Production of the Stratus and Sebring models at the Sterling Heights Assembly Plant ceased in early 2006 after 1,308,123 Stratus and Chrysler Sebring sedan and convertible models were built since 2000. The Dodge Avenger replaced the Stratus nameplate in early 2007 for the 2008 model year.",
+  "summary_lang": "en",
+  "summary_url": "https://en.wikipedia.org/wiki/Dodge_Stratus",
+  "wikipedia_title": "Dodge Stratus",
+  "specs": {
+    "engine": {
+      "value": "2.0 L A588 I4 · 2.4 L EDZ/EY7 I4 · 2.4 L EDV/EDT turbo I4 · 2.5 L Mitsubishi 6G73 V6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports · Automatique 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur transversal, moteur avant, traction",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "June 1994–2000",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Michael Santoro (1992)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United States: Sterling Heights, Michigan (Sterling Heights Assembly)",
+      "from_text": false
+    },
+    "length": {
+      "value": "4724 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1821 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1995–98 Base: 54.2 in",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2743 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "168 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/dodge-stratus/1.jpg",
+      "thumb": "photos/dodge-stratus/1-thumb.jpg",
+      "author": "IFCAR",
+      "license": "Public domain",
+      "license_url": "",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1st_Dodge_Stratus_ES_--_03-18-2011.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

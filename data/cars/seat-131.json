@@ -1,0 +1,77 @@
+{
+  "slug": "seat-131",
+  "name": "SEAT 131",
+  "brand": "SEAT",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T05:42:12+00:00",
+  "updated": "2026-11-07T05:42:12+00:00",
+  "summary": "The SEAT 131 is a mid-size family car produced by the Spanish car manufacturer SEAT from 1975 to the middle of 1984. The SEAT 131 was presented in May 1975 in the Barcelona Motor Show. With SEAT having formed a partnership with Fiat, the SEAT 131 was a rebadged version of the Fiat 131, which had been presented nine months earlier in Turin. It received a few locally produced engines and other concessions to the Spanish market and was only offered with a 4-door sedan and five-door station wagon configuration. The SEAT 131 entered production in early 1975 in Barcelona and up to the end of its production life cycle 412,948 units were produced.",
+  "summary_lang": "en",
+  "summary_url": "https://en.wikipedia.org/wiki/SEAT_131",
+  "wikipedia_title": "SEAT 131",
+  "specs": {
+    "engine": {
+      "value": "1.4–1.9L I4 (Gasoline) · 2.0–2.4L I4 (Diesel)",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "4 and Manuelle 5 rapports · Automatique 3 rapports",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes · Break 5 portes (Familiar)",
+      "from_text": false
+    },
+    "production": {
+      "value": "1975–1984",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Spain: Barcelona (Zona Franca)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "970 kg to 1035 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4230 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1630 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1380 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2490 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "52 hp",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "155 km/h",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/seat-131/1.jpg",
+      "thumb": "photos/seat-131/1-thumb.jpg",
+      "author": "Spanish Coches",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1977_Seat_131_E_1600_(5979276386).jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

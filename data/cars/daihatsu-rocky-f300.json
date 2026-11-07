@@ -1,0 +1,69 @@
+{
+  "slug": "daihatsu-rocky-f300",
+  "name": "Daihatsu Rocky (F300)",
+  "brand": "Daihatsu",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T02:21:17+00:00",
+  "updated": "2026-11-07T02:21:17+00:00",
+  "summary": "La Daihatsu Rocky est un petit 4x4 produit par le constructeur automobile japonais Daihatsu de 1984 à 1998, après l'ouverture d'une usine de Daihatsu en Chine. Il a été restylé en 1994.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Daihatsu_Rocky",
+  "wikipedia_title": "Daihatsu Rocky (F300)",
+  "specs": {
+    "engine": {
+      "value": "Petrol: · 1.6 L HD-C I4 · 1.6 L HD-E I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports · Automatique 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, propulsion\nFront-engine, four-wheel-drive",
+      "from_text": false
+    },
+    "body": {
+      "value": "SUV 3 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1989–2002",
+      "from_text": false
+    },
+    "length": {
+      "value": "3765-3845 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "body: 1580 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1720-1725 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2175 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "55-77 kW",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/daihatsu-rocky-f300/1.jpg",
+      "thumb": "photos/daihatsu-rocky-f300/1-thumb.jpg",
+      "author": "IFCAR",
+      "license": "Public domain",
+      "license_url": "",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Daihatsu_Rocky.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

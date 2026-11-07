@@ -1,0 +1,77 @@
+{
+  "slug": "bmw-3200-cs",
+  "name": "BMW 3200 CS",
+  "brand": "BMW",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T06:07:09+00:00",
+  "updated": "2026-11-07T06:07:09+00:00",
+  "summary": "Le coupé 3200 est produit par BMW entre janvier 1962 et septembre 1965. Il a été conçu par Bertone. Environ 600 cents exemplaires ont été construits. Le coupé 3200 est la dernière variation de la plate-forme de l'après-guerre débutant avec la BMW 501 introduite en 1951. Le style de la 3200 CS a influencé le coupé 2000 Nouvelle classe.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/BMW_3200_CS",
+  "wikipedia_title": "BMW 3200 CS",
+  "specs": {
+    "engine": {
+      "value": "BMW OHV V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "January 1962 – September 1965 · 603 built",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Giorgetto Giugiaro at Bertone",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1500 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4850 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1760 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1470 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2840 mm",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/bmw-3200-cs/1.jpg",
+      "thumb": "photos/bmw-3200-cs/1-thumb.jpg",
+      "author": "Alexander Migl",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:BMW_3200_CS_(1961)_Classic-Gala_2022_1X7A0178.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "603 exemplaires",
+    "Coupé 2 portes",
+    "avant 1970"
+  ]
+}

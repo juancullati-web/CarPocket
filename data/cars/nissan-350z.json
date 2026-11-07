@@ -1,0 +1,84 @@
+{
+  "slug": "nissan-350z",
+  "name": "Nissan 350Z",
+  "brand": "Nissan",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T05:53:20+00:00",
+  "updated": "2026-11-07T05:53:20+00:00",
+  "summary": "La 350Z, également connue sous le nom de Fairlady Z Z33 au Japon, est un coupé sportif du constructeur automobile japonais Nissan. Elle est le troisième modèle le plus récent d'une longue lignée de voitures de sport produites par Nissan, dont la première représentante était le coupé Datsun 240Z (connue sous son nom d'origine Nissan Fairlady Z au Japon depuis son début).",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Nissan_350Z",
+  "wikipedia_title": "Nissan 350Z",
+  "specs": {
+    "engine": {
+      "value": "3.5 L VQ35DE V6 · 3.5 L VQ35HR V6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Automatique 6 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Front moteur central, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Compacte 2 portes coupé · Cabriolet 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "July 2002–2008 (Coupe) · 2003–2008 (Roadster)",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Ajay Panchal at Nissan Design America (2000)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Japan: Oppama (2002–2003) Japan: Kaminokawa, Tochigi (2003–2008)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "3117.4-3602 lb",
+      "from_text": false
+    },
+    "length": {
+      "value": "4303 mm (2003–2005)",
+      "from_text": false
+    },
+    "width": {
+      "value": "1816 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1318 mm (2003–2005 Hatch)",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2649 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "200 bhp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/nissan-350z/1.jpg",
+      "thumb": "photos/nissan-350z/1-thumb.jpg",
+      "author": "Vauxford",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2004_Nissan_350Z_3.5_Front.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "Compacte 2 portes coupé",
+    "décrite comme sportive ou de prestige"
+  ]
+}

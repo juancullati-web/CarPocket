@@ -1,0 +1,73 @@
+{
+  "slug": "kia-carnival",
+  "name": "Kia Carnival",
+  "brand": "Kia",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T02:00:07+00:00",
+  "updated": "2026-11-07T02:00:07+00:00",
+  "summary": "Le Kia Carnival est un grand monospace du constructeur automobile sud-coréen Kia Motors vendu depuis 1999.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Kia_Carnival",
+  "wikipedia_title": "Kia Carnival",
+  "specs": {
+    "engine": {
+      "value": "Petrol: · 2.5 L Rover KV6 V6 · 3.5 L Sigma V6 · Diesel: · 2.9 L J-Line CRDi I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Automatique 4 rapports · Automatique 5 rapports · Manuelle 5 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, traction",
+      "from_text": false
+    },
+    "body": {
+      "value": "5-door minivan",
+      "from_text": false
+    },
+    "production": {
+      "value": "January 1998–2005",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "South Korea: Gwangmyeong (Sohari Plant) China: Yancheng (Yancheng Plant) Malaysia: Gurun (Naza); Pekan (AMM) Russia: Kaliningrad (Avtotor) Thailand: Lat Krabang (YMC)",
+      "from_text": false
+    },
+    "length": {
+      "value": "4890 mm (1998–2000)",
+      "from_text": false
+    },
+    "width": {
+      "value": "1895 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1730 mm (1998–2001)",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2910 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "132 kW",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/kia-carnival/1.jpg",
+      "thumb": "photos/kia-carnival/1-thumb.jpg",
+      "author": "Chu",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:20110809_kia_carnival_0001.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

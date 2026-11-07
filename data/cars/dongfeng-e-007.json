@@ -1,0 +1,77 @@
+{
+  "slug": "dongfeng-e-007",
+  "name": "Dongfeng eπ 007",
+  "brand": "Dongfeng",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T01:16:00+00:00",
+  "updated": "2026-11-07T01:16:00+00:00",
+  "summary": "The Dongfeng eπ 007 (pronounced 'e pi'; also known as Yipai 007, Dongfeng Ace 007 or simply Dongfeng 007), is a battery electric and plug-in hybrid full-size liftback sedan and shooting brake produced by Chinese automobile manufacturer Dongfeng Motor Corporation under the Dongfeng eπ (东风奕派) sub-brand. It is the first product of the eπ sub-brand, and was launched in March 2024. The batteries of the Dongfeng eπ 007 are supplied by the United Auto Battery System (UABS), a joint venture between SAIC and CATL.",
+  "summary_lang": "en",
+  "summary_url": "https://en.wikipedia.org/wiki/Dongfeng_e%CF%80_007",
+  "wikipedia_title": "Dongfeng eπ 007",
+  "specs": {
+    "engine": {
+      "value": "Petrol range extender: · 1.5 L DFMC15DE I4",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Front-engine, rear-motor, rear-wheel drive (EREV)\nRear-motor, rear-wheel-drive\nDual-motor, all-wheel-drive",
+      "from_text": false
+    },
+    "body": {
+      "value": "5-door liftback · 5-door shooting brake (GT)",
+      "from_text": false
+    },
+    "production": {
+      "value": "2024–present",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "China: Wuhan",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1759-1999 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4880 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1865 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1460 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2915 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "160-400 kW",
+      "from_text": false
+    },
+    "zero_100": {
+      "value": "0-100 km/h : 7,2 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/dongfeng-e-007/1.jpg",
+      "thumb": "photos/dongfeng-e-007/1-thumb.jpg",
+      "author": "Nuo Nuo cars",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Dongfeng_e%CF%80_007_range_extended_electric_sedan_01.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

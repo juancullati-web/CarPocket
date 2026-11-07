@@ -1,0 +1,77 @@
+{
+  "slug": "honda-hr-v",
+  "name": "Honda HR-V",
+  "brand": "Honda",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T01:54:05+00:00",
+  "updated": "2026-11-07T01:54:05+00:00",
+  "summary": "Le Honda HR-V est un petit SUV produit par le constructeur automobile japonais Honda. HR-V est l'acronyme de High Rider Vehicle, on rencontre aussi la désignation Hybrid Recreation Vehicle en Europe. La première génération est produite de 1999 à 2006, tandis que la seconde est commercialisée en Europe de 2013 à 2021. Cette dernière est remplacée par une troisième génération en 2021.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Honda_HR-V",
+  "wikipedia_title": "Honda HR-V",
+  "specs": {
+    "engine": {
+      "value": "Petrol: · 1.6 L D16W1 SOHC I4 · 1.6 L D16W5 SOHC VTEC I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Honda Multimatic S · Manuelle 5 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, traction\nmoteur avant, transmission intégrale",
+      "from_text": false
+    },
+    "body": {
+      "value": "SUV 3 portes (GH1/GH2)",
+      "from_text": false
+    },
+    "production": {
+      "value": "1999–2006",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Japan: Suzuka, Mie",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1200-1300 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "3-door: 4000 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1695 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1590 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "3-door: 2360 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "105 PS",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/honda-hr-v/1.jpg",
+      "thumb": "photos/honda-hr-v/1-thumb.jpg",
+      "author": "Vauxford",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1999_Honda_HR-V_Automatic_1.6_Front.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

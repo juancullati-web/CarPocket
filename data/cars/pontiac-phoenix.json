@@ -1,0 +1,71 @@
+{
+  "slug": "pontiac-phoenix",
+  "name": "Pontiac Phoenix",
+  "brand": "Pontiac",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T01:17:00+00:00",
+  "updated": "2026-11-07T01:17:00+00:00",
+  "summary": "The Pontiac Phoenix was a compact car that was sold from 1977 to 1984 by Pontiac. There were two generations of the Phoenix, both based on popular Chevrolet models, and both using the GM X platform designation. It was named for the mythological Phoenix, which would die in a self-inflicted fire and be reborn from the ashes. The Phoenix was replaced by the Grand Am in 1985.",
+  "summary_lang": "en",
+  "summary_url": "https://en.wikipedia.org/wiki/Pontiac_Phoenix",
+  "wikipedia_title": "Pontiac Phoenix",
+  "specs": {
+    "engine": {
+      "value": "151 cuin Iron Duke I4 · 231 cuin Buick V6 · 305 cuin Chevrolet LG3 V8 · 350 cuin Chevrolet 350 V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 3 rapports · Manuelle 4 rapports · Automatique 3 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1976–1979",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "North Tarrytown Assembly, Tarrytown, New York Willow Run Assembly, Ypsilanti, Michigan",
+      "from_text": false
+    },
+    "length": {
+      "value": "5166 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1839 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2822 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "110 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/pontiac-phoenix/1.jpg",
+      "thumb": "photos/pontiac-phoenix/1-thumb.jpg",
+      "author": "Greg Gjerdingen",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1978_Pontiac_Phoenix_LJ_Landau.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "Coupé 2 portes"
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "slug": "cadillac-xlr",
+  "name": "Cadillac XLR",
+  "brand": "Cadillac",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T05:20:16+00:00",
+  "updated": "2026-11-07T05:20:16+00:00",
+  "summary": "La XLR reprend la ligne générale du concept car Cadillac Evoq présenté en 2000. Sa production a été interrompue au printemps 2009.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Cadillac_XLR",
+  "wikipedia_title": "Cadillac XLR",
+  "specs": {
+    "engine": {
+      "value": "4.6 L Northstar V8 · 4.4 L Northstar Supercharged V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Automatique 5 rapports · Automatique 6 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Cabriolet 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "2003–2009",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Tom Peters (prod. exterior: 1999, 2000), Kip Wasenko (Evoq Concept: 1998; chief designer of prod: 2000), Wayne Cherry (design director)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United States: Bowling Green, Kentucky (Bowling Green Assembly Plant)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1742 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4514 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1836 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1280 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2685 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "320 hp",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "249 km/h",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/cadillac-xlr/1.jpg",
+      "thumb": "photos/cadillac-xlr/1-thumb.jpg",
+      "author": "Greg Gjerdingen from Willmar, USA",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Black_Cadillac_XLR;_Hastings,_MN_(41324714390)_(cropped).jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "Cabriolet 2 portes",
+    "décrite comme sportive ou de prestige"
+  ]
+}

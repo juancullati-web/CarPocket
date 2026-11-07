@@ -1,0 +1,83 @@
+{
+  "slug": "subaru-360",
+  "name": "Subaru 360",
+  "brand": "Subaru",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T04:32:08+00:00",
+  "updated": "2026-11-07T04:32:08+00:00",
+  "summary": "La Subaru 360 est la première voiture construite par la division automobile de Fuji Heavy Industries, Subaru.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Subaru_360",
+  "wikipedia_title": "Subaru 360",
+  "specs": {
+    "engine": {
+      "value": "356 cc EK31 I2 · 356 cc EK32 I2 · 423 cc EK51 I2",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur arrière, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 2 portes · 2-door cabrio coach · Break 3 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1958–1971",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Shinroku Momose",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Japan: Otakita Plant, Ōta, Gunma",
+      "from_text": false
+    },
+    "weight": {
+      "value": "408 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "2990 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1300 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1379 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "1801 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "16 PS",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "97 km/h",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/subaru-360/1.jpg",
+      "thumb": "photos/subaru-360/1-thumb.jpg",
+      "author": "Mytho88",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1958_Subaru_360_01.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "avant 1970"
+  ]
+}

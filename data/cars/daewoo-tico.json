@@ -1,0 +1,77 @@
+{
+  "slug": "daewoo-tico",
+  "name": "Daewoo Tico",
+  "brand": "Daewoo",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T02:13:17+00:00",
+  "updated": "2026-11-07T02:13:17+00:00",
+  "summary": "La Daewoo Tico est une automobile basée sur la Suzuki Alto. Sortie en 1991, la voiture était équipée d'un 3 cylindres de 796 cm³ et d'une boîte de vitesses 5 vitesses. La voiture a été très vendue en Europe de l'Est. Il y avait une usine de montage en Roumanie, à Craiova, sur l'ancien site de fabrication des Oltcit.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Daewoo_Tico",
+  "wikipedia_title": "Daewoo Tico",
+  "specs": {
+    "engine": {
+      "value": "0.8 L S-TEC I3 (petrol)",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports · Automatique 3 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, traction",
+      "from_text": false
+    },
+    "body": {
+      "value": "Compacte 5 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "May 1991 – September 2000 (South Korea) · 1996–2001 (Poland, Uzbekistan) · 1998–2002 (Romania)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "South Korea: Changwon Poland: Warsaw (FSO) Romania: Craiova (Rodae) Uzbekistan: Asaka (UzDaewoo)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "680 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "3340 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1400 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1394 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2334 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "48 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/daewoo-tico/1.png",
+      "thumb": "photos/daewoo-tico/1-thumb.png",
+      "author": "Stahlkocher",
+      "license": "CC BY 4.0",
+      "license_url": "https://creativecommons.org/licenses/by/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Daewoo_Tico_vl_(cropped).png"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

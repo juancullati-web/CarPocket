@@ -1,0 +1,62 @@
+{
+  "slug": "fiat-509",
+  "name": "Fiat 509",
+  "brand": "Fiat",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T04:31:08+00:00",
+  "updated": "2026-11-07T04:31:08+00:00",
+  "summary": "La Fiat 509 est une voiture fabriquée par le constructeur italien Fiat entre 1925 et 1929. C'est la première voiture italienne et la première voiture Fiat à remporter le Rallye Monte-Carlo, en 1928, lors de sa première participation. La Fiat 509 a fait dire à Gabriele D'Annunzio : « La voiture est féminine. Cette voiture a la grâce, l'élégance, la vivacité d'une séductrice, mais en revanche, des femmes, elle a la légèreté désinvolte pour vaincre toute frustration. »",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Fiat_509",
+  "wikipedia_title": "Fiat 509",
+  "specs": {
+    "engine": {
+      "value": "990 cc SOHC I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 3 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "2/Berline 4 portes · 2/Cabriolet 4 portes · 2-door spyder",
+      "from_text": false
+    },
+    "production": {
+      "value": "1924–1929",
+      "from_text": false
+    },
+    "weight": {
+      "value": "650 kg-800 kg",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "255 cm",
+      "from_text": false
+    },
+    "power": {
+      "value": "22 PS",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/fiat-509/1.jpg",
+      "author": "Lars-Göran Lindgren Sweden",
+      "license": "CC BY-SA 3.0",
+      "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Fiat_509_Spider_1925.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "avant 1970"
+  ]
+}

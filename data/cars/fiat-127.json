@@ -1,0 +1,73 @@
+{
+  "slug": "fiat-127",
+  "name": "Fiat 127",
+  "brand": "Fiat",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T04:04:11+00:00",
+  "updated": "2026-11-07T04:04:11+00:00",
+  "summary": "La FIAT 127 est une voiture fabriquée par le constructeur italien FIAT entre 1971 et 1987. Le code interne du projet FIAT était X1/4. La FIAT 127 est lancée en avril 1971 pour succéder à la FIAT 850. Cette nouvelle voiture représente plus qu'un saut de génération avec sa devancière en raison des avancées technologiques qu'elle utilise. Le moteur est placé transversalement à l'avant, le système de propulsion est à traction avant, et la suspension à 4 roues indépendantes. Elle a remporté le trophée européen de la voiture de l'année en 1972. Dans sa première série, la FIAT 127 conserve le moteur de 903 cm3 qui a équipé les FIAT 850 Coupé et Spider développant 47 ch DIN.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Fiat_127",
+  "wikipedia_title": "Fiat 127",
+  "specs": {
+    "engine": {
+      "value": "903 cc 100 GL.000 OHV I4",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur transversal, moteur avant, traction",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1971–1977",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Dante Giacosa, Pio Manzù",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Italy: Turin (Mirafiori Plant) Spain: Barcelona (Zona Franca) Poland: Tychy (Polski Fiat) Egypt: Cairo (Nasr) Zambia: Livingstone (Livingstone Motor Assemblers Ltd) Morocco: Casablanca (Somaca)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "705–710 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "3595 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1525 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1325 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2225 mm",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/fiat-127/1.jpg",
+      "thumb": "photos/fiat-127/1-thumb.jpg",
+      "author": "Thomas doerfer",
+      "license": "CC BY-SA 3.0",
+      "license_url": "http://creativecommons.org/licenses/by-sa/3.0/",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Fiat_127_green.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

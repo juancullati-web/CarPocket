@@ -1,0 +1,73 @@
+{
+  "slug": "hyundai-celesta",
+  "name": "Hyundai Celesta",
+  "brand": "Hyundai",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T00:36:00+00:00",
+  "updated": "2026-11-07T00:36:00+00:00",
+  "summary": "The Hyundai Celesta (Chinese: 现代悦动; pinyin: Xiàndài Yuèdòng) is a compact car produced by the Beijing Hyundai joint venture since 2017 to 2023, replacing the extended production of the Hyundai Elantra Yuedong.",
+  "summary_lang": "en",
+  "summary_url": "https://en.wikipedia.org/wiki/Hyundai_Celesta",
+  "wikipedia_title": "Hyundai Celesta",
+  "specs": {
+    "engine": {
+      "value": "Petrol: · 1.4 L Kappa II T-GDi I4 · 1.6 L Gamma MPi I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 6 rapports · Automatique 6 rapports · 7 speed DCT",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes · Break 5 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "2017–2023",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "China: Beijing (Beijing Hyundai)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1120-1190 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4510 mm (sedan)",
+      "from_text": false
+    },
+    "width": {
+      "value": "1765 mm (sedan)",
+      "from_text": false
+    },
+    "height": {
+      "value": "1470 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2650 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "122 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/hyundai-celesta/1.jpg",
+      "thumb": "photos/hyundai-celesta/1-thumb.jpg",
+      "author": "Dinkun Chen",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:HYUNDAI_CELESTA_China_(14).jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

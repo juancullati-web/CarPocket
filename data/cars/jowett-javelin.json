@@ -1,0 +1,87 @@
+{
+  "slug": "jowett-javelin",
+  "name": "Jowett Javelin",
+  "brand": "Jowett",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T05:34:19+00:00",
+  "updated": "2026-11-07T05:34:19+00:00",
+  "summary": "La Jowett Javelin est une grande routière qui a été produite entre 1947 et 1953 par Jowett Cars de Idle, près de Bradford en Angleterre. Le modèle a connu cinq variantes codées de PA à PE, chacune disponible en version \"standard\" ou \"de luxe\". La voiture fut conçue par Gerald Palmer durant la Seconde Guerre mondiale et était destinée à marquer un grand pas en avant par rapport aux conceptions relativement ternes des Jowett d'avant-guerre. Un peu plus de 23 000 unités ont été produites.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Jowett_Javelin",
+  "wikipedia_title": "Jowett Javelin",
+  "specs": {
+    "engine": {
+      "value": "Jowett flat four, 1486 cc",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 4 rapports",
+      "from_text": false
+    },
+    "body": {
+      "value": "4-door fastback saloon",
+      "from_text": false
+    },
+    "production": {
+      "value": "1947–1953; 23,307 made",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Gerald Palmer",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Great Britain Australia",
+      "from_text": false
+    },
+    "weight": {
+      "value": "962 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4267 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1524 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1549 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2591 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "50 bhp",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "133 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-60 mph : 20,9 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/jowett-javelin/1.jpg",
+      "thumb": "photos/jowett-javelin/1-thumb.jpg",
+      "author": "Charles01",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Jowett_Javelin_Billericay.JPG"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "avant 1970"
+  ]
+}

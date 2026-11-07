@@ -1,0 +1,85 @@
+{
+  "slug": "lamborghini-murcielago",
+  "name": "Lamborghini Murciélago",
+  "brand": "Lamborghini",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T04:13:08+00:00",
+  "updated": "2026-11-07T04:13:08+00:00",
+  "summary": "La Lamborghini Murciélago est une supercar du constructeur automobile italien Lamborghini. C'est la première voiture de la marque sous la direction d'Audi. Dessinée par Luc Donckerwolke, elle vise à concurrencer la 575M de Ferrari sur le segment des super-sportives. La Murciélago, sortie en 2002, succède à la Diablo dont elle reprend le moteur V12 dont la cylindrée est augmentée à 6,2 L. Celui-ci développe 580 chevaux. Une version roadster dite « Barchetta » de la Murciélago apparaît au printemps 2004. La seconde génération de Murciélago apparaît en 2006 avec la LP640-4 et sa version roadster. Cette nouvelle Murciélago voit sa cylindrée augmentée à 6,5 litres pour une puissance de 640 ch. Une série spéciale appelée LP650-4 Roadster voit ensuite le jour ainsi qu'une version ultra-sportive, la LP670-4 SV, en automne 2009.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Lamborghini_Murci%C3%A9lago",
+  "wikipedia_title": "Lamborghini Murciélago",
+  "specs": {
+    "engine": {
+      "value": "6.2 L–6.5 L Lamborghini V12",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 6 rapports · Manuelle 6 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Longitudinal, mid-engine, all wheel drive",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes · Cabriolet 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "2001–2010 · 4,099 exemplaires",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Luc Donckerwolke (original design), Filippo Perini at Lamborghini Style Center (facelift)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Italy: Sant'Agata Bolognese",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1841 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "2002–05: 4580 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "2002–05: 2045 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1135 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2665 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "427 kW",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/lamborghini-murcielago/1.jpg",
+      "thumb": "photos/lamborghini-murcielago/1-thumb.jpg",
+      "author": "Alexandre Prévot from Nancy, France",
+      "license": "CC BY-SA 2.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Lamborghini_Murci%C3%A9lago_LP-640_-_Flickr_-_Alexandre_Pr%C3%A9vot_(40).jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "4099 exemplaires",
+    "Coupé 2 portes",
+    "décrite comme sportive ou de prestige"
+  ]
+}

@@ -1,0 +1,85 @@
+{
+  "slug": "seat-132",
+  "name": "SEAT 132",
+  "brand": "SEAT",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T05:11:12+00:00",
+  "updated": "2026-11-07T05:11:12+00:00",
+  "summary": "C'est au mois d'avril 1973 que la SEAT 132 est lancée sur le marché espagnol. C'est la copie conforme de la Fiat 132 ; elle vient compléter la gamme SEAT. Comme pour l'original italien, trois versions sont ainsi proposées : 1600, 1600 Lujo et 1800 Lujo. Seule particularité, un moteur diesel est également disponible dès la première série, il est fourni par Mercedes-Benz avec qui Fiat-Seat entretenait de très bons rapports, MB équipant déjà la SEAT 1500L de 1960. Comme la Fiat 132, la seconde version de 1975 reçoit quelques retouches esthétiques qui actualisent la ligne, comme une calandre plus plongeante, des vitres latérales plus grandes et des feux arrière carrés. En 1978, SEAT présente la troisième série de la 132. Toute la gamme est strictement conforme au modèle original Fiat.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Seat_132",
+  "wikipedia_title": "SEAT 132",
+  "specs": {
+    "engine": {
+      "value": "1.6–1.9L I4 (Gasoline) · 2.0–2.2L I4 (Diesel)",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "4 and Manuelle 5 rapports · Automatique 3 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "May 1973–1982",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Marcello Gandini",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Spain: Barcelona (Zona Franca)",
+      "from_text": false
+    },
+    "length": {
+      "value": "4392 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1640 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1435 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2557 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "98 bhp",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "165 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-100 km/h : 12,5 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/seat-132/1.jpg",
+      "thumb": "photos/seat-132/1-thumb.jpg",
+      "author": "Estevoaei",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:VI_Concentraci%C3%B3n_VCACPontevedra_-_SEAT_132_b.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

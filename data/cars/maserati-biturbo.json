@@ -1,0 +1,80 @@
+{
+  "slug": "maserati-biturbo",
+  "name": "Maserati Biturbo",
+  "brand": "Maserati",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T06:03:00+00:00",
+  "updated": "2026-11-07T06:03:00+00:00",
+  "summary": "La Maserati Biturbo est une berline sportive (2 et 4 portes) du constructeur italien Maserati. Après la reprise, en 1975, de Maserati par Alejandro de Tomaso à Citroën, celui-ci lance la marque dans l’aventure Biturbo. L’idée consistait à introduire sur le marché une voiture de luxe dotée d’un prix raisonnable et d’une cylindrée de moins de 2 000 cm3, taxes italiennes obligent. La cible visée était la BMW série 3 version E21, comme l’illustrent plusieurs choix techniques, voire certaines pièces détachées. Rapidement Maserati a dû pousser les murs de son usine pour faire face à la demande : c’était le sauvetage, peut-être encore temporaire, de la marque. Les besoins de capacité de production étaient tels que le montage de certains modèles était assuré dans l'usine Innocenti de Milan.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Maserati_Biturbo",
+  "wikipedia_title": "Maserati Biturbo",
+  "specs": {
+    "engine": {
+      "value": "2.0 L twin-turbocharged 90° V6 · 2.5 L twin-turbocharged 90° V6 · 2.8 L twin-turbocharged 90° V6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports · Automatique 3 rapports · Automatique 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "2-door 2+2 coupé · 2-door, 2+3 coupé (228) · Berline 4 portes/sedan · Cabriolet 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1981–1994",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Pierangelo Andreani (1977), Marcello Gandini (1988 and 1991 facelifts), Giuseppe Mittino at Zagato (Spyder)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Coupé/Saloon: Italy: Modena (Maserati) Spyder: Italy: Terrazzano di Rho (Zagato)",
+      "from_text": false
+    },
+    "length": {
+      "value": "4150 mm (coupé)",
+      "from_text": false
+    },
+    "width": {
+      "value": "1710 mm (coupé, Spyder)",
+      "from_text": false
+    },
+    "height": {
+      "value": "1310 mm (coupé, Spyder)",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2514 mm (coupé)",
+      "from_text": false
+    },
+    "power": {
+      "value": "185 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/maserati-biturbo/1.jpg",
+      "thumb": "photos/maserati-biturbo/1-thumb.jpg",
+      "author": "Mr.choppers",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1985_Maserati_Biturbo_E,_front_left_(US).jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "2-door 2+2 coupé",
+    "décrite comme sportive ou de prestige"
+  ]
+}

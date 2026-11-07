@@ -1,0 +1,76 @@
+{
+  "slug": "baojun-510",
+  "name": "Baojun 510",
+  "brand": "Baojun",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T00:59:08+00:00",
+  "updated": "2026-11-07T00:59:08+00:00",
+  "summary": "Le Baojun 510 est un modèle de SUV multisegment sous-compact produit par SAIC-GM-Wuling sous la marque Baojun.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Baojun_510",
+  "wikipedia_title": "Baojun 510",
+  "specs": {
+    "engine": {
+      "value": "Petrol: · 1.5 L L2B I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 6 rapports · Automatique 5 rapports · CVT",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, traction",
+      "from_text": false
+    },
+    "body": {
+      "value": "SUV 5 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "January 2017 – September 2025",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Zhou Fang",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "China: Liuzhou, Guangxi",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1206-1290 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4220 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1740 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1615-1625 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2550 mm",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/baojun-510/1.jpg",
+      "author": "Rutger van der Maar",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Baojun_510_front.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

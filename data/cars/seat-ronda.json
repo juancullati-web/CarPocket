@@ -1,0 +1,65 @@
+{
+  "slug": "seat-ronda",
+  "name": "SEAT Ronda",
+  "brand": "SEAT",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T03:10:11+00:00",
+  "updated": "2026-11-07T03:10:11+00:00",
+  "summary": "La Seat Ronda, nommée Seat Ritmo jusqu'en 1982, est une automobile du segment C produite par le constructeur espagnol Seat de 1979 à 1986. Il s'agit de la version espagnole de la Fiat Ritmo produite sous licence, rebaptisée Ronda à la suite de la rupture des accords technologiques et financiers qui liaient Fiat SpA et l'État espagnol pour la direction de SEAT. En conséquence, même si elle se présente sous une apparence très légèrement différente, la Seat Ronda maintient sa conception d'origine et tous ses composants comme les moteurs Fiat toujours fabriqués sous licence, et notamment l'ancien 1 438 cm3 de 75 ch provenant de l'antique Seat 1430 de 1970 et le récent 1 995 cm3 de la Seat 132. Plus tard, le modèle d'entrée de gamme bénéficiera d'un petit moteur 1,2 litre qu'elle partagera avec les modèles Malaga et Ibiza.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Seat_Ronda",
+  "wikipedia_title": "SEAT Ronda",
+  "specs": {
+    "body": {
+      "value": "Compacte 5 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1982–1986 · 177,869 exemplaires",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Tom Tjaarda at Rayton Fissore",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Spain: Barcelona (Zona Franca)",
+      "from_text": false
+    },
+    "length": {
+      "value": "4011 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1650 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1400 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2448 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "64 PS",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/seat-ronda/1.jpg",
+      "thumb": "photos/seat-ronda/1-thumb.jpg",
+      "author": "Pandalia",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Seat_Ronda_Front.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

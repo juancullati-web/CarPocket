@@ -1,0 +1,85 @@
+{
+  "slug": "austin-healey-3000",
+  "name": "Austin-Healey 3000",
+  "brand": "Austin-Healey",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T05:39:08+00:00",
+  "updated": "2026-11-07T05:39:08+00:00",
+  "summary": "L'Austin-Healey 3000 est une voiture de sport construite entre 1959 et 1967 par la société Jensen Motors pour la marque Austin-Healey. Elle est connue des spécialistes sous le surnom de « Big », en référence à son gros moteur de trois litres de cylindrée. Elle a obtenu de nombreux succès sportifs en rallye à l'époque, particulièrement dans les Alpes et fut pilotée par les plus grands pilotes : Carroll Shelby, Donald Morley, Vic Elford, Pat Moss, Paddy Hopkirk, Timo Mäkinen, Rauno Aaltonen… De nos jours, elle est toujours utilisée en course par les enthousiastes de la marque.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Austin-Healey_3000",
+  "wikipedia_title": "Austin-Healey 3000",
+  "specs": {
+    "engine": {
+      "value": "2912 cc C-Series I6",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "2-door 2 or 2+2 seater roadster then convertible",
+      "from_text": false
+    },
+    "production": {
+      "value": "1959–1967",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United Kingdom: Abingdon, England",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1157 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "3988 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1524 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1168 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2337 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "136 bhp",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "185 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-60 mph : 11,7 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/austin-healey-3000/1.jpg",
+      "thumb": "photos/austin-healey-3000/1-thumb.jpg",
+      "author": "SG2012",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Austin_Healey_3000_Mk_II_(1963)_-_15033636981.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "2-door 2 or 2+2 seater roadster then convertible",
+    "avant 1970",
+    "décrite comme sportive ou de prestige"
+  ]
+}

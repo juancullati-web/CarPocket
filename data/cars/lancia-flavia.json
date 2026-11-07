@@ -1,0 +1,87 @@
+{
+  "slug": "lancia-flavia",
+  "name": "Lancia Flavia",
+  "brand": "Lancia",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T05:44:15+00:00",
+  "updated": "2026-11-07T05:44:15+00:00",
+  "summary": "La Lancia Flavia représente, pour la marque Lancia, fondée par Vincenzo Lancia, le début d'une nouvelle ère de grande innovation technologique et de créativité. La Lancia Flavia était une voiture de classe supérieure, luxueuse comme toutes les Lancia, dont la première série fut présentée à l'occasion du Salon Automobile International de Turin 1960 et qui resta en fabrication jusqu'en 1971. La Lancia Flavia ne remplaçait aucune autre voiture de la marque, elle signait l'arrivée de Lancia dans le cercle fermé des constructeurs des grandes routières de luxe. En 2012, la Chrysler 200 est commercialisée en Europe dans sa version cabriolet sous le nom de FlaviaCabrio: c'est une des conséquences du rachat de Chrysler par Fiat en 2009.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Lancia_Flavia",
+  "wikipedia_title": "Lancia Flavia",
+  "specs": {
+    "engine": {
+      "value": "1488 cc Lancia H4 · 1490 cc Lancia H4 · 1500 cc Lancia H4 · 1800 cc Lancia H4 · 1991 cc Lancia H4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 4 rapports · Manuelle 5 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Longitudinal moteur avant, traction",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes · Coupé 2 portes · Cabriolet 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1961–1971 · 105,848 exemplaires",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Piero Castegnero (Berlina), Pininfarina (Coupé), Giovanni Michelotti at Vignale (Convertible), Ercole Spada at Zagato (Sport)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Italy: Turin",
+      "from_text": false
+    },
+    "length": {
+      "value": "4572 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1613 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1473 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2642 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "100 CV",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "149 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-60 mph : 18,6 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/lancia-flavia/1.jpg",
+      "thumb": "photos/lancia-flavia/1-thumb.jpg",
+      "author": "JoachimKohlerBremen",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Lancia_Flavia_1.8_Iniezone_Coup%C3%A9.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "avant 1970"
+  ]
+}

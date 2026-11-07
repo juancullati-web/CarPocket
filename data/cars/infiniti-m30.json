@@ -1,0 +1,79 @@
+{
+  "slug": "infiniti-m30",
+  "name": "Infiniti M30",
+  "brand": "Infiniti",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T02:00:16+00:00",
+  "updated": "2026-11-07T02:00:16+00:00",
+  "summary": "L'Infiniti M est une berline de luxe de la marque Infiniti commercialisée en 2002 pour remplacer les J30 des années 1990 et les I30. Plus grande que la G, elle était, en revanche, moins longue que l'ancien fleuron de la gamme, la Q45. Reprenant la carrosserie de la Nissan Gloria de 1999, elle n'a jamais connu le succès. Une deuxième mouture est venue la remplacer dès 2005. Son apparition en Europe s'est effectuée à l'automne 2010 avec l'arrivée de la troisième génération.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Infiniti_M",
+  "wikipedia_title": "Infiniti M",
+  "specs": {
+    "engine": {
+      "value": "3.0 L VG30E V6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Automatique 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Cabriolet 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1989–1992",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Japan: Musashimurayama, Tokyo",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1498 kg (coupe)",
+      "from_text": false
+    },
+    "length": {
+      "value": "4796 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1689 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1321 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2616 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "162 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/infiniti-m30/1.jpg",
+      "thumb": "photos/infiniti-m30/1-thumb.jpg",
+      "author": "Kevauto",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1991_Infiniti_M30_2.2.18.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "Cabriolet 2 portes"
+  ]
+}

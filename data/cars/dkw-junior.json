@@ -1,0 +1,71 @@
+{
+  "slug": "dkw-junior",
+  "name": "DKW Junior",
+  "brand": "DKW",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T06:01:05+00:00",
+  "updated": "2026-11-07T06:01:05+00:00",
+  "summary": "La DKW Junior est une voiture du segment citadine du constructeur automobile allemand DKW, produite de 1959 à 1963.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/DKW_Junior",
+  "wikipedia_title": "DKW Junior",
+  "specs": {
+    "engine": {
+      "value": "741 cc two-stroke I3 · 796 cc two-stroke I3 · 889 cc two-stroke I3",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, traction",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 2 portes · Cabriolet 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1959–1963 (Junior) · 1963–1965 (F11 / F12)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Düsseldorf, West Germany Ingolstadt, West Germany",
+      "from_text": false
+    },
+    "weight": {
+      "value": "700-770 kg (empty)",
+      "from_text": false
+    },
+    "length": {
+      "value": "3968 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2175 mm Junior",
+      "from_text": false
+    },
+    "power": {
+      "value": "34 bhp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/dkw-junior/1.jpg",
+      "thumb": "photos/dkw-junior/1-thumb.jpg",
+      "author": "Charles01",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:DKW_Junior_1959_741cc_at_Schaffen-Diest_Fly-Drive_2013.JPG"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "avant 1970"
+  ]
+}

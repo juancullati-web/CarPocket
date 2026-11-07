@@ -1,0 +1,88 @@
+{
+  "slug": "panhard-cd",
+  "name": "Panhard CD",
+  "brand": "Panhard",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T06:06:14+00:00",
+  "updated": "2026-11-07T06:06:14+00:00",
+  "summary": "La Panhard CD est un modèle automobile conçu par Charles Deutsch et construit par Panhard entre 1962 à 1965. Le coupé CD (« CD » pour Charles Deutsch) est considéré comme le successeur des coachs DB à moteur Panhard.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Panhard_CD",
+  "wikipedia_title": "Panhard CD",
+  "specs": {
+    "engine": {
+      "value": "848 cc air-cooled ohv boxer twin",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, traction",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1962–1965",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Charles Deutsch",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "France",
+      "from_text": false
+    },
+    "weight": {
+      "value": "580 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4060 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1600 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1185 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2250 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "49 hp",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "165 km/h",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/panhard-cd/1.jpg",
+      "thumb": "photos/panhard-cd/1-thumb.jpg",
+      "author": "Thesupermat",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Festival_automobile_international_2011_-_Vente_aux_ench%C3%A8res_-_Panhard_CD_-_1964_-_003.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "Coupé 2 portes",
+    "avant 1970"
+  ]
+}

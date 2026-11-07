@@ -1,0 +1,60 @@
+{
+  "slug": "nissan-maxima",
+  "name": "Nissan Maxima",
+  "brand": "Nissan",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T01:20:08+00:00",
+  "updated": "2026-11-07T01:20:08+00:00",
+  "summary": "La Nissan Maxima est une voiture du constructeur automobile japonais Nissan dont la première génération est introduite en 1981. C'est une grande routière réservée au marché américain. Elle en est actuellement à sa septième génération.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Nissan_Maxima",
+  "wikipedia_title": "Nissan Maxima",
+  "specs": {
+    "engine": {
+      "value": "Gasoline: · 2.4 L L24E I6 · Diesel: · 2.8 L LD28 I6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports · Automatique 3 rapports (1980–1982) · Automatique 4 rapports (1983–1984)",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1980–1981 (Datsun 810) · 1981–1983 (Datsun Maxima) · 1983–1984 (Nissan Maxima)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Japan: Oppama Plant, Yokosuka, Kanagawa",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2625 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "120 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/nissan-maxima/1.jpg",
+      "author": "IFCAR",
+      "license": "Public domain",
+      "license_url": "",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1st-Nissan-Maxima.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

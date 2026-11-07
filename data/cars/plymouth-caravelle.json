@@ -1,0 +1,76 @@
+{
+  "slug": "plymouth-caravelle",
+  "name": "Plymouth Caravelle",
+  "brand": "Plymouth",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T04:20:12+00:00",
+  "updated": "2026-11-07T04:20:12+00:00",
+  "summary": "La Caravelle de Plymouth est une berline familiale qui a été présentée par Plymouth comme modèle canadien de 1983. La Caravelle est arrivée aux États-Unis en 1985 pour remplacer la Chrysler E-Class. Elle était essentiellement identique à la Dodge 600. Elle a été remplacée par la Plymouth Acclaim en 1989. La Caravelle était la première berline intermédiaire à traction avant de Plymouth. Le nom du véhicule est inspiré du mot Caravelle, un voilier du XVe siècle utilisé par les Portugais; le navire a été noté pour sa vitesse et agilité.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Plymouth_Caravelle",
+  "wikipedia_title": "Plymouth Caravelle",
+  "specs": {
+    "engine": {
+      "value": "2.2 L K I4 · 2.2 L Turbo I I4 · 2.5 L K I4 · 2.6 L Mitsubishi G54B I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports · Manuelle 5 rapports · Automatique 3 rapports · Automatique 3 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur transversal, moteur avant, traction",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes · Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1983–1988",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United States: Detroit, Michigan (Jefferson Avenue Assembly)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1178 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4704 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1727 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1349 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2624 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "97 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/plymouth-caravelle/1.png",
+      "author": "55allegro",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Plymouth_Caravelle,_83-85.png"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

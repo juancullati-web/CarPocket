@@ -1,0 +1,89 @@
+{
+  "slug": "alfa-romeo-spider",
+  "name": "Alfa Romeo Spider",
+  "brand": "Alfa Romeo",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T03:44:05+00:00",
+  "updated": "2026-11-07T03:44:05+00:00",
+  "summary": "L'Alfa Romeo Duetto Spider est un roadster du constructeur italien Alfa Romeo. Sa production a débuté en 1966 et s'est achevée en 1993. Reconnu comme un grand classique, ce modèle n'a subi que relativement peu de modifications esthétiques ou mécaniques durant ses trois décennies de production.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Alfa_Romeo_Spider_%28Duetto%29",
+  "wikipedia_title": "Alfa Romeo Spider",
+  "specs": {
+    "engine": {
+      "value": "1290 cc Twin Cam I4 · 1570 cc Twin Cam I4 · 1779 cc Twin Cam I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Cabriolet 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1966–1969",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Aldo Brovarone and Battista Pininfarina at Pininfarina",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Italy: Grugliasco, Turin Italy: San Giorgio Canavese (Pininfarina)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "990-1040 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4250 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1630 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1290 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2250 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "109 PS",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "190 km/h",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/alfa-romeo-spider/1.jpg",
+      "thumb": "photos/alfa-romeo-spider/1-thumb.jpg",
+      "author": "Vauxford",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1969_Alfa_Romeo_Spider_Series_1_1.8_Front.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "Cabriolet 2 portes",
+    "avant 1970",
+    "décrite comme sportive ou de prestige"
+  ]
+}

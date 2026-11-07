@@ -1,0 +1,71 @@
+{
+  "slug": "plymouth-cranbrook",
+  "name": "Plymouth Cranbrook",
+  "brand": "Plymouth",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T02:19:16+00:00",
+  "updated": "2026-11-07T02:19:16+00:00",
+  "summary": "The Plymouth Cranbrook is an automobile which was built by Plymouth for the model years 1951 through 1953. It replaced the Special Deluxe when Plymouth changed its naming scheme and was essentially the same as the Plymouth Concord and Cambridge. In period TV commercials, the cars were all introduced as \"the new Plymouth\" and then followed by the model year; the ads made no mention of the nameplate, which merely indicated a trim package with standard and optional features. The Cranbrook model name was, however, featured in contemporary sales brochures.",
+  "summary_lang": "en",
+  "summary_url": "https://en.wikipedia.org/wiki/Plymouth_Cranbrook",
+  "wikipedia_title": "Plymouth Cranbrook",
+  "specs": {
+    "engine": {
+      "value": "217.8 cuin Plymouth Flathead Straight six",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 3 rapports standard(1951-1953), \"Hy-Drive\" semi-automatic Automatic with Overdrive",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes · Coupé 2 portes · 2-door hardtop coupe · Cabriolet 2 portes · Break 3 portes · Coupé 2 portes utility (Australia)",
+      "from_text": false
+    },
+    "production": {
+      "value": "1951–1953",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Lynch Road Assembly, Highland Park, MI, United States San Leandro Assembly, San Leandro, California Adelaide Assembly, South Australia",
+      "from_text": false
+    },
+    "weight": {
+      "value": "3200-3400 lb",
+      "from_text": false
+    },
+    "length": {
+      "value": "1951-52: 193.875 in",
+      "from_text": false
+    },
+    "width": {
+      "value": "72.8\" (1951), 73.4\" (1953)",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "1951-52: 111 in",
+      "from_text": false
+    },
+    "power": {
+      "value": "97 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/plymouth-cranbrook/1.jpg",
+      "thumb": "photos/plymouth-cranbrook/1-thumb.jpg",
+      "author": "dave_7",
+      "license": "CC BY-SA 2.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1952_Plymouth_Cranbrook.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "avant 1970"
+  ]
+}

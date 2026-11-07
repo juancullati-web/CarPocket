@@ -1,0 +1,85 @@
+{
+  "slug": "alfa-romeo-33",
+  "name": "Alfa Romeo 33",
+  "brand": "Alfa Romeo",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T03:54:16+00:00",
+  "updated": "2026-11-07T03:54:16+00:00",
+  "summary": "L'Alfa Romeo 33 est un modèle automobile produit par le constructeur Alfa Romeo. Son nom fait référence aux type 33, célèbres prototypes ayant gagné plusieurs championnats du monde au début des années 1970. Elle est une évolution de l’Alfasud produite de 1983 à 1995. Ses moteurs boxer essence sont déclinés en trois cylindrées (1,3, 1,5, 1,7 L) ; un turbodiesel équipera également certains modèles. Le modèle se révèlera assez robuste et performant, mais sera tout de même victime d’une mauvaise réputation, héritée de l'Alfasud et de ses problèmes de corrosion. La 33 n’en fut pas moins un succès commercial. Elle contribua à attirer à la marque de nouveaux clients et plus de jeunes. La 33 est restylée en 1989 avec une nouvelle calandre et des feux arrière constitué d'une seule bande continue, à l'instar de l'Alfa Romeo 164.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Alfa_Romeo_33",
+  "wikipedia_title": "Alfa Romeo 33",
+  "specs": {
+    "engine": {
+      "value": "petrol: · 1.2 L Boxer H4 · 1.4 L Boxer H4 · 1.5 L Boxer H4 · 1.7 L Boxer H4 · 1.7 L Boxer 16V H4 · diesel: · 1.8 L VM HRT 392 turbo I3",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Longitudinal moteur avant, traction/four-wheel-drive",
+      "from_text": false
+    },
+    "body": {
+      "value": "Compacte 5 portes · Break 5 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1983–1995",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Ermanno Cressoni at Centro Stile Alfa Romeo, Pininfarina (estate)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Italy: Pomigliano d'Arco plant, Campania Italy: Pininfarina Grugliasco plant, Piedmont South Africa: Rosslyn, Brits (Alfa Romeo SA (Pty) Ltd)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "890-1070 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4075 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1615 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1350-1375 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2475 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "76 PS",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "185 km/h",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/alfa-romeo-33/1.jpg",
+      "thumb": "photos/alfa-romeo-33/1-thumb.jpg",
+      "author": "Lelenightwave",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Alfaromeo_33_1.3cc_anno_1990.JPG"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

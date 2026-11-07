@@ -1,0 +1,76 @@
+{
+  "slug": "lagonda-2-6-litre",
+  "name": "Lagonda 2.6-Litre",
+  "brand": "Lagonda",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T02:26:11+00:00",
+  "updated": "2026-11-07T02:26:11+00:00",
+  "summary": "La Lagonda 2.6-Litre est une automobile produite par la marque Lagonda au Royaume-Uni de 1948 à 1953.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Lagonda_2.6-Litre",
+  "wikipedia_title": "Lagonda 2.6-Litre",
+  "specs": {
+    "engine": {
+      "value": "2.6 L Lagonda I6",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes · 2-door 4-seat drophead coupé",
+      "from_text": false
+    },
+    "production": {
+      "value": "1948–1953 · 510 exemplaires",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United Kingdom: Feltham, Middlesex",
+      "from_text": false
+    },
+    "length": {
+      "value": "4775 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1727 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1549 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2883 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "105 bhp",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "145 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-60 mph : 17,6 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/lagonda-2-6-litre/1.jpg",
+      "thumb": "photos/lagonda-2-6-litre/1-thumb.jpg",
+      "author": "Redsimon",
+      "license": "CC BY 3.0",
+      "license_url": "https://creativecommons.org/licenses/by/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Lagonda_2-6litre_DHC_front.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "510 exemplaires",
+    "avant 1970"
+  ]
+}

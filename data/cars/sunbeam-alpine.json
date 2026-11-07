@@ -1,0 +1,74 @@
+{
+  "slug": "sunbeam-alpine",
+  "name": "Sunbeam Alpine",
+  "brand": "Sunbeam",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T03:47:05+00:00",
+  "updated": "2026-11-07T03:47:05+00:00",
+  "summary": "La Sunbeam Alpine est un coupé décapotable biplace produit par le constructeur automobile anglais Sunbeam sous l'égide du groupe Rootes de 1953 à 1955, puis de 1959 à 1968. Le modèle original lancé en 1953 a été la première voiture à porter la marque Sunbeam après le rachat par le groupe Rootes des marques Clément-Talbot et Sunbeam.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Sunbeam_Alpine",
+  "wikipedia_title": "Sunbeam Alpine",
+  "specs": {
+    "engine": {
+      "value": "2267 cc (2.3 L) I4",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Cabriolet 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1953–1955 · 1,582 made",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Roy Axe",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United Kingdom Australia",
+      "from_text": false
+    },
+    "length": {
+      "value": "4280 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1588 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2476 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "97.5 bhp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/sunbeam-alpine/1.jpg",
+      "thumb": "photos/sunbeam-alpine/1-thumb.jpg",
+      "author": "Mr.choppers",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1954_Sunbeam_Alpine_Mark_I_Roadster,_front_right_(Hershey_2019).jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "1582 exemplaires",
+    "Cabriolet 2 portes",
+    "avant 1970",
+    "décrite comme sportive ou de prestige"
+  ]
+}

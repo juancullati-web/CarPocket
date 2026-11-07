@@ -1,0 +1,62 @@
+{
+  "slug": "fiat-525",
+  "name": "Fiat 525",
+  "brand": "Fiat",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T04:52:06+00:00",
+  "updated": "2026-11-07T04:52:06+00:00",
+  "summary": "La Fiat 525 est une imposante automobile fabriquée par le constructeur italien Fiat entre 1928 et 1931. Après avoir abandonné le projet, pourtant bien avancé, de la grosse Fiat 530 à 8 cylindres pour tenir compte des conditions économiques du marché, Fiat décida de remplacer la Fiat 512 par cette nouvelle voiture, la Fiat 525. Équipée d'un nouveau moteur 6 cylindres en ligne de 3 739 cm³ développant 68,5 ch, la 1re version ne fut construite qu'à 511 exemplaires plus une version spéciale pour le Pape, livrée le 20 avril 1929. La seconde série comprenait 3 modèles : la 525N, disposant d'un châssis raccourci et d'améliorations mécaniques, cette version fut construite à 1.784 exemplaires jusqu'en 1931 dont beaucoup ont été exportées. la 525S et la 525SS sont des versions sportives à châssis court et disposant de mécaniques plus puissantes ; la SS disposait d'un moteur développant 89 ch.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Fiat_525",
+  "wikipedia_title": "Fiat 525",
+  "specs": {
+    "engine": {
+      "value": "3739 cc straight-6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes · 2/Cabriolet 4 portes · 2-door spider",
+      "from_text": false
+    },
+    "production": {
+      "value": "1928–1931",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1450 kg-1900 kg",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "300 cm (525 SS)",
+      "from_text": false
+    },
+    "power": {
+      "value": "69 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/fiat-525/1.jpg",
+      "author": "Unknown authorUnknown author",
+      "license": "Public domain",
+      "license_url": "",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Fiat_525_SS_1928.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "avant 1970"
+  ]
+}

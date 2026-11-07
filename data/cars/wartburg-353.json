@@ -1,0 +1,87 @@
+{
+  "slug": "wartburg-353",
+  "name": "Wartburg 353",
+  "brand": "Wartburg",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T03:35:15+00:00",
+  "updated": "2026-11-07T03:35:15+00:00",
+  "summary": "La Wartburg 353 est une automobile produite de 1966 à 1989 par l’usine est-allemande AWE. Avec la Trabant 601, c’est une des voitures les plus emblématiques de la RDA.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Wartburg_353",
+  "wikipedia_title": "Wartburg 353",
+  "specs": {
+    "engine": {
+      "value": "993 cc two-stroke I3",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FF layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes · Break 5 portes · Coupé 2 portes utility (pickup)",
+      "from_text": false
+    },
+    "production": {
+      "value": "June 1966 – November 1989",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Hans Fleischer, in cooperation with Clauss Dietel and Lutz Rudolph",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "East Germany: Eisenach",
+      "from_text": false
+    },
+    "weight": {
+      "value": "920 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4220 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1640 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1490 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2450 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "50-55 PS",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "170 km/h",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/wartburg-353/1.jpg",
+      "thumb": "photos/wartburg-353/1-thumb.jpg",
+      "author": "MumblesToad01",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Wartburg_353_declared_first_registered_January_1988_encine_capacity_993_cc.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "avant 1970"
+  ]
+}

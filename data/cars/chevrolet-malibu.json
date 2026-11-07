@@ -1,0 +1,75 @@
+{
+  "slug": "chevrolet-malibu",
+  "name": "Chevrolet Malibu",
+  "brand": "Chevrolet",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T00:49:05+00:00",
+  "updated": "2026-11-07T00:49:05+00:00",
+  "summary": "La Chevrolet Malibu (nommée en l’honneur de la ville côtière de Malibu, Californie) est un véhicule de type intermédiaire du constructeur automobile américain Chevrolet, propriété de General Motors (GM). La Malibu est produite aux États-Unis et vendue aux États-Unis, au Canada, au Mexique et en Israël.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Chevrolet_Malibu",
+  "wikipedia_title": "Chevrolet Malibu",
+  "specs": {
+    "engine": {
+      "value": "200 cuin Chevrolet L26 V6 · 229 cuin Chevrolet V6 · 231 cuin Buick LD5 V6 · 305 cuin Chevrolet LG3 V8 · 350 cuin Chevrolet LM1 V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 3 rapports · Manuelle 4 rapports · Automatique 3 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1978–1983",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Arlington, Texas, U.S. (Arlington Assembly) Baltimore, Maryland, U.S. (Baltimore Assembly) Doraville, Georgia, U.S. (Doraville Assembly) Fremont, California, U.S. (Fremont Assembly) Leeds, Missouri, U.S. (Leeds Assembly) Oshawa, Ontario, Canada (Oshawa Car Assembly) Ramos Arizpe, Coahuila, Mexico (Ramos Arizpe Assembly) Valencia, Carabobo, Venezuela",
+      "from_text": false
+    },
+    "length": {
+      "value": "4895 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1816 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1354 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2743 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "140 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/chevrolet-malibu/1.jpg",
+      "thumb": "photos/chevrolet-malibu/1-thumb.jpg",
+      "author": "Dennis Elzinga",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Chevrolet_Malibu_Classic_(14189588902).jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "Coupé 2 portes"
+  ]
+}

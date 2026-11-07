@@ -1,0 +1,68 @@
+{
+  "slug": "mg-kn",
+  "name": "MG KN",
+  "brand": "MG",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T03:08:08+00:00",
+  "updated": "2026-11-07T03:08:08+00:00",
+  "summary": "La MG KN Magnette est un coupé produit par la marque MG en 1933 et 1934, conçu pour utiliser l'excédent de carrosseries des berlines MG K-type invendues. Ces carrosseries furent montées sur le châssis K1, mais avaient le moteur plus puissant MG N-type de 1 271 cm3. La carrosserie n'avait pas de pilier entre les portes avant et arrière. Les portes avant ont des charnières sur l'extrémité du pare-brise et ferment sur les portes arrière. Pour donner l'impression d'être un coupé deux portes, les portes arrière n'ont pas de poignées externes. L'absence de pilier central affecte la structure de la carrosserie et cause souvent des problèmes. Un toit ouvrant équipe le véhicule. Le moteur de 56 ch pouvait amener la voiture à 125 km/h.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/MG_KN",
+  "wikipedia_title": "MG KN",
+  "specs": {
+    "engine": {
+      "value": "1271 cc I6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 4 rapports",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 4 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1933–1934",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Abingdon-on-Thames, Berkshire, England",
+      "from_text": false
+    },
+    "length": {
+      "value": "3912 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1499 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2743 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "56 bhp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/mg-kn/1.jpg",
+      "thumb": "photos/mg-kn/1-thumb.jpg",
+      "author": "andreboeni",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:MG_KN_Pillarless_Saloon_(1935)_-_30369458443.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "Coupé 4 portes",
+    "avant 1970"
+  ]
+}

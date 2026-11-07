@@ -1,0 +1,84 @@
+{
+  "slug": "nissan-300zx",
+  "name": "Nissan 300ZX",
+  "brand": "Nissan",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T05:34:10+00:00",
+  "updated": "2026-11-07T05:34:10+00:00",
+  "summary": "La Nissan 300ZX (connue sous son nom d'origine Nissan Fairlady Z au Japon depuis son début) fait partie de la lignée des voitures sportives de la série Z de chez Nissan. Elle a été vendue au Japon de 1983 à 2000 et aux États-Unis de 1984 à 1996, le nom 300ZX a suivi la numération initiée avec la Z originale, la Nissan Fairlady Z (S30), qui a été commercialisée aux États-Unis sous le nom de 240Z . La 300ZX de première génération connue sous le nom de modèle Z31 a été produite de 1983 à 1989 et a été un succès commercial, devenant le coupé Z le plus vendu pour Nissan. Pour être encore plus compétitive sur le marché des voitures de sport, la deuxième génération de 300ZX est montée en gamme. Elle fut dotée d'une technologie plus avancée, mais son prix était plus élevé qu'auparavant, avec des augmentations de prix consécutives chaque année.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Nissan_300ZX",
+  "wikipedia_title": "Nissan 300ZX",
+  "specs": {
+    "engine": {
+      "value": "2.0 L VG20ET turbo V6 (200Z/ZG/ZS) · 2.0 L RB20DET turbo DOHC I6 (200ZR) · 3.0 L VG30E V6 (300ZX) · 3.0 L VG30ET turbo V6 (300ZX Turbo) · 3.0 L VG30DE DOHC V6 (300ZR)",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports · Manuelle 5 rapports · Manuelle 5 rapports · Automatique 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "3-door 2-seater coupé or T-top",
+      "from_text": false
+    },
+    "production": {
+      "value": "July 1983–1989 · 329,900 exemplaires · (export: 294,516) · (domestic: 35,384)",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Kazumasu Takagi (1982)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Japan: Hiratsuka, Kanagawa (Nissan Shatai) South Africa: Rosslyn (1992–1994, Nissan South Africa)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "2888-3280 lb",
+      "from_text": false
+    },
+    "length": {
+      "value": "4410 mm (SWB)",
+      "from_text": false
+    },
+    "width": {
+      "value": "1725 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1260 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2320 mm (SWB)",
+      "from_text": false
+    },
+    "power": {
+      "value": "170 PS",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/nissan-300zx/1.jpg",
+      "thumb": "photos/nissan-300zx/1-thumb.jpg",
+      "author": "nakhon100",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Nissan_300_ZX_(8490940358)_(cropped).jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "3-door 2-seater coupé or T-top",
+    "décrite comme sportive ou de prestige"
+  ]
+}

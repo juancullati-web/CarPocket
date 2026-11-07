@@ -1,0 +1,77 @@
+{
+  "slug": "ford-crown-victoria",
+  "name": "Ford Crown Victoria",
+  "brand": "Ford",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T01:58:18+00:00",
+  "updated": "2026-11-07T01:58:18+00:00",
+  "summary": "La Ford Crown Victoria, souvent surnommée Crown Vic, est une berline du constructeur américain Ford. Elle exista en quatre générations, dont les trois dernières produites à l'usine canadienne St. Thomas, en Ontario. La Crown Victoria lle fut également vendue par la marque Mercury sous le nom de Grand Marquis, avec de très légères modifications.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Ford_Crown_Victoria",
+  "wikipedia_title": "Ford Crown Victoria",
+  "specs": {
+    "engine": {
+      "value": "4.6 L 2v SOHC Modular V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Automatique 4 rapports · Automatique 4 rapports · Automatique 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "January 14, 1991 – October 1997",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Canada: Talbotville, Southwold, Ontario (St. Thomas Assembly)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "3748-3849 lb",
+      "from_text": false
+    },
+    "length": {
+      "value": "1992–94: 212.4 in",
+      "from_text": false
+    },
+    "width": {
+      "value": "1976 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1992–94: 56.7 in",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2906 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "210 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/ford-crown-victoria/1.jpg",
+      "thumb": "photos/ford-crown-victoria/1-thumb.jpg",
+      "author": "IFCAR",
+      "license": "Public domain",
+      "license_url": "",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1992_Ford_Crown_Victoria_LX.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

@@ -1,0 +1,91 @@
+{
+  "slug": "audi-q8",
+  "name": "Audi Q8",
+  "brand": "Audi",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T00:46:06+00:00",
+  "updated": "2026-11-07T00:46:06+00:00",
+  "summary": "La Q8 est un SUV coupé haut de gamme produit par le constructeur automobile allemand Audi à partir de octobre 2018. Le Q8 est un concurrent des Lamborghini Urus, BMW X6, Mercedes-Benz Classe GLE ou Range Rover Sport.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Audi_Q8",
+  "wikipedia_title": "Audi Q8",
+  "specs": {
+    "engine": {
+      "value": "Petrol: · 3.0 L TFSI V6 · 4.0 L TFSI twin-turbo V8 · Petrol plug-in hybrid: · 3.0 L TFSI V6 PHEV · Diesel: · 3.0 L TDI V6 · 4.0 L TDI V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Automatique 8 rapports (ZF 8HP)",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Front-engine, four-wheel-drive",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 5 portes SUV",
+      "from_text": false
+    },
+    "production": {
+      "value": "June 2018 – present",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Sascha Heyde and Maurício Monteiro Dos Santos under Marc Lichte",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Slovakia: Bratislava (Volkswagen Bratislava Plant)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "2145 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4986-5012 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1995 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1705 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2995 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "340 bhp",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "249 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-100 km/h : 4,8 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/audi-q8/1.jpg",
+      "thumb": "photos/audi-q8/1-thumb.jpg",
+      "author": "Vauxford",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2018_Audi_Q8_S_Line_50_TDi_Quattro_3.0_Front.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "Coupé 5 portes SUV"
+  ]
+}

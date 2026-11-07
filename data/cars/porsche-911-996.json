@@ -1,0 +1,84 @@
+{
+  "slug": "porsche-911-996",
+  "name": "Porsche 911 (996)",
+  "brand": "Porsche",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T02:35:01+00:00",
+  "updated": "2026-11-07T02:35:01+00:00",
+  "summary": "La Porsche 996 (ou 911 Type 996) dévoilée au public en 1997, est la cinquième génération de Porsche 911, sportive de prestige développée par le constructeur allemand Porsche. Rompant avec une longue tradition tant au niveau du design que de l'aménagement intérieur, la version MK1 est passablement critiquée, essentiellement en raison des optiques de phare avant, empruntés à la Porsche Boxster. Les phares sont modifiés sur la version Mk2 et adoptent le design de ceux de la Carrera 4S et de la Turbo de la version Mk1. Ils sont définitivement abandonnés avec le retour des phares ovales sur la génération suivante (la 997), qui reviennent au design historique du modèle.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Porsche_911_%28996%29",
+  "wikipedia_title": "Porsche 911 (996)",
+  "specs": {
+    "engine": {
+      "value": "3.4 L–3.6 L M96 naturally aspirated/twin-turbocharged flat-6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 6 rapports · Automatique 5 rapports · Automatique 5 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur arrière, propulsion/moteur arrière, transmission intégrale",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes · Cabriolet 2 portes · 2-door Targa top",
+      "from_text": false
+    },
+    "production": {
+      "value": "July 17, 1997–2004 (2005 and 2006 for 911 Turbo S, GT2 and GT3 models only)",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Pinky Lai (1993–2006), Harm Lagaay",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Germany: Stuttgart",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1317 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4432 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1999–2001: 69.5 in",
+      "from_text": false
+    },
+    "height": {
+      "value": "1306 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2352 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "221 kW",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/porsche-911-996/1.jpg",
+      "thumb": "photos/porsche-911-996/1-thumb.jpg",
+      "author": "MercurySable99",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2003_Porsche_911_Carrera_4S_coupe,_front_left,_06-08-2024.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "Coupé 2 portes",
+    "décrite comme sportive ou de prestige"
+  ]
+}

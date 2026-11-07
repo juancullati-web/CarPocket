@@ -1,0 +1,84 @@
+{
+  "slug": "ssc-ultimate-aero",
+  "name": "SSC Ultimate Aero",
+  "brand": "SSC",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T01:48:08+00:00",
+  "updated": "2026-11-07T01:48:08+00:00",
+  "summary": "La SSC Ultimate Aero XT est une supercar construite par Shelby Super Cars (SSC) dans le but de rivaliser avec la Bugatti Veyron 16.4. Elle a une vitesse de pointe de 412 km/h, et un temps de 2,78 secondes pour le 0 à 100 km/h.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/SSC_Ultimate_Aero",
+  "wikipedia_title": "SSC Ultimate Aero",
+  "specs": {
+    "engine": {
+      "value": "General Motors LS-based small-block based · 2004: 6,200 cc supercharged V8 · 2005: 6,300 cc supercharged V8 · 2006: 6,300 cc supercharged V8 · 2007: 6,300 cc twin-turbocharged V8 · SSC designed · 2009: 6,300 cc twin-turbocharged V8 · 2013: 6,900 cc twin-turbocharged V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Automatique 3 rapports (for EV only) · Manuelle 5 rapports (for SC/8T only) · Manuelle 6 rapports (for TT only) · Manuelle 7 rapports (for XT only)",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur central arrière, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "2004–2013",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United States: Richland, Washington",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1270-1292 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4475 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "2100 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1092 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "911 hp",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "401 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-100 km/h : 2,78 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/ssc-ultimate-aero/1.jpg",
+      "thumb": "photos/ssc-ultimate-aero/1-thumb.jpg",
+      "author": "Nate Hawbaker",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source_url": "https://commons.wikimedia.org/wiki/File:SSC_Ultimate_Aero_TT_-_1.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "Coupé 2 portes",
+    "décrite comme sportive ou de prestige"
+  ]
+}

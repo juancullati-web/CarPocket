@@ -1,0 +1,81 @@
+{
+  "slug": "kia-stonic",
+  "name": "Kia Stonic",
+  "brand": "Kia",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T00:56:08+00:00",
+  "updated": "2026-11-07T00:56:08+00:00",
+  "summary": "Le Kia Stonic est un crossover urbain produit par le constructeur automobile Sud-coréen Kia depuis fin 2017. En Europe, il remplace le petit monospace Kia Venga.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Kia_Stonic",
+  "wikipedia_title": "Kia Stonic",
+  "specs": {
+    "engine": {
+      "value": "Petrol: · 1.0 L Kappa II T-GDI I3 · 1.0 L Smartstream G1.0 T-GDI I3 · 1.2 L Kappa II MPI I4 · 1.2 L Smartstream G1.2 MPI I4 · 1.4 L Kappa II MPI I4 · Diesel: · 1.6 L U II CRDi I4 · 1.6 L Smartstream D1.6 CRDi I4 · Diesel mild hybrid: · 1.6 L Smartstream D1.6 CRDi I4 EcoDynamics+",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports · Manuelle 6 rapports · Automatique 6 rapports · Variation continue 7 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, traction",
+      "from_text": false
+    },
+    "body": {
+      "value": "Compacte 5 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "2017–present",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Peter Schreyer",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "South Korea: Gwangmyeong (Sohari Plant, 2017–2023); Seosan (Donghee, 2023–present) China: Yancheng (Yueda Kia) Pakistan: Karachi (Lucky Motor Corporation)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1060-1104 kg (China)",
+      "from_text": false
+    },
+    "length": {
+      "value": "4100-4140 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1760 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1520 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2580 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "74 kW",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/kia-stonic/1.jpg",
+      "thumb": "photos/kia-stonic/1-thumb.jpg",
+      "author": "Vauxford",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2017_Kia_Stonic_First_Edition_1.0.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

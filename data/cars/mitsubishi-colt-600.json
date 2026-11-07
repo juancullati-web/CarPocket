@@ -1,0 +1,78 @@
+{
+  "slug": "mitsubishi-colt-600",
+  "name": "Mitsubishi Colt 600",
+  "brand": "Mitsubishi",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T03:38:01+00:00",
+  "updated": "2026-11-07T03:38:01+00:00",
+  "summary": "The Mitsubishi Colt 600 is a five-seat, two-door passenger sedan produced by Shin Mitsubishi Heavy-Industries, Ltd - one of the companies which would become Mitsubishi Motors. It was rear-engined and rear wheel drive, powered by an air-cooled 594 cc twin-cylinder OHV engine producing 25 PS (18 kW), and debuted in July 1962 as the successor to the company's Mitsubishi 500 Super Deluxe. The 600 was the first Mitsubishi to bear the \"Colt\" name. Top speed was 100 km/h (62 mph). A convertible version—the company's first \"show car\"— was exhibited at the 9th Tokyo Motor Show, but was never offered for public sale. A replica of that car was used to promote the new Mitsubishi Colt cabriolet at the 75th Geneva Motor Show in 2005.",
+  "summary_lang": "en",
+  "summary_url": "https://en.wikipedia.org/wiki/Mitsubishi_Colt_600",
+  "wikipedia_title": "Mitsubishi Colt 600",
+  "specs": {
+    "engine": {
+      "value": "594 cc NE35B, air-cooled OHV Straight-twin engine",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 3 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur arrière, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1962–1965",
+      "from_text": false
+    },
+    "weight": {
+      "value": "555 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "3385 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1410 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1370 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2065 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "25 PS",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "100 km/h",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/mitsubishi-colt-600/1.jpg",
+      "author": "Yones",
+      "license": "Public domain",
+      "license_url": "",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Mitsubishi_Colt_600.JPG"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "avant 1970"
+  ]
+}

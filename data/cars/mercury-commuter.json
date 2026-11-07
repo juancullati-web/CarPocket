@@ -1,0 +1,67 @@
+{
+  "slug": "mercury-commuter",
+  "name": "Mercury Commuter",
+  "brand": "Mercury",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T04:23:13+00:00",
+  "updated": "2026-11-07T04:23:13+00:00",
+  "summary": "The Mercury Commuter is a full-size station wagon that was produced by Mercury from 1957 until 1968. When introduced for the 1957 model year it was priced below Mercury's other two new full size wagons as a part of the Mercury Monterey series, alongside the mid-range Voyager and the top-level Colony Park. In 1957 the same 368 cu in (6.0 L) Lincoln Y-Block V8 that was standard equipment on the Mercury Turnpike Cruiser was optional equipment on the Commuter. From 1957 until 1960 all Mercury station wagons were hardtops, and also offered a rear window that retracted into the tailgate that was not offered on Ford branded station wagons. The Commuter was initially available as a two-door wagon and as a four-door wagon. Due to the two-door only selling just over 7,600 units in 1957-59, the two-door was dropped from the 1960 model range.",
+  "summary_lang": "en",
+  "summary_url": "https://en.wikipedia.org/wiki/Mercury_Commuter",
+  "wikipedia_title": "Mercury Commuter",
+  "specs": {
+    "engine": {
+      "value": "312 cuin V8 · 368 cuin Lincoln Y-Block V8 · 390 cuin V8 · 428 cuin V8",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "Break 2 portes · Break 4 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1957–1962 · 1964–1968",
+      "from_text": false
+    },
+    "weight": {
+      "value": "4800-4900 lb",
+      "from_text": false
+    },
+    "length": {
+      "value": "1959: 218.2 in",
+      "from_text": false
+    },
+    "width": {
+      "value": "1959: 80.7 in",
+      "from_text": false
+    },
+    "height": {
+      "value": "1468 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "3200 mm",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/mercury-commuter/1.jpg",
+      "thumb": "photos/mercury-commuter/1-thumb.jpg",
+      "author": "AlfvanBeem",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source_url": "https://commons.wikimedia.org/wiki/File:MERCURY_COMMUTER_dutch_licence_registration_AM-75-80_pic1.JPG"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "avant 1970"
+  ]
+}

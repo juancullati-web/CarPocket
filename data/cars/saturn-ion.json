@@ -1,0 +1,77 @@
+{
+  "slug": "saturn-ion",
+  "name": "Saturn Ion",
+  "brand": "Saturn",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T00:53:08+00:00",
+  "updated": "2026-11-07T00:53:08+00:00",
+  "summary": "La Saturn Ion est une automobile compacte vendue par Saturn de 2003 à 2007. Elle succède à la Saturn S-Series, et est remplacée par la Saturn Astra en 2008. À partir de 2006, la Saturne Ion était la plus grande compacte vendue en Amérique du Nord. La production et les ventes cessent en mars 2007.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Saturn_Ion",
+  "wikipedia_title": "Saturn Ion",
+  "specs": {
+    "engine": {
+      "value": "2.2 L L61 I4 (gasoline) · 2.4 L LE5 I4 (gasoline) · 2.0 L LSJ s/c I4 (gasoline)",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports · Manuelle 5 rapports · Automatique 4 rapports · Automatique 5 rapports · CVT VTi automatic",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur transversal, moteur avant, traction",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes · 4-door quad coupe",
+      "from_text": false
+    },
+    "production": {
+      "value": "2002–March 29, 2007",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United States: Spring Hill, Tennessee",
+      "from_text": false
+    },
+    "weight": {
+      "value": "2600-2984 lb",
+      "from_text": false
+    },
+    "length": {
+      "value": "4686 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1707 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1458 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2621 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "140 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/saturn-ion/1.jpg",
+      "thumb": "photos/saturn-ion/1-thumb.jpg",
+      "author": "IFCAR",
+      "license": "Public domain",
+      "license_url": "",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2005-Saturn-Ion-2.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

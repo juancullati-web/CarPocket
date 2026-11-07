@@ -1,0 +1,84 @@
+{
+  "slug": "jaguar-xjs",
+  "name": "Jaguar XJS",
+  "brand": "Jaguar",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T04:00:11+00:00",
+  "updated": "2026-11-07T04:00:11+00:00",
+  "summary": "La Jaguar XJ-S (puis Jaguar XJS) - (XJ27) est une voiture de grand-tourisme luxueuse produite par le fabricant anglais Jaguar de 1975 à 1996. La XJ-S a remplacé la Type E en septembre 1975 et a été basée sur la berline XJ. Elle n'est pas aussi sportive que sa devancière: c'est une grand-tourisme issue de la plateforme XJ, destinée à séduire le marché américain. La XJ-S bénéficia d'une puissance digne de la marque : un moteur à essence V12, avec un choix d'une transmission manuelle (à 4 rapports) ou automatique (à 3 rapports). La boîte manuelle a vite été délaissée. À l'époque, à la fin des années 1970, il était inhabituel de voir une grand-tourisme avec un moteur V12. C'était l'apanage des voitures de sport italiennes de luxe, comme Lamborghini ou Ferrari, dont le tarif était autrement important.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Jaguar_XJS",
+  "wikipedia_title": "Jaguar XJS",
+  "specs": {
+    "engine": {
+      "value": "5.3 L Jaguar V12",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 4 rapports · Automatique 3 rapports · Automatique 3 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1975–1981 · 14,800 built",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Malcolm Sayer (early design), Geoff Lawson (facelift)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United Kingdom: Coventry",
+      "from_text": false
+    },
+    "length": {
+      "value": "4870 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1793 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1270 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2591 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "295 hp",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "230 km/h",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/jaguar-xjs/1.jpg",
+      "thumb": "photos/jaguar-xjs/1-thumb.jpg",
+      "author": "Charles01",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Jaguar_XJS_registered_January_1978_5343cc.JPG"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "Coupé 2 portes",
+    "décrite comme sportive ou de prestige"
+  ]
+}

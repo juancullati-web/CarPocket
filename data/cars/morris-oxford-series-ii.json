@@ -1,0 +1,67 @@
+{
+  "slug": "morris-oxford-series-ii",
+  "name": "Morris Oxford Series II",
+  "brand": "Morris",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T05:04:10+00:00",
+  "updated": "2026-11-07T05:04:10+00:00",
+  "summary": "Morris Oxford is a series of motor car models produced by Morris Motors of the United Kingdom, from the 1913 bullnose Oxford to the Farina Oxfords V and VI. Named by W R Morris after the city of dreaming spires, the university town in which he grew up, the manufacture of Morris's Oxford cars would turn Oxford into an industrial city. From 1913 to mid-1935 Oxford cars grew in size and quantity. In 1923 they with the Cowley cars were 28.1 per cent of British private car production. In 1925 Morris sold near double the number and they represented 41 per cent of British production. The model name was recycled in 1948 and lasted almost another 23 years through to 1971 but in this time the market sector and engine-size remained nearly constant between 1476 cc and 1622 cc.",
+  "summary_lang": "en",
+  "summary_url": "https://en.wikipedia.org/wiki/Morris_Oxford_Series_II",
+  "wikipedia_title": "Morris Oxford Series II",
+  "specs": {
+    "engine": {
+      "value": "1489 cc B-Series Straight-4",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1954–1956 · 87,341 exemplaires",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United Kingdom Australia",
+      "from_text": false
+    },
+    "length": {
+      "value": "4343 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1651 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1600 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2464 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "50 hp",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/morris-oxford-series-ii/1.jpg",
+      "thumb": "photos/morris-oxford-series-ii/1-thumb.jpg",
+      "author": "Redsimon at English Wikipedia",
+      "license": "CC BY 2.5",
+      "license_url": "https://creativecommons.org/licenses/by/2.5",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Morris_Oxford_Series_II_front.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "avant 1970"
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "slug": "mitsubishi-pistachio",
+  "name": "Mitsubishi Pistachio",
+  "brand": "Mitsubishi",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T05:43:07+00:00",
+  "updated": "2026-11-07T05:43:07+00:00",
+  "summary": "The Mitsubishi Pistachio is a three-door hatchback introduced by Mitsubishi Motors in December 1999, based on the platform of their Minica kei car. Only 50 Pistachios were sold in either Citron Yellow and Loire Green colour schemes, priced at ¥959,000, to local authorities and public corporations working to protect the environment.",
+  "summary_lang": "en",
+  "summary_url": "https://en.wikipedia.org/wiki/Mitsubishi_Pistachio",
+  "wikipedia_title": "Mitsubishi Pistachio",
+  "specs": {
+    "engine": {
+      "value": "1094 cc 4A31 DOHC 16v GDI I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports",
+      "from_text": false
+    },
+    "body": {
+      "value": "Compacte 3 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1999 · 50 exemplaires",
+      "from_text": false
+    },
+    "weight": {
+      "value": "700 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "3440 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1475 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1510 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2340 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "54 kW",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/mitsubishi-pistachio/1.jpg",
+      "thumb": "photos/mitsubishi-pistachio/1-thumb.jpg",
+      "author": "TTTNIS",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Mitsubishi_Pistachio.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "50 exemplaires"
+  ]
+}

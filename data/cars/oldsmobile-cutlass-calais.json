@@ -1,0 +1,71 @@
+{
+  "slug": "oldsmobile-cutlass-calais",
+  "name": "Oldsmobile Cutlass Calais",
+  "brand": "Oldsmobile",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T01:27:18+00:00",
+  "updated": "2026-11-07T01:27:18+00:00",
+  "summary": "The Oldsmobile Calais is a compact car that was manufactured and marketed by Oldsmobile from 1985 through 1991, superseding the Oldsmobile Omega and named after the city of Calais, France. Renamed the Cutlass Calais for 1988, the Calais shared the GM N platform with the Pontiac Grand Am and the Buick Skylark/Buick Somerset—and was superseded by the Oldsmobile Achieva in 1992. Previously, the Cutlass Calais nameplate was used on top-line versions of the Cutlass Supreme coupé (differing from the Supreme only in minor trim details) from 1978 to 1984. There was also a Cadillac Calais model, sold from 1965 to 1976.",
+  "summary_lang": "en",
+  "summary_url": "https://en.wikipedia.org/wiki/Oldsmobile_Cutlass_Calais",
+  "wikipedia_title": "Oldsmobile Cutlass Calais",
+  "specs": {
+    "engine": {
+      "value": "2.3 L Quad 4 I4 · 2.5 L Tech IV I4 · 3.0 L Buick V6 · 3.3 L 3300 V6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports · Automatique 3 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur transversal, moteur avant, traction",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes · Berline 4 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1984-1991",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United States: Lansing, Michigan (Lansing Car Assembly)",
+      "from_text": false
+    },
+    "length": {
+      "value": "1988: 178.8 in",
+      "from_text": false
+    },
+    "width": {
+      "value": "1988: 66.7 in",
+      "from_text": false
+    },
+    "height": {
+      "value": "1988: 52.3 in",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2626 mm",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/oldsmobile-cutlass-calais/1.jpg",
+      "thumb": "photos/oldsmobile-cutlass-calais/1-thumb.jpg",
+      "author": "Mr.choppers",
+      "license": "CC BY-SA 3.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1991_Oldsmobile_Cutlass_Calais_4-door_Quad_4,_fL.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": [
+    "Coupé 2 portes"
+  ]
+}

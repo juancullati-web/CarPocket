@@ -1,0 +1,77 @@
+{
+  "slug": "fisker-karma",
+  "name": "Fisker Karma",
+  "brand": "Fisker",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T01:14:05+00:00",
+  "updated": "2026-11-07T01:14:05+00:00",
+  "summary": "La Fisker Karma est la première berline de luxe électrique à prolongateur d'autonomie. Elle était assemblée par l'usine finlandaise Valmet Automotive pour le compte du constructeur automobile américain Fisker Automotive. Son concepteur Henrik Fisker est également le designer des : Aston Martin DB9, Aston Martin Vantage, BMW Z8, VLF Force One et la Fisker EMotion, entre autres.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Fisker_Karma",
+  "wikipedia_title": "Fisker Karma",
+  "specs": {
+    "engine": {
+      "value": "2.0 L (121.9 cu in) turbocharged Ecotec VVT DI LNF I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "1-speed",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "2011–2012",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Henrik Fisker",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Finland: Uusikaupunki (Valmet Automotive)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "2404 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4970 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1984 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1310 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "3160 mm",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/fisker-karma/1.jpg",
+      "thumb": "photos/fisker-karma/1-thumb.jpg",
+      "author": "M 93",
+      "license": "CC BY-SA 3.0 de",
+      "license_url": "https://creativecommons.org/licenses/by-sa/3.0/de/deed.en",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Fisker_Karma_EVer_EcoChic_%E2%80%93_Frontansicht_(1),_6._Juni_2012,_D%C3%BCsseldorf.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}

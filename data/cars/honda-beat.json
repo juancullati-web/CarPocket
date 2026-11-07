@@ -1,0 +1,88 @@
+{
+  "slug": "honda-beat",
+  "name": "Honda Beat",
+  "brand": "Honda",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T04:17:14+00:00",
+  "updated": "2026-11-07T04:17:14+00:00",
+  "summary": "La Honda Beat est un roadster à moteur central produit de mai 1991 à février 1996 par Honda.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Honda_Beat",
+  "wikipedia_title": "Honda Beat",
+  "specs": {
+    "engine": {
+      "value": "656 cc E07A MTREC I3",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur transversal, moteur central, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Cabriolet 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "May 1991– February 1996",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Pavel Hušek at Pininfarina",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Suzuka Plant, Suzuka, Mie, Japan",
+      "from_text": false
+    },
+    "weight": {
+      "value": "760 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "3295 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1395 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1175 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2280 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "64 PS",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "135 km/h",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/honda-beat/1.jpg",
+      "thumb": "photos/honda-beat/1-thumb.jpg",
+      "author": "Guyon from Richmond, VA, United States of America",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Honda_Beat_PP1_front.jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "remarkable",
+  "reserve_reasons": [
+    "Cabriolet 2 portes",
+    "décrite comme sportive ou de prestige"
+  ]
+}

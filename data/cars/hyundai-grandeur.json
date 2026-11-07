@@ -1,0 +1,85 @@
+{
+  "slug": "hyundai-grandeur",
+  "name": "Hyundai Grandeur",
+  "brand": "Hyundai",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-07T03:48:05+00:00",
+  "updated": "2026-11-07T03:48:05+00:00",
+  "summary": "La Hyundai Grandeur est un véhicule du constructeur automobile sud-coréen Hyundai Motor vendu depuis 1986 en Corée du Sud. Depuis 2000, elle est exportée en Amérique du Nord et en Europe sous le nom de Hyundai XG et Hyundai Azera successivement.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Hyundai_Grandeur",
+  "wikipedia_title": "Hyundai Grandeur",
+  "specs": {
+    "engine": {
+      "value": "2.0 L Sirius SOHC I4 · 2.4 L Sirius SOHC I4 · 3.0 L Sigma SOHC V6",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports · Automatique 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, traction (1986–present)\nmoteur avant, transmission intégrale (2022–present)",
+      "from_text": false
+    },
+    "body": {
+      "value": "Berline 4 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1986–1992",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "South Korea: Ulsan",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1409-1540 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4865 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1725 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1430 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2735 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "165 bhp",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "204 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-60 mph : 10,6 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/hyundai-grandeur/1.jpg",
+      "thumb": "photos/hyundai-grandeur/1-thumb.jpg",
+      "author": "Damian B Oh",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Hyundai_Grandeur_L_Silver_(12).jpg"
+    }
+  ],
+  "reserve": true,
+  "reserve_kind": "discovery",
+  "reserve_reasons": []
+}
