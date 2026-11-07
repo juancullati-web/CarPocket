@@ -5,7 +5,7 @@
   "variant": null,
   "example": false,
   "added": "2026-11-05T10:30:20+00:00",
-  "updated": "2026-11-05T10:30:20Z",
+  "updated": "2026-11-07T00:08:21+00:00",
   "summary": "",
   "summary_lang": "",
   "summary_url": "",
@@ -28,5 +28,15 @@
     }
   },
   "overrides": {},
-  "photos": []
+  "photos": [
+    {
+      "file": "photos/porsche-turbo-4-911-turbo-cab-s/1.jpg",
+      "thumb": "photos/porsche-turbo-4-911-turbo-cab-s/1-thumb.jpg",
+      "author": "Alexandre Prevot",
+      "license": "CC BY-SA 2.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Porsche_996_Turbo_S_Cabriolet_(50179533347).jpg",
+      "scope": "model"
+    }
+  ]
 }
