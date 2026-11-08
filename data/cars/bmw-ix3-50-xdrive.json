@@ -1,0 +1,36 @@
+{
+  "slug": "bmw-ix3-50-xdrive",
+  "name": "BMW IX3 50 Xdrive",
+  "brand": "BMW",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-08T07:19:42+00:00",
+  "updated": "2026-11-08T07:19:42+00:00",
+  "summary": "",
+  "summary_lang": "",
+  "summary_url": "",
+  "wikipedia_title": "BMW IX3 50 Xdrive",
+  "specs": {
+    "power": {
+      "value": "345 kW",
+      "from_text": false,
+      "source": "OVD"
+    },
+    "weight": {
+      "value": "2360 kg (en ordre de marche)",
+      "from_text": false,
+      "source": "OVD"
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/bmw-ix3-50-xdrive/1.jpg",
+      "thumb": "photos/bmw-ix3-50-xdrive/1-thumb.jpg",
+      "author": "Chanokchon",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2026_BMW_iX3_50_xDrive_M_Sport.jpg"
+    }
+  ]
+}
