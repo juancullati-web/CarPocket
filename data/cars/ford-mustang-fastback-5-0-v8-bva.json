@@ -5,7 +5,7 @@
   "variant": null,
   "example": false,
   "added": "2026-11-07T22:53:52+00:00",
-  "updated": "2026-11-07T22:53:52+00:00",
+  "updated": "2026-11-08T07:12:23+00:00",
   "summary": "",
   "summary_lang": "",
   "summary_url": "",
@@ -38,5 +38,15 @@
     }
   },
   "overrides": {},
-  "photos": []
+  "photos": [
+    {
+      "file": "photos/ford-mustang-fastback-5-0-v8-bva/1.jpg",
+      "thumb": "photos/ford-mustang-fastback-5-0-v8-bva/1-thumb.jpg",
+      "author": "Kieran White from Manchester, England",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:1972_Ford_Mustang_5.0_V8_Fastback_(53632122369).jpg",
+      "scope": "model"
+    }
+  ]
 }
