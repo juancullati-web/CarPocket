@@ -1,0 +1,74 @@
+{
+  "slug": "aro-24-series",
+  "name": "ARO 24 Series",
+  "brand": "ARO",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-09T16:07:47+00:00",
+  "updated": "2026-11-09T16:07:47+00:00",
+  "summary": "The ARO 24 Series is a 4x4 off-road vehicle manufactured by ARO from 1969 to 2006 and mass produced from 1972. ARO 240 was the first of the ARO 24 series, which eventually included many other models: the four-door 241 and 244, the 242 pick-up, the three-door 243, the 320, 330 pick-ups, and many other body trims. Last special military versions were called ARO Dragon. It is equipped with many different engines (both diesel and petrol options), and comes in both 4x2 and 4x4 versions. Notable improvements over the years were the introduction of Romanian Diesel engines, units equipped with Toyota engines, and units equipped with Romanian-built Turbo Diesel engines. The ARO-24s are no longer in production, as ARO was shut down. Plans to market the ARO 244 in the United States as the Cross Lander 244X in 2005 were eventually cancelled.",
+  "summary_lang": "en",
+  "summary_url": "https://en.wikipedia.org/wiki/ARO_24_Series",
+  "wikipedia_title": "ARO 24 Series",
+  "specs": {
+    "engine": {
+      "value": "Petrol/Diesel/Turbodiesel engines",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 4 rapports · Manuelle 5 rapports · Automatique 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, propulsion / Four-wheel drive",
+      "from_text": false
+    },
+    "body": {
+      "value": "Cabriolet 2 portes · SUV 3 portes · SUV 4 portes · Cabriolet 4 portes · SUV 5 portes · 2-door pickup · 4-door pickup",
+      "from_text": false
+    },
+    "production": {
+      "value": "1969–2006 (Romania) · 1975–1995 (Portugal) · 1980–1990 (Spain) · 2002–2006 (Brazil)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Romania: Câmpulung-Muscel Portugal: Setúbal (Portaro:1975–1985) Portugal: Tramagal (Portaro: 1985–1995) Spain: Barcelona (HISPARO) Brazil: Manaus (Cross Lander)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1650-2000 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4098-6410 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1775-2100 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1840-2900 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2350-4200 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "140 PS",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/aro-24-series/1.jpg",
+      "thumb": "photos/aro-24-series/1-thumb.jpg",
+      "author": "Torsten Maue",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:OMMMA_2011_Impressionen_(6109050031).jpg"
+    }
+  ]
+}
