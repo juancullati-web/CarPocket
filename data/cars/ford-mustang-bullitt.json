@@ -1,0 +1,46 @@
+{
+  "slug": "ford-mustang-bullitt",
+  "name": "Ford Mustang Bullitt",
+  "brand": "Ford",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-11T11:07:31+00:00",
+  "updated": "2026-11-11T11:07:31+00:00",
+  "summary": "",
+  "summary_lang": "",
+  "summary_url": "",
+  "wikipedia_title": "Ford Mustang Bullitt",
+  "specs": {
+    "engine": {
+      "value": "5,0 L, 8 cylindres",
+      "from_text": false,
+      "source": "EPA"
+    },
+    "transmission": {
+      "value": "Manuelle 6 rapports",
+      "from_text": false,
+      "source": "EPA"
+    },
+    "layout": {
+      "value": "Propulsion",
+      "from_text": false,
+      "source": "EPA"
+    },
+    "production": {
+      "value": "2019–2020",
+      "from_text": false,
+      "source": "EPA"
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/ford-mustang-bullitt/1.jpg",
+      "thumb": "photos/ford-mustang-bullitt/1-thumb.jpg",
+      "author": "Handelsgeselschaft",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Ford_Mustang_Bullitt_(2).jpg"
+    }
+  ]
+}
