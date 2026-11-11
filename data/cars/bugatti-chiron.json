@@ -1,0 +1,90 @@
+{
+  "slug": "bugatti-chiron",
+  "name": "Bugatti Chiron",
+  "brand": "Bugatti",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-11T11:08:13+00:00",
+  "updated": "2026-11-11T11:08:13+00:00",
+  "summary": "La Bugatti Chiron est une hypercar du constructeur automobile français Bugatti, descendante annoncée de la Bugatti Veyron 16.4. Elle tient son nom du pilote automobile monégasque Louis Chiron (1899-1979). Elle est préfigurée par le concept car Bugatti Vision Gran Turismo et inspirée par la Bugatti Type 57. La Bugatti Chiron a été produite de 2016 à 2024, à 500 exemplaires, ce qui représente une production d'environ 60 exemplaires par an.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Bugatti_Chiron",
+  "wikipedia_title": "Bugatti Chiron",
+  "specs": {
+    "engine": {
+      "value": "8,0 L, 16 cylindres",
+      "from_text": false,
+      "source": "EPA"
+    },
+    "transmission": {
+      "value": "Automatique 7 rapports",
+      "from_text": false,
+      "source": "EPA"
+    },
+    "layout": {
+      "value": "Transmission intégrale",
+      "from_text": false,
+      "source": "EPA"
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "2018–2023",
+      "from_text": false,
+      "source": "EPA"
+    },
+    "designer": {
+      "value": "Achim Anscheidt (Head of Design), Frank Heyl, Sasha Selipanov, Etienne Salome",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "France: Molsheim (Bugatti Molsheim Plant)",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1996 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4544 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "2038 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1212 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2711 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "1103 kW",
+      "from_text": false
+    },
+    "top_speed": {
+      "value": "420 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-62 mph : 2,4 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/bugatti-chiron/1.jpg",
+      "thumb": "photos/bugatti-chiron/1-thumb.jpg",
+      "author": "Calreyn88",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Bugatti_Chiron_1.jpg"
+    }
+  ]
+}
