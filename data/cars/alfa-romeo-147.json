@@ -1,0 +1,78 @@
+{
+  "slug": "alfa-romeo-147",
+  "name": "Alfa Romeo 147",
+  "brand": "Alfa Romeo",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-13T10:38:10+00:00",
+  "updated": "2026-11-13T10:38:10+00:00",
+  "summary": "L'Alfa Romeo 147 est une automobile compacte du constructeur automobile italien Alfa Romeo construite de 2000 à 2010. Elle succéde aux modèles 145/146 et elle est remplacée par la Giulietta. Elle a remporté le trophée européen de la voiture de l'année en 2001. La 147 est produite en Italie, dans l'usine de Pomigliano d'Arco.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Alfa_Romeo_147",
+  "wikipedia_title": "Alfa Romeo 147",
+  "specs": {
+    "engine": {
+      "value": "petrol: · 1.6 L Twin Spark 16V I4 · 2.0 L Twin Spark 16V I4 · 3.2 L Busso 24V V6 (GTA) · diesel: · 1.9 L Fiat JTD/JTDm 8V/16V turbo I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 5 rapports · Manuelle 6 rapports · Manuelle 5 rapports · Manuelle 6 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur avant, traction",
+      "from_text": false
+    },
+    "body": {
+      "value": "3/Compacte 5 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "2000–2010",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Walter de Silva and Wolfgang Egger at Centro Stile Alfa Romeo, Giorgetto Giugiaro at Italdesign (restyling)",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Italy: Pomigliano d'Arco plant, Campania",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1200-1360 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4213-4223 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1729-1764 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1412-1442 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2546 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "105 PS",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/alfa-romeo-147/1.jpg",
+      "thumb": "photos/alfa-romeo-147/1-thumb.jpg",
+      "author": "OSX",
+      "license": "Public domain",
+      "license_url": "",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2002_Alfa_Romeo_147_(MY02)_Selespeed_Twin_Spark_5-door_hatchback_(2010-11-28).jpg"
+    }
+  ]
+}
