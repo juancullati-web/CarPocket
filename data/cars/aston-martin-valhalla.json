@@ -1,0 +1,82 @@
+{
+  "slug": "aston-martin-valhalla",
+  "name": "Aston Martin Valhalla",
+  "brand": "Aston Martin",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-15T20:25:45+00:00",
+  "updated": "2026-11-15T20:25:45+00:00",
+  "summary": "L'Aston Martin Valhalla, connue sous le nom de code interne AM-RB 003, est une supercar produite par le constructeur automobile britannique Aston Martin à partir de 2025, dont la diffusion est limitée à 999 exemplaires.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Aston_Martin_Valhalla",
+  "wikipedia_title": "Aston Martin Valhalla",
+  "specs": {
+    "engine": {
+      "value": "3982 cc Mercedes-AMG M178 LS2 twin-turbocharged V8 (production model)",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Double embrayage 8 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Mid engine, AWD",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes · 2-door Targa top roadster",
+      "from_text": false
+    },
+    "production": {
+      "value": "2019 (AM-RB 003 prototype) · 2025–present",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Miles Nurnberger, Adrian Newey",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "United Kingdom: Gaydon, Warwickshire",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1655 kg (dry)",
+      "from_text": false
+    },
+    "length": {
+      "value": "4748 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "2014 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1161 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2760 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "1064 bhp",
+      "from_text": false
+    },
+    "torque": {
+      "value": "1100 N.m",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/aston-martin-valhalla/1.jpg",
+      "thumb": "photos/aston-martin-valhalla/1-thumb.jpg",
+      "author": "Bread57",
+      "license": "CC0",
+      "license_url": "http://creativecommons.org/publicdomain/zero/1.0/deed.en",
+      "source_url": "https://commons.wikimedia.org/wiki/File:2026_Aston_Martin_Valhalla_taken_at_the_2026_Adelaide_Auto_Expo.jpg"
+    }
+  ]
+}
