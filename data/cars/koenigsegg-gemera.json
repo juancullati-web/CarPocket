@@ -1,0 +1,82 @@
+{
+  "slug": "koenigsegg-gemera",
+  "name": "Koenigsegg Gemera",
+  "brand": "Koenigsegg",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-21T21:45:41+00:00",
+  "updated": "2026-11-21T21:45:41+00:00",
+  "summary": "La Koenigsegg Gemera est une voiture de sport hybride produite à 300 exemplaires par le constructeur automobile suédois Koenigsegg dévoilée en mars 2020.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Koenigsegg_Gemera",
+  "wikipedia_title": "Koenigsegg Gemera",
+  "specs": {
+    "engine": {
+      "value": "Prototype: · 2.0 L TFG twin-turbocharged I3 · Production: · 5.0 L twin-turbocharged V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "9-speed Koenigsegg LSTT multi-clutch",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Longitudinal, rear mid-engine, all-wheel-drive",
+      "from_text": false
+    },
+    "body": {
+      "value": "2-door, 4-seat coupé",
+      "from_text": false
+    },
+    "production": {
+      "value": "2026–present",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Christian von Koenigsegg, Sasha Selipanov",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Sweden: Ängelholm",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1988 kg (2020 prototype)",
+      "from_text": false
+    },
+    "length": {
+      "value": "4975 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1988 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1295 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "3000 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "1400 hp",
+      "from_text": false
+    },
+    "top_speed": {
+      "value": "400 km/h",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/koenigsegg-gemera/1.jpg",
+      "thumb": "photos/koenigsegg-gemera/1-thumb.jpg",
+      "author": "MrWalkr",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Koenigsegg_Gemera.jpg"
+    }
+  ]
+}
