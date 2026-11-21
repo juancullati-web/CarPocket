@@ -1,0 +1,74 @@
+{
+  "slug": "ariel-atom",
+  "name": "Ariel Atom",
+  "brand": "Ariel",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-21T21:35:12+00:00",
+  "updated": "2026-11-21T21:35:12+00:00",
+  "summary": "L'Atom est une voiture biplace de route du constructeur automobile britannique Ariel Ltd, à carrosserie ouverte et sans pare-brise ni protection latérale autre que son châssis tubulaire en version de base. Elle est homologuée au Royaume-Uni et dans d'autres pays à titre isolé (Single Vehicle Approval).",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Ariel_Atom",
+  "wikipedia_title": "Ariel Atom",
+  "specs": {
+    "engine": {
+      "value": "1.8 L 190 hp Rover K-Series engine · 2.0 L 245 bhp naturally aspirated or 310 bhp (350 bhp in 3.5R) supercharged Honda K20Z4 i-VTEC · 2.2 L or 2.4 L 205-300 bhp supercharged General Motors Ecotec · 3.0 L 500 bhp Ariel H1 V8 · 2.4 L 245 bhp naturally aspirated or 300bhp supercharged Honda i-VTEC (US) · 2.4 L 230 bhp naturally aspirated or 365 bhp turbocharged Honda K24Z7 i-VTEC · 2.0 L 321 bhp turbocharged (direct injection) Honda K20C1 i-VTEC",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 6 rapports · Séquentielle 6 rapports manual",
+      "from_text": false
+    },
+    "body": {
+      "value": "Open-wheel two-seater",
+      "from_text": false
+    },
+    "production": {
+      "value": "2000–present",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Niki Smart",
+      "from_text": false
+    },
+    "weight": {
+      "value": "612 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "3410 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1890 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1195 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2345 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "373 kW",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-97 km/h : 2,89 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/ariel-atom/1.jpg",
+      "thumb": "photos/ariel-atom/1-thumb.jpg",
+      "author": "Brian Snelson",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:ArielAtomGoodwood.jpg"
+    }
+  ]
+}
