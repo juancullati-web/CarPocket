@@ -1,0 +1,86 @@
+{
+  "slug": "dallara-stradale",
+  "name": "Dallara Stradale",
+  "brand": "Dallara",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-21T21:48:28+00:00",
+  "updated": "2026-11-21T21:48:28+00:00",
+  "summary": "La Dallara Stradale est une supercar fabriquée par le constructeur automobile italien Dallara. La Stradale est la première voiture de route fabriquée par la société, les principaux produits de la société étant le développement de châssis pour d'autres constructeurs automobiles ainsi que le développement et la construction de voitures de course. Dans sa forme de base la Stradale est une barchetta sans portes convertible en style de carrosserie spider et coupé après l'installation de pièces interchangeables.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Dallara_Stradale",
+  "wikipedia_title": "Dallara Stradale",
+  "specs": {
+    "engine": {
+      "value": "2.3-litre turbocharged Ford EcoBoost I4",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 6 rapports · Manuelle 6 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "Moteur transversal, moteur central arrière, propulsion",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes · Doorless roadster · Doorless targa top · Doorless barchetta",
+      "from_text": false
+    },
+    "production": {
+      "value": "2017–present",
+      "from_text": false
+    },
+    "designer": {
+      "value": "Granstudio under Lowie Vermeersch",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Varano de' Melegari, Italy",
+      "from_text": false
+    },
+    "weight": {
+      "value": "855 kg (dry weight)",
+      "from_text": false
+    },
+    "length": {
+      "value": "4185 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1875 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1041 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2475 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "400 PS",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "280 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-60 mph : 3,2 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/dallara-stradale/1.jpg",
+      "thumb": "photos/dallara-stradale/1-thumb.jpg",
+      "author": "Calreyn88",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Dallara_Stradale.jpg"
+    }
+  ]
+}
