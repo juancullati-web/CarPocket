@@ -1,0 +1,62 @@
+{
+  "slug": "czinger-21c",
+  "name": "Czinger 21C",
+  "brand": "Czinger",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-21T21:36:54+00:00",
+  "updated": "2026-11-21T21:36:54+00:00",
+  "summary": "La Czinger 21C (21C pour 21st Century) est une hypercar hybride conçue par le constructeur automobile américain Czinger, et produite à 80 exemplaires à partir de 2021.",
+  "summary_lang": "fr",
+  "summary_url": "https://fr.wikipedia.org/wiki/Czinger_21C",
+  "wikipedia_title": "Czinger 21C",
+  "specs": {
+    "engine": {
+      "value": "2.88 L DOHC Twin turbo V8",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Séquentielle 7 rapports transaxle with hydraulic actuated multi-plate clutch",
+      "from_text": false
+    },
+    "body": {
+      "value": "Coupé 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "2021–present",
+      "from_text": false
+    },
+    "designer": {
+      "value": "David O’Connell, Kevin Czinger, Lukas Czinger",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1250 kg",
+      "from_text": false
+    },
+    "width": {
+      "value": "2050 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "950 hp",
+      "from_text": false
+    },
+    "torque": {
+      "value": "746 Nm",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/czinger-21c/1.jpg",
+      "thumb": "photos/czinger-21c/1-thumb.jpg",
+      "author": "MrWalkr",
+      "license": "CC BY-SA 4.0",
+      "license_url": "https://creativecommons.org/licenses/by-sa/4.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Czinger_21C_FOS2022.jpg"
+    }
+  ]
+}
