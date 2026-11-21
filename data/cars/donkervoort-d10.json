@@ -1,0 +1,53 @@
+{
+  "slug": "donkervoort-d10",
+  "name": "Donkervoort D10",
+  "brand": "Donkervoort",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-21T21:28:34+00:00",
+  "updated": "2026-11-21T21:28:34+00:00",
+  "summary": "Donkervoort D10 is an ultra-light weight sports car manufactured by Donkervoort in Lelystad, Netherlands between 1988 and 1994. It is the third in series of Donkervoort sports cars, the two previous models being Donkervoort S7 and Donkervoort S8. It was first produced for celebrating Donkervoort's 10th anniversary.",
+  "summary_lang": "en",
+  "summary_url": "https://en.wikipedia.org/wiki/Donkervoort_D10",
+  "wikipedia_title": "Donkervoort D10",
+  "specs": {
+    "engine": {
+      "value": "2,160 cc Ford Garrett T3 turbocharger",
+      "from_text": false
+    },
+    "body": {
+      "value": "Cabriolet 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1988–1989",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Lelystad, Netherlands",
+      "from_text": false
+    },
+    "weight": {
+      "value": "650 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "3400 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1730 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "980 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2305 mm",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": []
+}
