@@ -1,0 +1,62 @@
+{
+  "slug": "donkervoort-s8",
+  "name": "Donkervoort S8",
+  "brand": "Donkervoort",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-21T21:34:27+00:00",
+  "updated": "2026-11-21T21:34:27+00:00",
+  "summary": "The Donkervoort S8 is an ultra-light weight sports car manufactured by Donkervoort in Lelystad, Netherlands, between 1983 and 1993. It is the second model produced by Donkervoort, succeeding the Donkervoort S7. Three models were produced, the Donkervoort S8, the Donkervoort S8A, and the Donkervoort S8AT. It was replaced by the Donkervoort D10 in 1988 which was in turn replaced by the Donkervoort D8 in 1993.",
+  "summary_lang": "en",
+  "summary_url": "https://en.wikipedia.org/wiki/Donkervoort_S8",
+  "wikipedia_title": "Donkervoort S8",
+  "specs": {
+    "engine": {
+      "value": "2.0 L Ford OHC · 2.0 L turbocharged Ford OHC",
+      "from_text": false
+    },
+    "body": {
+      "value": "Cabriolet 2 portes",
+      "from_text": false
+    },
+    "production": {
+      "value": "1984–1994",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Lelystad, Netherlands",
+      "from_text": false
+    },
+    "weight": {
+      "value": "675 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "3600 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1730 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1070 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2305 mm",
+      "from_text": false
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/donkervoort-s8/1.jpg",
+      "thumb": "photos/donkervoort-s8/1-thumb.jpg",
+      "author": "Rutger van der Maar",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:Donkervoort_S8_2.0_(54170866167).jpg"
+    }
+  ]
+}
