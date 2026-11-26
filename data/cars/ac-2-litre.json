@@ -1,0 +1,82 @@
+{
+  "slug": "ac-2-litre",
+  "name": "AC 2-Litre",
+  "brand": "AC",
+  "variant": null,
+  "example": false,
+  "added": "2026-11-26T12:04:11+00:00",
+  "updated": "2026-11-26T12:04:11+00:00",
+  "summary": "The AC 2-Litre is an automobile that was produced by AC of Thames Ditton in Surrey, England between 1947 and 1956. Two and, from 1952, four-door saloons were sold. In addition, as from 1949, a small number of drophead coupés and \"Buckland\" tourers were produced. The car's wetliner, aluminium cylinder block, six-cylinder 1991 cc engine was the unit first offered by the company in the AC 16, back in 1922. However, by 1947 the engine was fed by three SU carburettors, and boasted a power output of 74 bhp (55.2 kW), increased again in 1951 to 85 bhp (63.4 kW) which was more than twice the 35 bhp (26.1 kW) claimed for engine's original commercial application. The aluminium-panelled body on a wood frame was fitted to a conventional steel chassis with rigid axles front and rear with semi-elliptic leaf springs with, for the first time on an AC, hydraulic dampers.",
+  "summary_lang": "en",
+  "summary_url": "https://en.wikipedia.org/wiki/AC_2-Litre",
+  "wikipedia_title": "AC 2-Litre",
+  "specs": {
+    "engine": {
+      "value": "1991 cc I6 ohc · 74 bhp/76 bhp",
+      "from_text": false
+    },
+    "transmission": {
+      "value": "Manuelle 4 rapports",
+      "from_text": false
+    },
+    "layout": {
+      "value": "FR layout",
+      "from_text": false
+    },
+    "body": {
+      "value": "2 -door / Berline 4 portes, drophead coupé, tourer",
+      "from_text": false
+    },
+    "production": {
+      "value": "1947–1956 · 1,284 exemplaires",
+      "from_text": false
+    },
+    "assembly": {
+      "value": "Thames Ditton, Surrey, England",
+      "from_text": false
+    },
+    "weight": {
+      "value": "1321 kg",
+      "from_text": false
+    },
+    "length": {
+      "value": "4674 mm",
+      "from_text": false
+    },
+    "width": {
+      "value": "1702 mm",
+      "from_text": false
+    },
+    "height": {
+      "value": "1549 mm",
+      "from_text": false
+    },
+    "wheelbase": {
+      "value": "2972 mm",
+      "from_text": false
+    },
+    "power": {
+      "value": "74 bhp",
+      "from_text": true
+    },
+    "top_speed": {
+      "value": "129 km/h",
+      "from_text": true
+    },
+    "zero_100": {
+      "value": "0-60 mph : 19,9 s",
+      "from_text": true
+    }
+  },
+  "overrides": {},
+  "photos": [
+    {
+      "file": "photos/ac-2-litre/1.jpg",
+      "thumb": "photos/ac-2-litre/1-thumb.jpg",
+      "author": "SG2012",
+      "license": "CC BY 2.0",
+      "license_url": "https://creativecommons.org/licenses/by/2.0",
+      "source_url": "https://commons.wikimedia.org/wiki/File:AC_2_-Litre_2_Door_Saloon_(1951).jpg"
+    }
+  ]
+}
